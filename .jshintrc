@@ -1,0 +1,24 @@
+{
+  "globalstrict": true,
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "require": true,
+    "module": true,
+    "process": true,
+    "jest": true,
+    "describe": true,
+    "beforeEach": true,
+    "it": true,
+    "expect": true,
+    "spyOn": true,
+    "document": true,
+    "window": true,
+    "jasmine": true,
+    "setTimeout": true,
+    "setInterval": true,
+    "clearInterval": true,
+    "console": true,
+    "global": true
+  }
+}
