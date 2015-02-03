@@ -2,6 +2,7 @@
 "use strict";
 
 var React     = require('react');
+var TopBar    = require('../layout/TopBar');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -9,7 +10,8 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="DemoPage">
-        Cool UI Here.
-      </div>);
+        <TopBar applicationName={ "UI Library" } />
+      </div>
+    );
   }
 });
