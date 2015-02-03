@@ -1,0 +1,58 @@
+{
+  "name": "ui-library",
+  "version": "0.0.1",
+  "description": "EDH UI library to share layout and base components between applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/jest",
+    "start": "node server.js",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/everydayhero/ui-library.git"
+  },
+  "author": "EDH",
+  "homepage": "https://github.com/everydayhero/ui-library",
+  "dependencies": {
+    "browserify": "^8.1.1",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-inject": "^1.1.1",
+    "gulp-jshint": "^1.9.0",
+    "gulp-minify-css": "^0.4.2",
+    "gulp-react": "^2.0.0",
+    "gulp-sass": "^1.3.2",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.2",
+    "install": "^0.1.8",
+    "jest-cli": "^0.2.1",
+    "jshint-stylish": "^1.0.0",
+    "lodash": "^3.0.0",
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2",
+    "reactify": "^1.0.0",
+    "run-sequence": "^1.0.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.2.1",
+    "webpack": "^1.5.3"
+  },
+  "devDependencies": {
+    "compression": "^1.3.0",
+    "express": "^4.11.1",
+    "morgan": "^1.5.1"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  }
+}
