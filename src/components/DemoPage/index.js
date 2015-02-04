@@ -1,8 +1,9 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React     = require('react');
-var TopBar    = require('../layout/TopBar');
+var React    = require('react');
+var TopBar   = require('../layout/TopBar');
+var Masthead = require('../layout/Masthead');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -10,7 +11,9 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="DemoPage">
-        <TopBar applicationName={ "UI Library" } />
+        <TopBar>
+          <Masthead applicationName={ "UI Library" } />
+        </TopBar>
       </div>
     );
   }

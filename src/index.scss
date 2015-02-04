@@ -1,6 +1,8 @@
 @import "sass/colors";
+@import "sass/modules/typography";
 
 @import "components/layout/TopBar/style";
+@import "components/layout/Masthead/style";
 
 * {
   margin: 0;
@@ -11,8 +13,12 @@
 }
 
 body {
-  background: $uilib-color-bg-beige;
+  background: $uilib-bg-beige;
   font-family: lato,helvetica,arial,sans-serif;
   font-size: 13px;
-  letter-spacing: 0.05em;
+}
+
+a, img {
+  border: none;
+  outline: none;
 }
