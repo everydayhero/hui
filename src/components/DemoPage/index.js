@@ -12,7 +12,7 @@ module.exports = React.createClass({
     return (
       <div className="DemoPage">
         <TopBar>
-          <Masthead applicationName={ "UI Library" } />
+          <Masthead appName={ "UI Library" } />
         </TopBar>
       </div>
     );

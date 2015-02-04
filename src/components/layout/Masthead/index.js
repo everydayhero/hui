@@ -10,7 +10,7 @@ module.exports = React.createClass({
 
   propTypes: {
     routes: React.PropTypes.object,
-    applicationName:React.PropTypes.string
+    appName:React.PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -20,7 +20,7 @@ module.exports = React.createClass({
   },
 
   renderLogo: function() {
-    var alt = ["everydayhero", this.props.applicationName].join(' ');
+    var alt = ["everydayhero", this.props.appName].join(' ');
 
     if (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
       return (
@@ -40,12 +40,12 @@ module.exports = React.createClass({
   },
 
   renderAppName: function() {
-    var applicationName = this.props.applicationName;
+    var appName = this.props.appName;
 
-    if (applicationName) {
+    if (appName) {
       return (
-          <span className="UIlib-Masthead__applicationName">
-            { applicationName }
+          <span className="UIlib-Masthead__appName">
+            { appName }
           </span>
         );
     } else {
