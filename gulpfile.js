@@ -21,15 +21,15 @@ var stylish      = require('jshint-stylish');
 
 // html
 var inject       = require("gulp-inject");
+var pkg          = require('./package');
 
 var debug        = !!gutil.env.debug;
 
-if (debug) {
-  process.env.NODE_ENV = 'development';
-}
+process.env.NODE_ENV = debug ? 'development' : 'production';
+process.env.BUILD_ENV = 'package';
 
 gulp.task('styles', function() {
-  var process = debug ? gutil.noop : minifyCss;
+  var compress = debug ? gutil.noop : minifyCss;
 
   return gulp
     .src([ 'src/index.scss' ])
@@ -41,7 +41,7 @@ gulp.task('styles', function() {
     }))
     .pipe(concat('index.css'))
     .pipe(autoprefixer())
-    .pipe(process())
+    .pipe(compress())
     .pipe(gulp.dest('dist/styles'));
 });
 
@@ -57,7 +57,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('scripts', [ 'lint' ], function() {
-  var process = debug ? gutil.noop : uglify;
+  var compress = debug ? gutil.noop : uglify;
 
   var bundler = browserify({
       entries: ['./src/index.js'],
@@ -69,11 +69,11 @@ gulp.task('scripts', [ 'lint' ], function() {
       .on('error', gutil.log.bind(gutil, 'Browserify Error'))
       .pipe(source('index.js'))
       .pipe(buffer())
-      .pipe(process())
+      .pipe(compress())
       .pipe(gulp.dest('./dist/scripts'));
 });
 
-gulp.task('index', [ 'styles', 'scripts' ], function() {
+gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
   var sources = gulp.src([
       'dist/*/index.*'
     ], { read: false });
@@ -88,6 +88,12 @@ gulp.task('index', [ 'styles', 'scripts' ], function() {
       }
     }))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('images', function() {
+  return gulp
+    .src('src/images/*', {base: 'src/images'})
+    .pipe(gulp.dest('dist/images' + '-' + pkg.version));
 });
 
 gulp.task('build', ['index']);
