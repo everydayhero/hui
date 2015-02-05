@@ -2,7 +2,6 @@
 "use strict";
 
 jest.dontMock('../index');
-jest.dontMock('../../../mixins/assests');
 
 describe('Masthead', function() {
   var React       = require('react/addons');
@@ -10,15 +9,16 @@ describe('Masthead', function() {
   var TestUtils   = React.addons.TestUtils;
   var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
+  var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
 
   describe('default', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead/>);
+      component = TestUtils.renderIntoDocument(<Masthead srcSvg="logo.svg" href="foo"/>);
       document.implementation.hasFeature = function() {
         return true;
-      }
+      };
     });
 
     it('should render Masthead', function() {
@@ -26,13 +26,19 @@ describe('Masthead', function() {
     });
 
     it('should not render application name', function() {
-      expect(scryByClass(component, 'UIlib-Masthead__appName').length).toBe(0);
+      expect(scryByClass(component, 'hui-Masthead__appName').length).toBe(0);
     });
 
     it('should render a svg logo', function() {
-      var src = findByClass(component, 'UIlib-Masthead__logo').getDOMNode().src;
+      var src = findByClass(component, 'hui-Masthead__logo').getDOMNode().src;
 
       expect(src).toContain('svg');
+    });
+
+    it('should render a anchor with href foo', function() {
+      var href = findByTag(component, 'a').getDOMNode().href;
+
+      expect(href).toContain('foo');
     });
   });
 
@@ -44,7 +50,7 @@ describe('Masthead', function() {
     });
 
     it('should render application name', function() {
-      expect(scryByClass(component, 'UIlib-Masthead__appName').length).toBe(1);
+      expect(scryByClass(component, 'hui-Masthead__appName').length).toBe(1);
     });
   });
 
@@ -52,16 +58,16 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead appName="foo" />);
+      component = TestUtils.renderIntoDocument(<Masthead appName="foo" srcSvg="logo.gif"/>);
       document.implementation.hasFeature = function() {
         return false;
-      }
+      };
     });
 
     it('should render a gif logo', function() {
-      var src = findByClass(component, 'UIlib-Masthead__logo').getDOMNode().src;
+      var src = findByClass(component, 'hui-Masthead__logo').getDOMNode().src;
 
-      expect(src).toContain('svg');
+      expect(src).toContain('gif');
     });
   });
 });

@@ -7,10 +7,8 @@ module.exports = React.createClass({
   displayName: 'TopBar',
 
   render: function() {
-    var props = this.props;
-
     return (
-      <div className="UIlib-TopBar">
+      <div className="hui-TopBar">
         { this.props.children }
       </div>);
   }

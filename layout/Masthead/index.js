@@ -2,21 +2,21 @@
 "use strict";
 
 var React   = require('react');
-var assests = require('../../mixins/assests');
 
 module.exports = React.createClass({
   displayName: 'Masthead',
-  mixins: [assests],
 
   propTypes: {
-    routes: React.PropTypes.object,
-    appName:React.PropTypes.string
+    href: React.PropTypes.string,
+    appName: React.PropTypes.string,
+    srcSvg: React.PropTypes.string,
+    srcGif: React.PropTypes.string
   },
 
   getDefaultProps: function() {
     return {
       root: '/'
-    }
+    };
   },
 
   renderLogo: function() {
@@ -25,15 +25,15 @@ module.exports = React.createClass({
     if (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
       return (
         <img
-          className="UIlib-Masthead__logo"
-          src={ this.assestPath('edh_logo.svg') }
+          className="hui-Masthead__logo"
+          src={ this.props.srcSvg }
           alt={ alt } />
         );
     } else {
       return (
         <img
-          className="UIlib-Masthead__logo"
-          src={ this.assestPath('edh_logo_32x180.gif') }
+          className="hui-Masthead__logo"
+          src={ this.props.srcGif }
           alt={ alt } />
         );
     }
@@ -44,7 +44,7 @@ module.exports = React.createClass({
 
     if (appName) {
       return (
-          <span className="UIlib-Masthead__appName">
+          <span className="hui-Masthead__appName">
             { appName }
           </span>
         );
@@ -54,11 +54,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var routes = this.props.routes;
-
     return (
-      <h1 className="UIlib-Masthead">
-        <a href={ this.props.root }>
+      <h1 className="hui-Masthead">
+        <a href={ this.props.href }>
           { this.renderLogo() }
           { this.renderAppName() }
         </a>
