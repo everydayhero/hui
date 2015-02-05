@@ -25,14 +25,34 @@ var pkg          = require('./package');
 
 var debug        = !!gutil.env.debug;
 
+var modulePaths = [
+  'forms/**/*.{type}',
+  'buttons/**/*.{type}',
+  'DemoPage/**/*.{type}',
+  'layout/**/*.{type}',
+  'mixins/**/*.{type}',
+  'navigation/**/*.{type}',
+  'typography/**/*.{type}'
+];
+
 process.env.NODE_ENV = debug ? 'development' : 'production';
 process.env.BUILD_ENV = 'package';
+
+function modulePathsWithType(type) {
+  var paths = [];
+
+  for (var i = 0; i < modulePaths.length; i++) {
+    paths.push(modulePaths[i].replace('{type}', type));
+  };
+
+  return paths;
+}
 
 gulp.task('styles', function() {
   var compress = debug ? gutil.noop : minifyCss;
 
   return gulp
-    .src([ 'src/index.scss' ])
+    .src([ 'index.scss' ])
     .pipe(sass({
       sourceMap: 'sass',
       sourceComments: 'map',
@@ -46,7 +66,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('lint', function() {
-  return gulp.src([ 'src/**/*.js' ])
+  return gulp.src(modulePathsWithType('js'))
     .pipe(react())
     .on('error', function(e) {
       // Need better logging here
@@ -60,7 +80,7 @@ gulp.task('scripts', [ 'lint' ], function() {
   var compress = debug ? gutil.noop : uglify;
 
   var bundler = browserify({
-      entries: ['./src/index.js'],
+      entries: ['./index.js'],
       debug: debug
     });
 
@@ -92,7 +112,7 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
 
 gulp.task('images', function() {
   return gulp
-    .src('src/images/*', {base: 'src/images'})
+    .src('./images/*', {base: 'src/images'})
     .pipe(gulp.dest('dist/images' + '-' + pkg.version));
 });
 
@@ -100,7 +120,7 @@ gulp.task('build', ['index']);
 gulp.task('default', [ 'build' ]);
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.scss', [ 'styles' ]);
-  gulp.watch('src/**/*.js', [ 'scripts' ]);
-  gulp.watch('src/index.html', [ 'index' ]);
+  gulp.watch(modulePathsWithType('.scss'), [ 'styles' ]);
+  gulp.watch(modulePathsWithType('.js'), [ 'scripts' ]);
+  gulp.watch('index.html', [ 'index' ]);
 });

@@ -2,7 +2,7 @@
 "use strict";
 
 var React   = require('react');
-var assests = require('../../../mixins/assests');
+var assests = require('../../mixins/assests');
 
 module.exports = React.createClass({
   displayName: 'Masthead',

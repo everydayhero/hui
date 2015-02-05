@@ -2,7 +2,7 @@
 "use strict";
 
 jest.dontMock('../index');
-jest.dontMock('../../../../mixins/assests');
+jest.dontMock('../../../mixins/assests');
 
 describe('Masthead', function() {
   var React       = require('react/addons');
@@ -26,7 +26,7 @@ describe('Masthead', function() {
     });
 
     it('should not render application name', function() {
-      expect(scryByClass(component, 'UIlib-Masthead__applicationName').length).toBe(0);
+      expect(scryByClass(component, 'UIlib-Masthead__appName').length).toBe(0);
     });
 
     it('should render a svg logo', function() {
@@ -40,11 +40,11 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead applicationName="foo" />);
+      component = TestUtils.renderIntoDocument(<Masthead appName="foo" />);
     });
 
     it('should render application name', function() {
-      expect(scryByClass(component, 'UIlib-Masthead__applicationName').length).toBe(1);
+      expect(scryByClass(component, 'UIlib-Masthead__appName').length).toBe(1);
     });
   });
 
@@ -52,7 +52,7 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead applicationName="foo" />);
+      component = TestUtils.renderIntoDocument(<Masthead appName="foo" />);
       document.implementation.hasFeature = function() {
         return false;
       }
