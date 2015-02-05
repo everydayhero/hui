@@ -17,8 +17,7 @@ module.exports = React.createClass({
           <Masthead
             appName={ "HUI (◠‿◠)" }
             href="/"
-            srcSvg={ imagePath + "edh_logo.svg" }
-            srcGif={ imagePath + "edh_logo_32x180.gif" } />
+            imagePath={ imagePath } />
         </TopBar>
       </div>
     );

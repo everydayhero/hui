@@ -36,7 +36,6 @@ var modulePaths = [
 ];
 
 process.env.NODE_ENV = debug ? 'development' : 'production';
-process.env.BUILD_ENV = 'package';
 
 function modulePathsWithType(type) {
   var paths = [];
@@ -112,7 +111,7 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
 
 gulp.task('images', function() {
   return gulp
-    .src('./images/*', {base: 'src/images'})
+    .src('./images/*', {base: './images'})
     .pipe(gulp.dest('dist/images' + '-' + pkg.version));
 });
 

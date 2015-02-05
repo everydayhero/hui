@@ -1,7 +1,13 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React   = require('react');
+var React = require('react');
+
+var hasSvgFeature = document.implementation.hasFeature(
+      "http://www.w3.org/TR/SVG11/feature#Image", "1.1"
+    );
+var fileType = hasSvgFeature ? 'svg' : 'gif';
+var LOGO_FILE_NAME = 'hui_edh_logo.';
 
 module.exports = React.createClass({
   displayName: 'Masthead',
@@ -9,8 +15,7 @@ module.exports = React.createClass({
   propTypes: {
     href: React.PropTypes.string,
     appName: React.PropTypes.string,
-    srcSvg: React.PropTypes.string,
-    srcGif: React.PropTypes.string
+    imagePath: React.PropTypes.string.isRequired
   },
 
   getDefaultProps: function() {
@@ -22,21 +27,12 @@ module.exports = React.createClass({
   renderLogo: function() {
     var alt = ["everydayhero", this.props.appName].join(' ');
 
-    if (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
-      return (
-        <img
-          className="hui-Masthead__logo"
-          src={ this.props.srcSvg }
-          alt={ alt } />
-        );
-    } else {
-      return (
-        <img
-          className="hui-Masthead__logo"
-          src={ this.props.srcGif }
-          alt={ alt } />
-        );
-    }
+    return (
+      <img
+        className="hui-Masthead__logo"
+        src={ this.props.imagePath + LOGO_FILE_NAME + fileType }
+        alt={ alt } />
+    );
   },
 
   renderAppName: function() {
