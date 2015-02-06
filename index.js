@@ -3,9 +3,10 @@
 
 var React    = require('react');
 var DemoPage = require('./DemoPage');
+var content  = document.getElementById("content");
 
 global.React = React;
 
-React.render(<DemoPage/>, document.body);
+React.render(<DemoPage/>, content);
 
 

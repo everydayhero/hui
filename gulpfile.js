@@ -98,7 +98,7 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
     ], { read: false });
 
   return gulp
-    .src('src/index.html')
+    .src('index.ejs')
     .pipe(inject(sources, {
       transform: function(filepath, file, i, length) {
         // remove `/dist` from the filepath
