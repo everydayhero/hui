@@ -2,13 +2,6 @@
 "use strict";
 
 var React = require('react');
-var hasSvgFeature = false;
-
-if (document) {
-  hasSvgFeature = document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1");
-}
-
-var fileType = hasSvgFeature ? 'svg' : 'gif';
 var LOGO_FILE_NAME = 'hui_edh_logo.';
 
 module.exports = React.createClass({
@@ -20,6 +13,15 @@ module.exports = React.createClass({
     imagePath: React.PropTypes.string.isRequired
   },
 
+  getInitialState: function() {
+    // catch to support server side rendering and test weirdness
+    var hasDocument = (typeof document === 'object');
+
+    return {
+      hasSvgFeature: hasDocument ? document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") : false
+    };
+  },
+
   getDefaultProps: function() {
     return {
       root: '/'
@@ -28,6 +30,7 @@ module.exports = React.createClass({
 
   renderLogo: function() {
     var alt = ["everydayhero", this.props.appName].join(' ');
+    var fileType = this.state.hasSvgFeature ? 'svg' : 'gif';
 
     return (
       <img
