@@ -15,10 +15,10 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead srcSvg="logo.svg" href="foo"/>);
       document.implementation.hasFeature = function() {
         return true;
       };
+      component = TestUtils.renderIntoDocument(<Masthead imagePath="/" href="foo"/>);
     });
 
     it('should render Masthead', function() {
@@ -46,7 +46,7 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead appName="foo" />);
+      component = TestUtils.renderIntoDocument(<Masthead appName="foo" imagePath="/"/>);
     });
 
     it('should render application name', function() {
@@ -58,15 +58,14 @@ describe('Masthead', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Masthead appName="foo" srcSvg="logo.gif"/>);
       document.implementation.hasFeature = function() {
         return false;
       };
+      component = TestUtils.renderIntoDocument(<Masthead appName="foo" imagePath="/"/>);
     });
 
     it('should render a gif logo', function() {
       var src = findByClass(component, 'hui-Masthead__logo').getDOMNode().src;
-
       expect(src).toContain('gif');
     });
   });
