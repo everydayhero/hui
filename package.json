@@ -1,8 +1,19 @@
 {
-  "name": "ui-library",
+  "name": "HUI",
   "version": "0.0.1",
   "description": "EDH UI library to share layout and base components between applications.",
-  "main": "index.js",
+  "main": "src/index.js",
+  "files": [
+    "README.md",
+    "dist/",
+    "forms/",
+    "images/",
+    "layout/",
+    "mixings/",
+    "navigation/",
+    "buttons/",
+    "sass/"
+  ],
   "scripts": {
     "test": "node_modules/.bin/jest",
     "start": "node server.js",

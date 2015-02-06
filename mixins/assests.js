@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 "use strict";
 
-var pkg = require('../../package');
+var pkg = require('../package');
 
 module.exports = {
   assestPath: function(assestName) {

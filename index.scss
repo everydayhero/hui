@@ -1,8 +1,8 @@
 @import "sass/colors";
 @import "sass/modules/typography";
 
-@import "components/layout/TopBar/style";
-@import "components/layout/Masthead/style";
+@import "layout/TopBar/style";
+@import "layout/Masthead/style";
 
 * {
   margin: 0;
@@ -13,7 +13,7 @@
 }
 
 body {
-  background: $uilib-bg-beige;
+  background: $hui-bg-beige;
   font-family: lato,helvetica,arial,sans-serif;
   font-size: 13px;
 }
