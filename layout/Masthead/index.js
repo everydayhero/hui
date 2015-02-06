@@ -2,10 +2,12 @@
 "use strict";
 
 var React = require('react');
+var hasSvgFeature = false;
 
-var hasSvgFeature = document.implementation.hasFeature(
-      "http://www.w3.org/TR/SVG11/feature#Image", "1.1"
-    );
+if (document) {
+  hasSvgFeature = document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1");
+}
+
 var fileType = hasSvgFeature ? 'svg' : 'gif';
 var LOGO_FILE_NAME = 'hui_edh_logo.';
 
