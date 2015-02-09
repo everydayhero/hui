@@ -4,16 +4,12 @@
 var React      = require('react');
 
 module.exports = React.createClass({
-  displayName: 'TopBar',
-
-  propTypes: {
-    children: React.PropTypes.node
-  },
+  displayName: 'TopBarLink',
 
   render: function() {
     return (
-      <div className="hui-TopBar">
+      <a className="hui-TopBarLink"  {...this.props} >
         { this.props.children }
-      </div>);
+      </a>);
   }
 });
