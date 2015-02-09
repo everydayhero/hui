@@ -51,7 +51,7 @@ gulp.task('styles', function() {
   var compress = debug ? gutil.noop : minifyCss;
 
   return gulp
-    .src([ 'index.scss' ])
+    .src([ 'index.scss', 'node_modules/highlight.js/styles/monokai_sublime.css' ])
     .pipe(sass({
       sourceMap: 'sass',
       sourceComments: 'map',

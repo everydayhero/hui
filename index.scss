@@ -1,7 +1,9 @@
 @import "sass/colors";
 @import "sass/modules/typography";
 
+@import "DemoPage/style";
 @import "layout/TopBar/style";
+@import "layout/TopBarLink/style";
 @import "layout/Masthead/style";
 
 * {

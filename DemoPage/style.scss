@@ -1,0 +1,62 @@
+.DemoPage {
+  margin-top: 64px;
+
+  h2 {
+    @extend %hui-rule-bottom;
+    font-size: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    margin-top: 36px;
+    font-weight: 200;
+    color: $hui-text-grey;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    font-weight: 400;
+    color: $hui-text-grey;
+  }
+
+  h4 {
+    font-size: 13px;
+    margin-bottom: 8px;
+    margin-top: 13px;
+    font-weight: 800;
+    color: $hui-text-grey;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: $hui-text-grey;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  ul {
+    margin-left: 24px;
+    margin-bottom: 24px;
+    color: $hui-text-grey;
+    font-size: 14px;
+    li {
+      line-height: 16px;
+    }
+  }
+}
+
+.DemoPage__content {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 64px;
+  padding: 24px;
+}
+
+.DemoPage__example {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  min-height: 69px;
+  margin-bottom: 24px;
+  border: 1px $hui-border-grey solid;
+}
