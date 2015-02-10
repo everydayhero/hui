@@ -5,6 +5,10 @@
 @import "layout/TopBar/style";
 @import "layout/TopBarLink/style";
 @import "layout/Masthead/style";
+@import "graphs/LineGraph/styles";
+@import "graphs/LineGraph/LinePath/style";
+@import "graphs/LineGraph/YScale/style";
+@import "graphs/LineGraph/XScale/style";
 
 * {
   margin: 0;

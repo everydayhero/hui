@@ -52,11 +52,27 @@
   padding: 24px;
 }
 
-.DemoPage__example {
+.DemoPage__example,
+.DemoPage__example--graph--lines,
+.DemoPage__example--graph--stacked {
   position: relative;
   top: 0px;
   left: 0px;
   min-height: 69px;
   margin-bottom: 24px;
   border: 1px $hui-border-grey solid;
+}
+
+.DemoPage__example--graph--lines,
+.DemoPage__example--graph--stacked {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.DemoPage__example--graph--lines {
+  height: 100px;
+}
+
+.DemoPage__example--graph--stacked {
+  height: 200px;
 }

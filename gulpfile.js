@@ -121,5 +121,5 @@ gulp.task('default', [ 'build' ]);
 gulp.task('watch', function() {
   gulp.watch(modulePathsWithType('.scss'), [ 'styles' ]);
   gulp.watch(modulePathsWithType('.js'), [ 'scripts' ]);
-  gulp.watch('index.html', [ 'index' ]);
+  gulp.watch('index.ejs', [ 'index' ]);
 });
