@@ -9,7 +9,7 @@ function getSeries(tick) {
   var series = [[], [], []];
   var count = 0;
 
-  while(count < 100) {
+  while(count < 30) {
     var value = (Math.abs(Math.sin(count + tick) * 5100000));
     var value2 = (Math.abs(Math.cos(count + tick) * 5100000));
     var value3 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
@@ -49,12 +49,12 @@ module.exports = React.createClass({
     var component = this;
     var tick = 1;
 
-    // setInterval(function() {
-    //   tick++;
-    //   component.setState({
-    //     series: getSeries(tick)
-    //   });
-    // }, 100);
+    setInterval(function() {
+      tick++;
+      component.setState({
+        series: getSeries(tick)
+      });
+    }, 200);
   },
 
   render: function() {
@@ -65,9 +65,19 @@ module.exports = React.createClass({
     return (
     <div>
       <h3>LineGraph</h3>
-      <p>Words</p>
       <h4>LineGraph propTypes</h4>
       <ul>
+        <li>series</li>
+        <li>stacked</li>
+        <li>lined</li>
+        <li>gutter
+          <ul>
+            <li>left</li>
+            <li>right</li>
+            <li>bottom</li>
+            <li>top</li>
+          </ul>
+        </li>
       </ul>
       <div className="DemoPage__example--graph--lines">
         <LineGraph {...this.state} line={ true } area={ false } />
@@ -78,9 +88,7 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<TopBar>\n' }
-        { '  <Masthead appName={ "Example" } href="/" imagePath={ imagePath } />\n' }
-        { '</TopBar>\n' }
+        { '<LineGraph series={ series } line={ true } area={ false } />' }
       </Highlight>
     </div>
     );
