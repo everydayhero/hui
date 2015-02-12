@@ -45,6 +45,20 @@ module.exports = React.createClass({
     };
   },
 
+  componentWillMount: function() {
+    var component = this;
+    var tick = 1;
+
+    if(typeof document === 'object') {
+      setInterval(function() {
+        tick++;
+        component.setState({
+          series: getSeries(tick)
+        });
+      }, 100);
+    }
+  },
+
   render: function() {
     if (this.state.hide) {
       return false;
