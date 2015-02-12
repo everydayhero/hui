@@ -9,7 +9,7 @@ function getSeries(tick) {
   var series = [[], [], []];
   var count = 0;
 
-  while(count < 30) {
+  while(count < 50) {
     var value = (Math.abs(Math.sin(count + tick) * 5100000));
     var value2 = (Math.abs(Math.cos(count + tick) * 5100000));
     var value3 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
@@ -43,18 +43,6 @@ module.exports = React.createClass({
     return {
       series: getSeries(1)
     };
-  },
-
-  componentWillMount: function() {
-    var component = this;
-    var tick = 1;
-
-    setInterval(function() {
-      tick++;
-      component.setState({
-        series: getSeries(tick)
-      });
-    }, 200);
   },
 
   render: function() {

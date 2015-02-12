@@ -36,8 +36,6 @@ module.exports = React.createClass({
   },
 
   getPathHeight: function() {
-    var props = this.props;
-
     return this.getDrawingHeight() * this.getScalePercentage();
   },
 
@@ -45,12 +43,12 @@ module.exports = React.createClass({
     var props = this.props;
 
     return SmoothLine({
-      data: [this.props.series[props.index]],
+      data: [props.series[props.index]],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
       height: this.getPathHeight(),
-      closed: !this.props.lined
+      closed: !props.lined
     });
   },
 

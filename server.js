@@ -10,7 +10,6 @@ var ReactApp    = React.createFactory(require('./DemoPage'));
 var staticPath  = __dirname + '/dist/';
 var port        = 5000;
 
-
 app.use(morgan());
 app.use(compression());
 
