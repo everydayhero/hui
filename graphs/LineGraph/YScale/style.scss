@@ -1,0 +1,14 @@
+.YScale__line {
+  fill: none;
+  stroke: #e6e7e8;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  opacity: 0.5;
+}
+
+.YScale__label {
+  font-size: 10px;
+  font-weight: 200;
+  transform: translate(0px, -4px);
+}

@@ -1,14 +1,15 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React        = require('react');
-var TopBar       = require('../layout/TopBar');
-var TopBarLink   = require('../layout/TopBarLink');
-var Masthead     = require('../layout/Masthead');
-var Highlight    = require('react-highlight');
-var pkg          = require('../package');
-var imagePath    = '/images-' + pkg.version + '/';
-var TopBarExample = require('./TopBarExample');
+var React            = require('react');
+var TopBar           = require('../layout/TopBar');
+var TopBarLink       = require('../layout/TopBarLink');
+var Masthead         = require('../layout/Masthead');
+var Highlight        = require('react-highlight');
+var pkg              = require('../package');
+var imagePath        = '/images-' + pkg.version + '/';
+var TopBarExample    = require('./TopBarExample');
+var LineGraphExample = require('./LineGraphExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -48,6 +49,7 @@ module.exports = React.createClass({
           <h2 id="examples">Examples</h2>
 
           <TopBarExample/>
+          <LineGraphExample/>
 
         </div>
       </div>

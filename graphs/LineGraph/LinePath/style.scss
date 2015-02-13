@@ -1,0 +1,41 @@
+.LinePath {
+  &:nth-child(1) {
+    .LinePath__area {
+      fill: #82c57a;
+    }
+    .LinePath__line {
+      stroke: #82c57a;
+    }
+  }
+
+  &:nth-child(2) {
+    .LinePath__area {
+      fill: #9e8694;
+    }
+    .LinePath__line {
+      stroke: #9e8694;
+    }
+  }
+
+  &:nth-child(3) {
+    .LinePath__area {
+      fill: #307c99;
+    }
+    .LinePath__line {
+      stroke: #307c99;
+    }
+  }
+}
+
+.LinePath__area, .LinePath__line {
+  stroke-width: 0;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.LinePath__line {
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  fill: none
+}
