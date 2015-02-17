@@ -10,6 +10,7 @@ var pkg              = require('../package');
 var imagePath        = '/images-' + pkg.version + '/';
 var TopBarExample    = require('./TopBarExample');
 var LineGraphExample = require('./LineGraphExample');
+var VisualisationExample = require('./DataVisualisationExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -50,6 +51,7 @@ module.exports = React.createClass({
 
           <TopBarExample/>
           <LineGraphExample/>
+          <VisualisationExample />
 
         </div>
       </div>
