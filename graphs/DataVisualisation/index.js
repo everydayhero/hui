@@ -40,7 +40,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    console.log('XXXXXXXX');
     return (
       <div className="DataVisalisation">
         { this.renderTotal() }

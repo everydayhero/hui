@@ -37,7 +37,7 @@ function getSeries(tick) {
 
 
 module.exports = React.createClass({
-  displayName: 'LineGraphExample',
+  displayName: 'DataVisualisationExample',
 
   getInitialState: function() {
     return {
@@ -47,20 +47,6 @@ module.exports = React.createClass({
     };
   },
 
-  componentWillMount: function() {
-    var component = this;
-    var tick = 1;
-
-    // if(typeof document === 'object') {
-    //   setInterval(function() {
-    //     tick++;
-    //     component.setState({
-    //       series: getSeries(tick)
-    //     });
-    //   }, 100);
-    // }
-  },
-
   render: function() {
     if (this.state.hide) {
       return false;
@@ -68,27 +54,19 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>LineGraph</h3>
-      <h4>LineGraph propTypes</h4>
+      <h3>DataVisualisation</h3>
+      <h4>DataVisualisation propTypes</h4>
       <ul>
         <li>series</li>
-        <li>stacked</li>
-        <li>lined</li>
-        <li>gutter
-          <ul>
-            <li>left</li>
-            <li>right</li>
-            <li>bottom</li>
-            <li>top</li>
-          </ul>
-        </li>
+        <li>title</li>
+        <li>total</li>
       </ul>
-      <div className="DemoPage__example--graph--lines">
+      <div className="DemoPage__example">
         <DataVisualisation {...this.state} />
       </div>
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<LineGraph series={ series } line={ true } area={ false } />' }
+        { '<DataVisualisation series={ series } total={ number } title={ string } />' }
       </Highlight>
     </div>
     );
