@@ -4,7 +4,7 @@
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "src/index.js",
   "files": [
-    "README.md",
+    "/",
     "dist/",
     "forms/",
     "images/",
@@ -12,6 +12,7 @@
     "mixings/",
     "navigation/",
     "buttons/",
+    "graphs/",
     "sass/"
   ],
   "scripts": {

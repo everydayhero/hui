@@ -51,14 +51,14 @@ module.exports = React.createClass({
     var component = this;
     var tick = 1;
 
-    if(typeof document === 'object') {
-      setInterval(function() {
-        tick++;
-        component.setState({
-          series: getSeries(tick)
-        });
-      }, 100);
-    }
+    // if(typeof document === 'object') {
+    //   setInterval(function() {
+    //     tick++;
+    //     component.setState({
+    //       series: getSeries(tick)
+    //     });
+    //   }, 100);
+    // }
   },
 
   render: function() {
