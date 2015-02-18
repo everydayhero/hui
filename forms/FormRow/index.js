@@ -27,7 +27,7 @@ module.exports = React.createClass({
     if (props.label) {
       return (
         <label
-          className="FormRow__label"
+          className="hui-FormRow__label"
           htmlFor={ props.htmlFor }>
             { props.label }
         </label>
@@ -41,7 +41,7 @@ module.exports = React.createClass({
     if (props.hint) {
       return (
         <label
-          className="FormRow__hint"
+          className="hui-FormRow__hint"
           htmlFor={ props.htmlFor }>
             { props.hint }
         </label>
@@ -59,8 +59,8 @@ module.exports = React.createClass({
     var props = this.props;
     var classNameProp = props.className || '';
     var classes = cx({
-      'FormRow__labels': props.hint|| props.labelTop,
-      'FormRow__labels--noHelp': !props.hint && !props.labelTop
+      'hui-FormRow__labels': props.hint|| props.labelTop,
+      'hui-FormRow__labels--noHelp': !props.hint && !props.labelTop
     });
 
     if (classNameProp) {
@@ -80,10 +80,10 @@ module.exports = React.createClass({
   render: function() {
     var props = this.props;
     var classNameProp = props.className || '';
-    var classes = 'FormRow ' + classNameProp;
+    var classes = 'hui-FormRow ' + classNameProp;
     var contentClass = cx({
-      'FormRow__content': this.hasLabels(),
-      'FormRow__content--nolabel': !this.hasLabels()
+      'hui-FormRow__content': this.hasLabels(),
+      'hui-FormRow__content--nolabel': !this.hasLabels()
     });
 
     if (classNameProp) {

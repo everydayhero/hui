@@ -7,7 +7,7 @@ var placeholderMixin = require('../../mixins/placeholderMixin');
 var nextId           = 0;
 
 module.exports = React.createClass({
-  displayName: 'TextInput',
+  displayName: 'hui-TextInput',
   mixins: [placeholderMixin],
 
   propTypes: {
@@ -50,9 +50,9 @@ module.exports = React.createClass({
     var props = this.props;
 
     var classes = {
-      "TextInput": true,
-      "TextInput--error": this.hasErrors(),
-      "TextInput--readOnly": this.props.readOnly
+      "hui-TextInput": true,
+      "hui-TextInput--error": this.hasErrors(),
+      "hui-TextInput--readOnly": this.props.readOnly
     };
 
     classes[props.className] = true;
@@ -73,7 +73,7 @@ module.exports = React.createClass({
       <input
         {...props}
         autoComplete="off"
-        className="TextInput__input"
+        className="hui-TextInput__input"
         placeholder=""
         ref="input" />
     );

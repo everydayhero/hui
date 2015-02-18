@@ -1,4 +1,4 @@
-.TextInput {
+.hui-TextInput {
   @extend %hui-input-wrap;
   &:before {
     @extend %hui-text-input-label;
@@ -7,13 +7,13 @@
   }
 }
 
-.TextInput__input {
+.hui-TextInput__input {
   @extend %hui-text-input;
   .Input--error {
     color: tomato;
   }
 }
 
-.TextInput__placeholder {
+.hui-TextInput__placeholder {
   @extend %hui-placeholder;
 }

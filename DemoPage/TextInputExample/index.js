@@ -32,7 +32,7 @@ module.exports = React.createClass({
       <div className="DemoPage__example">
         <TextInput
           autoComplete="off"
-          className="PathInput__input"
+          className="hui-TextInput"
           id='demo_input'
           placeholder="Input here..."
           value={ this.state.form.demo_input }
@@ -43,7 +43,7 @@ module.exports = React.createClass({
       <Highlight className='html'>
         { '<TextInput\n' }
         { '  autoComplete="off"\n' }
-        { '  className="PathInput__input"\n' }
+        { '  className="hui-TextInput"\n' }
         { '  id={ props.id }\n' }
         { '  placeholder="Input here..."\n' }
         { '  value={ props.domain + value } />\n' }

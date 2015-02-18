@@ -1,11 +1,11 @@
-.InputErrors li {
-  @extend %errorMessage;
+.hui-InputErrors li {
+  @extend %hui-errorMessage;
   list-style-type: none;
   position: relative;
   display: block;
 }
 
-.InputErrors li:before {
+.hui-InputErrors li:before {
   content: '';
   display: block;
   width: 0;

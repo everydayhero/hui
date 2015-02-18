@@ -5,34 +5,34 @@
   padding: $hui-x-2 0;
 }
 
-.FormRow__label {
+.hui-FormRow__label {
   @extend %hui-form-row-label;
 }
 
-.FormRow__hint {
+.hui-FormRow__hint {
   @extend %form-instruction;
   display: block;
   font-weight: 200;
 }
 
-.FormRow__content {
+.hui-FormRow__content {
   display: table-cell;
   vertical-align: top;
   width: 100%;
   min-width: 386px;
 }
 
-.FormRow__content--nolabel {
+.hui-FormRow__content--nolabel {
   display: block;
 }
 
-.FormRow__labels, .FormRow__labels--noHelp {
+.hui-FormRow__labels, .hui-FormRow__labels--noHelp {
   display: table-cell;
   vertical-align: top;
   min-width: 258px;
   padding-right: 3%;
 }
 
-.FormRow__labels--noHelp {
+.hui-FormRow__labels--noHelp {
   vertical-align: middle;
 }
