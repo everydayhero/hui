@@ -56,7 +56,6 @@ module.exports = React.createClass({
           <LegendExample />
           <VisualisationExample />
           <TextInputExample />
-
         </div>
       </div>
     );

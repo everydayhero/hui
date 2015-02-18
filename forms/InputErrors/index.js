@@ -6,7 +6,7 @@ module.exports = React.createClass({
   displayName: 'InputErrors',
 
   render: function() {
-    var errors = this.props.errors;
+    var errors     = this.props.errors;
     var ErrorsList = [];
 
     if (errors && errors.length > 0) {

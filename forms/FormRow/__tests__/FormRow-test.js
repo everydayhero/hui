@@ -4,9 +4,9 @@ jest.dontMock('../');
 jest.dontMock('lodash');
 
 describe('FormRow', function() {
-  var React       = require('react/addons');
-  var FormRow     = require('../');
-  var TestUtils   = React.addons.TestUtils;
+  var React     = require('react/addons');
+  var FormRow   = require('../');
+  var TestUtils = React.addons.TestUtils;
 
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 
