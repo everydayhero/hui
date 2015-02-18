@@ -16,13 +16,13 @@ describe('FormRow', function() {
         );
 
     it('it renders a FormRow', function() {
-      findByClass(element, 'FormRow');
+      findByClass(element, 'hui-FormRow');
     });
 
     it('does not render a label', function() {
       var error;
       try {
-        findByClass(element, 'FormRow__label');
+        findByClass(element, 'hui-FormRow__label');
       } catch(e) {
         error = e;
       }
@@ -37,13 +37,13 @@ describe('FormRow', function() {
         );
 
     it('does render a label', function() {
-      var label = findByClass(element, 'FormRow__label');
+      var label = findByClass(element, 'hui-FormRow__label');
 
       expect(label.getDOMNode().textContent).toBe("foo");
     });
 
     it('does render a hint', function() {
-      var label = findByClass(element, 'FormRow__hint');
+      var label = findByClass(element, 'hui-FormRow__hint');
 
       expect(label.getDOMNode().textContent).toBe("hint");
     });

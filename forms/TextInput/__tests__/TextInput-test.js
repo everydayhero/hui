@@ -97,14 +97,14 @@ describe('TextInput', function() {
 
     it('is there if there is no value', function() {
       element = TestUtils.renderIntoDocument(<TextInput placeholder="words" />);
-      label = findByClass(element, 'TextInput__placeholder');
+      label = findByClass(element, 'hui-TextInput__placeholder');
 
       expect(label.getDOMNode().textContent).toEqual('words');
     });
 
     it('is not there if there is a value', function() {
       element = TestUtils.renderIntoDocument(<TextInput value="foobar" placeholder="words" />);
-      label = scryByClass(element, 'TextInput__placeholder')[0];
+      label = scryByClass(element, 'hui-TextInput__placeholder')[0];
 
       expect(label).toBeUndefined();
     });
@@ -115,28 +115,28 @@ describe('TextInput', function() {
 
     it('defaults valid to true', function() {
       element = TestUtils.renderIntoDocument(<TextInput/>);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(0);
     });
 
     it('does not have TextInput--error class when errors is null', function() {
       element = TestUtils.renderIntoDocument(<TextInput errors={ null } />);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(0);
     });
 
     it('does not have TextInput--error class when errors is empty', function() {
       element = TestUtils.renderIntoDocument(<TextInput errors={ [] } />);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(0);
     });
 
     it('does have TextInput--error class when errors is present', function() {
       element = TestUtils.renderIntoDocument(<TextInput errors={ ['foobar'] } />);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(1);
     });
