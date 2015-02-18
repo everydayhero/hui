@@ -1,0 +1,37 @@
+.Legend {
+  .LegendItem{
+    display: inline-block;
+    margin-right: 12px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @for $n from 1 through 3 {
+      &:nth-child(#{$n}) {
+        .LegendItem__dot {
+          background-color: nth($data-series-colors, $n);
+        }
+      }
+    }
+
+    .LegendItemContent {
+      display: table;
+
+      .LegendItem__dot {
+        display: table-cell;
+        border-radius: 5px;
+        width: 10px;
+        height: 10px;
+      }
+      .LegendItem__text {
+        display: table-cell;
+        line-height: 10px;
+        padding-left: 4px;
+        font-size: 10px;
+        color: $hui-link-grey;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
