@@ -3,6 +3,7 @@
 var React   = require('react');
 var Graphs  = require('../LineGraph');
 var SingleNumber = require('./SingleNumber');
+var Legend = require('./Legend');
 
 module.exports = React.createClass({
   displayName: 'DataVisalisation',
@@ -12,7 +13,8 @@ module.exports = React.createClass({
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
-    type: React.PropTypes.oneOf(['donations', 'supporters'])
+    type: React.PropTypes.oneOf(['donations', 'supporters']),
+    labels: React.PropTypes.arrayOf(React.PropTypes.string)
   },
 
   getDefaultProps: function() {
@@ -39,11 +41,22 @@ module.exports = React.createClass({
     }
   },
 
+  renderLegend: function() {
+    if (!this.props.labels) {
+      return false;
+    }
+
+    return (
+      <Legend titles={this.props.labels} />
+    );
+  },
+
   render: function() {
     return (
       <div className="DataVisalisation">
         { this.renderTotal() }
         { this.renderGraph() }
+        { this.renderLegend() }
       </div>
     );
   }

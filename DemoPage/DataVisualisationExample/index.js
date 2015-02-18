@@ -42,6 +42,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       series: getSeries(1),
+      labels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       total: 7000,
       title: 'Example Data'
     };
@@ -60,13 +61,14 @@ module.exports = React.createClass({
         <li>series</li>
         <li>title</li>
         <li>total</li>
+        <li>labels</li>
       </ul>
       <div className="DemoPage__example">
         <DataVisualisation {...this.state} />
       </div>
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<DataVisualisation series={ series } total={ number } title={ string } />' }
+        { '<DataVisualisation series={ series } total={ number } title={ string } labels={ labels } />' }
       </Highlight>
     </div>
     );
