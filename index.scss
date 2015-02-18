@@ -1,5 +1,8 @@
 @import "sass/colors";
+@import "sass/variables";
 @import "sass/modules/typography";
+@import "sass/modules/forms";
+@import "sass/modules/messages";
 
 @import "DemoPage/style";
 @import "layout/TopBar/style";
@@ -10,6 +13,9 @@
 @import "graphs/LineGraph/LinePath/style";
 @import "graphs/LineGraph/YScale/style";
 @import "graphs/LineGraph/XScale/style";
+@import "forms/TextInput/style";
+@import "forms/InputErrors/style";
+@import "forms/FormRow/style";
 
 * {
   margin: 0;
