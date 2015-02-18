@@ -10,6 +10,7 @@ var pkg              = require('../package');
 var imagePath        = '/images-' + pkg.version + '/';
 var TopBarExample    = require('./TopBarExample');
 var LineGraphExample = require('./LineGraphExample');
+var LegendExample    = require('./LegendExample');
 var VisualisationExample = require('./DataVisualisationExample');
 
 module.exports = React.createClass({
@@ -51,6 +52,7 @@ module.exports = React.createClass({
 
           <TopBarExample/>
           <LineGraphExample/>
+          <LegendExample />
           <VisualisationExample />
 
         </div>
