@@ -94,6 +94,7 @@ describe('TextInput', function() {
 
   describe('placeholder behavior', function() {
     var element, label;
+    var change = jest.genMockFunction();
 
     it('is there if there is no value', function() {
       element = TestUtils.renderIntoDocument(<TextInput placeholder="words" />);
@@ -103,7 +104,7 @@ describe('TextInput', function() {
     });
 
     it('is not there if there is a value', function() {
-      element = TestUtils.renderIntoDocument(<TextInput value="foobar" placeholder="words" />);
+      element = TestUtils.renderIntoDocument(<TextInput value="foobar" onChange={ change } placeholder="words" />);
       label = scryByClass(element, 'hui-TextInput__placeholder')[0];
 
       expect(label).toBeUndefined();

@@ -12,7 +12,7 @@ module.exports = React.createClass({
 
   propTypes: {
     id: React.PropTypes.string,
-    errors: React.PropTypes.object,
+    errors: React.PropTypes.array,
     placeholder: React.PropTypes.string,
     readOnly: React.PropTypes.bool,
     type: React.PropTypes.string,
