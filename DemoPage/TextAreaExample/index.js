@@ -46,12 +46,13 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<TextInput\n' }
-        { '  autoComplete="off"\n' }
-        { '  className="hui-TextInput"\n' }
-        { '  id={ props.id }\n' }
-        { '  placeholder="Input here..."\n' }
-        { '  value={ props.domain + value } />\n' }
+        { '{ this.textArea("food_menu") }' }
+        { '<TextArea\n' }
+        { '  className="Your-TextArea"\n' }
+        { '  id="description"\n' }
+        { '  value={ this.state.form.description }\n' }
+        { '  onChange={ change('description') }\n' }
+        { '  errors={ this.props.errors }/>\n' }
       </Highlight>
     </div>
     );

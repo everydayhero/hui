@@ -50,6 +50,7 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
+        { '{ this.textInput('user_name', { hint: false }) }\n' }
         { '<TextInput\n' }
         { '  autoComplete="off"\n' }
         { '  className="hui-TextInput"\n' }
