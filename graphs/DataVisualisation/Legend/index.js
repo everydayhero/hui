@@ -6,17 +6,17 @@ module.exports = React.createClass({
   displayName: 'Legend',
 
   propTypes: {
-    titles: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
+    labels: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
   },
 
-  titles: function() {
-    return this.props.titles.map(function(title) {
+  labels: function() {
+    return this.props.labels.map(function(label) {
       return (
         <div className="LegendItem">
           <div className="LegendItemContent">
             <div className="LegendItem__dot"></div>
-            <div className="LegendItem__text">
-              { title }
+            <div className="LegendItem__label">
+              { label }
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="Legend">
-        { this.titles() }
+        { this.labels() }
       </div>
     );
   }

@@ -14,7 +14,7 @@ module.exports = React.createClass({
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
     type: React.PropTypes.oneOf(['donations', 'supporters']),
-    labels: React.PropTypes.arrayOf(React.PropTypes.string)
+    legendLabels: React.PropTypes.arrayOf(React.PropTypes.string)
   },
 
   getDefaultProps: function() {
@@ -42,12 +42,12 @@ module.exports = React.createClass({
   },
 
   renderLegend: function() {
-    if (!this.props.labels) {
+    if (!this.props.legendLabels) {
       return false;
     }
 
     return (
-      <Legend titles={this.props.labels} />
+      <Legend labels={this.props.legendLabels} />
     );
   },
 
