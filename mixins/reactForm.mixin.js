@@ -4,6 +4,7 @@ var React               = require('react');
 var FormRow             = require('../forms/FormRow');
 var TextInput           = require('../forms/TextInput');
 var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
+var CheckBox            = require('../forms/Checkbox');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -95,5 +96,16 @@ module.exports = {
         );
 
     return this.formRow(input, name, !options.hint);
-  }
+  },
+
+  checkboxInput: function(name) {
+    return (
+      <CheckBox
+        id={ name }
+        value={ this.state.form[name] }
+        label={ this.t( name + '_label') }
+        onChange={ this.inputChangeEventFn(name) }
+        key={ name }/>
+    );
+  },
 };
