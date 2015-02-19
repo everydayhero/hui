@@ -3,6 +3,7 @@
 var React               = require('react');
 var FormRow             = require('../forms/FormRow');
 var TextInput           = require('../forms/TextInput');
+var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -65,6 +66,19 @@ module.exports = {
           { children }
       </FormRow>
     );
+  },
+
+  readOnlyAddress: function(name, options) {
+    options = options || { hint: true };
+    var input = (
+          <ReadOnlyAddress
+            id={ name }
+            value={ this.state.form[name] }
+            onChange={  this.inputChangeEventFn(name) }
+            className={ name } />
+        );
+
+    return this.formRow(input, name, !options.hint);
   },
 
   textInput: function(name, options) {
