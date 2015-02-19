@@ -10,6 +10,14 @@ module.exports = React.createClass({
   displayName: 'TextInputExample',
   mixins: [formMixin],
 
+  t: function(name) {
+    var translation = {
+      user_name_label: 'User Name:'
+    };
+
+    return (translation[name]);
+  },
+
   render: function() {
     var change = this.inputChangeEventFn;
 
@@ -30,6 +38,7 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
+        { this.textInput('user_name', { hint: false }) }
         <TextInput
           autoComplete="off"
           className="hui-TextInput"

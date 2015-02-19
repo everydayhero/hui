@@ -34,7 +34,6 @@ module.exports = React.createClass({
       </ul>
       <div className="DemoPage__example">
         { this.readOnlyAddress('charity_address', { hint: false }) }
-        <br />
         <ReadOnlyAddress
             id={ name }
             value={ this.state.form[name] }
