@@ -1,0 +1,7 @@
+.hui-TextArea {
+  @extend %hui-text-area;
+}
+
+.hui-TextArea__placeholder {
+  @extend %hui-placeholder;
+}

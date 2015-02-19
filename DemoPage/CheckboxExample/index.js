@@ -49,12 +49,13 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<TextInput\n' }
-        { '  autoComplete="off"\n' }
-        { '  className="hui-TextInput"\n' }
-        { '  id={ props.id }\n' }
-        { '  placeholder="Input here..."\n' }
-        { '  value={ props.domain + value } />\n' }
+        { "{ this.checkboxInput('join') }\n" }
+        { '<CheckboxInput\n' }
+        { '  id={ name }\n' }
+        { '  value={ this.state.form[name] }\n' }
+        { "  label={ this.t( name + '_label') }\n" }
+        { '  onChange={ change(name) }\n' }
+        { '  key={ name } />\n' }
       </Highlight>
     </div>
     );

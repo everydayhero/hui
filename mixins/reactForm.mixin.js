@@ -5,6 +5,7 @@ var FormRow             = require('../forms/FormRow');
 var TextInput           = require('../forms/TextInput');
 var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
 var CheckBox            = require('../forms/Checkbox');
+var TextArea            = require('../forms/TextArea');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -107,5 +108,18 @@ module.exports = {
         onChange={ this.inputChangeEventFn(name) }
         key={ name }/>
     );
+  },
+
+  textArea: function(name) {
+    var textArea = (
+          <TextArea
+            id={ name }
+            value={ this.state.form[name] }
+            onChange={ this.inputChangeEventFn(name)  }
+            errors={ this.props.errors && this.props.errors[name]}
+            key={ name }/>
+        );
+
+    return this.formRow(textArea, name);
   },
 };

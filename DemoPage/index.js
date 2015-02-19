@@ -15,6 +15,7 @@ var VisualisationExample   = require('./DataVisualisationExample');
 var TextInputExample       = require('./TextInputExample');
 var ReadOnlyAddressExample = require('./ReadOnlyAddressExample');
 var CheckboxExample        = require('./CheckboxExample');
+var TextAreaExample        = require('./TextAreaExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -60,6 +61,7 @@ module.exports = React.createClass({
           <TextInputExample />
           <ReadOnlyAddressExample />
           <CheckboxExample />
+          <TextAreaExample />
         </div>
       </div>
     );
