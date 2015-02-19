@@ -1,0 +1,38 @@
+.hui-FormRow {
+  display: table;
+  width: 100%;
+  position: relative;
+  padding: $hui-x-2 0;
+}
+
+.hui-FormRow__label {
+  @extend %hui-form-row-label;
+}
+
+.hui-FormRow__hint {
+  @extend %form-instruction;
+  display: block;
+  font-weight: 200;
+}
+
+.hui-FormRow__content {
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  min-width: 386px;
+}
+
+.hui-FormRow__content--nolabel {
+  display: block;
+}
+
+.hui-FormRow__labels, .hui-FormRow__labels--noHelp {
+  display: table-cell;
+  vertical-align: top;
+  min-width: 258px;
+  padding-right: 3%;
+}
+
+.hui-FormRow__labels--noHelp {
+  vertical-align: middle;
+}

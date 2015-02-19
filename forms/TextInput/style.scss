@@ -1,0 +1,19 @@
+.hui-TextInput {
+  @extend %hui-input-wrap;
+  &:before {
+    @extend %hui-text-input-label;
+    content: attr(data-placeholder);
+    pointer-events: none;
+  }
+}
+
+.hui-TextInput__input {
+  @extend %hui-text-input;
+  .Input--error {
+    color: tomato;
+  }
+}
+
+.hui-TextInput__placeholder {
+  @extend %hui-placeholder;
+}
