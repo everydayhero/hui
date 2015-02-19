@@ -11,7 +11,7 @@ module.exports = React.createClass({
 
     if (errors && errors.length > 0) {
       for (var i = 0; i < errors.length; i++) {
-        ErrorsList.push(<li> { errors[i] } </li>);
+        ErrorsList.push(<li key={ 'key' + i }> { errors[i] } </li>);
       }
 
       return <ul className="hui-InputErrors"> { ErrorsList } </ul>;
