@@ -6,6 +6,7 @@ var TextInput           = require('../forms/TextInput');
 var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
 var CheckBox            = require('../forms/Checkbox');
 var TextArea            = require('../forms/TextArea');
+var UrlInput            = require('../forms/UrlInput');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -122,4 +123,17 @@ module.exports = {
 
     return this.formRow(textArea, name);
   },
+
+  urlInput: function(name, placeholder) {
+    var input = (
+          <UrlInput
+            id={ name }
+            onChange={ this.changeFormPropertyFn(name) }
+            value={ this.state.form[name] }
+            placeholder={ placeholder }
+            errors={ this.props.errors && this.props.errors[name] } />
+        );
+
+    return this.formRow(input, name);
+  }
 };

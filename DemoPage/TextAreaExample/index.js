@@ -46,12 +46,12 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '{ this.textArea("food_menu") }' }
+        { '{ this.textArea("food_menu") }\n' }
         { '<TextArea\n' }
         { '  className="Your-TextArea"\n' }
         { '  id="description"\n' }
         { '  value={ this.state.form.description }\n' }
-        { '  onChange={ change('description') }\n' }
+        { "  onChange={ change('description') }\n" }
         { '  errors={ this.props.errors }/>\n' }
       </Highlight>
     </div>

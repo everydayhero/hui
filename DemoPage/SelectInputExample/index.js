@@ -47,7 +47,7 @@ module.exports = React.createClass({
           value={ this.state.form.toys }
           className="Toys__select"
           prompt="Please select your toy"
-          options={ options }/>
+          options={ options } />
       </div>
 
       <h4>React Example</h4>
@@ -58,7 +58,7 @@ module.exports = React.createClass({
         { '  value={ this.state.form.toys }\n' }
         { '  className="Toys__select"\n' }
         { '  prompt="Please select your toy"\n' }
-        { '  options={ options }/>\n'}
+        { '  options={ options } />\n'}
       </Highlight>
     </div>
     );

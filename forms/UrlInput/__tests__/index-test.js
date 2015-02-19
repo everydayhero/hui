@@ -64,16 +64,16 @@ describe('UrlInput', function() {
   describe('validation behavior', function() {
     var element, errorClasses;
 
-    it('does not have TextInput--error class when errors is empty', function() {
+    it('does not have hui-TextInput--error class when errors is empty', function() {
       element = TestUtils.renderIntoDocument(<UrlInput errors={ [] } />);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(0);
     });
 
-    it('does have TextInput--error class when errors is present', function() {
+    it('does have hui-TextInput--error class when errors is present', function() {
       element = TestUtils.renderIntoDocument(<UrlInput errors={ ['foobar'] } />);
-      errorClasses = scryByClass(element, 'TextInput--error');
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).toBe(1);
     });

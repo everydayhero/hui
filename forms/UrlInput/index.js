@@ -3,11 +3,9 @@
 var React       = require('react');
 var SelectInput = require('../SelectInput');
 var Input       = require('../TextInput');
-var i18nMixin   = require('../../../mixins/i18n');
 
 module.exports = React.createClass({
   displayName: 'UrlInput',
-  mixins: [i18nMixin],
 
   getInitialState: function() {
     return {
@@ -52,11 +50,11 @@ module.exports = React.createClass({
     var id    = props.id;
 
     return (
-      <div className="UrlInput">
+      <div className="hui-UrlInput">
         <SelectInput
           id={ id + '_protocol' }
           value={ state.protocol }
-          className="UrlInput__protocol"
+          className="hui-UrlInput__protocol"
           onChange={ this._handleProtocolChange }
           options={[
             { value: 'http://', label: 'http://' },
@@ -67,7 +65,7 @@ module.exports = React.createClass({
           placeholder={ props.placeholder }
           value={ state.path }
           onChange={ this._handlePathChange }
-          className="UrlInput__path"
+          className="hui-UrlInput__path"
           errors={ props.errors } />
       </div>
     );

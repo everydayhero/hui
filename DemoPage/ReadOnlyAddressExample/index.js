@@ -46,7 +46,7 @@ module.exports = React.createClass({
         { '<ReadOnlyAddress\n' }
         { '  id={ name }\n' }
         { '  value={ this.state.form[name] }\n' }
-        { '  onChange={ change(name) } \n' }
+        { '  onChange={ change(name) } />\n' }
       </Highlight>
     </div>
     );

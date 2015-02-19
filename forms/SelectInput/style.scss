@@ -10,6 +10,7 @@
   @extend %hui-text-input;
   background-image: none;
   position: absolute;
+  top: 0px;
 }
 
 .hui-SelectInput__selected, .hui-SelectInput__selected--noSelection {

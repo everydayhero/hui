@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function() {
     var classes = _.compact([
       'hui-Icon',
-      this.props.type && ('Icon--' + this.props.type),
+      this.props.type && ('hui-Icon--' + this.props.type),
       'fa',
       this.props.fixedWith && 'fa-fw',
       this.props.spin && 'fa-spin',
