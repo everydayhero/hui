@@ -1,0 +1,26 @@
+.hui-DatePickerDay, .hui-DatePickerDay--selected, .hui-DatePickerDay--today, .hui-DatePickerDay--filler {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 0px 4px;
+  color: $hui-primary-green;
+  &:hover {
+    background-color: $hui-secondary-hover-grey;
+  }
+}
+
+.hui-DatePickerDay--today {
+  font-weight: bold;
+  background-color: $hui-secondary-grey;
+  color: $hui-primary-green;
+}
+
+.hui-DatePickerDay--selected {
+  background: $hui-selected-background-green;
+  color: white;
+
+  &:hover {
+    color: $hui-hover-inverse-green;
+  }
+}

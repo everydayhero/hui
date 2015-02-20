@@ -19,6 +19,7 @@
 @import "forms/Checkbox/style";
 @import "forms/SelectInput/style";
 @import "forms/UrlInput/style";
+@import "forms/DateInput/style";
 
 * {
   margin: 0;
@@ -32,6 +33,10 @@ body {
   background: $hui-bg-beige;
   font-family: lato,helvetica,arial,sans-serif;
   font-size: 13px;
+}
+
+a {
+  color: $hui-primary-green;
 }
 
 a, img {

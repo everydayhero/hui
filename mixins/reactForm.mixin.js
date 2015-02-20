@@ -7,6 +7,7 @@ var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
 var CheckBox            = require('../forms/Checkbox');
 var TextArea            = require('../forms/TextArea');
 var UrlInput            = require('../forms/UrlInput');
+var DateInput           = require('../forms/DateInput');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -135,5 +136,18 @@ module.exports = {
         );
 
     return this.formRow(input, name);
-  }
+  },
+
+  dateInput: function(name, placeholder) {
+    var input = (
+          <DateInput
+            id={ name }
+            value={ this.state.form[name] }
+            onChange={ this.inputChangeEventFn(name) }
+            placeholder={ placeholder }
+            errors={ this.props.errors && this.props.errors[name] } />
+        );
+
+    return this.formRow(input, name);
+  },
 };

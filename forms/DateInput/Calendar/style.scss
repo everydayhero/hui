@@ -1,0 +1,18 @@
+.hui-Calendar {
+  margin-top: 8px;
+}
+
+.hui-Calendar__weekdays {
+  display: table;
+  width: 100%;
+}
+
+.hui-Calendar__weekday {
+  display: table-cell;
+  padding-left: 3px;
+}
+
+.hui-Calendar__dates {
+  line-height: 26px;
+  margin-top: 10px;
+}

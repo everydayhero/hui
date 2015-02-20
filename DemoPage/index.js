@@ -18,6 +18,7 @@ var CheckboxExample        = require('./CheckboxExample');
 var TextAreaExample        = require('./TextAreaExample');
 var SelectInputExample     = require('./SelectInputExample');
 var UrlInputExample        = require('./UrlInputExample');
+var DateInputExample       = require('./DateInputExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -66,6 +67,7 @@ module.exports = React.createClass({
           <TextAreaExample />
           <SelectInputExample />
           <UrlInputExample />
+          <DateInputExample />
         </div>
       </div>
     );
