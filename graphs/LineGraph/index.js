@@ -54,6 +54,7 @@ module.exports = React.createClass({
 
   handleResize: function() {
     var domNode = this.getDOMNode();
+    console.log(domNode)
     this.setState({
       height: domNode.offsetHeight,
       width: domNode.offsetWidth
@@ -94,7 +95,6 @@ module.exports = React.createClass({
 
   renderGraph: function() {
     var state = this.state;
-
     if (!state.series || !state.width) {
       return false;
     }
@@ -110,8 +110,10 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <svg className="hui-LineGraph">
-        { this.renderGraph() }
-      </svg>);
+      <div className="hui-LineGraph">
+        <svg className="hui-LineGraph__svg">
+          { this.renderGraph() }
+        </svg>
+      </div>);
   }
 });
