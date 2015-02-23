@@ -54,7 +54,6 @@ module.exports = React.createClass({
 
   handleResize: function() {
     var domNode = this.getDOMNode();
-    console.log(domNode)
     this.setState({
       height: domNode.offsetHeight,
       width: domNode.offsetWidth
