@@ -1,7 +1,7 @@
 .DemoPage {
   margin-top: 64px;
 
-  h2 {
+  .DemoPage__h2 {
     @extend %hui-rule-bottom;
     font-size: 24px;
     margin-bottom: 24px;
@@ -11,7 +11,7 @@
     color: $hui-text-grey;
   }
 
-  h3 {
+  .DemoPage__h3 {
     font-size: 16px;
     margin-bottom: 16px;
     margin-top: 16px;
@@ -19,7 +19,7 @@
     color: $hui-text-grey;
   }
 
-  h4 {
+  .DemoPage__h4 {
     font-size: 13px;
     margin-bottom: 8px;
     margin-top: 13px;
@@ -27,21 +27,22 @@
     color: $hui-text-grey;
   }
 
-  p {
+  .DemoPage__p {
     margin-bottom: 16px;
     color: $hui-text-grey;
     font-size: 14px;
     line-height: 16px;
   }
 
-  ul {
+  .DemoPage__ul {
     margin-left: 24px;
     margin-bottom: 24px;
     color: $hui-text-grey;
     font-size: 14px;
-    li {
-      line-height: 16px;
-    }
+  }
+
+  .DemoPage__li {
+    line-height: 16px;
   }
 }
 

@@ -33,10 +33,10 @@ module.exports = React.createClass({
             </TopBarLink>
         </TopBar>
         <div className="DemoPage__content">
-          <h2 id="how-to-use">How to use HUI</h2>
-          <p>HUI can be used in two ways depending on the use case</p>
+          <h2 className="DemoPage__h2" id="how-to-use">How to use HUI</h2>
+          <p className="DemoPage__p">HUI can be used in two ways depending on the use case</p>
 
-          <h3>CDN</h3>
+          <h3 className="DemoPage__h3">CDN</h3>
           <Highlight className='bash'>
             { "//d1ig6folwd6a9s.cloudfront.net/hui/hui-" + pkg.version + ".css" }
           </Highlight>
@@ -44,12 +44,12 @@ module.exports = React.createClass({
             { "//d1ig6folwd6a9s.cloudfront.net/hui/hui-" + pkg.version + ".js" }
           </Highlight>
 
-          <h3>Install with npm (Optional version. SSH key rquired.)</h3>
+          <h3 className="DemoPage__h3">Install with npm (Optional version. SSH key rquired.)</h3>
           <Highlight className='bash'>
             { "npm install git+ssh://git@github.com:everydayhero/ui-library.git#" + pkg.version }
           </Highlight>
 
-          <h2 id="examples">Examples</h2>
+          <h2 className="DemoPage__h2" id="examples">Examples</h2>
 
           <TopBarExample/>
           <LineGraphExample/>

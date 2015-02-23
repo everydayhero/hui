@@ -1,0 +1,19 @@
+.SingleNumber {
+  position: relative
+}
+
+.SingleNumber__title {
+  display: inline-block;
+}
+
+.SingleNumber__metric {
+  display: inline-block;
+}
+
+.SingleNumber__metric {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  font-size: $hui-x-7;
+  font-weight: 200;
+}

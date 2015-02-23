@@ -52,18 +52,18 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>LineGraph</h3>
-      <h4>LineGraph propTypes</h4>
-      <ul>
-        <li>series</li>
-        <li>stacked</li>
-        <li>lined</li>
-        <li>gutter
-          <ul>
-            <li>left</li>
-            <li>right</li>
-            <li>bottom</li>
-            <li>top</li>
+      <h3 className="DemoPage__h3">LineGraph</h3>
+      <h4 className="DemoPage__h4">LineGraph propTypes</h4>
+      <ul className="DemoPage__ul">
+        <li className="DemoPage__li">series</li>
+        <li className="DemoPage__li">stacked</li>
+        <li className="DemoPage__li">lined</li>
+        <li className="DemoPage__li">gutter
+          <ul className="DemoPage__ul">
+            <li className="DemoPage__li">left</li>
+            <li className="DemoPage__li">right</li>
+            <li className="DemoPage__li">bottom</li>
+            <li className="DemoPage__li">top</li>
           </ul>
         </li>
       </ul>
@@ -74,7 +74,7 @@ module.exports = React.createClass({
         <LineGraph {...this.state} stacked={ true } />
       </div>
 
-      <h4>React Example</h4>
+      <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
         { '<LineGraph series={ series } line={ true } area={ false } />' }
       </Highlight>

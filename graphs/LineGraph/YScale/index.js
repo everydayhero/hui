@@ -67,11 +67,13 @@ module.exports = React.createClass({
     var scaleLineGap = this.getScaleLineGap();
     var count = 0;
     var label = 0;
+    var format = '00 a';
 
     while(scaleLines.total + 1 !== count) {
       var path = Path()
                 .moveto({x: 0, y: yPos })
                 .hlineto({x: this.props.width});
+      format = (label > 1000)? '0.0 a' : format;
 
       scaleLinePaths.push(
         <g
@@ -80,7 +82,7 @@ module.exports = React.createClass({
           <path
             className="YScale__line"
             d={ path.print() } />
-          <text x="0" y={ yPos } className="YScale__label">{ numeral(label).format('00 a') }</text>
+          <text x="0" y={ yPos } className="YScale__label">{ numeral(label).format(format) }</text>
         </g>
       );
 

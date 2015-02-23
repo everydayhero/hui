@@ -55,18 +55,18 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>DataVisualisation</h3>
-      <h4>DataVisualisation propTypes</h4>
-      <ul>
-        <li>series</li>
-        <li>title</li>
-        <li>total</li>
-        <li>legendLabels</li>
+      <h3 className="DemoPage__h2">DataVisualisation</h3>
+      <h4 className="DemoPage__h4">DataVisualisation propTypes</h4>
+      <ul className="DemoPage__ul">
+        <li className="DemoPage__li">series</li>
+        <li className="DemoPage__li">title</li>
+        <li className="DemoPage__li">total</li>
+        <li className="DemoPage__li">legendLabels</li>
       </ul>
       <div className="DemoPage__example">
         <DataVisualisation {...this.state} />
       </div>
-      <h4>React Example</h4>
+      <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
         { '<DataVisualisation series={ series } total={ number } title={ string } legendLabels={ labels } />' }
       </Highlight>
