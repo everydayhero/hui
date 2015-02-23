@@ -8,6 +8,7 @@ var CheckBox            = require('../forms/Checkbox');
 var TextArea            = require('../forms/TextArea');
 var UrlInput            = require('../forms/UrlInput');
 var DateInput           = require('../forms/DateInput');
+var FileInput           = require('../forms/FileInput');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -150,4 +151,16 @@ module.exports = {
 
     return this.formRow(input, name);
   },
+
+  fileInput: function(name) {
+    var input = (
+          <FileInput
+            id={ name }
+            onChange={ this.changeFormPropertyFn(name) }
+            value={ this.state.form[name] }
+            errors={ this.props.errors && this.props.errors[name] } />
+        );
+
+    return this.formRow(input, name);
+  }
 };

@@ -19,6 +19,7 @@ var TextAreaExample        = require('./TextAreaExample');
 var SelectInputExample     = require('./SelectInputExample');
 var UrlInputExample        = require('./UrlInputExample');
 var DateInputExample       = require('./DateInputExample');
+var FileInputExample       = require('./FileInputExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -68,6 +69,7 @@ module.exports = React.createClass({
           <SelectInputExample />
           <UrlInputExample />
           <DateInputExample />
+          <FileInputExample />
         </div>
       </div>
     );

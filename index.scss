@@ -3,6 +3,7 @@
 @import "sass/modules/typography";
 @import "sass/modules/forms";
 @import "sass/modules/messages";
+@import "sass/modules/links";
 
 @import "DemoPage/style";
 @import "layout/TopBar/style";
@@ -20,6 +21,7 @@
 @import "forms/SelectInput/style";
 @import "forms/UrlInput/style";
 @import "forms/DateInput/style";
+@import "forms/FileInput/style";
 
 * {
   margin: 0;
