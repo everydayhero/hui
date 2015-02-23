@@ -16,7 +16,7 @@ app.use(compression());
 function sendStaticFile(name) {
   return function (_, res) {
     var content = React.renderToString(ReactApp({}));
-      res.render(staticPath + name, {content: content});
+    res.render(staticPath + name, {content: content});
   };
 }
 

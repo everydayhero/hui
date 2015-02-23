@@ -1,18 +1,26 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React                = require('react');
-var TopBar               = require('../layout/TopBar');
-var TopBarLink           = require('../layout/TopBarLink');
-var Masthead             = require('../layout/Masthead');
-var Highlight            = require('react-highlight');
-var pkg                  = require('../package');
-var imagePath            = '/images-' + pkg.version + '/';
-var TopBarExample        = require('./TopBarExample');
-var LineGraphExample     = require('./LineGraphExample');
-var LegendExample        = require('./LegendExample');
-var VisualisationExample = require('./DataVisualisationExample');
-var TextInputExample     = require('./TextInputExample');
+var React                  = require('react');
+var TopBar                 = require('../layout/TopBar');
+var TopBarLink             = require('../layout/TopBarLink');
+var Masthead               = require('../layout/Masthead');
+var Highlight              = require('react-highlight');
+var pkg                    = require('../package');
+var imagePath              = '/images-' + pkg.version + '/';
+var TopBarExample          = require('./TopBarExample');
+var LineGraphExample       = require('./LineGraphExample');
+var LegendExample          = require('./LegendExample');
+var VisualisationExample   = require('./DataVisualisationExample');
+var TextInputExample       = require('./TextInputExample');
+var ReadOnlyAddressExample = require('./ReadOnlyAddressExample');
+var CheckboxExample        = require('./CheckboxExample');
+var TextAreaExample        = require('./TextAreaExample');
+var SelectInputExample     = require('./SelectInputExample');
+var UrlInputExample        = require('./UrlInputExample');
+var DateInputExample       = require('./DateInputExample');
+var FileInputExample       = require('./FileInputExample');
+var ImageInputExample      = require('./ImageInputExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -56,6 +64,14 @@ module.exports = React.createClass({
           <LegendExample />
           <VisualisationExample />
           <TextInputExample />
+          <ReadOnlyAddressExample />
+          <CheckboxExample />
+          <TextAreaExample />
+          <SelectInputExample />
+          <UrlInputExample />
+          <DateInputExample />
+          <FileInputExample />
+          <ImageInputExample />
         </div>
       </div>
     );

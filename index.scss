@@ -3,6 +3,7 @@
 @import "sass/modules/typography";
 @import "sass/modules/forms";
 @import "sass/modules/messages";
+@import "sass/modules/links";
 
 @import "DemoPage/style";
 @import "layout/TopBar/style";
@@ -17,6 +18,11 @@
 @import "forms/TextInput/style";
 @import "forms/InputErrors/style";
 @import "forms/FormRow/style";
+@import "forms/Checkbox/style";
+@import "forms/SelectInput/style";
+@import "forms/UrlInput/style";
+@import "forms/DateInput/style";
+@import "forms/FileInput/style";
 
 * {
   margin: 0;
@@ -30,6 +36,10 @@ body {
   background: $hui-bg-beige;
   font-family: lato,helvetica,arial,sans-serif;
   font-size: 13px;
+}
+
+a {
+  color: $hui-primary-green;
 }
 
 a, img {

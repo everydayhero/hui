@@ -1,0 +1,18 @@
+.hui-UrlInput {
+  display: table;
+  width: 100%;
+}
+
+.hui-UrlInput__protocol,
+.hui-UrlInput__path {
+  display: table-cell;
+}
+
+.hui-UrlInput__path {
+  padding-left: $hui-x-3;
+}
+
+.hui-UrlInput__protocol {
+  max-width: $hui-x-9;
+  padding-right: $hui-x-3;
+}

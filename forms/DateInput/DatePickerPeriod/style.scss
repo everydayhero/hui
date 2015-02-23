@@ -1,0 +1,14 @@
+.hui-DatePickerPeriod, .hui-DatePickerPeriod--selected {
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.hui-DatePickerPeriod--selected {
+  background: $hui-selected-background-green;
+  color: white;
+
+  &:hover {
+    color: $hui-hover-inverse-green;
+  }
+}

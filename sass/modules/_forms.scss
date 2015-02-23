@@ -53,3 +53,11 @@
   font-size: $hui-x-4;
   display: block;
 }
+
+%hui-text-area {
+  @extend %hui-input-wrap;
+  @extend %hui-text-input;
+  padding: $hui-x-3;
+  min-height: $hui-x-36;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+}

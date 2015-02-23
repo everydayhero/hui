@@ -4,6 +4,7 @@ $hui-link-grey: #8e8e8e;
 $hui-link-active-green: #109e4d;
 $hui-text-grey: #585858;
 $hui-border-grey: #bcbec0;
+$hui-label-grey: #b3b3b3;
 
 $data-series-colors: #82c57a, #9e8694, #307c99;
 
@@ -13,3 +14,17 @@ $hui-input-background-grey: #f2f2f2;
 $hui-input-text-grey: #b3b3b3;
 
 $hui-primary-grey: #666666;
+$hui-primary-green: #00a044;
+$hui-primary-border-grey: #b3b3b3;
+
+$hui-medium-grey: #b3b3b3;
+
+$hui-secondary-grey: #f2f2f2;
+
+$hui-rule-grey: #e6e6e6;
+$hui-background-dropdown-white: white;
+$hui-secondary-hover-grey: #dbdbdb;
+$hui-hover-green: #00b44d;
+
+$hui-selected-background-green: lighten($hui-primary-green, 8%);
+$hui-hover-inverse-green: lighten($hui-primary-green, 50%);

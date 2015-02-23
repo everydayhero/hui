@@ -1,0 +1,43 @@
+.hui-SelectInput {
+  @extend %hui-input-wrap;
+}
+
+.hui-SelectInput__label {
+  @extend %hui-text-input-label;
+}
+
+.hui-SelectInput__displayValue {
+  @extend %hui-text-input;
+  background-image: none;
+  position: absolute;
+  top: 0px;
+}
+
+.hui-SelectInput__selected, .hui-SelectInput__selected--noSelection {
+  position: absolute;
+  top: 0px;
+  left: $hui-x-3;
+  letter-spacing: 0.10em;
+  line-height: $hui-x-9 - 1;
+  pointer-events:none;
+}
+
+.hui-SelectInput__selected--noSelection {
+  color: $hui-label-grey;
+}
+
+.hui-SelectInput__input {
+  @extend %hui-text-input;
+  background-image: none;
+  opacity: 0;
+
+  .hui-Input--error {
+    color: tomato;
+  }
+}
+
+.hui-SelectInput__icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

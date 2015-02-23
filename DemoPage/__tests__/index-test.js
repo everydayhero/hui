@@ -2,6 +2,7 @@
 "use strict";
 
 jest.dontMock('../index');
+jest.dontMock('moment');
 
 describe('Demo Page', function() {
   var React     = require('react/addons');

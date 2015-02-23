@@ -1,0 +1,26 @@
+%hui-button {
+  background: $hui-medium-grey;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  padding-right: $hui-x-5;
+  padding-left: $hui-x-5;
+  box-sizing: border-box;
+  border-radius: $hui-border-radius;
+  display: inline-block;
+  font-size: 13px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  color: snow;
+  line-height: $hui-x-9 - 2;
+}
+
+%hui-button-reset {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}

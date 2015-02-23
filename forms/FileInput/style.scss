@@ -1,0 +1,55 @@
+.hui-FileInput {
+  @extend %hui-text-input;
+  @extend %clearfix;
+  overflow: hidden;
+  overflow: hidden;
+  padding-right: 0;
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.hui-FileInput__input {
+  color: $hui-input-text-grey;
+  display: inline-block;
+  line-height: $hui-x-9;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+
+  .hui-FileInput_hasFile & {
+    color: inherit;
+  }
+}
+
+.hui-FileInput__buttons {
+  background: $hui-input-background-grey;
+  padding-left: $hui-x-2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  white-space: nowrap;
+}
+
+.hui-FileInput__browse {
+  @extend %hui-button;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    color: snow;
+  }
+}
+
+.hui-FileInput__reset {
+  @extend %hui-button-reset;
+  font-size: 16px;
+  line-height: $hui-x-9;
+  margin: 0;
+  padding-right: $hui-x-2;
+  vertical-align: top;
+  display: inline-block;
+  color: $hui-primary-border-grey;
+  &:hover {
+    color: $hui-primary-border-grey;
+  }
+}

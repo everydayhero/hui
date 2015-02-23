@@ -1,0 +1,43 @@
+@import "./DatePickerPeriod/style";
+@import "./DatePickerPeriods/style";
+@import "./DatePicker/style";
+@import "./DatePickerDay/style";
+@import "./Calendar/style";
+
+.hui-DateInput {
+  @extend %hui-input-wrap;
+  max-width: $hui-x-36;
+
+  &:before {
+    @extend %hui-text-input-label;
+    content: attr(data-placeholder);
+    left: 0px;
+  }
+}
+
+.hui-DateInput__input {
+  @extend %hui-text-input;
+}
+
+.hui-DateInput__input_wrapper {
+  @extend %hui-input-wrap;
+}
+
+.hui-DateInput__clear {
+  background: transparent;
+  border: 0;
+  color: $hui-label-grey;
+  position: absolute;
+  padding: $hui-x-3;
+  top: -1px;
+  right: 0px;
+  &:hover {
+    color: $hui-hover-green;
+  }
+}
+
+.hui-DateInput__placeholder {
+  @extend %hui-text-input-label;
+  padding: 0 $hui-x-4;
+  color: $hui-label-grey;
+}
