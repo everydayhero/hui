@@ -1,7 +1,7 @@
 .Legend {
   .LegendItem{
     display: inline-block;
-    margin-right: 12px;
+    margin-right: $hui-x-4;
 
     &:last-child {
       margin-right: 0;
@@ -20,15 +20,15 @@
 
       .LegendItem__dot {
         display: table-cell;
-        border-radius: 5px;
-        width: 10px;
-        height: 10px;
+        border-radius: 50%;
+        width: $hui-x-3;
+        height: $hui-x-3;
       }
       .LegendItem__label {
         display: table-cell;
-        line-height: 10px;
-        padding-left: 4px;
-        font-size: 10px;
+        line-height: $hui-x-3;
+        padding-left: $hui-x-1;
+        font-size: $hui-x-3;
         color: $hui-link-grey;
         text-transform: uppercase;
       }

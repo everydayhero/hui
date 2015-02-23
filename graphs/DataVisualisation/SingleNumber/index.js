@@ -4,7 +4,7 @@ var React   = require('react');
 var numeral = require('numeral');
 
 module.exports = React.createClass({
-  displayName: 'SingleNumberMetric',
+  displayName: 'SingleNumber',
 
   propTypes: {
     title: React.PropTypes.string.isRequired,
@@ -25,9 +25,9 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="Widget">
-        <h2>{ this.props.title }</h2>
-        <div className="Widget__metric">
+      <div className="SingleNumber">
+        <h2 className="SingleNumber__title">{ this.props.title }</h2>
+        <div className="SingleNumber__metric">
           { this.metricFormatted() }
         </div>
       </div>

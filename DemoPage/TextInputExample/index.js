@@ -15,19 +15,19 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>TextInput</h3>
-      <p>Basic text input.</p>
-      <h4>TextInput propTypes</h4>
-      <ul>
-        <li>errors:</li>
-        <li>placeholder:</li>
-        <li>readOnly:</li>
-        <li>type:</li>
-        <li>className:</li>
-        <li>autoComplete:</li>
-        <li>value:</li>
-        <li>onBlur:</li>
-        <li>onChange:</li>
+      <h3 className="DemoPage__h3">TextInput</h3>
+      <p className="DemoPage__p">Basic text input.</p>
+      <h4 className="DemoPage__h4">TextInput propTypes</h4>
+      <ul className="DemoPage__ul">
+        <li className="DemoPage__li">errors:</li>
+        <li className="DemoPage__li">placeholder:</li>
+        <li className="DemoPage__li">readOnly:</li>
+        <li className="DemoPage__li">type:</li>
+        <li className="DemoPage__li">className:</li>
+        <li className="DemoPage__li">autoComplete:</li>
+        <li className="DemoPage__li">value:</li>
+        <li className="DemoPage__li">onBlur:</li>
+        <li className="DemoPage__li">onChange:</li>
       </ul>
       <div className="DemoPage__example">
         <TextInput
@@ -39,7 +39,7 @@ module.exports = React.createClass({
           onChange={ change('demo_input') } />
       </div>
 
-      <h4>React Example</h4>
+      <h4 className="DemoPage__h3">React Example</h4>
       <Highlight className='html'>
         { '<TextInput\n' }
         { '  autoComplete="off"\n' }
