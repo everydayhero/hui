@@ -9,6 +9,7 @@ var TextArea            = require('../forms/TextArea');
 var UrlInput            = require('../forms/UrlInput');
 var DateInput           = require('../forms/DateInput');
 var FileInput           = require('../forms/FileInput');
+var ImageInput          = require('../forms/ImageInput');
 var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
@@ -159,6 +160,19 @@ module.exports = {
             onChange={ this.changeFormPropertyFn(name) }
             value={ this.state.form[name] }
             errors={ this.props.errors && this.props.errors[name] } />
+        );
+
+    return this.formRow(input, name);
+  },
+
+  imageInput: function(name) {
+    var errors = this.props.errors;
+    var input = (
+          <ImageInput
+            id={ name }
+            value={ this.state.form[name] }
+            onChange={ this.changeFormPropertyFn(name) }
+            errors={ errors && errors[name] } />
         );
 
     return this.formRow(input, name);

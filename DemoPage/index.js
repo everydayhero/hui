@@ -20,6 +20,7 @@ var SelectInputExample     = require('./SelectInputExample');
 var UrlInputExample        = require('./UrlInputExample');
 var DateInputExample       = require('./DateInputExample');
 var FileInputExample       = require('./FileInputExample');
+var ImageInputExample      = require('./ImageInputExample');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -70,6 +71,7 @@ module.exports = React.createClass({
           <UrlInputExample />
           <DateInputExample />
           <FileInputExample />
+          <ImageInputExample />
         </div>
       </div>
     );
