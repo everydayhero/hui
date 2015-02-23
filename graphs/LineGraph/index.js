@@ -5,6 +5,7 @@ var React    = require('react');
 var LinePath = require('./LinePath');
 var YScale   = require('./YScale');
 var XScale   = require('./XScale');
+var ToolTip  = require('./ToolTip');
 
 module.exports = React.createClass({
   displayName: 'LineGraph',
@@ -82,6 +83,20 @@ module.exports = React.createClass({
     this.setState({series: this.transformSeries()});
   },
 
+  showTip: function(data, position) {
+    this.setState({
+      showTip: true,
+      tipPosition: position,
+      tipData: data
+    });
+  },
+
+  hideTip: function() {
+    this.setState({
+      showTip: false
+    });
+  },
+
   renderLinePath: function() {
     var paths = [];
     var state = this.state;
@@ -89,7 +104,15 @@ module.exports = React.createClass({
 
     for (var i = series.length - 1; i >= 0; i--) {
       paths.push(
-        <LinePath {...this.props} series={ series } index={ i } width={ state.width } height={ state.height } key={ i } />
+        <LinePath
+          {...this.props}
+          series={ series }
+          index={ i }
+          width={ state.width }
+          height={ state.height }
+          key={ i }
+          onPointOver={ this.showTip }
+          onPointLeave={ this.hideTip } />
       );
     };
 
@@ -112,8 +135,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var state = this.state;
+
     return (
       <div className="hui-LineGraph">
+        <ToolTip data={ state.tipData } show={ state.showTip } position={ state.tipPosition }/>
         <svg className="hui-LineGraph__svg">
           { this.renderGraph() }
         </svg>

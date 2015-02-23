@@ -5,6 +5,7 @@
 var React       = require('react');
 var SmoothLine  = require('paths-js/smooth-line');
 var scaleMixing = require('../mixins/scaleMixin');
+var _           = require('lodash');
 
 function date(data) {
   var d = new Date(data.date);
@@ -23,6 +24,12 @@ module.exports = React.createClass({
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
     area: React.PropTypes.bool.isRequired
+  },
+
+  getInitialState: function() {
+    return {
+      showTip: false
+    }
   },
 
   getDrawingHeight: function() {
@@ -57,6 +64,56 @@ module.exports = React.createClass({
     return this.props.gutter.top + (this.getDrawingHeight() * translationPercentage);
   },
 
+  onMouseOver: function(data, pos) {
+    return function() {
+      this.props.onPointOver(data, pos);
+    }.bind(this);
+  },
+
+  onMouseLeave: function() {
+    this.props.onPointLeave();
+  },
+
+  renderTipTargets: function() {
+    var smoothLine = this.smoothLine();
+    var targets = [];
+    var translateX = this.props.gutter.left;
+    var translateY = this.getTranslateY();
+    var onMouseOver = this.onMouseOver;
+    var onMouseLeave = this.onMouseLeave;
+
+    _.forEach(smoothLine.curves[0].item, function(data) {
+      var y = smoothLine.yscale(data.calculatedValue) + translateY;
+      var x = smoothLine.xscale(date(data)) + translateX;
+      targets.push(<circle
+        cx={ x }
+        cy={ y }
+        r="5"
+        fill="red"
+        onMouseOver={ onMouseOver(data, {x: x, y: y}) }
+        onMouseLeave={ onMouseLeave } />
+      );
+    });
+
+    return targets;
+  },
+
+  renderTip: function() {
+    var state = this.state;
+
+    if (!state.showTip) {
+      return null;
+    }
+
+    return (
+      <g
+        className="LinePath__tip"
+        transform={ "translate(" + state.tipPos.x + ", " + state.tipPos.y  + ")" } >
+          <circle r="10" fill="blue"/>
+      </g>
+    );
+  },
+
   renderPath: function(type) {
     if (!this.props[type]) {
       return false;
@@ -75,6 +132,8 @@ module.exports = React.createClass({
       <g className="LinePath">
         { this.renderPath('area') }
         { this.renderPath('line') }
+        { this.renderTip() }
+        { this.renderTipTargets() }
       </g>
     );
   }
