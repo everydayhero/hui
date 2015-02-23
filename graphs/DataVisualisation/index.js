@@ -10,6 +10,7 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
+    seriesValueKey: React.PropTypes.string,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
@@ -18,36 +19,47 @@ module.exports = React.createClass({
   },
 
   getDefaultProps: function() {
-   return {
-     stacked: true
-   };
+    return {
+      stacked: true,
+      seriesValueKey: 'value'
+    };
   },
 
   renderGraph: function() {
-    var series = this.props.series;
+    var props = this.props,
+        series = props.series,
+        seriesValueKey = props.seriesValueKey,
+        stacked = props.stacked;
+
     if (series) {
       return (
-        <Graphs stacked={ this.props.stacked } series={ series } />
+        <Graphs stacked={ stacked } series={ series } seriesValueKey={ seriesValueKey } />
       );
     }
   },
 
   renderTotal: function() {
-    var total = this.props.total;
+    var props = this.props,
+        total = props.total,
+        title = props.title;
+
     if (total) {
       return (
-        <SingleNumber type="donations" title={ this.props.title } value={ total }/>
+        <SingleNumber type="donations" title={ title } value={ total }/>
       );
     }
   },
 
   renderLegend: function() {
-    if (!this.props.legendLabels) {
+    var props = this.props,
+        legendLabels = props.legendLabels;
+
+    if (!legendLabels) {
       return false;
     }
 
     return (
-      <Legend labels={this.props.legendLabels} />
+      <Legend labels={ legendLabels } />
     );
   },
 

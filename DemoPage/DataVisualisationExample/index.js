@@ -16,17 +16,17 @@ function getSeries(tick) {
 
     series[0].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value
+      pages: value
     });
 
     series[1].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value2
+      pages: value2
     });
 
     series[2].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value3
+      pages: value3
     });
 
     count++;
@@ -35,13 +35,13 @@ function getSeries(tick) {
   return series;
 }
 
-
 module.exports = React.createClass({
   displayName: 'DataVisualisationExample',
 
   getInitialState: function() {
     return {
       series: getSeries(1),
+      seriesValueKey: 'pages',
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       total: 7000,
       title: 'Example Data'
@@ -68,7 +68,7 @@ module.exports = React.createClass({
       </div>
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { '<DataVisualisation series={ series } total={ number } title={ string } legendLabels={ labels } />' }
+        { '<DataVisualisation series={ series } seriesValueKey="pages" total={ number } title={ string } legendLabels={ labels } />' }
       </Highlight>
     </div>
     );

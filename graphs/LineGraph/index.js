@@ -11,6 +11,7 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
+    seriesValueKey: React.PropTypes.string,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     gutter: React.PropTypes.shape({
@@ -23,6 +24,7 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
+      seriesValueKey: 'value',
       gutter: {
         left: 35,
         right: 20,
@@ -36,15 +38,17 @@ module.exports = React.createClass({
   },
 
   transformSeries: function() {
-    var props = this.props;
-    var series = _.clone(props.series, true);
+    var props    = this.props,
+        series   = _.clone(props.series, true),
+        seriesValueKey = props.seriesValueKey;
 
     return _.map(series, function(dataSeries, seriesIndex) {
       return _.map(dataSeries, function(dataPoint, pointIndex) {
+        var value = dataPoint[seriesValueKey];
         if (props.stacked && seriesIndex !== 0) {
-          dataPoint.calculatedValue = dataPoint.value + series[seriesIndex - 1][pointIndex].calculatedValue;
+          dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
         } else {
-          dataPoint.calculatedValue = dataPoint.value;
+          dataPoint.calculatedValue = value;
         }
 
         return dataPoint;
