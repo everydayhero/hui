@@ -16,17 +16,17 @@ function getSeries(tick) {
 
     series[0].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value
+      funds_raised: value
     });
 
     series[1].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value2
+      funds_raised: value2
     });
 
     series[2].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      value: value3
+      funds_raised: value3
     });
 
     count++;
@@ -35,13 +35,13 @@ function getSeries(tick) {
   return series;
 }
 
-
 module.exports = React.createClass({
   displayName: 'LineGraphExample',
 
   getInitialState: function() {
     return {
-      series: getSeries(1)
+      series: getSeries(1),
+      seriesValueKey: 'funds_raised'
     };
   },
 
@@ -76,7 +76,7 @@ module.exports = React.createClass({
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { '<LineGraph series={ series } line={ true } area={ false } />' }
+        { '<LineGraph series={ series } seriesValueKey="funds_raised" line={ true } area={ false } />' }
       </Highlight>
     </div>
     );
