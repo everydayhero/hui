@@ -15,6 +15,8 @@ module.exports = React.createClass({
     seriesValueKey: React.PropTypes.string,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
+    tipLabel: React.PropTypes.string,
+    tipFormat: React.PropTypes.string,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,
       right: React.PropTypes.number,
@@ -112,7 +114,8 @@ module.exports = React.createClass({
           height={ state.height }
           key={ i }
           onPointOver={ this.showTip }
-          onPointLeave={ this.hideTip } />
+          onPointLeave={ this.hideTip }
+          seriesValueKey={ this.props.seriesValueKey } />
       );
     };
 
@@ -136,10 +139,16 @@ module.exports = React.createClass({
 
   render: function() {
     var state = this.state;
+    var props = this.props;
 
     return (
       <div className="hui-LineGraph">
-        <ToolTip data={ state.tipData } show={ state.showTip } position={ state.tipPosition }/>
+        <ToolTip
+          data={ state.tipData }
+          show={ state.showTip }
+          position={ state.tipPosition }
+          label={ props.tipLabel }
+          format={ props.tipFormat } />
         <svg className="hui-LineGraph__svg">
           { this.renderGraph() }
         </svg>

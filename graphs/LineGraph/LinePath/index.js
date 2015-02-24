@@ -23,7 +23,8 @@ module.exports = React.createClass({
     series: React.PropTypes.array.isRequired,
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
-    area: React.PropTypes.bool.isRequired
+    area: React.PropTypes.bool.isRequired,
+    seriesValueKey: React.PropTypes.string.isRequired,
   },
 
   getInitialState: function() {
@@ -64,14 +65,31 @@ module.exports = React.createClass({
     return this.props.gutter.top + (this.getDrawingHeight() * translationPercentage);
   },
 
-  onMouseOver: function(data, pos) {
+  calculateTotal: function(dataPoint) {
+    var props = this.props;
+    var total = 0;
+
+    _.forEach(props.series, function(data) {
+      total += data[dataPoint][props.seriesValueKey];
+    });
+
+    return total;
+  },
+
+  onMouseOver: function(data, dataPoint, pos) {
     return function() {
-      this.props.onPointOver(data, pos);
+      var tipInfo = {
+        date: data.date,
+        value: data[this.props.seriesValueKey],
+        total: this.calculateTotal(dataPoint)
+      }
+
+      this.props.onPointOver(tipInfo, pos);
     }.bind(this);
   },
 
   onMouseLeave: function() {
-    //this.props.onPointLeave();
+    this.props.onPointLeave();
   },
 
   renderTipTargets: function() {
@@ -82,15 +100,15 @@ module.exports = React.createClass({
     var onMouseOver = this.onMouseOver;
     var onMouseLeave = this.onMouseLeave;
 
-    _.forEach(smoothLine.curves[0].item, function(data) {
+    _.forEach(smoothLine.curves[0].item, function(data, dataPoint) {
       var y = smoothLine.yscale(data.calculatedValue) + translateY;
       var x = smoothLine.xscale(date(data)) + translateX;
       targets.push(<circle
         cx={ x }
         cy={ y }
-        r="1"
+        r="3"
         fill="red"
-        onMouseOver={ onMouseOver(data, {x: x, y: y}) }
+        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
         onMouseLeave={ onMouseLeave } />
       );
     });

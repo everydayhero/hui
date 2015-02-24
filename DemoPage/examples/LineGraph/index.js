@@ -79,10 +79,10 @@ module.exports = React.createClass({
         </li>
       </ul>
       <div className="DemoPage__example--graph--lines">
-        <LineGraph {...this.state} line={ true } area={ false } />
+        <LineGraph {...this.state} line={ true } area={ false } tipLabel='Fund raised' />
       </div>
       <div className="DemoPage__example--graph--stacked">
-        <LineGraph {...this.state} stacked={ true } />
+        <LineGraph {...this.state} stacked={ true } tipLabel='Fund raised' />
       </div>
 
       <h4 className="DemoPage__h4">React Example</h4>
