@@ -23,15 +23,28 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var props = this.props;
-    var style = { left: props.position.x, top: props.position.y };
+    var props    = this.props;
+    var position = props.position;
+    var x        = position.x;
+    var y        = position.y;
+    var style    = { left: x, top: y };
     if (!props.show) {
       return false;
     }
 
     return (
       <div className="ToolTip" style={ style }>
-        I am a tip!
+        <svg className="ToolTip__svg" >
+          <g
+            className="ToolTip__circle"
+            transform={ "translate(" + position.x + ", " + position.y + ")" } >
+
+          </g>
+        </svg>
+
+        <div className="ToolTip__text" >
+          This is the tip!
+        </div>
       </div>
     );
   }

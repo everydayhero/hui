@@ -71,7 +71,7 @@ module.exports = React.createClass({
   },
 
   onMouseLeave: function() {
-    this.props.onPointLeave();
+    //this.props.onPointLeave();
   },
 
   renderTipTargets: function() {
@@ -88,7 +88,7 @@ module.exports = React.createClass({
       targets.push(<circle
         cx={ x }
         cy={ y }
-        r="5"
+        r="1"
         fill="red"
         onMouseOver={ onMouseOver(data, {x: x, y: y}) }
         onMouseLeave={ onMouseLeave } />
