@@ -9,6 +9,7 @@ var Highlight              = require('react-highlight');
 var pkg                    = require('../package');
 var imagePath              = '/images-' + pkg.version + '/';
 var TopBarExample          = require('./TopBarExample');
+var DeltaArrowExample      = require('./DeltaArrowExample');
 var LineGraphExample       = require('./LineGraphExample');
 var LegendExample          = require('./LegendExample');
 var VisualisationExample   = require('./DataVisualisationExample');
@@ -60,6 +61,7 @@ module.exports = React.createClass({
           <h2 className="DemoPage__h2" id="examples">Examples</h2>
 
           <TopBarExample/>
+          <DeltaArrowExample/>
           <LineGraphExample/>
           <LegendExample />
           <VisualisationExample />
