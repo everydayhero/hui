@@ -2,9 +2,9 @@
 "use strict";
 
 var React     = require('react');
-var FileInput = require('../../forms/FileInput');
+var FileInput = require('../../../forms/FileInput');
 var Highlight = require('react-highlight');
-var formMixin = require('../../mixins/reactForm.mixin');
+var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'FileInputExample',

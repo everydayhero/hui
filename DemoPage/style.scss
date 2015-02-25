@@ -1,49 +1,49 @@
 .DemoPage {
   margin-top: 64px;
+}
 
-  .DemoPage__h2 {
-    @extend %hui-rule-bottom;
-    font-size: 24px;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    margin-top: 36px;
-    font-weight: 200;
-    color: $hui-text-grey;
-  }
+.DemoPage__h2 {
+  @extend %hui-rule-bottom;
+  font-size: 28px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  margin-top: 36px;
+  font-weight: 200;
+  color: $hui-text-grey;
+}
 
-  .DemoPage__h3 {
-    font-size: 16px;
-    margin-bottom: 16px;
-    margin-top: 16px;
-    font-weight: 400;
-    color: $hui-text-grey;
-  }
+.DemoPage__h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  font-weight: 700;
+  color: $hui-text-grey;
+}
 
-  .DemoPage__h4 {
-    font-size: 13px;
-    margin-bottom: 8px;
-    margin-top: 13px;
-    font-weight: 800;
-    color: $hui-text-grey;
-  }
+.DemoPage__h4 {
+  font-size: 13px;
+  margin-bottom: 8px;
+  margin-top: 24px;
+  font-weight: 800;
+  color: $hui-text-grey;
+}
 
-  .DemoPage__p {
-    margin-bottom: 16px;
-    color: $hui-text-grey;
-    font-size: 14px;
-    line-height: 16px;
-  }
+.DemoPage__p {
+  margin-bottom: 16px;
+  color: $hui-text-grey;
+  font-size: 14px;
+  line-height: 16px;
+}
 
-  .DemoPage__ul {
-    margin-left: 24px;
-    margin-bottom: 24px;
-    color: $hui-text-grey;
-    font-size: 14px;
-  }
+.DemoPage__ul {
+  margin-left: 24px;
+  margin-bottom: 24px;
+  color: $hui-text-grey;
+  font-size: 14px;
+}
 
-  .DemoPage__li {
-    line-height: 16px;
-  }
+.DemoPage__li {
+  line-height: 24px;
 }
 
 .DemoPage__content {
@@ -76,4 +76,8 @@
 
 .DemoPage__example--graph--stacked {
   height: 200px;
+}
+
+.DemoPage__bold {
+  font-weight: 700;
 }

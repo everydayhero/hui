@@ -2,7 +2,7 @@
 "use strict";
 
 var React      = require('react');
-var LineGraph  = require('../../graphs/LineGraph');
+var LineGraph  = require('../../../graphs/LineGraph');
 var Highlight  = require('react-highlight');
 
 function getSeries(tick) {

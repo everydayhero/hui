@@ -3,7 +3,7 @@
 
 var React     = require('react');
 var Highlight = require('react-highlight');
-var Legend    = require('../../graphs/DataVisualisation/Legend');
+var Legend    = require('../../../graphs/DataVisualisation/Legend');
 
 module.exports = React.createClass({
   displayName: 'LegendExample',

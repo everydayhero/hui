@@ -2,10 +2,10 @@
 "use strict";
 
 var React      = require('react');
-var TopBar     = require('../../layout/TopBar');
-var Masthead   = require('../../layout/Masthead');
+var TopBar     = require('../../../layout/TopBar');
+var Masthead   = require('../../../layout/Masthead');
 var Highlight  = require('react-highlight');
-var pkg        = require('../../package');
+var pkg        = require('../../../package');
 var imagePath  = '/images-' + pkg.version + '/';
 
 module.exports = React.createClass({
@@ -15,12 +15,12 @@ module.exports = React.createClass({
     return (
     <div>
       <h3 className="DemoPage__h3">TopBar and MastHead</h3>
-      <p className="DemoPage__p">The top bar should be consitent across all applications and include a MastHead.</p>
+      <p className="DemoPage__p">The top bar should be consitent across all applications and include a MastHead. TopBarLinks are optional</p>
       <h4 className="DemoPage__h4">MastHead propTypes</h4>
       <ul className="DemoPage__ul">
-        <li className="DemoPage__li">appName: Optional application name to appear beside logo</li>
-        <li className="DemoPage__li">href: Path to navigate user when clicking on logo)</li>
-        <li className="DemoPage__li">imagePath: Path to logo image assests. 'hui_edh_logo.gif' & 'hui_edh_logo.svg' to optimise logo for screen resolutions and svg support.</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">appName:</span> Optional application name to appear beside logo</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">href:</span> Path to navigate user when clicking on logo)</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">imagePath:</span> Path to logo image assests. 'hui_edh_logo@x2.gif' to optimise logo for screen resolutions.</li>
       </ul>
       <div className="DemoPage__example">
         <TopBar>
@@ -35,7 +35,23 @@ module.exports = React.createClass({
       <Highlight className='html'>
         { '<TopBar>\n' }
         { '  <Masthead appName={ "Example" } href="/" imagePath={ imagePath } />\n' }
+        { '    <TopBarLink href="#how-to-use">How to use</TopBarLink>\n' }
+        { '    <TopBarLink href="#examples">HUI examples</TopBarLink>\n' }
         { '</TopBar>\n' }
+      </Highlight>
+
+      <h4 className="DemoPage__h4">HTML Example</h4>
+      <Highlight className='html'>
+      { '<div class="hui-TopBar">\n' }
+      { '  <h1 class="hui-Masthead">\n' }
+      { '    <a href="/">\n' }
+      { '      <img class="hui-Masthead__logo" src="/images-' + pkg.version + '/hui_edh_logo@x2.gif" alt="everydayhero HUI">\n' }
+      { '      <span class="hui-Masthead__appName">HUI (◠‿◠)</span>\n' }
+      { '    </a>\n' }
+      { '  </h1>\n' }
+      { '  <a class="hui-TopBarLink" href="#how-to-use">How to use</a>\n' }
+      { '  <a class="hui-TopBarLink" href="#examples">HUI examples</a>\n' }
+      { '</div>' }
       </Highlight>
     </div>
     );

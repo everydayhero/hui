@@ -3,8 +3,8 @@
 
 var React           = require('react');
 var Highlight       = require('react-highlight');
-var ReadOnlyAddress = require('../../forms/ReadOnlyAddress');
-var formMixin       = require('../../mixins/reactForm.mixin');
+var ReadOnlyAddress = require('../../../forms/ReadOnlyAddress');
+var formMixin       = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'ReadOnlyAddressExample',

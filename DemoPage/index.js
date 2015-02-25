@@ -1,27 +1,27 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React                  = require('react');
-var TopBar                 = require('../layout/TopBar');
-var TopBarLink             = require('../layout/TopBarLink');
-var Masthead               = require('../layout/Masthead');
-var Highlight              = require('react-highlight');
-var pkg                    = require('../package');
-var imagePath              = '/images-' + pkg.version + '/';
-var TopBarExample          = require('./TopBarExample');
-var DeltaArrowExample      = require('./DeltaArrowExample');
-var LineGraphExample       = require('./LineGraphExample');
-var LegendExample          = require('./LegendExample');
-var VisualisationExample   = require('./DataVisualisationExample');
-var TextInputExample       = require('./TextInputExample');
-var ReadOnlyAddressExample = require('./ReadOnlyAddressExample');
-var CheckboxExample        = require('./CheckboxExample');
-var TextAreaExample        = require('./TextAreaExample');
-var SelectInputExample     = require('./SelectInputExample');
-var UrlInputExample        = require('./UrlInputExample');
-var DateInputExample       = require('./DateInputExample');
-var FileInputExample       = require('./FileInputExample');
-var ImageInputExample      = require('./ImageInputExample');
+var React           = require('react');
+var TopBar          = require('../layout/TopBar');
+var TopBarLink      = require('../layout/TopBarLink');
+var Masthead        = require('../layout/Masthead');
+var Highlight       = require('react-highlight');
+var pkg             = require('../package');
+var imagePath       = '/images-' + pkg.version + '/';
+var TopBarExample   = require('./examples/TopBar');
+var DeltaArrow      = require('./examples/DeltaArrow');
+var LineGraph       = require('./examples/LineGraph');
+var Legend          = require('./examples/Legend');
+var Visualisation   = require('./examples/DataVisualisation');
+var TextInput       = require('./examples/TextInput');
+var ReadOnlyAddress = require('./examples/ReadOnlyAddress');
+var Checkbox        = require('./examples/Checkbox');
+var TextArea        = require('./examples/TextArea');
+var SelectInput     = require('./examples/SelectInput');
+var UrlInput        = require('./examples/UrlInput');
+var DateInput       = require('./examples/DateInput');
+var FileInput       = require('./examples/FileInput');
+var ImageInput      = require('./examples/ImageInput');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -61,19 +61,19 @@ module.exports = React.createClass({
           <h2 className="DemoPage__h2" id="examples">Examples</h2>
 
           <TopBarExample/>
-          <DeltaArrowExample/>
-          <LineGraphExample/>
-          <LegendExample />
-          <VisualisationExample />
-          <TextInputExample />
-          <ReadOnlyAddressExample />
-          <CheckboxExample />
-          <TextAreaExample />
-          <SelectInputExample />
-          <UrlInputExample />
-          <DateInputExample />
-          <FileInputExample />
-          <ImageInputExample />
+          <DeltaArrow/>
+          <LineGraph/>
+          <Legend />
+          <Visualisation />
+          <TextInput />
+          <ReadOnlyAddress />
+          <Checkbox />
+          <TextArea />
+          <SelectInput />
+          <UrlInput />
+          <DateInput />
+          <FileInput />
+          <ImageInput />
         </div>
       </div>
     );

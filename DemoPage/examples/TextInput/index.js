@@ -2,9 +2,9 @@
 "use strict";
 
 var React     = require('react');
-var TextInput = require('../../forms/TextInput');
+var TextInput = require('../../../forms/TextInput');
 var Highlight = require('react-highlight');
-var formMixin = require('../../mixins/reactForm.mixin');
+var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'TextInputExample',

@@ -3,7 +3,7 @@
 
 var React     = require('react');
 var Highlight = require('react-highlight');
-var DataVisualisation = require('../../graphs/DataVisualisation');
+var DataVisualisation = require('../../../graphs/DataVisualisation');
 
 function getSeries(tick) {
   var series = [[], [], []];

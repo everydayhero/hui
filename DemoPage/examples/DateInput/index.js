@@ -2,9 +2,9 @@
 "use strict";
 
 var React     = require('react');
-var DateInput = require('../../forms/DateInput');
+var DateInput = require('../../../forms/DateInput');
 var Highlight = require('react-highlight');
-var formMixin = require('../../mixins/reactForm.mixin');
+var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'DateInputExample',

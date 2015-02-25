@@ -2,7 +2,7 @@
 "use strict";
 
 var React      = require('react');
-var DeltaArrow = require('../../graphs/DeltaArrow');
+var DeltaArrow = require('../../../graphs/DeltaArrow');
 var Highlight  = require('react-highlight');
 
 module.exports = React.createClass({
