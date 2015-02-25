@@ -2,3 +2,17 @@
 @import "Legend/style";
 @import "../LineGraph/style";
 @import "../DeltaArrow/style";
+
+.hui-DataVisalisation__title {
+  display: block;
+  position: absolute;
+  font-size: $hui-x-6;
+  color: $hui-header-grey;
+  font-weight: 300;
+}
+
+.hui-DataVisalisation__valueGroup {
+  text-align: right;
+  top: -10px;
+  position: relative;
+}

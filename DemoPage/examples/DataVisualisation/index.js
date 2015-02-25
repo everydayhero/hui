@@ -44,7 +44,7 @@ module.exports = React.createClass({
       seriesValueKey: 'pages',
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       delta: -10,
-      total: 7000,
+      total: 160000000,
       title: 'Example Data'
     };
   },
@@ -64,7 +64,7 @@ module.exports = React.createClass({
         <li className="DemoPage__li">total</li>
         <li className="DemoPage__li">legendLabels</li>
       </ul>
-      <div className="DemoPage__example">
+      <div className="DemoPage__example--visualisation">
         <DataVisualisation {...this.state} />
       </div>
       <h4 className="DemoPage__h4">React Example</h4>

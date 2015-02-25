@@ -27,7 +27,7 @@ module.exports = React.createClass({
       seriesValueKey: 'value',
       gutter: {
         left: 35,
-        right: 20,
+        right: 0,
         bottom: 20,
         top: 20
       },

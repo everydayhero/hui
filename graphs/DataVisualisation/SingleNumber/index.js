@@ -7,7 +7,6 @@ module.exports = React.createClass({
   displayName: 'SingleNumber',
 
   propTypes: {
-    title: React.PropTypes.string.isRequired,
     type: React.PropTypes.oneOf(['donations', 'supporters'])
   },
 
@@ -25,9 +24,8 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="SingleNumber">
-        <h2 className="SingleNumber__title">{ this.props.title }</h2>
-        <div className="SingleNumber__metric">
+      <div className="hui-SingleNumber">
+        <div className="hui-SingleNumber__metric">
           { this.metricFormatted() }
         </div>
       </div>

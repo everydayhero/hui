@@ -75,9 +75,12 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="DataVisalisation">
-        { this.renderDeltaArrow() }
-        { this.renderTotal() }
+      <div className="hui-DataVisalisation">
+        <h2 className="hui-DataVisalisation__title">{ this.props.title }</h2>
+        <div className="hui-DataVisalisation__valueGroup">
+          { this.renderTotal() }
+          { this.renderDeltaArrow() }
+        </div>
         { this.renderGraph() }
         { this.renderLegend() }
       </div>

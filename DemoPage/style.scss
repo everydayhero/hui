@@ -55,7 +55,8 @@
 
 .DemoPage__example,
 .DemoPage__example--graph--lines,
-.DemoPage__example--graph--stacked {
+.DemoPage__example--graph--stacked,
+.DemoPage__example--visualisation {
   position: relative;
   top: 0px;
   left: 0px;
@@ -63,10 +64,12 @@
   margin-bottom: 24px;
   border: 1px $hui-border-grey solid;
   z-index: 1;
+  background: white;
 }
 
 .DemoPage__example--graph--lines,
-.DemoPage__example--graph--stacked {
+.DemoPage__example--graph--stacked,
+.DemoPage__example--visualisation {
   box-sizing: border-box;
   padding: 10px;
 }

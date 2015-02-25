@@ -8,7 +8,6 @@ describe('Masthead', function() {
   var Masthead        = require('../index');
   var TestUtils   = React.addons.TestUtils;
   var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
-  var findByClass = TestUtils.findRenderedDOMComponentWithClass;
   var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
 
   describe('default', function() {
