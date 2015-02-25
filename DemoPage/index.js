@@ -1,27 +1,27 @@
 /** @jsx React.DOM */
 "use strict";
 
-var React                  = require('react');
-var TopBar                 = require('../layout/TopBar');
-var TopBarLink             = require('../layout/TopBarLink');
-var Masthead               = require('../layout/Masthead');
-var Highlight              = require('react-highlight');
-var pkg                    = require('../package');
-var imagePath              = '/images-' + pkg.version + '/';
-var TopBarExample          = require('./TopBarExample');
-var DeltaArrowExample      = require('./DeltaArrowExample');
-var LineGraphExample       = require('./LineGraphExample');
-var LegendExample          = require('./LegendExample');
-var VisualisationExample   = require('./DataVisualisationExample');
-var TextInputExample       = require('./TextInputExample');
-var ReadOnlyAddressExample = require('./ReadOnlyAddressExample');
-var CheckboxExample        = require('./CheckboxExample');
-var TextAreaExample        = require('./TextAreaExample');
-var SelectInputExample     = require('./SelectInputExample');
-var UrlInputExample        = require('./UrlInputExample');
-var DateInputExample       = require('./DateInputExample');
-var FileInputExample       = require('./FileInputExample');
-var ImageInputExample      = require('./ImageInputExample');
+var React           = require('react');
+var TopBar          = require('../layout/TopBar');
+var TopBarLink      = require('../layout/TopBarLink');
+var Masthead        = require('../layout/Masthead');
+var Highlight       = require('react-highlight');
+var pkg             = require('../package');
+var imagePath       = '/images-' + pkg.version + '/';
+var TopBarExample   = require('./examples/TopBar');
+var DeltaArrow      = require('./examples/DeltaArrow');
+var LineGraph       = require('./examples/LineGraph');
+var Legend          = require('./examples/Legend');
+var Visualisation   = require('./examples/DataVisualisation');
+var TextInput       = require('./examples/TextInput');
+var ReadOnlyAddress = require('./examples/ReadOnlyAddress');
+var Checkbox        = require('./examples/Checkbox');
+var TextArea        = require('./examples/TextArea');
+var SelectInput     = require('./examples/SelectInput');
+var UrlInput        = require('./examples/UrlInput');
+var DateInput       = require('./examples/DateInput');
+var FileInput       = require('./examples/FileInput');
+var ImageInput      = require('./examples/ImageInput');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -29,17 +29,15 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="DemoPage">
-        <TopBar>
+        <TopBar fixed={ true }>
           <Masthead
             appName={ "HUI (◠‿◠)" }
             href="/"
             imagePath={ imagePath } />
-            <TopBarLink href="#how-to-use">
-              How to use
-            </TopBarLink>
-            <TopBarLink href="#examples">
-              HUI examples
-            </TopBarLink>
+            <TopBarLink href="#how-to-use">How to use</TopBarLink>
+            <TopBarLink href="#layout">Layout</TopBarLink>
+            <TopBarLink href="#graphs">Graphs</TopBarLink>
+            <TopBarLink href="#forms">Forms</TopBarLink>
         </TopBar>
         <div className="DemoPage__content">
           <h2 className="DemoPage__h2" id="how-to-use">How to use HUI</h2>
@@ -58,22 +56,31 @@ module.exports = React.createClass({
             { "npm install git+ssh://git@github.com:everydayhero/ui-library.git#" + pkg.version }
           </Highlight>
 
-          <h2 className="DemoPage__h2" id="examples">Examples</h2>
+          <h2 className="DemoPage__h2" id="layout">Layout</h2>
+          <div className="DemoPage__group">
+            <TopBarExample/>
+          </div>
 
-          <TopBarExample/>
-          <DeltaArrowExample/>
-          <LineGraphExample/>
-          <LegendExample />
-          <VisualisationExample />
-          <TextInputExample />
-          <ReadOnlyAddressExample />
-          <CheckboxExample />
-          <TextAreaExample />
-          <SelectInputExample />
-          <UrlInputExample />
-          <DateInputExample />
-          <FileInputExample />
-          <ImageInputExample />
+          <h2 className="DemoPage__h2" id="graphs">Graphs</h2>
+          <div className="DemoPage__group">
+            <Visualisation />
+            <LineGraph/>
+            <Legend />
+            <DeltaArrow/>
+          </div>
+
+          <h2 className="DemoPage__h2" id="forms">Forms</h2>
+          <div className="DemoPage__group">
+            <TextInput />
+            <ReadOnlyAddress />
+            <Checkbox />
+            <TextArea />
+            <SelectInput />
+            <UrlInput />
+            <DateInput />
+            <FileInput />
+            <ImageInput />
+          </div>
         </div>
       </div>
     );

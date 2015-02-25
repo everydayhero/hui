@@ -1,0 +1,12 @@
+@import "graphs/LineGraph/LinePath/style";
+@import "graphs/LineGraph/YScale/style";
+@import "graphs/LineGraph/XScale/style";
+
+.hui-LineGraph {
+  height: 100%;
+}
+
+.hui-LineGraph__svg {
+  width: 100%;
+  height: 100%;
+}

@@ -2,7 +2,6 @@
 "use strict";
 
 var React = require('react');
-var LOGO_FILE_NAME = 'hui_edh_logo.';
 
 module.exports = React.createClass({
   displayName: 'Masthead',
@@ -13,31 +12,10 @@ module.exports = React.createClass({
     imagePath: React.PropTypes.string.isRequired
   },
 
-  getInitialState: function() {
-    // catch to support server side rendering and test weirdness
-    var hasDocument = (typeof document === 'object');
-
-    return {
-      hasSvgFeature: hasDocument ? document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") : false
-    };
-  },
-
   getDefaultProps: function() {
     return {
       root: '/'
     };
-  },
-
-  renderLogo: function() {
-    var alt = ["everydayhero", this.props.appName].join(' ');
-    var fileType = this.state.hasSvgFeature ? 'svg' : 'gif';
-
-    return (
-      <img
-        className="hui-Masthead__logo"
-        src={ this.props.imagePath + LOGO_FILE_NAME + fileType }
-        alt={ alt } />
-    );
   },
 
   renderAppName: function() {
@@ -55,10 +33,15 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var alt = ["everydayhero", this.props.appName].join(' ');
+
     return (
       <h1 className="hui-Masthead">
         <a href={ this.props.href }>
-          { this.renderLogo() }
+          <img
+            className="hui-Masthead__logo"
+            src={ this.props.imagePath + 'hui_edh_logo@x2.gif' }
+            alt={ alt } />
           { this.renderAppName() }
         </a>
       </h1>
