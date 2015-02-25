@@ -16,7 +16,6 @@ module.exports = React.createClass({
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
-    tipFormat: React.PropTypes.string,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,
       right: React.PropTypes.number,
@@ -147,8 +146,7 @@ module.exports = React.createClass({
           data={ state.tipData }
           show={ state.showTip }
           position={ state.tipPosition }
-          label={ props.tipLabel }
-          format={ props.tipFormat } />
+          label={ props.tipLabel } />
         <svg className="hui-LineGraph__svg">
           { this.renderGraph() }
         </svg>

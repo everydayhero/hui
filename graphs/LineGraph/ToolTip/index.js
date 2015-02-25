@@ -1,8 +1,9 @@
 "use strict";
 
-var _      = require('lodash');
-var React  = require('react');
-var moment = require('moment');
+var _            = require('lodash');
+var React        = require('react');
+var moment       = require('moment');
+var formatNumber = require('../../../lib/formatNumber');
 
 module.exports = React.createClass({
   displayName: 'ToolTip',
@@ -12,7 +13,6 @@ module.exports = React.createClass({
     show: React.PropTypes.bool,
     data: React.PropTypes.object,
     label: React.PropTypes.string,
-    format: React.PropTypes.string,
   },
 
   getDefaultProps: function() {
@@ -31,11 +31,8 @@ module.exports = React.createClass({
     return (
       <svg className="ToolTip__svg">
         <g className="ToolTip__line">
-          <line
-            x1={ 10 }
-            y1={ 0 }
-            x2={ 10 }
-            y2={ 100 }
+          <path
+            d="M10 100 L10 0"
             stroke="black"
             strokeWidth="1"
             strokeLinecap="round"
@@ -48,14 +45,13 @@ module.exports = React.createClass({
   renderTipContent: function() {
     var props  = this.props;
     var data   = props.data;
-    var format = props.format : '00 a';
     var date, content;
 
     if (_.isEmpty(data)) {
       return false;
     } else {
       date    = moment(data.date).format("ddd MMM DD, YYYY");
-      content = props.label + ": " + data.value + " of " + data.total;
+      content = props.label + ": " + formatNumber(data.value) + " of " + formatNumber(data.total);
 
       return (
         <div className="ToolTip__text" >
