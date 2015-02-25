@@ -1,23 +1,16 @@
-@import "sass/colors";
-@import "sass/variables";
-@import "sass/modules/typography";
-@import "sass/modules/forms";
-@import "sass/modules/messages";
-@import "sass/modules/links";
+@import "common";
 
 @import "DemoPage/style";
+
 @import "layout/TopBar/style";
 @import "layout/TopBarLink/style";
 @import "layout/Masthead/style";
-@import "graphs/DataVisualisation/SingleNumber/style";
-@import "graphs/DataVisualisation/Legend/style";
-@import "graphs/DeltaArrow/style";
-@import "graphs/LineGraph/styles";
-@import "graphs/LineGraph/LinePath/style";
-@import "graphs/LineGraph/YScale/style";
-@import "graphs/LineGraph/XScale/style";
+
+@import "graphs/DataVisualisation/style";
+
+@import "graphs/LineGraph/style";
+
 @import "forms/TextInput/style";
-@import "forms/InputErrors/style";
 @import "forms/FormRow/style";
 @import "forms/Checkbox/style";
 @import "forms/SelectInput/style";
