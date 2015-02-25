@@ -29,17 +29,15 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="DemoPage">
-        <TopBar>
+        <TopBar fixed={ true }>
           <Masthead
             appName={ "HUI (◠‿◠)" }
             href="/"
             imagePath={ imagePath } />
-            <TopBarLink href="#how-to-use">
-              How to use
-            </TopBarLink>
-            <TopBarLink href="#examples">
-              HUI examples
-            </TopBarLink>
+            <TopBarLink href="#how-to-use">How to use</TopBarLink>
+            <TopBarLink href="#layout">Layout</TopBarLink>
+            <TopBarLink href="#graphs">Graphs</TopBarLink>
+            <TopBarLink href="#forms">Forms</TopBarLink>
         </TopBar>
         <div className="DemoPage__content">
           <h2 className="DemoPage__h2" id="how-to-use">How to use HUI</h2>
@@ -58,22 +56,31 @@ module.exports = React.createClass({
             { "npm install git+ssh://git@github.com:everydayhero/ui-library.git#" + pkg.version }
           </Highlight>
 
-          <h2 className="DemoPage__h2" id="examples">Examples</h2>
+          <h2 className="DemoPage__h2" id="layout">Layout</h2>
+          <div className="DemoPage__group">
+            <TopBarExample/>
+          </div>
 
-          <TopBarExample/>
-          <DeltaArrow/>
-          <LineGraph/>
-          <Legend />
-          <Visualisation />
-          <TextInput />
-          <ReadOnlyAddress />
-          <Checkbox />
-          <TextArea />
-          <SelectInput />
-          <UrlInput />
-          <DateInput />
-          <FileInput />
-          <ImageInput />
+          <h2 className="DemoPage__h2" id="graphs">Graphs</h2>
+          <div className="DemoPage__group">
+            <Visualisation />
+            <LineGraph/>
+            <Legend />
+            <DeltaArrow/>
+          </div>
+
+          <h2 className="DemoPage__h2" id="forms">Forms</h2>
+          <div className="DemoPage__group">
+            <TextInput />
+            <ReadOnlyAddress />
+            <Checkbox />
+            <TextArea />
+            <SelectInput />
+            <UrlInput />
+            <DateInput />
+            <FileInput />
+            <ImageInput />
+          </div>
         </div>
       </div>
     );

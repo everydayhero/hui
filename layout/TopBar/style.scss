@@ -1,4 +1,4 @@
-.hui-TopBar {
+.hui-TopBar, .hui-TopBar--fixed {
   background-color: white;
   border: 0px;
   border-bottom: 1px;
@@ -8,5 +8,9 @@
   top: 0px;
   width: 100%;
   height: 67px;
-  z-index: 1;
+  z-index: 5;
+}
+
+.hui-TopBar--fixed {
+  position: fixed;
 }

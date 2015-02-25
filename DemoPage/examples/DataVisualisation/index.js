@@ -56,7 +56,7 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3 className="DemoPage__h2">DataVisualisation</h3>
+      <h3 className="DemoPage__h3">DataVisualisation</h3>
       <h4 className="DemoPage__h4">DataVisualisation propTypes</h4>
       <ul className="DemoPage__ul">
         <li className="DemoPage__li">series</li>
