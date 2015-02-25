@@ -2,6 +2,7 @@
 
 var React   = require('react');
 var Graphs  = require('../LineGraph');
+var DeltaArrow = require('../DeltaArrow');
 var SingleNumber = require('./SingleNumber');
 var Legend = require('./Legend');
 
@@ -15,7 +16,8 @@ module.exports = React.createClass({
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
     type: React.PropTypes.oneOf(['donations', 'supporters']),
-    legendLabels: React.PropTypes.arrayOf(React.PropTypes.string)
+    legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
+    delta: React.PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -50,6 +52,14 @@ module.exports = React.createClass({
     }
   },
 
+  renderDeltaArrow: function() {
+    var delta = this.props.delta;
+
+    if (delta) {
+      return <DeltaArrow delta={ delta } />;
+    }
+  },
+
   renderLegend: function() {
     var props = this.props,
         legendLabels = props.legendLabels;
@@ -66,6 +76,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="DataVisalisation">
+        { this.renderDeltaArrow() }
         { this.renderTotal() }
         { this.renderGraph() }
         { this.renderLegend() }

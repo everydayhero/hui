@@ -43,6 +43,7 @@ module.exports = React.createClass({
       series: getSeries(1),
       seriesValueKey: 'pages',
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
+      delta: -10,
       total: 7000,
       title: 'Example Data'
     };

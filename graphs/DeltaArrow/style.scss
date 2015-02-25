@@ -1,0 +1,38 @@
+.DeltaArrow--up,
+.DeltaArrow--down {
+  width: 43px;
+  height: 37px;
+  position: relative;
+
+  svg {
+    width: 43px;
+    height: 37px;
+  }
+
+  .delta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10px;
+    color: white;
+  }
+}
+
+.DeltaArrow--up {
+  svg {
+    fill: #85c27e;
+  }
+  .delta {
+    bottom: 5px;
+  }
+}
+
+.DeltaArrow--down {
+  svg {
+    fill: #ce522e;
+  }
+  .delta {
+    top: 5px;
+  }
+}
