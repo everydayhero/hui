@@ -15,7 +15,6 @@ module.exports = React.createClass({
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
-    type: React.PropTypes.oneOf(['donations', 'supporters']),
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number
   },
@@ -47,7 +46,7 @@ module.exports = React.createClass({
 
     if (total) {
       return (
-        <SingleNumber type="donations" title={ title } value={ total }/>
+        <SingleNumber title={ title } value={ total }/>
       );
     }
   },

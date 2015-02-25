@@ -6,10 +6,6 @@ var numeral = require('numeral');
 module.exports = React.createClass({
   displayName: 'SingleNumber',
 
-  propTypes: {
-    type: React.PropTypes.oneOf(['donations', 'supporters'])
-  },
-
   getDefaultProps: function() {
     return {
       format: '0.0a',
