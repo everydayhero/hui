@@ -12,10 +12,10 @@ module.exports = React.createClass({
   labels: function() {
     return this.props.labels.map(function(label) {
       return (
-        <div className="LegendItem">
-          <div className="LegendItemContent">
-            <div className="LegendItem__dot"></div>
-            <div className="LegendItem__label">
+        <div className="hui-Legend__item">
+          <div className="hui-Legend__content">
+            <div className="hui-Legend__dot"></div>
+            <div className="hui-Legend__label">
               { label }
             </div>
           </div>
@@ -26,7 +26,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="Legend">
+      <div className="hui-Legend">
         { this.labels() }
       </div>
     );

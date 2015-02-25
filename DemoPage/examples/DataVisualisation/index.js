@@ -69,7 +69,12 @@ module.exports = React.createClass({
       </div>
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { '<DataVisualisation series={ series } seriesValueKey="pages" total={ number } title={ string } legendLabels={ labels } />' }
+        { '<DataVisualisation \n' }
+        { '  series={ series } \n' }
+        { '  seriesValueKey="pages" \n' }
+        { '  total={ number } \n' }
+        { '  title={ string } \n' }
+        { '  legendLabels={ labels } />' }
       </Highlight>
     </div>
     );

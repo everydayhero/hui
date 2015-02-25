@@ -2,6 +2,8 @@
 
 var React  = require('react');
 var moment = require('moment');
+var OFFSET = 12;
+// top stop dates running off the edge of the svg
 
 module.exports = React.createClass({
 
@@ -30,7 +32,7 @@ module.exports = React.createClass({
     var props = this.props;
     var gutter = props.gutter;
 
-    return props.width - gutter.left - gutter.right;
+    return props.width - gutter.left - gutter.right - (OFFSET * 2);
   },
 
   getScaleIncrement: function() {
@@ -58,7 +60,7 @@ module.exports = React.createClass({
     for (var i = 0; i < dataArray.length; i += scaleIncrement) {
       paths.push(
         <g
-          transform={ "translate("+ props.gutter.left + ", 0)" }
+          transform={ "translate("+ (props.gutter.left + OFFSET) + ", 0)" }
           key={ i }>
           <text
             x={ xPos }
