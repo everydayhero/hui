@@ -77,8 +77,7 @@ module.exports = React.createClass({
   isFlipOver: function(pointPos) {
     var isFlipOver = false;
 
-    if (this.calculateOffset(pointPos) < 200)
-    {
+    if (this.calculateOffset(pointPos) < 200) {
       isFlipOver = true;
     }
 

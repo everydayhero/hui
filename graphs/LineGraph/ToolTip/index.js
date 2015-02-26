@@ -54,8 +54,8 @@ module.exports = React.createClass({
   },
 
   renderTipContent: function() {
-    var props   = this.props;
-    var data    = props.data;
+    var props = this.props;
+    var data  = props.data;
     var date, content, classes;
 
     classes = cx({
@@ -67,7 +67,7 @@ module.exports = React.createClass({
     if (_.isEmpty(data)) {
       return false;
     } else {
-      date    = moment(data.date).format("ddd MMM DD, YYYY");
+      date = moment(data.date).format("ddd MMM DD, YYYY");
 
       return (
         <div className={ classes } >

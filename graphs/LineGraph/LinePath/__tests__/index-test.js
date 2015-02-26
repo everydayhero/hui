@@ -34,6 +34,7 @@ describe('LinePath', function() {
   }
 
   var height = 120;
+  var yAccessor = jest.genMockFunction();
 
   describe('default', function() {
     var component;
@@ -47,7 +48,8 @@ describe('LinePath', function() {
           index={ 0 }
           line={ true }
           area={ true }
-          gutter={ gutters } />
+          gutter={ gutters }
+          yAccessor={ yAccessor } />
       );
     });
 
@@ -56,13 +58,13 @@ describe('LinePath', function() {
     });
 
     it('should render a line', function() {
-      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'LinePath__line');
+      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-LinePath__line');
 
       expect(lines.length).toBe(1);
     });
 
     it('should render a area', function() {
-      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'LinePath__area');
+      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-LinePath__area');
 
       expect(lines.length).toBe(1);
     });
@@ -98,18 +100,19 @@ describe('LinePath', function() {
           index={ 0 }
           line={ false }
           area={ false }
-          gutter={ gutters } />
+          gutter={ gutters }
+          yAccessor={ yAccessor } />
       );
     });
 
     it('should not render a line', function() {
-      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'LinePath__line');
+      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-LinePath__line');
 
       expect(lines.length).toBe(0);
     });
 
     it('should not render a area', function() {
-      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'LinePath__area');
+      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-LinePath__area');
 
       expect(lines.length).toBe(0);
     });
