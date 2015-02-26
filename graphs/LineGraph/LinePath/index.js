@@ -5,6 +5,7 @@
 var React       = require('react');
 var SmoothLine  = require('paths-js/smooth-line');
 var scaleMixing = require('../mixins/scaleMixin');
+var _           = require('lodash');
 
 function date(data) {
   var d = new Date(data.date);
@@ -22,7 +23,8 @@ module.exports = React.createClass({
     series: React.PropTypes.array.isRequired,
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
-    area: React.PropTypes.bool.isRequired
+    area: React.PropTypes.bool.isRequired,
+    yAccessor: React.PropTypes.func.isRequired,
   },
 
   getDrawingHeight: function() {
@@ -57,6 +59,71 @@ module.exports = React.createClass({
     return this.props.gutter.top + (this.getDrawingHeight() * translationPercentage);
   },
 
+  calculateTotal: function(dataPoint) {
+    var props = this.props;
+    var total = 0;
+
+    _.forEach(props.series, function(data) {
+      total += props.yAccessor(data[dataPoint]);
+    });
+
+    return total;
+  },
+
+  calculateOffset: function(pointPos) {
+    return this.props.width - pointPos.x;
+  },
+
+  isFlipOver: function(pointPos) {
+    var isFlipOver = false;
+
+    if (this.calculateOffset(pointPos) < 200) {
+      isFlipOver = true;
+    }
+
+    return isFlipOver;
+  },
+
+  onMouseOver: function(data, dataPoint, pos) {
+    return function() {
+      var tipInfo = {
+        date: data.date,
+        value: this.props.yAccessor(data),
+        total: this.calculateTotal(dataPoint)
+      }
+
+      this.props.onPointOver(tipInfo, pos, this.isFlipOver(pos));
+    }.bind(this);
+  },
+
+  onMouseLeave: function() {
+    this.props.onPointLeave();
+  },
+
+  renderTipTargets: function() {
+    var smoothLine = this.smoothLine();
+    var targets = [];
+    var translateX = this.props.gutter.left;
+    var translateY = this.getTranslateY();
+    var onMouseOver = this.onMouseOver;
+    var onMouseLeave = this.onMouseLeave;
+
+    _.forEach(smoothLine.curves[0].item, function(data, dataPoint) {
+      var y = smoothLine.yscale(data.calculatedValue) + translateY;
+      var x = smoothLine.xscale(date(data)) + translateX;
+      targets.push(<circle
+        cx={ x }
+        cy={ y }
+        r="6"
+        className="hui-LinePath__target"
+        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
+        onMouseLeave={ onMouseLeave } />
+      );
+    });
+
+    return targets;
+  },
+
   renderPath: function(type) {
     if (!this.props[type]) {
       return false;
@@ -65,16 +132,17 @@ module.exports = React.createClass({
     return (
       <path
         transform={ "translate(" + this.props.gutter.left + ", " + this.getTranslateY()  +")" }
-        className={ "LinePath__" + type }
+        className={ "hui-LinePath__" + type }
         d={ this.smoothLine().curves[0][type].path.print() }/>
     );
   },
 
   render: function() {
     return (
-      <g className="LinePath">
+      <g className="hui-LinePath">
         { this.renderPath('area') }
         { this.renderPath('line') }
+        { this.renderTipTargets() }
       </g>
     );
   }

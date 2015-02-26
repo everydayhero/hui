@@ -5,15 +5,17 @@ var React    = require('react');
 var LinePath = require('./LinePath');
 var YScale   = require('./YScale');
 var XScale   = require('./XScale');
+var ToolTip  = require('./ToolTip');
 
 module.exports = React.createClass({
   displayName: 'LineGraph',
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string,
+    yAccessor: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
+    tipLabel: React.PropTypes.string,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,
       right: React.PropTypes.number,
@@ -24,7 +26,6 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      seriesValueKey: 'value',
       gutter: {
         left: 40,
         right: 0,
@@ -33,18 +34,21 @@ module.exports = React.createClass({
       },
       stacked: false,
       line: false,
-      area: true
+      area: true,
+      yAccessor: function(data) {
+        return data.value;
+      }
     }
   },
 
   transformSeries: function() {
-    var props    = this.props,
-        series   = _.clone(props.series, true),
-        seriesValueKey = props.seriesValueKey;
+    var props    = this.props;
+    var series   = _.clone(props.series, true);
 
     return _.map(series, function(dataSeries, seriesIndex) {
       return _.map(dataSeries, function(dataPoint, pointIndex) {
-        var value = dataPoint[seriesValueKey];
+        var value = props.yAccessor(dataPoint);
+
         if (props.stacked && seriesIndex !== 0) {
           dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
         } else {
@@ -82,6 +86,21 @@ module.exports = React.createClass({
     this.setState({series: this.transformSeries()});
   },
 
+  showTip: function(data, position, isFlipOver) {
+    this.setState({
+      showTip: true,
+      tipPosition: position,
+      tipData: data,
+      isFlipOver: isFlipOver
+    });
+  },
+
+  hideTip: function() {
+    this.setState({
+      showTip: false
+    });
+  },
+
   renderLinePath: function() {
     var paths = [];
     var state = this.state;
@@ -89,7 +108,16 @@ module.exports = React.createClass({
 
     for (var i = series.length - 1; i >= 0; i--) {
       paths.push(
-        <LinePath {...this.props} series={ series } index={ i } width={ state.width } height={ state.height } key={ i } />
+        <LinePath
+          {...this.props}
+          series={ series }
+          index={ i }
+          width={ state.width }
+          height={ state.height }
+          key={ i }
+          onPointOver={ this.showTip }
+          onPointLeave={ this.hideTip }
+          yAccessor={ this.props.yAccessor } />
       );
     };
 
@@ -112,8 +140,17 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var state = this.state;
+    var props = this.props;
+
     return (
       <div className="hui-LineGraph">
+        <ToolTip
+          data={ state.tipData }
+          show={ state.showTip }
+          position={ state.tipPosition }
+          label={ props.tipLabel }
+          isFlipOver={ state.isFlipOver } />
         <svg className="hui-LineGraph__svg">
           { this.renderGraph() }
         </svg>

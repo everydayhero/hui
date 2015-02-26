@@ -43,7 +43,7 @@ describe('LineGraph', function() {
     });
 
     it('should render a equal number of paths to series', function() {
-      var linePaths = TestUtils.scryRenderedDOMComponentsWithClass(component, 'LinePath');
+      var linePaths = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-LinePath');
 
       expect(linePaths.length).toBe(series.length);
     });

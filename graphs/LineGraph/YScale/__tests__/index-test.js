@@ -51,7 +51,7 @@ describe('YScale', function() {
     });
 
     it('renders the correct labels', function() {
-      var scaleLabels = TestUtils.scryRenderedDOMComponentsWithClass(component, 'YScale__label');
+      var scaleLabels = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-YScale__label');
       var label = 0;
 
       for (var i = 0; i < scaleLabels.length; i++) {
@@ -61,7 +61,7 @@ describe('YScale', function() {
     });
 
     it('renders the correct number of scale lines', function() {
-      var scaleLines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'YScale__line');
+      var scaleLines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-YScale__line');
 
       expect(scaleLines.length).toBe(6)
     });

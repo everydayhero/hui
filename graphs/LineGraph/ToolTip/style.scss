@@ -1,0 +1,37 @@
+.hui-ToolTip {
+  position: absolute;
+  margin-top: -105px;
+  margin-left: -10px;
+  height: 100px;
+  width: 200px;
+}
+
+.hui-ToolTip--left {
+  margin-left: -190px;
+}
+
+.hui-ToolTip__text {
+  position: absolute;
+  background: $hui-tooltip-bg-white;
+  top: 0px;
+  padding: $hui-x-3;
+  box-shadow: 2px 2px 5px $hui-drop-shadow-grey;
+}
+
+.hui-ToolTip__text--left {
+  left: 0px;
+}
+
+.hui-ToolTip__text--right {
+  right: 0px;
+}
+
+.hui-ToolTip__svg {
+  width: 100%;
+  height: 100%;
+  height: 100px;
+}
+
+.hui-ToolTip__date, .hui-ToolTip__value, .hui-ToolTip__total {
+  font-weight: 700;
+}
