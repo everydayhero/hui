@@ -11,30 +11,31 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string,
+    yAccessor: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
-    delta: React.PropTypes.number
+    delta: React.PropTypes.number,
+    tipLabel: React.PropTypes.string
   },
 
   getDefaultProps: function() {
     return {
-      stacked: true,
-      seriesValueKey: 'value'
+      stacked: true
     };
   },
 
   renderGraph: function() {
     var props = this.props,
         series = props.series,
-        seriesValueKey = props.seriesValueKey,
-        stacked = props.stacked;
+        yAccessor = props.yAccessor,
+        stacked = props.stacked,
+        tipLabel = props.tipLabel;
 
     if (series) {
       return (
-        <Graphs stacked={ stacked } series={ series } seriesValueKey={ seriesValueKey } />
+        <Graphs stacked={ stacked } series={ series } yAccessor={ yAccessor } tipLabel={ tipLabel } />
       );
     }
   },

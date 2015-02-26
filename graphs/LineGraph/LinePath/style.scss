@@ -18,9 +18,13 @@
   stroke-width: 1;
   stroke-linecap: round;
   stroke-miterlimit: 10;
-  fill: none
+  fill: none;
 }
 
-circle:hover {
-  fill: blue;
+.hui-LinePath__target {
+  fill: transparent;
+}
+
+.hui-LinePath__target:hover {
+  fill: $hui-link-active-green;
 }

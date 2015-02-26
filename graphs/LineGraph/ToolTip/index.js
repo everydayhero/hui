@@ -68,12 +68,16 @@ module.exports = React.createClass({
       return false;
     } else {
       date    = moment(data.date).format("ddd MMM DD, YYYY");
-      content = props.label + ": " + formatNumber(data.value) + " of " + formatNumber(data.total);
 
       return (
         <div className={ classes } >
-          <p>{ date }</p>
-          <p>{ content }</p>
+          <p className="hui-ToolTip__date" >{ date }</p>
+          <p>
+            { props.label + ": " }
+            <span className="hui-ToolTip__value"> { formatNumber(data.value) } </span>
+            { " / " }
+            <span className="hui-ToolTip__total"> { formatNumber(data.total) } </span>
+          </p>
         </div>
       );
     }

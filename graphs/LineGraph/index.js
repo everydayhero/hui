@@ -12,7 +12,7 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string,
+    yAccessor: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
@@ -26,7 +26,6 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      seriesValueKey: 'value',
       gutter: {
         left: 40,
         right: 0,
@@ -35,18 +34,21 @@ module.exports = React.createClass({
       },
       stacked: false,
       line: false,
-      area: true
+      area: true,
+      yAccessor: function(data) {
+        return data.value;
+      }
     }
   },
 
   transformSeries: function() {
-    var props    = this.props,
-        series   = _.clone(props.series, true),
-        seriesValueKey = props.seriesValueKey;
+    var props    = this.props;
+    var series   = _.clone(props.series, true);
 
     return _.map(series, function(dataSeries, seriesIndex) {
       return _.map(dataSeries, function(dataPoint, pointIndex) {
-        var value = dataPoint[seriesValueKey];
+        var value = props.yAccessor(dataPoint);
+
         if (props.stacked && seriesIndex !== 0) {
           dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
         } else {
@@ -115,7 +117,7 @@ module.exports = React.createClass({
           key={ i }
           onPointOver={ this.showTip }
           onPointLeave={ this.hideTip }
-          seriesValueKey={ this.props.seriesValueKey } />
+          yAccessor={ this.props.yAccessor } />
       );
     };
 

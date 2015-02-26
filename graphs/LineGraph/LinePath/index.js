@@ -24,7 +24,7 @@ module.exports = React.createClass({
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
     area: React.PropTypes.bool.isRequired,
-    seriesValueKey: React.PropTypes.string.isRequired,
+    yAccessor: React.PropTypes.func.isRequired,
   },
 
   getDrawingHeight: function() {
@@ -64,7 +64,7 @@ module.exports = React.createClass({
     var total = 0;
 
     _.forEach(props.series, function(data) {
-      total += data[dataPoint][props.seriesValueKey];
+      total += props.yAccessor(data[dataPoint]);
     });
 
     return total;
@@ -89,7 +89,7 @@ module.exports = React.createClass({
     return function() {
       var tipInfo = {
         date: data.date,
-        value: data[this.props.seriesValueKey],
+        value: this.props.yAccessor(data),
         total: this.calculateTotal(dataPoint)
       }
 
@@ -115,8 +115,8 @@ module.exports = React.createClass({
       targets.push(<circle
         cx={ x }
         cy={ y }
-        r="3"
-        fill="red"
+        r="6"
+        className="hui-LinePath__target"
         onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
         onMouseLeave={ onMouseLeave } />
       );

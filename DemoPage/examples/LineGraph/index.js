@@ -41,7 +41,9 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       series: getSeries(1),
-      seriesValueKey: 'funds_raised'
+      yAccessor: function(data) {
+        return data.funds_raised / 100;
+      }
     };
   },
 
@@ -60,13 +62,16 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
+          <span className="DemoPage__bold">yAccessor:</span> Accesor for value on data object.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to false.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">lined:</span> Defines line only graph with no area fill. Defaults to false.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">tipLabel:</span> Defines the label of values on tooltip.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">gutter:</span> Defines the area around the graph for x and y scales.
@@ -87,7 +92,7 @@ module.exports = React.createClass({
 
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { '<LineGraph series={ series } seriesValueKey="funds_raised" line={ true } area={ false } />' }
+        { '<LineGraph series={ series } yAccessor{ yAccessor } line={ true } tipLabel={ "Fund raised" } area={ false } />' }
       </Highlight>
     </div>
     );

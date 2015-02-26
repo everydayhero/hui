@@ -40,11 +40,14 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       series: getSeries(1),
-      seriesValueKey: 'pages',
+      yAccessor: function(data) {
+        return data.pages;
+      },
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       delta: -10,
       total: 160000000,
-      title: 'Example Data'
+      title: 'Example Data',
+      tipLabel: 'Pages'
     };
   },
 
@@ -63,7 +66,7 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
+          <span className="DemoPage__bold">yAccessor:</span> Accesor for value on data object.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to true.
@@ -78,6 +81,9 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">legendLabels:</span> Array of legend labels with indexes matching series.
         </li>
         <li className="DemoPage__li">
+          <span className="DemoPage__bold">tipLabel:</span> Defines the label of values on tooltip.
+        </li>
+        <li className="DemoPage__li">
           <span className="DemoPage__bold">delta:</span> The percentage difference from a comparative period.
         </li>
       </ul>
@@ -88,7 +94,7 @@ module.exports = React.createClass({
       <Highlight className='html'>
         { '<DataVisualisation \n' }
         { '  series={ series } \n' }
-        { '  seriesValueKey="pages" \n' }
+        { '  yAccessor={ yAccessor } \n' }
         { '  total={ number } \n' }
         { '  title={ string } \n' }
         { '  legendLabels={ labels } \n' }
