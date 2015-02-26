@@ -37,14 +37,13 @@ function getSeries(tick) {
 
 module.exports = React.createClass({
   displayName: 'DataVisualisationExample',
-
   getInitialState: function() {
     return {
       series: getSeries(1),
       seriesValueKey: 'pages',
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       delta: -10,
-      total: 7000,
+      total: 160000000,
       title: 'Example Data'
     };
   },
@@ -57,19 +56,54 @@ module.exports = React.createClass({
     return (
     <div>
       <h3 className="DemoPage__h3">DataVisualisation</h3>
+      <p>The HUI data visualisation is a combination of a number of graph component. These componets can also be used independantly of the data visualisation.</p>
       <h4 className="DemoPage__h4">DataVisualisation propTypes</h4>
       <ul className="DemoPage__ul">
-        <li className="DemoPage__li">series</li>
-        <li className="DemoPage__li">title</li>
-        <li className="DemoPage__li">total</li>
-        <li className="DemoPage__li">legendLabels</li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to true.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">title:</span> Graph Title.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">total:</span> Total for defined period.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">legendLabels:</span> Array of legend labels with indexes matching series.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">delta:</span> The percentage difference from a comparative period.
+        </li>
       </ul>
-      <div className="DemoPage__example">
+      <div className="DemoPage__example--visualisation">
         <DataVisualisation {...this.state} />
       </div>
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { '<DataVisualisation series={ series } seriesValueKey="pages" total={ number } title={ string } legendLabels={ labels } />' }
+        { '<DataVisualisation \n' }
+        { '  series={ series } \n' }
+        { '  seriesValueKey="pages" \n' }
+        { '  total={ number } \n' }
+        { '  title={ string } \n' }
+        { '  legendLabels={ labels } \n' }
+        { '  delta={ delta }/>' }
+      </Highlight>
+
+      <h4 className="DemoPage__h4">Example Series structure</h4>
+      <Highlight>
+        { '[\n' }
+        { '  [\n' }
+        { '     { date: "2014-01-31T14:00:00.000Z", \n' }
+        { '       value: 20  \n' }
+        { '     }, ...\n' }
+        { '  ], ...\n' }
+        { ']' }
       </Highlight>
     </div>
     );

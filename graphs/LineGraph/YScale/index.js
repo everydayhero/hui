@@ -5,6 +5,7 @@ var _          = require('lodash');
 var numeral    = require('numeral');
 var Path       = require('paths-js/path');
 var scaleMixin = require('../mixins/scaleMixin');
+var TEXTOFFSET = 8;
 
 module.exports = React.createClass({
   displayName: 'YScale',
@@ -82,7 +83,12 @@ module.exports = React.createClass({
           <path
             className="YScale__line"
             d={ path.print() } />
-          <text x="0" y={ yPos } className="YScale__label">{ numeral(label).format(format) }</text>
+          <text
+            x="0"
+            y={ yPos - TEXTOFFSET }
+            className="YScale__label">
+              { numeral(label).format(format) }
+          </text>
         </g>
       );
 

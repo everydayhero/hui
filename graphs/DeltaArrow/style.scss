@@ -1,38 +1,39 @@
-.DeltaArrow--up,
-.DeltaArrow--down {
+.hui-DeltaArrow--up,
+.hui-DeltaArrow--down {
   width: 43px;
   height: 37px;
   position: relative;
+  display: inline-block;
 
   svg {
     width: 43px;
     height: 37px;
   }
-
-  .delta {
-    position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 10px;
-    color: white;
-  }
 }
 
-.DeltaArrow--up {
+.hui-DeltaArrow__value {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+}
+
+.hui-DeltaArrow--up {
   svg {
     fill: #85c27e;
   }
-  .delta {
+  .hui-DeltaArrow__value {
     bottom: 5px;
   }
 }
 
-.DeltaArrow--down {
+.hui-DeltaArrow--down {
   svg {
     fill: #ce522e;
   }
-  .delta {
+  .hui-DeltaArrow__value {
     top: 5px;
   }
 }

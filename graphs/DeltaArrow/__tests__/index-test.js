@@ -16,7 +16,7 @@ describe('DeltaArrow', function() {
     });
 
     it('should point upwards', function() {
-      TestUtils.findRenderedDOMComponentWithClass(component, 'DeltaArrow--up');
+      TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--up');
     });
   });
 
@@ -28,7 +28,7 @@ describe('DeltaArrow', function() {
     });
 
     it('should point upwards', function() {
-      TestUtils.findRenderedDOMComponentWithClass(component, 'DeltaArrow--down');
+      TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--down');
     });
   });
 });

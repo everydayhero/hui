@@ -1,37 +1,43 @@
-.Legend {
-  .LegendItem{
-    display: inline-block;
-    margin-right: $hui-x-4;
+.hui-Legend {
+  margin-top: $hui-x-4;
+  margin-left: $hui-x-10;
+}
 
-    &:last-child {
-      margin-right: 0;
-    }
+.hui-Legend__item{
+  display: inline-block;
+  margin-right: $hui-x-4;
 
-    @for $n from 1 through 3 {
-      &:nth-child(#{$n}) {
-        .LegendItem__dot {
-          background-color: nth($data-series-colors, $n);
-        }
-      }
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 
-    .LegendItemContent {
-      display: table;
-
-      .LegendItem__dot {
-        display: table-cell;
-        border-radius: 50%;
-        width: $hui-x-3;
-        height: $hui-x-3;
-      }
-      .LegendItem__label {
-        display: table-cell;
-        line-height: $hui-x-3;
-        padding-left: $hui-x-1;
-        font-size: $hui-x-3;
-        color: $hui-link-grey;
-        text-transform: uppercase;
+  @for $n from 1 through 3 {
+    &:nth-child(#{$n}) {
+      .hui-Legend__dot {
+        background-color: nth($data-series-colors, $n);
       }
     }
   }
 }
+
+.hui-Legend__content {
+  display: table;
+}
+
+.hui-Legend__dot {
+  display: table-cell;
+  border-radius: 50%;
+  width: $hui-x-3;
+  height: $hui-x-3;
+}
+
+.hui-Legend__label {
+  display: table-cell;
+  line-height: $hui-x-3;
+  padding-left: $hui-x-1;
+  font-size: 11px;
+  color: $hui-link-grey;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+

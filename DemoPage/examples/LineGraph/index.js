@@ -53,12 +53,23 @@ module.exports = React.createClass({
     return (
     <div>
       <h3 className="DemoPage__h3">LineGraph</h3>
+      <p>The line graph can render a stacked or combination graph as well as option for area fill or line only.</p>
       <h4 className="DemoPage__h4">LineGraph propTypes</h4>
       <ul className="DemoPage__ul">
-        <li className="DemoPage__li">series</li>
-        <li className="DemoPage__li">stacked</li>
-        <li className="DemoPage__li">lined</li>
-        <li className="DemoPage__li">gutter
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to false.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">lined:</span> Defines line only graph with no area fill. Defaults to false.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">gutter:</span> Defines the area around the graph for x and y scales.
           <ul className="DemoPage__ul">
             <li className="DemoPage__li">left</li>
             <li className="DemoPage__li">right</li>

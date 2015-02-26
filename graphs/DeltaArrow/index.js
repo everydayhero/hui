@@ -35,9 +35,9 @@ module.exports = React.createClass({
     var className;
 
     if (this.props.delta > 0 ) {
-      className = "DeltaArrow--up";
+      className = "hui-DeltaArrow--up";
     } else {
-      className = "DeltaArrow--down";
+      className = "hui-DeltaArrow--down";
     }
 
     var x = this.props.delta.toString().replace(/^-/, "") + "%";
@@ -45,7 +45,7 @@ module.exports = React.createClass({
     return (
       <div className={ className }>
         { this.renderTriangle() }
-        <div className="delta">
+        <div className="hui-DeltaArrow__value">
           { x }
         </div>
       </div>

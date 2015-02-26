@@ -54,7 +54,7 @@ describe('XScale', function() {
     it('renders the correct number of labels', function() {
       var scaleLines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'XScale__label');
 
-      expect(scaleLines.length).toBe(3)
+      expect(scaleLines.length).toBe(2)
     });
 
     it('renders the correct labels', function() {
@@ -62,8 +62,7 @@ describe('XScale', function() {
       var label = 0;
 
       expect(scaleLabels[0].getDOMNode().textContent).toBe('Jan 1');
-      expect(scaleLabels[1].getDOMNode().textContent).toBe('Mar 1');
-      expect(scaleLabels[2].getDOMNode().textContent).toBe('May 1');
+      expect(scaleLabels[1].getDOMNode().textContent).toBe('Apr 1');
     });
   });
 });
