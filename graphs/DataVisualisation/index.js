@@ -7,7 +7,7 @@ var SingleNumber = require('./SingleNumber');
 var Legend = require('./Legend');
 
 module.exports = React.createClass({
-  displayName: 'DataVisalisation',
+  displayName: 'DataVisualisation',
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
@@ -75,9 +75,9 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="hui-DataVisalisation">
-        <h2 className="hui-DataVisalisation__title">{ this.props.title }</h2>
-        <div className="hui-DataVisalisation__valueGroup">
+      <div className="hui-DataVisualisation">
+        <h2 className="hui-DataVisualisation__title">{ this.props.title }</h2>
+        <div className="hui-DataVisualisation__valueGroup">
           { this.renderTotal() }
           { this.renderDeltaArrow() }
         </div>
