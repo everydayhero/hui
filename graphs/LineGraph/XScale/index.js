@@ -66,7 +66,7 @@ module.exports = React.createClass({
             x={ xPos }
             y={ props.height }
             textAnchor="middle"
-            className="XScale__label">
+            className="hui-XScale__label">
               { moment(dataArray[i].date).format(props.dateFormat) }
           </text>
         </g>);
@@ -79,7 +79,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <g className="XScale">
+      <g className="hui-XScale">
         { this.renderScaleLines() }
       </g>
     );

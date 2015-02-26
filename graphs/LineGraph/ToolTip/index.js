@@ -40,7 +40,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <svg className="ToolTip__svg">
+      <svg className="hui-ToolTip__svg">
         <g>
           <path
             d={ pathData }
@@ -59,9 +59,9 @@ module.exports = React.createClass({
     var date, content, classes;
 
     classes = cx({
-      "ToolTip__text": true,
-      "ToolTip__text--left": !props.isFlipOver,
-      "ToolTip__text--right": props.isFlipOver,
+      "hui-ToolTip__text": true,
+      "hui-ToolTip__text--left": !props.isFlipOver,
+      "hui-ToolTip__text--right": props.isFlipOver,
     });
 
     if (_.isEmpty(data)) {
@@ -86,8 +86,8 @@ module.exports = React.createClass({
     var y        = position.y;
     var style    = { left: x, top: y };
     var classes  = cx({
-      "ToolTip": true,
-      "ToolTip--left": props.isFlipOver
+      "hui-ToolTip": true,
+      "hui-ToolTip--left": props.isFlipOver
     });
 
     if (!props.show) {

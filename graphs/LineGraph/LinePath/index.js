@@ -133,14 +133,14 @@ module.exports = React.createClass({
     return (
       <path
         transform={ "translate(" + this.props.gutter.left + ", " + this.getTranslateY()  +")" }
-        className={ "LinePath__" + type }
+        className={ "hui-LinePath__" + type }
         d={ this.smoothLine().curves[0][type].path.print() }/>
     );
   },
 
   render: function() {
     return (
-      <g className="LinePath">
+      <g className="hui-LinePath">
         { this.renderPath('area') }
         { this.renderPath('line') }
         { this.renderTipTargets() }

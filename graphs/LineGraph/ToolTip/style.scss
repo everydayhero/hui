@@ -1,4 +1,4 @@
-.ToolTip {
+.hui-ToolTip {
   position: absolute;
   margin-top: -105px;
   margin-left: -10px;
@@ -6,26 +6,26 @@
   width: 200px;
 }
 
-.ToolTip--left {
+.hui-ToolTip--left {
   margin-left: -190px;
 }
 
-.ToolTip__text {
+.hui-ToolTip__text {
   position: absolute;
   background: #666;
   top: 0px;
 
 }
 
-.ToolTip__text--left {
+.hui-ToolTip__text--left {
   left: 0px;
 }
 
-.ToolTip__text--right {
+.hui-ToolTip__text--right {
   right: 0px;
 }
 
-.ToolTip__svg {
+.hui-ToolTip__svg {
   width: 100%;
   height: 100%;
   background-color: rgba(125,0,0,0.5);

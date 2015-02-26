@@ -81,12 +81,12 @@ module.exports = React.createClass({
           key={ count }
           transform={ "translate(0, "+ this.props.gutter.top +")" }>
           <path
-            className="YScale__line"
+            className="hui-YScale__line"
             d={ path.print() } />
           <text
             x="0"
             y={ yPos - TEXTOFFSET }
-            className="YScale__label">
+            className="hui-YScale__label">
               { numeral(label).format(format) }
           </text>
         </g>

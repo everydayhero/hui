@@ -1,20 +1,20 @@
-.LinePath {
+.hui-LinePath {
   @for $n from 1 through 3 {
     &:nth-child(#{$n}) {
       $color: nth($data-series-colors, $n);
-      .LinePath__area { fill: $color; }
-      .LinePath__line { stroke: $color; }
+      .hui-LinePath__area { fill: $color; }
+      .hui-LinePath__line { stroke: $color; }
     }
   }
 }
 
-.LinePath__area, .LinePath__line {
+.hui-LinePath__area, .hui-LinePath__line {
   stroke-width: 0;
   stroke-linecap: round;
   stroke-miterlimit: 10;
 }
 
-.LinePath__line {
+.hui-LinePath__line {
   stroke-width: 1;
   stroke-linecap: round;
   stroke-miterlimit: 10;
