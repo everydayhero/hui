@@ -1,6 +1,5 @@
 #!/bin/bash
 
 set -e
-heroku git:remote -a hui-guide || exit 1
-git push heroku master || exit 1
-
+heroku git:remote -a hui-guide
+git push heroku master
