@@ -27,12 +27,6 @@ module.exports = React.createClass({
     seriesValueKey: React.PropTypes.string.isRequired,
   },
 
-  getInitialState: function() {
-    return {
-      showTip: false
-    }
-  },
-
   getDrawingHeight: function() {
     var props = this.props;
 
@@ -76,6 +70,21 @@ module.exports = React.createClass({
     return total;
   },
 
+  calculateOffset: function(pointPos) {
+    return this.props.width - pointPos.x;
+  },
+
+  isFlipOver: function(pointPos) {
+    var isFlipOver = false;
+
+    if (this.calculateOffset(pointPos) < 200)
+    {
+      isFlipOver = true;
+    }
+
+    return isFlipOver;
+  },
+
   onMouseOver: function(data, dataPoint, pos) {
     return function() {
       var tipInfo = {
@@ -84,7 +93,7 @@ module.exports = React.createClass({
         total: this.calculateTotal(dataPoint)
       }
 
-      this.props.onPointOver(tipInfo, pos);
+      this.props.onPointOver(tipInfo, pos, this.isFlipOver(pos));
     }.bind(this);
   },
 
@@ -116,22 +125,6 @@ module.exports = React.createClass({
     return targets;
   },
 
-  renderTip: function() {
-    var state = this.state;
-
-    if (!state.showTip) {
-      return null;
-    }
-
-    return (
-      <g
-        className="LinePath__tip"
-        transform={ "translate(" + state.tipPos.x + ", " + state.tipPos.y  + ")" } >
-          <circle r="10" fill="blue"/>
-      </g>
-    );
-  },
-
   renderPath: function(type) {
     if (!this.props[type]) {
       return false;
@@ -150,7 +143,6 @@ module.exports = React.createClass({
       <g className="LinePath">
         { this.renderPath('area') }
         { this.renderPath('line') }
-        { this.renderTip() }
         { this.renderTipTargets() }
       </g>
     );

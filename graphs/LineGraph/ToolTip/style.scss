@@ -3,13 +3,26 @@
   margin-top: -105px;
   margin-left: -10px;
   height: 100px;
+  width: 200px;
+}
+
+.ToolTip--left {
+  margin-left: -190px;
 }
 
 .ToolTip__text {
   position: absolute;
   background: #666;
   top: 0px;
+
+}
+
+.ToolTip__text--left {
   left: 0px;
+}
+
+.ToolTip__text--right {
+  right: 0px;
 }
 
 .ToolTip__svg {

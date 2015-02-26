@@ -84,11 +84,12 @@ module.exports = React.createClass({
     this.setState({series: this.transformSeries()});
   },
 
-  showTip: function(data, position) {
+  showTip: function(data, position, isFlipOver) {
     this.setState({
       showTip: true,
       tipPosition: position,
-      tipData: data
+      tipData: data,
+      isFlipOver: isFlipOver
     });
   },
 
@@ -146,7 +147,8 @@ module.exports = React.createClass({
           data={ state.tipData }
           show={ state.showTip }
           position={ state.tipPosition }
-          label={ props.tipLabel } />
+          label={ props.tipLabel }
+          isFlipOver={ state.isFlipOver } />
         <svg className="hui-LineGraph__svg">
           { this.renderGraph() }
         </svg>
