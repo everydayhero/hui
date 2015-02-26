@@ -19,7 +19,7 @@
     "test": "node_modules/.bin/jest",
     "start": "node server.js",
     "build": "gulp build",
-    "postinstall": "npm run build",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
