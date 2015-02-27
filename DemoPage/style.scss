@@ -1,5 +1,9 @@
 .DemoPage {
   margin-top: 64px;
+
+  pre {
+    margin-bottom: 18px;
+  }
 }
 
 .DemoPage__h2 {
@@ -10,6 +14,10 @@
   margin-top: 36px;
   font-weight: 200;
   color: $hui-text-grey;
+}
+
+.DemoPage__p {
+  margin-bottom: 16px;
 }
 
 .DemoPage__h3 {
@@ -56,12 +64,15 @@
 .DemoPage__example,
 .DemoPage__example--graph--lines,
 .DemoPage__example--graph--stacked,
-.DemoPage__example--visualisation {
+.DemoPage__example--visualisation,
+.DemoPage__example--button--inverse,
+.DemoPage__example--button {
   position: relative;
   top: 0px;
   left: 0px;
   min-height: 69px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+  margin-top: 18px;
   border: 1px $hui-border-grey solid;
   z-index: 1;
   background: white;
@@ -87,6 +98,14 @@
 }
 
 .DemoPage__group {
-  @extend %hui-rule-bottom;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
+}
+
+.DemoPage__example--button,
+.DemoPage__example--button--inverse {
+  padding: 24px;
+}
+
+.DemoPage__example--button--inverse {
+  background: #666;
 }
