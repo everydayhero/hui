@@ -1,8 +1,9 @@
 /** @jsx React.DOM */
 "use strict";
 
-var _     = require('lodash');
-var React = require('react');
+var _       = require('lodash');
+var React   = require('react');
+var numeral = require('numeral');
 
 module.exports = React.createClass({
   displayName: 'DeltaArrow',
@@ -28,11 +29,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var className, x;
+
     if (this.props.delta == 0) {
       return null;
     }
-
-    var className;
 
     if (this.props.delta > 0 ) {
       className = "hui-DeltaArrow--up";
@@ -40,7 +41,8 @@ module.exports = React.createClass({
       className = "hui-DeltaArrow--down";
     }
 
-    var x = this.props.delta.toString().replace(/^-/, "") + "%";
+    x = numeral(this.props.delta).format('0 %');
+    x = x.toString().replace(/^-/, "");
 
     return (
       <div className={ className }>
