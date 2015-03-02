@@ -41,7 +41,7 @@ module.exports = React.createClass({
       className = "hui-DeltaArrow--down";
     }
 
-    x = numeral(this.props.delta).format('0 %');
+    x = numeral(this.props.delta).format('0%');
     x = x.toString().replace(/^-/, "");
 
     return (
