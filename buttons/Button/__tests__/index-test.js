@@ -4,7 +4,6 @@ jest.autoMockOff();
 var React       = require('react/addons');
 var TestUtils   = React.addons.TestUtils;
 var Button      = require('../index');
-var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
 var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 var scryByTag   = TestUtils.scryRenderedDOMComponentsWithTag;
 
@@ -18,7 +17,8 @@ describe('Button', function() {
       clicked = false;
       var onClick = function(){
         clicked = true;
-      }
+      };
+
       component = TestUtils.renderIntoDocument(
         <Button kind='cta' label='Get Started' icon='chevron-right' onClick={ onClick }/>
       );
@@ -127,7 +127,8 @@ describe('Button', function() {
       clicked = false;
       var onClick = function(){
         clicked = true;
-      }
+      };
+
       component = TestUtils.renderIntoDocument(
         <Button kind='cta' label='Get Started' icon='chevron-right' disabled={ true } onClick={ onClick }/>
       );

@@ -107,7 +107,7 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Disabled Example</h4>
         <div className="DemoPage__example--button">
-          <Button kind='cta' label='Give' thin={ true } href="/give" disabled={ true }/>
+          <Button kind='cta' label='Give' thin={ true } disabled={ true }/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
