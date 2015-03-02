@@ -292,7 +292,7 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button kind='tertiary' inverse={ true } label='Edit' icon='edit' disabled={ true }/>
+          <Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
