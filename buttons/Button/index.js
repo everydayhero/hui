@@ -88,6 +88,7 @@ module.exports = React.createClass({
         href={ href }
         onMouseUp={ !href && this.handleClick }
         onTouchStart={ !href && this.handleClick }
+        disabled={ props.disabled && 'disabled' }
         onClick={ this.handleDefaultClick }>
         <Icon className="hui-Button__icon" icon={ props.icon }/>
         <span className="hui-Button__label">{ props.label }</span>
