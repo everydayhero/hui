@@ -22,6 +22,7 @@ var UrlInput        = require('./examples/UrlInput');
 var DateInput       = require('./examples/DateInput');
 var FileInput       = require('./examples/FileInput');
 var ImageInput      = require('./examples/ImageInput');
+var ButtonExample   = require('./examples/Button');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -36,6 +37,7 @@ module.exports = React.createClass({
             imagePath={ imagePath } />
             <TopBarLink href="#how-to-use">How to use</TopBarLink>
             <TopBarLink href="#layout">Layout</TopBarLink>
+            <TopBarLink href="#buttons">Buttons</TopBarLink>
             <TopBarLink href="#graphs">Graphs</TopBarLink>
             <TopBarLink href="#forms">Forms</TopBarLink>
         </TopBar>
@@ -59,6 +61,11 @@ module.exports = React.createClass({
           <h2 className="DemoPage__h2" id="layout">Layout</h2>
           <div className="DemoPage__group">
             <TopBarExample/>
+          </div>
+
+          <h2 className="DemoPage__h2" id="buttons">Buttons</h2>
+          <div className="DemoPage__group">
+            <ButtonExample/>
           </div>
 
           <h2 className="DemoPage__h2" id="graphs">Graphs</h2>
