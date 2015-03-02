@@ -8,7 +8,7 @@ var ejs         = require('ejs');
 
 var ReactApp    = React.createFactory(require('./DemoPage'));
 var staticPath  = __dirname + '/dist/';
-var port        = 5000;
+var port        = Number(process.env.PORT || 5000);
 
 app.use(morgan());
 app.use(compression());
