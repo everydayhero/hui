@@ -21,7 +21,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow__value');
-      expect(node.getDOMNode().textContent).toEqual('12 %');
+      expect(node.getDOMNode().textContent).toEqual('12%');
     });
   });
 
@@ -38,7 +38,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow__value');
-      expect(node.getDOMNode().textContent).toEqual('50 %');
+      expect(node.getDOMNode().textContent).toEqual('50%');
     });
   });
 });
