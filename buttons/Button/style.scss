@@ -1,4 +1,5 @@
 .hui-Button {
+  @extend %a-reset;
   transition: all 160ms ease-out;
   display: inline-block;
   position: relative;
@@ -187,8 +188,21 @@ a.hui-Button {
   color: #aaa !important;
   border-color: #aaa !important;
   border-style: dashed !important;
+  background-color: $hui-disabled-grey;
   &:before {
     background-color: transparent !important;
     box-shadow: 0 0 90px 60px transparent !important;
   }
+  .hui-Button__icon {
+    border-color: #aaa !important;
+    border-style: dashed !important;
+  }
+}
+
+.hui-Button--disabled.hui-Button--inverse {
+  background-color: transparent;
+}
+
+.hui-Button--disabled.hui-Button--primary.hui-Button--inverse {
+  background-color: $hui-disabled-grey;
 }

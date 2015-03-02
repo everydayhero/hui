@@ -8,11 +8,10 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
-    use: React.PropTypes.string.isRequired,
+    kind: React.PropTypes.string.isRequired,
     type: React.PropTypes.string,
     label: React.PropTypes.string,
     href: React.PropTypes.string,
-    params: React.PropTypes.object,
     icon: React.PropTypes.string,
     inverse: React.PropTypes.bool,
     thin: React.PropTypes.bool,
@@ -41,23 +40,33 @@ module.exports = React.createClass({
   },
 
   handleClick: function(e) {
+    if(this.props.disabled) {
+      e.preventDefault();
+    }
+
     if (!this.props.disabled && this.props.onClick) {
       this.props.onClick(e);
+    }
+  },
+
+  handleDefaultClick: function(e) {
+    if(this.props.disabled) {
+      e.preventDefault();
     }
   },
 
   render: function() {
     var El;
     var props = this.props;
-    var use = props.use;
+    var kind = props.kind;
     var href = props.href;
 
     var classes = cx({
       'hui-Button': true,
-      'hui-Button--cta': use === 'cta',
-      'hui-Button--primary': use === 'primary',
-      'hui-Button--secondary': use === 'secondary',
-      'hui-Button--tertiary': use === 'tertiary',
+      'hui-Button--cta': kind === 'cta',
+      'hui-Button--primary': kind === 'primary',
+      'hui-Button--secondary': kind === 'secondary',
+      'hui-Button--tertiary': kind === 'tertiary',
       'hui-Button--disabled': props.disabled,
       'hui-Button--inverse': props.inverse,
       'hui-Button--thin': props.thin,
@@ -76,10 +85,10 @@ module.exports = React.createClass({
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
-        params={ props.params }
         href={ href }
         onMouseUp={ !href && this.handleClick }
-        onTouchStart={ !href && this.handleClick }>
+        onTouchStart={ !href && this.handleClick }
+        onClick={ this.handleDefaultClick }>
         <Icon className="hui-Button__icon" icon={ props.icon }/>
         <span className="hui-Button__label">{ props.label }</span>
       </El>

@@ -16,7 +16,7 @@ module.exports = React.createClass({
       <h4 className="DemoPage__h4">Checkbox propTypes</h4>
       <ul className="DemoPage__ul">
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">use:</span> Button use (cta, primary, secondary or tertiary).
+          <span className="DemoPage__bold">kind:</span> Button kind (cta, primary, secondary or tertiary).
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">type:</span> Passed to button element (button (default), submit, reset).
@@ -52,12 +52,12 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button use='cta' label='Get Started' icon='chevron-right'/>
+          <Button kind='cta' label='Get Started' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { '<Button use="cta" label="Get Started" icon="chevron-right"/> '}
+          { '<Button kind="cta" label="Get Started" icon="chevron-right"/> '}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -83,12 +83,12 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Thin Example</h4>
         <div className="DemoPage__example--button">
-          <Button use='cta' label='Give' thin={ true }/>
+          <Button kind='cta' label='Give' thin={ true } href="/give"/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { '<Button use="cta" label="Give" thin={ true } href="/give" /> '}
+          { '<Button kind="cta" label="Give" thin={ true } href="/give" /> '}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Example</h4>
@@ -104,17 +104,41 @@ module.exports = React.createClass({
         </Highlight>
       </div>
 
+      <div className="DemoPage__group">
+        <h4 className="DemoPage__h4">Disabled Example</h4>
+        <div className="DemoPage__example--button">
+          <Button kind='cta' label='Give' thin={ true } href="/give" disabled={ true }/>
+        </div>
+
+        <h4 className="DemoPage__h4">React Example</h4>
+        <Highlight>
+          { '<Button kind="cta" label="Give" thin={ true } href="/give" disabled={ true }/> '}
+        </Highlight>
+
+        <h4 className="DemoPage__h4">HTML Example</h4>
+        <Highlight className='html'>
+          { '<button class="hui-Button hui-Button--cta hui-Button--thin hui-Button--disabled">\n'}
+          { '  <span class="hui-Button__label">Give</span>\n'}
+          { '</button>\n'}
+        </Highlight>
+        <Highlight className='html'>
+          { '<a href="/foo" class="hui-Button hui-Button--cta hui-Button--thin hui-Button--disabled">\n'}
+          { '  <span class="hui-Button__label">Give</span>\n'}
+          { '</a>\n'}
+        </Highlight>
+      </div>
+
       <h3 className="DemoPage__h3">Primary Button</h3>
       <p className="DemoPage__p">The Primary button is reserved for important actions that are not CTAs. Idealy there would only be one primary button in view.</p>
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button use='primary' label='Save' icon='chevron-right'/>
+          <Button kind='primary' label='Save' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { '<Button use="primary" label="Save" icon="chevron-right"/> '}
+          { '<Button kind="primary" label="Save" icon="chevron-right"/> '}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -140,12 +164,12 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button use='primary' inverse={ true } label='Sign Up' icon='chevron-right'/>
+          <Button kind='primary' inverse={ true } label='Sign Up' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button use='primary' inverse={ true } label='Sign Up' icon='chevron-right'/> "}
+          { "<Button kind='primary' inverse={ true } label='Sign Up' icon='chevron-right'/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -173,12 +197,12 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button use='secondary' label='Sign In' icon='chevron-right'/>
+          <Button kind='secondary' label='Sign In' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button use='secondary' label='Sign In' icon='chevron-right'/> "}
+          { "<Button kind='secondary' label='Sign In' icon='chevron-right'/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -204,12 +228,12 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button use='secondary' inverse={ true } label='Sign In' icon='chevron-right'/>
+          <Button kind='secondary' inverse={ true } label='Sign In' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button use='secondary' inverse={ true } label='Sign In' icon='chevron-right'/> "}
+          { "<Button kind='secondary' inverse={ true } label='Sign In' icon='chevron-right'/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -237,12 +261,12 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button use='tertiary' label='Prev' icon='chevron-left' iconLeft={ true }/>
+          <Button kind='tertiary' label='Prev' icon='chevron-left' iconLeft={ true }/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button use='tertiary' label='Prev' icon='chevron-left' iconLeft={ true }/> "}
+          { "<Button kind='tertiary' label='Prev' icon='chevron-left' iconLeft={ true }/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -268,12 +292,12 @@ module.exports = React.createClass({
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button use='tertiary' inverse={ true } label='Edit' icon='edit'/>
+          <Button kind='tertiary' inverse={ true } label='Edit' icon='edit' disabled={ true }/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button use='tertiary' inverse={ true } label='Edit' icon='edit'/> "}
+          { "<Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
