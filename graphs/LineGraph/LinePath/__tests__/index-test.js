@@ -47,7 +47,8 @@ describe('LinePath', function() {
           index={ 0 }
           line={ true }
           area={ true }
-          gutter={ gutters } />
+          gutter={ gutters }
+          seriesValueKey='' />
       );
     });
 
@@ -98,7 +99,8 @@ describe('LinePath', function() {
           index={ 0 }
           line={ false }
           area={ false }
-          gutter={ gutters } />
+          gutter={ gutters }
+          seriesValueKey='' />
       );
     });
 

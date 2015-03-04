@@ -12,7 +12,7 @@ module.exports = React.createClass({
   propTypes: {
     series: React.PropTypes.array.isRequired,
     seriesValueKey: React.PropTypes.string.isRequired,
-    numConverter: React.PropTypes.func,
+    valueConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
@@ -24,7 +24,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       stacked: true,
-      numConverter: function(number) {
+      valueConverter: function(number) {
         return number;
       }
     };
@@ -34,7 +34,7 @@ module.exports = React.createClass({
     var props          = this.props,
         series         = props.series,
         seriesValueKey = props.seriesValueKey,
-        numConverter   = props.numConverter,
+        valueConverter = props.valueConverter,
         stacked        = props.stacked,
         tipLabel       = props.tipLabel;
 
@@ -44,21 +44,21 @@ module.exports = React.createClass({
           stacked={ stacked }
           series={ series }
           seriesValueKey={ seriesValueKey }
-          numConverter={ numConverter }
+          valueConverter={ valueConverter }
           tipLabel={ tipLabel } />
       );
     }
   },
 
   renderTotal: function() {
-    var props        = this.props,
-        total        = props.total,
-        title        = props.title,
-        numConverter = props.numConverter;
+    var props          = this.props,
+        total          = props.total,
+        title          = props.title,
+        valueConverter = props.valueConverter;
 
     if (total) {
       return (
-        <SingleNumber title={ title } value={ numConverter(total) }/>
+        <SingleNumber title={ title } value={ valueConverter(total) }/>
       );
     }
   },

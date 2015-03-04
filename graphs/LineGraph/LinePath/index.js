@@ -25,7 +25,7 @@ module.exports = React.createClass({
     line: React.PropTypes.bool.isRequired,
     area: React.PropTypes.bool.isRequired,
     seriesValueKey: React.PropTypes.string.isRequired,
-    numConverter: React.PropTypes.func
+    valueConverter: React.PropTypes.func
   },
 
   getDrawingHeight: function() {
@@ -63,11 +63,11 @@ module.exports = React.createClass({
   calculateTotal: function(dataPoint) {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
-        numConverter   = props.numConverter,
+        valueConverter = props.valueConverter,
         total          = 0;
 
     _.forEach(props.series, function(data) {
-      total += numConverter(data[dataPoint][seriesValueKey])
+      total += valueConverter(data[dataPoint][seriesValueKey])
     });
 
     return total;
@@ -90,12 +90,12 @@ module.exports = React.createClass({
   onMouseOver: function(data, dataPoint, pos) {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
-        numConverter   = props.numConverter;
+        valueConverter = props.valueConverter;
 
     return function() {
       var tipInfo = {
         date: data.date,
-        value: numConverter(data[seriesValueKey]),
+        value: valueConverter(data[seriesValueKey]),
         total: this.calculateTotal(dataPoint)
       }
 

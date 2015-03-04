@@ -42,7 +42,7 @@ module.exports = React.createClass({
     return {
       series: getSeries(1),
       seriesValueKey: 'funds_raised',
-      numConverter: function(number) {
+      valueConverter: function(number) {
         return number / 100;
       }
     };
@@ -66,7 +66,7 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">numConverter:</span> Convert to the value we want to display.
+          <span className="DemoPage__bold">valueConverter:</span> Convert to the value we want to display.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to false.

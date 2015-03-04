@@ -13,7 +13,7 @@ module.exports = React.createClass({
   propTypes: {
     series: React.PropTypes.array.isRequired,
     seriesValueKey: React.PropTypes.string.isRequired,
-    numConverter: React.PropTypes.func,
+    valueConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
@@ -36,7 +36,7 @@ module.exports = React.createClass({
       stacked: false,
       line: false,
       area: true,
-      numConverter: function(number) {
+      valueConverter: function(number) {
         return number;
       }
     }
@@ -45,12 +45,12 @@ module.exports = React.createClass({
   transformSeries: function() {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
-        numConverter   = props.numConverter,
+        valueConverter = props.valueConverter,
         series         = _.clone(props.series, true);
 
     return _.map(series, function(dataSeries, seriesIndex) {
       return _.map(dataSeries, function(dataPoint, pointIndex) {
-        var value = numConverter(dataPoint[seriesValueKey]);
+        var value = valueConverter(dataPoint[seriesValueKey]);
 
         if (props.stacked && seriesIndex !== 0) {
           dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
@@ -122,7 +122,7 @@ module.exports = React.createClass({
           onPointOver={ this.showTip }
           onPointLeave={ this.hideTip }
           seriesValueKey={ props.seriesValueKey }
-          numConverter={ props.numConverter } />
+          valueConverter={ props.valueConverter } />
       );
     };
 
