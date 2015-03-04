@@ -31,7 +31,7 @@ describe('LineGraph', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<LineGraph series={ series } />);
+      component = TestUtils.renderIntoDocument(<LineGraph series={ series } seriesValueKey={'value'} />);
       component.setState({
         width: 200,
         height: 200
@@ -63,7 +63,7 @@ describe('LineGraph', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<LineGraph series={ series } stacked={ true }/>);
+      component = TestUtils.renderIntoDocument(<LineGraph series={ series } stacked={ true } seriesValueKey={'value'} />);
       component.setState({
         width: 200,
         height: 200
