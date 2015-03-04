@@ -46,6 +46,9 @@ module.exports = React.createClass({
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       delta: -0.12,
       total: 160000000,
+      totalConverter: function(total) {
+        return total;
+      },
       title: 'Example Data',
       tipLabel: 'Pages'
     };
