@@ -34,7 +34,6 @@ describe('LinePath', function() {
   }
 
   var height = 120;
-  var yAccessor = jest.genMockFunction();
 
   describe('default', function() {
     var component;
@@ -48,8 +47,7 @@ describe('LinePath', function() {
           index={ 0 }
           line={ true }
           area={ true }
-          gutter={ gutters }
-          yAccessor={ yAccessor } />
+          gutter={ gutters } />
       );
     });
 
@@ -100,8 +98,7 @@ describe('LinePath', function() {
           index={ 0 }
           line={ false }
           area={ false }
-          gutter={ gutters }
-          yAccessor={ yAccessor } />
+          gutter={ gutters } />
       );
     });
 

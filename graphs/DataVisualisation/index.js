@@ -11,11 +11,11 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
-    yAccessor: React.PropTypes.func,
+    seriesValueKey: React.PropTypes.string.isRequired,
+    numConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number.isRequired,
-    totalConverter: React.PropTypes.func,
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
     tipLabel: React.PropTypes.string
@@ -23,33 +23,42 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      stacked: true
+      stacked: true,
+      numConverter: function(number) {
+        return number;
+      }
     };
   },
 
   renderGraph: function() {
-    var props = this.props,
-        series = props.series,
-        yAccessor = props.yAccessor,
-        stacked = props.stacked,
-        tipLabel = props.tipLabel;
+    var props          = this.props,
+        series         = props.series,
+        seriesValueKey = props.seriesValueKey,
+        numConverter   = props.numConverter,
+        stacked        = props.stacked,
+        tipLabel       = props.tipLabel;
 
     if (series) {
       return (
-        <Graphs stacked={ stacked } series={ series } yAccessor={ yAccessor } tipLabel={ tipLabel } />
+        <Graphs
+          stacked={ stacked }
+          series={ series }
+          seriesValueKey={ seriesValueKey }
+          numConverter={ numConverter }
+          tipLabel={ tipLabel } />
       );
     }
   },
 
   renderTotal: function() {
-    var props     = this.props,
-        total     = props.total,
-        converter = props.totalConverter,
-        title     = props.title;
+    var props        = this.props,
+        total        = props.total,
+        title        = props.title,
+        numConverter = props.numConverter;
 
     if (total) {
       return (
-        <SingleNumber title={ title } value={ converter(total) }/>
+        <SingleNumber title={ title } value={ numConverter(total) }/>
       );
     }
   },

@@ -12,7 +12,8 @@ module.exports = React.createClass({
 
   propTypes: {
     series: React.PropTypes.array.isRequired,
-    yAccessor: React.PropTypes.func,
+    seriesValueKey: React.PropTypes.string.isRequired,
+    numConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
@@ -35,19 +36,21 @@ module.exports = React.createClass({
       stacked: false,
       line: false,
       area: true,
-      yAccessor: function(data) {
-        return data.value;
+      numConverter: function(number) {
+        return number;
       }
     }
   },
 
   transformSeries: function() {
-    var props    = this.props;
-    var series   = _.clone(props.series, true);
+    var props          = this.props,
+        seriesValueKey = props.seriesValueKey,
+        numConverter   = props.numConverter,
+        series         = _.clone(props.series, true);
 
     return _.map(series, function(dataSeries, seriesIndex) {
       return _.map(dataSeries, function(dataPoint, pointIndex) {
-        var value = props.yAccessor(dataPoint);
+        var value = numConverter(dataPoint[seriesValueKey]);
 
         if (props.stacked && seriesIndex !== 0) {
           dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
@@ -102,14 +105,15 @@ module.exports = React.createClass({
   },
 
   renderLinePath: function() {
-    var paths = [];
-    var state = this.state;
+    var paths  = [];
+    var state  = this.state;
+    var props  = this.props;
     var series = state.series;
 
     for (var i = series.length - 1; i >= 0; i--) {
       paths.push(
         <LinePath
-          {...this.props}
+          {...props}
           series={ series }
           index={ i }
           width={ state.width }
@@ -117,7 +121,8 @@ module.exports = React.createClass({
           key={ i }
           onPointOver={ this.showTip }
           onPointLeave={ this.hideTip }
-          yAccessor={ this.props.yAccessor } />
+          seriesValueKey={ props.seriesValueKey }
+          numConverter={ props.numConverter } />
       );
     };
 

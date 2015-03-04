@@ -40,15 +40,10 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       series: getSeries(1),
-      yAccessor: function(data) {
-        return data.pages;
-      },
+      seriesValueKey: 'pages',
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
       delta: -0.12,
       total: 160000000,
-      totalConverter: function(total) {
-        return total;
-      },
       title: 'Example Data',
       tipLabel: 'Pages'
     };
@@ -69,7 +64,10 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">yAccessor:</span> Accesor for value on data object.
+          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">numConverter:</span> Convert to the value we want to display.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to true.
@@ -97,7 +95,7 @@ module.exports = React.createClass({
       <Highlight className='html'>
         { '<DataVisualisation \n' }
         { '  series={ series } \n' }
-        { '  yAccessor={ yAccessor } \n' }
+        { '  seriesValueKey={ seriesValueKey } \n' }
         { '  total={ number } \n' }
         { '  title={ string } \n' }
         { '  legendLabels={ labels } \n' }
