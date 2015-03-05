@@ -38,7 +38,7 @@ module.exports = React.createClass({
         <li className="DemoPage__li">onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.textInput('user_name', { hint: false }) }
+        { this.textInput('user_name', { hint: false, hasCounter: true, maxLength: 255 }) }
         <TextInput
           autoComplete="off"
           className="hui-TextInput"

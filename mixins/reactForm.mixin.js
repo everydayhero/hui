@@ -97,7 +97,9 @@ module.exports = {
             onBlur={ options.onBlurCallback }
             onChange={ this.inputChangeEventFn(name) }
             readOnly={ options.readOnly }
-            value={ this.state.form[name] } />
+            value={ this.state.form[name] }
+            hasCounter={ options.hasCounter }
+            maxLength={ options.maxLength } />
         );
 
     return this.formRow(input, name, !options.hint);
