@@ -34,6 +34,8 @@ module.exports = React.createClass({
         <li className="DemoPage__li">className:</li>
         <li className="DemoPage__li">autoComplete:</li>
         <li className="DemoPage__li">value:</li>
+        <li className="DemoPage__li">hasCounter:</li>
+        <li className="DemoPage__li">maxLength:</li>
         <li className="DemoPage__li">onBlur:</li>
         <li className="DemoPage__li">onChange:</li>
       </ul>
@@ -50,7 +52,7 @@ module.exports = React.createClass({
 
       <h4 className="DemoPage__h3">React Example</h4>
       <Highlight className='html'>
-        { "{ this.textInput('user_name', { hint: false }) }\n" }
+        { "{ this.textInput('user_name', { hint: false, hasCounter: true, maxLength: 255 }) }\n" }
         { '<TextInput\n' }
         { '  autoComplete="off"\n' }
         { '  className="hui-TextInput"\n' }
