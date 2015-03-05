@@ -15,6 +15,8 @@ module.exports = React.createClass({
     errors: React.PropTypes.array,
     placeholder: React.PropTypes.string,
     readOnly: React.PropTypes.bool,
+    hasCounter: React.PropTypes.bool,
+    maxLength: React.PropTypes.number,
     type: React.PropTypes.string,
     className: React.PropTypes.string,
     autoComplete: React.PropTypes.string,
@@ -34,6 +36,7 @@ module.exports = React.createClass({
       readOnly: false,
       type: 'text',
       value: '',
+      hasCounter: false,
       autoComplete: 'off'
     };
   },
@@ -61,21 +64,54 @@ module.exports = React.createClass({
       <span className={ cx(classes) }>
         { this.renderPlaceholder() }
         { this.renderInput() }
+        { this.renderCounter() }
         <InputErrors errors={ props.errors } />
       </span>
     );
   },
 
+  renderCounter: function() {
+    var props      = this.props;
+    var hasCounter = props.hasCounter;
+    var maxLength  = props.maxLength;
+    var value, number, classes;
+
+    if (hasCounter) {
+      value = props.value;
+      if (value && typeof(value) === 'string') {
+        number = maxLength - value.length;
+      } else {
+        number = maxLength;
+      }
+
+      classes = cx({
+        "hui-TextInput--counter": true,
+        "hui-TextInput--counter--warning": number <= 5
+      });
+
+      return (
+        <p className={ classes }>{ number }</p>
+      );
+    } else {
+      return null;
+    }
+  },
+
   renderInput: function() {
     var props = this.props;
+    var classes = cx({
+      "hui-TextInput__input": true,
+      "hui-TextInput__input--shrink": this.props.hasCounter
+    });
 
     return (
       <input
         {...props}
         autoComplete="off"
-        className="hui-TextInput__input"
+        className={ classes }
         placeholder=""
-        ref="input" />
+        ref="input"
+        maxLength="10000" />
     );
   },
 

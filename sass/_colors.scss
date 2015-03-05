@@ -17,6 +17,7 @@ $hui-error-background: lighten(tomato, 8%);
 $hui-input-label-grey: #b3b3b3;
 $hui-input-background-grey: #f2f2f2;
 $hui-input-text-grey: #b3b3b3;
+$hui-input-counter-light-grey: #e6e6e6;
 
 $hui-primary-grey: #666666;
 $hui-primary-green: #00a044;
@@ -34,3 +35,5 @@ $hui-selected-background-green: lighten($hui-primary-green, 8%);
 $hui-hover-inverse-green: lighten($hui-primary-green, 50%);
 
 $hui-tooltip-bg-white: #ffffff;
+
+$hui-input-overlength-red: lighten(tomato, 8%);

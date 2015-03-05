@@ -16,6 +16,24 @@
   }
 }
 
+.hui-TextInput__input--shrink {
+  width: 90%;
+}
+
 .hui-TextInput__placeholder {
   @extend %hui-placeholder;
 }
+
+.hui-TextInput--counter {
+  width: 10%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: $hui-x-3;
+  color: $hui-input-counter-light-grey;
+}
+
+.hui-TextInput--counter--warning {
+  color: $hui-input-overlength-red;
+}
+
