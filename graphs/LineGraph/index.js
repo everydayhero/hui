@@ -1,5 +1,5 @@
-/** @jsx React.DOM */
 "use strict";
+
 var _        = require('lodash');
 var React    = require('react');
 var LinePath = require('./LinePath');
