@@ -188,7 +188,7 @@ a.hui-Button {
   color: #aaa !important;
   border-color: #aaa !important;
   border-style: dashed !important;
-  background-color: $hui-disabled-grey;
+  background-color: $hui-disabled-button;
   &:before {
     background-color: transparent !important;
     box-shadow: 0 0 90px 60px transparent !important;
@@ -204,5 +204,5 @@ a.hui-Button {
 }
 
 .hui-Button--disabled.hui-Button--primary.hui-Button--inverse {
-  background-color: $hui-disabled-grey;
+  background-color: $hui-disabled-button;
 }

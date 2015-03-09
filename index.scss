@@ -9,6 +9,7 @@
 @import "layout/TopBar/style";
 @import "layout/TopBarLink/style";
 @import "layout/Masthead/style";
+@import "layout/UserAuth/style";
 
 // Graphs
 @import "graphs/DataVisualisation/style";
@@ -33,7 +34,7 @@
 }
 
 body {
-  background: $hui-bg-beige;
+  background: $hui-bg;
   font-family: lato,helvetica,arial,sans-serif;
   font-size: 13px;
 }

@@ -1,0 +1,11 @@
+=media($width: 320px)
+  @media only screen and (min-width: $width)
+    @content
+
+=media-max($width: 320px)
+  @media only screen and (max-width: $width - 1px)
+    @content
+
+=media-range($min: 320px, $max: 720px)
+  @media only screen and (min-width: $min) and (max-width: $max - 1px)
+    @content

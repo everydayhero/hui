@@ -12,7 +12,7 @@
 }
 
 .hui-FileInput__input {
-  color: $hui-input-text-grey;
+  color: $hui-input-text;
   display: inline-block;
   line-height: $hui-x-9;
   overflow: hidden;
@@ -25,7 +25,7 @@
 }
 
 .hui-FileInput__buttons {
-  background: $hui-input-background-grey;
+  background: $hui-input-background;
   padding-left: $hui-x-2;
   position: absolute;
   right: 0;

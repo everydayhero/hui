@@ -1,13 +1,13 @@
 .hui-TopBarLink {
   display: inline-block;
   font-size: 11px;
-  color: $hui-link-grey;
+  color: $hui-link-secondary;
   margin-right: 16px;
   text-transform: uppercase;
   position: relative;
   top: -8px;
 
   &:hover {
-    color: $hui-link-active-green;
+    color: $hui-link-active;
   }
 }
