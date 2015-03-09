@@ -24,3 +24,12 @@
   border: 0;
   cursor: pointer;
 }
+
+%hui-link {
+  font-size: 13px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  color: $hui-link-green;
+  &:active, &:hover {
+    color: $hui-link-active-green;
+  }
+}

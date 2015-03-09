@@ -29,14 +29,15 @@
   @extend %hui-lato-thin;
   @extend %hui-rule-left;
   font-size: $hui-x-5;
-  color: $hui-border-green;
+  color: $hui-link-green;
   position: relative;
-  top: -6px;
+  top: 20px;
   display: inline-block;
   padding-left: $hui-x-4;
   margin-left: $hui-x-4;
+  vertical-align: top;
 
-  @include media-max {
+  @include media-max(460px) {
     display: none;
   }
 }
