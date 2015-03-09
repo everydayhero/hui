@@ -99,16 +99,21 @@ module.exports = React.createClass({
 
   renderInput: function() {
     var props = this.props;
-    var classes = cx({
+    var className = props.className;
+    var classes = {
       "hui-TextInput__input": true,
       "hui-TextInput__input--shrink": this.props.hasCounter
-    });
+    };
+
+    if (className) {
+      classes[className] = true;
+    }
 
     return (
       <input
         {...props}
         autoComplete="off"
-        className={ classes }
+        className={ cx(classes) }
         placeholder=""
         ref="input"
         maxLength="10000" />

@@ -43,12 +43,6 @@ describe('SelectInput', function() {
       expect(labels.length).toBe(0);
     });
 
-    it('display default value when no selction', function() {
-      var display = findByClass(element, 'hui-SelectInput__selected--noSelection');
-
-      expect(display.getDOMNode().textContent).toContain("Please select");
-    });
-
     it('does not render blank option', function() {
       var firstOption = scryByTag(element, 'option')[0];
       var node = firstOption.getDOMNode();

@@ -98,18 +98,22 @@ module.exports = React.createClass({
   },
 
   renderDisplayValue: function() {
-    var props = this.props;
-    var value = props.value;
-    var className = "hui-SelectInput__selected";
-    var displayValue = props.prompt;
+    var props          = this.props;
+    var value          = props.value;
+    var className      = "hui-SelectInput__selected";
+    var displayValue   = props.prompt;
     var selectedOption = this.getSelected();
+    var firstOption    = this.getOptions()[0];
+    var firstLabel     = firstOption && firstOption[props.labelKey];
 
-    if (!value && !this.props.selectionMade) {
+    if (!value && !firstLabel && !this.props.selectionMade) {
       className += "--noSelection";
     }
 
     if (selectedOption) {
       displayValue = selectedOption[props.labelKey];
+    } else if (firstLabel) {
+      displayValue = firstLabel;
     }
 
     return (
