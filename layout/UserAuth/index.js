@@ -7,8 +7,8 @@ module.exports = React.createClass({
   displayName: 'UserAuth',
 
   propTypes: {
-    signInHref: React.PropTypes.string.isRequired,
-    signUpHref: React.PropTypes.string.isRequired,
+    signInUrl: React.PropTypes.string.isRequired,
+    signUpUrl: React.PropTypes.string.isRequired,
     signInLabel: React.PropTypes.string,
     signUpLabel: React.PropTypes.string
   },
@@ -25,8 +25,8 @@ module.exports = React.createClass({
 
     return (
       <div className="hui-UserAuth">
-        <Button label={ props.signUpLabel } thin={ true } kind="cta" href={ props.signUpHref }/>
-        <a className="hui-UserAuth__signIn" href={ props.signInHref } >
+        <Button label={ props.signUpLabel } thin={ true } kind="cta" href={ props.signUpUrl }/>
+        <a className="hui-UserAuth__signIn" href={ props.signInUrl } >
           { props.signInLabel }
         </a>
       </div>

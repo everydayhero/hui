@@ -27,7 +27,7 @@
 .hui-DateInput__clear {
   background: transparent;
   border: 0;
-  color: $hui-label-grey;
+  color: $hui-label;
   position: absolute;
   padding: $hui-x-3;
   top: -1px;
@@ -40,5 +40,5 @@
 .hui-DateInput__placeholder {
   @extend %hui-text-input-label;
   padding: 0 $hui-x-4;
-  color: $hui-label-grey;
+  color: $hui-label;
 }

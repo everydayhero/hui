@@ -28,8 +28,8 @@
 %hui-link {
   font-size: 13px;
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  color: $hui-link-green;
+  color: $hui-link-primary;
   &:active, &:hover {
-    color: $hui-link-active-green;
+    color: $hui-link-active;
   }
 }

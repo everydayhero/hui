@@ -15,7 +15,7 @@ module.exports = React.createClass({
     return (
     <div>
       <h3 className="DemoPage__h3">TopBar and MastHead</h3>
-      <p className="DemoPage__p">The top bar should be consitent across all applications and include a MastHead and UserAuth components. TopBarLinks are optional.</p>
+      <p className="DemoPage__p">The top bar should be consistent across all applications and include a MastHead and UserAuth components. TopBarLinks are optional.</p>
       <h4 className="DemoPage__h4">MastHead propTypes</h4>
       <ul className="DemoPage__ul">
         <li className="DemoPage__li">
@@ -37,7 +37,7 @@ module.exports = React.createClass({
             appName={ "Example" }
             href="/"
             imagePath={ imagePath } />
-          <UserAuth signUpHref="#" signInHref="#"/>
+          <UserAuth signUpUrl="#" signInUrl="#"/>
         </TopBar>
       </div>
 
@@ -47,7 +47,7 @@ module.exports = React.createClass({
         { '  <Masthead appName={ "Example" } href="/" imagePath={ imagePath } fixed={ true } />\n' }
         { '    <TopBarLink href="#how-to-use">How to use</TopBarLink>\n' }
         { '    <TopBarLink href="#examples">HUI examples</TopBarLink>\n' }
-        { '    <UserAuth signUpHref="#" signInHref="#"/>\n' }
+        { '    <UserAuth signUpUrl="#" signInUrl="#"/>\n' }
         { '</TopBar>\n' }
       </Highlight>
 

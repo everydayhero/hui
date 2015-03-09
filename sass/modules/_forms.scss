@@ -6,7 +6,7 @@
 
 %hui-text-input-label {
   position: absolute;
-  color: $hui-input-label-grey;
+  color: $hui-input-label;
   cursor: text;
   letter-spacing: 0.10em;
   line-height: $hui-x-9;
@@ -18,11 +18,11 @@
 }
 
 %hui-text-input {
-  background: $hui-input-background-grey;
+  background: $hui-input-background;
   border-radius: $hui-radius-input-border;
   border-style: solid;
   border-width: 1px;
-  border-color: $hui-input-text-grey;
+  border-color: $hui-input-text;
   color: inherit;
   cursor: text;
   display: block;
@@ -46,7 +46,7 @@
 %hui-placeholder {
   @extend %hui-text-input-label;
   padding: 0 $hui-x-4;
-  color: $hui-input-label-grey;
+  color: $hui-input-label;
 }
 
 %hui-form-row-label {

@@ -11,7 +11,7 @@ describe('UserAuth', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<UserAuth signInHref="#" signUpHref="#"/>);
+      component = TestUtils.renderIntoDocument(<UserAuth signInUrl="#" signUpUrl="#"/>);
     });
 
     it('should render UserAuth', function() {
