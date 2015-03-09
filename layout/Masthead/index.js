@@ -38,8 +38,12 @@ module.exports = React.createClass({
       <h1 className="hui-Masthead">
         <a href={ this.props.href }>
           <img
-            className="hui-Masthead__logo"
+            className="hui-Masthead__logo--desktop"
             src={ this.props.imagePath + 'hui_edh_logo@x2.gif' }
+            alt={ alt } />
+          <img
+            className="hui-Masthead__logo--mobile"
+            src={ this.props.imagePath + 'hui_edh_mark@x2.gif' }
             alt={ alt } />
           { this.renderAppName() }
         </a>
