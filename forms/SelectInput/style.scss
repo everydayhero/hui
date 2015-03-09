@@ -15,7 +15,8 @@
   top: 0px;
 }
 
-.hui-SelectInput__selected, .hui-SelectInput__selected--noSelection {
+.hui-SelectInput__selected,
+.hui-SelectInput__selected--noSelection {
   position: absolute;
   top: 0px;
   left: $hui-x-3;

@@ -58,13 +58,23 @@ module.exports = {
     }.bind(this);
   },
 
-  formRow: function(children, name, noHint) {
+  formRow: function(children, name, options) {
     var constructor = this.constructor || {};
+    var hint;
+    options = options || {};
+
+    if (!options.hint) {
+      hint = undefined;
+    } else if(typeof options.hint == 'boolean') {
+      hint = this.t(name + '_hint');
+    } else {
+      hint = options.hint;
+    }
 
     return (
       <FormRow
         label={ this.t(name + '_label') }
-        hint={ !noHint && this.t(name + '_hint') }
+        hint={ hint }
         htmlFor={ name }
         className={ constructor.name + "__" + name }
         key={ 'fieldset' + name }
@@ -75,34 +85,38 @@ module.exports = {
   },
 
   readOnlyAddress: function(name, options) {
+    var input;
     options = options || { hint: true };
-    var input = (
-          <ReadOnlyAddress
-            id={ name }
-            value={ this.state.form[name] }
-            onChange={  this.inputChangeEventFn(name) }
-            className={ name } />
-        );
 
-    return this.formRow(input, name, !options.hint);
+    input = (
+      <ReadOnlyAddress
+        id={ name }
+        value={ this.state.form[name] }
+        onChange={  this.inputChangeEventFn(name) }
+        className={ name } />
+    );
+
+    return this.formRow(input, name, options);
   },
 
   textInput: function(name, options) {
+    var input;
     options = options || { hint: true };
-    var input = (
-          <TextInput
-            className={ name }
-            errors={ this.props.errors && this.props.errors[name] }
-            id={ name }
-            onBlur={ options.onBlurCallback }
-            onChange={ this.inputChangeEventFn(name) }
-            readOnly={ options.readOnly }
-            value={ this.state.form[name] }
-            hasCounter={ options.hasCounter }
-            maxLength={ options.maxLength } />
-        );
 
-    return this.formRow(input, name, !options.hint);
+    input = (
+      <TextInput
+        className={ name }
+        errors={ this.props.errors && this.props.errors[name] }
+        id={ name }
+        onBlur={ options.onBlurCallback }
+        onChange={ this.inputChangeEventFn(name) }
+        readOnly={ options.readOnly }
+        value={ this.state.form[name] }
+        hasCounter={ options.hasCounter }
+        maxLength={ options.maxLength } />
+    );
+
+    return this.formRow(input, name, options);
   },
 
   checkboxInput: function(name) {
@@ -116,17 +130,20 @@ module.exports = {
     );
   },
 
-  textArea: function(name) {
-    var textArea = (
-          <TextArea
-            id={ name }
-            value={ this.state.form[name] }
-            onChange={ this.inputChangeEventFn(name)  }
-            errors={ this.props.errors && this.props.errors[name]}
-            key={ name }/>
-        );
+  textArea: function(name, options) {
+    var textArea;
+    options = options || { hint: true };
 
-    return this.formRow(textArea, name);
+    textArea = (
+      <TextArea
+        id={ name }
+        value={ this.state.form[name] }
+        onChange={ this.inputChangeEventFn(name)  }
+        errors={ this.props.errors && this.props.errors[name]}
+        key={ name }/>
+    );
+
+    return this.formRow(textArea, name, options);
   },
 
   urlInput: function(name, placeholder) {
@@ -142,21 +159,27 @@ module.exports = {
     return this.formRow(input, name);
   },
 
-  dateInput: function(name, placeholder) {
-    var input = (
-          <DateInput
-            id={ name }
-            value={ this.state.form[name] }
-            onChange={ this.inputChangeEventFn(name) }
-            placeholder={ placeholder }
-            errors={ this.props.errors && this.props.errors[name] } />
-        );
+  dateInput: function(name, placeholder, options) {
+    var input;
 
-    return this.formRow(input, name);
+    options = options || { hint: true };
+    input = (
+      <DateInput
+        id={ name }
+        value={ this.state.form[name] }
+        onChange={ this.inputChangeEventFn(name) }
+        placeholder={ placeholder }
+        errors={ this.props.errors && this.props.errors[name] } />
+    );
+
+    return this.formRow(input, name, options);
   },
 
-  fileInput: function(name) {
-    var input = (
+  fileInput: function(name, options) {
+    var input;
+    options = options || { hint: true };
+
+    input = (
           <FileInput
             id={ name }
             onChange={ this.changeFormPropertyFn(name) }
@@ -164,19 +187,22 @@ module.exports = {
             errors={ this.props.errors && this.props.errors[name] } />
         );
 
-    return this.formRow(input, name);
+    return this.formRow(input, name, options);
   },
 
-  imageInput: function(name) {
+  imageInput: function(name, options) {
     var errors = this.props.errors;
-    var input = (
-          <ImageInput
-            id={ name }
-            value={ this.state.form[name] }
-            onChange={ this.changeFormPropertyFn(name) }
-            errors={ errors && errors[name] } />
-        );
+    var input;
 
-    return this.formRow(input, name);
-  }
+    options = options || { hint: true };
+    input = (
+      <ImageInput
+        id={ name }
+        value={ this.state.form[name] }
+        onChange={ this.changeFormPropertyFn(name) }
+        errors={ errors && errors[name] } />
+    );
+
+    return this.formRow(input, name, options);
+  },
 };
