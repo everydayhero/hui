@@ -18,7 +18,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var change = this.inputChangeEventFn;
+    var change = this.changeFormPropertyFn;
 
     return (
     <div>
