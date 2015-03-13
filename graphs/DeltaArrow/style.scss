@@ -1,3 +1,4 @@
+.hui-DeltaArrow--unknown,
 .hui-DeltaArrow--up,
 .hui-DeltaArrow--down {
   width: 43px;
@@ -18,6 +19,15 @@
   text-align: center;
   font-size: 10px;
   color: white;
+}
+
+.hui-DeltaArrow--unknown {
+  svg {
+    fill: #d1d2d4;
+  }
+  .hui-DeltaArrow__value {
+    bottom: 5px;
+  }
 }
 
 .hui-DeltaArrow--up {
