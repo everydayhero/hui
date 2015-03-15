@@ -11,7 +11,8 @@ module.exports = React.createClass({
     return {
       valid: true,
       labelIsClickable: false,
-      labelContainsHtml: false
+      labelContainsHtml: false,
+      enabled: true
     };
   },
 
@@ -49,6 +50,7 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
+    var enabled = props.enabled;
     var Label;
 
     if (props.labelIsClickable) {
@@ -65,7 +67,8 @@ module.exports = React.createClass({
       value: props.value,
       checked: props.value,
       onChange: props.onChange,
-      autoComplete: 'off'
+      autoComplete: 'off',
+      disabled: (!enabled)
     });
 
     var classes = cx({
