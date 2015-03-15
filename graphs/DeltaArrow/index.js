@@ -69,8 +69,9 @@ module.exports = React.createClass({
     } else if (delta == null ) {
       text = '--%'
     } else {
-      text = numeral(delta).format('0%');
-      text = text.toString().replace(/^-/, "");
+      text = numeral(delta).format('0%')
+                           .toString()
+                           .replace(/^-/, "");
     }
 
     return (
