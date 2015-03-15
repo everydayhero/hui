@@ -65,9 +65,9 @@ module.exports = React.createClass({
     }
 
     if (busy) {
-      text = ''
+      text = '';
     } else if (delta == null ) {
-      text = '--%'
+      text = '--%';
     } else {
       text = numeral(delta).format('0%')
                            .toString()
