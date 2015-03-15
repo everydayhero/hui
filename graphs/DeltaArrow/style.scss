@@ -21,6 +21,12 @@
   color: white;
 }
 
+.hui-DeltaArrow--busy {
+  svg {
+    fill: #d1d2d4;
+  }
+}
+
 .hui-DeltaArrow--unknown {
   svg {
     fill: #d1d2d4;

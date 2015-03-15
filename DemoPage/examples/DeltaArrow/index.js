@@ -17,6 +17,7 @@ module.exports = React.createClass({
         <DeltaArrow delta={ 0.5 } />
         <DeltaArrow delta={ -0.5 } />
         <DeltaArrow delta={ n } />
+        <DeltaArrow delta={ n } busy={ true } />
       </div>
 
       <h4 className="DemoPage__h4">React Example</h4>
