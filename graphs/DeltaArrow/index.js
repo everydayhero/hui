@@ -42,7 +42,7 @@ module.exports = React.createClass({
         delta = props.delta,
         busy  = props.busy,
         className,
-        x;
+        text;
 
     if (delta == 0) {
       return null;
@@ -65,19 +65,19 @@ module.exports = React.createClass({
     }
 
     if (busy) {
-      x = ''
+      text = ''
     } else if (delta == null ) {
-      x = '--%'
+      text = '--%'
     } else {
-      x = numeral(delta).format('0%');
-      x = x.toString().replace(/^-/, "");
+      text = numeral(delta).format('0%');
+      text = text.toString().replace(/^-/, "");
     }
 
     return (
       <div className={ className }>
         { this.renderTriangle() }
         <div className="hui-DeltaArrow__value">
-          { x }
+          { text }
         </div>
       </div>
     );
