@@ -1,6 +1,12 @@
-.hui-SingleNumber {
+.hui-SingleNumber,
+.hui-SingleNumber--loading {
   position: relative;
   display: inline-block;
+}
+
+.hui-SingleNumber--loading {
+  background-color: #D1D2D4;
+  width: 200px;
 }
 
 .hui-SingleNumber__metric {
