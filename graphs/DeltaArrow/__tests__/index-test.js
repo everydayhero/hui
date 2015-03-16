@@ -14,7 +14,7 @@ describe('DeltaArrow', function() {
       component = TestUtils.renderIntoDocument(<DeltaArrow delta={ 0.1234 } />);
     });
 
-    it('should point upwards', function() {
+    it('should have appropriate class', function() {
       TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--up');
     });
 
@@ -31,7 +31,7 @@ describe('DeltaArrow', function() {
       component = TestUtils.renderIntoDocument(<DeltaArrow delta={ -0.5 } />);
     });
 
-    it('should point downwards', function() {
+    it('should have appropriate class', function() {
       TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--down');
     });
 
