@@ -1,7 +1,7 @@
 "use strict";
 
 var React   = require('react');
-var Graphs  = require('../LineGraph');
+var Graph   = require('../LineGraph');
 var DeltaArrow = require('../DeltaArrow');
 var SingleNumber = require('./SingleNumber');
 var Legend = require('./Legend');
@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
     if (series) {
       return (
-        <Graphs
+        <Graph
           stacked={ stacked }
           series={ series }
           seriesValueKey={ seriesValueKey }
