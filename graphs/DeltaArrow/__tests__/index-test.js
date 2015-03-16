@@ -40,4 +40,21 @@ describe('DeltaArrow', function() {
       expect(node.getDOMNode().textContent).toEqual('50%');
     });
   });
+
+  describe('with loading', function() {
+    var component;
+
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(<DeltaArrow delta={ -0.5 } loading={ true } />);
+    });
+
+    it('should have appropriate class', function() {
+      TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--loading');
+    });
+
+    it('should render formatted percentage', function() {
+      node = TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow__value');
+      expect(node.getDOMNode().textContent).toEqual('');
+    });
+  });
 });
