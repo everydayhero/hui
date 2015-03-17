@@ -23,11 +23,11 @@ module.exports = React.createClass({
         format  = props.format,
         loading = props.loading;
 
-    if (loading) {
-      return '&nbsp;';
-    } else {
-      return numeral(value).format(format);
+    if (loading === true) {
+      return;
     }
+
+    return numeral(value).format(format);
   },
 
   render: function() {
@@ -42,7 +42,8 @@ module.exports = React.createClass({
 
     return (
       <div className={ className }>
-        <div className="hui-SingleNumber__metric" dangerouslySetInnerHTML={{ __html: this.metricFormatted() }}>
+        <div className="hui-SingleNumber__metric">
+          { this.metricFormatted() }
         </div>
       </div>
     );

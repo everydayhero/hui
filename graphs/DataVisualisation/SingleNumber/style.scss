@@ -9,6 +9,9 @@
 .hui-SingleNumber--loading {
   background-color: #D1D2D4;
   width: 200px;
+  .hui-SingleNumber__metric:before {
+    content: "\00a0";
+  }
 }
 
 .hui-SingleNumber__metric {
