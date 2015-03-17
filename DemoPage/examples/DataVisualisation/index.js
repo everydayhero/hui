@@ -90,6 +90,9 @@ module.exports = React.createClass({
       <div className="DemoPage__example--visualisation">
         <DataVisualisation {...this.state} />
       </div>
+      <div className="DemoPage__example--visualisation">
+        <DataVisualisation {...this.state} loading={ true } />
+      </div>
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
         { '<DataVisualisation \n' }
