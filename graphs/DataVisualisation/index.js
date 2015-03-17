@@ -18,7 +18,8 @@ module.exports = React.createClass({
     total: React.PropTypes.number.isRequired,
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
-    tipLabel: React.PropTypes.string
+    tipLabel: React.PropTypes.string,
+    loading: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -26,7 +27,8 @@ module.exports = React.createClass({
       stacked: true,
       valueConverter: function(number) {
         return number;
-      }
+      },
+      loading: false
     };
   },
 
@@ -54,20 +56,23 @@ module.exports = React.createClass({
     var props          = this.props,
         total          = props.total,
         title          = props.title,
-        valueConverter = props.valueConverter;
+        valueConverter = props.valueConverter,
+        loading        = props.loading;
 
     if (typeof(total) != 'undefined') {
       return (
-        <SingleNumber title={ title } value={ valueConverter(total) }/>
+        <SingleNumber title={ title } value={ valueConverter(total) } loading={ loading }/>
       );
     }
   },
 
   renderDeltaArrow: function() {
-    var delta = this.props.delta;
+    var props   = this.props,
+        delta   = props.delta,
+        loading = props.loading;
 
     if (delta) {
-      return <DeltaArrow delta={ delta } />;
+      return <DeltaArrow delta={ delta } loading={ loading } />;
     }
   },
 
