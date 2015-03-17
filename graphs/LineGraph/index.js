@@ -154,7 +154,7 @@ module.exports = React.createClass({
         tooltip,
         graph;
 
-    if (loading === true) {
+    if (loading === true && state.width) {
       graph = (
         <LoadingPlaceholder
           height={ state.height }

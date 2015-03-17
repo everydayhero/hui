@@ -10,12 +10,12 @@ module.exports = React.createClass({
   displayName: 'DataVisualisation',
 
   propTypes: {
-    series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string.isRequired,
+    series: React.PropTypes.array,
+    seriesValueKey: React.PropTypes.string,
     valueConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
-    total: React.PropTypes.number.isRequired,
+    total: React.PropTypes.number,
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
     tipLabel: React.PropTypes.string,
@@ -61,7 +61,7 @@ module.exports = React.createClass({
         valueConverter = props.valueConverter,
         loading        = props.loading;
 
-    if (typeof(total) != 'undefined') {
+    if (loading || typeof(total) != 'undefined') {
       return (
         <SingleNumber title={ title } value={ valueConverter(total) } loading={ loading }/>
       );
@@ -73,7 +73,7 @@ module.exports = React.createClass({
         delta   = props.delta,
         loading = props.loading;
 
-    if (delta) {
+    if (loading || delta) {
       return <DeltaArrow delta={ delta } loading={ loading } />;
     }
   },
