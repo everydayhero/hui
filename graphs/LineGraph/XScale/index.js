@@ -50,6 +50,11 @@ module.exports = React.createClass({
   },
 
   renderScaleLines: function() {
+
+    if (this.props.series.length == 0) {
+      return;
+    }
+
     var props = this.props;
     var dataArray = props.series[0];
     var scaleLineGap = this.getWidth() / ( dataArray.length - 1 );
