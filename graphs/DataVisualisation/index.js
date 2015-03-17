@@ -56,7 +56,7 @@ module.exports = React.createClass({
         title          = props.title,
         valueConverter = props.valueConverter;
 
-    if (total) {
+    if (typeof(total) != 'undefined') {
       return (
         <SingleNumber title={ title } value={ valueConverter(total) }/>
       );
