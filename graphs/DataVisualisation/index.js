@@ -38,7 +38,8 @@ module.exports = React.createClass({
         seriesValueKey = props.seriesValueKey,
         valueConverter = props.valueConverter,
         stacked        = props.stacked,
-        tipLabel       = props.tipLabel;
+        tipLabel       = props.tipLabel,
+        loading        = props.loading;
 
     if (series) {
       return (
@@ -47,7 +48,8 @@ module.exports = React.createClass({
           series={ series }
           seriesValueKey={ seriesValueKey }
           valueConverter={ valueConverter }
-          tipLabel={ tipLabel } />
+          tipLabel={ tipLabel }
+          loading={ loading } />
       );
     }
   },
@@ -78,9 +80,10 @@ module.exports = React.createClass({
 
   renderLegend: function() {
     var props = this.props,
+        loading = props.loading,
         legendLabels = props.legendLabels;
 
-    if (!legendLabels) {
+    if (loading || !legendLabels) {
       return false;
     }
 
