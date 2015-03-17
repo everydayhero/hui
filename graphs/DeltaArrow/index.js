@@ -44,23 +44,15 @@ module.exports = React.createClass({
         className,
         text;
 
-    if (delta == 0) {
-      return null;
-    }
-
     if (loading == true ) {
       className = "hui-DeltaArrow--loading";
-    }
-
-    if (delta == null ) {
+    } else if (delta == 0) {
+      return null;
+    } else if (delta == null ) {
       className = "hui-DeltaArrow--unknown";
-    }
-
-    if (delta > 0 ) {
+    } else if (delta > 0 ) {
       className = "hui-DeltaArrow--up";
-    }
-
-    if (delta < 0 ) {
+    } else if (delta < 0 ) {
       className = "hui-DeltaArrow--down";
     }
 
