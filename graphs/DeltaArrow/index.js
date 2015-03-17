@@ -8,7 +8,7 @@ module.exports = React.createClass({
   displayName: 'DeltaArrow',
 
   propTypes: {
-    delta: React.PropTypes.number.isRequired,
+    delta: React.PropTypes.number,
     loading: React.PropTypes.bool
   },
 

@@ -1,11 +1,12 @@
 "use strict";
 
-var _        = require('lodash');
-var React    = require('react');
-var LinePath = require('./LinePath');
-var YScale   = require('./YScale');
-var XScale   = require('./XScale');
-var ToolTip  = require('./ToolTip');
+var _                  = require('lodash');
+var React              = require('react');
+var LinePath           = require('./LinePath');
+var YScale             = require('./YScale');
+var XScale             = require('./XScale');
+var ToolTip            = require('./ToolTip');
+var LoadingPlaceholder = require('./LoadingPlaceholder');
 
 module.exports = React.createClass({
   displayName: 'LineGraph',
@@ -22,7 +23,8 @@ module.exports = React.createClass({
       right: React.PropTypes.number,
       bottom: React.PropTypes.number,
       top: React.PropTypes.number
-    })
+    }),
+    loading: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -38,7 +40,8 @@ module.exports = React.createClass({
       area: true,
       valueConverter: function(number) {
         return number;
-      }
+      },
+      loading: false
     }
   },
 
@@ -145,20 +148,37 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var state = this.state;
-    var props = this.props;
+    var state   = this.state,
+        props   = this.props,
+        loading = props.loading,
+        tooltip,
+        graph;
 
-    return (
-      <div className="hui-LineGraph">
+    if (loading === true && state.width) {
+      graph = (
+        <LoadingPlaceholder
+          height={ state.height }
+          width={ state.width } />
+      );
+    } else {
+      tooltip = (
         <ToolTip
           data={ state.tipData }
           show={ state.showTip }
           position={ state.tipPosition }
           label={ props.tipLabel }
           isFlipOver={ state.isFlipOver } />
+      );
+      graph = this.renderGraph();
+    }
+
+    return (
+      <div className="hui-LineGraph">
+        { tooltip }
         <svg className="hui-LineGraph__svg">
-          { this.renderGraph() }
+          { graph }
         </svg>
-      </div>);
+      </div>
+    );
   }
 });
