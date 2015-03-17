@@ -58,6 +58,22 @@ describe('LineGraph', function() {
     });
   });
 
+  describe('empty data', function() {
+    var component;
+
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(<LineGraph series={ [] } seriesValueKey={'value'} />);
+      component.setState({
+        width: 200,
+        height: 200
+      });
+    });
+
+    it('should render LineGraph', function() {
+      expect(component).not.toBeNull();
+    });
+  });
+
   describe('stacked', function() {
     var component;
 
