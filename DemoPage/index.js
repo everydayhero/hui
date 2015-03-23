@@ -46,10 +46,10 @@ module.exports = React.createClass({
 
           <h3 className="DemoPage__h3">CDN</h3>
           <Highlight className='bash'>
-            { "//d1ig6folwd6a9s.cloudfront.net/hui/hui-" + pkg.version + ".css" }
+            { "//d1ig6folwd6a9s.cloudfront.net/hui-" + pkg.version + ".css" }
           </Highlight>
           <Highlight className='bash'>
-            { "//d1ig6folwd6a9s.cloudfront.net/hui/hui-" + pkg.version + ".js" }
+            { "//d1ig6folwd6a9s.cloudfront.net/hui-" + pkg.version + ".js" }
           </Highlight>
 
           <h3 className="DemoPage__h3">Install with npm (Optional version. SSH key rquired.)</h3>
