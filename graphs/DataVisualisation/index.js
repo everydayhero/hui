@@ -16,6 +16,7 @@ module.exports = React.createClass({
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number,
+    totalFormat: React.PropTypes.string,
     legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
     tipLabel: React.PropTypes.string,
@@ -57,13 +58,14 @@ module.exports = React.createClass({
   renderTotal: function() {
     var props          = this.props,
         total          = props.total,
+        totalFormat    = props.totalFormat,
         title          = props.title,
         valueConverter = props.valueConverter,
         loading        = props.loading;
 
     if (loading || typeof(total) != 'undefined') {
       return (
-        <SingleNumber title={ title } value={ valueConverter(total) } loading={ loading }/>
+        <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
       );
     }
   },
