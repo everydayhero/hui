@@ -36,11 +36,12 @@
     opacity: 0;
   }
 
-  &:hover {
+  &:hover, &:focus {
     color: white;
+    text-decoration: none;
   }
 
-  &:hover:before {
+  &:hover:before, &:focus:before {
     transform: scale(1);
     opacity: 1;
   }
@@ -180,14 +181,14 @@ a.hui-Button {
 
 .hui-Button--secondary.hui-Button--inverse {
   color: white;
-  &:hover {
+  &:hover, &:focus {
     color: #00a044;
   }
 }
 
 .hui-Button--tertiary.hui-Button--inverse {
   color: white;
-  &:hover {
+  &:hover, &:focus {
     color: #525252;
   }
 }
