@@ -1,4 +1,5 @@
 .hui-Legend {
+  @extend %general-reset;
   margin-top: $hui-x-4;
   margin-left: $hui-x-10;
 }

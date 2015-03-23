@@ -8,6 +8,7 @@
 
 .DemoPage__h2 {
   @extend %hui-rule-bottom;
+  @extend %general-reset;
   font-size: 28px;
   margin-bottom: 24px;
   padding-bottom: 12px;
@@ -16,11 +17,8 @@
   color: $hui-text-body;
 }
 
-.DemoPage__p {
-  margin-bottom: 16px;
-}
-
 .DemoPage__h3 {
+  @extend %general-reset;
   font-size: 20px;
   margin-bottom: 16px;
   margin-top: 16px;
@@ -29,6 +27,7 @@
 }
 
 .DemoPage__h4 {
+  @extend %general-reset;
   font-size: 13px;
   margin-bottom: 8px;
   margin-top: 24px;
@@ -37,6 +36,7 @@
 }
 
 .DemoPage__p {
+  @extend %general-reset;
   margin-bottom: 16px;
   color: $hui-text-body;
   font-size: 14px;
@@ -44,6 +44,7 @@
 }
 
 .DemoPage__ul {
+  @extend %general-reset;
   margin-left: 24px;
   margin-bottom: 24px;
   color: $hui-text-body;

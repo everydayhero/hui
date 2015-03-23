@@ -1,7 +1,5 @@
 @import "common";
 
-@import "DemoPage/style";
-
 //Buttons
 @import "buttons/Button/style";
 
@@ -25,16 +23,3 @@
 @import "forms/DateInput/style";
 @import "forms/FileInput/style";
 @import "forms/ImageInput/style";
-
-* {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-body {
-  background: $hui-bg;
-  font-size: 13px;
-}

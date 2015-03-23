@@ -1,4 +1,5 @@
 .hui-TopBarLink {
+  @extend %general-reset;
   display: inline-block;
   font-size: 11px;
   color: $hui-link-secondary;

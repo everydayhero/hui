@@ -39,6 +39,9 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">iconLeft:</span> Render icon on the left. Icons should apear on the right unless there is a particular use case for the icon appearing on the left. For example a 'previous' button.Boolean, default false.
         </li>
         <li className="DemoPage__li">
+          <span className="DemoPage__bold">uppercase:</span> Optional uppercase text (When appropriate).
+        </li>
+        <li className="DemoPage__li">
           <span className="DemoPage__bold">disabled:</span> Disable button. Boolean, default false.
         </li>
         <li className="DemoPage__li">
