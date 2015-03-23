@@ -13,11 +13,12 @@
 
 .hui-FileInput__input {
   color: $hui-input-text;
-  display: inline-block;
+  display: block;
   line-height: $hui-x-9;
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
+  height: 100%;
 
   .hui-FileInput_hasFile & {
     color: inherit;
