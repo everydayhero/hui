@@ -15,6 +15,7 @@ module.exports = React.createClass({
     icon: React.PropTypes.string,
     inverse: React.PropTypes.bool,
     thin: React.PropTypes.bool,
+    uppercase: React.PropTypes.bool,
     iconLeft: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     onClick: React.PropTypes.func
@@ -71,7 +72,8 @@ module.exports = React.createClass({
       'hui-Button--inverse': props.inverse,
       'hui-Button--thin': props.thin,
       'hui-Button--hasIcon': props.icon,
-      'hui-Button--iconLeft': props.iconLeft
+      'hui-Button--iconLeft': props.iconLeft,
+      'hui-Button--uppercase': props.uppercase
     });
 
     if (href) {

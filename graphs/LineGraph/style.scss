@@ -4,6 +4,7 @@
 @import "ToolTip/style";
 
 .hui-LineGraph {
+  @extend %general-reset;
   height: 100%;
   position: relative;
 }

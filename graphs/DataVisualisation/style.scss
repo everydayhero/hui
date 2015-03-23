@@ -4,6 +4,7 @@
 @import "../DeltaArrow/style";
 
 .hui-DataVisualisation {
+  @extend %general-reset;
   display: table;
   width:  100%;
 }

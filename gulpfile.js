@@ -1,51 +1,35 @@
 "use strict";
 
-var gulp         = require('gulp');
-var gutil        = require('gulp-util');
-var concat       = require('gulp-concat');
-var runSequence  = require('run-sequence');
-var source       = require('vinyl-source-stream');
-var buffer       = require('vinyl-buffer');
+var gulp                = require('gulp');
+var gutil               = require('gulp-util');
+var concat              = require('gulp-concat');
+var runSequence         = require('run-sequence');
+var source              = require('vinyl-source-stream');
+var buffer              = require('vinyl-buffer');
 
 // stylesheets
-var sass         = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifyCss    = require('gulp-minify-css');
+var sass                = require('gulp-sass');
+var autoprefixer        = require('gulp-autoprefixer');
+var minifyCss           = require('gulp-minify-css');
 
 // javascripts
-var browserify   = require('browserify');
-var uglify       = require('gulp-uglify');
-var react        = require('gulp-react');
-var jshint       = require('gulp-jshint');
-var stylish      = require('jshint-stylish');
+var browserify          = require('browserify');
+var uglify              = require('gulp-uglify');
 
 // html
-var inject       = require("gulp-inject");
-var pkg          = require('./package');
+var inject              = require("gulp-inject");
+var pkg                 = require('./package');
+
+var modulePathsWithType = require('./gulp_tasks/modulePathsWithType');
+
+// Tasks
+require('./gulp_tasks/assets-deploy.js');
+require('./gulp_tasks/lint.js');
+require('./gulp_tasks/assets-build.js');
 
 var debug        = !!gutil.env.debug;
 
-var modulePaths = [
-  'forms/**/*.{type}',
-  'buttons/**/*.{type}',
-  'DemoPage/**/*.{type}',
-  'layout/**/*.{type}',
-  'mixins/**/*.{type}',
-  'navigation/**/*.{type}',
-  'typography/**/*.{type}'
-];
-
 process.env.NODE_ENV = debug ? 'development' : 'production';
-
-function modulePathsWithType(type) {
-  var paths = [];
-
-  for (var i = 0; i < modulePaths.length; i++) {
-    paths.push(modulePaths[i].replace('{type}', type));
-  };
-
-  return paths;
-}
 
 gulp.task('styles', function() {
   var compress = debug ? gutil.noop : minifyCss;
@@ -62,17 +46,6 @@ gulp.task('styles', function() {
     .pipe(autoprefixer())
     .pipe(compress())
     .pipe(gulp.dest('dist/styles'));
-});
-
-gulp.task('lint', function() {
-  return gulp.src(modulePathsWithType('js'))
-    .pipe(react())
-    .on('error', function(e) {
-      // Need better logging here
-      console.log(e);
-    })
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('scripts', [ 'lint' ], function() {

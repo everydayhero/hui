@@ -2,6 +2,7 @@
 .hui-DeltaArrow--up,
 .hui-DeltaArrow--down,
 .hui-DeltaArrow--loading {
+  @extend %general-reset;
   width: 43px;
   height: 37px;
   position: relative;

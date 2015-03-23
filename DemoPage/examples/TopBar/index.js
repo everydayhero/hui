@@ -25,7 +25,7 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">href:</span> Path to navigate user when clicking on logo)
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">imagePath:</span> Path to logo image assests. 'hui_edh_logo@x2.gif' to optimise logo for screen resolutions.
+          <span className="DemoPage__bold">imagePath:</span> Path to logo image assets. 'hui_edh_logo@x2.gif' to optimise logo for screen resolutions.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">fixed:</span> Fix the TopBar postion.
