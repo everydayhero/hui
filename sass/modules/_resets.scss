@@ -12,6 +12,10 @@
   border: none;
   outline: none;
   color: $hui-primary-green;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 %img-reset {
