@@ -5,13 +5,14 @@ var Highlight = require('react-highlight');
 var DataVisualisation = require('../../../graphs/DataVisualisation');
 
 function getSeries(tick) {
-  var series = [[], [], []];
+  var series = [[], [], [], []];
   var count = 0;
 
   while(count < 50) {
     var value = (Math.abs(Math.sin(count + tick) * 5100000));
     var value2 = (Math.abs(Math.cos(count + tick) * 5100000));
     var value3 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
+    var value4 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
 
     series[0].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
@@ -28,6 +29,11 @@ function getSeries(tick) {
       pages: value3
     });
 
+    series[3].push({
+      date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
+      pages: value4
+    });
+
     count++;
   }
 
@@ -40,7 +46,7 @@ module.exports = React.createClass({
     return {
       series: getSeries(1),
       seriesValueKey: 'pages',
-      legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3'],
+      legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3', 'Campaign 4'],
       delta: -0.12,
       total: 160000000,
       title: 'Example Data',
