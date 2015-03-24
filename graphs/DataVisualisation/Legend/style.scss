@@ -12,7 +12,7 @@
     margin-right: 0;
   }
 
-  @for $n from 1 through 3 {
+  @for $n from 1 through length($data-series-colors) {
     &:nth-child(#{$n}) {
       .hui-Legend__dot {
         background-color: nth($data-series-colors, $n);
