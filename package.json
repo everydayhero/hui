@@ -1,6 +1,6 @@
 {
   "name": "HUI",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "src/index.js",
   "files": [
