@@ -116,7 +116,7 @@ describe('DatePicker', function() {
           <Input value="2015-12-09" onChange={ listener } />
         );
 
-      var clear = findByClass(element, 'hui-DateInput__clear');
+      var clear = findByClass(element, 'hui-DateInput__icon');
       TestUtils.Simulate.click(clear);
 
       expect(listener.mock.calls[0][0].target.value).toBe(null);

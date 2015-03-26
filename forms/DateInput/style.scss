@@ -24,7 +24,7 @@
   @extend %hui-input-wrap;
 }
 
-.hui-DateInput__clear {
+.hui-DateInput__icon {
   background: transparent;
   border: 0;
   color: $hui-label;
@@ -41,4 +41,10 @@
   @extend %hui-text-input-label;
   padding: 0 $hui-x-4;
   color: $hui-label;
+}
+
+.hui-DateInput--empty:hover {
+  .hui-DateInput__icon {
+    color: $hui-hover-green;
+  }
 }
