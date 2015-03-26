@@ -1,8 +1,8 @@
 "use strict";
 
-var React = require('react');
-var cx = require('react/lib/cx');
-var Icon = require('../../Helpers/Icon');
+var React      = require('react');
+var Classnames = require('classnames');
+var Icon       = require('../../Helpers/Icon');
 
 module.exports = React.createClass({
   displayName: 'Button',
@@ -62,8 +62,7 @@ module.exports = React.createClass({
     var kind = props.kind;
     var href = props.href;
 
-    var classes = cx({
-      'hui-Button': true,
+    var classes = Classnames({
       'hui-Button--cta': kind === 'cta',
       'hui-Button--primary': kind === 'primary',
       'hui-Button--secondary': kind === 'secondary',
@@ -74,7 +73,7 @@ module.exports = React.createClass({
       'hui-Button--hasIcon': props.icon,
       'hui-Button--iconLeft': props.iconLeft,
       'hui-Button--uppercase': props.uppercase
-    });
+    }, 'hui-Button');
 
     if (href) {
       El = 'a';

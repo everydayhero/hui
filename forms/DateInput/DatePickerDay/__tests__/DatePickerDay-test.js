@@ -3,6 +3,7 @@
 jest.dontMock('../');
 jest.dontMock('lodash');
 jest.dontMock('moment');
+jest.dontMock('classnames');
 
 describe('DatePickerDay', function() {
   var React         = require('react/addons');

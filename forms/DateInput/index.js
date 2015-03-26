@@ -2,7 +2,7 @@
 
 var moment            = require('moment');
 var React             = require('react');
-var cx                = require('react/lib/cx');
+var Classnames        = require('classnames');
 var DatePicker        = require('./DatePicker');
 var InputErrors       = require('../InputErrors');
 var Icon              = require('../../Helpers/Icon');
@@ -105,17 +105,12 @@ module.exports = React.createClass({
   render: function() {
     var props = this.props;
 
-    var classes = {
-      "hui-DateInput": true,
+    var classes = Classnames({
       "hui-DateInput--empty": this.hasValue() === false
-    };
-
-    if (props.className) {
-      classes[props.className] = true;
-    }
+    }, "hui-DateInput", props.className);
 
     return (
-      <span className={ cx(classes) }>
+      <span className={ classes }>
         { this.renderInput() }
         <InputErrors errors={ props.errors } />
         { this.renderDatePicker() }
