@@ -2,6 +2,7 @@
 
 var moment            = require('moment');
 var React             = require('react');
+var cx                = require('react/lib/cx');
 var DatePicker        = require('./DatePicker');
 var InputErrors       = require('../InputErrors');
 var Icon              = require('../../Helpers/Icon');
@@ -103,10 +104,18 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
-    var classes = 'hui-DateInput ' + (props.className || "");
+
+    var classes = {
+      "hui-DateInput": true,
+      "hui-DateInput--empty": this.hasValue() === false
+    };
+
+    if (props.className) {
+      classes[props.className] = true
+    }
 
     return (
-      <span className={ classes }>
+      <span className={ cx(classes) }>
         { this.renderInput() }
         <InputErrors errors={ props.errors } />
         { this.renderDatePicker() }
@@ -115,6 +124,22 @@ module.exports = React.createClass({
   },
 
   renderInput: function() {
+    var icon;
+
+    if (this.hasValue()) {
+      icon = (
+        <a href="#" className="hui-DateInput__icon" onClick={ this.clear }>
+          <Icon icon="times"/>
+        </a>
+      );
+    } else {
+      icon = (
+        <a href="#" className="hui-DateInput__icon" onClick={ this.toggleOpen }>
+          <Icon icon="calendar"/>
+        </a>
+      );
+    }
+
     return (
       <span className="hui-DateInput__input_wrapper">
         { this.renderPlaceholder() }
@@ -124,9 +149,7 @@ module.exports = React.createClass({
           value={ this.getDisplayValue() }
           readOnly={ true }
           id={ this.props.id } />
-        <a href="#" className="hui-DateInput__clear" onClick={ this.clear }>
-          <Icon icon="times"/>
-        </a>
+        { icon }
       </span>
     );
   },
