@@ -47,6 +47,18 @@ module.exports = React.createClass({
           placeholder="Input here..."
           value={ this.state.form.demo_input }
           onChange={ change('demo_input') } />
+        <TextInput
+          autoComplete="off"
+          className="hui-TextInput"
+          id='demo_input'
+          placeholder="Input here..."
+          value="This is some content"
+          onChange={ change('demo_input') } />
+        <TextInput
+          className="hui-TextInput"
+          id='demo_input_readonly'
+          value="This is a readonly text input"
+          readOnly={ true } />
       </div>
 
       <h4 className="DemoPage__h3">React Example</h4>
