@@ -90,7 +90,8 @@ module.exports = React.createClass({
     this.onDateChange(null);
   },
 
-  toggleOpen: function() {
+  toggleOpen: function(e) {
+    e.preventDefault();
     this.setState({
       open: !this.state.open
     });
