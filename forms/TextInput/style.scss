@@ -37,3 +37,8 @@
   color: $hui-input-overlength-red;
 }
 
+.hui-TextInput--readOnly {
+  .hui-TextInput__input {
+    @extend %hui-text-input--readOnly;
+  }
+}

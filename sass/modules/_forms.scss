@@ -38,6 +38,18 @@
   }
 }
 
+%hui-text-input--readOnly {
+  @extend %hui-text-input;
+
+  background: none;
+  border: none;
+  cursor: default;
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
 %form-instruction {
   padding-bottom: $hui-x-3;
   font-size: $hui-x-4;
