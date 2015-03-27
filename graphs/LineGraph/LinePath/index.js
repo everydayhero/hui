@@ -1,7 +1,7 @@
 "use strict";
 
 var React       = require('react');
-var GmoothLine  = require('paths-js/stock');
+var GraphLine  = require('paths-js/stock');
 var scaleMixing = require('../mixins/scaleMixin');
 var _           = require('lodash');
 
@@ -43,7 +43,7 @@ module.exports = React.createClass({
   graphLine: function() {
     var props = this.props;
 
-    return GmoothLine({
+    return GraphLine({
       data: [props.series[props.index]],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
@@ -85,7 +85,7 @@ module.exports = React.createClass({
     return isFlipOver;
   },
 
-  onMouseOver: function(data, dataPoint, pos) {
+  onMouseEnter: function(data, dataPoint, pos) {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
         valueConverter = props.valueConverter;
@@ -110,7 +110,7 @@ module.exports = React.createClass({
     var targets = [];
     var translateX = this.props.gutter.left;
     var translateY = this.getTranslateY();
-    var onMouseOver = this.onMouseOver;
+    var onMouseEnter = this.onMouseEnter;
     var onMouseLeave = this.onMouseLeave;
 
     _.forEach(graphLine.curves[0].item, function(data, dataPoint) {
@@ -121,7 +121,7 @@ module.exports = React.createClass({
         cy={ y }
         r="6"
         className="hui-LinePath__target"
-        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
+        onMouseEnter={ onMouseEnter(data, dataPoint, {x: x, y: y}) }
         onMouseLeave={ onMouseLeave } />
       );
     });
