@@ -34,23 +34,18 @@ module.exports = React.createClass({
   },
 
   renderGraph: function() {
-    var props          = this.props,
-        series         = props.series,
-        seriesValueKey = props.seriesValueKey,
-        valueConverter = props.valueConverter,
-        stacked        = props.stacked,
-        tipLabel       = props.tipLabel,
-        loading        = props.loading;
+    var props = this.props;
 
-    if (series) {
+    if (props.series) {
       return (
         <Graph
-          stacked={ stacked }
-          series={ series }
-          seriesValueKey={ seriesValueKey }
-          valueConverter={ valueConverter }
-          tipLabel={ tipLabel }
-          loading={ loading } />
+          stacked={ props.stacked }
+          series={ props.series }
+          seriesValueKey={ props.seriesValueKey }
+          valueConverter={ props.valueConverter }
+          totalFormat={ props.totalFormat }
+          tipLabel={ props.tipLabel }
+          loading={ props.loading } />
       );
     }
   },

@@ -85,6 +85,9 @@ module.exports = React.createClass({
             <li className="DemoPage__li">top</li>
           </ul>
         </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals (Leave blank to use default formating)
+        </li>
       </ul>
       <div className="DemoPage__example--graph--lines">
         <LineGraph {...this.state} line={ true } area={ false } tipLabel='Fund raised' />
