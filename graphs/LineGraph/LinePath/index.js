@@ -1,7 +1,7 @@
 "use strict";
 
 var React       = require('react');
-var SmoothLine  = require('paths-js/smooth-line');
+var GraphLine  = require('paths-js/stock');
 var scaleMixing = require('../mixins/scaleMixin');
 var _           = require('lodash');
 
@@ -40,10 +40,10 @@ module.exports = React.createClass({
     return this.getDrawingHeight() * this.getScalePercentage();
   },
 
-  smoothLine: function() {
+  graphLine: function() {
     var props = this.props;
 
-    return SmoothLine({
+    return GraphLine({
       data: [props.series[props.index]],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
@@ -85,7 +85,7 @@ module.exports = React.createClass({
     return isFlipOver;
   },
 
-  onMouseOver: function(data, dataPoint, pos) {
+  onMouseEnter: function(data, dataPoint, pos) {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
         valueConverter = props.valueConverter;
@@ -106,22 +106,22 @@ module.exports = React.createClass({
   },
 
   renderTipTargets: function() {
-    var smoothLine = this.smoothLine();
+    var graphLine = this.graphLine();
     var targets = [];
     var translateX = this.props.gutter.left;
     var translateY = this.getTranslateY();
-    var onMouseOver = this.onMouseOver;
+    var onMouseEnter = this.onMouseEnter;
     var onMouseLeave = this.onMouseLeave;
 
-    _.forEach(smoothLine.curves[0].item, function(data, dataPoint) {
-      var y = smoothLine.yscale(data.calculatedValue) + translateY;
-      var x = smoothLine.xscale(date(data)) + translateX;
+    _.forEach(graphLine.curves[0].item, function(data, dataPoint) {
+      var y = graphLine.yscale(data.calculatedValue) + translateY;
+      var x = graphLine.xscale(date(data)) + translateX;
       targets.push(<circle
         cx={ x }
         cy={ y }
         r="6"
         className="hui-LinePath__target"
-        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
+        onMouseEnter={ onMouseEnter(data, dataPoint, {x: x, y: y}) }
         onMouseLeave={ onMouseLeave } />
       );
     });
@@ -138,7 +138,7 @@ module.exports = React.createClass({
       <path
         transform={ "translate(" + this.props.gutter.left + ", " + this.getTranslateY()  +")" }
         className={ "hui-LinePath__" + type }
-        d={ this.smoothLine().curves[0][type].path.print() }/>
+        d={ this.graphLine().curves[0][type].path.print() }/>
     );
   },
 
