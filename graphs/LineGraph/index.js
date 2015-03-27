@@ -15,6 +15,7 @@ module.exports = React.createClass({
     series: React.PropTypes.array.isRequired,
     seriesValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
+    totalFormat: React.PropTypes.string,
     stacked: React.PropTypes.bool,
     lined: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
@@ -167,6 +168,7 @@ module.exports = React.createClass({
           show={ state.showTip }
           position={ state.tipPosition }
           label={ props.tipLabel }
+          totalFormat={ props.totalFormat }
           isFlipOver={ state.isFlipOver } />
       );
       graph = this.renderGraph();

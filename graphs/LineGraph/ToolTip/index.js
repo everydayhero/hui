@@ -14,7 +14,8 @@ module.exports = React.createClass({
     show: React.PropTypes.bool,
     data: React.PropTypes.object,
     label: React.PropTypes.string,
-    isFlipOver: React.PropTypes.bool
+    isFlipOver: React.PropTypes.bool,
+    totalFormat: React.PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -74,9 +75,9 @@ module.exports = React.createClass({
           <p className="hui-ToolTip__date" >{ date }</p>
           <p>
             { props.label + ": " }
-            <span className="hui-ToolTip__value"> { formatNumber(data.value) } </span>
+            <span className="hui-ToolTip__value"> { formatNumber(data.value, props.totalFormat) } </span>
             { " / " }
-            <span className="hui-ToolTip__total"> { formatNumber(data.total) } </span>
+            <span className="hui-ToolTip__total"> { formatNumber(data.total, props.totalFormat) } </span>
           </p>
         </div>
       );

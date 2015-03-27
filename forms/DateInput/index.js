@@ -111,7 +111,7 @@ module.exports = React.createClass({
     };
 
     if (props.className) {
-      classes[props.className] = true
+      classes[props.className] = true;
     }
 
     return (

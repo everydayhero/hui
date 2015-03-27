@@ -55,6 +55,18 @@ describe('ToolTip', function() {
     });
   });
 
+  describe('formated', function() {
+    var component;
+
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(<ToolTip data={ data } show={ true } totalFormat={ '0.00a' }/>);
+    });
+
+    it('should render the total formated', function() {
+      expect(findByClass(component, 'hui-ToolTip__total').getDOMNode().textContent).toContain('456.00');
+    });
+  });
+
   describe('flip over behaviour', function() {
     var component;
 
