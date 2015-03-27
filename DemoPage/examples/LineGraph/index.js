@@ -86,7 +86,7 @@ module.exports = React.createClass({
           </ul>
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals (Leave blank to use default formating)
+          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals (Leave blank to use default formatting)
         </li>
       </ul>
       <div className="DemoPage__example--graph--lines">

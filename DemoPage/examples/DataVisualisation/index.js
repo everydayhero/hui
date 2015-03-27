@@ -93,7 +93,7 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">delta:</span> The percentage difference from a comparative period.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals and total value (Leave blank to use default formating)
+          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals and total value (Leave blank to use default formatting)
         </li>
       </ul>
       <div className="DemoPage__example--visualisation">
