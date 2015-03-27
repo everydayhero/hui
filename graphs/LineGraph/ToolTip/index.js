@@ -89,7 +89,7 @@ module.exports = React.createClass({
     var position = props.position;
     var x        = position.x;
     var y        = position.y;
-    var style    = { left: x, top: y };
+    var style    = { left: x, top: y - 3 };
     var classes  = cx({
       "hui-ToolTip": true,
       "hui-ToolTip--left": props.isFlipOver

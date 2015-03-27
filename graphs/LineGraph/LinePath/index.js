@@ -85,7 +85,7 @@ module.exports = React.createClass({
     return isFlipOver;
   },
 
-  onMouseEnter: function(data, dataPoint, pos) {
+  onMouseOver: function(data, dataPoint, pos) {
     var props          = this.props,
         seriesValueKey = props.seriesValueKey,
         valueConverter = props.valueConverter;
@@ -101,7 +101,7 @@ module.exports = React.createClass({
     }.bind(this);
   },
 
-  onMouseLeave: function() {
+  onMouseOut: function() {
     this.props.onPointLeave();
   },
 
@@ -110,8 +110,8 @@ module.exports = React.createClass({
     var targets = [];
     var translateX = this.props.gutter.left;
     var translateY = this.getTranslateY();
-    var onMouseEnter = this.onMouseEnter;
-    var onMouseLeave = this.onMouseLeave;
+    var onMouseOver = this.onMouseOver;
+    var onMouseOut = this.onMouseOut;
 
     _.forEach(graphLine.curves[0].item, function(data, dataPoint) {
       var y = graphLine.yscale(data.calculatedValue) + translateY;
@@ -121,8 +121,8 @@ module.exports = React.createClass({
         cy={ y }
         r="6"
         className="hui-LinePath__target"
-        onMouseEnter={ onMouseEnter(data, dataPoint, {x: x, y: y}) }
-        onMouseLeave={ onMouseLeave } />
+        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
+        onMouseOut={ onMouseOut } />
       );
     });
 
