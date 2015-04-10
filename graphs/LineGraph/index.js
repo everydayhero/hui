@@ -53,17 +53,21 @@ module.exports = React.createClass({
         series         = _.clone(props.series, true);
 
     return _.map(series, function(dataSeries, seriesIndex) {
-      return _.map(dataSeries, function(dataPoint, pointIndex) {
+      var data = _.map(dataSeries.data, function(dataPoint, pointIndex) {
         var value = valueConverter(dataPoint[seriesValueKey]);
 
         if (props.stacked && seriesIndex !== 0) {
-          dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
+          dataPoint.calculatedValue = value + series[seriesIndex - 1].data[pointIndex].calculatedValue;
         } else {
           dataPoint.calculatedValue = value;
         }
 
         return dataPoint;
       });
+
+      dataSeries.data = data;
+
+      return dataSeries;
     });
   },
 

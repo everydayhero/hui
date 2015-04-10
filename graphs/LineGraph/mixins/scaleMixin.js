@@ -8,7 +8,7 @@
   },
 
   getMaxForIndex: function(index) {
-    return  _.max(_.pluck(this.props.series[index], 'calculatedValue'));
+    return  _.max(_.pluck(this.props.series[index].data, 'calculatedValue'));
   },
 
   getUpperBound: function() {

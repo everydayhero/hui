@@ -44,7 +44,7 @@ module.exports = React.createClass({
     var props = this.props;
 
     return GraphLine({
-      data: [props.series[props.index]],
+      data: [props.series[props.index].data],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
