@@ -41,6 +41,19 @@ describe('DeltaArrow', function() {
     });
   });
 
+  describe('numbers over 999%', function() {
+    var component;
+
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(<DeltaArrow delta={ 11.3 } />);
+    });
+
+    it('should render formatted percentage with one signicant number', function() {
+      node = TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow__value');
+      expect(node.getDOMNode().textContent).toEqual('1k%');
+    });
+  });
+
   describe('with loading', function() {
     var component;
 
