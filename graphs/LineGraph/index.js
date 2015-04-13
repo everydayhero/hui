@@ -123,6 +123,7 @@ module.exports = React.createClass({
         <LinePath
           {...props}
           series={ series }
+          className={ series[i].className }
           index={ i }
           width={ state.width }
           height={ state.height }

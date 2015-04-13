@@ -7,22 +7,22 @@ describe('YScale', function() {
   var YScale    = require('../index');
   var TestUtils = React.addons.TestUtils;
   var series = [
-        [
+        { data:[
           { date: 1, calculatedValue: 5 },
           { date: 2, calculatedValue: 22 },
           { date: 3, calculatedValue: 14 },
           { date: 4, calculatedValue: 5 },
           { date: 5, calculatedValue: 10 },
           { date: 6, calculatedValue: 24 }
-        ],
-        [
+        ]},
+        { data: [
           { date: 1, calculatedValue: 4 },
           { date: 2, calculatedValue: 6 },
           { date: 3, calculatedValue: 11 },
           { date: 4, calculatedValue: 2 },
           { date: 5, calculatedValue: 4 },
           { date: 6, calculatedValue: 23 }
-        ]
+        ]}
       ];
 
   var gutters = {

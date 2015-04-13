@@ -3,7 +3,7 @@
  module.exports = {
   getMax: function() {
     return _.max(_.map(this.props.series, function(dataArray) {
-      return  _.max(_.pluck(dataArray, 'calculatedValue'));
+      return  _.max(_.pluck(dataArray.data, 'calculatedValue'));
     }));
   },
 

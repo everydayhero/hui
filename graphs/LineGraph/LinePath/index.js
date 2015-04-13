@@ -16,14 +16,15 @@ module.exports = React.createClass({
   mixins: [scaleMixing],
 
   propTypes: {
-    width: React.PropTypes.number.isRequired,
+    area: React.PropTypes.bool.isRequired,
+    className: React.PropTypes.string,
     height: React.PropTypes.number.isRequired,
-    series: React.PropTypes.array.isRequired,
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
-    area: React.PropTypes.bool.isRequired,
+    series: React.PropTypes.array.isRequired,
     seriesValueKey: React.PropTypes.string.isRequired,
-    valueConverter: React.PropTypes.func
+    valueConverter: React.PropTypes.func,
+    width: React.PropTypes.number.isRequired,
   },
 
   getDrawingHeight: function() {
@@ -65,7 +66,7 @@ module.exports = React.createClass({
         total          = 0;
 
     _.forEach(props.series, function(data) {
-      total += valueConverter(data[dataPoint][seriesValueKey])
+      total += valueConverter(data.data[dataPoint][seriesValueKey])
     });
 
     return total;
@@ -143,8 +144,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var givenClassName = this.props.className || '';
     return (
-      <g className="hui-LinePath">
+      <g className={ 'hui-LinePath ' + givenClassName }>
         { this.renderPath('area') }
         { this.renderPath('line') }
         { this.renderTipTargets() }

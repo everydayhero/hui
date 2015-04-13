@@ -5,7 +5,7 @@ var LineGraph  = require('../../../graphs/LineGraph');
 var Highlight  = require('react-highlight');
 
 function getSeries(tick) {
-  var series = [[], [], []];
+  var series = [{data:[]}, {data:[]}, {data:[]}];
   var count = 0;
 
   while(count < 50) {
@@ -13,17 +13,17 @@ function getSeries(tick) {
     var value2 = (Math.abs(Math.cos(count + tick) * 5100000));
     var value3 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
 
-    series[0].push({
+    series.data[0].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value
     });
 
-    series[1].push({
+    series.data[1].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value2
     });
 
-    series[2].push({
+    series.data[2].push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value3
     });

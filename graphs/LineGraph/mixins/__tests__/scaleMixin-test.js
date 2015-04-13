@@ -7,7 +7,20 @@ describe('scaleMixin', function() {
   describe('max 24', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [[{calculatedValue: 5}, {calculatedValue: 2}],[{calculatedValue: 3}, {calculatedValue: 24}]]
+        series:
+        [
+          { data:
+            [
+              {calculatedValue: 5},
+              {calculatedValue: 2}
+            ]
+          },
+          { data:[
+              {calculatedValue: 3},
+              {calculatedValue: 24}
+            ]
+          }
+        ]
       };
     });
 
@@ -27,7 +40,20 @@ describe('scaleMixin', function() {
   describe('max 999', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [[{calculatedValue: 999}, {calculatedValue: 70}],[{calculatedValue: 566.6}, {calculatedValue: 5}]]
+        series: [
+          {
+            data: [
+              {calculatedValue: 999},
+              {calculatedValue: 70}
+            ]
+          },
+          {
+            data: [
+              {calculatedValue: 566.6},
+              {calculatedValue: 5}
+            ]
+          }
+        ]
       };
     });
 
@@ -47,7 +73,20 @@ describe('scaleMixin', function() {
   describe('max 0.7', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [[{calculatedValue: 0.123}, {calculatedValue: 0.71}],[{calculatedValue: 0.5666}, {calculatedValue: 0.5}]]
+        series: [
+          {
+            data: [
+              {calculatedValue: 0.123},
+              {calculatedValue: 0.71}
+            ]
+          },
+          {
+            data: [
+              {calculatedValue: 0.5666},
+              {calculatedValue: 0.5}
+            ]
+          }
+        ]
       };
     });
 
@@ -67,7 +106,20 @@ describe('scaleMixin', function() {
   describe('max 0.5', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [[{calculatedValue: 0.123}, {calculatedValue: 0.50}],[{calculatedValue: 0.4666}, {calculatedValue: 0.49}]]
+        series: [
+          {
+            data: [
+              {calculatedValue: 0.123},
+              {calculatedValue: 0.50}
+            ]
+          },
+          {
+            data:[
+              {calculatedValue: 0.4666},
+              {calculatedValue: 0.49}
+            ]
+          }
+        ]
       };
     });
 

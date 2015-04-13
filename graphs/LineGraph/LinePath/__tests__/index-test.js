@@ -7,22 +7,22 @@ describe('LinePath', function() {
   var LinePath    = require('../index');
   var TestUtils = React.addons.TestUtils;
   var series = [
-        [
+        { data: [
           { date: 1, calculatedValue: 5 },
           { date: 2, calculatedValue: 22 },
           { date: 3, calculatedValue: 96 },
           { date: 4, calculatedValue: 5 },
           { date: 5, calculatedValue: 10 },
           { date: 6, calculatedValue: 24 }
-        ],
-        [
+        ]},
+        {data :[
           { date: 1, calculatedValue: 4 },
           { date: 2, calculatedValue: 6 },
           { date: 3, calculatedValue: 90 },
           { date: 4, calculatedValue: 2 },
           { date: 5, calculatedValue: 4 },
           { date: 6, calculatedValue: 23 }
-        ]
+        ]}
       ];
 
   var gutters = {
@@ -47,12 +47,19 @@ describe('LinePath', function() {
           line={ true }
           area={ true }
           gutter={ gutters }
+          className='classname1'
           seriesValueKey='' />
       );
     });
 
     it('should render LinePath', function() {
       expect(component).not.toBeNull();
+    });
+
+    it('should render item with given className', function() {
+      var lines = TestUtils.scryRenderedDOMComponentsWithClass(component, 'classname1');
+
+      expect(lines.length).toBe(1);
     });
 
     it('should render a line', function() {

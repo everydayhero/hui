@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
   getScaleIncrement: function() {
     var props = this.props;
-    var numberOfDataPoints = props.series[0].length  - 1;
+    var numberOfDataPoints = props.series[0].data.length  - 1;
     var gap = this.getWidth() / numberOfDataPoints;
     var maxScaleLines = this.getWidth() / props.minScaleLineGap;
     var scaleIncrement = 1;
@@ -56,7 +56,7 @@ module.exports = React.createClass({
     }
 
     var props = this.props;
-    var dataArray = props.series[0];
+    var dataArray = props.series[0].data;
     var scaleLineGap = this.getWidth() / ( dataArray.length - 1 );
     var xPos = 0;
     var paths = [];

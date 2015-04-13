@@ -8,22 +8,22 @@ describe('XScale', function() {
   var TestUtils = React.addons.TestUtils;
 
   var series = [
-        [
+        { data: [
           { date: new Date("2014, 1").toISOString(), calculatedValue: 5 },
           { date: new Date("2014, 2").toISOString(), calculatedValue: 22 },
           { date: new Date("2014, 3").toISOString(), calculatedValue: 14 },
           { date: new Date("2014, 4").toISOString(), calculatedValue: 5 },
           { date: new Date("2014, 5").toISOString(), calculatedValue: 10 },
           { date: new Date("2014, 6").toISOString(), calculatedValue: 24 }
-        ],
-        [
+        ]},
+        { data: [
           { date: new Date("2014, 1").toISOString(), calculatedValue: 4 },
           { date: new Date("2014, 2").toISOString(), calculatedValue: 6 },
           { date: new Date("2014, 3").toISOString(), calculatedValue: 11 },
           { date: new Date("2014, 4").toISOString(), calculatedValue: 2 },
           { date: new Date("2014, 5").toISOString(), calculatedValue: 4 },
           { date: new Date("2014, 6").toISOString(), calculatedValue: 23 }
-        ]
+        ]}
       ];
 
   var gutters = {
