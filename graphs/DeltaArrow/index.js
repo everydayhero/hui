@@ -61,7 +61,7 @@ module.exports = React.createClass({
     } else if (delta == null ) {
       text = '--%';
     } else {
-      text = numeral(delta).format('0%')
+      text = numeral(delta).format('0a%')
                            .toString()
                            .replace(/^-/, "");
     }
