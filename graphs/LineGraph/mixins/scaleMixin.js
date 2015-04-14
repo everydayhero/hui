@@ -2,13 +2,13 @@
 
  module.exports = {
   getMax: function() {
-    return _.max(_.map(this.props.series, function(dataArray) {
-      return  _.max(_.pluck(dataArray, 'calculatedValue'));
+    return _.max(_.map(this.props.collection, function(set) {
+      return  _.max(_.pluck(set.series, 'calculatedValue'));
     }));
   },
 
   getMaxForIndex: function(index) {
-    return  _.max(_.pluck(this.props.series[index], 'calculatedValue'));
+    return  _.max(_.pluck(this.props.collection[index].series, 'calculatedValue'));
   },
 
   getUpperBound: function() {

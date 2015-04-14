@@ -6,17 +6,21 @@ module.exports = React.createClass({
   displayName: 'Legend',
 
   propTypes: {
-    labels: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
+    keys: React.PropTypes.arrayOf(React.PropTypes.shape({
+      text: React.PropTypes.string,
+      className: React.PropTypes.string
+    })).isRequired
   },
 
-  labels: function() {
-    return this.props.labels.map(function(label) {
+  keys: function() {
+    return this.props.keys.map(function(key) {
+      var givenClassName = ' ' + key.className || '';
       return (
-        <div className="hui-Legend__item">
+        <div className={ 'hui-Legend__item' + givenClassName }>
           <div className="hui-Legend__content">
             <div className="hui-Legend__dot"></div>
             <div className="hui-Legend__label">
-              { label }
+              { key.label }
             </div>
           </div>
         </div>
@@ -27,7 +31,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="hui-Legend">
-        { this.labels() }
+        { this.keys() }
       </div>
     );
   }

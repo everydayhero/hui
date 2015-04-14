@@ -10,7 +10,7 @@ module.exports = React.createClass({
   displayName: 'XScale',
 
   propTypes: {
-    series: React.PropTypes.array.isRequired,
+    collection: React.PropTypes.array.isRequired,
     width: React.PropTypes.number.isRequired,
     height: React.PropTypes.number.isRequired,
     minScaleLineGap: React.PropTypes.number,
@@ -37,13 +37,13 @@ module.exports = React.createClass({
 
   getScaleIncrement: function() {
     var props = this.props;
-    var numberOfDataPoints = props.series[0].length  - 1;
-    var gap = this.getWidth() / numberOfDataPoints;
+    var numberOfseriesPoints = props.collection[0].series.length  - 1;
+    var gap = this.getWidth() / numberOfseriesPoints;
     var maxScaleLines = this.getWidth() / props.minScaleLineGap;
     var scaleIncrement = 1;
 
     if (gap < props.minScaleLineGap) {
-      scaleIncrement = Math.ceil(numberOfDataPoints / maxScaleLines);
+      scaleIncrement = Math.ceil(numberOfseriesPoints / maxScaleLines);
     }
 
     return scaleIncrement;
@@ -51,18 +51,18 @@ module.exports = React.createClass({
 
   renderScaleLines: function() {
 
-    if (this.props.series.length == 0) {
+    if (this.props.collection.length == 0) {
       return;
     }
 
     var props = this.props;
-    var dataArray = props.series[0];
-    var scaleLineGap = this.getWidth() / ( dataArray.length - 1 );
+    var series = props.collection[0].series;
+    var scaleLineGap = this.getWidth() / ( series.length - 1 );
     var xPos = 0;
     var paths = [];
     var scaleIncrement = this.getScaleIncrement();
 
-    for (var i = 0; i < dataArray.length; i += scaleIncrement) {
+    for (var i = 0; i < series.length; i += scaleIncrement) {
       paths.push(
         <g
           transform={ "translate("+ (props.gutter.left + OFFSET) + ", 0)" }
@@ -72,7 +72,7 @@ module.exports = React.createClass({
             y={ props.height }
             textAnchor="middle"
             className="hui-XScale__label">
-              { moment(dataArray[i].date).format(props.dateFormat) }
+              { moment(series[i].date).format(props.dateFormat) }
           </text>
         </g>);
 

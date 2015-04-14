@@ -12,8 +12,8 @@ module.exports = React.createClass({
   displayName: 'LineGraph',
 
   propTypes: {
-    series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string.isRequired,
+    collection: React.PropTypes.array.isRequired,
+    collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
     totalFormat: React.PropTypes.string,
     stacked: React.PropTypes.bool,
@@ -46,24 +46,28 @@ module.exports = React.createClass({
     }
   },
 
-  transformSeries: function() {
-    var props          = this.props,
-        seriesValueKey = props.seriesValueKey,
-        valueConverter = props.valueConverter,
-        series         = _.clone(props.series, true);
+  transformCollection: function() {
+    var props              = this.props,
+        collectionValueKey = props.collectionValueKey,
+        valueConverter     = props.valueConverter,
+        collection         = _.clone(props.collection, true);
 
-    return _.map(series, function(dataSeries, seriesIndex) {
-      return _.map(dataSeries, function(dataPoint, pointIndex) {
-        var value = valueConverter(dataPoint[seriesValueKey]);
+    return _.map(collection, function(set, collectionIndex) {
+      var series = _.map(set.series, function(dataPoint, pointIndex) {
+        var value = valueConverter(dataPoint[collectionValueKey]);
 
-        if (props.stacked && seriesIndex !== 0) {
-          dataPoint.calculatedValue = value + series[seriesIndex - 1][pointIndex].calculatedValue;
+        if (props.stacked && collectionIndex !== 0) {
+          dataPoint.calculatedValue = value + collection[collectionIndex - 1].series[pointIndex].calculatedValue;
         } else {
           dataPoint.calculatedValue = value;
         }
 
         return dataPoint;
       });
+
+      set.series = series;
+
+      return set;
     });
   },
 
@@ -86,11 +90,11 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    this.setState({series: this.transformSeries()});
+    this.setState({collection: this.transformCollection()});
   },
 
   componentWillReceiveProps: function() {
-    this.setState({series: this.transformSeries()});
+    this.setState({collection: this.transformCollection()});
   },
 
   showTip: function(data, position, isFlipOver) {
@@ -112,20 +116,21 @@ module.exports = React.createClass({
     var paths  = [];
     var state  = this.state;
     var props  = this.props;
-    var series = state.series;
+    var collection = state.collection;
 
-    for (var i = series.length - 1; i >= 0; i--) {
+    for (var i = collection.length - 1; i >= 0; i--) {
       paths.push(
         <LinePath
           {...props}
-          series={ series }
+          collection={ collection }
+          className={ collection[i].className }
           index={ i }
           width={ state.width }
           height={ state.height }
           key={ i }
           onPointOver={ this.showTip }
           onPointLeave={ this.hideTip }
-          seriesValueKey={ props.seriesValueKey }
+          collectionValueKey={ props.collectionValueKey }
           valueConverter={ props.valueConverter } />
       );
     };
@@ -135,15 +140,15 @@ module.exports = React.createClass({
 
   renderGraph: function() {
     var state = this.state;
-    if (!state.series || !state.width) {
+    if (!state.collection || !state.width) {
       return false;
     }
 
     return (
       <g>
         { this.renderLinePath() }
-        <YScale {...this.props} series={ state.series } height={ state.height } width={ state.width } />
-        <XScale {...this.props} series={ state.series } height={ state.height } width={ state.width } />
+        <YScale {...this.props} collection={ state.collection } height={ state.height } width={ state.width } />
+        <XScale {...this.props} collection={ state.collection } height={ state.height } width={ state.width } />
       </g>
     );
   },

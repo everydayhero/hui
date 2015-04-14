@@ -6,23 +6,23 @@ describe('YScale', function() {
   var React     = require('react/addons');
   var YScale    = require('../index');
   var TestUtils = React.addons.TestUtils;
-  var series = [
-        [
+  var collection = [
+        { series:[
           { date: 1, calculatedValue: 5 },
           { date: 2, calculatedValue: 22 },
           { date: 3, calculatedValue: 14 },
           { date: 4, calculatedValue: 5 },
           { date: 5, calculatedValue: 10 },
           { date: 6, calculatedValue: 24 }
-        ],
-        [
+        ]},
+        { series: [
           { date: 1, calculatedValue: 4 },
           { date: 2, calculatedValue: 6 },
           { date: 3, calculatedValue: 11 },
           { date: 4, calculatedValue: 2 },
           { date: 5, calculatedValue: 4 },
           { date: 6, calculatedValue: 23 }
-        ]
+        ]}
       ];
 
   var gutters = {
@@ -38,7 +38,7 @@ describe('YScale', function() {
     beforeEach(function() {
       component = TestUtils.renderIntoDocument(
         <YScale
-          series={ series }
+          collection={ collection }
           height={ 200 }
           width={ 200 }
           gutter= { gutters } />

@@ -12,10 +12,10 @@ module.exports = React.createClass({
   mixins: [scaleMixin],
 
   propTypes: {
-    series: React.PropTypes.array.isRequired,
-    width: React.PropTypes.number.isRequired,
+    collection: React.PropTypes.array.isRequired,
     height: React.PropTypes.number.isRequired,
     minScaleLineGap: React.PropTypes.number,
+    width: React.PropTypes.number.isRequired,
     gutter: React.PropTypes.shape({
       bottom: React.PropTypes.number.isRequired,
       top: React.PropTypes.number.isRequired
