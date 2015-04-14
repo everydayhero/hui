@@ -5,8 +5,8 @@ var GraphLine  = require('paths-js/stock');
 var scaleMixing = require('../mixins/scaleMixin');
 var _           = require('lodash');
 
-function date(data) {
-  var d = new Date(data.date);
+function date(series) {
+  var d = new Date(series.date);
 
   return d.getTime();
 }
@@ -21,8 +21,8 @@ module.exports = React.createClass({
     height: React.PropTypes.number.isRequired,
     index: React.PropTypes.number.isRequired,
     line: React.PropTypes.bool.isRequired,
-    series: React.PropTypes.array.isRequired,
-    seriesValueKey: React.PropTypes.string.isRequired,
+    collection: React.PropTypes.array.isRequired,
+    collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
     width: React.PropTypes.number.isRequired,
   },
@@ -45,7 +45,7 @@ module.exports = React.createClass({
     var props = this.props;
 
     return GraphLine({
-      data: [props.series[props.index].data],
+      data: [props.collection[props.index].series],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
@@ -61,12 +61,12 @@ module.exports = React.createClass({
 
   calculateTotal: function(dataPoint) {
     var props          = this.props,
-        seriesValueKey = props.seriesValueKey,
+        collectionValueKey = props.collectionValueKey,
         valueConverter = props.valueConverter,
         total          = 0;
 
-    _.forEach(props.series, function(data) {
-      total += valueConverter(data.data[dataPoint][seriesValueKey])
+    _.forEach(props.collection, function(set) {
+      total += valueConverter(set.series[dataPoint][collectionValueKey])
     });
 
     return total;
@@ -88,13 +88,13 @@ module.exports = React.createClass({
 
   onMouseOver: function(data, dataPoint, pos) {
     var props          = this.props,
-        seriesValueKey = props.seriesValueKey,
+        collectionValueKey = props.collectionValueKey,
         valueConverter = props.valueConverter;
 
     return function() {
       var tipInfo = {
         date: data.date,
-        value: valueConverter(data[seriesValueKey]),
+        value: valueConverter(data[collectionValueKey]),
         total: this.calculateTotal(dataPoint)
       }
 
@@ -114,15 +114,15 @@ module.exports = React.createClass({
     var onMouseOver = this.onMouseOver;
     var onMouseOut = this.onMouseOut;
 
-    _.forEach(graphLine.curves[0].item, function(data, dataPoint) {
-      var y = graphLine.yscale(data.calculatedValue) + translateY;
-      var x = graphLine.xscale(date(data)) + translateX;
+    _.forEach(graphLine.curves[0].item, function(series, dataPoint) {
+      var y = graphLine.yscale(series.calculatedValue) + translateY;
+      var x = graphLine.xscale(date(series)) + translateX;
       targets.push(<circle
         cx={ x }
         cy={ y }
         r="6"
         className="hui-LinePath__target"
-        onMouseOver={ onMouseOver(data, dataPoint, {x: x, y: y}) }
+        onMouseOver={ onMouseOver(series, dataPoint, {x: x, y: y}) }
         onMouseOut={ onMouseOut } />
       );
     });

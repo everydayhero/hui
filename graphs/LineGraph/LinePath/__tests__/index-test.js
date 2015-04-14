@@ -6,8 +6,8 @@ describe('LinePath', function() {
   var React     = require('react/addons');
   var LinePath    = require('../index');
   var TestUtils = React.addons.TestUtils;
-  var series = [
-        { data: [
+  var collection = [
+        { series: [
           { date: 1, calculatedValue: 5 },
           { date: 2, calculatedValue: 22 },
           { date: 3, calculatedValue: 96 },
@@ -15,7 +15,7 @@ describe('LinePath', function() {
           { date: 5, calculatedValue: 10 },
           { date: 6, calculatedValue: 24 }
         ]},
-        {data :[
+        { series :[
           { date: 1, calculatedValue: 4 },
           { date: 2, calculatedValue: 6 },
           { date: 3, calculatedValue: 90 },
@@ -40,7 +40,7 @@ describe('LinePath', function() {
     beforeEach(function() {
       component = TestUtils.renderIntoDocument(
         <LinePath
-          series={ series }
+          collection={ collection }
           width={ 200 }
           height={ height }
           index={ 0 }
@@ -48,7 +48,7 @@ describe('LinePath', function() {
           area={ true }
           gutter={ gutters }
           className='classname1'
-          seriesValueKey='' />
+          collectionValueKey='' />
       );
     });
 
@@ -99,14 +99,14 @@ describe('LinePath', function() {
     beforeEach(function() {
       component = TestUtils.renderIntoDocument(
         <LinePath
-          series={ series }
+          collection={ collection }
           width={ 200 }
           height={ 200 }
           index={ 0 }
           line={ false }
           area={ false }
           gutter={ gutters }
-          seriesValueKey='' />
+          collectionValueKey='' />
       );
     });
 

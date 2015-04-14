@@ -10,14 +10,14 @@ module.exports = React.createClass({
   displayName: 'DataVisualisation',
 
   propTypes: {
-    series: React.PropTypes.array,
-    seriesValueKey: React.PropTypes.string,
+    collection: React.PropTypes.array,
+    collectionValueKey: React.PropTypes.string,
     valueConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
     total: React.PropTypes.number,
     totalFormat: React.PropTypes.string,
-    legendLabels: React.PropTypes.arrayOf(React.PropTypes.string),
+    legendKeys: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
     tipLabel: React.PropTypes.string,
     loading: React.PropTypes.bool
@@ -36,12 +36,12 @@ module.exports = React.createClass({
   renderGraph: function() {
     var props = this.props;
 
-    if (props.series) {
+    if (props.collection) {
       return (
         <Graph
           stacked={ props.stacked }
-          series={ props.series }
-          seriesValueKey={ props.seriesValueKey }
+          collection={ props.collection }
+          collectionValueKey={ props.collectionValueKey }
           valueConverter={ props.valueConverter }
           totalFormat={ props.totalFormat }
           tipLabel={ props.tipLabel }
@@ -78,14 +78,14 @@ module.exports = React.createClass({
   renderLegend: function() {
     var props = this.props,
         loading = props.loading,
-        legendLabels = props.legendLabels;
+        legendKeys = props.legendKeys;
 
-    if (loading || !legendLabels) {
+    if (loading || !legendKeys) {
       return false;
     }
 
     return (
-      <Legend labels={ legendLabels } />
+      <Legend keys={ legendKeys } />
     );
   },
 

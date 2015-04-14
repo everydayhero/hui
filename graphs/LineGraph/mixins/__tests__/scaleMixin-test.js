@@ -7,15 +7,15 @@ describe('scaleMixin', function() {
   describe('max 24', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series:
+        collection:
         [
-          { data:
+          { series:
             [
               {calculatedValue: 5},
               {calculatedValue: 2}
             ]
           },
-          { data:[
+          { series:[
               {calculatedValue: 3},
               {calculatedValue: 24}
             ]
@@ -40,15 +40,15 @@ describe('scaleMixin', function() {
   describe('max 999', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [
+        collection: [
           {
-            data: [
+            series: [
               {calculatedValue: 999},
               {calculatedValue: 70}
             ]
           },
           {
-            data: [
+            series: [
               {calculatedValue: 566.6},
               {calculatedValue: 5}
             ]
@@ -73,15 +73,15 @@ describe('scaleMixin', function() {
   describe('max 0.7', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [
+        collection: [
           {
-            data: [
+            series: [
               {calculatedValue: 0.123},
               {calculatedValue: 0.71}
             ]
           },
           {
-            data: [
+            series: [
               {calculatedValue: 0.5666},
               {calculatedValue: 0.5}
             ]
@@ -106,15 +106,15 @@ describe('scaleMixin', function() {
   describe('max 0.5', function() {
     beforeEach(function() {
       scaleMixin.props = {
-        series: [
+        collection: [
           {
-            data: [
+            series: [
               {calculatedValue: 0.123},
               {calculatedValue: 0.50}
             ]
           },
           {
-            data:[
+            series:[
               {calculatedValue: 0.4666},
               {calculatedValue: 0.49}
             ]
