@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 9px;
   color: white;
 }
 
@@ -34,7 +34,7 @@
     fill: #d1d2d4;
   }
   .hui-DeltaArrow__value {
-    bottom: 5px;
+    bottom: $hui-x-1;
   }
 }
 
@@ -43,7 +43,7 @@
     fill: #85c27e;
   }
   .hui-DeltaArrow__value {
-    bottom: 5px;
+    bottom: $hui-x-1;
   }
 }
 
@@ -52,6 +52,6 @@
     fill: #ce522e;
   }
   .hui-DeltaArrow__value {
-    top: 5px;
+    top: $hui-x-1;
   }
 }

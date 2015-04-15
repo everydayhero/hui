@@ -13,17 +13,17 @@ function getCollection(tick) {
     var value2 = (Math.abs(Math.cos(count + tick) * 5100000));
     var value3 = (Math.abs(Math.sin(count + 5 + tick) * 3000000));
 
-    collection.series[0].push({
+    collection[0].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value
     });
 
-    collection.series[1].push({
+    collection[1].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value2
     });
 
-    collection.series[2].push({
+    collection[2].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
       funds_raised: value3
     });
