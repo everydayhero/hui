@@ -93,7 +93,7 @@ module.exports = React.createClass({
         disabled={ props.disabled && 'disabled' }
         onClick={ this.handleDefaultClick }>
         <Icon className="hui-Button__icon" icon={ props.icon }/>
-        <span className="hui-Button__label">{ props.label }</span>
+        <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
     );
   }
