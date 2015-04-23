@@ -1,10 +1,10 @@
 "use strict";
 
-var _         = require('lodash');
-var React     = require('react');
-var cx        = require('react/lib/cx');
-var Errors    = require('../InputErrors');
-var Icon      = require('../../Helpers/Icon');
+var _          = require('lodash');
+var React      = require('react');
+var Classnames = require('classnames');
+var Errors     = require('../InputErrors');
+var Icon       = require('../../Helpers/Icon');
 
 module.exports = React.createClass({
   displayName: 'SelectInput',
@@ -60,11 +60,11 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
     var value = props.value;
-    var classes = props.className + ' ' + cx({
-      'hui-SelectInput': true,
+
+    var classes = Classnames({
       'hui-Input--error': !props.valid,
       'hui-SelectInput--focused': state.focused
-    });
+    }, 'hui-SelectInput', props.className);
 
     return (
       <div className={ classes }>

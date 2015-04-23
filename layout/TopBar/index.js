@@ -1,7 +1,7 @@
 "use strict";
 
-var React = require('react');
-var cx    = require('react/lib/cx');
+var React      = require('react');
+var Classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'TopBar',
@@ -11,10 +11,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var className = cx({
-      "hui-TopBar": true,
+    var className = Classnames({
       "hui-TopBar--fixed": this.props.fixed
-    });
+    }, "hui-TopBar");
 
     return (
       <div className={ className }>

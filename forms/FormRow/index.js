@@ -1,7 +1,7 @@
 "use strict";
 
-var React = require('react');
-var cx    = require('react/lib/cx');
+var React      = require('react');
+var Classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'FormRow',
@@ -58,7 +58,8 @@ module.exports = React.createClass({
   renderLabels: function() {
     var props = this.props;
     var classNameProp = props.className || '';
-    var classes = cx({
+
+    var classes = Classnames({
       'hui-FormRow__labels': props.hint|| props.labelTop,
       'hui-FormRow__labels--noHelp': !props.hint && !props.labelTop
     });
@@ -81,7 +82,8 @@ module.exports = React.createClass({
     var props = this.props;
     var classNameProp = props.className || '';
     var classes = 'hui-FormRow ' + classNameProp;
-    var contentClass = cx({
+
+    var contentClass = Classnames({
       'hui-FormRow__content': this.hasLabels(),
       'hui-FormRow__content--nolabel': !this.hasLabels()
     });

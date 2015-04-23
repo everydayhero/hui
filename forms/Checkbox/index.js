@@ -1,8 +1,8 @@
 "use strict";
 
-var React  = require('react');
-var cx     = require('react/lib/cx');
-var Errors = require('../InputErrors');
+var React      = require('react');
+var Classnames = require('classnames');
+var Errors     = require('../InputErrors');
 
 module.exports = React.createClass({
   displayName: 'Checkbox',
@@ -71,10 +71,9 @@ module.exports = React.createClass({
       disabled: (!enabled)
     });
 
-    var classes = cx({
-      "hui-Checkbox": true,
+    var classes = Classnames({
       "hui-Input--error": !this.props.valid
-    });
+    }, "hui-Checkbox");
 
     return (
       <div className={ classes }>

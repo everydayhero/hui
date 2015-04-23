@@ -2,6 +2,7 @@
 
 jest.dontMock('../');
 jest.dontMock('../../InputErrors');
+jest.dontMock('classnames');
 
 describe('Checkbox', function() {
   var React       = require('react/addons');

@@ -1,7 +1,7 @@
 "use strict";
 
-var React  = require('react');
-var cx     = require('react/lib/cx');
+var React      = require('react');
+var Classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'hui-DatePickerPeriod',
@@ -24,10 +24,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var classes = cx({
-      'hui-DatePickerPeriod': true,
+    var classes = Classnames({
       'hui-DatePickerPeriod--selected': this.isSelected(),
-    });
+    }, 'hui-DatePickerPeriod');
 
     return <a className={ classes } href="#" onClick={ this.onClick }>{ this.props.children } </a>;
   }

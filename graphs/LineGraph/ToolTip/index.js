@@ -2,7 +2,7 @@
 
 var _            = require('lodash');
 var React        = require('react');
-var cx           = require('react/lib/cx');
+var Classnames   = require('classnames');
 var moment       = require('moment');
 var formatNumber = require('../../../lib/formatNumber');
 
@@ -59,11 +59,10 @@ module.exports = React.createClass({
     var data  = props.data;
     var date, content, classes;
 
-    classes = cx({
-      "hui-ToolTip__text": true,
+    classes = Classnames({
       "hui-ToolTip__text--left": !props.isFlipOver,
       "hui-ToolTip__text--right": props.isFlipOver,
-    });
+    }, "hui-ToolTip__text");
 
     if (_.isEmpty(data)) {
       return false;
@@ -90,10 +89,10 @@ module.exports = React.createClass({
     var x        = position.x;
     var y        = position.y;
     var style    = { left: x, top: y - 3 };
-    var classes  = cx({
-      "hui-ToolTip": true,
+
+    var classes = Classnames({
       "hui-ToolTip--left": props.isFlipOver
-    });
+    }, "hui-ToolTip");
 
     if (!props.show) {
       return false;

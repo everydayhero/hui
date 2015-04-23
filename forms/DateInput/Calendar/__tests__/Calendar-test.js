@@ -3,6 +3,7 @@
 jest.dontMock('../');
 jest.dontMock('lodash');
 jest.dontMock('moment');
+jest.dontMock('classnames');
 jest.dontMock('../../DatePickerDay');
 
 describe('Calendar', function() {

@@ -1,7 +1,7 @@
 "use strict";
 
 var React            = require('react');
-var cx               = require('react/lib/cx');
+var Classnames       = require('classnames');
 var InputErrors      = require('../InputErrors');
 var placeholderMixin = require('../../mixins/placeholderMixin');
 var nextId           = 0;
@@ -52,16 +52,13 @@ module.exports = React.createClass({
   render: function() {
     var props = this.props;
 
-    var classes = {
-      "hui-TextInput": true,
+    var classes = Classnames({
       "hui-TextInput--error": this.hasErrors(),
       "hui-TextInput--readOnly": this.props.readOnly
-    };
-
-    classes[props.className] = true;
+    }, 'hui-TextInput', props.className);
 
     return (
-      <span className={ cx(classes) }>
+      <span className={ classes }>
         { this.renderPlaceholder() }
         { this.renderInput() }
         { this.renderCounter() }
@@ -84,10 +81,9 @@ module.exports = React.createClass({
         number = maxLength;
       }
 
-      classes = cx({
-        "hui-TextInput--counter": true,
+      classes = Classnames({
         "hui-TextInput--counter--warning": number <= 5
-      });
+      }, "hui-TextInput--counter");
 
       return (
         <p className={ classes }>{ number }</p>
@@ -100,20 +96,16 @@ module.exports = React.createClass({
   renderInput: function() {
     var props = this.props;
     var className = props.className;
-    var classes = {
-      "hui-TextInput__input": true,
-      "hui-TextInput__input--shrink": this.props.hasCounter
-    };
 
-    if (className) {
-      classes[className] = true;
-    }
+    var classes = Classnames({
+      "hui-TextInput__input--shrink": this.props.hasCounter
+    }, "hui-TextInput__input", className);
 
     return (
       <input
         {...props}
         autoComplete="off"
-        className={ cx(classes) }
+        className={ classes }
         placeholder=""
         ref="input"
         maxLength="10000" />
