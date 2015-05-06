@@ -1,6 +1,6 @@
 {
   "name": "hui",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "src/index.js",
   "files": [
@@ -24,10 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/everydayhero/ui-library.git"
+    "url": "https://github.com/everydayhero/hui.git"
   },
   "author": "EDH",
-  "homepage": "https://github.com/everydayhero/ui-library",
+  "homepage": "https://github.com/everydayhero/hui",
   "assets_cdn": "//edh-widgets.s3.amazonaws.com/",
   "dependencies": {
     "classnames": "~1.2.0",
