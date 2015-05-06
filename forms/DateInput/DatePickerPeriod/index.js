@@ -1,7 +1,7 @@
 "use strict";
 
 var React      = require('react');
-var Classnames = require('classnames');
+var classNames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'hui-DatePickerPeriod',
@@ -24,7 +24,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var classes = Classnames({
+    var classes = classNames({
       'hui-DatePickerPeriod--selected': this.isSelected(),
     }, 'hui-DatePickerPeriod');
 

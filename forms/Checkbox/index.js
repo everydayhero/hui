@@ -1,7 +1,7 @@
 "use strict";
 
 var React      = require('react');
-var Classnames = require('classnames');
+var classNames = require('classnames');
 var Errors     = require('../InputErrors');
 
 module.exports = React.createClass({
@@ -71,7 +71,7 @@ module.exports = React.createClass({
       disabled: (!enabled)
     });
 
-    var classes = Classnames({
+    var classes = classNames({
       "hui-Input--error": !this.props.valid
     }, "hui-Checkbox");
 

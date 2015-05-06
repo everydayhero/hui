@@ -10,7 +10,6 @@ var UrlInput            = require('../forms/UrlInput');
 var DateInput           = require('../forms/DateInput');
 var FileInput           = require('../forms/FileInput');
 var ImageInput          = require('../forms/ImageInput');
-var actions             = require('./reactFormActions');
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 
 module.exports = {
@@ -33,9 +32,6 @@ module.exports = {
         value = e.target.checked;
       }
 
-      if (form[key] != value) {
-        actions.dismissGlobalFlash();
-      }
       if (value === '') {
         value = null;
       }
@@ -48,10 +44,6 @@ module.exports = {
   changeFormPropertyFn: function(key) {
     return function(obj) {
       var form = this.state.form;
-
-      if (form[key] != obj) {
-        actions.dismissGlobalFlash();
-      }
 
       form[key] = nullEmptyStringDeep(obj);
       this.setState({form: form}, this.onChange);

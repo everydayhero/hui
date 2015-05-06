@@ -2,7 +2,7 @@
 
 var React      = require('react');
 var moment     = require('moment');
-var Classnames = require('classnames');
+var classNames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'hui-DatePickerDay',
@@ -30,7 +30,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var classes = Classnames({
+    var classes = classNames({
       'hui-DatePickerDay--today': this.isToday(),
       'hui-DatePickerDay--selected': this.isSelected(),
     }, 'hui-DatePickerDay');

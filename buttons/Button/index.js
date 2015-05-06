@@ -1,7 +1,7 @@
 "use strict";
 
 var React      = require('react');
-var Classnames = require('classnames');
+var classNames = require('classnames');
 var Icon       = require('../../Helpers/Icon');
 
 module.exports = React.createClass({
@@ -62,7 +62,7 @@ module.exports = React.createClass({
     var kind = props.kind;
     var href = props.href;
 
-    var classes = Classnames({
+    var classes = classNames({
       'hui-Button--cta': kind === 'cta',
       'hui-Button--primary': kind === 'primary',
       'hui-Button--secondary': kind === 'secondary',
