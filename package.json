@@ -1,6 +1,6 @@
 {
   "name": "hui",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "src/index.js",
   "files": [
@@ -19,7 +19,6 @@
     "test": "node_modules/.bin/jest",
     "start": "node server.js",
     "build": "node_modules/.bin/gulp build",
-    "postinstall": "npm run build",
     "deploy_assets": "bin/deploy_assets"
   },
   "repository": {
