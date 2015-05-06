@@ -24,13 +24,8 @@ module.exports = {
   },
 
   inputChangeEventFn: function(key) {
-    return function(e) {
+    return function(value) {
       var form = this.state.form;
-      var value = e.target.value;
-
-      if (e.target.type === 'checkbox') {
-        value = e.target.checked;
-      }
 
       if (value === '') {
         value = null;

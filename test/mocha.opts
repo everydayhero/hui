@@ -1,0 +1,4 @@
+--recursive
+--compilers .:test/helpers/compiler.js
+--ui bdd
+--require test/helpers/common.js
