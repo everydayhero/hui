@@ -1,7 +1,7 @@
 "use strict";
 
 var React       = require('react');
-var Classnames  = require('classnames');
+var classNames  = require('classnames');
 var filepicker  = require('../../lib/filepicker');
 var Icon        = require('../../Helpers/Icon');
 var InputErrors = require('../InputErrors');
@@ -89,7 +89,7 @@ module.exports = React.createClass({
       );
     }
 
-    classes = Classnames({
+    classes = classNames({
       'hui-FileInput_hasFile': !!filename
     }, 'hui-FileInput');
 

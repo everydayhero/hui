@@ -2,7 +2,7 @@
 
 var _          = require('lodash');
 var React      = require('react');
-var Classnames = require('classnames');
+var classNames = require('classnames');
 var Errors     = require('../InputErrors');
 var Icon       = require('../../Helpers/Icon');
 
@@ -61,7 +61,7 @@ module.exports = React.createClass({
     var state = this.state;
     var value = props.value;
 
-    var classes = Classnames({
+    var classes = classNames({
       'hui-Input--error': !props.valid,
       'hui-SelectInput--focused': state.focused
     }, 'hui-SelectInput', props.className);

@@ -2,7 +2,7 @@
 
 var moment            = require('moment');
 var React             = require('react');
-var Classnames        = require('classnames');
+var classNames        = require('classnames');
 var DatePicker        = require('./DatePicker');
 var InputErrors       = require('../InputErrors');
 var Icon              = require('../../Helpers/Icon');
@@ -105,7 +105,7 @@ module.exports = React.createClass({
   render: function() {
     var props = this.props;
 
-    var classes = Classnames({
+    var classes = classNames({
       "hui-DateInput--empty": this.hasValue() === false
     }, "hui-DateInput", props.className);
 

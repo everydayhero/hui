@@ -1,7 +1,7 @@
 "use strict";
 
 var React            = require('react');
-var Classnames       = require('classnames');
+var classNames       = require('classnames');
 var InputErrors      = require('../InputErrors');
 var placeholderMixin = require('../../mixins/placeholderMixin');
 var nextId           = 0;
@@ -52,7 +52,7 @@ module.exports = React.createClass({
   render: function() {
     var props = this.props;
 
-    var classes = Classnames({
+    var classes = classNames({
       "hui-TextInput--error": this.hasErrors(),
       "hui-TextInput--readOnly": this.props.readOnly
     }, 'hui-TextInput', props.className);
@@ -81,7 +81,7 @@ module.exports = React.createClass({
         number = maxLength;
       }
 
-      classes = Classnames({
+      classes = classNames({
         "hui-TextInput--counter--warning": number <= 5
       }, "hui-TextInput--counter");
 
@@ -97,7 +97,7 @@ module.exports = React.createClass({
     var props = this.props;
     var className = props.className;
 
-    var classes = Classnames({
+    var classes = classNames({
       "hui-TextInput__input--shrink": this.props.hasCounter
     }, "hui-TextInput__input", className);
 

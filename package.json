@@ -30,12 +30,20 @@
   "homepage": "https://github.com/everydayhero/ui-library",
   "assets_cdn": "//edh-widgets.s3.amazonaws.com/",
   "dependencies": {
-    "browserify": "^8.1.3",
     "classnames": "~1.2.0",
+    "lodash": "^3.8.0",
+    "moment": "2.8.3",
+    "numeral": "^1.5.3",
+    "paths-js": "^0.3.0",
+    "react": "^0.12.2",
+    "react-capacitor": "~0.0.6",
+    "react-highlight": "^0.4.1"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.3",
     "compression": "^1.3.0",
     "ejs": "^2.2.4",
     "envify": "^3.2.0",
-    "es6-promise": "~1.0.0",
     "express": "^4.11.1",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.1.0",
@@ -50,18 +58,10 @@
     "gulp-uglify": "^1.1.0",
     "gulp-util": "^3.0.2",
     "highlight.js": "^8.4.0",
-    "install": "^0.1.8",
     "jest-cli": "^0.2.1",
     "jshint-stylish": "^1.0.0",
-    "lodash": "^3.0.0",
-    "moment": "2.8.3",
     "morgan": "^1.5.1",
     "node-jsx": "^0.12.4",
-    "numeral": "^1.5.3",
-    "paths-js": "^0.3.0",
-    "react": "^0.12.2",
-    "react-capacitor": "~0.0.6",
-    "react-highlight": "^0.4.1",
     "react-tools": "^0.12.2",
     "reactify": "^1.0.0",
     "run-sequence": "^1.0.2",
@@ -69,13 +69,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1",
-    "webpack": "^1.5.3",
     "wget": "0.0.1"
-  },
-  "devDependencies": {
-    "compression": "^1.3.0",
-    "express": "^4.11.1",
-    "morgan": "^1.5.1"
   },
   "browserify": {
     "transform": [
