@@ -6,7 +6,6 @@ var TopBarLink      = require('../layout/TopBarLink');
 var Masthead        = require('../layout/Masthead');
 var Highlight       = require('react-highlight');
 var pkg             = require('../package');
-var imagePath       = '/images-' + pkg.version + '/';
 var TopBarExample   = require('./examples/TopBar');
 var DeltaArrow      = require('./examples/DeltaArrow');
 var LineGraph       = require('./examples/LineGraph');
@@ -22,6 +21,7 @@ var DateInput       = require('./examples/DateInput');
 var FileInput       = require('./examples/FileInput');
 var ImageInput      = require('./examples/ImageInput');
 var ButtonExample   = require('./examples/Button');
+var imagePath       = './images/';
 
 module.exports = React.createClass({
   displayName: 'DemoPage',

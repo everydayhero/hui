@@ -85,7 +85,7 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
 gulp.task('images', function() {
   return gulp
     .src('./images/*', {base: './images'})
-    .pipe(gulp.dest('dist/images' + '-' + pkg.version));
+    .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('build', ['index']);

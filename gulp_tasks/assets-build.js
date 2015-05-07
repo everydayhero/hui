@@ -8,7 +8,9 @@ var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var pkg          = require('../package');
 var rename       = require('gulp-rename');
-
+var inject       = require("gulp-inject");
+var merge        = require('merge-stream');
+var replace      = require('gulp-replace');
 // stylesheets
 var sass         = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
@@ -64,10 +66,37 @@ gulp.task('assets-scripts', [ 'lint' ], function() {
       .pipe(gulp.dest('./dist/deploy/'));
 });
 
-gulp.task('assets-build', [ 'assets-styles', 'assets-scripts', 'assets-images']);
-
 gulp.task('assets-images', function() {
   return gulp
     .src('./images/*', {base: './images'})
     .pipe(gulp.dest('./dist/deploy/hui-' + pkg.version + '/images'));
 });
+
+gulp.task('guide-index', [ 'styles', 'scripts', 'images'], function() {
+  var sources = gulp.src([
+      'dist/*/index.*'
+    ], { read: false });
+
+  var moveFiles = gulp
+    .src([
+      'dist/*/index.*'
+    ])
+    .pipe(gulp.dest('dist/deploy/hui-' + pkg.version));
+
+  var moveIndex = gulp
+    .src('index.ejs')
+    .pipe(inject(sources, {
+      transform: function(filepath, file, i, length) {
+        // remove `/dist` from the filepath
+        filepath = './' + filepath.split('/').slice(2).join('/');
+        return inject.transform(filepath, file, i, length);
+      }
+    }))
+    .pipe(replace("<%- content %>", 'Loading...'))
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest('dist/deploy/hui-' + pkg.version));
+
+  return merge(moveFiles, moveIndex);
+});
+
+gulp.task('assets-build', [ 'assets-styles', 'assets-scripts', 'assets-images', 'guide-index']);
