@@ -9,7 +9,8 @@ var buffer       = require('vinyl-buffer');
 var pkg          = require('../package');
 var rename       = require('gulp-rename');
 var inject       = require("gulp-inject");
-
+var merge        = require('merge-stream');
+var replace      = require('gulp-replace');
 // stylesheets
 var sass         = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
@@ -76,7 +77,13 @@ gulp.task('guide-index', [ 'styles', 'scripts', 'images'], function() {
       'dist/*/index.*'
     ], { read: false });
 
-  return gulp
+  var moveFiles = gulp
+    .src([
+      'dist/*/index.*'
+    ])
+    .pipe(gulp.dest('dist/deploy/hui-' + pkg.version));
+
+  var moveIndex = gulp
     .src('index.ejs')
     .pipe(inject(sources, {
       transform: function(filepath, file, i, length) {
@@ -85,16 +92,11 @@ gulp.task('guide-index', [ 'styles', 'scripts', 'images'], function() {
         return inject.transform(filepath, file, i, length);
       }
     }))
+    .pipe(replace("<%- content %>", 'Loading...'))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist/deploy/hui-' + pkg.version));
+
+  return merge(moveFiles, moveIndex);
 });
 
-gulp.task('guide-scripts', [ 'styles', 'scripts' ], function() {
-  return gulp
-    .src([
-      'dist/*/index.*'
-    ])
-    .pipe(gulp.dest('dist/deploy/hui-' + pkg.version));
-});
-
-gulp.task('assets-build', [ 'assets-styles', 'assets-scripts', 'assets-images', 'guide-index', 'guide-scripts']);
+gulp.task('assets-build', [ 'assets-styles', 'assets-scripts', 'assets-images', 'guide-index']);
