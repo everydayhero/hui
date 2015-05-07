@@ -6,7 +6,7 @@ var Masthead   = require('../../../layout/Masthead');
 var UserAuth   = require('../../../layout/UserAuth');
 var Highlight  = require('react-highlight');
 var pkg        = require('../../../package');
-var imagePath  = '/images-' + pkg.version + '/';
+var imagePath  = './images/';
 
 module.exports = React.createClass({
   displayName: 'TopBarExample',
