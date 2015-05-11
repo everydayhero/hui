@@ -8,8 +8,12 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
-    kind: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string,
+    kind: React.PropTypes.oneOf(
+      ['cta', 'primary', 'secondary', 'tertiary']
+    ).isRequired,
+    type: React.PropTypes.oneOf(
+      ['submit', 'reset', 'button']
+    ),
     label: React.PropTypes.string,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
