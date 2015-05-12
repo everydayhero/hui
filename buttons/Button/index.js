@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   propTypes: {
     kind: React.PropTypes.oneOf(
-      ['cta', 'primary', 'secondary', 'tertiary']
+      ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
     ).isRequired,
     type: React.PropTypes.oneOf(
       ['submit', 'reset', 'button']
@@ -71,6 +71,7 @@ module.exports = React.createClass({
       'hui-Button--primary': kind === 'primary',
       'hui-Button--secondary': kind === 'secondary',
       'hui-Button--tertiary': kind === 'tertiary',
+      'hui-Button--borderless': kind === 'borderless',
       'hui-Button--disabled': props.disabled,
       'hui-Button--inverse': props.inverse,
       'hui-Button--thin': props.thin,
