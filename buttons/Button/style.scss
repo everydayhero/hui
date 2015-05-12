@@ -8,9 +8,6 @@
   overflow: hidden;
   margin: 2px;
   line-height: 44px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 2px;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -52,6 +49,15 @@
   }
 }
 
+.hui-Button--cta,
+.hui-Button--primary,
+.hui-Button--secondary,
+.hui-Button--tertiary {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+}
+
 a.hui-Button {
   padding: 1px 1px 0px 0;
 }
@@ -67,11 +73,25 @@ a.hui-Button {
   width: 0;
   opacity: 0;
   float: right;
-  margin-left: -5px;
   border-width: 0;
-  border-style: solid;
-  border-left-width: 1px;
   overflow: hidden;
+}
+
+.hui-Button--cta,
+.hui-Button--primary,
+.hui-Button--secondary,
+.hui-Button--tertiary {
+  .hui-Button__icon {
+    margin-left: -5px;
+    border-style: solid;
+    border-left-width: 1px;
+  }
+}
+
+.hui-Button--borderless {
+  .hui-Button__icon {
+    margin-left: -30px;
+  }
 }
 
 .hui-Button--uppercase {
@@ -190,6 +210,22 @@ a.hui-Button {
   color: white;
   &:hover, &:focus {
     color: #525252;
+  }
+}
+
+.hui-Button--borderless {
+  background: none;
+  color: #666;
+  &:hover, &:focus {
+    color: #00B44D;
+  }
+}
+
+.hui-Button--borderless.hui-Button--inverse {
+  background: none;
+  color: white;
+  &:hover, &:focus {
+    color: #eee;
   }
 }
 
