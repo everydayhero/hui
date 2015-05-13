@@ -1,5 +1,22 @@
 @import "../InputErrors/style";
 
+.hui-TextInput__label{
+  position: relative;
+  transition: all 80ms ease-out;
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #525252;
+  padding: 4px 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 9px;
+  line-height: 9px;
+  color: #525252;
+}
+
 .hui-TextInput {
   @extend %hui-input-wrap;
   &:before {
