@@ -41,8 +41,7 @@ describe('TextInput', function() {
       var props = {
         name: 'test_input',
         label: 'Test Input',
-        hint: 'This is a test',
-        errorMessage: 'This input errored correctly'
+        hint: 'This is a test'
       };
       var element = TestUtils.renderIntoDocument(<Input { ...props } icon="bolt" width="half" />);
       var input = findByClass(element, 'hui-TextInput__input');
@@ -59,14 +58,6 @@ describe('TextInput', function() {
 
       var icon = findByClass(element, 'fa-bolt');
       expect(icon).to.exist;
-
-      element.setValid(false);
-
-      var error = findByClass(element, 'hui-TextInput__message').getDOMNode();
-      expect(error.textContent).to.contain('This input errored correctly');
-
-      var errorIcon = findByClass(element, 'fa-times');
-      expect(errorIcon).to.exist;
     });
   });
 
@@ -122,25 +113,61 @@ describe('TextInput', function() {
       expect(errorClasses.length).to.equal(0);
     });
 
-    it('does not have TextInput--error class when errors is null', function() {
-      element = TestUtils.renderIntoDocument(<Input errors={ null } />);
-      errorClasses = scryByClass(element, 'hui-TextInput--error');
-
-      expect(errorClasses.length).to.equal(0);
-    });
-
-    it('does not have TextInput--error class when errors is empty', function() {
-      element = TestUtils.renderIntoDocument(<Input errors={ [] } />);
-      errorClasses = scryByClass(element, 'hui-TextInput--error');
-
-      expect(errorClasses.length).to.equal(0);
-    });
-
-    it('does have TextInput--error class when errors is present', function() {
-      element = TestUtils.renderIntoDocument(<Input error={ true } errorMessage="foo" />);
+    it('does have TextInput--error class when validation fails', function() {
+      element = TestUtils.renderIntoDocument(<Input errorMessage="foo" />);
+      element.setValid(false);
+      var errorIcon = findByClass(element, 'fa-times');
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).to.equal(1);
+      expect(errorIcon).to.exist;
+    });
+  });
+
+  describe('render message', function() {
+    var element, errorClasses, message, errorIcon;
+
+    it('will render hint when no errors', function() {
+      element = TestUtils.renderIntoDocument(<Input value="oldValue" hint='this is a hint' />);
+      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
+
+      expect(message.textContent).to.contain('this is a hint');
+    });
+
+    it('will render errorMessage when validation fails', function() {
+      element = TestUtils.renderIntoDocument(<Input errorMessage="this is an error" />);
+      element.setValid(false);
+      errorIcon = findByClass(element, 'fa-times');
+      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
+
+      expect(errorClasses.length).to.equal(1);
+      expect(errorIcon).to.exist;
+      expect(message.textContent).to.contain('this is an error');
+    });
+
+    it('will render errorMessage when validation fails and having serverErrors', function() {
+      element = TestUtils.renderIntoDocument(<Input errorMessage="validation error" serverErrors={ ['server error'] }/>);
+      element.setValid(false);
+      errorIcon = findByClass(element, 'fa-times');
+      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
+
+      expect(errorClasses.length).to.equal(1);
+      expect(errorIcon).to.exist;
+      expect(message.textContent).to.contain('validation error');
+    });
+
+    it('will render serverErrors when having serverErrors only', function() {
+      element = TestUtils.renderIntoDocument(<Input serverErrors={['server error']}/>);
+      element.setValid(true);
+      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
+      errorIcon = findByClass(element, 'fa-times');
+
+      expect(errorIcon).to.exist;
+      expect(errorClasses.length).to.equal(1);
+      expect(message.textContent).to.contain('server error');
     });
   });
 
