@@ -27,7 +27,6 @@ module.exports = React.createClass({
       <h4 className="DemoPage__h4">TextInput propTypes</h4>
       <ul className="DemoPage__ul">
         <li className="DemoPage__li">errors:</li>
-        <li className="DemoPage__li">placeholder:</li>
         <li className="DemoPage__li">readOnly:</li>
         <li className="DemoPage__li">type:</li>
         <li className="DemoPage__li">className:</li>
@@ -44,15 +43,26 @@ module.exports = React.createClass({
           autoComplete="off"
           className="hui-TextInput"
           id='demo_input'
-          placeholder="Input here..."
           value={ this.state.form.demo_input }
+          required={ true }
+          errorMessage='This field cannot be left blank'
+          label='This field is required'
           onChange={ change('demo_input') } />
         <TextInput
           autoComplete="off"
           className="hui-TextInput"
           id='demo_input'
-          placeholder="Input here..."
+          value='invalid@email'
+          serverErrors={ ['invalid email address', 'correctly wrong'] }
+          label='invalid email address'
+          onChange={ change('demo_input') } />
+        <TextInput
+          autoComplete="off"
+          className="hui-TextInput"
+          id='demo_input'
           value="This is some content"
+          label='Thers is a hint'
+          hint='this is the hint'
           onChange={ change('demo_input') } />
         <TextInput
           className="hui-TextInput"
@@ -68,8 +78,12 @@ module.exports = React.createClass({
         { '  autoComplete="off"\n' }
         { '  className="hui-TextInput"\n' }
         { '  id={ props.id }\n' }
-        { '  placeholder="Input here..."\n' }
-        { '  value={ props.domain + value } />\n' }
+        { '  value={ props.domain + value }\n' }
+        { '  validate={ this.required }\n' }
+        { '  required={ true }\n' }
+        { "  errorMessage='This field cannot be left blank'\n" }
+        { "  label='This field is required'\n" }
+        { "  onChange={ change('demo_input') } />\n" }
       </Highlight>
     </div>
     );

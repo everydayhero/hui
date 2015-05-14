@@ -1,5 +1,13 @@
 @import "../InputErrors/style";
 
+.hui-TextInput {
+  float: left;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+}
+
 .hui-TextInput__label{
   position: relative;
   transition: all 80ms ease-out;
@@ -17,45 +25,117 @@
   color: #525252;
 }
 
-.hui-TextInput {
-  @extend %hui-input-wrap;
-  &:before {
-    @extend %hui-text-input-label;
-    content: attr(data-placeholder);
-    pointer-events: none;
-  }
-}
-
 .hui-TextInput__input {
-  @extend %hui-text-input;
-  .Input--error {
-    color: tomato;
-  }
+  font-family: 'Lato', sans-serif;
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #525252;
+  text-transform: none;
+  letter-spacing: 0.05em;
+  line-height: 27px;
+  height: 27px;
 }
 
-.hui-TextInput__input--shrink {
-  width: 90%;
+.hui-TextInput__message {
+  transition: all 240ms 80ms ease-out;
+  position: relative;
+  z-index: -1;
+  top: -56px;
+  border-radius: 0 0 2px 2px;
+  color: #525252;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  opacity: 0;
 }
 
-.hui-TextInput__placeholder {
-  @extend %hui-placeholder;
-}
-
-.hui-TextInput--counter {
-  width: 10%;
+.hui-TextInput__icon {
   position: absolute;
-  right: 0px;
-  top: 0px;
-  padding: $hui-x-3;
-  color: $hui-input-counter;
+  right: 8px;
+  top: 50%;
+  margin-top: -12px;
+  line-height: 24px;
+  font-size: 14px;
 }
 
-.hui-TextInput--counter--warning {
-  color: $hui-input-overlength-red;
+.hui-TextInput--error .hui-TextInput__label {
+  border-bottom-color: tomato;
+  color: tomato;
 }
 
-.hui-TextInput--readOnly {
-  .hui-TextInput__input {
-    @extend %hui-text-input--readOnly;
-  }
+.hui-TextInput--error .hui-TextInput__message {
+  opacity: 1;
+  top: 0;
+  color: white;
+  background-color: tomato;
+  margin: 0 8px;
+}
+
+.hui-TextInput--error .hui-TextInput__icon {
+  color: tomato;
+}
+
+.hui-TextInput--hasValue .hui-TextInput__label {
+  border-bottom-color: #aaa;
+  color: #aaa;
+}
+
+.hui-TextInput--valid .hui-TextInput__icon {
+  color: #7ec774;
+}
+
+.hui-TextInput--disabled .hui-TextInput__label {
+  border-bottom-color: #aaa;
+  color: #aaa;
+}
+
+.hui-TextInput--disabled .hui-TextInput__input {
+  color: #aaa;
+}
+
+.hui-TextInput--focused .hui-TextInput__label {
+  border-bottom-color: #7ec774;
+  color: #7ec774;
+}
+
+.hui-TextInput--focused .hui-TextInput__message {
+  opacity: 1;
+  top: 0;
+}
+
+.hui-TextInput--full {
+  width: 100%;
+}
+
+.hui-TextInput--wide {
+  width: 66%;
+}
+
+.hui-TextInput--half {
+  width: 50%;
+}
+
+.hui-TextInput--narrow {
+  width: 34%;
+}
+
+.hui-TextInput--quarter {
+  width: 25%;
+}
+
+.hui-TextInput--compact {
+  padding: 0;
+}
+
+.hui-TextInput--tight {
+  padding: 0 4px 8px;
+}
+
+.hui-TextInput--loose {
+  padding: 0 16px 32px;
 }
