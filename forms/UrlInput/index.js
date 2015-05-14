@@ -18,8 +18,8 @@ module.exports = React.createClass({
     this._updateState(this.props.value);
   },
 
-  _handlePathChange: function(e) {
-    var fullPath = this._updateState(e.target.value);
+  _handlePathChange: function(value) {
+    var fullPath = this._updateState(value);
     this.props.onChange(fullPath.path && fullPath.protocol + fullPath.path);
   },
 

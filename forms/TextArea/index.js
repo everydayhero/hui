@@ -19,6 +19,13 @@ module.exports = React.createClass({
     };
   },
 
+  handleChange: function(e) {
+    var props = this.props;
+    if(props.onChange) {
+      this.props.onChange(e.target.value);
+    }
+  },
+
   render: function() {
     var props = this.props;
     var classes = 'hui-TextArea ' + (props.className || '');
@@ -29,7 +36,7 @@ module.exports = React.createClass({
         <textarea className={ classes }
           id={ props.id }
           value={ props.value }
-          onChange={ props.onChange }>
+          onChange={ this.handleChange }>
         </textarea>
         <InputErrors errors={ props.errors } />
       </span>

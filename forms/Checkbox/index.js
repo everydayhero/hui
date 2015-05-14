@@ -48,6 +48,13 @@ module.exports = React.createClass({
     }
   },
 
+  handleChange: function(e) {
+    var props = this.props;
+    if(props.onChange) {
+      this.props.onChange(e.target.checked);
+    }
+  },
+
   render: function() {
     var props = this.props;
     var enabled = props.enabled;
@@ -66,7 +73,7 @@ module.exports = React.createClass({
       type: "checkbox",
       value: props.value,
       checked: props.value,
-      onChange: props.onChange,
+      onChange: this.handleChange,
       autoComplete: 'off',
       disabled: (!enabled)
     });

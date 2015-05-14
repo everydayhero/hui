@@ -45,10 +45,10 @@ describe('TextInput', function() {
       };
       var element = TestUtils.renderIntoDocument(<Input { ...props } icon="bolt" width="half" />);
       var input = findByClass(element, 'hui-TextInput__input');
-      expect(input).to.exist();
+      expect(input).to.exist;
 
       var inputWithName = findByProp(element, 'name', 'test_input');
-      expect(inputWithName).to.exist();
+      expect(inputWithName).to.exist;
 
       var label = findByClass(element, 'hui-TextInput__label').getDOMNode();
       expect(label.textContent).to.contain('Test Input');
@@ -57,7 +57,7 @@ describe('TextInput', function() {
       expect(hint.textContent).to.contain('This is a test');
 
       var icon = findByClass(element, 'fa-bolt');
-      expect(icon).to.exist();
+      expect(icon).to.exist;
     });
   });
 
@@ -120,7 +120,7 @@ describe('TextInput', function() {
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist();
+      expect(errorIcon).to.exist;
     });
   });
 
@@ -142,7 +142,7 @@ describe('TextInput', function() {
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist();
+      expect(errorIcon).to.exist;
       expect(message.textContent).to.contain('this is an error');
     });
 
@@ -154,7 +154,7 @@ describe('TextInput', function() {
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist();
+      expect(errorIcon).to.exist;
       expect(message.textContent).to.contain('validation error');
     });
 
@@ -165,7 +165,7 @@ describe('TextInput', function() {
       errorClasses = scryByClass(element, 'hui-TextInput--error');
       errorIcon = findByClass(element, 'fa-times');
 
-      expect(errorIcon).to.exist();
+      expect(errorIcon).to.exist;
       expect(errorClasses.length).to.equal(1);
       expect(message.textContent).to.contain('server error');
     });
@@ -191,9 +191,9 @@ describe('TextInput', function() {
       TestUtils.Simulate.change(input, { target: { value: 'newValue' } });
       TestUtils.Simulate.blur(input);
 
-      expect(modal).to.have.not.been.called();
-      expect(output).to.have.not.been.called();
-      expect(validate).to.have.not.been.called();
+      expect(modal).to.have.not.been.called;
+      expect(output).to.have.not.been.called;
+      expect(validate).to.have.not.been.called;
       expect(input.value).to.equal('oldValue');
     });
   });
@@ -243,7 +243,7 @@ describe('TextInput', function() {
 
       TestUtils.Simulate.blur(input);
 
-      expect(validate).to.have.not.been.called();
+      expect(validate).to.have.not.been.called;
     });
 
     it("will execute validate function on blur if required", function() {
