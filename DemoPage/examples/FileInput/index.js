@@ -33,7 +33,7 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.fileInput('identity_proof') }
+        { this.fileInput('identity_proof', { helpText: 'This is the help text' }) }
         <FileInput
           id={ 'sample_file' }
           noFileLabel={ 'No file selected' }

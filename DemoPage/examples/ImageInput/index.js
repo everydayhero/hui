@@ -32,7 +32,7 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.imageInput('banner_image') }
+        { this.imageInput('banner_image', { helpText: 'This is the help text' }) }
         <ImageInput
           id={ 'proof_image' }
           value={ this.state.form.proof_image }

@@ -39,13 +39,14 @@ module.exports = React.createClass({
 
   onChange: function(event) {
     var onChange = this.props.onChange;
+    var value = event.target.value;
 
     this.setState({
-      value: event.target.value
+      value: value
     });
 
     if (onChange) {
-      onChange(event);
+      onChange(value);
     }
   },
 

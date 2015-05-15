@@ -20,6 +20,14 @@ module.exports = React.createClass({
   render: function() {
     var change = this.inputChangeEventFn;
     var name   = 'edh_address';
+    var address = {
+      street_address: '333 Ann Street',
+      street_address_2: '',
+      locality: 'Brisbane',
+      region: 'QLD',
+      postal_code: '4116',
+      country_name: 'Australia'
+    };
 
     return (
     <div>
@@ -32,16 +40,16 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.readOnlyAddress('charity_address', { hint: false }) }
+        { this.readOnlyAddress('charity_address', { helpText: false }) }
         <ReadOnlyAddress
             id={ name }
-            value={ this.state.form[name] }
+            value={ address }
             onChange={ change(name) } />
       </div>
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { "{ this.readOnlyAddress('charity_address', { hint: false }) } \n" }
+        { "{ this.readOnlyAddress('charity_address', { helpText: false }) } \n" }
         { '<ReadOnlyAddress\n' }
         { '  id={ name }\n' }
         { '  value={ this.state.form[name] }\n' }

@@ -9,7 +9,7 @@
   @extend %hui-form-row-label;
 }
 
-.hui-FormRow__hint {
+.hui-FormRow__helpText {
   @extend %form-instruction;
   display: block;
   font-weight: 200;
@@ -18,7 +18,7 @@
 .hui-FormRow__content {
   display: table-cell;
   vertical-align: top;
-  width: 100%;
+  width: 40%;
   min-width: 386px;
 }
 

@@ -47,21 +47,21 @@ module.exports = {
 
   formRow: function(children, name, options) {
     var constructor = this.constructor || {};
-    var hint;
+    var helpText;
     options = options || {};
 
-    if (!options.hint) {
-      hint = undefined;
-    } else if(typeof options.hint == 'boolean') {
-      hint = this.t(name + '_hint');
+    if (!options.helpText) {
+      helpText = undefined;
+    } else if(typeof options.helpText == 'boolean') {
+      helpText = this.t(name + '_helpText');
     } else {
-      hint = options.hint;
+      helpText = options.helpText;
     }
 
     return (
       <FormRow
         label={ this.t(name + '_label') }
-        hint={ hint }
+        helpText={ helpText }
         htmlFor={ name }
         className={ constructor.name + "__" + name }
         key={ 'fieldset' + name }
@@ -73,7 +73,7 @@ module.exports = {
 
   readOnlyAddress: function(name, options) {
     var input;
-    options = options || { hint: true };
+    options = options || { helpText: true };
 
     input = (
       <ReadOnlyAddress
@@ -88,19 +88,22 @@ module.exports = {
 
   textInput: function(name, options) {
     var input;
-    options = options || { hint: true };
+    options = options || { helpText: true };
 
     input = (
       <TextInput
-        className={ name }
-        errors={ this.props.errors && this.props.errors[name] }
+        label={ options.label }
+        autoComplete={ options.autoComplete }
+        required={ options.required }
+        validate={ options.validate }
+        errorMessage={ options.errorMessage }
+        serverErrors={ this.props.errors && this.props.errors[name] }
+        hint={ options.hint }
         id={ name }
         onBlur={ options.onBlurCallback }
         onChange={ this.inputChangeEventFn(name) }
         readOnly={ options.readOnly }
-        value={ this.state.form[name] }
-        hasCounter={ options.hasCounter }
-        maxLength={ options.maxLength } />
+        value={ this.state.form[name] }/>
     );
 
     return this.formRow(input, name, options);
@@ -119,7 +122,7 @@ module.exports = {
 
   textArea: function(name, options) {
     var textArea;
-    options = options || { hint: true };
+    options = options || { helpText: true };
 
     textArea = (
       <TextArea
@@ -149,7 +152,7 @@ module.exports = {
   dateInput: function(name, placeholder, options) {
     var input;
 
-    options = options || { hint: true };
+    options = options || { helpText: true };
     input = (
       <DateInput
         id={ name }
@@ -164,7 +167,7 @@ module.exports = {
 
   fileInput: function(name, options) {
     var input;
-    options = options || { hint: true };
+    options = options || { helpText: true };
 
     input = (
           <FileInput
@@ -181,7 +184,7 @@ module.exports = {
     var errors = this.props.errors;
     var input;
 
-    options = options || { hint: true };
+    options = options || { helpText: true };
     input = (
       <ImageInput
         id={ name }

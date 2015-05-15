@@ -34,7 +34,7 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.dateInput('start_on', "(dd/mm/yyyy)") }
+        { this.dateInput('start_on', "(dd/mm/yyyy)", { helpText: 'This is the help text' }) }
         <DateInput
           id="end_on"
           className="campaign__endOn"

@@ -34,7 +34,7 @@ module.exports = React.createClass({
         <li>onChange:</li>
       </ul>
       <div className="DemoPage__example">
-        { this.textArea("food_menu") }
+        { this.textArea("food_menu", { helpText: 'This is the help text' }) }
         <TextArea
           className="Your-TextArea"
           id="description"
