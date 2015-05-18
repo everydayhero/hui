@@ -27,7 +27,10 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">href:</span> Optional.
         </li>
         <li className="DemoPage__li">
-          <span className="DemoPage__bold">icon:</span> Optional.
+          <span className="DemoPage__bold">icon:</span> Optional FontAwesome font class to show. If this attribute is applied/removed the change will be animated.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">iconSpin:</span> Optional. Whether or not the icon should be spinning.
         </li>
         <li className="DemoPage__li">
           <span className="DemoPage__bold">inverse:</span> Invert button for use on images
