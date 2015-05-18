@@ -1,55 +1,44 @@
 "use strict";
 
 var React      = require('react');
-var classNames = require('classnames');
+var classnames = require('classnames');
 var Errors     = require('../InputErrors');
 
 module.exports = React.createClass({
   displayName: 'Checkbox',
 
+  propTypes: {
+    disabled: React.PropTypes.bool,
+    labelIsClickable: React.PropTypes.bool,
+    onChange: React.PropTypes.func,
+    value: React.PropTypes.bool,
+    label: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.element
+    ])
+  },
+
   getDefaultProps: function() {
     return {
-      valid: true,
-      labelIsClickable: false,
-      labelContainsHtml: false,
-      enabled: true
+      disabled: false,
+      labelIsClickable: true
     };
   },
 
-  textLabel: function() {
+  label: function() {
     var props = this.props;
+    var lableType = props.labelIsClickable ? 'label' : 'span';
 
-    if (props.labelContainsHtml) {
-      return React.DOM.span({
-        className: "hui-Checkbox__label",
-        dangerouslySetInnerHTML: { __html: props.label },
-      });
-    } else {
-      return React.DOM.span({
-        className: "hui-Checkbox__label"
-      }, props.label);
-    }
-  },
+    if (!props.label) { return; }
 
-  clickableLabel: function() {
-    var props = this.props;
-
-    if (props.labelContainsHtml) {
-      return React.DOM.label({
-        className: "hui-Checkbox__label",
-        htmlFor: props.id,
-        dangerouslySetInnerHTML: { __html: props.label },
-      });
-    } else {
-      return React.DOM.label({
-        className: "hui-Checkbox__label",
-        htmlFor: props.id,
-      }, props.label);
-    }
+    return React.createElement(
+      lableType, { className: "hui-Checkbox__label", htmlFor: props.id }, props.label
+    );
   },
 
   handleChange: function(e) {
     var props = this.props;
+
     if(props.onChange) {
       this.props.onChange(e.target.checked);
     }
@@ -57,14 +46,7 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
-    var enabled = props.enabled;
-    var Label;
-
-    if (props.labelIsClickable) {
-      Label = this.clickableLabel();
-    } else {
-      Label = this.textLabel();
-    }
+    var errors = props.errors || [];
 
     var Input = React.DOM.input({
       id: props.id,
@@ -75,17 +57,17 @@ module.exports = React.createClass({
       checked: props.value,
       onChange: this.handleChange,
       autoComplete: 'off',
-      disabled: (!enabled)
+      disabled: (props.disabled)
     });
 
-    var classes = classNames({
-      "hui-Input--error": !this.props.valid
+    var classes = classnames({
+      "hui-Input--error": errors.length > 0
     }, "hui-Checkbox");
 
     return (
       <div className={ classes }>
         { Input }
-        { Label }
+        { this.label() }
         <Errors errors={ this.props.errors } />
       </div>
     );

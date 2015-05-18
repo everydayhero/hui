@@ -2,10 +2,17 @@
 
 var moment            = require('moment');
 var React             = require('react');
-var classNames        = require('classnames');
 var DatePicker        = require('./DatePicker');
-var InputErrors       = require('../InputErrors');
-var Icon              = require('../../Helpers/Icon');
+var TextInput         = require('../TextInput');
+
+var dateFormats       = {
+  uk: ["DD", "YYYY", "DD-MM", "MMM DD", "MMM Do", "DD-MM-YY", "DD-MM-YYYY", "MMM DD YY", "MMM Do YY", "MMM DD YYYY", "MMM Do YYYY", "Do MMM YYYY", "DD MMM YYYY", "YYYY-MM-DD"],
+  us: ["MM", "YYYY", "MM-DD", "MMM DD", "MMM Do", "MM-DD-YY", "MM-DD-YYYY", "MMM DD YY", "MMM Do YY", "MMM DD YYYY", "MMM Do YYYY", "Do MMM YYYY", "DD MMM YYYY", "YYYY-MM-DD"],
+};
+
+dateFormats.au = dateFormats.uk;
+dateFormats.nz = dateFormats.uk;
+dateFormats.ie = dateFormats.uk;
 
 module.exports = React.createClass({
   displayName: 'hui-DateInput',
@@ -17,14 +24,18 @@ module.exports = React.createClass({
     onChange: React.PropTypes.func,
     placeholder: React.PropTypes.string,
     errors: React.PropTypes.array,
-    id: React.PropTypes.string
+    id: React.PropTypes.string,
+    countryCode: React.PropTypes.string,
+    minimumYear: React.PropTypes.number,
   },
 
   getDefaultProps: function() {
     return {
       valueFormat: "YYYY-MM-DD",
       displayFormat: "DD/MM/YYYY",
-      value: ""
+      value: "",
+      countryCode: 'uk',
+      minimumYear: 1000
     };
   },
 
@@ -67,6 +78,11 @@ module.exports = React.createClass({
   },
 
   onDateChange: function(date) {
+    this.setDateValue(date);
+    this.close();
+  },
+
+  setDateValue: function(date) {
     var props = this.props;
     var value = date && date.format(props.valueFormat);
 
@@ -75,94 +91,29 @@ module.exports = React.createClass({
     });
 
     if (props.onChange) {
-      var event = {
-        target: {
-          value: value
-        }
-      };
-      props.onChange(event);
+      props.onChange(value);
     }
-
-    this.close();
   },
 
-  clear: function(e) {
-    e.preventDefault();
-    this.onDateChange(null);
+  clear: function() {
+    this.setDateValue(null);
   },
 
-  toggleOpen: function(e) {
-    e.preventDefault();
+  toggleOpen: function(force) {
     this.setState({
-      open: !this.state.open
+      open: force !== null ? force : !this.state.open
     });
   },
 
   close: function() {
-    this.setState({open: false});
-  },
-
-  render: function() {
-    var props = this.props;
-
-    var classes = classNames({
-      "hui-DateInput--empty": this.hasValue() === false
-    }, "hui-DateInput", props.className);
-
-    return (
-      <span className={ classes }>
-        { this.renderInput() }
-        <InputErrors errors={ props.errors } />
-        { this.renderDatePicker() }
-      </span>
-    );
-  },
-
-  renderInput: function() {
-    var icon;
-
-    if (this.hasValue()) {
-      icon = (
-        <a href="#" className="hui-DateInput__icon" onClick={ this.clear }>
-          <Icon icon="times"/>
-        </a>
-      );
-    } else {
-      icon = (
-        <a href="#" className="hui-DateInput__icon" onClick={ this.toggleOpen }>
-          <Icon icon="calendar"/>
-        </a>
-      );
-    }
-
-    return (
-      <span className="hui-DateInput__input_wrapper">
-        { this.renderPlaceholder() }
-        <input
-          className="hui-DateInput__input"
-          onClick={ this.toggleOpen }
-          value={ this.getDisplayValue() }
-          readOnly={ true }
-          id={ this.props.id } />
-        { icon }
-      </span>
-    );
-  },
-
-  renderDatePicker: function() {
     var state = this.state;
+    var date = this.state.date;
 
-    if (state.open) {
-      return <DatePicker onChange={ this.onDateChange } value={ state.date } className="hui-DateInput__picker" />;
+    if(state.tempValue) {
+      this.setDateValue(date);
     }
-  },
 
-  renderPlaceholder: function() {
-    var placeholder = this.props.placeholder;
-
-    if (!this.hasValue() && placeholder) {
-      return <label htmlFor={ this.props.id } className="hui-DateInput__placeholder">{ placeholder }</label>;
-    }
+    this.setState({ open: false, tempValue: null });
   },
 
   hasValue: function() {
@@ -171,11 +122,96 @@ module.exports = React.createClass({
 
   getDisplayValue: function() {
     var props = this.props;
+    var state = this.state;
+
+    if (state.open && state.tempValue !== null) {
+      return state.tempValue;
+    }
 
     if (this.hasValue()) {
       return moment(props.value, props.valueFormat).format(props.displayFormat);
-    } else {
-      return '';
     }
-  }
+
+    return '';
+  },
+
+  onTab: function() {
+    this.close();
+  },
+
+  onFocus: function() {
+    this.toggleOpen(true);
+  },
+
+  onIconClick: function() {
+    if (this.hasValue()) {
+      this.clear();
+      this.close();
+    } else {
+      var input = this.refs.input.getDOMNode();
+      input.getElementsByTagName('input')[0].focus();
+    }
+  },
+
+  onInputEdit: function(value) {
+    var props = this.props;
+    var parsedDate = moment(value, dateFormats[props.countryCode]);
+    var currentDate = moment();
+
+    if (parsedDate.isValid()) {
+      if (parsedDate.year() < props.minimumYear) {
+        parsedDate.year(currentDate.year());
+      }
+    }
+
+    if (!value) {
+      this.clear();
+      this.setState({ tempValue: null });
+    } else {
+      this.setState({
+        date: parsedDate.isValid() && value ? parsedDate : this.state.date,
+        tempValue: value ? value : ''
+      });
+    }
+
+  },
+
+  onChangeSelection: function(date) {
+    this.setDateValue(date);
+  },
+
+  renderInput: function() {
+    var icon = this.hasValue() ? 'times' : 'calendar';
+
+    return (
+      <TextInput
+        layout="quarter"
+        ref="input"
+        {...this.props}
+        value={ this.getDisplayValue() }
+        onTab={ this.onTab }
+        onFocus={ this.onFocus }
+        onChange={ this.onInputEdit }
+        icon={ icon }
+        onIconClick={ this.onIconClick }/>
+    );
+  },
+
+  renderDatePicker: function() {
+    var state = this.state;
+
+    if (state.open) {
+      return <DatePicker onChange={ this.onDateChange } onChangeSelection={ this.onChangeSelection } date={ state.date } className="hui-DateInput__picker" />;
+    }
+  },
+
+
+  render: function() {
+    return (
+      <span className="DateInput">
+        { this.renderInput() }
+        { this.renderDatePicker() }
+      </span>
+    );
+  },
 });

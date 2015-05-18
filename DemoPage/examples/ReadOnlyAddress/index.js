@@ -31,29 +31,16 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>ReadOnlyAddress</h3>
-      <p>ReadOnlyAddress.</p>
-      <h4>ReadOnlyAddress propTypes</h4>
-      <ul>
-        <li>id:</li>
-        <li>value:</li>
-        <li>onChange:</li>
-      </ul>
-      <div className="DemoPage__example">
-        { this.readOnlyAddress('charity_address', { helpText: false }) }
-        <ReadOnlyAddress
-            id={ name }
-            value={ address }
-            onChange={ change(name) } />
-      </div>
+      <h3 className="DemoPage__h3">ReadOnlyAddress</h3>
+      <p className="DemoPage__p">Read only address input (Contactinates address values with ",".</p>
+      <h4 className="DemoPage__h4">ReadOnlyAddress propTypes (See TextInput)</h4>
+      <ReadOnlyAddress id={ name } value={ address } />
 
-      <h4>React Example</h4>
+      <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { "{ this.readOnlyAddress('charity_address', { helpText: false }) } \n" }
         { '<ReadOnlyAddress\n' }
         { '  id={ name }\n' }
-        { '  value={ this.state.form[name] }\n' }
-        { '  onChange={ change(name) } />\n' }
+        { '  value={ this.state.form[name] } />\n' }
       </Highlight>
     </div>
     );

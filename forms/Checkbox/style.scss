@@ -5,7 +5,8 @@
 }
 
 .hui-Checkbox__input {
-  margin-right: 20px;
+  margin-right: 8px;
+  display: inline-block;
 }
 
 label.hui-Checkbox__label {
@@ -13,6 +14,11 @@ label.hui-Checkbox__label {
 }
 
 .hui-Checkbox__label {
-  display: inline;
-  font-size: $hui-x-4;
+  display: inline-block;
+  font-size: 13px;
+  font-family: $hui-font-family;
+  text-transform: uppercase;
+  color: $hui-text-input-text;
+  top: 1px;
+  position: relative;
 }

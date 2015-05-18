@@ -5,7 +5,7 @@
   position: relative;
   z-index: 1;
   text-align: left;
-  font-family: 'Lato', sans-serif;
+  font-family: $hui-font-family;
 }
 
 .hui-TextInput__label{
@@ -16,37 +16,38 @@
   border-radius: 2px;
   background-color: white;
   border: 1px solid #aaa;
-  border-bottom: 1px solid #525252;
+  border-bottom: 1px solid $hui-text-input-text;
   padding: 4px 8px 0;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 9px;
   line-height: 9px;
-  color: #525252;
+  color: $hui-text-input-text;
 }
 
 .hui-TextInput__input {
-  font-family: 'Lato', sans-serif;
+  font-family: $hui-font-family;
   display: block;
   width: 100%;
   border: none;
   outline: none;
   background: transparent;
   font-size: 15px;
-  color: #525252;
+  color: $hui-text-input-text;
   text-transform: none;
   letter-spacing: 0.05em;
   line-height: 27px;
   height: 27px;
+  padding-right: 30px;
 }
 
 .hui-TextInput__message {
   transition: all 240ms 80ms ease-out;
   position: relative;
   z-index: -1;
-  top: -56px;
+  top: -35px;
   border-radius: 0 0 2px 2px;
-  color: #525252;
+  color: $hui-text-input-text;
   font-size: 12px;
   line-height: 12px;
   letter-spacing: 0.05em;
@@ -58,7 +59,7 @@
   position: absolute;
   right: 8px;
   top: 50%;
-  margin-top: -12px;
+  margin-top: -6px;
   line-height: 24px;
   font-size: 14px;
 }
@@ -87,6 +88,14 @@
 
 .hui-TextInput--valid .hui-TextInput__icon {
   color: #7ec774;
+}
+
+.hui-TextInput__iconButton {
+  @extend %general-reset;
+  @extend %a-reset;
+  background: none;
+  margin-top: -11px;
+  cursor: pointer;
 }
 
 .hui-TextInput--disabled .hui-TextInput__label {

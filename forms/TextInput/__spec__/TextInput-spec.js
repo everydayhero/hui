@@ -41,7 +41,8 @@ describe('TextInput', function() {
       var props = {
         name: 'test_input',
         label: 'Test Input',
-        hint: 'This is a test'
+        hint: 'This is a test',
+        errorMessage: 'This input errored correctly'
       };
       var element = TestUtils.renderIntoDocument(<Input { ...props } icon="bolt" width="half" />);
       var input = findByClass(element, 'hui-TextInput__input');
@@ -58,6 +59,14 @@ describe('TextInput', function() {
 
       var icon = findByClass(element, 'fa-bolt');
       expect(icon).to.exist;
+
+      element.setValid(false);
+
+      var error = findByClass(element, 'hui-TextInput__message').getDOMNode();
+      expect(error.textContent).to.contain('This input errored correctly');
+
+      var errorIcon = findByClass(element, 'fa-times');
+      expect(errorIcon).to.exist;
     });
   });
 
@@ -113,61 +122,25 @@ describe('TextInput', function() {
       expect(errorClasses.length).to.equal(0);
     });
 
-    it('does have TextInput--error class when validation fails', function() {
-      element = TestUtils.renderIntoDocument(<Input errorMessage="foo" />);
-      element.setValid(false);
-      var errorIcon = findByClass(element, 'fa-times');
+    it('does not have TextInput--error class when errors is null', function() {
+      element = TestUtils.renderIntoDocument(<Input errors={ null } />);
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
+
+      expect(errorClasses.length).to.equal(0);
+    });
+
+    it('does not have TextInput--error class when errors is empty', function() {
+      element = TestUtils.renderIntoDocument(<Input errors={ [] } />);
+      errorClasses = scryByClass(element, 'hui-TextInput--error');
+
+      expect(errorClasses.length).to.equal(0);
+    });
+
+    it('does have TextInput--error class when errors is present', function() {
+      element = TestUtils.renderIntoDocument(<Input error={ true } errorMessage="foo" showError={ true }/>);
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist;
-    });
-  });
-
-  describe('render message', function() {
-    var element, errorClasses, message, errorIcon;
-
-    it('will render hint when no errors', function() {
-      element = TestUtils.renderIntoDocument(<Input value="oldValue" hint='this is a hint' />);
-      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
-
-      expect(message.textContent).to.contain('this is a hint');
-    });
-
-    it('will render errorMessage when validation fails', function() {
-      element = TestUtils.renderIntoDocument(<Input errorMessage="this is an error" />);
-      element.setValid(false);
-      errorIcon = findByClass(element, 'fa-times');
-      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
-      errorClasses = scryByClass(element, 'hui-TextInput--error');
-
-      expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist;
-      expect(message.textContent).to.contain('this is an error');
-    });
-
-    it('will render errorMessage when validation fails and having serverErrors', function() {
-      element = TestUtils.renderIntoDocument(<Input errorMessage="validation error" serverErrors={ ['server error'] }/>);
-      element.setValid(false);
-      errorIcon = findByClass(element, 'fa-times');
-      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
-      errorClasses = scryByClass(element, 'hui-TextInput--error');
-
-      expect(errorClasses.length).to.equal(1);
-      expect(errorIcon).to.exist;
-      expect(message.textContent).to.contain('validation error');
-    });
-
-    it('will render serverErrors when having serverErrors only', function() {
-      element = TestUtils.renderIntoDocument(<Input serverErrors={['server error']}/>);
-      element.setValid(true);
-      message = findByClass(element, 'hui-TextInput__message').getDOMNode();
-      errorClasses = scryByClass(element, 'hui-TextInput--error');
-      errorIcon = findByClass(element, 'fa-times');
-
-      expect(errorIcon).to.exist;
-      expect(errorClasses.length).to.equal(1);
-      expect(message.textContent).to.contain('server error');
     });
   });
 
@@ -181,18 +154,18 @@ describe('TextInput', function() {
     });
 
     it("will not execute methods when disabled", function() {
-      var modal = sinon.spy();
-      var output = sinon.spy();
+      var onFocus = sinon.spy();
+      var onChange = sinon.spy();
       var validate = sinon.spy();
-      var element = TestUtils.renderIntoDocument(<Input value="oldValue" disabled={ true } modal={ modal }output={ output } validate={ validate } />);
+      var element = TestUtils.renderIntoDocument(<Input value="oldValue" disabled={ true } onFocus={ onFocus } onChange={ onChange } validate={ validate } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
 
       TestUtils.Simulate.focus(input);
       TestUtils.Simulate.change(input, { target: { value: 'newValue' } });
       TestUtils.Simulate.blur(input);
 
-      expect(modal).to.have.not.been.called;
-      expect(output).to.have.not.been.called;
+      expect(onFocus).to.have.not.been.called;
+      expect(onChange).to.have.not.been.called;
       expect(validate).to.have.not.been.called;
       expect(input.value).to.equal('oldValue');
     });
@@ -200,35 +173,38 @@ describe('TextInput', function() {
 
   describe('readOnly callbacks', function() {
 
-    it("will execute modal function on focus", function() {
-      var modal = sinon.spy();
-      var element = TestUtils.renderIntoDocument(<Input value="testValue" modal={ modal } />);
+    it("will execute onFocus function on focus", function() {
+      var onFocus = sinon.spy();
+      var element = TestUtils.renderIntoDocument(<Input value="testValue" onFocus={ onFocus } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
       TestUtils.Simulate.focus(input);
 
       var object = {
         element: element.getDOMNode(),
-        value: 'testValue',
-        callback: element.setValue
+        value: 'testValue'
       };
 
-      expect(modal).to.have.been.calledWith(object);
+      expect(onFocus).to.have.been.calledWith(object);
     });
 
-    it("will execute output function on change", function() {
-      var output = sinon.spy();
-      var element = TestUtils.renderIntoDocument(<Input value="oldValue" output={ output } />);
+    it("will execute onChange function on change", function() {
+      var onChange = sinon.spy();
+      var element = TestUtils.renderIntoDocument(<Input value="oldValue" onChange={ onChange } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
 
       TestUtils.Simulate.change(input, { target: { value: 'newValue' } });
 
-      expect(output).to.have.been.calledWith('newValue');
+      expect(onChange).to.have.been.calledWith('newValue');
     });
 
     it("will execute mask function on change", function() {
+      var onChange = function(value) {
+        this.setProps({ value: value });
+      }
       var mask = sinon.stub().returns('newValue--masked');
       var element = TestUtils.renderIntoDocument(<Input value="oldValue" mask={ mask } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
+      element.setProps({ onChange: onChange.bind(element) });
 
       TestUtils.Simulate.change(input, { target: { value: 'newValue' } });
 
@@ -238,18 +214,25 @@ describe('TextInput', function() {
 
     it("will not execute validate function on blur if not required", function() {
       var validate = sinon.spy();
+      var onChange = function(value) {
+        this.setProps({ value: value });
+      }
       var element = TestUtils.renderIntoDocument(<Input required={ false } validate={ validate } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
-
+      element.setProps({ onChange: onChange.bind(element) });
       TestUtils.Simulate.blur(input);
 
       expect(validate).to.have.not.been.called;
     });
 
     it("will execute validate function on blur if required", function() {
+      var onChange = function(value) {
+        this.setProps({ value: value });
+      }
       var validate = sinon.stub();
       var element = TestUtils.renderIntoDocument(<Input required={ true } validate={ validate } />);
       var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
+      element.setProps({ onChange: onChange.bind(element) });
 
       TestUtils.Simulate.change(input, { target: { value: 'testValue' } });
       TestUtils.Simulate.blur(input);

@@ -16,7 +16,9 @@
     "sass/"
   ],
   "scripts": {
-    "test": "node_modules/.bin/jest || mocha **/__tests__/*mocha-test.js",
+    "jest": "node_modules/.bin/jest",
+    "spec": "mocha **/__spec__/*.js",
+    "test": "npm run jest && npm run spec",
     "start": "node server.js",
     "build": "node_modules/.bin/gulp build",
     "deploy_assets": "bin/deploy_assets"

@@ -17,8 +17,7 @@ module.exports = React.createClass({
         address.country_name
       ]);
     return (<TextInput
-      id={ props.id }
-      name={ props.name }
+      {...props}
       readOnly={ true }
       value={ fields.join(', ') } />
     );
