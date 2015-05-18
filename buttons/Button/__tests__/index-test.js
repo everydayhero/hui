@@ -108,6 +108,18 @@ describe('Button', function() {
     });
   });
 
+  describe('iconSpin', function() {
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(
+        <Button kind='cta' label='Log In' icon='refresh' iconSpin={ true } />
+      );
+    });
+
+    it('spins the icon', function(){
+      findByClass(component, 'fa-spin');
+    });
+  });
+
   describe('iconLeft', function() {
     beforeEach(function() {
       component = TestUtils.renderIntoDocument(
