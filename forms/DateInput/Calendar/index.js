@@ -12,19 +12,18 @@ module.exports = React.createClass({
     year: React.PropTypes.number,
     month: React.PropTypes.number,
     date: React.PropTypes.object,
-    onClick: React.PropTypes.func
+    onSelectDate: React.PropTypes.func
   },
 
   getDefaultProps: function() {
-    var now = moment();
     return {
-      year: now.year(),
-      month: now.month()
+      date: moment()
     };
   },
 
   buildDates: function() {
-    var d = moment().year(this.props.year).month(this.props.month);
+    var props = this.props;
+    var d = moment().year(props.date.year()).month(props.date.month());
     return _.range(1, d.endOf('month').date() + 1).map(function(day) {
       return moment(d).date(day);
     });

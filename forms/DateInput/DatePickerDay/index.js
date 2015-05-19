@@ -15,7 +15,6 @@ module.exports = React.createClass({
 
   onClick: function(e) {
     e.preventDefault();
-
     if (this.props.onClick) {
       this.props.onClick(this.props.date);
     }

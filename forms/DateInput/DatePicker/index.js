@@ -9,34 +9,28 @@ module.exports = React.createClass({
 
   propTypes: {
     onChange: React.PropTypes.func,
+    onChangeSelection: React.PropTypes.func,
     className: React.PropTypes.string,
-    value: React.PropTypes.object.isRequired
-  },
-
-  getInitialState: function() {
-    var value = this.props.value;
-
-    return {
-      year: value.year(),
-      month: value.month()
-    };
+    date: React.PropTypes.object.isRequired
   },
 
   setYear: function(year) {
-    this.setState({
-      year: year
-    });
+    var props = this.props;
+    var date = props.date.year(year);
+
+    props.onChangeSelection && props.onChangeSelection(date);
   },
 
   setMonth: function(month) {
-    this.setState({
-      month: month
-    });
+    var props = this.props;
+    var date = props.date.month(month);
+
+    props.onChangeSelection && props.onChangeSelection(date);
   },
 
   render: function() {
     var props = this.props;
-    var value = props.value;
+    var date = props.date;
     var classes = 'hui-DatePicker ' + props.className;
     var state = this.state;
 
@@ -44,20 +38,20 @@ module.exports = React.createClass({
       <div className={ classes }>
         <DatePickerPeriods
           type="year"
-          date={ value }
-          current={ state.year }
-          onClick={ this.setYear } />
+          date={ date }
+          current={ props.date.year() }
+          onChange={ this.setYear } />
 
         <DatePickerPeriods
           type="month"
-          date={ value }
-          current={ state.month }
-          onClick={ this.setMonth } />
+          date={ date }
+          current={ props.date.month() }
+          onChange={ this.setMonth } />
 
         <Calendar
-          date={ value }
-          month={ state.month }
-          year={ state.year }
+          date={ date }
+          month={ props.date.month() }
+          year={ props.date.year() }
           onSelectDate={ this.props.onChange } />
       </div>
     );

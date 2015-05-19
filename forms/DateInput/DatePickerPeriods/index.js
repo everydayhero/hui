@@ -10,24 +10,21 @@ module.exports = React.createClass({
 
   propTypes: {
     onClick: React.PropTypes.func,
+    onChange: React.PropTypes.func,
     type: React.PropTypes.string,
     date: React.PropTypes.object.isRequired,
     current: React.PropTypes.number
   },
 
-  getInitialState: function() {
-    return {
-      date: this.props.date
-    };
-  },
-
   navigate: function(i) {
     var type = this.props.type;
-    var current = this.state.date[type]() + i;
+    var current = this.props.date[type]() + i;
 
-    this.setState({
-      date: moment().set(type, current)
-    });
+    this.props.onChange && this.props.onChange(current);
+  },
+
+  onChange: function(current) {
+    this.props.onChange && this.props.onChange(current);
   },
 
   onForward: function(e) {
@@ -49,7 +46,7 @@ module.exports = React.createClass({
     var periods = [];
     var state = this.state;
     var props = this.props;
-    var current = state.date[props.type]() - 1;
+    var current = props.date[props.type]() - 1;
 
     for (var i = 0; i < 3; i++) {
       var next = current + i;
@@ -67,7 +64,7 @@ module.exports = React.createClass({
           date={ props.date }
           type={ props.type }
           current={ props.current }
-          onClick={ props.onClick }>
+          onChange={ this.onChange }>
             { label }
         </DatePickerPeriod>
       );
