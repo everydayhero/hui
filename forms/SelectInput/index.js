@@ -1,33 +1,65 @@
 "use strict";
 
-var _          = require('lodash');
-var React      = require('react');
-var classNames = require('classnames');
-var Errors     = require('../InputErrors');
-var Icon       = require('../../Helpers/Icon');
+var _                 = require('lodash');
+var React             = require('react');
+var Icon              = require('../../Helpers/Icon');
+var LocalStorageMixin = require('../../mixins/localStorage');
+var inputMessage      = require('../../mixins/inputMessage');
 
 module.exports = React.createClass({
   displayName: 'SelectInput',
 
+  mixins: [LocalStorageMixin, inputMessage],
+
   propTypes: {
-    includeBlank: React.PropTypes.bool,
+    autoComplete: React.PropTypes.bool,
+    storeLocally: React.PropTypes.bool,
+    autoFocus: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+    name: React.PropTypes.string,
+    hint: React.PropTypes.string,
+    onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onBlur: React.PropTypes.func,
+    includeBlank: React.PropTypes.bool,
+    onTab: React.PropTypes.func,
+    required: React.PropTypes.bool,
+    spacing: React.PropTypes.string,
+    layout: React.PropTypes.string,
     options: React.PropTypes.array,
     prompt: React.PropTypes.string,
-    value: React.PropTypes.string
+    value: React.PropTypes.string,
+    labelKey: React.PropTypes.string,
+    valueKey: React.PropTypes.string,
+    errors: React.PropTypes.array,
+    label: React.PropTypes.string,
+    errorMessage: React.PropTypes.string
   },
 
   getDefaultProps: function() {
     return {
+      autoComplete: true,
+      storeLocally: false,
+      autoFocus: false,
+      disabled: false,
+      name: null,
+      hint: '',
+      onFocus: null,
+      onChange: null,
+      onBlur: function() {},
       includeBlank: false,
-      labelKey: 'label',
+      onTab: function() {},
+      required: false,
+      spacing: 'loose',
+      layout: 'full',
       options: [],
       prompt: null,
-      selectionMade: false,
-      valid: true,
       value: null,
-      valueKey: 'value'
+      labelKey: 'label',
+      valueKey: 'value',
+      errors: [],
+      label: 'Select',
+      errorMessage: null
     };
   },
 
@@ -37,12 +69,21 @@ module.exports = React.createClass({
     };
   },
 
+  componentDidMount: function() {
+    var props = this.props;
+
+    if (props.disabled) { return; }
+    if (props.autoFocus) { this.refs.input.getDOMNode().focus(); }
+  },
+
   onChange: function(event) {
     var onChange = this.props.onChange;
     var value = event.target.value;
+    var hasError = this.props.required ? !value : false;
 
     this.setState({
-      value: value
+      value: value,
+      hasError: hasError
     });
 
     if (onChange) {
@@ -50,52 +91,18 @@ module.exports = React.createClass({
     }
   },
 
-  onBlur: function(e) {
-    var onBlur = this.props.onBlur;
-    if (onBlur) {
-      onBlur(e);
-    }
+  onBlur: function() {
+    var props = this.props;
+    var hasError = props.required ? !props.value : false;
+
+    if (props.onBlur) { props.onBlur(props.value); }
+    this.setState({focused: false, hasError: hasError});
   },
 
-  render: function() {
+  onFocus: function() {
     var props = this.props;
-    var state = this.state;
-    var value = props.value;
-
-    var classes = classNames({
-      'hui-Input--error': !props.valid,
-      'hui-SelectInput--focused': state.focused
-    }, 'hui-SelectInput', props.className);
-
-    return (
-      <div className={ classes }>
-        { this.renderLabel() }
-        { this.renderDisplayValue() }
-        <Icon icon="chevron-down" className="hui-SelectInput__icon"/>
-        <select
-          autoComplete="off"
-          className="hui-SelectInput__input"
-          id={ props.id }
-          name={ props.name || props.id }
-          onBlur={ this.onBlur }
-          onChange={ this.onChange }
-          value={ value }>
-            { this.renderOptions() }
-        </select>
-        <Errors errors={ props.errors } />
-      </div>
-    );
-  },
-
-  renderLabel: function() {
-    var props = this.props;
-
-    if (props.label && !props.value) {
-      return React.DOM.label({
-        className: "hui-SelectInput__label",
-        htmlFor: props.id,
-      }, props.label);
-    }
+    if (props.onFocus) { props.onFocus(props.value); }
+    this.setState({focused: true, valid: true});
   },
 
   renderDisplayValue: function() {
@@ -167,5 +174,50 @@ module.exports = React.createClass({
         </option>
         );
     });
+  },
+
+  render: function() {
+    var props = this.props;
+    var state = this.state;
+    var value = props.value;
+    var hasServerErrors = props.errors.length;
+    var layout = props.layout;
+    var spacing= props.spacing;
+    var classes = [
+      'hui-SelectInput--' + layout,
+      'hui-SelectInput--' + spacing,
+      'hui-SelectInput',
+      !!value && !!value.trim() && 'hui-SelectInput--hasValue',
+      state.focused && 'hui-SelectInput--focused',
+      state.valid && 'hui-SelectInput--valid',
+      this.shouldShowError() && 'hui-SelectInput--error',
+      props.disabled && 'hui-SelectInput--disabled'
+    ].join(' ').replace('false');
+
+    return (
+      <div className={ classes }>
+        <div className="hui-SelectInput__wrap">
+          <label className="hui-SelectInput__label">{ props.label }</label>
+          { this.renderDisplayValue() }
+          <Icon icon="chevron-down" className="hui-SelectInput__icon"/>
+          <div className="hui-SelectInput__inputWrap">
+            <select
+              autoComplete={ props.autoComplete }
+              className="hui-SelectInput__input"
+              id={ props.id }
+              disabled={ props.disabled }
+              name={ props.name || props.id }
+              onBlur={ this.onBlur }
+              onFocus={ this.onFocus }
+              onChange={ this.onChange }
+              onKeyDown={ this.onTab }
+              value={ value }>
+                { this.renderOptions() }
+            </select>
+          </div>
+        </div>
+        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+      </div>
+    );
   }
 });

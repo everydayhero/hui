@@ -63,7 +63,7 @@ module.exports = React.createClass({
         autoComplete={false}
         id='demo_input'
         value={ this.state.form.demo_input_02 }
-        serverErrors={ ['invalid email address', 'required'] }
+        errors={ ['invalid email address', 'required'] }
         label='invalid email address'
         onChange={ change('demo_input_02') } />
       <TextInput
@@ -80,7 +80,6 @@ module.exports = React.createClass({
         readOnly={ true } />
       <TextInput
         id='demo_input_disabled'
-        disabled='disabled'
         value="This is a disabled text input"
         disabled={ true } />
       <TextInput

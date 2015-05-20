@@ -1,8 +1,7 @@
 @import "../InputErrors/style";
 
 .hui-UrlInput {
-  display: table;
-  width: 100%;
+  @extend %hui-input-base;
 }
 
 .hui-UrlInput__protocol,
@@ -18,3 +17,5 @@
   max-width: $hui-x-9;
   padding-right: $hui-x-3;
 }
+
+@include input-sizes(UrlInput);

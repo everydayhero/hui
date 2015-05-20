@@ -15,9 +15,15 @@ describe('DatePickerPeriod', function() {
     var element;
 
     beforeEach(function() {
-        element = TestUtils.renderIntoDocument(
-          <DatePickerPeriods type="year" date={ date } current={ 2014 }/>
-        );
+      var onChange = function(value) {
+        console.log('onChange', value)
+        date.year(value);
+        this.setProps({ current: value, date: date });
+      }
+      element = TestUtils.renderIntoDocument(
+        <DatePickerPeriods type="year" date={ date } current={ 2014 }/>
+      );
+      element.setProps({ onChange: onChange.bind(element) });
     });
 
     it('renders three periods around current', function() {
@@ -36,8 +42,8 @@ describe('DatePickerPeriod', function() {
 
     it('navigates forward', function() {
       var forward = findByClass(element, "hui-DatePickerPeriods__forward");
+      var periods = scryByClass(element, "hui-DatePickerPeriod");
       TestUtils.Simulate.click(forward);
-
       var periods = scryByClass(element, "hui-DatePickerPeriod");
 
       expect(periods[2].getDOMNode().textContent).toContain('2016');
@@ -45,11 +51,10 @@ describe('DatePickerPeriod', function() {
 
     it('navigates backwards', function() {
       var back = findByClass(element, "hui-DatePickerPeriods__back");
+      var periods = scryByClass(element, "hui-DatePickerPeriod");
       TestUtils.Simulate.click(back);
 
-      var periods = scryByClass(element, "hui-DatePickerPeriod");
-
-      expect(periods[0].getDOMNode().textContent).toContain('2012');
+      expect(periods[0].getDOMNode().textContent).toContain('2013');
     });
   });
 
@@ -58,9 +63,14 @@ describe('DatePickerPeriod', function() {
     var element;
 
     beforeEach(function() {
-        element = TestUtils.renderIntoDocument(
-          <DatePickerPeriods type="month" date={ date } current={ 11 }/>
-        );
+      var onChange = function(value) {
+        date.month(value);
+        this.setProps({ current: value, date: date });
+      }
+      element = TestUtils.renderIntoDocument(
+        <DatePickerPeriods type="month" date={ date } current={ 11 }/>
+      );
+      element.setProps({ onChange: onChange.bind(element) });
     });
 
     it('renders three periods around current', function() {
@@ -90,7 +100,7 @@ describe('DatePickerPeriod', function() {
 
       var periods = scryByClass(element, "hui-DatePickerPeriod");
 
-      expect(periods[0].getDOMNode().textContent).toContain('Dec');
+      expect(periods[0].getDOMNode().textContent).toContain('Jan');
     });
   });
 });

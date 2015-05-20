@@ -9,13 +9,14 @@ module.exports = React.createClass({
   propTypes: {
     current: React.PropTypes.number,
     value: React.PropTypes.number,
-    onChange: React.PropTypes.func
+    onSelect: React.PropTypes.func
   },
 
-  onChange: function(e) {
+  onSelect: function(e) {
     e.preventDefault();
-    if (this.props.onChange) {
-      this.props.onChange(this.props.value);
+
+    if (this.props.onSelect) {
+      this.props.onSelect(this.props.value);
     }
   },
 
@@ -28,6 +29,6 @@ module.exports = React.createClass({
       'hui-DatePickerPeriod--selected': this.isSelected(),
     }, 'hui-DatePickerPeriod');
 
-    return <a className={ classes } href="#" onClick={ this.onChange }>{ this.props.children } </a>;
+    return <a className={ classes } tabIndex="-1" href="#" onClick={ this.onSelect }>{ this.props.children } </a>;
   }
 });

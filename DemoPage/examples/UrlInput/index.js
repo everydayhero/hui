@@ -37,15 +37,12 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
-      <div className="DemoPage__example">
-        { this.urlInput('website_url', 'example.com') }
-        <UrlInput
-          id={ url }
-          onChange={ change(url) }
-          value={ this.state.form[url] }
-          placeholder={ 'www.example.com' }
-          errors={ this.props.errors && this.props.errors[url] } />
-      </div>
+      <UrlInput
+        id={ url }
+        onChange={ change(url) }
+        value={ this.state.form[url] }
+        placeholder={ 'www.example.com' }
+        errors={ this.props.errors && this.props.errors[url] } />
 
       <h4>React Example</h4>
       <Highlight className='html'>

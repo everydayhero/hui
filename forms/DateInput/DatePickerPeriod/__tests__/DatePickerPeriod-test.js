@@ -24,15 +24,17 @@ describe('DatePickerPeriod', function() {
 
   describe('onClick', function() {
     it('is fired onClick', function() {
-      var listener = jest.genMockFunction();
+      var parsedValue;
+      var value = 2;
+      var listener = function(value) { parsedValue = value; };
       var element = TestUtils.renderIntoDocument(
-            <DatePickerPeriod onClick={ listener } value={ 2 } />
+            <DatePickerPeriod onSelect={ listener } value={ value } />
           );
 
       var period = element.getDOMNode();
       TestUtils.Simulate.click(period);
 
-      expect(listener.mock.calls[0][0]).toBe(2);
+      expect(parsedValue).toBe(value);
     });
   });
 });

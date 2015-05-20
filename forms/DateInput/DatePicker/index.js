@@ -32,7 +32,6 @@ module.exports = React.createClass({
     var props = this.props;
     var date = props.date;
     var classes = 'hui-DatePicker ' + props.className;
-    var state = this.state;
 
     return (
       <div className={ classes }>

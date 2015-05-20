@@ -64,7 +64,7 @@ module.exports = React.createClass({
           date={ props.date }
           type={ props.type }
           current={ props.current }
-          onChange={ this.onChange }>
+          onSelect={ this.onChange }>
             { label }
         </DatePickerPeriod>
       );
@@ -75,11 +75,11 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="hui-DatePickerPeriods">
-        <a href="#" className="hui-DatePickerPeriods__back" onClick={ this.onBack }><Icon icon="chevron-left"/></a>
+        <a href="#" tabIndex="-1" className="hui-DatePickerPeriods__back" onClick={ this.onBack }><Icon icon="chevron-left"/></a>
           <div className="hui-DatePickerPeriods__periods">
             { this.renderPeriods() }
           </div>
-        <a href="#" className="hui-DatePickerPeriods__forward" onClick={ this.onForward }><Icon icon="chevron-right"/></a>
+        <a href="#" tabIndex="-1" className="hui-DatePickerPeriods__forward" onClick={ this.onForward }><Icon icon="chevron-right"/></a>
       </div>
     );
   }

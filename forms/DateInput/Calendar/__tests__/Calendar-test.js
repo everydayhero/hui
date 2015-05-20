@@ -9,12 +9,14 @@ jest.dontMock('../../DatePickerDay');
 describe('Calendar', function() {
   var React       = require('react/addons');
   var Calendar    = require('../');
+  var moment      = require('moment');
   var TestUtils   = React.addons.TestUtils;
   var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
 
   describe('Jan 2014', function() {
+    var date = moment('2014-01-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 0 }/>
+          <Calendar date={ date }/>
         );
     it('renders 31 days in Jan', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -22,15 +24,16 @@ describe('Calendar', function() {
       expect(days.length).toBe(31);
     });
 
-    it('Jan 2014 starts on a Monday', function() {
+    it('Jan 2014 starts on a Wednesday', function() {
       var days = scryByClass(element, 'hui-DatePickerDay--filler');
       expect(days.length).toBe(3);
     });
   });
 
   describe('Feb 2014', function() {
+    var date = moment('2014-02-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 1 }/>
+          <Calendar date={ date }/>
         );
     it('renders 28 days in Feb', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -45,8 +48,9 @@ describe('Calendar', function() {
   });
 
   describe('Mar 2014', function() {
+    var date = moment('2014-03-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 2 }/>
+          <Calendar date={ date }/>
         );
     it('renders 31 days in Mar', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -61,8 +65,9 @@ describe('Calendar', function() {
   });
 
   describe('Apr 2014', function() {
+    var date = moment('2014-04-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 3 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Apr', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -77,8 +82,9 @@ describe('Calendar', function() {
   });
 
   describe('May 2014', function() {
+    var date = moment('2014-05-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 4 }/>
+          <Calendar date={ date }/>
         );
     it('renders 31 days in May', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -93,8 +99,9 @@ describe('Calendar', function() {
   });
 
   describe('Jun 2014', function() {
+    var date = moment('2014-06-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 5 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Jun', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -109,8 +116,9 @@ describe('Calendar', function() {
   });
 
   describe('Jul 2014', function() {
+    var date = moment('2014-07-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 6 }/>
+          <Calendar date={ date }/>
         );
     it('renders 31 days in Jul', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -125,8 +133,9 @@ describe('Calendar', function() {
   });
 
   describe('Aug 2014', function() {
+    var date = moment('2014-08-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 7 }/>
+          <Calendar date={ date }/>
         );
     it('renders 31 days in Aug', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -141,8 +150,9 @@ describe('Calendar', function() {
   });
 
   describe('Sep 2014', function() {
+    var date = moment('2014-09-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 8 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Sep', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -157,8 +167,9 @@ describe('Calendar', function() {
   });
 
   describe('Oct 2014', function() {
+    var date = moment('2014-10-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 9 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Oct', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -173,8 +184,9 @@ describe('Calendar', function() {
   });
 
   describe('Nov 2014', function() {
+    var date = moment('2014-11-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 10 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Nov', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -189,8 +201,9 @@ describe('Calendar', function() {
   });
 
   describe('Dec 2014', function() {
+    var date = moment('2014-12-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 11 }/>
+          <Calendar date={ date }/>
         );
     it('renders 30 days in Dec', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -205,8 +218,9 @@ describe('Calendar', function() {
   });
 
   describe('leap year', function() {
+    var date = moment('2016-02-01');
     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2016 } month={ 1 }/>
+          <Calendar date={ date }/>
         );
     it('renders 29 days in Feb', function() {
       var days = scryByClass(element, 'hui-DatePickerDay');
@@ -216,9 +230,10 @@ describe('Calendar', function() {
   });
 
   describe('Selecting a date', function() {
-     var listener = jest.genMockFunction();
-     var element = TestUtils.renderIntoDocument(
-          <Calendar year={ 2014 } month={ 11 } onSelectDate={ listener }/>
+    var listener = jest.genMockFunction();
+    var date = moment('2014-11-01');
+    var element = TestUtils.renderIntoDocument(
+          <Calendar date={ date } onSelectDate={ listener }/>
         );
 
     it('triggers an onClick when a date is slected', function() {

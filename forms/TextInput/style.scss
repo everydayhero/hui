@@ -1,28 +1,12 @@
 @import "../InputErrors/style";
 
 .hui-TextInput {
-  float: left;
-  position: relative;
-  z-index: 1;
-  text-align: left;
-  font-family: $hui-font-family;
+  @extend %hui-input-base;
 }
 
-.hui-TextInput__label{
-  position: relative;
-  transition: all 80ms ease-out;
-  display: block;
-  width: 100%;
-  border-radius: 2px;
-  background-color: white;
-  border: 1px solid #aaa;
-  border-bottom: 1px solid $hui-text-input-text;
-  padding: 4px 8px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 9px;
-  line-height: 9px;
-  color: $hui-text-input-text;
+.hui-TextInput__label {
+  @extend %hui-input-border;
+  @extend %hui-input-label;
 }
 
 .hui-TextInput__input {
@@ -65,20 +49,15 @@
 }
 
 .hui-TextInput--error .hui-TextInput__label {
-  border-bottom-color: tomato;
-  color: tomato;
+  @extend %hui-input-error;
 }
 
 .hui-TextInput--error .hui-TextInput__message {
-  opacity: 1;
-  top: 0;
-  color: white;
-  background-color: tomato;
-  margin: 0 8px;
+  @extend %error-message;
 }
 
 .hui-TextInput--error .hui-TextInput__icon {
-  color: tomato;
+  @extend %hui-input-error;
 }
 
 .hui-TextInput--hasValue .hui-TextInput__label {
@@ -99,17 +78,15 @@
 }
 
 .hui-TextInput--disabled .hui-TextInput__label {
-  border-bottom-color: #aaa;
-  color: #aaa;
+  @extend %hui-input-disabled;
 }
 
 .hui-TextInput--disabled .hui-TextInput__input {
-  color: #aaa;
+  @extend %hui-input-disabled;
 }
 
 .hui-TextInput--focused .hui-TextInput__label {
-  border-bottom-color: #7ec774;
-  color: #7ec774;
+  @extend %hui-input-focused;
 }
 
 .hui-TextInput--focused .hui-TextInput__message {
@@ -117,34 +94,4 @@
   top: 0;
 }
 
-.hui-TextInput--full {
-  width: 100%;
-}
-
-.hui-TextInput--wide {
-  width: 66%;
-}
-
-.hui-TextInput--half {
-  width: 50%;
-}
-
-.hui-TextInput--narrow {
-  width: 34%;
-}
-
-.hui-TextInput--quarter {
-  width: 25%;
-}
-
-.hui-TextInput--compact {
-  padding: 0;
-}
-
-.hui-TextInput--tight {
-  padding: 0 4px 8px;
-}
-
-.hui-TextInput--loose {
-  padding: 0 16px 32px;
-}
+@include input-sizes(TextInput);

@@ -265,5 +265,25 @@ describe('TextInput', function() {
       validate.args[0][1](true);
       expect(element.state.valid).to.equal(true);
     });
+
+    it("will execute onBlur prop on blur", function() {
+      var onBlur = sinon.spy();
+      var value = "foo";
+      var element = TestUtils.renderIntoDocument(<Input required={ true } onBlur={ onBlur }  value={ value }/>);
+      var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
+
+      TestUtils.Simulate.blur(input);
+      expect(onBlur).to.have.been.calledWith(value);
+    });
+
+    it("will execute onBlur prop on blur", function() {
+      var onTab = sinon.spy();
+      var value = "foo";
+      var element = TestUtils.renderIntoDocument(<Input required={ true } onTab={ onTab }  value={ value }/>);
+      var input = findByClass(element, 'hui-TextInput__input').getDOMNode();
+
+      TestUtils.Simulate.keyDown(input, {key: "Tab"});
+      expect(onTab).to.have.been.calledWith(value);
+    });
   });
 });

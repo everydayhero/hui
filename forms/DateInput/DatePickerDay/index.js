@@ -34,7 +34,7 @@ module.exports = React.createClass({
       'hui-DatePickerDay--selected': this.isSelected(),
     }, 'hui-DatePickerDay');
     return (
-      <a href="#" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>
+      <a href="#" tabIndex="-1" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>
     );
   }
 });
