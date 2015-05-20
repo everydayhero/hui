@@ -33,15 +33,24 @@ module.exports = React.createClass({
         <li>className:</li>
         <li>onChange:</li>
       </ul>
-      <div className="DemoPage__example">
-        { this.textArea("food_menu", { helpText: 'This is the help text' }) }
         <TextArea
           className="Your-TextArea"
           id="description"
+          label="With hint"
           value={ this.state.form.description }
           onChange={ change('description') }
+          hint="Tell me a story."
           errors={ this.props.errors }/>
-      </div>
+
+       <TextArea
+          className="Your-TextArea"
+          id="description"
+          value={ this.state.form.description_02 }
+          onChange={ change('description_02') }
+          required={ true }
+          label="Error message and required"
+          errorMessage="You need to do this thing."
+          errors={ ["You should attend a marketing writing course."] }/>
 
       <h4>React Example</h4>
       <Highlight className='html'>

@@ -16,7 +16,6 @@ describe('DatePickerPeriod', function() {
 
     beforeEach(function() {
       var onChange = function(value) {
-        console.log('onChange', value)
         date.year(value);
         this.setProps({ current: value, date: date });
       }

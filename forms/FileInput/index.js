@@ -1,25 +1,45 @@
 "use strict";
 
-var React       = require('react');
-var classNames  = require('classnames');
-var filepicker  = require('../../lib/filepicker');
-var Icon        = require('../../Helpers/Icon');
-var InputErrors = require('../InputErrors');
+var React             = require('react');
+var filepicker        = require('../../lib/filepicker');
+var Icon              = require('../../Helpers/Icon');
+var inputMessage      = require('../../mixins/inputMessage');
 
 module.exports = React.createClass({
   displayName: 'FileInput',
+
+  mixins: [inputMessage,],
 
   propTypes: {
     id: React.PropTypes.string,
     noFileLabel: React.PropTypes.string,
     onBlur: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    value: React.PropTypes.object
+    value: React.PropTypes.object,
+    errors: React.PropTypes.array,
+    layout: React.PropTypes.string,
+    spacing: React.PropTypes.string,
+    label: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
   },
 
   getDefaultProps: function() {
     return {
-      mimetypes: ['image/*']
+      mimetypes: ['image/*'],
+      errors: [],
+      layout: 'full',
+      spacing: 'loose',
+      label: 'image',
+      noFileLabel: 'No file selected',
+      disabled: false
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      hasError: false,
+      focused: false
     };
   },
 
@@ -34,7 +54,9 @@ module.exports = React.createClass({
     }
 
     e.preventDefault();
-    filepicker.pick(options, this.onChange);
+    if (!props.disabled) {
+      filepicker.pick(options, this.onChange, this.focus);
+    }
   },
 
   reset: function(e) {
@@ -45,21 +67,32 @@ module.exports = React.createClass({
     });
   },
 
+  focus: function() {
+    this.refs.browse_files.getDOMNode().focus();
+  },
+
   onBlur: function() {
     var onBlur = this.props.onBlur;
     if (onBlur) {
       onBlur();
     }
+    this.setState({ focused: false });
+  },
+
+  onFocus: function() {
+    var onFocus = this.props.onFocus;
+    if (onFocus) {
+      onFocus();
+    }
+    this.setState({ focused: true });
   },
 
   onChange: function(file) {
     var onChange = this.props.onChange;
-
-    this.refs.browse_files.getDOMNode().focus();
-
     if (onChange) {
       onChange(file);
     }
+    this.focus();
   },
 
   getBrowseLabel: function(filename) {
@@ -67,12 +100,23 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var props       = this.props;
-    var file        = props.value;
-    var filename    = file ? file.filename : null;
-    var inputLabel  = filename ? filename : props.noFileLabel;
-    var browseLabel = this.getBrowseLabel(filename);
-    var classes, resetButton;
+    var props           = this.props;
+    var state           = this.state;
+    var file            = props.value;
+    var filename        = file ? file.filename : null;
+    var inputLabel      = filename ? filename : props.noFileLabel;
+    var browseLabel     = this.getBrowseLabel(filename);
+    var hasServerErrors = props.errors.length;
+    var resetButton;
+    var classes = [
+      'hui-FileInput--' + props.layout,
+      'hui-FileInput--' + props.spacing,
+      !!filename && 'hui-FileInput--hasFile',
+      this.shouldShowError() && 'hui-FileInput--error',
+      props.disabled && 'hui-FileInput--disabled',
+      state.focused && 'hui-FileInput--focused',
+      "hui-FileInput"
+    ].join(' ');
 
     global.ENV = global.ENV || {};
 
@@ -89,21 +133,20 @@ module.exports = React.createClass({
       );
     }
 
-    classes = classNames({
-      'hui-FileInput_hasFile': !!filename
-    }, 'hui-FileInput');
-
     return (
-      <span>
-        <span className={ classes } >
-          <span className="hui-FileInput__input" id={ props.id } onClick={ this.browse }>{ inputLabel }</span>
-          <span className="hui-FileInput__buttons">
+      <div className={ classes } >
+        <div className="hui-FileInput__wrap">
+          <label className="hui-FileInput__label">{ props.label }</label>
+          <div className="hui-FileInput__input" id={ props.id } onClick={ this.browse }>
+            { inputLabel }
+          </div>
+          <div className="hui-FileInput__buttons">
             { resetButton }
-            <a href="#" ref="browse_files" onBlur={ this.onBlur } className="hui-FileInput__browse" onClick={ this.browse }>{ browseLabel }</a>
-          </span>
-        </span>
-        <InputErrors errors={ props.errors } />
-      </span>
+            <a href="#" ref="browse_files" onBlur={ this.onBlur } onFocus={ this.onFocus } className="hui-FileInput__browse" onClick={ this.browse }>{ browseLabel }</a>
+          </div>
+        </div>
+        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+      </div>
     );
   },
 });

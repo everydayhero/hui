@@ -1,9 +1,88 @@
 @import "../InputErrors/style";
 
 .hui-TextArea {
-  @extend %hui-text-area;
+  @extend %hui-input-base;
 }
 
-.hui-TextArea__placeholder {
-  @extend %hui-placeholder;
+.hui-TextArea__input {
+  @extend %hui-input-border;
+  height: 124px;
+  padding-top: 20px;
 }
+
+.hui-TextArea__label {
+  @extend %hui-input-label;
+  position: absolute;
+  z-index: 2;
+  margin: 8px;
+}
+
+.hui-TextArea--error .hui-TextArea__label {
+  @extend %hui-input-error;
+}
+
+.hui-TextArea--error .hui-TextArea__message {
+  @extend %error-message;
+}
+
+.hui-TextArea--error .hui-TextArea__icon {
+  @extend %hui-input-error;
+}
+
+.hui-TextArea--hasValue .hui-TextArea__label {
+  border-bottom-color: #aaa;
+  color: #aaa;
+}
+
+.hui-TextArea--valid .hui-TextArea__icon {
+  color: #7ec774;
+}
+
+.hui-TextArea__iconButton {
+  @extend %general-reset;
+  @extend %a-reset;
+  background: none;
+  margin-top: -11px;
+  cursor: pointer;
+}
+
+
+.hui-TextArea--focused .hui-TextArea__message {
+  opacity: 1;
+  top: 0;
+}
+
+.hui-TextArea--error .hui-TextInput__message {
+  @extend %error-message;
+}
+
+.hui-TextArea--disabled .hui-TextArea__input,
+.hui-TextArea--disabled .hui-TextArea__label {
+  @extend %hui-input-disabled;
+}
+
+.hui-TextArea--disabled .hui-TextArea__input,
+.hui-TextArea--focused .hui-TextArea__label {
+  @extend %hui-input-focused;
+}
+
+.hui-TextArea--error .hui-TextInput__message {
+  @extend %error-message;
+}
+
+.hui-TextArea--disabled .hui-TextArea__input,
+.hui-TextArea--error .hui-TextArea__label {
+  @extend %hui-input-error;
+}
+
+.hui-TextArea--error .hui-TextArea__icon,
+.hui-TextArea--error .hui-TextArea__wrap,
+.hui-TextArea--error .hui-TextArea__label {
+  @extend %hui-input-error;
+}
+
+.hui-TextArea--focused .hui-TextInput__message {
+  @extend %hui-input-focused;
+}
+
+@include input-sizes(TextArea);

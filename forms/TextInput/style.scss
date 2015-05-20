@@ -48,6 +48,15 @@
   font-size: 14px;
 }
 
+.hui-TextInput--hasValue .hui-TextInput__label {
+  border-bottom-color: #aaa;
+  color: #aaa;
+}
+
+.hui-TextInput--valid .hui-TextInput__icon {
+  color: #7ec774;
+}
+
 .hui-TextInput--error .hui-TextInput__label {
   @extend %hui-input-error;
 }
@@ -58,15 +67,6 @@
 
 .hui-TextInput--error .hui-TextInput__icon {
   @extend %hui-input-error;
-}
-
-.hui-TextInput--hasValue .hui-TextInput__label {
-  border-bottom-color: #aaa;
-  color: #aaa;
-}
-
-.hui-TextInput--valid .hui-TextInput__icon {
-  color: #7ec774;
 }
 
 .hui-TextInput__iconButton {
@@ -90,8 +90,7 @@
 }
 
 .hui-TextInput--focused .hui-TextInput__message {
-  opacity: 1;
-  top: 0;
+  @extend %hui-input-focused;
 }
 
 @include input-sizes(TextInput);

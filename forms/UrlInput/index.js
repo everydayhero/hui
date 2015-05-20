@@ -47,9 +47,9 @@ module.exports = React.createClass({
       autoFocus: false,
       disabled: false,
       icon: null,
-      onFocus: null,
-      onChange: null,
-      onError: null,
+      onFocus: function() {},
+      onChange: function() {},
+      onError: function() {},
       onBlur: function() {},
       onTab: function() {},
       onIconClick: null,
@@ -81,7 +81,7 @@ module.exports = React.createClass({
 
   _handleProtocolChange: function(value) {
     this.setState({ protocol: value });
-    this.props.onChange(this.state.path && e.target.value + this.state.path);
+    this.props.onChange(this.state.path && value + this.state.path);
   },
 
   _updateState: function(path) {
@@ -108,7 +108,6 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
     var id    = props.id;
-
     var classes = [
       'hui-UrlInput--' + props.layout,
       'hui-UrlInput--' + props.spacing,

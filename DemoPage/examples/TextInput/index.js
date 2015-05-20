@@ -1,9 +1,10 @@
 "use strict";
 
-var React     = require('react');
-var TextInput = require('../../../forms/TextInput');
-var Highlight = require('react-highlight');
-var formMixin = require('../../../mixins/reactForm.mixin');
+var React              = require('react');
+var TextCountDownInput = require('../../../forms/TextCountDownInput');
+var TextInput          = require('../../../forms/TextInput');
+var Highlight          = require('react-highlight');
+var formMixin          = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'TextInputExample',
@@ -87,7 +88,15 @@ module.exports = React.createClass({
         value={ this.state.form.demo_input_04 }
         label="custom icon"
         icon="rocket"
-        onChange={ change('demo_input_02') } />
+        onChange={ change('demo_input_04') } />
+
+      <TextCountDownInput
+        id='demo_input_icon'
+        value={ this.state.form.demo_input_05 }
+        label="Text input with countdown"
+        max={ 20 }
+        warnMax={ 10 }
+        onChange={ change('demo_input_05') } />
 
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>

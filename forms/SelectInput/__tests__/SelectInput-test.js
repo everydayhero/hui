@@ -149,9 +149,9 @@ describe('SelectInput', function() {
       expect(errorClasses.length).toBe(0);
     });
 
-    it('when invalid there is a hui-SelectInput--erro class', function() {
+    it('when invalid there is a hui-SelectInput--error class', function() {
       element = TestUtils.renderIntoDocument(
-        <Select serverErrors={["I'm an error"]} />
+        <Select errors={["I'm an error"]} />
       );
       errorClasses = scryByClass(element, 'hui-SelectInput--error');
 
@@ -160,7 +160,7 @@ describe('SelectInput', function() {
 
     it('shows errors', function() {
       element = TestUtils.renderIntoDocument(
-        <Select serverErrors={["I'm an error"]}/>
+        <Select errors={["I'm an error"]}/>
       );
       errorClasses = scryByClass(element, 'hui-InputErrors');
 

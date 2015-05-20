@@ -1,33 +1,34 @@
 @import "../InputErrors/style";
 
 .hui-FileInput {
-  @extend %hui-text-input;
-  @extend %clearfix;
-  overflow: hidden;
-  overflow: hidden;
-  padding-right: 0;
-  position: relative;
-  user-select: none;
-  width: 100%;
+  @extend %hui-input-base;
+}
+
+.hui-FileInput__wrap {
+  @extend %hui-input-border;
 }
 
 .hui-FileInput__input {
-  color: $hui-input-text;
-  display: block;
-  line-height: $hui-x-9;
-  overflow: hidden;
-  white-space: nowrap;
+  position: absolute;
+  top: 9px;
+  left: 0px;
+  color: $hui-text-input-text;
+  letter-spacing: 0.10em;
+  line-height: $hui-x-9 - 1;
+  font-size: 15px;
+  padding-left: 8px;
   width: 100%;
-  height: 100%;
-
-  .hui-FileInput_hasFile & {
+  .hui-FileInput--hasFile & {
     color: inherit;
   }
 }
 
+.hui-FileInput__label {
+  @extend %hui-input-label;
+}
+
 .hui-FileInput__buttons {
   background: $hui-input-background;
-  padding-left: $hui-x-2;
   position: absolute;
   right: 0;
   top: 0;
@@ -35,7 +36,7 @@
 }
 
 .hui-FileInput__browse {
-  @extend %hui-button;
+  @extend %hui-input-button;
   border: 0;
   cursor: pointer;
   &:hover {
@@ -46,9 +47,9 @@
 .hui-FileInput__reset {
   @extend %hui-button-reset;
   font-size: 16px;
-  line-height: $hui-x-9;
+  line-height: 40px;
   margin: 0;
-  padding-right: $hui-x-2;
+  padding: 0 $hui-x-2;
   vertical-align: top;
   display: inline-block;
   color: $hui-primary-border-grey;
@@ -56,3 +57,37 @@
     color: $hui-primary-border-grey;
   }
 }
+
+.hui-FileInput--disabled .hui-FileInput__input,
+.hui-FileInput--disabled .hui-FileInput__selected,
+.hui-FileInput--disabled .hui-FileInput__label,
+.hui-FileInput--disabled .hui-FileInput__wrap {
+  @extend %hui-input-disabled;
+}
+
+.hui-FileInput--disabled .hui-FileInput__browse,
+.hui-FileInput--disabled.hui-FileInput--focused .hui-FileInput__browse  {
+  background-color: $hui-disabled-button;
+}
+
+.hui-FileInput--focused .hui-FileInput__wrap,
+.hui-FileInput--focused .hui-FileInput__label {
+  @extend %hui-input-focused;
+}
+
+.hui-FileInput--focused .hui-FileInput__browse {
+  background-color: $hui-primary-green;
+}
+
+.hui-FileInput--error .hui-TextInput__message {
+  @extend %error-message;
+}
+
+.hui-FileInput--error .hui-FileInput__icon,
+.hui-FileInput--error .hui-FileInput__input,
+.hui-FileInput--error .hui-FileInput__label,
+.hui-FileInput--error .hui-FileInput__wrap {
+  @extend %hui-input-error;
+}
+
+@include input-sizes(FileInput);

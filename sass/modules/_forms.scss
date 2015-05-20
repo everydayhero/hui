@@ -6,7 +6,6 @@
 
 %hui-input-border {
   position: relative;
-  transition: all 80ms ease-out;
   display: block;
   width: 100%;
   height: 42px;
@@ -94,4 +93,9 @@
   padding: $hui-x-3;
   min-height: $hui-x-36;
   font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+%hui-input-focused {
+  opacity: 1;
+  top: 0;
 }
