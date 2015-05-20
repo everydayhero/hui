@@ -6,9 +6,26 @@ var TestUtils   = React.addons.TestUtils;
 var Button      = require('../index');
 var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 var scryByTag   = TestUtils.scryRenderedDOMComponentsWithTag;
+var findByType  = TestUtils.findRenderedComponentWithType;
+
+var TestHelpers = require('../../../test/helpers');
+var scryByProp  = TestHelpers.scryRenderedDOMComponentsWithProp;
+var findByProp  = TestHelpers.findRenderedDOMComponentWithProp;
 
 describe('Button', function() {
   var component;
+
+  describe('with id', function() {
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(
+        <Button id='click-me' />
+      );
+    });
+
+    it('renders a CTA button', function(){
+      findByProp(component, 'id', 'click-me');
+    });
+  });
 
   describe('cta', function() {
     var clicked = false;

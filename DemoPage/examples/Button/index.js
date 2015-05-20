@@ -15,6 +15,9 @@ module.exports = React.createClass({
       <h4 className="DemoPage__h4">Checkbox propTypes</h4>
       <ul className="DemoPage__ul">
         <li className="DemoPage__li">
+          <span className="DemoPage__bold">id:</span> If you would like to render the button/link with a particular id, this is where you can do that.
+        </li>
+        <li className="DemoPage__li">
           <span className="DemoPage__bold">kind:</span> Button kind (cta, primary, secondary or tertiary, borderless).
         </li>
         <li className="DemoPage__li">
@@ -57,7 +60,7 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button kind='cta' label='Get Started' icon='chevron-right'/>
+          <Button id="get-started" kind='cta' label='Get Started' icon='chevron-right'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>

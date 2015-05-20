@@ -8,6 +8,7 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
+    id: React.PropTypes.string,
     kind: React.PropTypes.oneOf(
       ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
     ).isRequired,
@@ -90,6 +91,7 @@ module.exports = React.createClass({
 
     return (
       <El className={ classes }
+        id={ props.id }
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
