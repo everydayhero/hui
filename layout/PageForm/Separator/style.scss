@@ -1,0 +1,17 @@
+.Separator {
+  border: none;
+  height: 9px;
+  margin: 8px 0px;
+}
+
+.Separator.green {
+  background-image: url('../../images/separator_green.png');
+}
+
+.Separator.white {
+  background-image: url('../../images/separator_white.png');
+}
+
+.Separator.grey {
+  background-image: url('../../images/separator_grey.png');
+}
