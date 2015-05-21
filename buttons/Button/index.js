@@ -36,7 +36,8 @@ module.exports = React.createClass({
       disabled: false,
       thin: false,
       inverse: false,
-      iconLeft: false
+      iconLeft: false,
+      iconSpin: false
     };
   },
 
@@ -98,7 +99,7 @@ module.exports = React.createClass({
         onTouchStart={ !href && this.handleClick }
         disabled={ props.disabled && 'disabled' }
         onClick={ this.handleDefaultClick }>
-        <Icon className="hui-Button__icon" icon={ props.icon }/>
+        <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
     );
