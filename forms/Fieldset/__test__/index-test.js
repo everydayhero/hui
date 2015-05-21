@@ -20,7 +20,7 @@ describe('Fieldset', function() {
     });
 
     it('does not render a legend', function() {
-      var legends = scryByClass(element, 'Fieldset__legend');
+      var legends = scryByClass(element, 'hui-Fieldset__legend');
 
       expect(legends.length).toBe(0);
     });
@@ -32,7 +32,7 @@ describe('Fieldset', function() {
         );
 
     it('does render a legend', function() {
-      var label = findByClass(element, 'Fieldset__legend');
+      var label = findByClass(element, 'hui-Fieldset__legend');
 
       expect(label.getDOMNode().textContent).toBe("foo");
     });

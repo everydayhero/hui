@@ -17,24 +17,17 @@ describe('TextInput', function() {
     var listener = jest.genMockFunction();
 
     it('is there if it has counter', function() {
-      element = TestUtils.renderIntoDocument(<TextInput onChange={ listener } hasCounter={ true } />);
-      findByClass(element, 'hui-TextInput--counter');
+      element = TestUtils.renderIntoDocument(<TextInput onChange={ listener } />);
+      findByClass(element, 'hui-TextCountDownInput__counter');
     });
 
-    it('is not there if it does not set', function() {
-      element = TestUtils.renderIntoDocument(<TextInput value="foobar" onChange={ listener } />);
-      label = scryByClass(element, 'hui-TextInput--counter')[0];
-
-      expect(label).toBeUndefined();
-    });
-
-    it('sets font colour to red when text length is close to limit', function() {
+    it('sets font colour to red when text length is at the limit', function() {
       element = TestUtils.renderIntoDocument(<TextInput
         onChange={ listener }
         hasCounter={ true }
         value={ '12345' }
-        maxLength={ 10 } />);
-      findByClass(element, 'hui-TextInput--counter--warning');
+        max={ 4 } />);
+      findByClass(element, 'hui-TextCountDownInput__counter--maxed');
     });
 
     it("set font colour to normal when text length is far from limit", function() {
@@ -42,10 +35,20 @@ describe('TextInput', function() {
         onChange={ listener }
         hasCounter={ true }
         value={ '12345' }
-        maxLength={ 100 } />);
-      label = scryByClass(element, 'hui-TextInput--counter--warning')[0];
+        max={ 100 } />);
+      label = scryByClass(element, 'hui-TextCountDownInput__counter--warn')[0];
 
       expect(label).toBeUndefined();
+    });
+
+    it("set font colour to orange when approaching limit", function() {
+      element = TestUtils.renderIntoDocument(<TextInput
+        onChange={ listener }
+        hasCounter={ true }
+        value={ '12345' }
+        max={ 10 }
+        warnMax={ 4 } />);
+      findByClass(element, 'hui-TextCountDownInput__counter--warn');
     });
   });
 });

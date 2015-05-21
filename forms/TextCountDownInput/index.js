@@ -63,10 +63,9 @@ propTypes: {
       'hui-TextCountDownInput--' + props.spacing,
       "hui-TextCountDownInput"
     ].join(' ');
-
     var counterClasses = [
       maxed && 'hui-TextCountDownInput__counter--maxed',
-      maxWarn && 'hui-TextCountDownInput__counter--warnMaxed',
+      maxWarn && 'hui-TextCountDownInput__counter--warn',
       "hui-TextCountDownInput__counter"
     ].join(' ');
 
