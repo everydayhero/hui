@@ -8,8 +8,13 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
-    kind: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string,
+    id: React.PropTypes.string,
+    kind: React.PropTypes.oneOf(
+      ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
+    ).isRequired,
+    type: React.PropTypes.oneOf(
+      ['submit', 'reset', 'button']
+    ),
     label: React.PropTypes.string,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -18,7 +23,8 @@ module.exports = React.createClass({
     uppercase: React.PropTypes.bool,
     iconLeft: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    iconSpin: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -83,6 +89,7 @@ module.exports = React.createClass({
 
     return (
       <El className={ classes }
+        id={ props.id }
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
