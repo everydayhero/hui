@@ -28,6 +28,8 @@
   font-size: 13px;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   color: $hui-link-primary;
+  border: none;
+  outline: none;
   &:active, &:hover {
     color: $hui-link-active;
   }

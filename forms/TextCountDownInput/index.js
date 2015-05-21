@@ -76,7 +76,7 @@ propTypes: {
 
     return (
       <div className={ classes }>
-        <Input {...props} errors={ errors } layout="full" spacing="compact"/>
+        <Input {...props} errors={ errors } layout="full" spacing="compact" showIcon={ false }/>
         <div className={ counterClasses }>
           { value.length }
         </div>

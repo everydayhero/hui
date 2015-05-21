@@ -31,13 +31,10 @@ module.exports = React.createClass({
         <li>value:</li>
         <li>onChange:</li>
       </ul>
-      <div className="DemoPage__example">
-        { this.imageInput('banner_image', { helpText: 'This is the help text' }) }
-        <ImageInput
-          id={ 'proof_image' }
-          value={ this.state.form.proof_image }
-          onChange={ change('proof_image') } />
-      </div>
+      <ImageInput
+        id={ 'proof_image' }
+        value={ this.state.form.proof_image }
+        onChange={ change('proof_image') } />
 
       <h4>React Example</h4>
       <Highlight className='html'>
