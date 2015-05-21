@@ -2,7 +2,6 @@
 
 var React             = require('react');
 var Input             = require('../TextInput');
-var LocalStorageMixin = require('../../mixins/localStorage');
 
 module.exports = React.createClass({
   displayName: 'TextCountDownInput',
@@ -48,12 +47,11 @@ propTypes: {
       spacing: 'loose',
       errors: [],
       maxErrorMessage: "Maximum {{max}} characters"
-    }
+    };
   },
 
   render: function() {
     var props   = this.props;
-    var id      = props.id;
     var value   = props.value || '';
     var maxed   = value.length > props.max;
     var maxWarn =  value.length > props.warnMax && value.length < props.max;

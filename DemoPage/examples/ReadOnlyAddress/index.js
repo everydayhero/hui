@@ -18,7 +18,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var change = this.inputChangeEventFn;
     var name   = 'edh_address';
     var address = {
       street_address: '333 Ann Street',

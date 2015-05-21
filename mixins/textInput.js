@@ -97,7 +97,8 @@ module.exports = {
 
   renderIcon: function() {
     var props = this.props;
-    var hasServerErrors = props.errors.length;
+    var errors = props.errors || [];
+    var hasServerErrors = errors.length;
     var state = this.state;
     var icon = !props.showIcon ? false
                : state.waiting ? 'refresh'

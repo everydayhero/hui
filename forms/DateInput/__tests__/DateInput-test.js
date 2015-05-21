@@ -8,9 +8,7 @@ describe('DatePicker', function() {
   var moment      = require('moment');
   var TestUtils   = React.addons.TestUtils;
   var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
-  var scryByTag   = TestUtils.scryRenderedDOMComponentsWithTag;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
-  var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
 
   describe('defaults', function() {
     var element, input;
@@ -142,7 +140,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -157,7 +155,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -172,7 +170,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -187,7 +185,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -202,7 +200,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -217,7 +215,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -232,7 +230,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -247,7 +245,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });
@@ -262,7 +260,7 @@ describe('DatePicker', function() {
         );
       var input = findByTag(element, 'input');
       TestUtils.Simulate.change(input, {target: {value: initialValue}});
-      element.close()
+      element.close();
 
       expect(parsedValue).toBe("1979-09-12");
     });

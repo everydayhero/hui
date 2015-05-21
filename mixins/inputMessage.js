@@ -6,15 +6,16 @@ var InputErrors = require('../forms/InputErrors');
 module.exports = {
   onTab: function(e) {
     var props = this.props;
-    if(e.key === 'Tab') {
-      props.onTab && props.onTab(props.value);
+    if(e.key === 'Tab' && props.onTab) {
+      props.onTab(props.value);
     }
   },
 
   shouldShowError: function() {
     var props = this.props;
+    var errors = props.errors || [];
 
-    return this.state.hasError || props.errors.length || props.showError;
+    return this.state.hasError || errors.length || props.showError;
   },
 
   renderMessage: function(hasMessage) {

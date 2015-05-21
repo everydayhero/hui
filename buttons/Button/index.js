@@ -1,20 +1,15 @@
 "use strict";
 
 var React      = require('react');
-var classNames = require('classnames');
+var classnames = require('classnames');
 var Icon       = require('../../Helpers/Icon');
 
 module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
-    id: React.PropTypes.string,
-    kind: React.PropTypes.oneOf(
-      ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
-    ).isRequired,
-    type: React.PropTypes.oneOf(
-      ['submit', 'reset', 'button']
-    ),
+    kind: React.PropTypes.string.isRequired,
+    type: React.PropTypes.string,
     label: React.PropTypes.string,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -23,8 +18,7 @@ module.exports = React.createClass({
     uppercase: React.PropTypes.bool,
     iconLeft: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-    iconSpin: React.PropTypes.bool
+    onClick: React.PropTypes.func
   },
 
   getDefaultProps: function() {
@@ -36,8 +30,7 @@ module.exports = React.createClass({
       disabled: false,
       thin: false,
       inverse: false,
-      iconLeft: false,
-      iconSpin: false
+      iconLeft: false
     };
   },
 
@@ -69,12 +62,11 @@ module.exports = React.createClass({
     var kind = props.kind;
     var href = props.href;
 
-    var classes = classNames({
+    var classes = classnames({
       'hui-Button--cta': kind === 'cta',
       'hui-Button--primary': kind === 'primary',
       'hui-Button--secondary': kind === 'secondary',
       'hui-Button--tertiary': kind === 'tertiary',
-      'hui-Button--borderless': kind === 'borderless',
       'hui-Button--disabled': props.disabled,
       'hui-Button--inverse': props.inverse,
       'hui-Button--thin': props.thin,
@@ -91,16 +83,15 @@ module.exports = React.createClass({
 
     return (
       <El className={ classes }
-        id={ props.id }
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
         href={ href }
         onMouseUp={ !href && this.handleClick }
-        onTouchEnd={ !href && this.handleClick }
+        onTouchStart={ !href && this.handleClick }
         disabled={ props.disabled && 'disabled' }
         onClick={ this.handleDefaultClick }>
-        <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />
+        <Icon className="hui-Button__icon" icon={ props.icon }/>
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
     );

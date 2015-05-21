@@ -67,7 +67,7 @@ module.exports = React.createClass({
       spacing: 'loose',
       protocolLabel: 'protocol',
       label: 'url',
-    }
+    };
   },
 
   componentWillMount: function() {

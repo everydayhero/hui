@@ -18,7 +18,7 @@ describe('DatePickerPeriod', function() {
       var onChange = function(value) {
         date.year(value);
         this.setProps({ current: value, date: date });
-      }
+      };
       element = TestUtils.renderIntoDocument(
         <DatePickerPeriods type="year" date={ date } current={ 2014 }/>
       );
@@ -41,7 +41,6 @@ describe('DatePickerPeriod', function() {
 
     it('navigates forward', function() {
       var forward = findByClass(element, "hui-DatePickerPeriods__forward");
-      var periods = scryByClass(element, "hui-DatePickerPeriod");
       TestUtils.Simulate.click(forward);
       var periods = scryByClass(element, "hui-DatePickerPeriod");
 
@@ -65,7 +64,7 @@ describe('DatePickerPeriod', function() {
       var onChange = function(value) {
         date.month(value);
         this.setProps({ current: value, date: date });
-      }
+      };
       element = TestUtils.renderIntoDocument(
         <DatePickerPeriods type="month" date={ date } current={ 11 }/>
       );

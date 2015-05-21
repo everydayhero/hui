@@ -7,9 +7,7 @@ describe('TextInput', function() {
   var TextInput   = require('../');
   var TestUtils   = React.addons.TestUtils;
 
-  var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
-  var scryByTag   = TestUtils.scryRenderedDOMComponentsWithTag;
   var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
 
   describe('counter behavior', function() {

@@ -18,14 +18,14 @@ module.exports = React.createClass({
     var props = this.props;
     var date = props.date.year(year);
 
-    props.onChangeSelection && props.onChangeSelection(date);
+    if (props.onChangeSelection) { props.onChangeSelection(date); }
   },
 
   setMonth: function(month) {
     var props = this.props;
     var date = props.date.month(month);
 
-    props.onChangeSelection && props.onChangeSelection(date);
+    if (props.onChangeSelection) { props.onChangeSelection(date); }
   },
 
   render: function() {

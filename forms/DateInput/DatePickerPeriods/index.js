@@ -1,7 +1,6 @@
 "use strict";
 
 var React            = require('react');
-var moment           = require('moment');
 var DatePickerPeriod = require('../DatePickerPeriod');
 var Icon             = require('../../../Helpers/Icon');
 
@@ -20,11 +19,11 @@ module.exports = React.createClass({
     var type = this.props.type;
     var current = this.props.date[type]() + i;
 
-    this.props.onChange && this.props.onChange(current);
+    if (this.props.onChange) { this.props.onChange(current); }
   },
 
   onChange: function(current) {
-    this.props.onChange && this.props.onChange(current);
+     if (this.props.onChange) { this.props.onChange(current); }
   },
 
   onForward: function(e) {
@@ -44,7 +43,6 @@ module.exports = React.createClass({
 
   renderPeriods: function() {
     var periods = [];
-    var state = this.state;
     var props = this.props;
     var current = props.date[props.type]() - 1;
 

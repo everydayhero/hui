@@ -2,11 +2,10 @@
 
 // Modified from https://github.com/STRML/react-localstorage
 
-var invariant = require('react/lib/invariant');
 var ls = global.localStorage;
 
 module.exports = {
-  componentWillUpdate: function(nextProps, nextState) {
+  componentWillUpdate: function() {
     if (!ls || !this.props.storeLocally) return;
     var key = getLocalStorageKey(this);
     ls.setItem(key, JSON.stringify(this.state));

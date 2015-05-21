@@ -19,7 +19,6 @@ module.exports = React.createClass({
 
   render: function() {
     var change = this.inputChangeEventFn;
-    var errors = this.props.errors || {};
 
     return (
     <div>
