@@ -7,6 +7,7 @@ var Masthead        = require('../layout/Masthead');
 var Highlight       = require('react-highlight');
 var pkg             = require('../package');
 var TopBarExample   = require('./examples/TopBar');
+var PageFormExample = require('./examples/PageForm');
 var DeltaArrow      = require('./examples/DeltaArrow');
 var LineGraph       = require('./examples/LineGraph');
 var Legend          = require('./examples/Legend');
@@ -60,6 +61,7 @@ module.exports = React.createClass({
           <h2 className="DemoPage__h2" id="layout">Layout</h2>
           <div className="DemoPage__group">
             <TopBarExample/>
+            <PageFormExample/>
           </div>
 
           <h2 className="DemoPage__h2" id="buttons">Buttons</h2>
