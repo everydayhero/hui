@@ -1,7 +1,7 @@
 "use strict";
 
 var React      = require('react');
-var Icon       = require('./Icon');
+var Icon       = require('../../Helpers/Icon');
 var Separator  = require('./Separator');
 
 module.exports = React.createClass({
