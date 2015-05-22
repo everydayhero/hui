@@ -47,7 +47,7 @@ describe('Button', function() {
 
     it('handles click events', function(){
       var node = scryByTag(component, 'button')[0];
-      React.addons.TestUtils.Simulate.mouseUp(node);
+      React.addons.TestUtils.Simulate.click(node);
 
       expect(clicked).toBe(true);
     });
@@ -165,7 +165,7 @@ describe('Button', function() {
 
     it('disables the button', function(){
       var node = scryByTag(component, 'button')[0];
-      React.addons.TestUtils.Simulate.mouseUp(node);
+      React.addons.TestUtils.Simulate.click(node);
 
       findByClass(component, 'hui-Button--disabled');
       expect(clicked).toBe(false);
