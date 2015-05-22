@@ -13,7 +13,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       color: 'green',
-      backgroundImage: "url(images/separator_green.png)"
+      separatorImagePath: "url(images/separator_green.png)"
     };
   },
 

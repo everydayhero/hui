@@ -16,9 +16,8 @@ module.exports = React.createClass({
 
   render: function() {
     var separatorImagePath = "images/separator_grey.png";
-    if(this.props.backgroundImagePath){
-      formStyle=
-        { backgroundImage: "url(" + this.props.separatorImagePath + ")" };}
+    if(this.props.separatorImagePath){
+      separatorImagePath= this.props.separatorImagePath;}
 
     var formStyle = 
       { backgroundImage: "url(images/alt_charity_bg--blur.jpg)" };
