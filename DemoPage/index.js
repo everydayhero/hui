@@ -23,6 +23,8 @@ var FileInput       = require('./examples/FileInput');
 var ImageInput      = require('./examples/ImageInput');
 var ButtonExample   = require('./examples/Button');
 var imagePath       = './images/';
+var FormRow         = require('./examples/FormRow');
+var Fieldset        = require('./examples/Fieldset');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -88,6 +90,8 @@ module.exports = React.createClass({
             <DateInput />
             <FileInput />
             <ImageInput />
+            <FormRow />
+            <Fieldset />
           </div>
         </div>
       </div>

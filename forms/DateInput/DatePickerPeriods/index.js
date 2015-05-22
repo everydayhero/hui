@@ -1,7 +1,6 @@
 "use strict";
 
 var React            = require('react');
-var moment           = require('moment');
 var DatePickerPeriod = require('../DatePickerPeriod');
 var Icon             = require('../../../Helpers/Icon');
 
@@ -10,24 +9,21 @@ module.exports = React.createClass({
 
   propTypes: {
     onClick: React.PropTypes.func,
+    onChange: React.PropTypes.func,
     type: React.PropTypes.string,
     date: React.PropTypes.object.isRequired,
     current: React.PropTypes.number
   },
 
-  getInitialState: function() {
-    return {
-      date: this.props.date
-    };
-  },
-
   navigate: function(i) {
     var type = this.props.type;
-    var current = this.state.date[type]() + i;
+    var current = this.props.date[type]() + i;
 
-    this.setState({
-      date: moment().set(type, current)
-    });
+    if (this.props.onChange) { this.props.onChange(current); }
+  },
+
+  onChange: function(current) {
+     if (this.props.onChange) { this.props.onChange(current); }
   },
 
   onForward: function(e) {
@@ -47,9 +43,8 @@ module.exports = React.createClass({
 
   renderPeriods: function() {
     var periods = [];
-    var state = this.state;
     var props = this.props;
-    var current = state.date[props.type]() - 1;
+    var current = props.date[props.type]() - 1;
 
     for (var i = 0; i < 3; i++) {
       var next = current + i;
@@ -67,7 +62,7 @@ module.exports = React.createClass({
           date={ props.date }
           type={ props.type }
           current={ props.current }
-          onClick={ props.onClick }>
+          onSelect={ this.onChange }>
             { label }
         </DatePickerPeriod>
       );
@@ -78,11 +73,11 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div className="hui-DatePickerPeriods">
-        <a href="#" className="hui-DatePickerPeriods__back" onClick={ this.onBack }><Icon icon="chevron-left"/></a>
+        <a href="#" tabIndex="-1" className="hui-DatePickerPeriods__back" onClick={ this.onBack }><Icon icon="chevron-left"/></a>
           <div className="hui-DatePickerPeriods__periods">
             { this.renderPeriods() }
           </div>
-        <a href="#" className="hui-DatePickerPeriods__forward" onClick={ this.onForward }><Icon icon="chevron-right"/></a>
+        <a href="#" tabIndex="-1" className="hui-DatePickerPeriods__forward" onClick={ this.onForward }><Icon icon="chevron-right"/></a>
       </div>
     );
   }

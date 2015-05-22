@@ -1,4 +1,4 @@
-%hui-button {
+ %hui-input-button {
   background: $hui-medium-grey;
   border-style: solid;
   border-width: 1px;
@@ -6,7 +6,6 @@
   padding-right: $hui-x-5;
   padding-left: $hui-x-5;
   box-sizing: border-box;
-  border-radius: $hui-border-radius;
   display: inline-block;
   font-size: 13px;
   font-family: "Lato", Helvetica, Arial, sans-serif;
@@ -16,7 +15,7 @@
   text-align: center;
   text-decoration: none;
   color: snow;
-  line-height: $hui-x-9 - 2;
+  line-height: 40px;
 }
 
 %hui-button-reset {
@@ -29,6 +28,8 @@
   font-size: 13px;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   color: $hui-link-primary;
+  border: none;
+  outline: none;
   &:active, &:hover {
     color: $hui-link-active;
   }

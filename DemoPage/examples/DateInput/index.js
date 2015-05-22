@@ -19,34 +19,25 @@ module.exports = React.createClass({
 
   render: function() {
     var change = this.inputChangeEventFn;
-    var errors = this.props.errors || {};
 
     return (
     <div>
       <h3>DateInput</h3>
       <p>Date input.</p>
-      <h4>DateInput propTypes</h4>
+      <h4>DateInput propTypes (See TextInput for complete list of propTypes)</h4>
       <ul>
         <li>id:</li>
-        <li>className:</li>
         <li>value:</li>
-        <li>placeholder:</li>
-        <li>onChange:</li>
+        <li>layout:</li>
       </ul>
-      <div className="DemoPage__example">
-        { this.dateInput('start_on', "(dd/mm/yyyy)") }
-        <DateInput
-          id="end_on"
-          className="campaign__endOn"
-          value={ this.state.form.end_on }
-          placeholder={ "(dd/mm/yyyy)" }
-          onChange={ change("end_on") }
-          errors={ errors.start_on } />
-      </div>
+      <DateInput
+        id="end_on"
+        className="campaign__endOn"
+        value={ this.state.form.end_on }
+        onChange={ change("end_on") } />
 
       <h4>React Example</h4>
       <Highlight className='html'>
-        { "{ this.dateInput('start_on', '(dd/mm/yyyy')) }\n" }
         { '<DateInput\n' }
         { '  id="end_on"\n' }
         { '  className="campaign__endOn"\n' }

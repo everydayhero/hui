@@ -19,6 +19,14 @@
     "setInterval": true,
     "clearInterval": true,
     "console": true,
-    "global": true
+    "global": true,
+    "TestUtils": true,
+    "findByTag": true,
+    "findByClass": true,
+    "sinon": true,
+    "React": true,
+    "scryByClass": true,
+    "scryByTag": true,
+    "findByProp": true
   }
 }

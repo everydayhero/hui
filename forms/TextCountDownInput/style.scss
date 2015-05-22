@@ -1,0 +1,26 @@
+@import "../InputErrors/style";
+@import "../TextInput/style";
+
+.hui-TextCountDownInput {
+  @extend %hui-input-base;
+}
+
+.hui-TextCountDownInput__counter {
+  position: absolute;
+  color: $hui-input-counter;
+  right: 31px;
+  top: 10px;
+  line-height: 24px;
+  font-size: 14px;
+  z-index: 3;
+}
+
+.hui-TextCountDownInput__counter--maxed {
+  color: tomato;
+}
+
+.hui-TextCountDownInput__counter--warn {
+  color: orange;
+}
+
+@include input-sizes(TextCountDownInput);

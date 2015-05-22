@@ -37,12 +37,6 @@ describe('SelectInput', function() {
       expect(select.getDOMNode().name).toBe(null);
     });
 
-    it('no label element', function() {
-      var labels = scryByTag(element, 'label');
-
-      expect(labels.length).toBe(0);
-    });
-
     it('does not render blank option', function() {
       var firstOption = scryByTag(element, 'option')[0];
       var node = firstOption.getDOMNode();
@@ -132,15 +126,6 @@ describe('SelectInput', function() {
 
       expect(labels.length).toBe(1);
     });
-
-    it('is not there if there is a value', function() {
-      element = TestUtils.renderIntoDocument(
-        <Select label="words" value="seven" />
-      );
-      labels = scryByTag(element, 'label');
-
-      expect(labels.length).toBe(0);
-    });
   });
 
   describe('validation behavior', function() {
@@ -164,19 +149,32 @@ describe('SelectInput', function() {
       expect(errorClasses.length).toBe(0);
     });
 
-    it('when invalid there is a hui-Input--error class', function() {
+    it('when invalid there is a hui-SelectInput--error class', function() {
       element = TestUtils.renderIntoDocument(
-        <Select valid={false} />
+        <Select errors={["I'm an error"]} />
       );
-      errorClasses = scryByClass(element, 'hui-Input--error');
+      errorClasses = scryByClass(element, 'hui-SelectInput--error');
 
       expect(errorClasses.length).toBe(1);
     });
 
     it('shows errors', function() {
       element = TestUtils.renderIntoDocument(
-        <Select valid={false} errors={['foo']} />
+        <Select errors={["I'm an error"]}/>
       );
+      errorClasses = scryByClass(element, 'hui-InputErrors');
+
+      expect(errorClasses.length).toBe(1);
+    });
+
+    it('shows errors when required', function() {
+      element = TestUtils.renderIntoDocument(
+        <Select errorMessage={ "I'm an error" } required={ true }/>
+      );
+
+      var select = findByTag(element, 'select');
+      TestUtils.Simulate.change(select);
+
       errorClasses = scryByClass(element, 'hui-InputErrors');
 
       expect(errorClasses.length).toBe(1);

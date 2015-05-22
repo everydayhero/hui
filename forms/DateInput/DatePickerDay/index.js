@@ -2,7 +2,7 @@
 
 var React      = require('react');
 var moment     = require('moment');
-var classNames = require('classnames');
+var classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'hui-DatePickerDay',
@@ -15,7 +15,6 @@ module.exports = React.createClass({
 
   onClick: function(e) {
     e.preventDefault();
-
     if (this.props.onClick) {
       this.props.onClick(this.props.date);
     }
@@ -30,12 +29,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var classes = classNames({
+    var classes = classnames({
       'hui-DatePickerDay--today': this.isToday(),
       'hui-DatePickerDay--selected': this.isSelected(),
     }, 'hui-DatePickerDay');
     return (
-      <a href="#" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>
+      <a href="#" tabIndex="-1" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>
     );
   }
 });

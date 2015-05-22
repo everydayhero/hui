@@ -138,7 +138,7 @@ a.hui-Button {
 
 .hui-Button--primary,
 .hui-Button--tertiary {
-  border-color: #525252;
+  border-color: $hui-text-input-text;
   &:before {
     background-color: #666;
     box-shadow: 0 0 90px 60px #666;
@@ -155,7 +155,7 @@ a.hui-Button {
 
 .hui-Button--primary {
   color: white;
-  background-color: #525252;
+  background-color: $hui-text-input-text;
 }
 
 .hui-Button--secondary {
@@ -167,10 +167,10 @@ a.hui-Button {
 }
 
 .hui-Button--tertiary {
-  color: #525252;
+  color: $hui-text-input-text;
   background-color: transparent;
   &:active {
-    color: #525252;
+    color: $hui-text-input-text;
   }
 }
 
@@ -195,7 +195,7 @@ a.hui-Button {
 }
 
 .hui-Button--primary.hui-Button--inverse {
-  color: #525252;
+  color: $hui-text-input-text;
   background-color: white;
 }
 
@@ -209,7 +209,7 @@ a.hui-Button {
 .hui-Button--tertiary.hui-Button--inverse {
   color: white;
   &:hover, &:focus {
-    color: #525252;
+    color: $hui-text-input-text;
   }
 }
 

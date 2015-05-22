@@ -18,34 +18,28 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var change = this.inputChangeEventFn;
     var name   = 'edh_address';
+    var address = {
+      street_address: '333 Ann Street',
+      street_address_2: '',
+      locality: 'Brisbane',
+      region: 'QLD',
+      postal_code: '4116',
+      country_name: 'Australia'
+    };
 
     return (
     <div>
-      <h3>ReadOnlyAddress</h3>
-      <p>ReadOnlyAddress.</p>
-      <h4>ReadOnlyAddress propTypes</h4>
-      <ul>
-        <li>id:</li>
-        <li>value:</li>
-        <li>onChange:</li>
-      </ul>
-      <div className="DemoPage__example">
-        { this.readOnlyAddress('charity_address', { hint: false }) }
-        <ReadOnlyAddress
-            id={ name }
-            value={ this.state.form[name] }
-            onChange={ change(name) } />
-      </div>
+      <h3 className="DemoPage__h3">ReadOnlyAddress</h3>
+      <p className="DemoPage__p">Read only address input (Contactinates address values with ",".</p>
+      <h4 className="DemoPage__h4">ReadOnlyAddress propTypes (See TextInput)</h4>
+      <ReadOnlyAddress id={ name } value={ address } />
 
-      <h4>React Example</h4>
+      <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
-        { "{ this.readOnlyAddress('charity_address', { hint: false }) } \n" }
         { '<ReadOnlyAddress\n' }
         { '  id={ name }\n' }
-        { '  value={ this.state.form[name] }\n' }
-        { '  onChange={ change(name) } />\n' }
+        { '  value={ this.state.form[name] } />\n' }
       </Highlight>
     </div>
     );

@@ -1,7 +1,7 @@
 "use strict";
 
 var React      = require('react');
-var classNames = require('classnames');
+var classnames = require('classnames');
 var Icon       = require('../../Helpers/Icon');
 
 module.exports = React.createClass({
@@ -69,12 +69,11 @@ module.exports = React.createClass({
     var kind = props.kind;
     var href = props.href;
 
-    var classes = classNames({
+    var classes = classnames({
       'hui-Button--cta': kind === 'cta',
       'hui-Button--primary': kind === 'primary',
       'hui-Button--secondary': kind === 'secondary',
       'hui-Button--tertiary': kind === 'tertiary',
-      'hui-Button--borderless': kind === 'borderless',
       'hui-Button--disabled': props.disabled,
       'hui-Button--inverse': props.inverse,
       'hui-Button--thin': props.thin,
@@ -97,7 +96,7 @@ module.exports = React.createClass({
         to={ href }
         href={ href }
         onMouseUp={ !href && this.handleClick }
-        onTouchEnd={ !href && this.handleClick }
+        onTouchStart={ !href && this.handleClick }
         disabled={ props.disabled && 'disabled' }
         onClick={ this.handleDefaultClick }>
         <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />

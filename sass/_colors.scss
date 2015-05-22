@@ -8,6 +8,8 @@ $hui-border-grey: #bcbec0;
 $hui-label: #b3b3b3;
 $hui-header-secondary: #575757;
 $hui-header-primary: #82c57a;
+$hui-header-fieldset-border-active: #82c57a;
+$hui-header-fieldset-border: #d1d2d4;
 $hui-legend: #8d8d8d;
 $hui-drop-shadow: #575757;
 $hui-disabled-button: #e5e5e5;
@@ -38,3 +40,6 @@ $hui-hover-inverse-green: lighten($hui-primary-green, 50%);
 $hui-tooltip-bg-white: #ffffff;
 
 $hui-input-overlength-red: lighten(tomato, 8%);
+
+$hui-text-input-text: #525252;
+$hui-fieldset-background: #ececec;

@@ -1,119 +1,123 @@
 "use strict";
 
-var React            = require('react');
-var classNames       = require('classnames');
-var InputErrors      = require('../InputErrors');
-var placeholderMixin = require('../../mixins/placeholderMixin');
-var nextId           = 0;
+var React             = require('react/addons');
+var LocalStorageMixin = require('../../mixins/localStorage');
+var PureRenderMixin   = React.addons.PureRenderMixin;
+var inputMessage      = require('../../mixins/inputMessage');
+var textInput         = require('../../mixins/textInput');
 
 module.exports = React.createClass({
-  displayName: 'hui-TextInput',
-  mixins: [placeholderMixin],
+  displayName: "TextInput",
+
+  mixins: [PureRenderMixin, LocalStorageMixin, inputMessage, textInput],
 
   propTypes: {
-    id: React.PropTypes.string,
+    autoComplete: React.PropTypes.bool,
+    storeLocally: React.PropTypes.bool,
+    autoFocus: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+    hasError: React.PropTypes.bool,
+    showError: React.PropTypes.bool,
+    name: React.PropTypes.string,
+    label: React.PropTypes.string,
     errors: React.PropTypes.array,
-    placeholder: React.PropTypes.string,
-    readOnly: React.PropTypes.bool,
-    hasCounter: React.PropTypes.bool,
-    maxLength: React.PropTypes.number,
-    type: React.PropTypes.string,
-    className: React.PropTypes.string,
-    autoComplete: React.PropTypes.string,
-    value: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number
-    ]),
+    errorMessage: React.PropTypes.string,
+    hint: React.PropTypes.string,
+    icon: React.PropTypes.string,
+    mask: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
+    onChange: React.PropTypes.func,
+    validate: React.PropTypes.func,
+    onError: React.PropTypes.func,
     onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func
+    onTab: React.PropTypes.func,
+    readOnly: React.PropTypes.bool,
+    required: React.PropTypes.bool,
+    showIcon: React.PropTypes.bool,
+    spacing: React.PropTypes.string,
+    type: React.PropTypes.string,
+    value: React.PropTypes.string,
+    layout: React.PropTypes.string,
+    onIconClick: React.PropTypes.func
   },
 
   getDefaultProps: function() {
     return {
-      errors: null,
-      id: ['text-input', ++nextId].join('-'),
-      placeholder: null,
+      autoComplete: true,
+      storeLocally: false,
+      autoFocus: false,
+      disabled: false,
+      showError: false,
+      icon: null,
+      initialise: null,
+      mask: null,
+      onFocus: null,
+      onChange: null,
+      validate: null,
+      onError: null,
+      onBlur: function() {},
+      onTab: function() {},
+      onIconClick: null,
       readOnly: false,
+      required: false,
+      showIcon: true,
+      name: null,
+      id: null,
+      label: 'Input',
+      errors: [],
+      errorMessage: '',
+      hint: '',
       type: 'text',
       value: '',
-      hasCounter: false,
-      autoComplete: 'off'
+      layout: 'full',
+      spacing: 'loose'
     };
   },
 
-  focus: function() {
-    this.refs.input.getDOMNode().focus();
-  },
-
-  blur: function() {
-    this.refs.input.getDOMNode().blur();
+  getInitialState: function() {
+    return {
+      hasError: false,
+      focused: false,
+      valid: false,
+      waiting: false
+    };
   },
 
   render: function() {
     var props = this.props;
-
-    var classes = classNames({
-      "hui-TextInput--error": this.hasErrors(),
-      "hui-TextInput--readOnly": this.props.readOnly
-    }, 'hui-TextInput', props.className);
-
-    return (
-      <span className={ classes }>
-        { this.renderPlaceholder() }
-        { this.renderInput() }
-        { this.renderCounter() }
-        <InputErrors errors={ props.errors } />
-      </span>
-    );
-  },
-
-  renderCounter: function() {
-    var props      = this.props;
-    var hasCounter = props.hasCounter;
-    var maxLength  = props.maxLength;
-    var value, number, classes;
-
-    if (hasCounter) {
-      value = props.value;
-      if (value && typeof(value) === 'string') {
-        number = maxLength - value.length;
-      } else {
-        number = maxLength;
-      }
-
-      classes = classNames({
-        "hui-TextInput--counter--warning": number <= 5
-      }, "hui-TextInput--counter");
-
-      return (
-        <p className={ classes }>{ number }</p>
-      );
-    } else {
-      return null;
-    }
-  },
-
-  renderInput: function() {
-    var props = this.props;
-    var className = props.className;
-
-    var classes = classNames({
-      "hui-TextInput__input--shrink": this.props.hasCounter
-    }, "hui-TextInput__input", className);
+    var state = this.state;
+    var errors = props.errors || [];
+    var value = props.value || '';
+    var hasServerErrors = errors.length;
+    var classes = [
+      'hui-TextInput--' + props.layout,
+      'hui-TextInput--' + props.spacing,
+      'hui-TextInput',
+      !!value && !!value.trim() && 'hui-TextInput--hasValue',
+      state.focused && 'hui-TextInput--focused',
+      state.valid && 'hui-TextInput--valid',
+      this.shouldShowError() && 'hui-TextInput--error',
+      props.disabled && 'hui-TextInput--disabled'
+    ].join(' ').replace('false');
 
     return (
-      <input
-        {...props}
-        autoComplete="off"
-        className={ classes }
-        placeholder=""
-        ref="input"
-        maxLength="10000" />
+      <div className={ classes }>
+        <label className="hui-TextInput__label" htmlFor={ props.name }>
+          { props.label }
+          <input { ...this.inputMethods(!props.disabled) }
+            autoComplete={ props.autoComplete ? 'on' : 'off' }
+            className="hui-TextInput__input"
+            disabled={ props.disabled }
+            id={ props.id || props.name }
+            name={ props.name }
+            ref="input"
+            onKeyDown={ this.onTab }
+            type={ props.type }
+            value={ this.maskValue(value) } />
+          { this.renderIcon() }
+        </label>
+        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+      </div>
     );
-  },
-
-  hasErrors: function() {
-    var errors = this.props.errors;
-    return errors && errors.length > 0;
   }
 });

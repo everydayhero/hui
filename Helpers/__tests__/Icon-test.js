@@ -17,7 +17,7 @@ describe('Icon', function() {
 
   it('renders an icon with fixedWith className', function() {
     var element = TestUtils.renderIntoDocument(
-        <Icon icon="lock" fixedWith={true}/>
+        <Icon icon="lock" fixedWidth={ true }/>
       );
     var iconClass = element.getDOMNode().children[0].className;
     expect(iconClass).toBe('hui-Icon fa fa-fw fa-lock');

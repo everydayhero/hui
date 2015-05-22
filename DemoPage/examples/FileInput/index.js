@@ -32,15 +32,27 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
-      <div className="DemoPage__example">
-        { this.fileInput('identity_proof') }
-        <FileInput
-          id={ 'sample_file' }
-          noFileLabel={ 'No file selected' }
-          onChange={ change('sample_file') }
-          value={ this.state.form.sample_file }
-          errors={ this.props.errors && this.props.errors.sample_file } />
-      </div>
+      <FileInput
+        id={ 'sample_file' }
+        noFileLabel={ 'No file selected' }
+        onChange={ change('sample_file') }
+        value={ this.state.form.sample_file } />
+
+      <FileInput
+        id={ 'sample_file' }
+        label="error input"
+        noFileLabel={ 'No file selected' }
+        onChange={ change('sample_file_01') }
+        errors={ ["Your image suggests a lack of design ability"] }
+        value={ this.state.form.sample_file_01 } />
+
+      <FileInput
+        id={ 'sample_file' }
+        label="disabled input"
+        noFileLabel={ 'No file selected' }
+        onChange={ change('sample_file_02') }
+        disabled={ true }
+        value={ this.state.form.sample_file_02 } />
 
       <h4>React Example</h4>
       <Highlight className='html'>

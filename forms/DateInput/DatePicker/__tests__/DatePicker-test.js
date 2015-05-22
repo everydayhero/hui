@@ -10,19 +10,24 @@ describe('DatePicker', function() {
   var DatePicker  = require('../');
   var moment      = require('moment');
   var TestUtils   = React.addons.TestUtils;
-
-  var date, element;
+  var date, component, passedDate;
 
   beforeEach(function() {
     date = moment();
-    element = TestUtils.renderIntoDocument(<DatePicker value={ date } />);
+    passedDate = null;
+    var onChangeSelection = function(value) { passedDate = value; };
+    component = TestUtils.renderIntoDocument(<DatePicker date={ date } onChangeSelection={ onChangeSelection }/>);
   });
 
   it('should set the month state', function() {
-    expect(element.state.month).toEqual(date.month());
+    var month = 1;
+    component.setMonth(month);
+    expect(passedDate.month()).toEqual(month);
   });
 
   it('should set the year state', function() {
-    expect(element.state.year).toEqual(date.year());
+    var year = 2015;
+    component.setYear(year);
+    expect(passedDate.year()).toEqual(year);
   });
 });

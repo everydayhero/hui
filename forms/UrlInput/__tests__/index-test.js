@@ -31,9 +31,10 @@ describe('UrlInput', function() {
   });
 
   describe('onChange', function() {
-    var changeFn, element, protocol, path;
+    var changeFn, element, protocol, path, parsedValue;
     beforeEach(function() {
-      changeFn = jest.genMockFn();
+      parsedValue = null;
+      changeFn = function(value) { parsedValue = value; };
       element = TestUtils.renderIntoDocument(<UrlInput value="http://example.org" onChange={ changeFn } />);
       path = findByTag(element, 'input');
       protocol = findByTag(element, 'select');
@@ -43,7 +44,7 @@ describe('UrlInput', function() {
       TestUtils.Simulate.change(path, {target: {value: 'https://example.com'}});
 
       expect(path.getDOMNode().value).toBe('example.com');
-      expect(changeFn.mock.calls[0][0]).toBe('https://example.com');
+      expect(parsedValue).toBe('https://example.com');
     });
 
     it('calls the onChange function whenever the protocol changes', function() {
@@ -51,13 +52,13 @@ describe('UrlInput', function() {
 
       expect(path.getDOMNode().value).toBe('example.org');
       expect(protocol.getDOMNode().value).toBe('https://');
-      expect(changeFn.mock.calls[0][0]).toBe('https://example.org');
+      expect(parsedValue).toBe('https://example.org');
     });
 
     it('does not change the form to include only the protocol when the path is remved', function() {
       TestUtils.Simulate.change(path, {target: {value: ''}});
 
-      expect(changeFn.mock.calls[0][0]).toBe('');
+      expect(parsedValue).toBe('');
     });
   });
 

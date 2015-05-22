@@ -9,3 +9,40 @@
 =media-range($min: 320px, $max: 720px)
   @media only screen and (min-width: $min) and (max-width: $max - 1px)
     @content
+
+=input-sizes($componentName)
+  .hui-#{$componentName}--full
+    width: 100%
+
+  .hui-#{$componentName}--wide
+    width: 66%
+
+  .hui-#{$componentName}--half
+    width: 50%
+
+  .hui-#{$componentName}--narrow
+    width: 34%
+
+  .hui-#{$componentName}--quarter
+    width: 25%
+
+  .hui-#{$componentName}--threeQuarters
+    width: 75%
+
+  .hui-#{$componentName}--eighth
+    width: 12.5%
+
+  .hui-#{$componentName}--sevenEighths
+    width: 87.5%
+
+  .hui-#{$componentName}--compact
+    padding: 0
+
+  .hui-#{$componentName}--tight
+    padding: 0 4px 8px
+
+  .hui-#{$componentName}--fitted
+    padding: 0 16px 24px
+
+  .hui-#{$componentName}--loose
+    padding: 0 16px 32px

@@ -39,15 +39,34 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
-      <div className="DemoPage__example">
-        <SelectInput
-          id="toys"
-          onChange={ change('toys') }
-          value={ this.state.form.toys }
-          className="Toys__select"
-          prompt="Please select your toy"
-          options={ options } />
-      </div>
+      <SelectInput
+        id="toys"
+        onChange={ change('toys01') }
+        label="Select a toy"
+        value={ this.state.form.toys01 }
+        className="Toys__select"
+        options={ options } />
+
+      <SelectInput
+        id="toys"
+        onChange={ change('toys02') }
+        value={ this.state.form.toys02 }
+        label="disabled"
+        disabled={ true }
+        className="Toys__select"
+        options={ options } />
+
+      <SelectInput
+        id="toys"
+        onChange={ change('toys03') }
+        value={ this.state.form.toys03 }
+        label="Required and include blank with prompt"
+        includeBlank={ true }
+        className="Toys__select"
+        errorMessage={ "You need to select a toy" }
+        required={ true }
+        prompt="Please select your toy"
+        options={ options } />
 
       <h4>React Example</h4>
       <Highlight className='html'>
