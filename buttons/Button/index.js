@@ -47,19 +47,13 @@ module.exports = React.createClass({
     };
   },
 
-  handleClick: function(e) {
-    if(this.props.disabled) {
-      e.preventDefault();
-    }
-
-    if (!this.props.disabled && this.props.onClick) {
-      this.props.onClick(e);
-    }
+  ignoreClick: function(e) {
+    e.preventDefault();
   },
 
-  handleDefaultClick: function(e) {
-    if(this.props.disabled) {
-      e.preventDefault();
+  propogateClick: function(e) {
+    if (this.props.onClick) {
+      this.props.onClick(e);
     }
   },
 
@@ -68,6 +62,7 @@ module.exports = React.createClass({
     var props = this.props;
     var kind = props.kind;
     var href = props.href;
+    var clickHandler = props.disabled ? this.ignoreClick : this.propogateClick;
 
     var classes = classnames({
       'hui-Button--cta': kind === 'cta',
@@ -95,10 +90,8 @@ module.exports = React.createClass({
         type={ props.type }
         to={ href }
         href={ href }
-        onMouseUp={ !href && this.handleClick }
-        onTouchStart={ !href && this.handleClick }
         disabled={ props.disabled && 'disabled' }
-        onClick={ this.handleDefaultClick }>
+        onClick={ clickHandler }>
         <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
