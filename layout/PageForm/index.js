@@ -14,25 +14,25 @@ module.exports = React.createClass({
     children: React.PropTypes.node
   },
 
-  render: function() {
-    var separatorImagePath = "images/separator_grey.png";
-    if(this.props.backgroundImagePath){
-      formStyle=
-        { backgroundImage: "url(" + this.props.separatorImagePath + ")" };}
+  getDefaultProps: function() {
+    return {
+      backgroundImagePath: "images/alt_charity_bg--blur.jpg",
+      separatorImagePath: "images/separator_grey.png"
+    };
+  },
 
-    var formStyle = 
-      { backgroundImage: "url(images/alt_charity_bg--blur.jpg)" };
-    if(this.props.backgroundImagePath){
-      formStyle=
-        { backgroundImage: "url(" + this.props.backgroundImagePath + ")" };}
+  render: function() {
+    var props = this.props;
+    var formStyle=
+        { backgroundImage: "url(" + props.backgroundImagePath + ")" };
     
     return (
       <div style={ formStyle } className="hui-PageForm">
-        <h2 className="hui-PageForm__title">{ this.props.pageName }</h2>
+        <h2 className="hui-PageForm__title">{ props.pageName }</h2>
         <Icon icon="heart-o" className="hui-PageForm__icon"/>
         <Separator color="grey" 
-        separatorImagePath={ separatorImagePath }/>
-        { this.props.children }
+        separatorImagePath={ props.separatorImagePath }/>
+        { props.children }
       </div>
     );
   }
