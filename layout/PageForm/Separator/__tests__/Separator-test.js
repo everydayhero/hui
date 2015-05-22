@@ -15,12 +15,16 @@ describe('Separator', function() {
   });
 
   it('can be white', function() {
-    element = TestUtils.renderIntoDocument(<Separator color="white"/>);
+    var separatorImagePath = "images/separator_white.png";
+    element = TestUtils.renderIntoDocument(<Separator color="white" 
+      separatorImagePath={ separatorImagePath }/>);
     findByClass(element, 'white');
   });
 
   it('can be grey', function() {
-    element = TestUtils.renderIntoDocument(<Separator color="grey"/>);
+    var separatorImagePath = "images/separator_grey.png";
+    element = TestUtils.renderIntoDocument(<Separator color="grey" 
+      separatorImagePath={ separatorImagePath }/>);
     findByClass(element, 'grey');
   });
 });
