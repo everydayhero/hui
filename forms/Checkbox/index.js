@@ -27,12 +27,20 @@ module.exports = React.createClass({
 
   label: function() {
     var props = this.props;
-    var lableType = props.labelIsClickable ? 'label' : 'span';
 
     if (!props.label) { return; }
 
-    return React.createElement(
-      lableType, { className: "hui-Checkbox__label", htmlFor: props.id }, props.label
+    if (props.labelIsClickable) {
+      return (
+        <label className="hui-Checkbox__label">
+          { props.label }
+        </label>
+      );
+    }
+    return (
+      <span className="hui-Checkbox__label">
+        { props.label }
+      </span>
     );
   },
 

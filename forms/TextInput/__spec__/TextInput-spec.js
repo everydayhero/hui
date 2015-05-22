@@ -93,6 +93,46 @@ describe('TextInput', function() {
     it('name is TextInput-seven', function() {
       expect(input.getDOMNode().name).to.equal('eight');
     });
+
+    it('icon is default', function() {
+      findByClass(element, 'hui-TextInput__input--icon');
+      findByClass(element, 'hui-TextInput__icon');
+    });
+  });
+
+  describe('icon left', function() {
+    var element, input;
+
+    beforeEach(function() {
+      element = TestUtils.renderIntoDocument(<Input
+        type="email"
+        value="six"
+        id="seven"
+        name="eight"
+        iconPosition="left" />);
+      input = findByTag(element, 'input');
+    });
+
+    it('type of email', function() {
+      expect(input.getDOMNode().type).to.equal('email');
+    });
+
+    it('value of six', function() {
+      expect(input.getDOMNode().value).to.equal('six');
+    });
+
+    it('id is TextInput-seven', function() {
+      expect(input.getDOMNode().id).to.equal('seven');
+    });
+
+    it('name is TextInput-seven', function() {
+      expect(input.getDOMNode().name).to.equal('eight');
+    });
+
+    it('icon is left', function() {
+      findByClass(element, 'hui-TextInput__input--icon-left');
+      findByClass(element, 'hui-TextInput__icon--left');
+    });
   });
 
   describe('onChange', function() {

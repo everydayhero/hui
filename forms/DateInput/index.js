@@ -15,7 +15,7 @@ dateFormats.nz = dateFormats.uk;
 dateFormats.ie = dateFormats.uk;
 
 module.exports = React.createClass({
-  displayName: 'hui-DateInput',
+  displayName: 'DateInput',
 
   propTypes: {
     valueFormat: React.PropTypes.string,
@@ -27,6 +27,8 @@ module.exports = React.createClass({
     id: React.PropTypes.string,
     countryCode: React.PropTypes.string,
     minimumYear: React.PropTypes.number,
+    layout: React.PropTypes.string,
+    spacing: React.PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -35,7 +37,9 @@ module.exports = React.createClass({
       displayFormat: "DD/MM/YYYY",
       value: "",
       countryCode: 'uk',
-      minimumYear: 1000
+      minimumYear: 1000,
+      layout: 'quarter',
+      spacing: 'loose'
     };
   },
 
@@ -185,9 +189,9 @@ module.exports = React.createClass({
 
     return (
       <TextInput
-        layout="quarter"
-        ref="input"
         {...this.props}
+        layout="full"
+        spacing="tight"
         value={ this.getDisplayValue() }
         onTab={ this.onTab }
         onFocus={ this.onFocus }
@@ -205,13 +209,19 @@ module.exports = React.createClass({
     }
   },
 
-
   render: function() {
+    var props = this.props;
+    var classes = [
+      'hui-DateInput--' + props.layout,
+      'hui-DateInput--' + props.spacing,
+      'hui-DateInput',
+    ].join(' ').replace('false', '');
+
     return (
-      <span className="DateInput">
+      <div className={ classes }>
         { this.renderInput() }
         { this.renderDatePicker() }
-      </span>
+      </div>
     );
   },
 });

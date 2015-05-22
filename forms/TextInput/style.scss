@@ -23,6 +23,13 @@
   line-height: 27px;
   height: 27px;
   padding-right: 30px;
+  position: relative;
+  z-index: 5;
+}
+
+.hui-TextInput__input--icon-left {
+  padding-right: 0px;
+  padding-left: 24px;
 }
 
 .hui-TextInput__message {
@@ -43,9 +50,14 @@
   position: absolute;
   right: 8px;
   top: 50%;
-  margin-top: -6px;
+  margin-top: -12px;
   line-height: 24px;
   font-size: 14px;
+}
+
+.hui-TextInput__icon--left {
+  left: 8px;
+  margin-top: -6px;
 }
 
 .hui-TextInput--hasValue .hui-TextInput__label {

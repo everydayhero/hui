@@ -31,10 +31,13 @@ module.exports = React.createClass({
         <li>layout:</li>
       </ul>
       <DateInput
-        id="end_on"
         className="campaign__endOn"
         value={ this.state.form.end_on }
         onChange={ change("end_on") } />
+      <DateInput
+        className="campaign__endOn"
+        value={ this.state.form.end_on2 }
+        onChange={ change("end_on2") } />
 
       <h4>React Example</h4>
       <Highlight className='html'>
