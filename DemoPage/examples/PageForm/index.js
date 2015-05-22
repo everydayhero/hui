@@ -5,7 +5,8 @@ var PageForm             = require('../../../layout/PageForm');
 var Button               = require('../../../buttons/Button');
 var TextInput            = require('../../../forms/TextInput');
 var Highlight            = require('react-highlight');
-var backgroundImagePath  = '../images/alt_charity_bg--blur.jpg';
+var backgroundImagePath  = ('../images/alt_charity_bg--blur.jpg');
+var separatorImagePath   = ('../images/separator_grey.png');
 
 module.exports = React.createClass({
   displayName: 'PageFormExample',
@@ -31,6 +32,9 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">backgroundImagePath:</span> Path to background image.
         </li>
         <li className="DemoPage__li">
+          <span className="DemoPage__bold">separatorImagePath:</span> Path to separator image.
+        </li>
+        <li className="DemoPage__li">
           <span className="DemoPage__bold">children:</span> Any elements to be added to the form.
         </li>
       </ul>
@@ -38,6 +42,7 @@ module.exports = React.createClass({
         <PageForm
           pageName={ "Example" }
           backgroundImagePath={ backgroundImagePath }
+          separatorImagePath={ separatorImagePath }
           children={ formInput }/>
       </div>
 
@@ -51,7 +56,8 @@ module.exports = React.createClass({
           { '<Button kind="secondary" label="Sign In" icon="chevron-right"/>];\n' }
           { '<PageForm\n'}
           { 'pageName={ "Example" }\n'}
-          { 'pageImagePath={ pageImagePath }\n' }
+          { 'backgroundImagePath={ backgroundImagePath }\n' }
+          { 'separatorImagePath={ separatorImagePath }\n' }
           { 'children={ formInput }/>\n' }
       </Highlight>
      
@@ -61,7 +67,7 @@ module.exports = React.createClass({
       { '<h2 class="hui-PageForm__title">Example</h2>\n' }
       { '<span class="IconWrapper hui-PageForm__icon">\n' }
       { '<i class="Icon fa fa-heart-o"></i></span>\n' }
-      { '<hr class="Separator grey">\n' }
+      { '<hr style="background-image:url(images/separator_grey.png);" class="Separator grey">\n' }
       { '<span class="hui-TextInput--readOnly hui-TextInput hui-TextInput">\n' }
       { '<input class="hui-TextInput__input hui-TextInput" id="demo_input_readonly" value="This is a readonly text input" readonly="" placeholder="" type="text" autocomplete="off" maxlength="10000">\n' }
       { '</span>\n' }
