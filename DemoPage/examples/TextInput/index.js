@@ -12,7 +12,9 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      user_name_label: 'User Name:'
+      user_name_label: 'User Name:',
+      user_name_hint: 'The name of the user',
+      user_name_tip: 'You should fill this input out.'
     };
 
     return (translation[name]);
@@ -51,6 +53,7 @@ module.exports = React.createClass({
         <li className="DemoPage__li"><span className="DemoPage__bold">value:</span> [String, Intiger, Float] – Value of input</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">layout:</span> [String one of "full", "wide", "half", "narrow" or "quarter"] – Defines input layout width (Default Full)</li>
       </ul>
+      { this.textInput("user_name") }
 
       <TextInput
         autoComplete={false}

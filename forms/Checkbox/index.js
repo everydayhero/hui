@@ -32,7 +32,7 @@ module.exports = React.createClass({
 
     if (props.labelIsClickable) {
       return (
-        <label className="hui-Checkbox__label">
+        <label htmlFor={ props.id } className="hui-Checkbox__label">
           { props.label }
         </label>
       );

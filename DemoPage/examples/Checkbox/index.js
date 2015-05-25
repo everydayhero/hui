@@ -12,7 +12,8 @@ module.exports = React.createClass({
   t: function(name) {
     var translation = {
       join_label: 'Join or not',
-      terms_label: 'Terms & Conditions'
+      terms_label: 'Terms & Conditions',
+      opt_in_label: 'Opt in'
     };
 
     return (translation[name]);
@@ -33,7 +34,7 @@ module.exports = React.createClass({
         <li className="DemoPage__li">labelIsClickable: [Boolean] (Default false)</li>
         <li className="DemoPage__li">onChange: [Function] On change callabck. Returns true/false. (Optional) </li>
       </ul>
-
+      { this.checkboxInput("opt_in") }
       <CheckboxInput
         id="terms"
         value={ this.state.form.terms }

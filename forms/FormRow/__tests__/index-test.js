@@ -22,13 +22,13 @@ describe('FormRow', function() {
 
   describe('properties', function() {
     var element = TestUtils.renderIntoDocument(
-          <FormRow label="foo" className="bar" helpText="helpText"/>
+          <FormRow label="foo" className="bar" tip="tip"/>
         );
 
     it('does render a help text', function() {
-      var label = findByClass(element, 'hui-FormRow__helpText');
+      var label = findByClass(element, 'hui-FormRow__tip');
 
-      expect(label.getDOMNode().textContent).toBe("helpText");
+      expect(label.getDOMNode().textContent).toBe("tip");
     });
   });
 });

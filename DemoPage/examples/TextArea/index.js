@@ -12,7 +12,9 @@ module.exports = React.createClass({
   t: function(name) {
     var translation = {
       food_menu_label: 'Food Menu:',
-      description_label: 'Description:'
+      story_label: 'Story',
+      story_hint: 'This is a hint.',
+      story_tip: 'This is a tip.'
     };
 
     return (translation[name]);
@@ -33,6 +35,8 @@ module.exports = React.createClass({
         <li>className:</li>
         <li>onChange:</li>
       </ul>
+        { this.textArea("story") }
+
         <TextArea
           className="Your-TextArea"
           id="description"

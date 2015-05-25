@@ -11,7 +11,8 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      identity_proof_label: 'Identity proof:'
+      image_label: 'image',
+      image_tip: 'Upload an image.'
     };
 
     return (translation[name]);
@@ -32,6 +33,8 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
+      { this.fileInput("image") }
+
       <FileInput
         id={ 'sample_file' }
         noFileLabel={ 'No file selected' }

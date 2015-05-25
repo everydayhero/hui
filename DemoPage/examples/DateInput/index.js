@@ -11,7 +11,8 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      start_on_label: 'Start On:'
+      start_on_label: 'Start On:',
+      start_on_tip: 'When should the thing start?'
     };
 
     return (translation[name]);
@@ -30,6 +31,8 @@ module.exports = React.createClass({
         <li>value:</li>
         <li>layout:</li>
       </ul>
+      { this.dateInput("start_on") }
+
       <DateInput
         className="campaign__endOn"
         value={ this.state.form.end_on }

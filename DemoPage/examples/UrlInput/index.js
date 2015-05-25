@@ -11,7 +11,9 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      website_url_label: 'Website Url:'
+      website_url_label: 'Website Url:',
+      website_url_tip: 'past your url here.',
+      website_url_hint: 'you can even pas! the http part!'
     };
 
     return (translation[name]);
@@ -37,6 +39,8 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
+      { this.urlInput("website_url") }
+
       <UrlInput
         id={ url }
         onChange={ change(url) }
