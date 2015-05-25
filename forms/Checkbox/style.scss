@@ -1,11 +1,11 @@
 @import "../InputErrors/style";
 
 .hui-Checkbox {
-  margin: 13px 0 13px 0;
+  margin: 0px 0 $hui-x-4 $hui-x-5
 }
 
 .hui-Checkbox__input {
-  margin-right: 8px;
+  margin-right: $hui-x-2;
   display: inline-block;
 }
 

@@ -82,6 +82,7 @@ module.exports = {
         onChange={  this.inputChangeEventFn(name) }
         className={ name }
         layout='half'
+        spacing='fitted'
         {...options} />
     );
 
