@@ -5,6 +5,7 @@ var LocalStorageMixin = require('../../mixins/localStorage');
 var PureRenderMixin   = React.addons.PureRenderMixin;
 var inputMessage      = require('../../mixins/inputMessage');
 var textInput         = require('../../mixins/textInput');
+var classnames        = require('classnames');
 
 module.exports = React.createClass({
   displayName: "TextInput",
@@ -24,6 +25,7 @@ module.exports = React.createClass({
     errorMessage: React.PropTypes.string,
     hint: React.PropTypes.string,
     icon: React.PropTypes.string,
+    iconPosition: React.PropTypes.string,
     mask: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
@@ -49,6 +51,7 @@ module.exports = React.createClass({
       disabled: false,
       showError: false,
       icon: null,
+      iconPosition: 'right',
       initialise: null,
       mask: null,
       onFocus: null,
@@ -89,6 +92,7 @@ module.exports = React.createClass({
     var errors = props.errors || [];
     var value = props.value || '';
     var hasServerErrors = errors.length;
+    var iconsLeft = (props.iconPosition === 'left');
     var classes = [
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
@@ -98,7 +102,13 @@ module.exports = React.createClass({
       state.valid && 'hui-TextInput--valid',
       this.shouldShowError() && 'hui-TextInput--error',
       props.disabled && 'hui-TextInput--disabled'
-    ].join(' ').replace('false');
+    ].join(' ').replace('false', '');
+
+    var inputClassName = classnames({
+      'hui-TextInput__input--icon-left': iconsLeft,
+      'hui-TextInput__input--icon': !iconsLeft,
+      'hui-TextInput__input': true
+    });
 
     return (
       <div className={ classes }>
@@ -106,7 +116,7 @@ module.exports = React.createClass({
           { props.label }
           <input { ...this.inputMethods(!props.disabled) }
             autoComplete={ props.autoComplete ? 'on' : 'off' }
-            className="hui-TextInput__input"
+            className={ inputClassName }
             disabled={ props.disabled }
             id={ props.id || props.name }
             name={ props.name }

@@ -4,8 +4,11 @@
   font-family: $hui-font-family;
 }
 
-.hui-FormRow__helpText {
+.hui-FormRow__tip {
   line-height: 42px;
   font-size: 15px;
   color: $hui-text-input-text;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
 }

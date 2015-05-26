@@ -11,7 +11,9 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      toys_label: 'Toys Select:'
+      toys_label: 'Toys Select:',
+      toys_hint: 'These are some toys',
+      toy_tip: 'What toy do you want?'
     };
 
     return (translation[name]);
@@ -39,6 +41,8 @@ module.exports = React.createClass({
         <li>onBlur:</li>
         <li>onChange:</li>
       </ul>
+      { this.selectInput("toys", { options: options }) }
+
       <SelectInput
         id="toys"
         onChange={ change('toys01') }

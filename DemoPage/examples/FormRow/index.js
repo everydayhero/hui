@@ -23,7 +23,7 @@ module.exports = React.createClass({
         <li>value:</li>
         <li>layout:</li>
       </ul>
-      <FormRow htmlFor="example" helpText="I'm very helpful.">
+      <FormRow htmlFor="example" tip="I'm very helpful.">
         <TextInput
           id='example'
           layout='half'

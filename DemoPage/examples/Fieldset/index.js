@@ -25,7 +25,7 @@ module.exports = React.createClass({
         <li>layout:</li>
       </ul>
       <Fieldset legend="I'm a field set">
-        <FormRow htmlFor="example" helpText="I'm very helpful.">
+        <FormRow htmlFor="example" tip="I'm very helpful.">
           <TextInput
             autoComplete={false}
             id='example'
@@ -35,7 +35,7 @@ module.exports = React.createClass({
             label='An input'
             onChange={ change('demo_input_01') } />
         </FormRow>
-        <FormRow htmlFor="example2" helpText="I'm very helpful too.">
+        <FormRow htmlFor="example2" tip="I'm very helpful too.">
           <TextInput
             id='example2'
             layout='half'
@@ -47,7 +47,7 @@ module.exports = React.createClass({
       </Fieldset>
 
       <Fieldset>
-        <FormRow htmlFor="example3" helpText="I'm very helpful.">
+        <FormRow htmlFor="example3" tip="I'm very helpful.">
           <TextInput
             autoComplete={false}
             id='example3'
@@ -57,7 +57,7 @@ module.exports = React.createClass({
             label='An input'
             onChange={ change('demo_input_03') } />
         </FormRow>
-        <FormRow htmlFor="example4" helpText="I'm very helpful too.">
+        <FormRow htmlFor="example4" tip="I'm very helpful too.">
           <TextInput
             id='example4'
             layout='half'

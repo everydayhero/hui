@@ -5,6 +5,7 @@ fieldset.hui-Fieldset {
   border-color: $hui-header-fieldset-border;
   background-color: $hui-fieldset-background;
   padding-top: $hui-x-6;
+  margin-bottom: $hui-x-4;
 }
 
 fieldset.hui-Fieldset--focused {
@@ -14,7 +15,6 @@ fieldset.hui-Fieldset--focused {
 
 fieldset.hui-Fieldset--with-legend {
   padding: 44px 0 0 $hui-x-2;
-  margin-bottom: $hui-x-4;
 }
 
 .hui-Fieldset__legend {

@@ -2,16 +2,20 @@
 
 var React               = require('react');
 var FormRow             = require('../forms/FormRow');
-var TextInput           = require('../forms/TextInput');
-var ReadOnlyAddress     = require('../forms/ReadOnlyAddress');
-var CheckBox            = require('../forms/Checkbox');
-var TextArea            = require('../forms/TextArea');
-var UrlInput            = require('../forms/UrlInput');
-var DateInput           = require('../forms/DateInput');
-var FileInput           = require('../forms/FileInput');
-var ImageInput          = require('../forms/ImageInput');
+var inputs = {
+  TextInput         :  require('../forms/TextInput'),
+  TextCountDownInput:  require('../forms/TextCountDownInput'),
+  ReadOnlyAddress   :  require('../forms/ReadOnlyAddress'),
+  CheckBox          :  require('../forms/Checkbox'),
+  TextArea          :  require('../forms/TextArea'),
+  UrlInput          :  require('../forms/UrlInput'),
+  DateInput         :  require('../forms/DateInput'),
+  FileInput         :  require('../forms/FileInput'),
+  ImageInput        :  require('../forms/ImageInput'),
+  SelectInput       :  require('../forms/SelectInput')
+}
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
-
+var defaultMessage      = {defaults: [{message: ""}]};
 module.exports = {
   getInitialState: function() {
     var form = {};
@@ -47,21 +51,12 @@ module.exports = {
 
   formRow: function(children, name, options) {
     var constructor = this.constructor || {};
-    var helpText;
     options = options || {};
-
-    if (!options.helpText) {
-      helpText = undefined;
-    } else if(typeof options.helpText == 'boolean') {
-      helpText = this.t(name + '_helpText');
-    } else {
-      helpText = options.helpText;
-    }
+    var tip = options.tip || this.t(name + '_tip', defaultMessage);
 
     return (
       <FormRow
-        label={ this.t(name + '_label') }
-        helpText={ helpText }
+        tip={ tip }
         htmlFor={ name }
         className={ constructor.name + "__" + name }
         key={ 'fieldset' + name }
@@ -71,128 +66,70 @@ module.exports = {
     );
   },
 
-  readOnlyAddress: function(name, options) {
+  renderInput: function(type, name, options) {
+    var Input = inputs[type];
     var input;
-    options = options || { helpText: true };
+    options = options || {};
+    var label = options.label || this.t(name + '_label');
+    var hint = options.hint || this.t(name + '_hint', defaultMessage);
 
     input = (
-      <ReadOnlyAddress
+      <Input
+        label={ label }
         id={ name }
         value={ this.state.form[name] }
+        hint={ hint }
         onChange={  this.inputChangeEventFn(name) }
-        className={ name } />
+        className={ name }
+        layout='half'
+        spacing='fitted'
+        {...options} />
     );
 
     return this.formRow(input, name, options);
+  },
+
+  readOnlyAddress: function(name, options) {
+    return this.renderInput('ReadOnlyAddress', name, options);
   },
 
   textInput: function(name, options) {
-    var input;
-    options = options || { helpText: true };
-
-    input = (
-      <TextInput
-        label={ options.label }
-        autoComplete={ options.autoComplete }
-        required={ options.required }
-        validate={ options.validate }
-        errorMessage={ options.errorMessage }
-        serverErrors={ this.props.errors && this.props.errors[name] }
-        hint={ options.hint }
-        id={ name }
-        onBlur={ options.onBlurCallback }
-        onChange={ this.inputChangeEventFn(name) }
-        readOnly={ options.readOnly }
-        value={ this.state.form[name] }/>
-    );
-
-    return this.formRow(input, name, options);
+    return this.renderInput('TextInput', name, options);
   },
 
-  checkboxInput: function(name) {
-    return (
-      <CheckBox
-        id={ name }
-        value={ this.state.form[name] }
-        label={ this.t( name + '_label') }
-        onChange={ this.inputChangeEventFn(name) }
-        key={ name }/>
-    );
+  textCountDownInput: function(name, options) {
+    return this.renderInput('TextCountDownInput', name, options);
+  },
+
+  checkboxInput: function(name, options) {
+    return this.renderInput('CheckBox', name, options);
+  },
+
+  selectInput: function(name, options) {
+    return this.renderInput('SelectInput', name, options);
   },
 
   textArea: function(name, options) {
-    var textArea;
-    options = options || { helpText: true };
-
-    textArea = (
-      <TextArea
-        id={ name }
-        value={ this.state.form[name] }
-        onChange={ this.inputChangeEventFn(name)  }
-        errors={ this.props.errors && this.props.errors[name]}
-        key={ name }/>
-    );
-
-    return this.formRow(textArea, name, options);
+    return this.renderInput('TextArea', name, options);
   },
 
-  urlInput: function(name, placeholder) {
-    var input = (
-          <UrlInput
-            id={ name }
-            onChange={ this.changeFormPropertyFn(name) }
-            value={ this.state.form[name] }
-            placeholder={ placeholder }
-            errors={ this.props.errors && this.props.errors[name] } />
-        );
-
-    return this.formRow(input, name);
+  urlInput: function(name, options) {
+    return this.renderInput('UrlInput', name, options);
   },
 
-  dateInput: function(name, placeholder, options) {
-    var input;
-
-    options = options || { helpText: true };
-    input = (
-      <DateInput
-        id={ name }
-        value={ this.state.form[name] }
-        onChange={ this.inputChangeEventFn(name) }
-        placeholder={ placeholder }
-        errors={ this.props.errors && this.props.errors[name] } />
-    );
-
-    return this.formRow(input, name, options);
+  dateInput: function(name, options) {
+    options = options || {};
+    if (!options.layout) {
+      options.layout = 'quarter';
+    }
+    return this.renderInput('DateInput', name, options);
   },
 
   fileInput: function(name, options) {
-    var input;
-    options = options || { helpText: true };
-
-    input = (
-          <FileInput
-            id={ name }
-            onChange={ this.changeFormPropertyFn(name) }
-            value={ this.state.form[name] }
-            errors={ this.props.errors && this.props.errors[name] } />
-        );
-
-    return this.formRow(input, name, options);
+    return this.renderInput('FileInput', name, options);
   },
 
   imageInput: function(name, options) {
-    var errors = this.props.errors;
-    var input;
-
-    options = options || { helpText: true };
-    input = (
-      <ImageInput
-        id={ name }
-        value={ this.state.form[name] }
-        onChange={ this.changeFormPropertyFn(name) }
-        errors={ errors && errors[name] } />
-    );
-
-    return this.formRow(input, name, options);
-  },
+    return this.renderInput('ImageInput', name, options);
+  }
 };

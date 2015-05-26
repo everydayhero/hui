@@ -2,6 +2,7 @@
 
 var React      = require('react');
 var Icon       = require('../Helpers/Icon');
+var classnames = require('classnames');
 
 module.exports = {
   componentDidMount: function() {
@@ -99,6 +100,11 @@ module.exports = {
     var props = this.props;
     var errors = props.errors || [];
     var hasServerErrors = errors.length;
+    var className = classnames({
+      'hui-TextInput__icon': true,
+      'hui-TextInput__icon--left': (props.iconPosition === 'left'),
+      'hui-TextInput__iconButton': props.onIconClick
+    });
     var state = this.state;
     var icon = !props.showIcon ? false
                : state.waiting ? 'refresh'
@@ -108,19 +114,19 @@ module.exports = {
                : props.icon ? props.icon
                : (props.required && !props.value) ? 'caret-left'
                : false;
-
+    console.log('icon', icon);
     if (!icon) { return; }
 
     if (props.onIconClick) {
       return (
-        <button className="hui-TextInput__iconButton hui-TextInput__icon" onClick={ props.onIconClick }>
+        <button className={ className } onClick={ props.onIconClick }>
           <Icon icon={ icon } fixedWidth={ true } />
         </button>
       );
     }
     return (
-      <span className="hui-TextInput__icon">
-        <Icon icon={ icon } className="hui-TextInput__icon" fixedWidth={ true } />
+      <span className={ className }>
+        <Icon icon={ icon } fixedWidth={ true } />
       </span>
     );
   },

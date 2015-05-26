@@ -5,3 +5,13 @@
 @import "./DatePickerDay/style";
 @import "./Calendar/style";
 @import "../TextInput/style";
+
+
+.hui-DateInput {
+  @extend %hui-input-base;
+  float: none;
+  display: inline-block;
+  z-index: initial;
+}
+
+@include input-sizes(DateInput);

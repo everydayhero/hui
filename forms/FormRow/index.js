@@ -12,18 +12,18 @@ module.exports = React.createClass({
       React.PropTypes.element,
       React.PropTypes.array,
     ]),
-    helpText: React.PropTypes.string
+    tip: React.PropTypes.string
   },
 
   renderHelpText: function() {
     var props = this.props;
 
-    if (props.helpText) {
+    if (props.tip) {
       return (
-        <div className="hui-FormRow__helpText">
+        <div className="hui-FormRow__tip">
           <label
             htmlFor={ props.htmlFor }>
-              { props.helpText }
+              { props.tip }
           </label>
         </div>
       );
