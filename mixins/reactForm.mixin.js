@@ -83,6 +83,7 @@ module.exports = {
         className={ name }
         layout='half'
         spacing='fitted'
+        errors={ options.errors || this.props.errors[name] }
         {...options} />
     );
 
