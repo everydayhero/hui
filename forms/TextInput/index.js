@@ -92,6 +92,7 @@ module.exports = React.createClass({
     var errors = props.errors || [];
     var value = props.value || '';
     var hasServerErrors = errors.length;
+    var iconsLeft = (props.iconPosition === 'left');
     var classes = [
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
@@ -104,10 +105,10 @@ module.exports = React.createClass({
     ].join(' ').replace('false', '');
 
     var inputClassName = classnames({
-      'hui-TextInput__input--icon-left': (props.iconPosition === 'left'),
+      'hui-TextInput__input--icon-left': iconsLeft,
+      'hui-TextInput__input--icon': !iconsLeft,
       'hui-TextInput__input': true
-    })
-
+    });
 
     return (
       <div className={ classes }>

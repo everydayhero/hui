@@ -74,6 +74,7 @@ describe('TextInput', function() {
         value="six"
         id="seven"
         name="eight"
+        icon="rocket"
         readOnly={ true } />);
       input = findByTag(element, 'input');
     });
@@ -109,6 +110,7 @@ describe('TextInput', function() {
         value="six"
         id="seven"
         name="eight"
+        icon="rocket"
         iconPosition="left" />);
       input = findByTag(element, 'input');
     });

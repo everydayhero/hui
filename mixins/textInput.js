@@ -114,7 +114,7 @@ module.exports = {
                : props.icon ? props.icon
                : (props.required && !props.value) ? 'caret-left'
                : false;
-
+    console.log('icon', icon);
     if (!icon) { return; }
 
     if (props.onIconClick) {
