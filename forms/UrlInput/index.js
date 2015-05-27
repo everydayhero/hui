@@ -4,6 +4,7 @@ var React             = require('react');
 var SelectInput       = require('../SelectInput');
 var Input             = require('../TextInput');
 var LocalStorageMixin = require('../../mixins/localStorage');
+var _                 = require('lodash');
 
 module.exports = React.createClass({
   displayName: 'UrlInput',
@@ -117,7 +118,7 @@ module.exports = React.createClass({
     return (
       <div className={ classes }>
         <SelectInput
-          { ...props }
+          { ..._.omit(props, 'errors') }
           id={ id + '_protocol' }
           value={ state.protocol }
           className="hui-UrlInput__protocol"
