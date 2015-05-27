@@ -22,6 +22,7 @@ module.exports = React.createClass({
       return (
         <div className="hui-FormRow__tip">
           <label
+            className="hui-FormRow__label"
             htmlFor={ props.htmlFor }>
               { props.tip }
           </label>
