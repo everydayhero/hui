@@ -34,9 +34,15 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var props = this.props;
+    var classes = [
+      "hui-FormRow",
+      props.className || ''
+    ].join(' ').replace('false', '');;
+
     return (
-      <div className="hui-FormRow">
-        { this.props.children }
+      <div className={ classes }>
+        { props.children }
         { this.renderHelpText() }
       </div>
     );
