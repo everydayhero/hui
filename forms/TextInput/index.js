@@ -90,7 +90,7 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
     var errors = props.errors || [];
-    var value = props.value || '';
+    var value = (typeof props.value === ('string' || 'number')) ? props.value.toString() : '';
     var hasServerErrors = errors.length;
     var iconsLeft = (props.iconPosition === 'left');
     var classes = [
