@@ -101,6 +101,24 @@ describe('TextInput', function() {
     });
   });
 
+  describe('handles numeric values', function() {
+    var element, input;
+
+    beforeEach(function() {
+      element = TestUtils.renderIntoDocument(<Input
+        value={ 6 }
+        id="seven"
+        name="eight"
+        icon="rocket"
+        readOnly={ true } />);
+      input = findByTag(element, 'input');
+    });
+
+    it('value of 6', function() {
+      expect(input.getDOMNode().value).to.equal('6');
+    });
+  });
+
   describe('icon left', function() {
     var element, input;
 
