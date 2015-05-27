@@ -32,16 +32,11 @@ module.exports = React.createClass({
   render: function() {
     var props    = this.props;
     var image    = props.value;
-    var onChange = props.onChange;
 
     return (
       <div className="hui-ImageInput__div">
         { this.renderImage(image) }
-        <FileInput
-          id={ props.id }
-          onChange={ onChange }
-          value={ image }
-          errors={ props.errors } />
+        <FileInput { ...props } />
       </div>
     );
   },

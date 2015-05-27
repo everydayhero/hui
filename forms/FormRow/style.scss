@@ -5,10 +5,18 @@
 }
 
 .hui-FormRow__tip {
-  line-height: 42px;
+  line-height: 20px;
   font-size: 15px;
   color: $hui-text-input-text;
-  display: inline-block;
-  vertical-align: top;
+  display: table;
   cursor: pointer;
+  max-width: 50%;
+  padding-right: 12px;
+  min-height: 42px;
+}
+
+.hui-FormRow__label {
+  display: table-cell;
+  vertical-align: middle;
+  font-weight: 200;
 }

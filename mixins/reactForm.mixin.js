@@ -13,7 +13,8 @@ var inputs = {
   FileInput         :  require('../forms/FileInput'),
   ImageInput        :  require('../forms/ImageInput'),
   SelectInput       :  require('../forms/SelectInput')
-}
+};
+
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 var defaultMessage      = {defaults: [{message: ""}]};
 module.exports = {
@@ -72,6 +73,7 @@ module.exports = {
     options = options || {};
     var label = options.label || this.t(name + '_label');
     var hint = options.hint || this.t(name + '_hint', defaultMessage);
+    var errors = this.props.errors || {};
 
     input = (
       <Input
@@ -83,7 +85,7 @@ module.exports = {
         className={ name }
         layout='half'
         spacing='fitted'
-        errors={ options.errors || this.props.errors[name] }
+        errors={ options.errors || errors[name] }
         {...options} />
     );
 
