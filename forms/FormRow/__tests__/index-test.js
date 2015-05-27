@@ -30,5 +30,9 @@ describe('FormRow', function() {
 
       expect(label.getDOMNode().textContent).toBe("tip");
     });
+
+    it('does render with the className given to it', function() {
+      findByClass(element, 'bar');
+    });
   });
 });
