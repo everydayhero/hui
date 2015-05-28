@@ -9,7 +9,7 @@
 
 .hui-DateInput {
   @extend %hui-input-base;
-  float: none;
+  float: left;
   display: inline-block;
   z-index: initial;
 }
