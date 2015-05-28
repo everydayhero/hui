@@ -54,8 +54,6 @@ module.exports = {
     options = options || {};
     var tip = options.tip || this.t(name + '_tip', defaultMessage);
 
-    this.textInput()
-
     return (
       <FormRow
         tip={ tip }
