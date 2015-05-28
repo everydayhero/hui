@@ -51,15 +51,16 @@ module.exports = {
   },
 
   formRow: function(children, name, options) {
-    var constructor = this.constructor || {};
     options = options || {};
     var tip = options.tip || this.t(name + '_tip', defaultMessage);
+
+    this.textInput()
 
     return (
       <FormRow
         tip={ tip }
         htmlFor={ name }
-        id={ constructor.name + "__" + name }
+        id={ "FormRow__" + name }
         key={ 'fieldset' + name }
         labelTop={ true }>
           { children }
