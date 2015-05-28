@@ -59,7 +59,7 @@ module.exports = {
       <FormRow
         tip={ tip }
         htmlFor={ name }
-        className={ constructor.name + "__" + name }
+        id={ constructor.name + "__" + name }
         key={ 'fieldset' + name }
         labelTop={ true }>
           { children }

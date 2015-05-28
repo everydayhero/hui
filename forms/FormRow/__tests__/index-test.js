@@ -2,11 +2,13 @@
 
 jest.dontMock('../');
 jest.dontMock('lodash');
+jest.dontMock('../../../test/helpers');
 
 describe('FormRow', function() {
   var React       = require('react/addons');
   var FormRow     = require('../');
   var TestUtils   = React.addons.TestUtils;
+  var helper = require('../../../test/helpers');
 
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 
@@ -22,7 +24,7 @@ describe('FormRow', function() {
 
   describe('properties', function() {
     var element = TestUtils.renderIntoDocument(
-          <FormRow label="foo" className="bar" tip="tip"/>
+          <FormRow label="foo" id="bar" tip="tip"/>
         );
 
     it('does render a help text', function() {
@@ -31,8 +33,9 @@ describe('FormRow', function() {
       expect(label.getDOMNode().textContent).toBe("tip");
     });
 
-    it('does render with the className given to it', function() {
-      findByClass(element, 'bar');
+    it('does render with the id given to it', function() {
+      var row = findByClass(element, 'hui-FormRow');
+      helper.findRenderedDOMComponentWithProp(row, 'id', 'bar');
     });
   });
 });

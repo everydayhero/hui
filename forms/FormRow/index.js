@@ -12,7 +12,8 @@ module.exports = React.createClass({
       React.PropTypes.element,
       React.PropTypes.array,
     ]),
-    tip: React.PropTypes.string
+    tip: React.PropTypes.string,
+    id: React.PropTypes.string,
   },
 
   renderHelpText: function() {
@@ -34,15 +35,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var props = this.props;
-    var classes = [
-      "hui-FormRow",
-      props.className || ''
-    ].join(' ').replace('false', '');;
+    var id = this.props.id || '';
 
     return (
-      <div className={ classes }>
-        { props.children }
+      <div id={ id } className="hui-FormRow">
+        { this.props.children }
         { this.renderHelpText() }
       </div>
     );
