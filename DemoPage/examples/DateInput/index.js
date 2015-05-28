@@ -4,6 +4,7 @@ var React     = require('react');
 var DateInput = require('../../../forms/DateInput');
 var Highlight = require('react-highlight');
 var formMixin = require('../../../mixins/reactForm.mixin');
+var FormRow   = require('../../../forms/FormRow');
 
 module.exports = React.createClass({
   displayName: 'DateInputExample',
@@ -33,14 +34,16 @@ module.exports = React.createClass({
       </ul>
       { this.dateInput("start_on") }
 
-      <DateInput
-        className="campaign__endOn"
-        value={ this.state.form.end_on }
-        onChange={ change("end_on") } />
-      <DateInput
-        className="campaign__endOn"
-        value={ this.state.form.end_on2 }
-        onChange={ change("end_on2") } />
+      <FormRow htmlFor="end_on" tip="I'm very helpful.">
+        <DateInput
+          className="campaign__endOn"
+          value={ this.state.form.end_on }
+          onChange={ change("end_on") } />
+        <DateInput
+          className="campaign__endOn"
+          value={ this.state.form.end_on2 }
+          onChange={ change("end_on2") } />
+      </FormRow>
 
       <h4>React Example</h4>
       <Highlight className='html'>
