@@ -138,6 +138,10 @@ module.exports = React.createClass({
     var props = this.props;
     var criteria = {};
 
+    if(!props.value) {
+      return;
+    }
+
     criteria[props.valueKey] = props.value;
 
     return _.where(options, criteria)[0];

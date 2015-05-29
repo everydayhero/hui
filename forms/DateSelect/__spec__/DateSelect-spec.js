@@ -34,7 +34,7 @@ describe('DateSelect', function() {
     var date;
     var onChange = function(value) {
           date = value;
-        }
+        };
 
     beforeEach(function() {
       element = TestUtils.renderIntoDocument(
@@ -87,6 +87,36 @@ describe('DateSelect', function() {
       );
       var errorClasses = scryByClass(element, 'hui-InputErrors');
       expect(errorClasses.length).to.equal(1);
+    });
+  });
+
+  describe('number of days in month', function() {
+    it('number of days in Jan', function() {
+      var element = TestUtils.renderIntoDocument(
+        <DateSelect value='1982-01-01'/>
+      );
+      expect(element.getDays().length).to.equal(31);
+    });
+
+    it('number of days in Sep', function() {
+      var element = TestUtils.renderIntoDocument(
+        <DateSelect value='1982-09-01'/>
+      );
+      expect(element.getDays().length).to.equal(30);
+    });
+
+    it('number of days in Feb regular year', function() {
+      var element = TestUtils.renderIntoDocument(
+        <DateSelect value='1982-02-01'/>
+      );
+      expect(element.getDays().length).to.equal(28);
+    });
+
+    it('number of days in Feb leap year', function() {
+      var element = TestUtils.renderIntoDocument(
+        <DateSelect value='2016-02-01'/>
+      );
+      expect(element.getDays().length).to.equal(29);
     });
   });
 });

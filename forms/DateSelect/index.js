@@ -44,7 +44,10 @@ module.exports = React.createClass({
       value: '',
       includeBlank: true,
       promptValue: '1980-01-01',
-      errors: []
+      errors: [],
+      autoComplete: true,
+      disabled: false,
+      readOnly: false
     };
   },
 
@@ -59,7 +62,6 @@ module.exports = React.createClass({
     var props = this.props;
     var currentValue = props.value || moment(props.promptValue).format(props.format);
     var date = moment(currentValue, props.format)[type](Number(value));
-
     if(props.onChange) {
       props.onChange(date.format(props.format));
     }
@@ -82,7 +84,7 @@ module.exports = React.createClass({
     var minYear = 1899;
     var years = [];
     while(year !== minYear) {
-      years.push({ value: year, label: year});
+      years.push({ value: year.toString(), label: year});
       year --;
     }
 
@@ -94,7 +96,7 @@ module.exports = React.createClass({
     var months = [];
 
     while(month !== 12) {
-      months.push({ value: month, label: this.props.months[month]});
+      months.push({ value: month.toString(), label: this.props.months[month]});
       month ++;
     }
 
@@ -102,10 +104,13 @@ module.exports = React.createClass({
   },
 
   getDays: function() {
-    var date = 0;
+    var date = 1;
     var dates = [];
-    while(date !== 31) {
-      dates.push({ value: date, label: date});
+    var props = this.props;
+    var value = props.value || props.promptValue;
+    var momentDate = moment(value, props.format);
+    while(date !== momentDate.daysInMonth() + 1) {
+      dates.push({ value: date.toString(), label: date});
       date ++;
     }
 
@@ -119,9 +124,9 @@ module.exports = React.createClass({
     if (props.value) {
       date = moment(props.value, props.format);
     }
-    var dateValue = date ? date.date().toString() : null;
-    var monthValue = date ? date.month().toString() : null;
-    var yearValue = date ? date.year().toString() : null;
+    var dateValue = date ? date.date() : '';
+    var monthValue = date ? date.month() : '';
+    var yearValue = date ? date.year() : '';
     var hasServerErrors = props.errors.length;
     var passedProps = {
       includeBlank: props.includeBlank,
@@ -138,6 +143,11 @@ module.exports = React.createClass({
       this.shouldShowError() && 'hui-DateSelect--error',
       props.disabled && 'hui-DateSelect--disabled'
     ].join(' ').replace('false', '');
+
+    monthValue = monthValue.toString();
+    yearValue = yearValue.toString();
+    dateValue = dateValue.toString();
+
     return (
       <div className={ classes }>
         <div className="hui-DateSelect__wrap">
