@@ -52,10 +52,6 @@
   top: 0;
 }
 
-.hui-TextArea--error .hui-TextInput__message {
-  @extend %error-message;
-}
-
 .hui-TextArea--disabled .hui-TextArea__input,
 .hui-TextArea--disabled .hui-TextArea__label {
   @extend %hui-input-disabled;

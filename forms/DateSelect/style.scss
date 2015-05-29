@@ -1,0 +1,29 @@
+@import "../InputErrors/style";
+@import "../SelectInput/style";
+
+.hui-DateSelect {
+  @extend %hui-input-base;
+}
+
+.hui-DateSelect__year,
+.hui-DateSelect__path {
+  display: table-cell;
+  max-width: $hui-x-9;
+  padding-right: $hui-x-3;
+}
+
+.hui-DateSelect__wrap {
+  position: relative;
+  display: block;
+}
+
+.hui-DateSelect--error .hui-TextInput__message {
+  @extend %error-message;
+  top: 10px;
+}
+
+.hui-DateSelect--error .hui-DateSelect__wrap {
+  @extend %hui-input-error;
+}
+
+@include input-sizes(DateSelect);
