@@ -54,7 +54,7 @@ propTypes: {
     var props   = this.props;
     var value   = props.value || '';
     var maxed   = value.length > props.max;
-    var maxWarn =  value.length > props.warnMax && value.length < props.max;
+    var maxWarn =  value.length > props.warnMax && value.length <= props.max;
     var errors  = props.errors;
     var classes = [
       'hui-TextCountDownInput--' + props.layout,

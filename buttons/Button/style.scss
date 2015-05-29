@@ -16,6 +16,7 @@
   outline-color: transparent;
   outline-style: none;
   vertical-align: middle;
+  background-color: transparent;
 
   &:before {
     transition: all 200ms ease-out;
@@ -214,10 +215,19 @@ a.hui-Button {
 }
 
 .hui-Button--borderless {
-  background: none;
-  color: #666;
+
+  .hui-Button__label {
+    padding: 0 12px;
+  }
+
+  .hui-IconWrapper.hui-Button__icon {
+    width: 20px;
+    margin-left: 0;
+  }
+
   &:hover, &:focus {
-    color: #00B44D;
+    color: #00a044;
+    text-decoration: underline;
   }
 }
 
