@@ -4,16 +4,25 @@
   @extend %hui-input-base;
 }
 
-.hui-TextArea__input {
+.hui-TextArea__inputWrap {
   @extend %hui-input-border;
+  @extend %hui-input-label;
+  height: auto;
+  padding: 0px;
+}
+
+.hui-TextArea__input {
   height: 124px;
-  padding-top: 20px;
+  max-width: 100%;
+  min-width: 100%;
+  font-size: 15px;
+  line-height: 20px;
+  border: 0px;
+  padding: 0px 8px 8px 8px;
 }
 
 .hui-TextArea__label {
   @extend %hui-input-label;
-  position: absolute;
-  z-index: 2;
   margin: 8px;
 }
 
