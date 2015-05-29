@@ -109,7 +109,6 @@ module.exports = {
     var icon = !props.showIcon ? false
                : state.waiting ? 'refresh'
                : (state.valid && !hasServerErrors) ? 'check'
-               : (state.hasError || hasServerErrors) ? 'times'
                : props.disabled ? 'minus'
                : props.icon ? props.icon
                : (props.required && !props.value) ? 'caret-left'

@@ -60,8 +60,6 @@ describe('TextInput', function() {
 
       var error = findByClass(element, 'hui-TextInput__message').getDOMNode();
       expect(error.textContent).to.contain('This input errored correctly');
-
-      findByClass(element, 'fa-times');
     });
   });
 
