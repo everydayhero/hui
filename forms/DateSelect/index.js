@@ -9,6 +9,29 @@ module.exports = React.createClass({
   displayName: 'SelectInput',
   mixins: [inputMessage],
 
+  propTypes: {
+    autoComplete: React.PropTypes.bool,
+    storeLocally: React.PropTypes.bool,
+    autoFocus: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+    onFocus: React.PropTypes.func,
+    onChange: React.PropTypes.func,
+    onBlur: React.PropTypes.func,
+    includeBlank: React.PropTypes.bool,
+    onTab: React.PropTypes.func,
+    required: React.PropTypes.bool,
+    spacing: React.PropTypes.string,
+    layout: React.PropTypes.string,
+    value: React.PropTypes.string,
+    errors: React.PropTypes.array,
+    errorMessage: React.PropTypes.string,
+    months: React.PropTypes.array,
+    monthLabel: React.PropTypes.string,
+    yearLabel: React.PropTypes.string,
+    dateLabel: React.PropTypes.string,
+    promptValue: React.PropTypes.string,
+  },
+
   getDefaultProps: function() {
     return {
       yearLabel: 'Year',

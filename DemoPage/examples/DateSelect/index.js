@@ -35,7 +35,6 @@ module.exports = React.createClass({
         <li className="DemoPage__li"><span className="DemoPage__bold">name:</span> [String] - Field name (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">serrors:</span> [Array] - List of error message returned from server (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">errorMessage:</span> [String] – Message defined by client side validation to display on validation error (Optional)</li>
-        <li className="DemoPage__li"><span className="DemoPage__bold">hint:</span> [String] – Text to display under input on feild focus (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">onFocus:</span> [Function] – Focus callback. Returns DOM element, input value and setValue method to update input (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">onChange:</span> [Function] – Change callback. Returns value of input (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">onError:</span> [Function] – On Error callback. returns error state boolean (Optional)</li>
@@ -46,6 +45,11 @@ module.exports = React.createClass({
         <li className="DemoPage__li"><span className="DemoPage__bold">type:</span> [String] – Native input type attribute</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">value:</span> [String, Intiger, Float] – Value of input</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">layout:</span> [String one of "full", "wide", "half", "narrow" or "quarter"] – Defines input layout width (Default Full)</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">months:</span> – i18n for month options</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">yearLabel:</span> label for year input</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">monthLabel:</span> label for month input</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">dateLabel:</span> label for date input</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">promptValue:</span> Date to show in select promp e.g(1989-12-12)</li>
       </ul>
       { this.dateSelect("start_on") }
 

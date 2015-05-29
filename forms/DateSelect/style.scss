@@ -17,16 +17,9 @@
   display: block;
 }
 
-.hui-DateSelect--focused .hui-TextInput__message {
-  @extend %hui-input-focused;
-}
-
 .hui-DateSelect--error .hui-TextInput__message {
   @extend %error-message;
-}
-
-.hui-DateSelect--error .hui-TextInput__message {
-  @extend %error-message;
+  top: 10px;
 }
 
 .hui-DateSelect--error .hui-DateSelect__wrap {
