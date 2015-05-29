@@ -12,7 +12,8 @@ var inputs = {
   DateInput         :  require('../forms/DateInput'),
   FileInput         :  require('../forms/FileInput'),
   ImageInput        :  require('../forms/ImageInput'),
-  SelectInput       :  require('../forms/SelectInput')
+  SelectInput       :  require('../forms/SelectInput'),
+  DateSelect        :  require('../forms/DateSelect')
 };
 
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
@@ -117,6 +118,10 @@ module.exports = {
 
   urlInput: function(name, options) {
     return this.renderInput('UrlInput', name, options);
+  },
+
+  dateSelect: function(name, options) {
+    return this.renderInput('DateSelect', name, options);
   },
 
   dateInput: function(name, options) {

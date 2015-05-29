@@ -19,6 +19,7 @@ var TextArea        = require('./examples/TextArea');
 var SelectInput     = require('./examples/SelectInput');
 var UrlInput        = require('./examples/UrlInput');
 var DateInput       = require('./examples/DateInput');
+var DateSelect       = require('./examples/DateSelect');
 var FileInput       = require('./examples/FileInput');
 var ImageInput      = require('./examples/ImageInput');
 var ButtonExample   = require('./examples/Button');
@@ -88,6 +89,7 @@ module.exports = React.createClass({
             <SelectInput />
             <UrlInput />
             <DateInput />
+            <DateSelect />
             <FileInput />
             <ImageInput />
             <FormRow />

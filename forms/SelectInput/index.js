@@ -187,12 +187,12 @@ module.exports = React.createClass({
       'hui-SelectInput--' + layout,
       'hui-SelectInput--' + spacing,
       'hui-SelectInput',
-      !!value && !!value.trim() && 'hui-SelectInput--hasValue',
+      !!value && 'hui-SelectInput--hasValue',
       state.focused && 'hui-SelectInput--focused',
       state.valid && 'hui-SelectInput--valid',
       this.shouldShowError() && 'hui-SelectInput--error',
       props.disabled && 'hui-SelectInput--disabled'
-    ].join(' ').replace('false');
+    ].join(' ').replace('false', '');
 
     return (
       <div className={ classes }>
