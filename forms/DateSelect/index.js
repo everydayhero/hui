@@ -62,6 +62,7 @@ module.exports = React.createClass({
     var props = this.props;
     var currentValue = props.value || moment(props.promptValue).format(props.format);
     var date = moment(currentValue, props.format)[type](Number(value));
+
     if(props.onChange) {
       props.onChange(date.format(props.format));
     }
