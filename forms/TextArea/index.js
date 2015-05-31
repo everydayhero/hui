@@ -99,16 +99,18 @@ module.exports = React.createClass({
 
     return (
       <div className={ classes }>
-        <label className="hui-TextArea__label" htmlFor={ props.name }>{ props.label }</label>
-        <textarea className="hui-TextArea__input"
-          id={ props.id }
-          ref="input"
-          value={ props.value }
-          onChange={ this.handleChange }
-          onFocus={ this.handleFocus }
-          onBlur={ this.handleBlur }
-          onTab={ this.onTab }>
-        </textarea>
+        <div className="hui-TextArea__inputWrap">
+          <label className="hui-TextArea__label" htmlFor={ props.name }>{ props.label }</label>
+          <textarea className="hui-TextArea__input"
+            id={ props.id }
+            ref="input"
+            value={ props.value }
+            onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
+            onTab={ this.onTab }>
+          </textarea>
+        </div>
         { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
       </div>
     );
