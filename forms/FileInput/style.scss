@@ -28,7 +28,7 @@
 }
 
 .hui-FileInput__buttons {
-  background: $hui-input-background;
+  background: white;
   position: absolute;
   right: 0;
   top: 0;
@@ -54,7 +54,7 @@
   display: inline-block;
   color: $hui-primary-border-grey;
   &:hover {
-    color: $hui-primary-border-grey;
+    color: $hui-link-active;
   }
 }
 
