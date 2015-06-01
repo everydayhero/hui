@@ -86,7 +86,7 @@
   @extend %a-reset;
   background: none;
   margin-top: -11px;
-  cursor: pointer;
+  z-index: 6;
 }
 
 .hui-TextInput--disabled .hui-TextInput__label {

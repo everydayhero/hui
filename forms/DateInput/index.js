@@ -147,7 +147,9 @@ module.exports = React.createClass({
     this.toggleOpen(true);
   },
 
-  onIconClick: function() {
+  onIconClick: function(e) {
+    e.preventDefault();
+
     if (this.hasValue()) {
       this.clear();
       this.close();
@@ -191,7 +193,7 @@ module.exports = React.createClass({
       <TextInput
         {...this.props}
         layout="full"
-        spacing="tight"
+        spacing="compact"
         value={ this.getDisplayValue() }
         onTab={ this.onTab }
         onFocus={ this.onFocus }
