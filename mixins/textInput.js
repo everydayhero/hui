@@ -119,9 +119,9 @@ module.exports = {
 
     if (props.onIconClick) {
       return (
-        <button className={ className } onClick={ props.onIconClick }>
+        <a href="" className={ className } onClick={ props.onIconClick }>
           <Icon icon={ icon } fixedWidth={ true } />
-        </button>
+        </a>
       );
     }
     return (
