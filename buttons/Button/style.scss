@@ -22,7 +22,6 @@
     content: '';
     display: block;
     position: absolute;
-    z-index: -1;
     left: 0;
     top: 50%;
     width: 100%;
@@ -66,6 +65,7 @@ a.hui-Button {
   font-size: 14px;
   padding: 0 20px;
   letter-spacing: 0.15em;
+  position: relative;
 }
 
 .hui-Button__icon {
@@ -75,6 +75,7 @@ a.hui-Button {
   float: right;
   border-width: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .hui-Button--cta,
