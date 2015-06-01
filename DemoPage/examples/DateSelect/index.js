@@ -67,7 +67,6 @@ module.exports = React.createClass({
           errors={ ['error'] } />
         <DateSelectWrapper
           value=""
-          required={ true }
           name="foo" />
       </FormRow>
 
