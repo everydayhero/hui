@@ -8,36 +8,38 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
+    disabled: React.PropTypes.bool,
+    href: React.PropTypes.string,
+    icon: React.PropTypes.string,
+    iconLeft: React.PropTypes.bool,
+    iconSpin: React.PropTypes.bool,
     id: React.PropTypes.string,
+    inverse: React.PropTypes.bool,
     kind: React.PropTypes.oneOf(
       ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
     ).isRequired,
+    label: React.PropTypes.string,
+    onClick: React.PropTypes.func,
+    target: React.PropTypes.string,
+    thin: React.PropTypes.bool,
     type: React.PropTypes.oneOf(
       ['submit', 'reset', 'button']
     ),
-    label: React.PropTypes.string,
-    href: React.PropTypes.string,
-    icon: React.PropTypes.string,
-    inverse: React.PropTypes.bool,
-    thin: React.PropTypes.bool,
-    uppercase: React.PropTypes.bool,
-    iconLeft: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-    iconSpin: React.PropTypes.bool
+    uppercase: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
     return {
-      label: '',
-      icon: '',
-      type: 'button',
-      href: null,
       disabled: false,
-      thin: false,
-      inverse: false,
+      href: null,
+      icon: '',
       iconLeft: false,
-      iconSpin: false
+      iconSpin: false,
+      inverse: false,
+      label: '',
+      target: null,
+      thin: false,
+      type: 'button'
     };
   },
 
@@ -85,7 +87,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <El className={ classes }
+      <El target={ props.target } className={ classes }
         id={ props.id }
         tabIndex={ 1 }
         type={ props.type }
