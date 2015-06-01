@@ -114,7 +114,7 @@ module.exports = React.createClass({
 
     return (
       <div className={ classes }>
-        <label className="hui-TextInput__label" htmlFor={ props.name }>
+        <label className="hui-TextInput__label" htmlFor={ props.name } ref={ props.ref }>
           { props.label }
           <input { ...this.inputMethods(!props.disabled) }
             autoComplete={ props.autoComplete ? 'on' : 'off' }

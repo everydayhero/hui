@@ -200,6 +200,7 @@ module.exports = React.createClass({
         onFocus={ this.onFocus }
         onChange={ this.onInputEdit }
         icon={ icon }
+        ref="input"
         onIconClick={ this.onIconClick }/>
     );
   },
