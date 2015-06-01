@@ -1,9 +1,10 @@
 "use strict";
 
-var React        = require('react');
-var SelectInput  = require('../SelectInput');
-var moment       = require('moment');
-var inputMessage = require('../../mixins/inputMessage');
+var React           = require('react');
+var SelectInput     = require('../SelectInput');
+var moment          = require('moment');
+var inputMessage    = require('../../mixins/inputMessage');
+var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'SelectInput',
@@ -135,7 +136,7 @@ module.exports = React.createClass({
       disabled: props.disabled,
       readOnly: props.readOnly
     }
-    var classes = [
+    var classes = classNamesArray([
       'hui-DateSelect--' + props.layout,
       'hui-DateSelect--' + props.spacing,
       'hui-DateSelect',
@@ -143,7 +144,7 @@ module.exports = React.createClass({
       state.valid && 'hui-DateSelect--valid',
       this.shouldShowError() && 'hui-DateSelect--error',
       props.disabled && 'hui-DateSelect--disabled'
-    ].join(' ').replace('false', '');
+    ]);
 
     monthValue = monthValue.toString();
     yearValue = yearValue.toString();

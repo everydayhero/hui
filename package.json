@@ -1,6 +1,6 @@
 {
   "name": "hui",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "src/index.js",
   "files": [
@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "jest": "node_modules/.bin/jest",
-    "spec": "mocha **/__spec__/*.js",
+    "spec": "mocha \"**/__spec__/*.js\"",
     "test": "npm run jest && npm run spec",
     "start": "node server.js",
     "build": "node_modules/.bin/gulp build",

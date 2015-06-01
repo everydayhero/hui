@@ -1,9 +1,10 @@
 "use strict";
 
-var React             = require('react');
-var filepicker        = require('../../lib/filepicker');
-var Icon              = require('../../Helpers/Icon');
-var inputMessage      = require('../../mixins/inputMessage');
+var React           = require('react');
+var filepicker      = require('../../lib/filepicker');
+var Icon            = require('../../Helpers/Icon');
+var inputMessage    = require('../../mixins/inputMessage');
+var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'FileInput',
@@ -108,7 +109,7 @@ module.exports = React.createClass({
     var browseLabel     = this.getBrowseLabel(filename);
     var hasServerErrors = props.errors.length;
     var resetButton;
-    var classes = [
+    var classes = classNamesArray([
       'hui-FileInput--' + props.layout,
       'hui-FileInput--' + props.spacing,
       !!filename && 'hui-FileInput--hasFile',
@@ -116,7 +117,7 @@ module.exports = React.createClass({
       props.disabled && 'hui-FileInput--disabled',
       state.focused && 'hui-FileInput--focused',
       "hui-FileInput"
-    ].join(' ');
+    ]);
 
     global.ENV = global.ENV || {};
 

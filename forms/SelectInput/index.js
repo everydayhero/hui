@@ -5,6 +5,7 @@ var React             = require('react');
 var Icon              = require('../../Helpers/Icon');
 var LocalStorageMixin = require('../../mixins/localStorage');
 var inputMessage      = require('../../mixins/inputMessage');
+var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'SelectInput',
@@ -187,7 +188,7 @@ module.exports = React.createClass({
     var hasServerErrors = props.errors.length;
     var layout = props.layout;
     var spacing= props.spacing;
-    var classes = [
+    var classes = classNamesArray([
       'hui-SelectInput--' + layout,
       'hui-SelectInput--' + spacing,
       'hui-SelectInput',
@@ -196,7 +197,7 @@ module.exports = React.createClass({
       state.valid && 'hui-SelectInput--valid',
       this.shouldShowError() && 'hui-SelectInput--error',
       props.disabled && 'hui-SelectInput--disabled'
-    ].join(' ').replace('false', '');
+    ]);
 
     return (
       <div className={ classes }>

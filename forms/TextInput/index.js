@@ -6,6 +6,7 @@ var PureRenderMixin   = React.addons.PureRenderMixin;
 var inputMessage      = require('../../mixins/inputMessage');
 var textInput         = require('../../mixins/textInput');
 var classnames        = require('classnames');
+var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: "TextInput",
@@ -94,7 +95,7 @@ module.exports = React.createClass({
     var value = (valueType === 'string' || valueType ==='number') ? props.value.toString() : '';
     var hasServerErrors = errors.length;
     var iconsLeft = (props.iconPosition === 'left');
-    var classes = [
+    var classes = classNamesArray([
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
       'hui-TextInput',
@@ -103,7 +104,7 @@ module.exports = React.createClass({
       state.valid && 'hui-TextInput--valid',
       this.shouldShowError() && 'hui-TextInput--error',
       props.disabled && 'hui-TextInput--disabled'
-    ].join(' ').replace('false', '');
+    ]);
 
     var inputClassName = classnames({
       'hui-TextInput__input--icon-left': iconsLeft,

@@ -5,6 +5,7 @@ var SelectInput       = require('../SelectInput');
 var Input             = require('../TextInput');
 var LocalStorageMixin = require('../../mixins/localStorage');
 var _                 = require('lodash');
+var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'UrlInput',
@@ -109,11 +110,11 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
     var id    = props.id;
-    var classes = [
+    var classes = classNamesArray([
       'hui-UrlInput--' + props.layout,
       'hui-UrlInput--' + props.spacing,
       "hui-UrlInput"
-    ].join(' ');
+    ]);
 
     return (
       <div className={ classes }>
