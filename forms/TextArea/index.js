@@ -4,6 +4,7 @@ var React             = require('react');
 var inputMessage      = require('../../mixins/inputMessage');
 var LocalStorageMixin = require('../../mixins/localStorage');
 var textInput         = require('../../mixins/textInput');
+var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'hui-TextArea',
@@ -86,7 +87,7 @@ module.exports = React.createClass({
     var state = this.state;
     var value = props.value || '';
     var hasServerErrors = props.errors.length;
-    var classes = [
+    var classes = classNamesArray([
       'hui-TextArea--' + props.layout,
       'hui-TextArea--' + props.spacing,
       'hui-TextArea',
@@ -95,7 +96,7 @@ module.exports = React.createClass({
       state.valid && 'hui-TextArea--valid',
       this.shouldShowError() && 'hui-TextArea--error',
       props.disabled && 'hui-TextArea--disabled'
-    ].join(' ');
+    ]);
 
     return (
       <div className={ classes }>
