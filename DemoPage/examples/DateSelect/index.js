@@ -1,7 +1,9 @@
 "use strict";
 
-var React     = require('react');
-var DateSelect = require('../../../forms/DateSelect');
+var React             = require('react');
+var DateSelect        = require('../../../forms/DateSelect');
+var DateSelectWrapper = require('../../../forms/DateSelect/Wrapper');
+
 var Highlight = require('react-highlight');
 var formMixin = require('../../../mixins/reactForm.mixin');
 var FormRow   = require('../../../forms/FormRow');
@@ -63,6 +65,10 @@ module.exports = React.createClass({
           value={ this.state.form.end_on2 }
           onChange={ change("end_on2") }
           errors={ ['error'] } />
+        <DateSelectWrapper
+          value=""
+          required={ true }
+          name="foo" />
       </FormRow>
 
       <h4>React Example</h4>
