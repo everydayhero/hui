@@ -16,10 +16,12 @@ module.exports = React.createClass({
         address.postal_code,
         address.country_name
       ]);
-    return (<TextInput
-      {...props}
-      readOnly={ true }
-      value={ fields.join(', ') } />
+
+    return (
+      <TextInput
+        {...props}
+        readOnly={ true }
+        value={ fields.join(', ') } />
     );
   }
 });

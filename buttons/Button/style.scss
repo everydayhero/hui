@@ -89,7 +89,10 @@ a.hui-Button {
   }
 }
 
-.hui-Button--borderless {
+.hui-Button--cta-borderless,
+.hui-Button--primary-borderless,
+.hui-Button--secondary-borderless,
+.hui-Button--tertiary-borderless {
   .hui-Button__icon {
     margin-left: -30px;
   }
@@ -214,7 +217,10 @@ a.hui-Button {
   }
 }
 
-.hui-Button--borderless {
+.hui-Button--cta-borderless,
+.hui-Button--primary-borderless,
+.hui-Button--secondary-borderless,
+.hui-Button--tertiary-borderless  {
 
   .hui-Button__label {
     padding: 0 12px;
@@ -231,11 +237,20 @@ a.hui-Button {
   }
 }
 
-.hui-Button--borderless.hui-Button--inverse {
-  background: none;
-  color: white;
-  &:hover, &:focus {
-    color: #eee;
+.hui-Button--primary-borderless {
+  color: $hui-text-input-text;
+}
+
+.hui-Button--cta-borderless,
+.hui-Button--primary-borderless,
+.hui-Button--secondary-borderless,
+.hui-Button--tertiary-borderless {
+  &.hui-Button--inverse {
+    background: none;
+    color: white;
+    &:hover, &:focus {
+      color: #eee;
+    }
   }
 }
 
