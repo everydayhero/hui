@@ -377,6 +377,18 @@ module.exports = React.createClass({
           { "<Button borderless={ true } kind='primary'label='Download' icon='download' inverse={ true } />"}
         </Highlight>
       </div>
+
+      <div className="DemoPage__group">
+        <h4 className="DemoPage__h4">CTA disabled Example</h4>
+        <div className="DemoPage__example--button">
+          <Button borderless={ true } kind='cta' disabled={ true } label='Download' icon='download'/>
+        </div>
+
+        <h4 className="DemoPage__h4">React Example</h4>
+        <Highlight>
+          { "<Button borderless={ true } kind='primary'label='Download' icon='download' inverse={ true } />"}
+        </Highlight>
+      </div>
     </div>
     );
   }

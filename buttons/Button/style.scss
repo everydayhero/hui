@@ -269,6 +269,19 @@ a.hui-Button {
   }
 }
 
+.hui-Button--cta-borderless,
+.hui-Button--primary-borderless,
+.hui-Button--secondary-borderless,
+.hui-Button--tertiary-borderless {
+  &.hui-Button--disabled {
+    border: 0px;
+    background: transparent;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
 .hui-Button--disabled.hui-Button--inverse {
   background-color: transparent;
 }
