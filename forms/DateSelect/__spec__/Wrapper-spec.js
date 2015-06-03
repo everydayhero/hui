@@ -1,3 +1,5 @@
+"use strict";
+
 describe('DateSelectWrapper', function() {
   var React             = require('react/addons');
   var DateSelectWrapper = require('../Wrapper');

@@ -1,8 +1,8 @@
 "use strict";
 
-var React      = require('react');
-var classnames = require('classnames');
-var Icon       = require('../../Helpers/Icon');
+var React           = require('react');
+var Icon            = require('../../Helpers/Icon');
+var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'Button',
@@ -15,8 +15,9 @@ module.exports = React.createClass({
     iconSpin: React.PropTypes.bool,
     id: React.PropTypes.string,
     inverse: React.PropTypes.bool,
+    borderless: React.PropTypes.bool,
     kind: React.PropTypes.oneOf(
-      ['cta', 'primary', 'secondary', 'tertiary', 'borderless']
+      ['cta', 'primary', 'secondary', 'tertiary']
     ).isRequired,
     label: React.PropTypes.string,
     onClick: React.PropTypes.func,
@@ -35,6 +36,7 @@ module.exports = React.createClass({
       icon: '',
       iconLeft: false,
       iconSpin: false,
+      borderless: false,
       inverse: false,
       label: '',
       target: null,
@@ -62,23 +64,20 @@ module.exports = React.createClass({
   render: function() {
     var El;
     var props = this.props;
-    var kind = props.kind;
     var href = props.href;
     var clickHandler = props.disabled ? this.ignoreClick : this.propogateClick;
+    var kind = props.borderless ? props.kind + '-borderless' : props.kind;
 
-    var classes = classnames({
-      'hui-Button--cta': kind === 'cta',
-      'hui-Button--primary': kind === 'primary',
-      'hui-Button--secondary': kind === 'secondary',
-      'hui-Button--tertiary': kind === 'tertiary',
-      'hui-Button--borderless': kind === 'borderless',
-      'hui-Button--disabled': props.disabled,
-      'hui-Button--inverse': props.inverse,
-      'hui-Button--thin': props.thin,
-      'hui-Button--hasIcon': props.icon,
-      'hui-Button--iconLeft': props.iconLeft,
-      'hui-Button--uppercase': props.uppercase
-    }, 'hui-Button');
+    var classes = classNamesArray([
+      'hui-Button',
+      'hui-Button--' + kind,
+      props.disabled && 'hui-Button--disabled',
+      props.inverse && 'hui-Button--inverse',
+      props.thin && 'hui-Button--thin',
+      props.icon && 'hui-Button--hasIcon',
+      props.iconLeft && 'hui-Button--iconLeft',
+      props.uppercase && 'hui-Button--uppercase'
+    ]);
 
     if (href) {
       El = 'a';

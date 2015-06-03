@@ -305,7 +305,7 @@ module.exports = React.createClass({
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/> "}
+          { "<Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/>"}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -333,48 +333,37 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button kind='borderless' label='Download' icon='download'/>
+          <Button  borderless={ true } kind='cta' label='Download' icon='download'/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button kind='borderless' label='Download' icon='download' /> "}
+          { "<Button  borderless={ true } kind='cta' label='Download' icon='download'/>"}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
         <Highlight className='html'>
-          { '<a href="/foo" class="hui-Button hui-Button--borderless hui-Button--hasIcon">\n'}
+          { '<a href="/foo" class="hui-Button--borderless hui-Button--hasIcon hui-Button">\n'}
           { '  <span class="hui-Button__icon">\n'}
           { '    <i class="hui-Icon fa fa-download"></i>\n'}
           { '  </span>\n'}
           { '  <span class="hui-Button__label">Download</span>\n'}
           { '</a>\n'}
         </Highlight>
-
-        <Highlight className='html'>
-          { '<button class="hui-Button hui-Button--borderless hui-Button--hasIcon">\n'}
-          { '  <span class="hui-Button__icon">\n'}
-          { '    <i class="hui-Icon fa fa-download"></i>\n'}
-          { '  </span>\n'}
-          { '  <span class="hui-Button__label">Download</span>\n'}
-          { '</button>\n'}
-        </Highlight>
-      </div>
 
       <div className="DemoPage__group">
-        <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button kind='borderless' label='Download' icon='download' inverse={ true } />
+          <Button  borderless={ true } kind='cta' label='Download' icon='download' inverse={ true }/>
         </div>
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button kind='borderless' inverse={ true } label='Download' icon='download' />"}
+          { "<Button  borderless={ true } kind='cta' label='Download' icon='download' inverse={ true }/>"}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
         <Highlight className='html'>
-          { '<a href="/foo" class="hui-Button hui-Button--borderless ui-Button--inverse hui-Button--hasIcon">\n'}
+          { '<a href="/foo" class="hui-Button--borderless hui-Button--hasIcon hui-Button">\n'}
           { '  <span class="hui-Button__icon">\n'}
           { '    <i class="hui-Icon fa fa-download"></i>\n'}
           { '  </span>\n'}
@@ -382,13 +371,26 @@ module.exports = React.createClass({
           { '</a>\n'}
         </Highlight>
 
-        <Highlight className='html'>
-          { '<button class="hui-Button hui-Button--borderless ui-Button--inverse hui-Button--hasIcon">\n'}
-          { '  <span class="hui-Button__icon">\n'}
-          { '    <i class="hui-Icon fa fa-download"></i>\n'}
-          { '  </span>\n'}
-          { '  <span class="hui-Button__label">Download</span>\n'}
-          { '</button>\n'}
+      <div className="DemoPage__group">
+        <h4 className="DemoPage__h4">Primary Example</h4>
+        <div className="DemoPage__example--button">
+          <Button borderless={ true } kind='primary'label='Download' icon='download' />
+        </div>
+
+        <h4 className="DemoPage__h4">React Example</h4>
+        <Highlight>
+          { "<Button borderless={ true } kind='cta' label='Download' icon='download' />"}
+        </Highlight>
+
+      <div className="DemoPage__group">
+        <h4 className="DemoPage__h4">Primary Example Inverse</h4>
+        <div className="DemoPage__example--button--inverse">
+          <Button borderless={ true } kind='primary'label='Download' icon='download' inverse={ true } />
+        </div>
+
+        <h4 className="DemoPage__h4">React Example</h4>
+        <Highlight>
+          { "<Button borderless={ true } kind='primary'label='Download' icon='download' inverse={ true } />"}
         </Highlight>
       </div>
     </div>
