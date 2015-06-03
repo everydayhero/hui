@@ -305,7 +305,7 @@ module.exports = React.createClass({
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/>"}
+          { "<Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/> "}
         </Highlight>
 
         <h4 className="DemoPage__h4">HTML Examples</h4>
@@ -340,16 +340,8 @@ module.exports = React.createClass({
         <Highlight>
           { "<Button  borderless={ true } kind='cta' label='Download' icon='download'/>"}
         </Highlight>
+      </div>
 
-        <h4 className="DemoPage__h4">HTML Examples</h4>
-        <Highlight className='html'>
-          { '<a href="/foo" class="hui-Button--borderless hui-Button--hasIcon hui-Button">\n'}
-          { '  <span class="hui-Button__icon">\n'}
-          { '    <i class="hui-Icon fa fa-download"></i>\n'}
-          { '  </span>\n'}
-          { '  <span class="hui-Button__label">Download</span>\n'}
-          { '</a>\n'}
-        </Highlight>
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button--inverse">
@@ -360,16 +352,7 @@ module.exports = React.createClass({
         <Highlight>
           { "<Button  borderless={ true } kind='cta' label='Download' icon='download' inverse={ true }/>"}
         </Highlight>
-
-        <h4 className="DemoPage__h4">HTML Examples</h4>
-        <Highlight className='html'>
-          { '<a href="/foo" class="hui-Button--borderless hui-Button--hasIcon hui-Button">\n'}
-          { '  <span class="hui-Button__icon">\n'}
-          { '    <i class="hui-Icon fa fa-download"></i>\n'}
-          { '  </span>\n'}
-          { '  <span class="hui-Button__label">Download</span>\n'}
-          { '</a>\n'}
-        </Highlight>
+      </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Primary Example</h4>
@@ -379,8 +362,9 @@ module.exports = React.createClass({
 
         <h4 className="DemoPage__h4">React Example</h4>
         <Highlight>
-          { "<Button borderless={ true } kind='cta' label='Download' icon='download' />"}
+          { "<Button borderless={ true } kind='primary'label='Download' icon='download' />"}
         </Highlight>
+      </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Primary Example Inverse</h4>
