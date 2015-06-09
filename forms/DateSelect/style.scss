@@ -15,6 +15,7 @@
 .hui-DateSelect__wrap {
   position: relative;
   display: block;
+  z-index: 1;
 }
 
 .hui-DateSelect--error .hui-TextInput__message {
