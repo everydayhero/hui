@@ -135,7 +135,7 @@ module.exports = React.createClass({
       autoComplete: props.autoComplete,
       disabled: props.disabled,
       readOnly: props.readOnly
-    }
+    };
     var classes = classNamesArray([
       'hui-DateSelect--' + props.layout,
       'hui-DateSelect--' + props.spacing,

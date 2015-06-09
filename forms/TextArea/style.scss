@@ -38,11 +38,6 @@
   @extend %hui-input-error;
 }
 
-.hui-TextArea--hasValue .hui-TextArea__label {
-  border-bottom-color: #aaa;
-  color: #aaa;
-}
-
 .hui-TextArea--valid .hui-TextArea__icon {
   color: #7ec774;
 }
