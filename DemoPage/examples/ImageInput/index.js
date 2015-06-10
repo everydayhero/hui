@@ -35,7 +35,7 @@ module.exports = React.createClass({
         id={ 'proof_image' }
         value={ this.state.form.proof_image }
         onChange={ change('proof_image') }
-        options={ {imageMin: [800, 600], imageQuality: 80, cropRatio: 8/6, services: ['CONVERT', 'COMPUTER'] } } />
+        options={ {imageMin: [800, 600], imageQuality: 80, cropRatio: 8/6 } } />
 
       <h4>React Example</h4>
       <Highlight className='html'>

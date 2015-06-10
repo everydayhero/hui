@@ -29,6 +29,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       mimetypes: ['image/*'],
+      services: ['CONVERT', 'COMPUTER'],
       options: {},
       errors: [],
       layout: 'full',
@@ -51,6 +52,7 @@ module.exports = React.createClass({
     var options = props.options;
 
     options.mimetypes = options.mimetypes || props.mimetypes;
+    options.services = options.services || props.services;
 
     e.preventDefault();
     if (!props.disabled) {
