@@ -35,8 +35,7 @@ module.exports = React.createClass({
       spacing: 'loose',
       label: 'image',
       noFileLabel: 'No file selected',
-      disabled: false,
-      cropRatio: null
+      disabled: false
     };
   },
 

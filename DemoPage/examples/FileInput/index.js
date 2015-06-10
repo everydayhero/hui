@@ -41,7 +41,7 @@ module.exports = React.createClass({
         label={ 'image with crop'}
         onChange={ change('sample_file') }
         value={ this.state.form.sample_file }
-        options={ {imageDim: [800, 600], imageQuality: 80, cropRatio: 4/3} } />
+        options={ {imageDim: [800, 600], imageQuality: 80, cropRatio: 4/3, services: ['CONVERT', 'COMPUTER'] } } />
 
       <FileInput
         id={ 'sample_file' }
