@@ -21,7 +21,7 @@ module.exports = React.createClass({
           country_name: 'Australia'
         }
       }
-    })
+    });
   },
 
   t: function(name) {
