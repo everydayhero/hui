@@ -23,17 +23,20 @@ module.exports = React.createClass({
     spacing: React.PropTypes.string,
     label: React.PropTypes.string,
     disabled: React.PropTypes.bool,
+    options: React.PropTypes.object
   },
 
   getDefaultProps: function() {
     return {
       mimetypes: ['image/*'],
+      options: {},
       errors: [],
       layout: 'full',
       spacing: 'loose',
       label: 'image',
       noFileLabel: 'No file selected',
-      disabled: false
+      disabled: false,
+      cropRatio: null
     };
   },
 
@@ -46,13 +49,9 @@ module.exports = React.createClass({
 
   browse: function(e) {
     var props = this.props;
-    var options = {
-      mimetypes: props.mimetypes
-    };
+    var options = props.options;
 
-    if (props.services) {
-      options.services = props.services;
-    }
+    options.mimetypes = options.mimetypes || props.mimetypes;
 
     e.preventDefault();
     if (!props.disabled) {
