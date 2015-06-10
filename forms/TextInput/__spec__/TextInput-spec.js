@@ -217,9 +217,9 @@ describe('TextInput', function() {
       TestUtils.Simulate.change(input, { target: { value: 'newValue' } });
       TestUtils.Simulate.blur(input);
 
-      expect(onFocus).to.have.not.been.called();
-      expect(onChange).to.have.not.been.called();
-      expect(validate).to.have.not.been.called();
+      expect(onFocus).to.have.not.been.called;
+      expect(onChange).to.have.not.been.called;
+      expect(validate).to.have.not.been.called;
       expect(input.value).to.equal('oldValue');
     });
   });
@@ -275,7 +275,7 @@ describe('TextInput', function() {
       element.setProps({ onChange: onChange.bind(element) });
       TestUtils.Simulate.blur(input);
 
-      expect(validate).to.have.not.been.called();
+      expect(validate).to.have.not.been.called;
     });
 
     it("will execute validate function on blur if required", function() {
