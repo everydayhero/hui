@@ -23,11 +23,14 @@ module.exports = React.createClass({
     spacing: React.PropTypes.string,
     label: React.PropTypes.string,
     disabled: React.PropTypes.bool,
+    options: React.PropTypes.object
   },
 
   getDefaultProps: function() {
     return {
       mimetypes: ['image/*'],
+      services: ['CONVERT', 'COMPUTER'],
+      options: {},
       errors: [],
       layout: 'full',
       spacing: 'loose',
@@ -46,13 +49,10 @@ module.exports = React.createClass({
 
   browse: function(e) {
     var props = this.props;
-    var options = {
-      mimetypes: props.mimetypes
-    };
+    var options = props.options;
 
-    if (props.services) {
-      options.services = props.services;
-    }
+    options.mimetypes = options.mimetypes || props.mimetypes;
+    options.services = options.services || props.services;
 
     e.preventDefault();
     if (!props.disabled) {
