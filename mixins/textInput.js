@@ -131,8 +131,7 @@ module.exports = {
   },
 
   renderPlaceHolder: function() {
-    if(!this.props.placeHolder || this.props.value)
-    {
+    if(!this.props.placeHolder || this.props.value) {
       return false;
     }
 
