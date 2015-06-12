@@ -94,8 +94,8 @@ describe('TextInput', function() {
       expect(input.getDOMNode().name).to.equal('eight');
     });
 
-    it('placeHolder is placeHolder', function() {
-      expect(input.getDOMNode().placeHolder).to.equal('placeHolder');
+    it('placeHolder is present', function() {
+      findByClass(element, 'hui-TextInput__placeHolder');
     });
 
     it('icon is default', function() {
