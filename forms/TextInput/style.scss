@@ -27,6 +27,16 @@
   position: relative;
 }
 
+.hui-TextInput__placeHolder {
+  position: absolute;
+  top: 22px;
+  font-family: $hui-font-family;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: #aaa;
+}
+
 .hui-TextInput__input--icon-left {
   padding-right: 0px;
   padding-left: 24px;

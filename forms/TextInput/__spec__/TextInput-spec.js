@@ -73,6 +73,7 @@ describe('TextInput', function() {
         id="seven"
         name="eight"
         icon="rocket"
+        placeHolder="placeHolder"
         readOnly={ true } />);
       input = findByTag(element, 'input');
     });
@@ -91,6 +92,10 @@ describe('TextInput', function() {
 
     it('name is TextInput-seven', function() {
       expect(input.getDOMNode().name).to.equal('eight');
+    });
+
+    it('placeHolder is placeHolder', function() {
+      expect(input.getDOMNode().placeHolder).to.equal('placeHolder');
     });
 
     it('icon is default', function() {

@@ -38,6 +38,7 @@ module.exports = React.createClass({
         <li className="DemoPage__li"><span className="DemoPage__bold">serverErrors:</span> [Array] - List of error message returned from server (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">errorMessage:</span> [String] – Message defined by client side validation to display on validation error (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">hint:</span> [String] – Text to display under input on feild focus (Optional)</li>
+        <li className="DemoPage__li"><span className="DemoPage__bold">placeHolder:</span> [String] – Text to display in input if no other text is entered (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">icon:</span> [String] – Icon to appear on the right of the input (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">mask:</span> [Function] – Function to mutate input value on change (Optional)</li>
         <li className="DemoPage__li"><span className="DemoPage__bold">onFocus:</span> [Function] – Focus callback. Returns DOM element, input value and setValue method to update input (Optional)</li>
@@ -59,24 +60,31 @@ module.exports = React.createClass({
         autoComplete={false}
         id='demo_input'
         value={ this.state.form.demo_input_01 }
-        required={ true }
-        errorMessage='This field cannot be left blank'
-        label='A required field'
+        label='Hint'
+        placeHolder='This is a placeholder'
         onChange={ change('demo_input_01') } />
       <TextInput
         autoComplete={false}
         id='demo_input'
         value={ this.state.form.demo_input_02 }
-        errors={ ['invalid email address', 'required'] }
-        label='invalid email address'
+        required={ true }
+        errorMessage='This field cannot be left blank'
+        label='A required field'
         onChange={ change('demo_input_02') } />
       <TextInput
         autoComplete={false}
         id='demo_input'
         value={ this.state.form.demo_input_03 }
+        errors={ ['invalid email address', 'required'] }
+        label='invalid email address'
+        onChange={ change('demo_input_03') } />
+      <TextInput
+        autoComplete={false}
+        id='demo_input'
+        value={ this.state.form.demo_input_04 }
         label='Hint'
         hint='this is the hint'
-        onChange={ change('demo_input_03') } />
+        onChange={ change('demo_input_04') } />
       <TextInput
         id='demo_input_readonly'
         label='Read only'
@@ -88,10 +96,10 @@ module.exports = React.createClass({
         disabled={ true } />
       <TextInput
         id='demo_input_icon'
-        value={ this.state.form.demo_input_04 }
+        value={ this.state.form.demo_input_05 }
         label="custom icon"
         icon="rocket"
-        onChange={ change('demo_input_04') } />
+        onChange={ change('demo_input_05') } />
       <TextInput
         id='demo_input_icon'
         value={ this.state.form.demo_input_06 }
@@ -102,11 +110,11 @@ module.exports = React.createClass({
 
       <TextCountDownInput
         id='demo_input_icon'
-        value={ this.state.form.demo_input_05 }
+        value={ this.state.form.demo_input_07 }
         label="Text input with countdown"
         max={ 20 }
         warnMax={ 10 }
-        onChange={ change('demo_input_05') } />
+        onChange={ change('demo_input_07') } />
 
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>
