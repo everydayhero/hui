@@ -22,6 +22,7 @@ module.exports = React.createClass({
     showError: React.PropTypes.bool,
     name: React.PropTypes.string,
     label: React.PropTypes.string,
+    placeHolder: React.PropTypes.string,
     errors: React.PropTypes.array,
     errorMessage: React.PropTypes.string,
     hint: React.PropTypes.string,
@@ -126,6 +127,7 @@ module.exports = React.createClass({
             onKeyDown={ this.onTab }
             type={ props.type }
             value={ this.maskValue(value) } />
+          { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>
         { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }

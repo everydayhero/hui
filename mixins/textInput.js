@@ -130,6 +130,18 @@ module.exports = {
     );
   },
 
+  renderPlaceHolder: function() {
+    if (!this.props.placeHolder || this.props.value) {
+      return false;
+    }
+
+    return (
+        <span className='hui-TextInput__placeHolder'>
+          { this.props.placeHolder }
+        </span>
+      );
+  },
+
   inputMethods: function(bool) {
     return bool && {
       onBlur: this.handleBlur,

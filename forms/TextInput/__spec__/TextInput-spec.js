@@ -73,6 +73,7 @@ describe('TextInput', function() {
         id="seven"
         name="eight"
         icon="rocket"
+        placeHolder="placeHolder"
         readOnly={ true } />);
       input = findByTag(element, 'input');
     });
@@ -91,6 +92,17 @@ describe('TextInput', function() {
 
     it('name is TextInput-seven', function() {
       expect(input.getDOMNode().name).to.equal('eight');
+    });
+
+    it('placeHolder is present', function() {
+      element = TestUtils.renderIntoDocument(<Input
+        type="email"
+        id="seven"
+        name="eight"
+        icon="rocket"
+        placeHolder="placeHolder"
+        readOnly={ true } />);
+      findByClass(element, 'hui-TextInput__placeHolder');
     });
 
     it('icon is default', function() {
