@@ -131,6 +131,11 @@ module.exports = {
   },
 
   renderPlaceHolder: function() {
+    if(!this.props.placeHolder || this.props.value)
+    {
+      return false;
+    }
+
     return (
         <span className='hui-TextInput__placeHolder'>
           { this.props.placeHolder }

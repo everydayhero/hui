@@ -95,6 +95,13 @@ describe('TextInput', function() {
     });
 
     it('placeHolder is present', function() {
+      element = TestUtils.renderIntoDocument(<Input
+        type="email"
+        id="seven"
+        name="eight"
+        icon="rocket"
+        placeHolder="placeHolder"
+        readOnly={ true } />);
       findByClass(element, 'hui-TextInput__placeHolder');
     });
 

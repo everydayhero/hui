@@ -113,10 +113,6 @@ module.exports = React.createClass({
       'hui-TextInput__input': true
     });
 
-    if(value !== '') {
-      props.placeHolder = '';
-    }
-
     return (
       <div className={ classes }>
         <label className="hui-TextInput__label" htmlFor={ props.name } ref={ props.ref }>
