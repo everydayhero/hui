@@ -26,6 +26,7 @@ var ButtonExample   = require('./examples/Button');
 var imagePath       = './images/';
 var FormRow         = require('./examples/FormRow');
 var Fieldset        = require('./examples/Fieldset');
+var LoadingProgress = require('./examples/LoadingProgress');
 
 module.exports = React.createClass({
   displayName: 'DemoPage',
@@ -64,6 +65,7 @@ module.exports = React.createClass({
           <h2 className="DemoPage__h2" id="layout">Layout</h2>
           <div className="DemoPage__group">
             <TopBarExample/>
+            <LoadingProgress/>
             <PageFormExample/>
           </div>
 
