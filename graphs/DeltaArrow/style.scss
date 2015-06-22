@@ -1,7 +1,8 @@
 .hui-DeltaArrow--unknown,
 .hui-DeltaArrow--up,
 .hui-DeltaArrow--down,
-.hui-DeltaArrow--loading {
+.hui-DeltaArrow--loading,
+.hui-DeltaArrow--emptyState {
   @extend %general-reset;
   width: 43px;
   height: 37px;
@@ -23,7 +24,8 @@
   color: white;
 }
 
-.hui-DeltaArrow--loading {
+.hui-DeltaArrow--loading,
+.hui-DeltaArrow--emptyState {
   svg {
     fill: #d1d2d4;
   }

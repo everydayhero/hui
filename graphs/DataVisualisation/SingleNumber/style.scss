@@ -1,12 +1,14 @@
 .hui-SingleNumber,
-.hui-SingleNumber--loading {
+.hui-SingleNumber--loading,
+.hui-SingleNumber--emptyState {
   position: relative;
   display: inline-block;
   margin-top: 10px;
   margin-right: 10px;
 }
 
-.hui-SingleNumber--loading {
+.hui-SingleNumber--loading,
+.hui-SingleNumber--emptyState {
   background-color: #D1D2D4;
   width: 200px;
   .hui-SingleNumber__metric:before {

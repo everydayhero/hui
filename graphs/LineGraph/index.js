@@ -25,7 +25,8 @@ module.exports = React.createClass({
       bottom: React.PropTypes.number,
       top: React.PropTypes.number
     }),
-    loading: React.PropTypes.bool
+    loading: React.PropTypes.bool,
+    emptyState: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -42,7 +43,8 @@ module.exports = React.createClass({
       valueConverter: function(number) {
         return number;
       },
-      loading: false
+      loading: false,
+      emptyState: false
     }
   },
 
@@ -154,13 +156,14 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var state   = this.state,
-        props   = this.props,
-        loading = props.loading,
+    var state      = this.state,
+        props      = this.props,
+        loading    = props.loading,
+        emptyState = props.emptyState,
         tooltip,
         graph;
 
-    if (loading === true && state.width) {
+    if ((loading === true || emptyState === true) && state.width) {
       graph = (
         <LoadingPlaceholder
           height={ state.height }

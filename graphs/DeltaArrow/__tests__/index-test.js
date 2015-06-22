@@ -70,4 +70,21 @@ describe('DeltaArrow', function() {
       expect(node.getDOMNode().textContent).toEqual('');
     });
   });
+
+  describe('with emptyState', function() {
+    var component;
+
+    beforeEach(function() {
+      component = TestUtils.renderIntoDocument(<DeltaArrow delta={ -0.5 } emptyState={ true } />);
+    });
+
+    it('should have appropriate class', function() {
+      TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow--emptyState');
+    });
+
+    it('should render formatted percentage', function() {
+      node = TestUtils.findRenderedDOMComponentWithClass(component, 'hui-DeltaArrow__value');
+      expect(node.getDOMNode().textContent).toEqual('');
+    });
+  });
 });
