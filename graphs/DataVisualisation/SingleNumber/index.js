@@ -1,7 +1,8 @@
 "use strict";
 
-var React   = require('react');
-var numeral = require('numeral');
+var React      = require('react');
+var numeral    = require('numeral');
+var classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'SingleNumber',
@@ -36,15 +37,10 @@ module.exports = React.createClass({
   render: function() {
     var loading    = this.props.loading,
         emptyState = this.props.emptyState,
-        className;
-    if (loading) {
-      className = "hui-SingleNumber--loading";
-    } 
-    else if(emptyState) {
-      className = "hui-SingleNumber--emptyState";
-    }else {
-      className = "hui-SingleNumber";
-    }
+        className = classnames({
+          "hui-SingleNumber--loading": loading,
+          "hui-SingleNumber--emptyState": emptyState
+        }, "hui-SingleNumber");
 
     return (
       <div className={ className }>
