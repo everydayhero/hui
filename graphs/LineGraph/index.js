@@ -160,6 +160,7 @@ module.exports = React.createClass({
         props      = this.props,
         loading    = props.loading,
         emptyState = props.emptyState,
+        emptyData,
         tooltip,
         graph;
 
@@ -182,8 +183,16 @@ module.exports = React.createClass({
       graph = this.renderGraph();
     }
 
+    if(emptyState === true) {
+      emptyData = 
+      <span className="hui-LineGraph__emptyState">
+        No Information to Display
+      </span>;
+    }
+
     return (
       <div className="hui-LineGraph">
+        { emptyData }
         { tooltip }
         <svg className="hui-LineGraph__svg">
           { graph }

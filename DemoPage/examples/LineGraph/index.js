@@ -77,6 +77,9 @@ module.exports = React.createClass({
           <span className="DemoPage__bold">tipLabel:</span> Defines the label of values on tooltip.
         </li>
         <li className="DemoPage__li">
+          <span className="DemoPage__bold">emptyState:</span> Whether the graph is empty or not.
+        </li>
+        <li className="DemoPage__li">
           <span className="DemoPage__bold">gutter:</span> Defines the area around the graph for x and y scales.
           <ul className="DemoPage__ul">
             <li className="DemoPage__li">left</li>
@@ -94,6 +97,9 @@ module.exports = React.createClass({
       </div>
       <div className="DemoPage__example--graph--stacked">
         <LineGraph {...this.state} stacked={ true } tipLabel='Fund raised' />
+      </div>
+      <div className="DemoPage__example--graph--empty">
+        <LineGraph {...this.state} stacked={ true } tipLabel='Fund raised' emptyState={ true }/>
       </div>
 
       <h4 className="DemoPage__h4">React Example</h4>
