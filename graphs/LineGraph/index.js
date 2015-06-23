@@ -25,7 +25,8 @@ module.exports = React.createClass({
       bottom: React.PropTypes.number,
       top: React.PropTypes.number
     }),
-    loading: React.PropTypes.bool
+    loading: React.PropTypes.bool,
+    emptyState: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -42,7 +43,8 @@ module.exports = React.createClass({
       valueConverter: function(number) {
         return number;
       },
-      loading: false
+      loading: false,
+      emptyState: false
     }
   },
 
@@ -154,13 +156,15 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var state   = this.state,
-        props   = this.props,
-        loading = props.loading,
+    var state      = this.state,
+        props      = this.props,
+        loading    = props.loading,
+        emptyState = props.emptyState,
+        emptyData,
         tooltip,
         graph;
 
-    if (loading === true && state.width) {
+    if ((loading === true || emptyState === true) && state.width) {
       graph = (
         <LoadingPlaceholder
           height={ state.height }
@@ -179,8 +183,16 @@ module.exports = React.createClass({
       graph = this.renderGraph();
     }
 
+    if(emptyState === true) {
+      emptyData =  ( 
+      <span className="hui-LineGraph__emptyState">
+        No Information to Display
+      </span>);
+    }
+
     return (
       <div className="hui-LineGraph">
+        { emptyData }
         { tooltip }
         <svg className="hui-LineGraph__svg">
           { graph }

@@ -49,7 +49,6 @@ module.exports = React.createClass({
       legendLabels: ['Campaign 1', 'Campaign 2', 'Campaign 3', 'Campaign 4'],
       delta: -0.12,
       total: 160000000,
-      title: 'Example Data',
       tipLabel: 'Pages'
     };
   },
@@ -95,12 +94,21 @@ module.exports = React.createClass({
         <li className="DemoPage__li">
           <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals and total value (Leave blank to use default formatting)
         </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">loading:</span> Whether the graph is currently loading or not.
+        </li>
+        <li className="DemoPage__li">
+          <span className="DemoPage__bold">emptyState:</span> Whether the graph is currently empty or not.
+        </li>
       </ul>
       <div className="DemoPage__example--visualisation">
-        <DataVisualisation {...this.state} />
+        <DataVisualisation {...this.state} title={ 'Example Data' }  />
       </div>
       <div className="DemoPage__example--visualisation">
-        <DataVisualisation {...this.state} loading={ true } />
+        <DataVisualisation {...this.state} title={ 'Example Loading Data' } loading={ true } />
+      </div>
+      <div className="DemoPage__example--visualisation">
+        <DataVisualisation {...this.state} title={ 'Example Empty Data' } emptyState={ true } />
       </div>
       <h4 className="DemoPage__h4">React Example</h4>
       <Highlight className='html'>

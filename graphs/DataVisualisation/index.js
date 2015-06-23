@@ -20,7 +20,8 @@ module.exports = React.createClass({
     legendKeys: React.PropTypes.arrayOf(React.PropTypes.string),
     delta: React.PropTypes.number,
     tipLabel: React.PropTypes.string,
-    loading: React.PropTypes.bool
+    loading: React.PropTypes.bool,
+    emptyState: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -29,7 +30,8 @@ module.exports = React.createClass({
       valueConverter: function(number) {
         return number;
       },
-      loading: false
+      loading: false,
+      emptyState: false
     };
   },
 
@@ -45,7 +47,8 @@ module.exports = React.createClass({
           valueConverter={ props.valueConverter }
           totalFormat={ props.totalFormat }
           tipLabel={ props.tipLabel }
-          loading={ props.loading } />
+          loading={ props.loading } 
+          emptyState={ props.emptyState }/>
       );
     }
   },
@@ -56,31 +59,40 @@ module.exports = React.createClass({
         totalFormat    = props.totalFormat,
         title          = props.title,
         valueConverter = props.valueConverter,
-        loading        = props.loading;
+        loading        = props.loading,
+        emptyState     = props.emptyState;
 
-    if (loading || typeof(total) != 'undefined') {
+    if (emptyState) {
       return (
-        <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
+        <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } emptyState={ emptyState }/>
       );
     }
+    return (
+      <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
+    );
   },
 
   renderDeltaArrow: function() {
-    var props   = this.props,
-        delta   = props.delta,
-        loading = props.loading;
+    var props      = this.props,
+        delta      = props.delta,
+        loading    = props.loading,
+        emptyState = props.emptyState;
 
+    if (emptyState) {
+      return <DeltaArrow delta={ delta } emptyState={ emptyState } />;
+    }
     if (loading || delta) {
       return <DeltaArrow delta={ delta } loading={ loading } />;
     }
   },
 
   renderLegend: function() {
-    var props = this.props,
-        loading = props.loading,
-        legendKeys = props.legendKeys;
+    var props      = this.props,
+        loading    = props.loading,
+        legendKeys = props.legendKeys,
+        emptyState = props.emptyState;
 
-    if (loading || !legendKeys) {
+    if (loading || emptyState || !legendKeys) {
       return false;
     }
 
