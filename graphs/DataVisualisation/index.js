@@ -67,11 +67,9 @@ module.exports = React.createClass({
         <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } emptyState={ emptyState }/>
       );
     }
-    else if (loading || typeof(total) !== 'undefined') {
-      return (
-        <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
-      );
-    }
+    return (
+      <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
+    );
   },
 
   renderDeltaArrow: function() {
