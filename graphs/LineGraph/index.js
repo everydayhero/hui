@@ -184,10 +184,10 @@ module.exports = React.createClass({
     }
 
     if(emptyState === true) {
-      emptyData = 
+      emptyData = ( 
       <span className="hui-LineGraph__emptyState">
         No Information to Display
-      </span>;
+      </span>);
     }
 
     return (
