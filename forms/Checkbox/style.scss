@@ -22,3 +22,16 @@ label.hui-Checkbox__label {
   top: 1px;
   position: relative;
 }
+
+.hui-Input--error {
+  .hui-InputErrors {
+    @extend %error-message;
+    text-align: left;
+    font-family: 'Lato',helvetica,arial,sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: .05em;
+    padding: 4px 8px;
+    margin-top: 8px;
+  }
+}

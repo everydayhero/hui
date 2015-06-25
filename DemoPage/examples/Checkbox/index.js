@@ -42,6 +42,13 @@ module.exports = React.createClass({
         onChange={ change("terms") } />
 
       <CheckboxInput
+        id="errors"
+        value={ this.state.form.errors }
+        label={ "Accepts terms and conditions" }
+        onChange={ change("errors") }
+        errors={ ["Please accept our terms and conditions."] } />
+
+      <CheckboxInput
         id="special"
         value={ this.state.form.special }
         label={ <span>Label with <b>HTML</b> content </span> }
