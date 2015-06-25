@@ -22,3 +22,7 @@ label.hui-Checkbox__label {
   top: 1px;
   position: relative;
 }
+
+.hui-InputErrors {
+  @extend %error-message;
+}
