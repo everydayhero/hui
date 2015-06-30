@@ -1,0 +1,92 @@
+.hui-Footer__beneficiary
+  background-color: #7ec774;
+  padding: 40px;
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+
+.hui-Footer__beneficiary,
+.hui-Footer__legalLinks,
+.hui-Footer__siteLinks
+  text-align: center;
+
+.hui-Footer__siteLinks
+  color: #7ec774;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  position: relative;
+
+.hui-Footer__siteLinksLeft,
+.hui-Footer__siteLinksRight,
+.hui-Footer__logo
+  display: inline-block;
+
+.hui-Footer__logo
+  height: 32px;
+  max-width: 100%;
+  padding: 0 30px;
+  line-height: 13px;
+  margin-bottom: -8px;
+
+.hui-Footer__legalLinks
+  color: #aaa;
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+
+.hui-Footer__siteLink,
+.hui-Footer__legalLink,
+.hui-Footer__beneficiaryInfo
+  display: inline-block;
+  padding: 0 13px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: 0.05em;
+
+.hui-Footer__socialMedia
+  color: #7ec774;
+  text-align: center;
+
+@media screen and (min-width: 920px)
+  .hui-Footer__legalLink + .hui-Footer__legalLink,
+  .hui-Footer__beneficiaryInfo + .hui-Footer__beneficiaryInfo
+    border-left: 1px solid currentColor;
+
+@media screen and (max-width: 919px)
+  .hui-Footer__siteLinksLeft,
+  .hui-Footer__siteLinksRight
+    width: 50%;
+
+  .hui-Footer__siteLink
+    display: block;
+    line-height: 48px;
+
+  .hui-Footer__logo
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 0
+    margin: 0
+
+  .hui-Footer__legalLink
+    display: block;
+    line-height: 44px;
+
+@media screen and (max-width: 500px)
+  .hui-Footer__siteLinks
+    padding-top: 50px;
+
+  .hui-Footer__logo
+    top: 0;
+    transform: translateX(-50%);
+
+  .hui-Footer__beneficiaryInfo
+    padding-top: 8px;
+    padding-bottom: 8px;

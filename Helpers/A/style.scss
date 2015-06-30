@@ -1,0 +1,22 @@
+.hui-A
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  cursor: pointer;
+
+  &:after
+    transition all: 160ms ease-out;
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    left: 0;
+    right: -0;
+    background-color: #00a044;
+    height: 3px;
+    transform: scaleX(0);
+
+  &:hover:after
+    height: 1px;
+    transform: scaleX(1);

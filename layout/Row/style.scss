@@ -1,0 +1,24 @@
+.hui-Row
+  padding 40px
+  width 100%
+  color white
+
+.hui-Row.phone
+  padding 40px 20px
+
+.hui-Row.banner
+  color white
+  text-align center
+
+.hui-Row.primary
+  background-color white
+  color #525252
+
+.hui-Row.secondary
+  background-image: url(images/alt_charity_bg--blur.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  // background-attachment: fixed;
+  background-size: cover;
+  color: #525252;
+  overflow: hidden;
