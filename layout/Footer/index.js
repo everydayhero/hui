@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var React = require('react');
-var I18n = require('../../../lib/mixins/I18n');
 var Row = require('../Row');
 var A = require('../../Helpers/A');
 var SocialMediaLinks = require('../../Helpers/SocialMediaLinks');
@@ -13,33 +12,41 @@ var portalUrl = urls.getUrl('portal');
 module.exports = React.createClass({
   displayName: 'Footer',
 
-  mixins: [I18n],
-
   propTypes: {
-    beneficiary: React.PropTypes.object
+    beneficiary: React.PropTypes.object,
+    registration_number: React.PropTypes.string,
+    rights: React.PropTypes.string,
+    name: React.PropTypes.string,
+    phone_label: React.PropTypes.string,
+    email_cta: React.PropTypes.string,
+    website_cta: React.PropTypes.string
   },
 
   renderBeneficiaryLinks: function() {
     var beneficiary = this.props.beneficiary;
+    var props = this.props;
+
     if (!beneficiary) { return false; }
+
     return (
       <div className="Footer__beneficiary">
         { beneficiary.name && <span className="hui-Footer__beneficiaryInfo">{ beneficiary.name }</span> }
-        { beneficiary.tax_number && <span className="hui-Footer__beneficiaryInfo">{ this.t('registration_number') } { beneficiary.tax_number }</span> }
-        { beneficiary.website_url && <A className="hui-Footer__beneficiaryInfo" href={ beneficiary.website_url }>{ this.t('website_cta') }</A> }
-        { beneficiary.email && <A mailto={ beneficiary.email } className="hui-Footer__beneficiaryInfo">{ this.t('email_cta') }</A> }
-        { beneficiary.phone && <span className="hui-Footer__beneficiaryInfo">{ this.t('phone_label') } { beneficiary.phone }</span> }
+        { beneficiary.tax_number && <span className="hui-Footer__beneficiaryInfo">{ props.registration_number } { beneficiary.tax_number }</span> }
+        { beneficiary.website_url && <A className="hui-Footer__beneficiaryInfo" href={ beneficiary.website_url }>{ props.website_cta }</A> }
+        { beneficiary.email && <A mailto={ beneficiary.email } className="hui-Footer__beneficiaryInfo">{ props.email_cta }</A> }
+        { beneficiary.phone && <span className="hui-Footer__beneficiaryInfo">{ props.phone_label } { beneficiary.phone }</span> }
       </div>
     );
   },
 
   getLinks: function(id, n) {
+    var props = this.props;
     var i = 0;
     var t = this.t;
     var links = {};
     while(i++ < n) {
       var name = id + '_' + i;
-      links[t(name)] = t(name + '_url');
+      links[props.name] = (props.name + '_url');
     }
     return links;
   },
@@ -88,7 +95,7 @@ module.exports = React.createClass({
           <div className="hui-Footer__legalLinks">
             { this.renderLegalLinks() }
 
-            <span className="hui-Footer__legalLink">&copy;{ new Date().getFullYear() } { this.t('rights') }</span>
+            <span className="hui-Footer__legalLink">&copy;{ new Date().getFullYear() } { props.rights }</span>
           </div>
           <SocialMediaLinks className="hui-Footer__socialMedia" links={ socialMedia }/>
         </Row>
