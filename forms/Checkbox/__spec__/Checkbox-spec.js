@@ -99,7 +99,7 @@ describe('Checkbox', function() {
         <Input onBlur={onBlur}/>
       );
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input);
+      TestUtils.Simulate.blur(input);
 
       expect(onBlur).to.have.been.calledWith(false);
     });
