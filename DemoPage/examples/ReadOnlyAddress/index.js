@@ -1,7 +1,6 @@
 "use strict";
 
 var React           = require('react');
-var Highlight       = require('react-highlight');
 var ReadOnlyAddress = require('../../../forms/ReadOnlyAddress');
 var formMixin       = require('../../../mixins/reactForm.mixin');
 
@@ -47,18 +46,10 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3 className="DemoPage__h3">ReadOnlyAddress</h3>
-      <p className="DemoPage__p">Read only address input (Contactinates address values with ",".</p>
-      <h4 className="DemoPage__h4">ReadOnlyAddress propTypes (See TextInput)</h4>
+      <h3 className="DemoPage__h3" id="ReadOnlyAddress">ReadOnlyAddress</h3>
+      <p className="DemoPage__p">Read only address input (Contactinates address values with ",").</p>
       { this.readOnlyAddress("charity_address") }
       <ReadOnlyAddress id={ name } value={ address } />
-
-      <h4 className="DemoPage__h4">React Example</h4>
-      <Highlight className='html'>
-        { '<ReadOnlyAddress\n' }
-        { '  id={ name }\n' }
-        { '  value={ this.state.form[name] } />\n' }
-      </Highlight>
     </div>
     );
   }

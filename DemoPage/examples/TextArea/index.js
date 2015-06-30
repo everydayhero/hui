@@ -2,7 +2,6 @@
 
 var React     = require('react');
 var TextArea  = require('../../../forms/TextArea');
-var Highlight = require('react-highlight');
 var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
@@ -25,16 +24,8 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>TextArea</h3>
-      <p>Basic text area.</p>
-      <h4>TextArea propTypes</h4>
-      <ul>
-        <li>errors:</li>
-        <li>id:</li>
-        <li>value:</li>
-        <li>className:</li>
-        <li>onChange:</li>
-      </ul>
+      <h3 className="DemoPage__h3" id="TextArea">TextArea</h3>
+      <p className="DemoPage__p">Basic text area.</p>
         { this.textArea("story") }
 
         <TextArea
@@ -55,17 +46,6 @@ module.exports = React.createClass({
           label="Error message and required"
           errorMessage="You need to do this thing."
           errors={ ["You should attend a marketing writing course."] }/>
-
-      <h4>React Example</h4>
-      <Highlight className='html'>
-        { '{ this.textArea("food_menu") }\n' }
-        { '<TextArea\n' }
-        { '  className="Your-TextArea"\n' }
-        { '  id="description"\n' }
-        { '  value={ this.state.form.description }\n' }
-        { "  onChange={ change('description') }\n" }
-        { '  errors={ this.props.errors }/>\n' }
-      </Highlight>
     </div>
     );
   }

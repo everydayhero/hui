@@ -2,7 +2,6 @@
 
 var React      = require('react');
 var ImageInput = require('../../../forms/ImageInput');
-var Highlight  = require('react-highlight');
 var formMixin  = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
@@ -22,29 +21,12 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>ImageInput</h3>
-      <p>Image input.</p>
-      <h4>ImageInput propTypes</h4>
-      <ul>
-        <li>errors:</li>
-        <li>id:</li>
-        <li>value:</li>
-        <li>onChange:</li>
-      </ul>
+      <h3 className="DemoPage__h3" id="ImageInput">ImageInput</h3>
       <ImageInput
         id={ 'proof_image' }
         value={ this.state.form.proof_image }
         onChange={ change('proof_image') }
         options={ {imageMin: [800, 600], imageQuality: 80, cropRatio: 8/6 } } />
-
-      <h4>React Example</h4>
-      <Highlight className='html'>
-        { "{ this.imageInput('banner_image') }\n" }
-        { '<ImageInput\n' }
-        { "  id={ 'proof_image' }\n" }
-        { '  value={ this.state.form.proof_image }\n' }
-        { "  onChange={ change('proof_image') } />\n" }
-      </Highlight>
     </div>
     );
   }

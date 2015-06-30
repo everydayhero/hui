@@ -2,7 +2,6 @@
 
 var React     = require('react');
 var UrlInput  = require('../../../forms/UrlInput');
-var Highlight = require('react-highlight');
 var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
@@ -13,7 +12,7 @@ module.exports = React.createClass({
     var translation = {
       website_url_label: 'Website Url:',
       website_url_tip: 'past your url here.',
-      website_url_hint: 'you can even pas! the http part!'
+      website_url_hint: 'you can even past the http part!'
     };
 
     return (translation[name]);
@@ -25,20 +24,8 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>UrlInput</h3>
-      <p>Url input.</p>
-      <h4>UrlInput propTypes</h4>
-      <ul>
-        <li>errors:</li>
-        <li>placeholder:</li>
-        <li>readOnly:</li>
-        <li>type:</li>
-        <li>className:</li>
-        <li>autoComplete:</li>
-        <li>value:</li>
-        <li>onBlur:</li>
-        <li>onChange:</li>
-      </ul>
+      <h3 className="DemoPage__h3" id="UrlInput">UrlInput</h3>
+
       { this.urlInput("website_url") }
 
       <UrlInput
@@ -47,17 +34,6 @@ module.exports = React.createClass({
         value={ this.state.form[url] }
         placeholder={ 'www.example.com' }
         errors={ this.props.errors && this.props.errors[url] } />
-
-      <h4>React Example</h4>
-      <Highlight className='html'>
-        { "{ this.urlInput('website_url', 'example.com') }\n" }
-        { '<UrlInput\n' }
-        { '  id={ url }\n' }
-        { '  onChange={ change(url) }\n' }
-        { '  value={ this.state.form[url] }\n' }
-        { "  placeholder={ 'www.example.com' }\n" }
-        { '  errors={ this.props.errors && this.props.errors[url] } />\n' }
-      </Highlight>
     </div>
     );
   }
