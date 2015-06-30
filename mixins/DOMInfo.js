@@ -5,7 +5,7 @@
 */
 
 var _ = require('lodash');
-var locals = require('../../locals');
+var locals = require('../locals');
 var breakpoints = {
   phone: 450,
   tablet: 700,

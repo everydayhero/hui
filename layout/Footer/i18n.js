@@ -1,6 +1,6 @@
 'use strict';
 
-var urls = require('../../../urls');
+var urls = require('../../urls');
 var portalUrl = urls.getUrl('portal');
 
 module.exports = {

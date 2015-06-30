@@ -1,12 +1,9 @@
 "use strict";
 
 var React = require('react');
-var { TrackLink } = require('../../../lib/mixins/tracking');
 
 module.exports = React.createClass({
   displayName: 'A',
-
-  mixins: [TrackLink],
 
   propTypes: {
     href: React.PropTypes.string.isRequired,

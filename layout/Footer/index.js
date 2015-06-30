@@ -7,7 +7,7 @@ var Row = require('../Row');
 var A = require('../../Helpers/A');
 var SocialMediaLinks = require('../../Helpers/SocialMediaLinks');
 
-var urls = require('../../../urls');
+var urls = require('../../urls');
 var portalUrl = urls.getUrl('portal');
 
 module.exports = React.createClass({
