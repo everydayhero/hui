@@ -11,6 +11,7 @@ module.exports = React.createClass({
     disabled: React.PropTypes.bool,
     labelIsClickable: React.PropTypes.bool,
     onChange: React.PropTypes.func,
+    onBlur: React.PropTypes.func,
     value: React.PropTypes.bool,
     label: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -52,6 +53,14 @@ module.exports = React.createClass({
     }
   },
 
+  handleBlur: function(e) {
+    var props = this.props;
+
+    if(props.onBlur) {
+      this.props.onBlur(e.target.checked);
+    }
+  },
+
   render: function() {
     var props = this.props;
     var errors = props.errors || [];
@@ -63,6 +72,7 @@ module.exports = React.createClass({
       type: "checkbox",
       value: props.value,
       checked: props.value,
+      onBlur: this.handleBlur,
       onChange: this.handleChange,
       autoComplete: 'off',
       disabled: (props.disabled)
