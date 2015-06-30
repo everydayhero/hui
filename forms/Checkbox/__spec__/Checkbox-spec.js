@@ -92,6 +92,19 @@ describe('Checkbox', function() {
     });
   });
 
+  describe('onBlur', function() {
+    it('is fired onBlur', function() {
+      var onBlur = sinon.spy();
+      var element = TestUtils.renderIntoDocument(
+        <Input onBlur={onBlur}/>
+      );
+      var input = findByTag(element, 'input');
+      TestUtils.Simulate.change(input);
+
+      expect(onBlur).to.have.been.calledWith(false);
+    });
+  });
+
   describe('validation behavior', function() {
     it('when valid no hui-Input--error class', function() {
       var element = TestUtils.renderIntoDocument(
