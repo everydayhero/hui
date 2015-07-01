@@ -8,7 +8,10 @@ module.exports = React.createClass({
 
   propTypes: {
     legend: React.PropTypes.string,
-    children: React.PropTypes.renderable.isRequired
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.node,
+      React.PropTypes.arrayOf(React.PropTypes.node)
+    ]).isRequired
   },
 
   getInitialState: function() {

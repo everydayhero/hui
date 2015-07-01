@@ -16,9 +16,12 @@ module.exports = React.createClass({
     id: React.PropTypes.string,
     inverse: React.PropTypes.bool,
     borderless: React.PropTypes.bool,
-    kind: React.PropTypes.oneOf(
-      ['cta', 'primary', 'secondary', 'tertiary']
-    ).isRequired,
+    kind: React.PropTypes.oneOf([
+      'cta', 'cta-borderless',
+      'primary', 'primary-borderless',
+      'secondary', 'secondary-borderless',
+      'tertiary', 'tertiary-borderless'
+    ]).isRequired,
     label: React.PropTypes.string,
     onClick: React.PropTypes.func,
     target: React.PropTypes.string,
@@ -61,6 +64,14 @@ module.exports = React.createClass({
     }
   },
 
+  icon: function() {
+    var props = this.props;
+
+    if (props.icon) {
+      return <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />;
+    }
+  },
+
   render: function() {
     var El;
     var props = this.props;
@@ -94,7 +105,7 @@ module.exports = React.createClass({
         href={ href }
         disabled={ props.disabled && 'disabled' }
         onClick={ clickHandler }>
-        <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />
+        { this.icon() }
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
     );

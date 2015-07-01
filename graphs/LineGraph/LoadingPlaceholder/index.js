@@ -34,7 +34,7 @@ module.exports = React.createClass({
                        .hlineto({x: width});
 
       scaleLinePaths.push(
-        <g transform={ "translate(0, 0)" }>
+        <g key={ i } transform={ "translate(0, 0)" }>
           <path className="hui-YScale__line" d={ path.print() } />
         </g>
       );

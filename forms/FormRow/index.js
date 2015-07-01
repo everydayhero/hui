@@ -12,7 +12,10 @@ module.exports = React.createClass({
       React.PropTypes.element,
       React.PropTypes.array,
     ]),
-    tip: React.PropTypes.string,
+    tip: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.node
+    ]),
     id: React.PropTypes.string,
   },
 
