@@ -71,6 +71,19 @@ The top bar should be consistent across all applications and include a MastHead 
 
 TopBar [Demo](https://shared-scripts.s3.amazonaws.com/hui-{{ latest-version }}/index.html#TopBar)
 
+### Footer
+> Footer Example
+```html
+<Footer/>
+```
+
+#### PropTypes
+- `beneficiary` The beneficiary information to display in the footer.
+- `domain` The domain for the footer links.
+- `region` The region the user is in.
+
+Footer [Demo](https://shared-scripts.s3.amazonaws.com/hui-{{ latest-version }}/index.html#Footer)
+
 ### Page Form
 
 > PageForm Example
