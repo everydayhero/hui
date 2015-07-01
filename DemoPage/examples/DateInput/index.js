@@ -15,8 +15,8 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      start_on_label: 'Start On:',
-      start_on_tip: 'When should the thing start?'
+      'start_on_label': 'Start On:',
+      'start_on_tip': 'When should the thing start?'
     };
 
     return (translation[name]);
