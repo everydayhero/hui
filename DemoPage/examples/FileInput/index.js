@@ -2,7 +2,6 @@
 
 var React     = require('react');
 var FileInput = require('../../../forms/FileInput');
-var Highlight = require('react-highlight');
 var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
@@ -23,16 +22,8 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3>FileInput</h3>
-      <p>File input.</p>
-      <h4>FileInput propTypes</h4>
-      <ul>
-        <li>id:</li>
-        <li>noFileLabel:</li>
-        <li>value:</li>
-        <li>onBlur:</li>
-        <li>onChange:</li>
-      </ul>
+      <h3 className="DemoPage__h3" id="FileInput">FileInput</h3>
+
       { this.fileInput("image") }
 
       <FileInput
@@ -58,17 +49,6 @@ module.exports = React.createClass({
         onChange={ change('sample_file_02') }
         disabled={ true }
         value={ this.state.form.sample_file_02 } />
-
-      <h4>React Example</h4>
-      <Highlight className='html'>
-        { "{ this.fileInput('identity_proof') }\n" }
-        { '<FileInput\n' }
-        { "  id={ 'sample_file' }\n" }
-        { "  noFileLabel={ 'No file selected' }\n" }
-        { "  onChange={ change('sample_file') }\n" }
-        { '  value={ this.state.form.sample_file }\n' }
-        { '  errors={ this.props.errors && this.props.errors.sample_file } />\n' }
-      </Highlight>
     </div>
     );
   }

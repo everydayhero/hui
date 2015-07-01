@@ -26,6 +26,7 @@ var modulePathsWithType = require('./gulp_tasks/modulePathsWithType');
 require('./gulp_tasks/assets-deploy.js');
 require('./gulp_tasks/lint.js');
 require('./gulp_tasks/assets-build.js');
+require('./gulp_tasks/docs.js');
 
 var debug        = !!gutil.env.debug;
 

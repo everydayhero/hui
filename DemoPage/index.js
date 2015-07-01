@@ -4,8 +4,6 @@ var React           = require('react');
 var TopBar          = require('../layout/TopBar');
 var TopBarLink      = require('../layout/TopBarLink');
 var Masthead        = require('../layout/Masthead');
-var Highlight       = require('react-highlight');
-var pkg             = require('../package');
 var TopBarExample   = require('./examples/TopBar');
 var PageFormExample = require('./examples/PageForm');
 var DeltaArrow      = require('./examples/DeltaArrow');
@@ -46,22 +44,8 @@ module.exports = React.createClass({
             <TopBarLink href="#forms">Forms</TopBarLink>
         </TopBar>
         <div className="DemoPage__content">
-          <h2 className="DemoPage__h2" id="how-to-use">How to use HUI</h2>
-          <p className="DemoPage__p">HUI can be used in two ways depending on the use case</p>
-
-          <h3 className="DemoPage__h3">CDN</h3>
-          <Highlight className='bash'>
-            { "//d1ig6folwd6a9s.cloudfront.net/hui-" + pkg.version + ".css" }
-          </Highlight>
-          <Highlight className='bash'>
-            { "//d1ig6folwd6a9s.cloudfront.net/hui-" + pkg.version + ".js" }
-          </Highlight>
-
-          <h3 className="DemoPage__h3">Install with npm (Optional version. SSH key rquired.)</h3>
-          <Highlight className='bash'>
-            { "npm install git+ssh://git@github.com:everydayhero/ui-library.git#" + pkg.version }
-          </Highlight>
-
+          <h2 className="DemoPage__h2" id="how-to-use">How To Use</h2>
+          <p className="DemoPage__p">HUI documentation can be found on <a href="http://everydayhero.github.io/public-api-docs/hui">EDH docs</a></p>
           <h2 className="DemoPage__h2" id="layout">Layout</h2>
           <div className="DemoPage__group">
             <TopBarExample/>

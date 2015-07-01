@@ -1,7 +1,6 @@
 "use strict";
 
 var React     = require('react');
-var Highlight = require('react-highlight');
 var DataVisualisation = require('../../../graphs/DataVisualisation');
 
 function getSeries(tick) {
@@ -60,47 +59,8 @@ module.exports = React.createClass({
 
     return (
     <div>
-      <h3 className="DemoPage__h3">DataVisualisation</h3>
+      <h3 className="DemoPage__h3" id="DataVisualisation">DataVisualisation</h3>
       <p>The HUI data visualisation is a combination of a number of graph component. These componets can also be used independantly of the data visualisation.</p>
-      <h4 className="DemoPage__h4">DataVisualisation propTypes</h4>
-      <ul className="DemoPage__ul">
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">series:</span> Array of array of objects containing value and date.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">seriesValueKey:</span> Accesor for value on data object.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">valueConverter:</span> Convert to the value we want to display.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">stacked:</span> Defines a stacked line graph. Defaults to true.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">title:</span> Graph Title.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">total:</span> Total for defined period.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">legendLabels:</span> Array of legend labels with indexes matching series.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">tipLabel:</span> Defines the label of values on tooltip.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">delta:</span> The percentage difference from a comparative period.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">totalFormat:</span> Format structure for tooltip totals and total value (Leave blank to use default formatting)
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">loading:</span> Whether the graph is currently loading or not.
-        </li>
-        <li className="DemoPage__li">
-          <span className="DemoPage__bold">emptyState:</span> Whether the graph is currently empty or not.
-        </li>
-      </ul>
       <div className="DemoPage__example--visualisation">
         <DataVisualisation {...this.state} title={ 'Example Data' }  />
       </div>
@@ -110,27 +70,6 @@ module.exports = React.createClass({
       <div className="DemoPage__example--visualisation">
         <DataVisualisation {...this.state} title={ 'Example Empty Data' } emptyState={ true } />
       </div>
-      <h4 className="DemoPage__h4">React Example</h4>
-      <Highlight className='html'>
-        { '<DataVisualisation \n' }
-        { '  series={ series } \n' }
-        { '  seriesValueKey={ seriesValueKey } \n' }
-        { '  total={ number } \n' }
-        { '  title={ string } \n' }
-        { '  legendLabels={ labels } \n' }
-        { '  delta={ delta }/>' }
-      </Highlight>
-
-      <h4 className="DemoPage__h4">Example Series structure</h4>
-      <Highlight>
-        { '[\n' }
-        { '  [\n' }
-        { '     { date: "2014-01-31T14:00:00.000Z", \n' }
-        { '       value: 20  \n' }
-        { '     }, ...\n' }
-        { '  ], ...\n' }
-        { ']' }
-      </Highlight>
     </div>
     );
   }

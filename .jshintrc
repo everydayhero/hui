@@ -7,6 +7,7 @@
     "module": true,
     "process": true,
     "jest": true,
+    "clearTimeout": true,
     "describe": true,
     "beforeEach": true,
     "it": true,
