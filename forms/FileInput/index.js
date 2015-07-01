@@ -12,31 +12,32 @@ module.exports = React.createClass({
   mixins: [inputMessage,],
 
   propTypes: {
+    disabled: React.PropTypes.bool,
+    errors: React.PropTypes.array,
     id: React.PropTypes.string,
+    label: React.PropTypes.string,
+    layout: React.PropTypes.string,
     noFileLabel: React.PropTypes.string,
     onBlur: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    value: React.PropTypes.object,
-    errors: React.PropTypes.array,
-    layout: React.PropTypes.string,
+    onFocus: React.PropTypes.func,
+    options: React.PropTypes.object,
+    services: React.PropTypes.arrayOf(React.PropTypes.string),
     spacing: React.PropTypes.string,
-    label: React.PropTypes.string,
-    disabled: React.PropTypes.bool,
-    options: React.PropTypes.object
+    value: React.PropTypes.object,
   },
 
   getDefaultProps: function() {
     return {
-      mimetypes: ['image/*'],
-      services: ['CONVERT', 'COMPUTER'],
-      options: {},
+      disabled: false,
       errors: [],
-      layout: 'full',
-      spacing: 'loose',
       label: 'image',
+      layout: 'full',
+      mimetypes: ['image/*'],
       noFileLabel: 'No file selected',
-      disabled: false
+      options: {},
+      services: ['CONVERT', 'COMPUTER'],
+      spacing: 'loose',
     };
   },
 
