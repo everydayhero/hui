@@ -10,7 +10,7 @@ module.exports = React.createClass({
   render: function() {
     return (
     <div>
-      <h3 className="DemoPage__h3">Footer</h3>
+      <h3 className="DemoPage__h3" id="Footer">Footer</h3>
       <div className="DemoPage__example">
         <Footer/>
       </div>
