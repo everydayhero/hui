@@ -1,7 +1,5 @@
 "use strict";
 
-jest.dontMock('../index');
-
 var Footer      = require('../index');
 var React       = require('react/addons');
 var TestUtils   = React.addons.TestUtils;
@@ -16,26 +14,23 @@ describe('Footer', function() {
   });
 
   it('renders', function() {
-    element.should.exist;
+    expect(element).not.toBeNull();
+    console.log(element);
   });
 
   it('contains the logo', function() {
-    var logo = findByClass(element, 'hui-Footer__logo');
-    logo.should.exist;
+    expect(findByClass(element, 'hui-Footer__logo').length).toBe(1);
   });
 
   it('contains portal links', function() {
-    var links = scryByClass(element, 'hui-Footer__siteLink');
-    links.should.exist;
+    expect(scryByClass(element, 'hui-Footer__siteLink').length).toBe(1);
   });
 
   it('contains legal links', function() {
-    var links = scryByClass(element, 'hui-Footer__legalLink');
-    links.should.exist;
+    expect(scryByClass(element, 'hui-Footer__legalLink').length).toBe(1);
   });
 
   it('contains social media', function() {
-    var links = scryByClass(element, 'hui-SocialMediaLinks__link');
-    links.should.exist;
+    expect(scryByClass(element, 'hui-SocialMediaLinks__link').length).toBe(1);
   });
 });

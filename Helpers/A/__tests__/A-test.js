@@ -1,6 +1,10 @@
 "use strict";
 
-var A = require('../');
+var A           = require('../index');
+var React       = require('react/addons');
+var TestUtils   = React.addons.TestUtils;
+var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
+var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 
 describe('A', function() {
   var element;
@@ -11,14 +15,13 @@ describe('A', function() {
   });
 
   it('renders a link', function() {
-    element.should.exist;
-    var link = findByProp(element, 'href', 'testurl');
+    expect(element).not.toBeNull();
+    expect(findByProp(element, 'href', 'testurl').length).toBe(1);
     link.should.exist;
   });
 
   it('accepts custom classnames', function() {
-    var link = findByClass(element, 'customClass');
-    link.should.exist;
+    expect(findByClass(element, 'customClass').length).toBe(1);
   });
 
   it('executes an onclick handler', function() {

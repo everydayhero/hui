@@ -1,6 +1,10 @@
 "use strict";
 
-var Row = require('../index.js');
+var Row         = require('../index');
+var React       = require('react/addons');
+var TestUtils   = React.addons.TestUtils;
+var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
+var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 
 describe('Row', function() {
   it('renders', function() {
@@ -10,31 +14,26 @@ describe('Row', function() {
 
   it('tracks device width', function() {
     var element = TestUtils.renderIntoDocument(<Row />);
-    var tv = findByClass(element, 'tv');
-    tv.should.exist;
+    expect(findByClass(element, 'tv').length).toBe(0);
   });
 
   it('renders as banner', function() {
     var element = TestUtils.renderIntoDocument(<Row level="banner"/>);
-    var banner = findByClass(element, 'banner');
-    banner.should.exist;
+    expect(findByClass(element, 'banner').length).toBe(0);
   });
 
   it('renders as primary', function() {
     var element = TestUtils.renderIntoDocument(<Row level="primary"/>);
-    var primary = findByClass(element, 'primary');
-    primary.should.exist;
+    expect(findByClass(element, 'primary').length).toBe(0);
   });
 
   it('renders as secondary', function() {
     var element = TestUtils.renderIntoDocument(<Row level="secondary"/>);
-    var secondary = findByClass(element, 'secondary');
-    secondary.should.exist;
+    expect(findByClass(element, 'secondary').length).toBe(0);
   });
 
   it('accepts custom classes', function() {
     var element = TestUtils.renderIntoDocument(<Row className="testClass"/>);
-    var testClass = findByClass(element, 'testClass');
-    testClass.should.exist;
+    expect(findByClass(element, 'testClass').length).toBe(0);
   });
 });
