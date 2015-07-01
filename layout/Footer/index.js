@@ -2,67 +2,67 @@
 
 var _ = require('lodash');
 var React = require('react');
+var I18n = require('../../mixins/I18n');
 var Row = require('../Row');
 var A = require('../../Helpers/A');
 var SocialMediaLinks = require('../../Helpers/SocialMediaLinks');
-
 var urls = require('../../urls');
-var portalUrl = urls.getUrl('portal');
 
 module.exports = React.createClass({
   displayName: 'Footer',
 
+  mixins: [I18n],
+
   propTypes: {
     beneficiary: React.PropTypes.object,
-    registration_number: React.PropTypes.string,
-    rights: React.PropTypes.string,
-    name: React.PropTypes.string,
-    phone_label: React.PropTypes.string,
-    email_cta: React.PropTypes.string,
-    website_cta: React.PropTypes.string
+    domain: React.PropTypes.string,
+    region: React.PropTypes.string
+  },
+
+  getDefautProps: function() {
+    return {
+      domain: 'everydayhero.com',
+      region: 'au'
+    };
   },
 
   renderBeneficiaryLinks: function() {
     var beneficiary = this.props.beneficiary;
-    var props = this.props;
-
     if (!beneficiary) { return false; }
-
     return (
-      <div className="Footer__beneficiary">
+      <div className="hui-Footer__beneficiary">
         { beneficiary.name && <span className="hui-Footer__beneficiaryInfo">{ beneficiary.name }</span> }
-        { beneficiary.tax_number && <span className="hui-Footer__beneficiaryInfo">{ props.registration_number } { beneficiary.tax_number }</span> }
-        { beneficiary.website_url && <A className="hui-Footer__beneficiaryInfo" href={ beneficiary.website_url }>{ props.website_cta }</A> }
-        { beneficiary.email && <A mailto={ beneficiary.email } className="hui-Footer__beneficiaryInfo">{ props.email_cta }</A> }
-        { beneficiary.phone && <span className="hui-Footer__beneficiaryInfo">{ props.phone_label } { beneficiary.phone }</span> }
+        { beneficiary.tax_number && <span className="hui-Footer__beneficiaryInfo">{ this.t('registration_number') } { beneficiary.tax_number }</span> }
+        { beneficiary.website_url && <A className="hui-Footer__beneficiaryInfo" href={ beneficiary.website_url }>{ this.t('website_cta') }</A> }
+        { beneficiary.email && <A mailto={ beneficiary.email } className="hui-Footer__beneficiaryInfo">{ this.t('email_cta') }</A> }
+        { beneficiary.phone && <span className="hui-Footer__beneficiaryInfo">{ this.t('phone_label') } { beneficiary.phone }</span> }
       </div>
     );
   },
 
   getLinks: function(id, n) {
-    var props = this.props;
     var i = 0;
     var t = this.t;
     var links = {};
     while(i++ < n) {
       var name = id + '_' + i;
-      links[props.name] = (props.name + '_url');
+      links[t(name)] = t(name + '_url');
     }
     return links;
   },
 
   renderLinks: function(links, className) {
     return _.map(links, function(d, key) {
-      return <A className={ "Footer__" + className + "Link" } href={ d } key={ d }>{ key }</A>;
+      return <A className={ "hui-Footer__" + className + "Link" } href={ d } key={ d }>{ key }</A>;
     });
   },
 
   renderLeftSiteLinks: function() {
-    return <div className="Footer__siteLinksLeft">{ this.renderLinks(this.getLinks('left', 4), 'site') }</div>;
+    return <div className="hui-Footer__siteLinksLeft">{ this.renderLinks(this.getLinks('left', 4), 'site') }</div>;
   },
 
   renderRightSiteLinks: function() {
-    return <div className="Footer__siteLinksRight">{ this.renderLinks(this.getLinks('right', 4), 'site') }</div>;
+    return <div className="hui-Footer__siteLinksRight">{ this.renderLinks(this.getLinks('right', 4), 'site') }</div>;
   },
 
   renderLegalLinks: function() {
@@ -70,7 +70,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var props = this.props;
+    var domain = this.props.domain;
+    var region = this.props.region;
+
     var socialMedia = [
       { name: 'facebook', url: urls.getUrl('facebook') },
       { name: 'twitter', url: urls.getUrl('twitter') },
@@ -87,7 +89,7 @@ module.exports = React.createClass({
           <div className="hui-Footer__siteLinks">
             { this.renderLeftSiteLinks() }
 
-            <a href={ portalUrl }><img className="hui-Footer__logo" src="images/edh-logo.png" /></a>
+            <a href={ urls.getUrl('portal', domain, region) }><img className="hui-Footer__logo" src="images/hui_edh_mark@x2.gif" /></a>
 
             { this.renderRightSiteLinks() }
           </div>
@@ -95,7 +97,7 @@ module.exports = React.createClass({
           <div className="hui-Footer__legalLinks">
             { this.renderLegalLinks() }
 
-            <span className="hui-Footer__legalLink">&copy;{ new Date().getFullYear() } { props.rights }</span>
+            <span className="hui-Footer__legalLink">&copy;{ new Date().getFullYear() } { this.t('rights') }</span>
           </div>
           <SocialMediaLinks className="hui-Footer__socialMedia" links={ socialMedia }/>
         </Row>

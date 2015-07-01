@@ -1,14 +1,16 @@
-.hui-SocialMediaLinks
+.hui-SocialMediaLinks {
   display: block;
   margin: 0 auto;
   white-space: nowrap;
 
-  a
+  a {
     color: inherit;
+  }
+}
 
-.hui-SocialMediaLinks__link
+.hui-SocialMediaLinks__link {
   display: inline-block;
-  transition all: 160ms ease-out;
+  transition: all 160ms ease-out;
   color: inherit;
   font-size: 20px;
   line-height: 30px;
@@ -18,15 +20,22 @@
   border-radius: 50%;
   background-color: transparent;
 
-  &:hover
-    background-color white
-  &.facebook:hover
+  &:hover {
+    background-color: white;
+  }
+  &.facebook:hover {
     color: #4862a0;
-  &.twitter:hover
+  }
+  &.twitter:hover {
     color: #05baf8;
-  &.google-plus:hover
+  }
+  &.google-plus:hover {
     color: #d64a33;
-  &.pinterest:hover
+  }
+  &.pinterest:hover {
     color: #cb2027;
-  &.instagram:hover
+  }
+  &.instagram:hover {
     color: #517fa4;
+  }
+}

@@ -1,12 +1,18 @@
 "use strict";
 
-var Footer = require('../index.js');
+jest.dontMock('../index');
+
+var Footer      = require('../index');
+var React       = require('react/addons');
+var TestUtils   = React.addons.TestUtils;
+var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
+var findByClass = TestUtils.findRenderedDOMComponentWithClass;
 
 describe('Footer', function() {
   var element;
 
-  before(function() {
-    element = TestUtils.renderIntoDocument(<Footer />);
+  beforeEach(function() {
+    element = TestUtils.renderIntoDocument(<Footer/>);
   });
 
   it('renders', function() {
@@ -14,22 +20,22 @@ describe('Footer', function() {
   });
 
   it('contains the logo', function() {
-    var logo = findByClass(element, 'Footer__logo');
+    var logo = findByClass(element, 'hui-Footer__logo');
     logo.should.exist;
   });
 
   it('contains portal links', function() {
-    var links = scryByClass(element, 'Footer__siteLink');
+    var links = scryByClass(element, 'hui-Footer__siteLink');
     links.should.exist;
   });
 
   it('contains legal links', function() {
-    var links = scryByClass(element, 'Footer__legalLink');
+    var links = scryByClass(element, 'hui-Footer__legalLink');
     links.should.exist;
   });
 
   it('contains social media', function() {
-    var links = scryByClass(element, 'SocialMediaLinks__link');
+    var links = scryByClass(element, 'hui-SocialMediaLinks__link');
     links.should.exist;
   });
 });
