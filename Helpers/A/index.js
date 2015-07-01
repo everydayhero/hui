@@ -11,7 +11,6 @@ module.exports = React.createClass({
   },
 
   handleClick: function(e) {
-    this.track();
     this.props.onClick(e);
   },
 

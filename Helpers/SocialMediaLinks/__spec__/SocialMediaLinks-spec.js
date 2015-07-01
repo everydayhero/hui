@@ -1,11 +1,6 @@
 "use strict";
 
 var SocialMediaLinks = require('../');
-var React            = require('react/addons');
-var TestUtils        = React.addons.TestUtils;
-var scryByClass      = TestUtils.scryRenderedDOMComponentsWithClass;
-var findByClass      = TestUtils.findRenderedDOMComponentWithClass;
-var findByProp       = TestHelpers.findRenderedDOMComponentWithProp;
 var testLinks = [
   { name: 'faceSpace', url: 'www.facespace.com' },
   { name: 'instaUnfriend', url: 'www.instaunfriend.com' },
@@ -20,7 +15,7 @@ describe('SocialMediaLinks', function() {
   });
 
   it('renders', function() {
-    expect(element).not.toBeNull();
+    element.should.exist;
   });
 
   it('accepts a custom className', function() {
@@ -43,3 +38,4 @@ describe('SocialMediaLinks', function() {
     findByClass(element, testLinks[2].name).should.exist;
   });
 });
+
