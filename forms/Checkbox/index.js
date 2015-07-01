@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var classnames = require('classnames');
@@ -26,25 +26,6 @@ module.exports = React.createClass({
     };
   },
 
-  label: function() {
-    var props = this.props;
-
-    if (!props.label) { return; }
-
-    if (props.labelIsClickable) {
-      return (
-        <label htmlFor={ props.id } className="hui-Checkbox__label">
-          { props.label }
-        </label>
-      );
-    }
-    return (
-      <span className="hui-Checkbox__label">
-        { props.label }
-      </span>
-    );
-  },
-
   handleChange: function(e) {
     var props = this.props;
 
@@ -61,6 +42,24 @@ module.exports = React.createClass({
     }
   },
 
+  renderLabel: function() {
+    var props = this.props;
+
+    if (props.labelIsClickable) {
+      return props.label && (
+        <label htmlFor={ props.id } className="hui-Checkbox__label">
+          { props.label }
+        </label>
+      );
+    } else {
+      return props.label && (
+        <span className="hui-Checkbox__label">
+          { props.label }
+        </span>
+      );
+    }
+  },
+
   render: function() {
     var props = this.props;
     var errors = props.errors || [];
@@ -68,8 +67,8 @@ module.exports = React.createClass({
     var Input = React.DOM.input({
       id: props.id,
       name: props.name || props.id,
-      className: "hui-Checkbox__input",
-      type: "checkbox",
+      className: 'hui-Checkbox__input',
+      type: 'checkbox',
       value: props.value,
       checked: props.value,
       onBlur: this.handleBlur,
@@ -79,13 +78,13 @@ module.exports = React.createClass({
     });
 
     var classes = classnames({
-      "hui-Input--error": errors.length > 0
-    }, "hui-Checkbox");
+      'hui-Input--error': errors.length > 0
+    }, 'hui-Checkbox');
 
     return (
       <div className={ classes }>
         { Input }
-        { this.label() }
+        { this.renderLabel() }
         <Errors errors={ this.props.errors } />
       </div>
     );

@@ -1,16 +1,32 @@
-"use strict";
+'use strict';
 
 require('./testdom')('<html><body></body></html>');
 
 global._ = require('lodash');
-global.chai = require("chai");
+global.React = require('react/addons');
+
+global.chai = require('chai');
 global.should = chai.should();
 global.expect = chai.expect;
 global.AssertionError = chai.AssertionError;
 global.sinon = require('sinon');
-global.React = require('react/addons');
+
+global.reactModulesToStub = [
+  'examples',
+  'FileInput/index',
+  'edh-widgets'
+];
+global.mockcomponent = function(str) {
+  global.reactModulesToStub.push(str);
+};
+global.unmockcomponent = function(str) {
+  global._.pull(global.reactModulesToStub, str);
+};
+global.mockrequire = require('mockrequire');
 
 global.TestUtils = React.addons.TestUtils;
+global.renderIntoDocument = TestUtils.renderIntoDocument;
+global.Simulate = TestUtils.Simulate;
 global.scryByType = TestUtils.scryRenderedComponentsWithType;
 global.findByType = TestUtils.findRenderedComponentWithType;
 global.scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
@@ -19,16 +35,16 @@ global.scryByTag = TestUtils.scryRenderedDOMComponentsWithTag;
 global.findByTag = TestUtils.findRenderedDOMComponentWithTag;
 global.scryByProp = require('./scryRenderedDOMComponentsWithProp').scryRenderedDOMComponentsWithProp;
 global.findByProp = require('./scryRenderedDOMComponentsWithProp').findRenderedDOMComponentWithProp;
-global.getRouterComponent = require('./router');
 
-global.blanket = require('blanket')({
-  pattern: /(app|lib)\/[^-]+\.js/
-});
+var blanketOptions = require('./blanket-options');
+global.blanket = require('blanket')(blanketOptions);
 
 global.swallow = function (thrower) {
   try {
     thrower();
-  } catch (e) { }
+  } catch (e) {
+    console.log('Swallow error');
+  }
 };
 
 chai.use(require('sinon-chai'));

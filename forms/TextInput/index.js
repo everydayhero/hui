@@ -1,17 +1,16 @@
-"use strict";
+'use strict';
 
 var React             = require('react/addons');
 var LocalStorageMixin = require('../../mixins/localStorage');
-var PureRenderMixin   = React.addons.PureRenderMixin;
 var inputMessage      = require('../../mixins/inputMessage');
 var textInput         = require('../../mixins/textInput');
 var classnames        = require('classnames');
 var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
-  displayName: "TextInput",
+  displayName: 'TextInput',
 
-  mixins: [PureRenderMixin, LocalStorageMixin, inputMessage, textInput],
+  mixins: [LocalStorageMixin, inputMessage, textInput],
 
   propTypes: {
     autoComplete: React.PropTypes.bool,
@@ -93,7 +92,7 @@ module.exports = React.createClass({
     var state = this.state;
     var errors = props.errors || [];
     var valueType = typeof props.value;
-    var value = (valueType === 'string' || valueType ==='number') ? props.value.toString() : '';
+    var value = (valueType === 'string' || valueType === 'number') ? props.value.toString() : '';
     var hasServerErrors = errors.length;
     var iconsLeft = (props.iconPosition === 'left');
     var classes = classNamesArray([

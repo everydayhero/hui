@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var InputErrors = require('../forms/InputErrors');
@@ -20,14 +20,11 @@ module.exports = {
 
   renderMessage: function(hasMessage) {
     var props = this.props;
-    var errors = [];
     var message;
 
-    if (!hasMessage) {
-      return;
-    }
-
-    errors = this.state.hasError ? [props.errorMessage] : props.errors;
+    var errors = this.state.hasError
+      ? [props.errorMessage]
+      : props.errors || [];
 
     if (errors.length > 0) {
       message = (<InputErrors errors={ errors } />);
@@ -35,10 +32,10 @@ module.exports = {
       message = this.props.hint;
     }
 
-    return (
+    return hasMessage && (
       <div className="hui-TextInput__message">
         { message }
       </div>
     );
-  },
+  }
 };

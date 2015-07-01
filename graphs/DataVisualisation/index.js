@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React   = require('react');
 var Graph   = require('../LineGraph');
@@ -47,7 +47,7 @@ module.exports = React.createClass({
           valueConverter={ props.valueConverter }
           totalFormat={ props.totalFormat }
           tipLabel={ props.tipLabel }
-          loading={ props.loading } 
+          loading={ props.loading }
           emptyState={ props.emptyState }/>
       );
     }

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var FileInput = require('../../../forms/FileInput');
@@ -10,8 +10,8 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      image_label: 'image',
-      image_tip: 'Upload an image.'
+      'image_label': 'image',
+      'image_tip': 'Upload an image.'
     };
 
     return (translation[name]);
@@ -24,7 +24,7 @@ module.exports = React.createClass({
     <div>
       <h3 className="DemoPage__h3" id="FileInput">FileInput</h3>
 
-      { this.fileInput("image") }
+      { this.fileInput('image') }
 
       <FileInput
         id={ 'sample_file' }
@@ -32,14 +32,14 @@ module.exports = React.createClass({
         label={ 'image with crop'}
         onChange={ change('sample_file') }
         value={ this.state.form.sample_file }
-        options={ {imageDim: [800, 600], imageQuality: 80, cropRatio: 4/3 } } />
+        options={ { imageDim: [800, 600], imageQuality: 80, cropRatio: 4 / 3 } } />
 
       <FileInput
         id={ 'sample_file' }
         label="error input"
         noFileLabel={ 'No file selected' }
         onChange={ change('sample_file_01') }
-        errors={ ["Your image suggests a lack of design ability"] }
+        errors={ ['Your image suggests a lack of design ability'] }
         value={ this.state.form.sample_file_01 } />
 
       <FileInput

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React = require('react');
 var Path  = require('paths-js/path');
@@ -30,8 +30,8 @@ module.exports = React.createClass({
     for (var i = 0; i < numberOfLines; i++) {
       yPos = (i + 1) * yPosInterval;
 
-      var path = Path().moveto({x: 0, y: yPos })
-                       .hlineto({x: width});
+      var path = Path().moveto({ x: 0, y: yPos })
+                       .hlineto({ x: width });
 
       scaleLinePaths.push(
         <g key={ i } transform={ "translate(0, 0)" }>

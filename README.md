@@ -34,8 +34,6 @@ $ gulp                  # build all production assets
 $ gulp --debug          # build all unminified assets (for debugging)
 $ gulp scripts          # build script assest (Can also use the --debug flag)
 $ gulp styles           # build styles assest (Can also use the --debug flag)
-$ npm run jest          # run jest test
-$ npm run spec          # run mocha tests
 $ npm run test          # run all tests
 $ npm run deploy-assets # publish build files to S3 bucket (AWS_KEY and AWS_SECRET environment variables must be set)
 $ npm start             # run local server to view demo page

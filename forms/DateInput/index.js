@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var moment            = require('moment');
 var React             = require('react');
@@ -6,9 +6,9 @@ var DatePicker        = require('./DatePicker');
 var TextInput         = require('../TextInput');
 var classNamesArray   = require('../../lib/classNamesArray');
 
-var dateFormats       = {
-  uk: ["DD", "YYYY", "DD-MM", "MMM DD", "MMM Do", "DD-MM-YY", "DD-MM-YYYY", "MMM DD YY", "MMM Do YY", "MMM DD YYYY", "MMM Do YYYY", "Do MMM YYYY", "DD MMM YYYY", "YYYY-MM-DD"],
-  us: ["MM", "YYYY", "MM-DD", "MMM DD", "MMM Do", "MM-DD-YY", "MM-DD-YYYY", "MMM DD YY", "MMM Do YY", "MMM DD YYYY", "MMM Do YYYY", "Do MMM YYYY", "DD MMM YYYY", "YYYY-MM-DD"],
+var dateFormats = {
+  uk: ['DD', 'YYYY', 'DD-MM', 'MMM DD', 'MMM Do', 'DD-MM-YY', 'DD-MM-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD'],
+  us: ['MM', 'YYYY', 'MM-DD', 'MMM DD', 'MMM Do', 'MM-DD-YY', 'MM-DD-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD']
 };
 
 dateFormats.au = dateFormats.uk;
@@ -34,9 +34,9 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      valueFormat: "YYYY-MM-DD",
-      displayFormat: "DD/MM/YYYY",
-      value: "",
+      valueFormat: 'YYYY-MM-DD',
+      displayFormat: 'DD/MM/YYYY',
+      value: '',
       countryCode: 'uk',
       minimumYear: 1000,
       layout: 'quarter',
@@ -218,7 +218,7 @@ module.exports = React.createClass({
     var classes = classNamesArray([
       'hui-DateInput--' + props.layout,
       'hui-DateInput--' + props.spacing,
-      'hui-DateInput',
+      'hui-DateInput'
     ]);
 
     return (
@@ -227,5 +227,5 @@ module.exports = React.createClass({
         { this.renderDatePicker() }
       </div>
     );
-  },
+  }
 });

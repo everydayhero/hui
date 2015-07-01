@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 
@@ -10,13 +10,13 @@ module.exports = React.createClass({
     children: React.PropTypes.oneOfType([
       React.PropTypes.node,
       React.PropTypes.element,
-      React.PropTypes.array,
+      React.PropTypes.array
     ]),
     tip: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.node
     ]),
-    id: React.PropTypes.string,
+    id: React.PropTypes.string
   },
 
   renderHelpText: function() {

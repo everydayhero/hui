@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _ = require('lodash');
 var React = require('react');
@@ -22,7 +22,7 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
-    var classes = _.compact([ 'hui-Row', props.className, props.level, this.state.device ]).join(' ');
+    var classes = _.compact(['hui-Row', props.className, props.level, this.state.device]).join(' ');
 
     return (
       <div className={ classes }>

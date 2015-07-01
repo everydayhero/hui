@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-var ReactTestUtils = require('react/addons').addons.TestUtils;
+var { TestUtils } = require('react/addons').addons;
 
 function scryRenderedDOMComponentsWithProp(root, propName, propValue) {
-  return ReactTestUtils.findAllInRenderedTree(root, function(inst) {
-    return ReactTestUtils.isDOMComponent(inst) &&
+  return TestUtils.findAllInRenderedTree(root, function(inst) {
+    return TestUtils.isDOMComponent(inst) &&
       inst.props.hasOwnProperty(propName) &&
       inst.props[propName] === propValue;
   });
@@ -25,6 +25,6 @@ function findRenderedDOMComponentWithProp(root, propName, propValue) {
 }
 
 module.exports = {
-  scryRenderedDOMComponentsWithProp: scryRenderedDOMComponentsWithProp,
-  findRenderedDOMComponentWithProp: findRenderedDOMComponentWithProp
+  scryRenderedDOMComponentsWithProp,
+  findRenderedDOMComponentWithProp
 };

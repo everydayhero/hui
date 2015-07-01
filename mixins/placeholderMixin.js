@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React = require('react');
 
@@ -27,5 +27,5 @@ module.exports = {
     }
 
     return props.placeholder;
-  },
+  }
 };

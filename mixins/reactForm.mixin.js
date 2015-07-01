@@ -1,44 +1,43 @@
-"use strict";
+'use strict';
 
-var React               = require('react');
-var FormRow             = require('../forms/FormRow');
+var React = require('react');
+var FormRow = require('../forms/FormRow');
 var inputs = {
-  TextInput         :  require('../forms/TextInput'),
-  TextCountDownInput:  require('../forms/TextCountDownInput'),
-  ReadOnlyAddress   :  require('../forms/ReadOnlyAddress'),
-  CheckBox          :  require('../forms/Checkbox'),
-  TextArea          :  require('../forms/TextArea'),
-  UrlInput          :  require('../forms/UrlInput'),
-  DateInput         :  require('../forms/DateInput'),
-  FileInput         :  require('../forms/FileInput'),
-  ImageInput        :  require('../forms/ImageInput'),
-  SelectInput       :  require('../forms/SelectInput'),
-  DateSelect        :  require('../forms/DateSelect')
+  TextInput: require('../forms/TextInput'),
+  TextCountDownInput: require('../forms/TextCountDownInput'),
+  ReadOnlyAddress: require('../forms/ReadOnlyAddress'),
+  CheckBox: require('../forms/Checkbox'),
+  TextArea: require('../forms/TextArea'),
+  UrlInput: require('../forms/UrlInput'),
+  DateInput: require('../forms/DateInput'),
+  FileInput: require('../forms/FileInput'),
+  ImageInput: require('../forms/ImageInput'),
+  SelectInput: require('../forms/SelectInput'),
+  DateSelect: require('../forms/DateSelect')
 };
 
 var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
-var defaultMessage      = {defaults: [{message: ""}]};
+var defaultMessage = { defaults: [{ message: '' }] };
+
 module.exports = {
   getInitialState: function() {
     var form = {};
     if (this.initialiseForm) {
       this.initialiseForm(form);
     }
-    return {
-      form: form
-    };
+
+    return { form };
   },
 
   inputChangeEventFn: function(key) {
     return function(value) {
       var form = this.state.form;
-
       if (value === '') {
         value = null;
       }
 
       form[key] = value;
-      this.setState({form: form}, this.onChange);
+      this.setState({ form }, this.onChange);
     }.bind(this);
   },
 
@@ -47,7 +46,7 @@ module.exports = {
       var form = this.state.form;
 
       form[key] = nullEmptyStringDeep(obj);
-      this.setState({form: form}, this.onChange);
+      this.setState({ form }, this.onChange);
     }.bind(this);
   },
 
@@ -59,7 +58,7 @@ module.exports = {
       <FormRow
         tip={ tip }
         htmlFor={ name }
-        id={ "FormRow__" + name }
+        id={ 'FormRow__' + name }
         key={ 'fieldset' + name }
         labelTop={ true }>
           { children }
@@ -83,8 +82,8 @@ module.exports = {
         hint={ hint }
         onChange={  this.inputChangeEventFn(name) }
         className={ name }
-        layout='half'
-        spacing='fitted'
+        layout="half"
+        spacing="fitted"
         errors={ options.errors || errors[name] }
         {...options} />
     );

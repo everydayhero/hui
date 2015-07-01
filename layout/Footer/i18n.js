@@ -1,7 +1,5 @@
 'use strict';
 
-var urls = require('../../urls');
-
 module.exports = {
   en: {
     left_1: 'About',
@@ -29,7 +27,7 @@ module.exports = {
     legal_1_url: '{portal}terms/privacy',
     legal_2_url: '{portal}terms/',
     legal_3_url: '{portal}terms/cookies',
-    legal_4_url: "https://www.blackbaud.com/",
+    legal_4_url: 'https://www.blackbaud.com/',
 
     registration_number: 'EIN:',
     phone_label: 'Phone:',

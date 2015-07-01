@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var FormRow   = require('../../../forms/FormRow');
@@ -17,10 +17,10 @@ module.exports = React.createClass({
       <h3 className="DemoPage__h3" id="FormRow">FormRow</h3>
       <FormRow htmlFor="example" tip="I'm very helpful.">
         <TextInput
-          id='example'
-          layout='half'
+          id="example"
+          layout="half"
           value={ this.state.form.demo_input_01 }
-          label='An input'
+          label="An input"
           onChange={ change('demo_input_01') } />
       </FormRow>
     </div>

@@ -1,10 +1,12 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var TextInput = require('../TextInput');
 var _         = require('lodash');
 
 module.exports = React.createClass({
+  displayName: 'ReadOnlyAddress',
+
   render: function() {
     var props = this.props;
     var address = props.value || {};

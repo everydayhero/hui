@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React           = require('react');
 var Input           = require('../TextInput');
@@ -35,7 +35,7 @@ propTypes: {
     value: React.PropTypes.string,
     layout: React.PropTypes.string,
     onIconClick: React.PropTypes.func,
-    max: React.PropTypes.number,
+    max: React.PropTypes.number
   },
 
   getDefaultProps: function() {
@@ -47,7 +47,7 @@ propTypes: {
       layout: 'full',
       spacing: 'loose',
       errors: [],
-      maxErrorMessage: "Maximum {{max}} characters"
+      maxErrorMessage: 'Maximum {{max}} characters'
     };
   },
 
@@ -60,12 +60,12 @@ propTypes: {
     var classes = classNamesArray([
       'hui-TextCountDownInput--' + props.layout,
       'hui-TextCountDownInput--' + props.spacing,
-      "hui-TextCountDownInput"
+      'hui-TextCountDownInput'
     ]);
     var counterClasses = classNamesArray([
       maxed && 'hui-TextCountDownInput__counter--maxed',
       maxWarn && 'hui-TextCountDownInput__counter--warn',
-      "hui-TextCountDownInput__counter"
+      'hui-TextCountDownInput__counter'
     ]);
 
     if(maxed) {

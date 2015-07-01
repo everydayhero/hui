@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 var _ = require('lodash');
 var React = require('react');
 var I18n = require('../../mixins/I18n');
 var Row = require('../Row');
-var A = require('../../Helpers/A');
-var SocialMediaLinks = require('../../Helpers/SocialMediaLinks');
+var A = require('../../atoms/A');
+var SocialMediaLinks = require('../../atoms/SocialMediaLinks');
 var urls = require('../../urls');
 
 module.exports = React.createClass({
@@ -27,6 +27,22 @@ module.exports = React.createClass({
     };
   },
 
+  getLinks: function(id, n) {
+    var i = 0;
+    var t = this.t;
+    var links = {};
+    var props = this.props;
+    var domain = props.domain;
+    var region = props.region;
+
+    while(i++ < n) {
+      var name = id + '_' + i;
+      links[t(name)] = t(name + '_url', { portal: urls.getUrl('portal', domain, region) });
+    }
+
+    return links;
+  },
+
   renderBeneficiaryLinks: function() {
     var beneficiary = this.props.beneficiary;
     if (!beneficiary) { return false; }
@@ -41,25 +57,9 @@ module.exports = React.createClass({
     );
   },
 
-  getLinks: function(id, n) {
-    var i = 0;
-    var t = this.t;
-    var links = {};
-    var props = this.props;
-    var domain = props.domain;
-    var region = props.region;
-
-    while(i++ < n) {
-      var name = id + '_' + i;
-      links[t(name)] = t(name + '_url', { portal:  urls.getUrl('portal', domain, region) });
-    }
-
-    return links;
-  },
-
   renderLinks: function(links, className) {
     return _.map(links, function(d, key) {
-      return <A className={ "hui-Footer__" + className + "Link" } href={ d } key={ d }>{ key }</A>;
+      return <A className={ 'hui-Footer__' + className + 'Link' } href={ d } key={ d }>{ key }</A>;
     });
   },
 

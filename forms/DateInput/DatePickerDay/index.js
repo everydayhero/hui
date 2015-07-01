@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var moment     = require('moment');
@@ -10,7 +10,7 @@ module.exports = React.createClass({
   propTypes: {
     date: React.PropTypes.object,
     onClick: React.PropTypes.func,
-    selectedDate: React.PropTypes.object,
+    selectedDate: React.PropTypes.object
   },
 
   onClick: function(e) {
@@ -31,7 +31,7 @@ module.exports = React.createClass({
   render: function() {
     var classes = classnames({
       'hui-DatePickerDay--today': this.isToday(),
-      'hui-DatePickerDay--selected': this.isSelected(),
+      'hui-DatePickerDay--selected': this.isSelected()
     }, 'hui-DatePickerDay');
     return (
       <a href="#" tabIndex="-1" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>

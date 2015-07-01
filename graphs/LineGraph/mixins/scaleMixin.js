@@ -1,6 +1,8 @@
- var _ = require('lodash');
+'use strict';
 
- module.exports = {
+var _ = require('lodash');
+
+module.exports = {
   getMax: function() {
     return _.max(_.map(this.props.collection, function(set) {
       return  _.max(_.pluck(set.series, 'calculatedValue'));

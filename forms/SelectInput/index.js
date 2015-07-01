@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 var _                 = require('lodash');
 var React             = require('react');
-var Icon              = require('../../Helpers/Icon');
+var Icon              = require('../../atoms/Icon');
 var LocalStorageMixin = require('../../mixins/localStorage');
 var inputMessage      = require('../../mixins/inputMessage');
 var classNamesArray   = require('../../lib/classNamesArray');
@@ -83,8 +83,8 @@ module.exports = React.createClass({
     var hasError = this.props.required ? !value : false;
 
     this.setState({
-      value: value,
-      hasError: hasError
+      value,
+      hasError
     });
 
     if (onChange) {
@@ -97,26 +97,52 @@ module.exports = React.createClass({
     var hasError = props.required ? !props.value : false;
 
     if (props.onBlur) { props.onBlur(props.value); }
-    this.setState({focused: false, hasError: hasError});
+    this.setState({ focused: false, hasError });
   },
 
   onFocus: function() {
     var props = this.props;
     if (props.onFocus) { props.onFocus(props.value); }
-    this.setState({focused: true, valid: true});
+    this.setState({ focused: true, valid: true });
+  },
+
+  getSelected: function() {
+    var options = this.getOptions();
+    var props = this.props;
+    var criteria = {};
+
+    if(props.value) {
+      criteria[props.valueKey] = props.value;
+
+      return _.where(options, criteria)[0];
+    }
+  },
+
+  getOptions: function() {
+    var props = this.props;
+    var options = props.options.slice();
+    var blank = {};
+
+    if (props.includeBlank) {
+      blank[props.valueKey] = '';
+      blank[props.labelKey] = '';
+      options.unshift(blank);
+    }
+
+    return options;
   },
 
   renderDisplayValue: function() {
     var props          = this.props;
     var value          = props.value;
-    var className      = "hui-SelectInput__selected";
+    var className      = 'hui-SelectInput__selected';
     var displayValue   = props.prompt;
     var selectedOption = this.getSelected();
     var firstOption    = this.getOptions()[0];
     var firstLabel     = firstOption && firstOption[props.labelKey];
 
     if (!value && !firstLabel && !this.props.selectionMade) {
-      className += "--noSelection";
+      className += '--noSelection';
     }
 
     if (selectedOption) {
@@ -132,34 +158,6 @@ module.exports = React.createClass({
         </span>
       </span>
     );
-  },
-
-  getSelected: function() {
-    var options = this.getOptions();
-    var props = this.props;
-    var criteria = {};
-
-    if(!props.value) {
-      return;
-    }
-
-    criteria[props.valueKey] = props.value;
-
-    return _.where(options, criteria)[0];
-  },
-
-  getOptions: function() {
-    var props = this.props;
-    var options = props.options.slice();
-    var blank = {};
-
-    if (props.includeBlank) {
-      blank[props.valueKey] = "";
-      blank[props.labelKey] = "";
-      options.unshift(blank);
-    }
-
-    return options;
   },
 
   renderOptions: function() {
@@ -187,7 +185,7 @@ module.exports = React.createClass({
     var value = props.value;
     var hasServerErrors = props.errors.length;
     var layout = props.layout;
-    var spacing= props.spacing;
+    var spacing = props.spacing;
     var classes = classNamesArray([
       'hui-SelectInput--' + layout,
       'hui-SelectInput--' + spacing,

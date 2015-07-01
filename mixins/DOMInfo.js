@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
 * This Mixin can only be called in/after ComponentDidMount(), as
 * getDOMNode() is unavailable until after the component is rendered.
@@ -79,10 +79,7 @@ module.exports = {
     var size = this.getSize();
     var device = this.getDevice();
     if (size !== this.state.size || device !== this.state.device) {
-      this.setState({
-        size: size,
-        device: device
-      });
+      this.setState({ size, device });
     }
   },
 

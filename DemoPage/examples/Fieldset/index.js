@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var FormRow   = require('../../../forms/FormRow');
@@ -20,20 +20,20 @@ module.exports = React.createClass({
           <FormRow htmlFor="example" tip="I'm very helpful.">
             <TextInput
               autoComplete={false}
-              id='example'
-              layout='half'
-              spacing='fitted'
+              id="example"
+              layout="half"
+              spacing="fitted"
               value={ this.state.form.demo_input_01 }
-              label='An input'
+              label="An input"
               onChange={ change('demo_input_01') } />
           </FormRow>
           <FormRow htmlFor="example2" tip="I'm very helpful too.">
             <TextInput
-              id='example2'
-              layout='half'
-              spacing='fitted'
+              id="example2"
+              layout="half"
+              spacing="fitted"
               value={ this.state.form.demo_input_02 }
-              label='An input too'
+              label="An input too"
               onChange={ change('demo_input_02') } />
           </FormRow>
         </Fieldset>
@@ -42,20 +42,20 @@ module.exports = React.createClass({
           <FormRow htmlFor="example3" tip="I'm very helpful.">
             <TextInput
               autoComplete={false}
-              id='example3'
-              layout='half'
-              spacing='fitted'
+              id="example3"
+              layout="half"
+              spacing="fitted"
               value={ this.state.form.demo_input_03 }
-              label='An input'
+              label="An input"
               onChange={ change('demo_input_03') } />
           </FormRow>
           <FormRow htmlFor="example4" tip="I'm very helpful too.">
             <TextInput
-              id='example4'
-              layout='half'
-              spacing='fitted'
+              id="example4"
+              layout="half"
+              spacing="fitted"
               value={ this.state.form.demo_input_04 }
-              label='An input too'
+              label="An input too"
               onChange={ change('demo_input_04') } />
           </FormRow>
         </Fieldset>

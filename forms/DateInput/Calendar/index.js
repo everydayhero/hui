@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React         = require('react');
 var moment        = require('moment');
@@ -35,17 +35,17 @@ module.exports = React.createClass({
     for (var week = 0; week <= 5; week++) {
       for (var d = 0; d <= 6; d++) {
         if (dates[current] && dates[current].day() === d) {
-           days.push(<DatePickerDay
-             date={ dates[current] }
-             day={ d }
-             key={ dates[current] }
-             selectedDate={ this.props.date }
-             onClick={ this.props.onSelectDate } >
+          days.push(<DatePickerDay
+            date={ dates[current] }
+            day={ d }
+            key={ dates[current] }
+            selectedDate={ this.props.date }
+            onClick={ this.props.onSelectDate } >
               { dates[current].date() }
             </DatePickerDay>);
           current++;
         } else if (current < 28) {
-           days.push(<div key={ d } className="hui-DatePickerDay--filler" />);
+          days.push(<div key={ d } className="hui-DatePickerDay--filler" />);
         }
       }
     }
@@ -54,7 +54,7 @@ module.exports = React.createClass({
   },
 
   getWeekDay: function(i) {
-    var weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return weekDays[i];
   },
 

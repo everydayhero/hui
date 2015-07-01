@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var LineGraph  = require('../../../graphs/LineGraph');
 
 function getCollection(tick) {
-  var collection = [{series:[]}, {series:[]}, {series:[]}];
+  var collection = [{ series: [] }, { series: [] }, { series: [] }];
   var count = 0;
 
   while(count < 50) {
@@ -14,17 +14,17 @@ function getCollection(tick) {
 
     collection[0].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      funds_raised: value
+      'funds_raised': value
     });
 
     collection[1].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      funds_raised: value2
+      'funds_raised': value2
     });
 
     collection[2].series.push({
       date: new Date(2014, 1, count + tick, 0, 0, 0, 0).toISOString(),
-      funds_raised: value3
+      'funds_raised': value3
     });
 
     count++;
@@ -56,13 +56,13 @@ module.exports = React.createClass({
       <h3 className="DemoPage__h3" id="LineGraph">LineGraph</h3>
       <p>The line graph can render a stacked or combination graph as well as option for area fill or line only.</p>
       <div className="DemoPage__example--graph--lines">
-        <LineGraph {...this.state} line={ true } area={ false } tipLabel='Fund raised' />
+        <LineGraph {...this.state} line={ true } area={ false } tipLabel="Fund raised" />
       </div>
       <div className="DemoPage__example--graph--stacked">
-        <LineGraph {...this.state} stacked={ true } tipLabel='Fund raised' />
+        <LineGraph {...this.state} stacked={ true } tipLabel="Fund raised" />
       </div>
       <div className="DemoPage__example--graph--empty">
-        <LineGraph {...this.state} stacked={ true } tipLabel='Fund raised' emptyState={ true }/>
+        <LineGraph {...this.state} stacked={ true } tipLabel="Fund raised" emptyState={ true }/>
       </div>
     </div>
     );

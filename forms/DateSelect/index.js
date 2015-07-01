@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React           = require('react');
 var SelectInput     = require('../SelectInput');
@@ -7,7 +7,8 @@ var inputMessage    = require('../../mixins/inputMessage');
 var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
-  displayName: 'SelectInput',
+  displayName: 'DateSelect',
+
   mixins: [inputMessage],
 
   propTypes: {
@@ -30,7 +31,7 @@ module.exports = React.createClass({
     monthLabel: React.PropTypes.string,
     yearLabel: React.PropTypes.string,
     dateLabel: React.PropTypes.string,
-    promptValue: React.PropTypes.string,
+    promptValue: React.PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -41,7 +42,7 @@ module.exports = React.createClass({
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       layout: 'full',
       spacing: 'loose',
-      format: "YYYY-MM-DD",
+      format: 'YYYY-MM-DD',
       value: '',
       includeBlank: true,
       promptValue: '1980-01-01',
@@ -86,8 +87,8 @@ module.exports = React.createClass({
     var minYear = 1899;
     var years = [];
     while(year !== minYear) {
-      years.push({ value: year.toString(), label: year});
-      year --;
+      years.push({ value: year.toString(), label: year });
+      year--;
     }
 
     return years;
@@ -98,8 +99,8 @@ module.exports = React.createClass({
     var months = [];
 
     while(month !== 12) {
-      months.push({ value: month.toString(), label: this.props.months[month]});
-      month ++;
+      months.push({ value: month.toString(), label: this.props.months[month] });
+      month++;
     }
 
     return months;
@@ -112,8 +113,8 @@ module.exports = React.createClass({
     var value = props.value || props.promptValue;
     var momentDate = moment(value, props.format);
     while(date !== momentDate.daysInMonth() + 1) {
-      dates.push({ value: date.toString(), label: date});
-      date ++;
+      dates.push({ value: date.toString(), label: date });
+      date++;
     }
 
     return dates;

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React = require('react');
 var cx    = require('react/lib/cx');
@@ -21,11 +21,11 @@ module.exports = React.createClass({
   },
 
   onFocus: function() {
-    this.setState({focused: true});
+    this.setState({ focused: true });
   },
 
   onBlur: function() {
-    this.setState({focused: false});
+    this.setState({ focused: false });
   },
 
   renderLegend: function() {
@@ -47,7 +47,7 @@ module.exports = React.createClass({
     var classes = cx({
       'hui-Fieldset': true,
       'hui-Fieldset--with-legend': props.legend,
-      'hui-Fieldset--focused': this.state.focused,
+      'hui-Fieldset--focused': this.state.focused
     });
 
     return (

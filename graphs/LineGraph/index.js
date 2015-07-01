@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _                  = require('lodash');
 var React              = require('react');
@@ -48,6 +48,24 @@ module.exports = React.createClass({
     }
   },
 
+  componentWillMount: function() {
+    this.setState({ collection: this.transformCollection() });
+  },
+
+  componentDidMount: function() {
+    this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 });
+    window.addEventListener('resize', this.handleResizeDebounce);
+    this.handleResize();
+  },
+
+  componentWillReceiveProps: function() {
+    this.setState({ collection: this.transformCollection() });
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('resize', this.handleResizeDebounce);
+  },
+
   transformCollection: function() {
     var props              = this.props,
         collectionValueKey = props.collectionValueKey,
@@ -81,30 +99,12 @@ module.exports = React.createClass({
     });
   },
 
-  componentDidMount: function() {
-    this.handleResizeDebounce = _.debounce(this.handleResize, 300, {maxWait: 1000});
-    window.addEventListener('resize', this.handleResizeDebounce);
-    this.handleResize();
-  },
-
-  componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResizeDebounce);
-  },
-
-  componentWillMount: function() {
-    this.setState({collection: this.transformCollection()});
-  },
-
-  componentWillReceiveProps: function() {
-    this.setState({collection: this.transformCollection()});
-  },
-
   showTip: function(data, position, isFlipOver) {
     this.setState({
       showTip: true,
       tipPosition: position,
       tipData: data,
-      isFlipOver: isFlipOver
+      isFlipOver
     });
   },
 
@@ -135,7 +135,7 @@ module.exports = React.createClass({
           collectionValueKey={ props.collectionValueKey }
           valueConverter={ props.valueConverter } />
       );
-    };
+    }
 
     return paths;
   },
@@ -184,7 +184,7 @@ module.exports = React.createClass({
     }
 
     if(emptyState === true) {
-      emptyData =  ( 
+      emptyData =  (
       <span className="hui-LineGraph__emptyState">
         No Information to Display
       </span>);

@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
+var _           = require('lodash');
 var React       = require('react');
 var GraphLine  = require('paths-js/stock');
-var scaleMixing = require('../mixins/scaleMixin');
-var _           = require('lodash');
+var scaleMixin = require('../mixins/scaleMixin');
 
 function date(series) {
   var d = new Date(series.date);
@@ -13,7 +13,8 @@ function date(series) {
 
 module.exports = React.createClass({
   displayName: 'LinePath',
-  mixins: [scaleMixing],
+
+  mixins: [scaleMixin],
 
   propTypes: {
     area: React.PropTypes.bool.isRequired,
@@ -24,7 +25,7 @@ module.exports = React.createClass({
     collection: React.PropTypes.array.isRequired,
     collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
-    width: React.PropTypes.number.isRequired,
+    width: React.PropTypes.number.isRequired
   },
 
   getDrawingHeight: function() {
@@ -122,7 +123,7 @@ module.exports = React.createClass({
         cy={ y }
         r="6"
         className="hui-LinePath__target"
-        onMouseOver={ onMouseOver(series, dataPoint, {x: x, y: y}) }
+        onMouseOver={ onMouseOver(series, dataPoint, { x, y }) }
         onMouseOut={ onMouseOut } />
       );
     });
@@ -137,8 +138,8 @@ module.exports = React.createClass({
 
     return (
       <path
-        transform={ "translate(" + this.props.gutter.left + ", " + this.getTranslateY()  +")" }
-        className={ "hui-LinePath__" + type }
+        transform={ 'translate(' + this.props.gutter.left + ', ' + this.getTranslateY() + ')' }
+        className={ 'hui-LinePath__' + type }
         d={ this.graphLine().curves[0][type].path.print() }/>
     );
   },

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
@@ -19,8 +19,6 @@ var minifyCss    = require('gulp-minify-css');
 // javascripts
 var browserify   = require('browserify');
 var uglify       = require('gulp-uglify');
-var react        = require('gulp-react');
-var stylish      = require('jshint-stylish');
 
 // Tasks
 require('./assets-deploy.js');

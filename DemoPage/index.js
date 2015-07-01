@@ -1,36 +1,37 @@
-"use strict";
+'use strict';
 
-var React           = require('react');
-var TopBar          = require('../layout/TopBar');
-var TopBarLink      = require('../layout/TopBarLink');
-var Masthead        = require('../layout/Masthead');
-var TopBarExample   = require('./examples/TopBar');
-var PageFormExample = require('./examples/PageForm');
-var FooterExample   = require('./examples/Footer');
-var DeltaArrow      = require('./examples/DeltaArrow');
-var LineGraph       = require('./examples/LineGraph');
-var Legend          = require('./examples/Legend');
-var Visualisation   = require('./examples/DataVisualisation');
-var TextInput       = require('./examples/TextInput');
-var ReadOnlyAddress = require('./examples/ReadOnlyAddress');
-var Checkbox        = require('./examples/Checkbox');
-var TextArea        = require('./examples/TextArea');
-var SelectInput     = require('./examples/SelectInput');
-var UrlInput        = require('./examples/UrlInput');
-var DateInput       = require('./examples/DateInput');
-var DateSelect       = require('./examples/DateSelect');
-var FileInput       = require('./examples/FileInput');
-var ImageInput      = require('./examples/ImageInput');
-var ButtonExample   = require('./examples/Button');
-var imagePath       = './images/';
-var FormRow         = require('./examples/FormRow');
-var Fieldset        = require('./examples/Fieldset');
-var LoadingProgress = require('./examples/LoadingProgress');
+import React from 'react'
+import TopBar from '../layout/TopBar'
+import TopBarLink from '../layout/TopBarLink'
+import Masthead from '../layout/Masthead'
+import TopBarExample from './examples/TopBar'
+import PageFormExample from './examples/PageForm'
+import DeltaArrow from './examples/DeltaArrow'
+import LineGraph from './examples/LineGraph'
+import Legend from './examples/Legend'
+import Visualisation from './examples/DataVisualisation'
+import TextInput from './examples/TextInput'
+import ReadOnlyAddress from './examples/ReadOnlyAddress'
+import Checkbox from './examples/Checkbox'
+import TextArea from './examples/TextArea'
+import SelectInput from './examples/SelectInput'
+import UrlInput from './examples/UrlInput'
+import DateInput from './examples/DateInput'
+import DateSelect from './examples/DateSelect'
+import FileInput from './examples/FileInput'
+import ImageInput from './examples/ImageInput'
+import ButtonExample from './examples/Button'
+import FormRow from './examples/FormRow'
+import Fieldset from './examples/Fieldset'
+import LoadingProgress from './examples/LoadingProgress'
+import FooterExample from './examples/Footer'
 
-module.exports = React.createClass({
+const imagePath = './images/';
+
+export default React.createClass({
   displayName: 'DemoPage',
 
-  render: function() {
+  render() {
     return (
       <div className="DemoPage">
         <TopBar fixed={ true }>
@@ -44,6 +45,7 @@ module.exports = React.createClass({
             <TopBarLink href="#graphs">Graphs</TopBarLink>
             <TopBarLink href="#forms">Forms</TopBarLink>
         </TopBar>
+
         <div className="DemoPage__content">
           <h2 className="DemoPage__h2" id="how-to-use">How To Use</h2>
           <p className="DemoPage__p">HUI documentation can be found on <a href="http://everydayhero.github.io/public-api-docs/hui">EDH docs</a></p>

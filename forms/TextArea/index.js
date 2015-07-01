@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React             = require('react');
 var inputMessage      = require('../../mixins/inputMessage');
@@ -8,6 +8,7 @@ var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'hui-TextArea',
+
   mixins: [inputMessage, LocalStorageMixin, textInput],
 
   propTypes: {
