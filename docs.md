@@ -78,6 +78,7 @@ TopBar [Demo](https://shared-scripts.s3.amazonaws.com/hui-{{ latest-version }}/i
 ```
 
 #### PropTypes
+- `imagePath` The path to the image which will be displayed in the footer.
 - `beneficiary` The beneficiary information to display in the footer.
 - `domain` The domain for the footer links.
 - `region` The region the user is in.

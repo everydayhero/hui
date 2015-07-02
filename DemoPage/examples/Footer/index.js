@@ -3,6 +3,7 @@
 var React      = require('react');
 var Footer     = require('../../../layout/Footer');
 var Highlight  = require('react-highlight');
+var ImagePath  = ('../images/hui_edh_mark@x2.gif');
 
 module.exports = React.createClass({
   displayName: 'FooterExample',
@@ -12,7 +13,8 @@ module.exports = React.createClass({
     <div>
       <h3 className="DemoPage__h3" id="Footer">Footer</h3>
       <div className="DemoPage__example">
-        <Footer/>
+        <Footer
+          imagePath={ ImagePath }/>
       </div>
     </div>
     );
