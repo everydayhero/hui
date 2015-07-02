@@ -1,8 +1,7 @@
 fieldset.hui-Fieldset {
   position: relative;
   border: 0px solid;
-  border-left: 4px solid;
-  border-color: $hui-header-fieldset-border;
+  border-left: 4px solid $hui-header-fieldset-border;
   background-color: $hui-fieldset-background;
   padding-top: $hui-x-6;
   padding-left: $hui-x-2;
