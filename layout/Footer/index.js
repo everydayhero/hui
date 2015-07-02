@@ -15,6 +15,7 @@ module.exports = React.createClass({
 
   propTypes: {
     beneficiary: React.PropTypes.object,
+    imagePath: React.PropTypes.string,
     domain: React.PropTypes.string,
     region: React.PropTypes.string
   },
@@ -89,7 +90,7 @@ module.exports = React.createClass({
           <div className="hui-Footer__siteLinks">
             { this.renderLeftSiteLinks() }
 
-            <a href={ urls.getUrl('portal', domain, region) }><img className="hui-Footer__logo" src="images/hui_edh_mark@x2.gif" /></a>
+            <a href={ urls.getUrl('portal', domain, region) }><img className="hui-Footer__logo" src={ this.props.imagePath } /></a>
 
             { this.renderRightSiteLinks() }
           </div>
