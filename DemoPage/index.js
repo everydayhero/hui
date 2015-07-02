@@ -6,6 +6,7 @@ var TopBarLink      = require('../layout/TopBarLink');
 var Masthead        = require('../layout/Masthead');
 var TopBarExample   = require('./examples/TopBar');
 var PageFormExample = require('./examples/PageForm');
+var FooterExample   = require('./examples/Footer');
 var DeltaArrow      = require('./examples/DeltaArrow');
 var LineGraph       = require('./examples/LineGraph');
 var Legend          = require('./examples/Legend');
@@ -51,6 +52,7 @@ module.exports = React.createClass({
             <TopBarExample/>
             <LoadingProgress/>
             <PageFormExample/>
+            <FooterExample/>
           </div>
 
           <h2 className="DemoPage__h2" id="buttons">Buttons</h2>
