@@ -45,10 +45,15 @@ module.exports = React.createClass({
     var i = 0;
     var t = this.t;
     var links = {};
+    var props = this.props;
+    var domain = props.domain;
+    var region = props.region;
+
     while(i++ < n) {
       var name = id + '_' + i;
-      links[t(name)] = t(name + '_url');
+      links[t(name)] = t(name + '_url', { portal:  urls.getUrl('portal', domain, region) });
     }
+
     return links;
   },
 
@@ -75,11 +80,11 @@ module.exports = React.createClass({
     var region = this.props.region;
 
     var socialMedia = [
-      { name: 'facebook', url: urls.getUrl('facebook') },
-      { name: 'twitter', url: urls.getUrl('twitter') },
-      { name: 'google-plus', url: urls.getUrl('google_plus') },
-      { name: 'instagram', url: urls.getUrl('instagram') },
-      { name: 'pinterest', url: urls.getUrl('pinterest') }
+      { name: 'facebook', url: urls.getUrl('facebook', domain, region) },
+      { name: 'twitter', url: urls.getUrl('twitter', domain, region) },
+      { name: 'google-plus', url: urls.getUrl('google_plus', domain, region) },
+      { name: 'instagram', url: urls.getUrl('instagram', domain, region) },
+      { name: 'pinterest', url: urls.getUrl('pinterest', domain, region) }
     ];
 
     return (
