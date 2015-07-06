@@ -1,11 +1,14 @@
-'use strict';
+'use strict'
 
-var React           = require('react/addons');
-var ListItem        = require('./Item');
-var _               = require('lodash');
-var classNamesArray = require('../../lib/classNamesArray');
+import React from 'react/addons'
 
-module.exports = React.createClass({
+import ListItem from './Item'
+
+import remove from 'lodash/array/remove'
+import isEmpty from 'lodash/lang/isEmpty'
+import classnames from 'classnames'
+
+export default React.createClass({
   displayName: 'TagList',
 
   propTypes: {
@@ -18,41 +21,37 @@ module.exports = React.createClass({
     layout: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       layout: 'full',
       spacing: 'loose'
-    };
+    }
   },
 
-  onClickItemIcon: function(data) {
-    var props         = this.props,
-    onItemIconClicked = props.onItemIconClicked,
-    elements          = props.items;
+  onClickItemIcon(data) {
+    let props = this.props
+    let onItemIconClicked = props.onItemIconClicked
+    let elements = props.items
 
-    _.remove(elements, function(elem) {
-      return elem.id === data.id;
-    });
+    remove(elements, (elem) => elem.id === data.id)
 
-    return onItemIconClicked && onItemIconClicked(elements);
+    return onItemIconClicked && onItemIconClicked(elements)
   },
 
-  renderItems: function() {
-    var items       = this.props.items || [];
-    var onIconClick = this.onClickItemIcon;
+  renderItems() {
+    let items = this.props.items || []
+    let onIconClick = this.onClickItemIcon
 
-    return !_.isEmpty(items) && items.map(function(item) {
-      return <ListItem key={ item.id } item={ item } onIconClick={ onIconClick } />;
-    });
+    return !isEmpty(items) && items.map((item) => <ListItem key={ item.id } item={ item } onIconClick={ onIconClick } />)
   },
 
-  render: function() {
-    var props   = this.props;
-    var classes = classNamesArray([
+  render() {
+    let props = this.props
+    let classes = classnames([
       'hui-TagList--' + props.layout,
       'hui-TagList--' + props.spacing,
       'hui-TagList'
-    ]);
+    ])
 
     return (
       <div className={ classes }>
@@ -60,6 +59,6 @@ module.exports = React.createClass({
           { this.renderItems() }
         </div>
       </div>
-    );
+    )
   }
-});
+})

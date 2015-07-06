@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   margin: 2px;
-  line-height: 44px;
+  line-height: $x-11;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -54,7 +54,7 @@
 .hui-Button--tertiary {
   border-width: 1px;
   border-style: solid;
-  border-radius: 2px;
+  border-radius: $border-radius;
 }
 
 a.hui-Button {
@@ -63,7 +63,7 @@ a.hui-Button {
 
 .hui-Button__label {
   font-size: 14px;
-  padding: 0 20px;
+  padding: 0 $x-5;
   letter-spacing: 0.15em;
   position: relative;
 }
@@ -102,7 +102,7 @@ a.hui-Button {
   text-transform: uppercase;
 
   .hui-Button__label  {
-    font-size: 13px;
+    font-size: $x-3;
   }
 }
 
@@ -115,74 +115,74 @@ a.hui-Button {
 }
 
 .hui-Button--hasIcon .hui-Button__icon {
-  width: 44px;
+  width: $x-11;
   opacity: 1;
 }
 
 .hui-Button--cta,
 .hui-Button--primary {
-  line-height: 44px;
+  line-height: $x-11;
 }
 
 .hui-Button--thin {
-  line-height: 36px;
+  line-height: $x-9;
 }
 
 .hui-Button--cta,
 .hui-Button--secondary {
-  border-color: #00a044;
+  border-color: $green;
   &:before {
-    background-color: #00b44d;
-    box-shadow: 0 0 90px 60px #00b44d;
+    background-color: $green-active;
+    box-shadow: 0 0 90px 60px $green-active;
   }
   .hui-Button__icon {
-    border-color: #7ec774;
+    border-color: $green-light;
   }
 }
 
 .hui-Button--primary,
 .hui-Button--tertiary {
-  border-color: $hui-text-input-text;
+  border-color: $grey;
   &:before {
-    background-color: #666;
-    box-shadow: 0 0 90px 60px #666;
+    background-color: $grey;
+    box-shadow: 0 0 90px 60px $grey;
   }
   .hui-Button__icon {
-    border-color: #aaa;
+    border-color: $grey-light;
   }
 }
 
 .hui-Button--cta {
   color: white;
-  background-color: #00a044;
+  background-color: $green;
 }
 
 .hui-Button--primary {
   color: white;
-  background-color: $hui-text-input-text;
+  background-color: $grey;
 }
 
 .hui-Button--secondary {
-  color: #00a044;
+  color: $green;
   background-color: transparent;
   &:active {
-    color: #00a044;
+    color: $green;
   }
 }
 
 .hui-Button--tertiary {
-  color: $hui-text-input-text;
+  color: $grey;
   background-color: transparent;
   &:active {
-    color: $hui-text-input-text;
+    color: $grey;
   }
 }
 
 .hui-Button--primary.hui-Button--inverse {
   border-color: white;
   &:before {
-    background-color: #eee;
-    box-shadow: 0 0 90px 60px #eee;
+    background-color: $grey-lighter;
+    box-shadow: 0 0 90px 60px $grey-lighter;
   }
 }
 
@@ -190,8 +190,8 @@ a.hui-Button {
 .hui-Button--tertiary.hui-Button--inverse {
   border-color: white;
   &:before {
-    background-color: #eee;
-    box-shadow: 0 0 90px 60px #eee;
+    background-color: $grey-lighter;
+    box-shadow: 0 0 90px 60px $grey-lighter;
   }
   .hui-Button__icon {
     border-color: white;
@@ -199,21 +199,21 @@ a.hui-Button {
 }
 
 .hui-Button--primary.hui-Button--inverse {
-  color: $hui-text-input-text;
+  color: $grey;
   background-color: white;
 }
 
 .hui-Button--secondary.hui-Button--inverse {
   color: white;
   &:hover, &:focus {
-    color: #00a044;
+    color: $green;
   }
 }
 
 .hui-Button--tertiary.hui-Button--inverse {
   color: white;
   &:hover, &:focus {
-    color: $hui-text-input-text;
+    color: $grey;
   }
 }
 
@@ -227,18 +227,18 @@ a.hui-Button {
   }
 
   .hui-IconWrapper.hui-Button__icon {
-    width: 20px;
+    width: $x-5;
     margin-left: 0;
   }
 
   &:hover, &:focus {
-    color: #00a044;
+    color: $green;
     text-decoration: underline;
   }
 }
 
 .hui-Button--primary-borderless {
-  color: $hui-text-input-text;
+  color: $grey;
 }
 
 .hui-Button--cta-borderless,
@@ -249,22 +249,22 @@ a.hui-Button {
     background: none;
     color: white;
     &:hover, &:focus {
-      color: #eee;
+      color: $grey-lighter;
     }
   }
 }
 
 .hui-Button--disabled {
-  color: #aaa !important;
-  border-color: #aaa !important;
+  color: $grey-light !important;
+  border-color: $grey-light !important;
   border-style: dashed !important;
-  background-color: $hui-disabled-button;
+  background-color: $grey-lighter;
   &:before {
     background-color: transparent !important;
     box-shadow: 0 0 90px 60px transparent !important;
   }
   .hui-Button__icon {
-    border-color: #aaa !important;
+    border-color: $grey-light !important;
     border-style: dashed !important;
   }
 }
@@ -287,5 +287,13 @@ a.hui-Button {
 }
 
 .hui-Button--disabled.hui-Button--primary.hui-Button--inverse {
-  background-color: $hui-disabled-button;
+  background-color: $grey-lighter;
+}
+
+@media screen and (max-width: 399px) {
+  .hui-Button__label {
+    padding: 0 $x-3;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
 }

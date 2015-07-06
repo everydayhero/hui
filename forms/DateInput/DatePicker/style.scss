@@ -1,12 +1,12 @@
 .hui-DatePicker {
   position: absolute;
   width: 233px;
-  background-color: $hui-background-dropdown-white;
-  border: 1px solid $hui-rule-grey;
-  border-radius: $hui-border-radius;
+  background-color: $white;
+  border: 1px solid $grey-lighter;
+  border-radius: $border-radius;
   z-index: 5;
   padding: 10px;
-  font-family: $hui-font-family;
+  font-family: $font-copy;
   top: 42px;
-  left: 4px;
+  left: $x-1;
 }

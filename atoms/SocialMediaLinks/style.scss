@@ -12,7 +12,7 @@
   display: inline-block;
   transition: all 160ms ease-out;
   color: inherit;
-  font-size: 20px;
+  font-size: $x-5;
   line-height: 30px;
   height: 30px;
   width: 30px;
@@ -24,18 +24,18 @@
     background-color: white;
   }
   &.facebook:hover {
-    color: #4862a0;
+    color: $facebook;
   }
   &.twitter:hover {
-    color: #05baf8;
+    color: $twitter;
   }
   &.google-plus:hover {
-    color: #d64a33;
+    color: $googleplus;
   }
   &.pinterest:hover {
-    color: #cb2027;
+    color: $pinterest;
   }
   &.instagram:hover {
-    color: #517fa4;
+    color: $instagram;
   }
 }

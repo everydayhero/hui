@@ -1,14 +1,14 @@
 .hui-Step {
   width: 100%;
-  min-height: $hui-x-144;
+  min-height: $x-144;
   top: 0px;
   left: 0px;
   background-color: white;
   box-shadow: 1px 1px 6px 2px rgba(219,219,219,1);
-  margin-bottom: $hui-x-8;
+  margin-bottom: $x-8;
   text-align: center;
-  padding: $hui-x-16;
-  color: $hui-text-body;
+  padding: $x-16;
+  color: $grey;
 }
 
 @include media-max($bp-xs) {
@@ -26,14 +26,14 @@
 }
 
 .Step__description {
-  font-size: $hui-x-4;
-  padding-bottom: $hui-x-4;
+  font-size: $x-4;
+  padding-bottom: $x-4;
 }
 
 .Step__proof {
-  font-size: $hui-x-4;
+  font-size: $x-4;
   font-style: italic;
-  padding-bottom: $hui-x-4;
+  padding-bottom: $x-4;
 }
 
 .Step__proof_value {

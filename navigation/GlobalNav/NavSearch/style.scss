@@ -1,0 +1,130 @@
+.hui-NavSearch {
+  transition: all 160ms ease-out;
+}
+
+.hui-NavSearch__label {
+  transition: all 160ms ease-out;
+  color: $grey-active;
+  font-size: 13px;
+  display: block;
+  font-family: inherit;
+  overflow: hidden;
+  position: relative;
+  input {
+    transition: all 160ms ease-out;
+    border: none;
+    outline: none;
+    color: $grey;
+    padding: 5px $x-6;
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+  }
+}
+
+.hui-NavSearch input::-webkit-input-placeholder { font-style: italic; }
+.hui-NavSearch input:-moz-placeholder { font-style: italic; }
+.hui-NavSearch input::-moz-placeholder { font-style: italic; }
+.hui-NavSearch input:-ms-input-placeholder { font-style: italic; }
+
+.hui-NavSearch__icon,
+.hui-NavSearch__close {
+  transition: all 160ms ease-out;
+  color: $grey-active;
+  position: absolute;
+  top: 50%;
+  margin-top: -9px;
+}
+
+.hui-NavSearch__icon {
+  left: 6px;
+}
+
+.hui-NavSearch--focused .hui-NavSearch__icon {
+  color: $green-active;
+}
+
+.hui-NavSearch__close {
+  right: 6px;
+  opacity: 0;
+}
+
+.hui-NavSearch--mobile.hui-NavSearch--hasValue.hui-NavSearch--focused,
+.hui-NavSearch--desktop.hui-NavSearch--hasValue {
+  .hui-NavSearch__close {
+    opacity: 1;
+  }
+}
+
+.hui-NavSearch--desktop {
+  width: 80%;
+  padding: 0 $x-3;
+  text-align: right;
+  .hui-NavSearch__label {
+    border: 1px solid $grey-lighter;
+    border-radius: $border-radius;
+    max-width: 300px;
+    width: 100%;
+    min-width: 80px;
+    float: right;
+  }
+}
+
+.hui-NavSearch--mobile {
+  width: 40%;
+  .hui-NavSearch__label {
+    border-bottom: 3px solid white;
+    max-width: 100%;
+  }
+  input {
+    padding: 9px $x-6;
+  }
+  &.hui-NavSearch--focused {
+    .hui-NavSearch__label {
+      border-bottom-color: $green-active;
+    }
+  }
+}
+
+.hui-NavSearch--transparent {
+  &.hui-NavSearch--desktop .hui-NavSearch__label {
+    border-color: transparentize($white, 0.75);
+  }
+  &.hui-NavSearch--desktop.hui-NavSearch--focused  .hui-NavSearch__label {
+    border-color: transparentize($white, 0.25);
+  }
+  .hui-NavSearch__label {
+    color: transparentize($white, 0.25);
+  }
+  .hui-NavSearch__icon,
+  .hui-NavSearch__close,
+  .hui-NavSearch__label input {
+    color: $white;
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .hui-NavSearch--mobile {
+    width: 37px;
+    .hui-NavSearch__icon {
+      transform: scale(1.3) translateX(5px) translateY(1px);
+    }
+    input {
+      padding: 9px 18px;
+      max-width: 0px;
+      opacity: 0;
+    }
+    &.hui-NavSearch--focused {
+      width: 100%;
+      .hui-NavSearch__icon {
+        transform: none;
+      }
+      input {
+        padding: 9px $x-6;
+        max-width: none;
+        opacity: 1;
+      }
+    }
+  }
+}

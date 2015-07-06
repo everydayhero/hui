@@ -67,4 +67,3 @@ module.exports = function(blanket) {
     require('../../' + _path);
   });
 };
-

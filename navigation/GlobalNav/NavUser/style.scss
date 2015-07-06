@@ -1,0 +1,85 @@
+%circle {
+  display: inline-block;
+  line-height: $x-10;
+  text-align: center;
+  height: $x-10;
+  width: $x-10;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hui-NavUser {
+  padding: 0 $x-2;
+  text-align: right;
+  white-space: nowrap;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.hui-NavUser__loading {
+  @extend %circle;
+  color: $white;
+  background-color: $grey-light;
+  font-size: 18px;
+  margin-right: $x-3;
+  &.hui-NavUser--transparent {
+    background-color: transparentize($white, 0.75);
+  }
+}
+
+.hui-NavUser__user {
+  color: $grey-active;
+  white-space: nowrap;
+  padding-right: $x-3;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .hui-NavUser--transparent & {
+    color: transparentize($white, 0.25);
+  }
+}
+
+.hui-NavUser__name {
+  padding: 0 $x-3;
+  font-size: 15px;
+}
+
+.hui-NavUser__avatar {
+  @extend %circle;
+}
+
+.hui-NavUser__avatar img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.hui-NavUser__user:hover .hui-NavUser__name,
+.hui-NavUser__user:focus .hui-NavUser__name {
+  color: $green-active;
+  .hui-NavUser--transparent & {
+    color: $white;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .hui-NavUser__name {
+    display: none;
+  }
+}

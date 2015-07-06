@@ -4,7 +4,7 @@ var Icon = require('../');
 
 describe('Icon', function() {
   it('renders an icon with default className', function() {
-    var element = TestUtils.renderIntoDocument(
+    var element = renderIntoDocument(
         <Icon icon="lock"/>
       );
     var iconClass = element.getDOMNode().children[0].className;
@@ -12,7 +12,7 @@ describe('Icon', function() {
   });
 
   it('renders an icon with fixedWidth className', function() {
-    var element = TestUtils.renderIntoDocument(
+    var element = renderIntoDocument(
         <Icon icon="lock" fixedWidth={ true }/>
       );
     var iconClass = element.getDOMNode().children[0].className;
@@ -20,8 +20,15 @@ describe('Icon', function() {
   });
 
   it('renders an icon with spin className', function() {
-    var element = TestUtils.renderIntoDocument(<Icon icon="lock" spin={ true }/>);
+    var element = renderIntoDocument(<Icon icon="lock" spin={ true }/>);
     var iconClass = element.getDOMNode().children[0].className;
     iconClass.should.equal('hui-Icon fa fa-spin fa-lock');
+  });
+
+  it('executes an onClick handler', function() {
+    var handler = sinon.spy();
+    var element = renderIntoDocument(<Icon icon="lock" onClick={ handler }/>);
+    Simulate.mouseDown(findByClass(element, 'hui-IconWrapper'));
+    handler.should.have.been.called;
   });
 });

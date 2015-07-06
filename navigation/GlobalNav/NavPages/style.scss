@@ -1,0 +1,129 @@
+.hui-NavPages {
+  color: $grey-active;
+  position: relative;
+}
+
+.hui-NavPages__button {
+  transition: all 160ms ease-out;
+  display: table;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hui-NavPages__label,
+.hui-NavPages__icon {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.hui-NavPages__label {
+  letter-spacing: 0.1em;
+}
+
+.hui-NavPages--desktop {
+  padding: 0 $x-3;
+  .hui-NavPages__button {
+    border: 1px solid $grey-active;
+    background-color: $grey-lighter;
+    border-radius: $border-radius;
+  }
+  .hui-NavPages__label {
+    font-size: 13px;
+    padding: 5px $x-3;
+  }
+  .hui-NavPages__icon {
+    padding: 5px $x-2;
+    border-left: 1px solid $grey-active;
+  }
+}
+
+.hui-NavPages--mobile {
+  padding: 0;
+  .hui-NavPages__button {
+    width: 100%;
+    text-transform: uppercase;
+    padding: $x-3 $x-2 10px;
+    border-bottom: 3px solid white;
+    border-left: 1px solid $grey-lighter;
+    &:hover {
+      color: $green-active;
+    }
+  }
+  .hui-NavPages__label {
+    font-size: 9px;
+  }
+  .hui-NavPages__icon {
+    line-height: 9px;
+    position: relative;
+    top: -1px;
+    padding-left: $x-2;
+    color: $green-dark;
+  }
+}
+
+.hui-NavPages__pageList {
+  position: absolute;
+  background-color: white;
+  padding: 0 $x-2;
+  top: 100%;
+  box-shadow: 0 1px 3px $grey-light;
+}
+
+.hui-NavPages--desktop .hui-NavPages__pageList {
+  left: 50%;
+  top: 42px;
+  transform: translateX(-50%);
+}
+
+.hui-NavPages--mobile .hui-NavPages__pageList {
+  right: 0;
+}
+
+.hui-NavPages__create {
+  color: $grey-active;
+  display: block;
+  padding: $x-2;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  &:hover, &:focus {
+    color: $green-active;
+  }
+}
+
+.hui-NavPages--transparent {
+  color: $white;
+  .hui-NavPages__button {
+    color: transparentize($white, 0.25);
+    &:hover {
+      color: $white;
+    }
+  }
+}
+.hui-NavPages--transparent.hui-NavPages--desktop {
+  .hui-NavPages__button {
+    border-color: transparentize($white, 0.5);
+    background-color: transparent;
+  }
+  .hui-NavPages__icon {
+    border-left-color: transparentize($white, 0.25);
+  }
+}
+.hui-NavPages--transparent.hui-NavPages--mobile {
+  .hui-NavPages__icon {
+    color: transparentize($white, 0.25);
+  }
+}
+
+.hui-NavPages--desktop.hui-NavPages--open .hui-NavPages__button {
+  color: $white;
+  background-color: $green-active;
+  border-color: $green;
+  .hui-NavPages__icon {
+    border-left-color: $green;
+  }
+}
+
+@import "navigation/GlobalNav/NavPages/NavPagesPage/style";

@@ -1,0 +1,228 @@
+.AggregateSearchModal__overlay {
+  background-image: url('../images/search-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.AggregateSearchModal__header {
+  @extend %clearfix;
+
+  width: 100%;
+  padding: $x-4;
+  position: relative;
+
+  max-width: $x-229;
+  margin: {
+    left: auto;
+    right: auto;
+  };
+  color: white;
+
+  .AggregateSearchModal__input {
+    margin-top: $x-4;
+    width: 100%;
+
+    .label__text {
+      top: 3px;
+    }
+
+    @include media-max($bp-xxs) {
+      margin-top: $x-2;
+    }
+  }
+
+  .AggregateSearchModal__input .hui-TextInput__label {
+    border-radius: 1px;
+    border-width: 0;
+  }
+
+  @include media-max($bp-xxs) {
+    padding-top: $x-2;
+  }
+}
+
+.AggregateSearchModal__body {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  top: 107px;
+  right: 0px;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  color: white;
+
+  @include media-max($bp-xs) {
+    top: 150px;
+  }
+
+  @include media-max($bp-xxs) {
+    top: 127px;
+  }
+}
+
+.AggregateSearchModal__title {
+  text-transform: uppercase;
+  font-size: $x-4;
+  letter-spacing: 1px;
+
+  @include media-max($bp-xxs) {
+    font-size: 14px;
+  }
+}
+
+.AggregateSearchModal__close {
+  cursor: pointer;
+  float: right;
+  font-size: 38px;
+  font-weight: bold;
+  color: white;
+  margin: -14px 0;
+
+  &:hover {
+    color: $green;
+  }
+
+  @include media-max($bp-xxs) {
+    font-size: $x-8;
+    margin: -10px 0;
+  }
+}
+
+.AggregateSearchModal__content {
+  @extend %clearfix;
+  margin: {
+    left: auto;
+    right: auto;
+  };
+  width: 100%;
+  max-width: $x-229;
+  padding: 0 $x-8;
+
+  @include media-max($bp-l) {
+    padding: 0 $x-4;
+  }
+}
+
+.AggregateSearchModal__filters {
+  @extend %clearfix;
+  position: absolute;
+  top: 107px;
+  left: $x-8;
+  z-index: 1;
+
+  @include media-max($bp-l) {
+    left: $x-4;
+  }
+
+  @include media-max($bp-xs) {
+    position: initial;
+    float: left;
+    width: 100%;
+    margin-top: $x-2;
+    text-align: center;
+  }
+}
+
+.AggregateSearchModal__filters__type {
+  text-transform: uppercase;
+  padding: $x-2 0;
+  position: relative;
+  cursor: pointer;
+  color: $grey-lighter;
+  border: 2px solid transparent;
+  border-radius: $border-radius;
+
+  &:hover {
+    color: white;
+  }
+
+  .hui-Icon {
+    position: absolute;
+    left: 105%;
+    top: 15px;
+    color: $grey-lighter;
+    font-size: $x-5;
+
+    @include media-max($bp-xs) {
+      display: none;
+    }
+  }
+
+  @include media-max($bp-xs) {
+    text-align: center;
+    display: inline-block;
+    padding: $x-1 $x-2;
+  }
+
+  @include media-max($bp-xxs) {
+    padding: $x-1 $x-1;
+  }
+}
+
+.AggregateSearchModal__filters__type-selected {
+  @include media-max($bp-xs) {
+    border-color: $green-light;
+  }
+}
+
+.AggregateSearchModal__filters__type__name {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @include media-max($bp-xxs) {
+    font-size: 10px;
+  }
+}
+
+.AggregateSearchModal__filters__type__results {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  overflow: hidden;
+  color: $green-light;
+
+  @include media-max($bp-xxs) {
+    font-size:$x-2;
+  }
+}
+
+.AggregateSearchModal__results {
+  float: left;
+  width: 100%;
+  padding-left: 25%;
+  padding-bottom: 100px;
+
+  @include media-max($bp-m) {
+    padding-left: 30%;
+  }
+
+  @include media-max($bp-s) {
+    padding-left: 35%;
+  }
+
+  @include media-max($bp-xs) {
+    padding-left: 0;
+  }
+}
+
+.AggregateSearchModal__footer {
+  margin-top: $x-4;
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: $green;
+      text-decoration: none;
+    }
+  }
+
+  i { margin-left: $x-2; }
+}

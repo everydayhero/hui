@@ -1,6 +1,6 @@
 .hui-Masthead {
   display: inline-block;
-  margin-right: $hui-x-9;
+  margin-right: $x-9;
 }
 
 .hui-Masthead__logo,
@@ -12,15 +12,15 @@
 .hui-Masthead__logo--desktop {
   width: 180px;
 
-  @include media-max(720px) {
+  @include media-max($bp-m) {
     display: none;
   }
 }
 
 .hui-Masthead__logo--mobile {
-  height: 32px;
+  height: $x-8;
 
-  @include media(720px) {
+  @include media($bp-m) {
     display: none;
   }
 }
@@ -28,13 +28,13 @@
 .hui-Masthead__appName {
   @extend %hui-lato-thin;
   @extend %hui-rule-left;
-  font-size: $hui-x-5;
-  color: $hui-link-primary;
+  font-size: $x-5;
+  color: $green-dark;
   position: relative;
-  top: 20px;
+  top: $x-5;
   display: inline-block;
-  padding-left: $hui-x-4;
-  margin-left: $hui-x-4;
+  padding-left: $x-4;
+  margin-left: $x-4;
   vertical-align: top;
 
   @include media-max(460px) {

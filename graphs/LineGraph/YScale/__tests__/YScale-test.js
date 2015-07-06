@@ -1,27 +1,27 @@
 'use strict';
 
-var YScale = require('../index');
-var _ = require('lodash');
+import map from 'lodash/collection/map'
+import YScale from '../'
 
 describe('YScale', function() {
   var collection = [
-        { series: [
-          { date: 1, calculatedValue: 5 },
-          { date: 2, calculatedValue: 22 },
-          { date: 3, calculatedValue: 14 },
-          { date: 4, calculatedValue: 5 },
-          { date: 5, calculatedValue: 10 },
-          { date: 6, calculatedValue: 24 }
-        ] },
-        { series: [
-          { date: 1, calculatedValue: 4 },
-          { date: 2, calculatedValue: 6 },
-          { date: 3, calculatedValue: 11 },
-          { date: 4, calculatedValue: 2 },
-          { date: 5, calculatedValue: 4 },
-          { date: 6, calculatedValue: 23 }
-        ] }
-      ];
+    { series: [
+      { date: 1, calculatedValue: 5 },
+      { date: 2, calculatedValue: 22 },
+      { date: 3, calculatedValue: 14 },
+      { date: 4, calculatedValue: 5 },
+      { date: 5, calculatedValue: 10 },
+      { date: 6, calculatedValue: 24 }
+    ] },
+    { series: [
+      { date: 1, calculatedValue: 4 },
+      { date: 2, calculatedValue: 6 },
+      { date: 3, calculatedValue: 11 },
+      { date: 4, calculatedValue: 2 },
+      { date: 5, calculatedValue: 4 },
+      { date: 6, calculatedValue: 23 }
+    ] }
+  ];
 
   var gutters = {
     top: 20,
@@ -31,7 +31,7 @@ describe('YScale', function() {
   }
 
   var textContent = function(label) { return label.getDOMNode().textContent; };
-  var scryLabels = function(component, transform) { return _.map(scryByClass(component, 'hui-YScale__label'), transform); };
+  var scryLabels = function(component, transform) { return map(scryByClass(component, 'hui-YScale__label'), transform); };
 
   describe('default', function() {
     var component;

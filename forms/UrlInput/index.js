@@ -1,11 +1,11 @@
 'use strict';
 
-var React             = require('react');
-var SelectInput       = require('../SelectInput');
-var Input             = require('../TextInput');
-var LocalStorageMixin = require('../../mixins/localStorage');
-var _                 = require('lodash');
-var classNamesArray   = require('../../lib/classNamesArray');
+import _ from 'lodash'
+import React from 'react'
+import SelectInput from '../SelectInput'
+import Input from '../TextInput'
+import LocalStorageMixin from '../../mixins/localStorage'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'UrlInput',
@@ -111,7 +111,7 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
     var id    = props.id;
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-UrlInput--' + props.layout,
       'hui-UrlInput--' + props.spacing,
       'hui-UrlInput'

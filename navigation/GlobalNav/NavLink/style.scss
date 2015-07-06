@@ -1,0 +1,66 @@
+.hui-NavLink {
+  transition: all 160ms ease-out;
+  color: $grey-active;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0 $x-2;
+  text-align: center;
+  &:active, &:hover, &:focus {
+    color: $green-active;
+  }
+}
+
+.hui-NavLink__icon {
+  margin-right: 5px;
+}
+
+.hui-NavLink--desktop,
+.hui-NavLink--mobile {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hui-NavLink--desktop.hui-NavLink--active {
+  color: $green-active;
+}
+
+.hui-NavLink--mobile {
+  font-size: 9px;
+  padding: $x-3 $x-2 10px;
+  border-bottom: 3px solid white;
+  border-left: 1px solid $grey-lighter;
+  &.hui-NavLink--active {
+    border-bottom-color: $green-active;
+  }
+}
+
+.hui-NavLink--cta {
+  font-size: 14px;
+  padding: 0 $x-3;
+  color: $green-dark;
+  letter-spacing: 0.05em;
+}
+
+.hui-NavLink--transparent {
+  color: transparentize($white, 0.25);
+  &.hui-NavLink--cta, &.hui-NavLink--active, &:active, &:hover, &:focus {
+    color: $white;
+  }
+}
+
+.hui-NavLink--account {
+  color: $grey;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  display: block;
+  padding: $x-4 $x-8 $x-4 $x-5;
+  text-align: left;
+  border-left: 3px solid $white;
+  &:hover, &:focus {
+    color: $green-active;
+    border-left-color: $green-active;
+  }
+  .hui-NavLink__icon {
+    margin-right: $x-4;
+  }
+}

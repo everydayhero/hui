@@ -1,0 +1,120 @@
+.AggregateSearchResultCharity__avatar {
+  float: left;
+  display: block;
+  position: relative;
+  border-radius: $x-9;
+  background: $grey-lighter;
+  width: $x-18;
+  min-height: $x-18;
+  margin-right: 10px;
+
+  .hui-Icon {
+    position: absolute;
+    color: $grey;
+    width: $x-18;
+    height: $x-18;
+    top: 0;
+    left: 0;
+    line-height: $x-18;
+    text-align: center;
+    font-size: $x-9;
+    padding-left: 1px;
+    padding-top: 2px;
+
+    @include media-max($bp-xs) {
+      width: $x-12;
+      height: $x-12;
+      line-height: $x-12;
+    }
+  }
+
+  @include media-max($bp-xs) {
+    border-radius: 25px;
+    width: $x-12;
+    min-height: $x-12;
+  }
+}
+
+.AggregateSearchResultCharity__logo {
+  float: left;
+  display: block;
+  width: $x-18;
+  height: $x-18;
+  text-align: center;
+  background-color: white;
+  border-radius: $border-radius;
+  padding: 5px;
+  font-size: 0;
+  line-height: 0;
+  margin-right: 10px;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    border: none;
+  }
+
+  @include media-max($bp-xs) {
+    width: $x-12;
+    height: $x-12;
+    padding: 3px;
+  }
+}
+
+.AggregateSearchResultCharity__content {
+  display: block;
+}
+
+.AggregateSearchResultCharity__header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: $x-5;
+  line-height: 1.2;
+  color: white;
+
+  @include media-max($bp-s) {
+    font-size: 17px;
+  }
+
+  @include media-max($bp-xs) {
+    font-size: 15px;
+  }
+
+  @include media-max($bp-xxxs) {
+    font-size: $x-3;
+  }
+}
+
+.AggregateSearchResultCharity__subheader {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  margin-bottom: $x-1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.AggregateSearchResultCharity__supporters {
+  color: $green-light;
+}
+
+.AggregateSearchResultCharity__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  line-height: 1.2;
+  height: 42px;
+  overflow: hidden;
+}

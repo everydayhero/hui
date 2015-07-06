@@ -1,10 +1,10 @@
 'use strict';
 
-var moment            = require('moment');
-var React             = require('react');
-var DatePicker        = require('./DatePicker');
-var TextInput         = require('../TextInput');
-var classNamesArray   = require('../../lib/classNamesArray');
+import moment from 'moment'
+import React from 'react'
+import DatePicker from './DatePicker'
+import TextInput from '../TextInput'
+import classnames from 'classnames'
 
 var dateFormats = {
   uk: ['DD', 'YYYY', 'DD-MM', 'MMM DD', 'MMM Do', 'DD-MM-YY', 'DD-MM-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD'],
@@ -221,7 +221,7 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-DateInput--' + props.layout,
       'hui-DateInput--' + props.spacing,
       'hui-DateInput'

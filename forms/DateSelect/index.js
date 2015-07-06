@@ -1,10 +1,10 @@
 'use strict';
 
-var React           = require('react');
-var SelectInput     = require('../SelectInput');
-var moment          = require('moment');
-var inputMessage    = require('../../mixins/inputMessage');
-var classNamesArray = require('../../lib/classNamesArray');
+import React from 'react'
+import SelectInput from '../SelectInput'
+import moment from 'moment'
+import inputMessage from '../../mixins/inputMessage'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'DateSelect',
@@ -137,7 +137,7 @@ module.exports = React.createClass({
       disabled: props.disabled,
       readOnly: props.readOnly
     };
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-DateSelect--' + props.layout,
       'hui-DateSelect--' + props.spacing,
       'hui-DateSelect',

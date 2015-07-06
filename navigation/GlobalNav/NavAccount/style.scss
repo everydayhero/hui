@@ -1,0 +1,34 @@
+.hui-NavAccount {
+  transition: all 160ms ease-out;
+  color: $grey-active;
+  padding: $x-2;
+  text-align: center;
+  margin-right: $x-2;
+  height: $x-10;
+  width: $x-10;
+  position: relative;
+  border-radius: 50%;
+}
+
+.hui-NavAccount__icon {
+  font-size: $x-5;
+  cursor: pointer;
+  &:hover {
+    color: $green-active;
+  }
+}
+
+.hui-NavAccount--open {
+  background-color: $green;
+  .hui-NavAccount__icon {
+    color: $white;
+  }
+}
+
+.hui-NavAccount__menu {
+  background-color: $white;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  box-shadow: 0 1px 3px $grey-light;
+}

@@ -1,11 +1,11 @@
 @import "../InputErrors/style";
 
 .hui-Checkbox {
-  margin: 0px 0 $hui-x-4 $hui-x-5
+  margin: 0px 0 $x-4 $x-5
 }
 
 .hui-Checkbox__input {
-  margin-right: $hui-x-2;
+  margin-right: $x-2;
   display: inline-block;
 }
 
@@ -15,10 +15,10 @@ label.hui-Checkbox__label {
 
 .hui-Checkbox__label {
   display: inline-block;
-  font-size: 13px;
-  font-family: $hui-font-family;
+  font-size: $x-3;
+  font-family: $font-copy;
   text-transform: uppercase;
-  color: $hui-text-input-text;
+  color: $grey;
   top: 1px;
   position: relative;
 }
@@ -28,10 +28,10 @@ label.hui-Checkbox__label {
     @extend %error-message;
     text-align: left;
     font-family: 'Lato',helvetica,arial,sans-serif;
-    font-size: 12px;
-    line-height: 12px;
+    font-size: $x-3;
+    line-height: $x-3;
     letter-spacing: .05em;
-    padding: 4px 8px;
-    margin-top: 8px;
+    padding: $x-1 $x-2;
+    margin-top: $x-2;
   }
 }

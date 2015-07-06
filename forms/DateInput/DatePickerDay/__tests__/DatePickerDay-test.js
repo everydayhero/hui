@@ -35,7 +35,7 @@ describe('DatePickerDay', function() {
       date = element.getDOMNode();
       Simulate.click(date);
 
-      listener.mock.calls.length.should.equal(1);
+      listener.should.have.been.called;
     });
   });
 });

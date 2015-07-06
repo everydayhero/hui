@@ -1,18 +1,25 @@
 %hui-lato-thin {
   font-weight: 100;
-  font-family: $hui-font-family;
+  font-family: $font-copy;
 }
 
 %hui-rule-left {
   border: 0;
   border-left: 1px;
   border-style: solid;
-  border-color: $hui-border-green;
+  border-color: $green-dark;
 }
 
 %hui-rule-bottom {
   border: 0;
   border-bottom: 1px;
   border-style: solid;
-  border-color: $hui-border-grey;
+  border-color: $grey-light;
+}
+
+%truncate {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

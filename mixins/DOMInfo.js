@@ -4,8 +4,9 @@
 * getDOMNode() is unavailable until after the component is rendered.
 */
 
-var _ = require('lodash');
-var locals = require('../locals');
+import _ from 'lodash'
+import { canUseDOM } from 'exenv'
+
 var breakpoints = {
   phone: 450,
   tablet: 700,
@@ -21,7 +22,7 @@ var sizes = {
 
 var resizeHandlers = [];
 
-if (locals.IS_CLIENT) window.addEventListener('resize', function(e) {
+if (canUseDOM) window.addEventListener('resize', function(e) {
   resizeHandlers.forEach(function(handler) {
     handler(e);
   });
@@ -37,7 +38,7 @@ module.exports = {
   getInitialState: function() {
     return {
       size: 'medium',
-      device: locals.device
+      device: 'tablet'
     };
   },
 

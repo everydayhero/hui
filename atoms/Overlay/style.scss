@@ -24,26 +24,26 @@
 
 .Overlay__close {
   position: absolute;
-  right: $hui-x-9;
-  top: $hui-x-9;
+  right: $x-9;
+  top: $x-9;
   display: block;
-  font-size: $hui-x-9;
-  line-height:$hui-x-9;
+  font-size: $x-9;
+  line-height:$x-9;
   color: white;
 
   &:hover {
-    color: $hui-primary-green;
+    color: $green;
   }
 
   @include media-max($bp-xs) {
-    right: $hui-x-3;
-    top: $hui-x-4;
+    right: $x-3;
+    top: $x-4;
     font-size: 30px;
   }
 }
 
 .Overlay__close--inverse {
-  color: $hui-medium-grey;
+  color: $grey-light;
 }
 
 .Overlay-open {

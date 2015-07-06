@@ -1,29 +1,29 @@
 .hui-Row {
-  padding: 40px;
+  padding: $x-10;
   width: 100%;
-  color: white;
+  color: $white;
 }
 
 .hui-Row.phone {
-  padding: 40px 20px;
+  padding: $x-10 $x-5;
 }
 
 .hui-Row.banner {
-  color: white;
+  color: $white;
   text-align: center;
 }
 
 .hui-Row.primary {
-  background-color: white;
-  color: #525252;
+  background-color: $white;
+  color: $grey;
 }
 
 .hui-Row.secondary {
-  background-image: url(images/alt_charity_bg--blur.jpg);
+  background-image: url('../images/alt_charity_bg--blur.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   // background-attachment: fixed;
   background-size: cover;
-  color: #525252;
+  color: $grey;
   overflow: hidden;
 }

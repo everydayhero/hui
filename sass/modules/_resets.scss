@@ -5,13 +5,13 @@
   text-decoration: none;
   box-sizing: border-box;
   font-family: lato,helvetica,arial,sans-serif;
-  font-size: 13px;
+  font-size: $x-3;
 }
 
 %a-reset {
   border: none;
   outline: none;
-  color: $hui-primary-green;
+  color: $green;
 
   &:hover {
     text-decoration: none;

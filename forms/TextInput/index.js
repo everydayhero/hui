@@ -5,7 +5,6 @@ var LocalStorageMixin = require('../../mixins/localStorage');
 var inputMessage      = require('../../mixins/inputMessage');
 var textInput         = require('../../mixins/textInput');
 var classnames        = require('classnames');
-var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'TextInput',
@@ -13,6 +12,7 @@ module.exports = React.createClass({
   mixins: [LocalStorageMixin, inputMessage, textInput],
 
   propTypes: {
+    className: React.PropTypes.string,
     autoComplete: React.PropTypes.bool,
     storeLocally: React.PropTypes.bool,
     autoFocus: React.PropTypes.bool,
@@ -46,6 +46,7 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
+      className: '',
       autoComplete: true,
       storeLocally: false,
       autoFocus: false,
@@ -95,7 +96,8 @@ module.exports = React.createClass({
     var value = (valueType === 'string' || valueType === 'number') ? props.value.toString() : '';
     var hasServerErrors = errors.length;
     var iconsLeft = (props.iconPosition === 'left');
-    var classes = classNamesArray([
+    var classes = classnames([
+      props.className,
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
       'hui-TextInput',
