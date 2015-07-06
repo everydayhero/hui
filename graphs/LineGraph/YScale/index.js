@@ -1,7 +1,6 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
-var _          = require('lodash');
 var numeral    = require('numeral');
 var Path       = require('paths-js/path');
 var scaleMixin = require('../mixins/scaleMixin');
@@ -9,6 +8,7 @@ var TEXTOFFSET = 8;
 
 module.exports = React.createClass({
   displayName: 'YScale',
+
   mixins: [scaleMixin],
 
   propTypes: {
@@ -25,7 +25,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       minScaleLineGap: 20
-    }
+    };
   },
 
   getHeight: function() {
@@ -48,12 +48,12 @@ module.exports = React.createClass({
         delta = Math.ceil(upperBound / numberOfScaleLine);
         break;
       }
-      numberOfScaleLine --;
+      numberOfScaleLine--;
     }
 
     return {
       total: numberOfScaleLine,
-      delta: delta
+      delta
     };
   },
 
@@ -72,14 +72,14 @@ module.exports = React.createClass({
 
     while(scaleLines.total + 1 !== count) {
       var path = Path()
-                .moveto({x: 0, y: yPos })
-                .hlineto({x: this.props.width});
-      format = (label > 1000)? '0.0 a' : format;
+                .moveto({ x: 0, y: yPos })
+                .hlineto({ x: this.props.width });
+      format = (label > 1000) ? '0.0 a' : format;
 
       scaleLinePaths.push(
         <g
           key={ count }
-          transform={ "translate(0, "+ this.props.gutter.top +")" }>
+          transform={ 'translate(0, ' + this.props.gutter.top + ')' }>
           <path
             className="hui-YScale__line"
             d={ path.print() } />
@@ -92,7 +92,7 @@ module.exports = React.createClass({
         </g>
       );
 
-      count ++;
+      count++;
       yPos = yPos - scaleLineGap;
       label += scaleLines.delta;
     }

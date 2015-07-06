@@ -1,14 +1,16 @@
 @import "common";
 
-//Helpers
-@import "Helpers/LoadingProgress/style";
-@import "Helpers/A/style";
-@import "Helpers/SocialMediaLinks/style";
+// atoms
+@import "atoms/A/style";
+@import "atoms/Icon/style";
+@import "atoms/LoadingProgress/style";
+@import "atoms/Separator/style";
+@import "atoms/SocialMediaLinks/style";
 
-//Buttons
+// Buttons
 @import "buttons/Button/style";
 
-//Layout
+// Layout
 @import "layout/TopBar/style";
 @import "layout/TopBarLink/style";
 @import "layout/Masthead/style";

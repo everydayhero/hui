@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 var React            = require('react');
 var DatePickerPeriod = require('../DatePickerPeriod');
-var Icon             = require('../../../Helpers/Icon');
+var Icon             = require('../../../atoms/Icon');
 
 module.exports = React.createClass({
   displayName: 'DatePickerPeriods',
@@ -23,7 +23,7 @@ module.exports = React.createClass({
   },
 
   onChange: function(current) {
-     if (this.props.onChange) { this.props.onChange(current); }
+    if (this.props.onChange) { this.props.onChange(current); }
   },
 
   onForward: function(e) {
@@ -37,7 +37,7 @@ module.exports = React.createClass({
   },
 
   getMonth: function(i) {
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return months[i];
   },
 

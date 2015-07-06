@@ -1,6 +1,5 @@
-"use strict";
+'use strict';
 
-var _ = require('lodash');
 var React = require('react');
 var i18n = require('../lib/i18n');
 var Remarkable = require('remarkable');

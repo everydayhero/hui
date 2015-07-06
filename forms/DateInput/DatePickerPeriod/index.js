@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var classnames = require('classnames');
@@ -26,7 +26,7 @@ module.exports = React.createClass({
 
   render: function() {
     var classes = classnames({
-      'hui-DatePickerPeriod--selected': this.isSelected(),
+      'hui-DatePickerPeriod--selected': this.isSelected()
     }, 'hui-DatePickerPeriod');
 
     return <a className={ classes } tabIndex="-1" href="#" onClick={ this.onSelect }>{ this.props.children } </a>;

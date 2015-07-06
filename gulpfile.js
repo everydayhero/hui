@@ -1,9 +1,8 @@
-"use strict";
+'use strict';
 
 var gulp                = require('gulp');
 var gutil               = require('gulp-util');
 var concat              = require('gulp-concat');
-var runSequence         = require('run-sequence');
 var source              = require('vinyl-source-stream');
 var buffer              = require('vinyl-buffer');
 
@@ -17,26 +16,35 @@ var browserify          = require('browserify');
 var uglify              = require('gulp-uglify');
 
 // html
-var inject              = require("gulp-inject");
-var pkg                 = require('./package');
-
-var modulePathsWithType = require('./gulp_tasks/modulePathsWithType');
+var inject              = require('gulp-inject');
 
 // Tasks
-require('./gulp_tasks/assets-deploy.js');
-require('./gulp_tasks/lint.js');
-require('./gulp_tasks/assets-build.js');
-require('./gulp_tasks/docs.js');
+require('./gulp_tasks/assets-deploy');
+require('./gulp_tasks/lint');
+require('./gulp_tasks/assets-build');
+require('./gulp_tasks/docs');
 
 var debug        = !!gutil.env.debug;
+var src          = {};
+var exclude      = [
+  '!./**/*test**',
+  '!./__tests__/**',
+  '!./test/**',
+  '!./node_modules/**',
+  '!./bin/**',
+  '!./gulp*',
+  '!./gulp_tasks/**',
+  '!./dist/**'
+];
 
 process.env.NODE_ENV = debug ? 'development' : 'production';
 
 gulp.task('styles', function() {
   var compress = debug ? gutil.noop : minifyCss;
+  src.styles = [ 'index.scss' ];
 
   return gulp
-    .src([ 'index.scss', 'node_modules/highlight.js/styles/monokai_sublime.css' ])
+    .src(src.styles)
     .pipe(sass({
       sourceMap: 'sass',
       sourceComments: 'map',
@@ -51,6 +59,7 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', [ 'lint' ], function() {
   var compress = debug ? gutil.noop : uglify;
+  src.scripts = ['./**/*.js'].concat(exclude);
 
   var bundler = browserify({
       entries: ['./index.js'],
@@ -84,8 +93,10 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
 });
 
 gulp.task('images', function() {
+  src.images = ['./**/images/*'].concat(exclude);
+
   return gulp
-    .src('./images/*', {base: './images'})
+    .src(src.images)
     .pipe(gulp.dest('dist/images'));
 });
 
@@ -93,7 +104,7 @@ gulp.task('build', ['index']);
 gulp.task('default', [ 'build' ]);
 
 gulp.task('watch', function() {
-  gulp.watch(modulePathsWithType('.scss'), [ 'styles' ]);
-  gulp.watch(modulePathsWithType('.js'), [ 'scripts' ]);
+  gulp.watch(src.styles, [ 'styles' ]);
+  gulp.watch(src.scripts, [ 'scripts' ]);
   gulp.watch('index.ejs', [ 'index' ]);
 });

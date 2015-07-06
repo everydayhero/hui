@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var FileInput = require('../FileInput');
@@ -39,5 +39,5 @@ module.exports = React.createClass({
         <FileInput { ...props } />
       </div>
     );
-  },
+  }
 });

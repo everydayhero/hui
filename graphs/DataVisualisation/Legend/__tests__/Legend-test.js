@@ -1,12 +1,8 @@
-"use strict";
+'use strict';
 
-jest.autoMockOff();
+var Legend    = require('../index');
 
 describe('Legend', function() {
-  var React     = require('react/addons');
-  var Legend    = require('../index');
-  var TestUtils = React.addons.TestUtils;
-
   var keys = [
     { label: 'label1', className: 'ClassName1' },
     { label: 'label2', className: 'ClassName2' },
@@ -20,7 +16,7 @@ describe('Legend', function() {
     var component;
 
     beforeEach(function() {
-      component = TestUtils.renderIntoDocument(<Legend keys={ keys } />);
+      component = renderIntoDocument(<Legend keys={ keys } />);
       component.setState({
         width: 200,
         height: 200
@@ -28,32 +24,29 @@ describe('Legend', function() {
     });
 
     it('should render Legend', function() {
-      expect(component).not.toBeNull();
+      component.should.exist;
     });
 
     it('should render a equal number of keys to items in array', function() {
-      var legendItems = TestUtils.scryRenderedDOMComponentsWithClass(component, 'hui-Legend__item');
+      var legendItems = scryByClass(component, 'hui-Legend__item');
 
-      expect(legendItems.length).toBe(keys.length);
+      legendItems.length.should.equal(keys.length);
     });
-
 
     it('should render text to match items in array', function() {
       keys.forEach(function(key) {
-        var legendItems = TestUtils.scryRenderedDOMComponentsWithClass(component, key.className);
+        var legendItems = scryByClass(component, key.className);
 
-        expect(legendItems[0].getDOMNode().textContent).toBe(key.label);
+        legendItems[0].getDOMNode().textContent.should.equal(key.label);
       });
     });
-
 
     it('should render items matching classnames given in array', function() {
       keys.forEach(function(key) {
-        var legendItems = TestUtils.scryRenderedDOMComponentsWithClass(component, key.className);
+        var legendItems = scryByClass(component, key.className);
 
-        expect(legendItems.length).toBe(1);
+        legendItems.length.should.equal(1);
       });
     });
-
   });
 });

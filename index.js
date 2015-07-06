@@ -1,12 +1,10 @@
-"use strict";
+'use strict';
 
-require('./env');
-var React    = require('react');
-var DemoPage = require('./DemoPage');
-var content  = document.getElementById("content");
+import './env'
+import React from 'react'
+import DemoPage from './DemoPage'
+const content = document.getElementById('content')
 
-global.React = React;
+global.React = React
 
-React.render(<DemoPage/>, content);
-
-
+React.render(<DemoPage/>, content)

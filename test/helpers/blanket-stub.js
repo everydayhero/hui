@@ -2,34 +2,28 @@
 // based on https://github.com/alex-seville/blanket/blob/master/src/node-loaders/coffee-script.js
 'use strict';
 
-var fs = require('fs'),
+var transform = require('./stub-transform'),
     glob = require('glob'),
-    path = require('path'),
-    transformer = require('./jsx-stub-transform');
-
+    path = require('path');
 
 module.exports = function(blanket) {
 
   var origJs = require.extensions['.js'];
 
   require.extensions['.js'] = function(localModule, filename) {
-    // short-circuit for common case.
     if (filename.match(/node_modules/)) {
       return origJs(localModule, filename);
     }
 
-    // React-ify as necessary.
-    var content = transformer.transform(filename) ||
-        fs.readFileSync(filename, 'utf8');
+    var content = transform(filename);
 
-    // Don't instrument code unless it passes the filter & is non-stubby.
+    // Don't instrument code unless it passes the filter.
     var pattern = blanket.options('filter');
     var normalizedFilename = blanket.normalizeBackslashes(filename);
-    if (transformer.shouldStub(filename) ||
-        !blanket.matchPattern(normalizedFilename, pattern)) {
+    if (!blanket.matchPattern(normalizedFilename, pattern)) {
       localModule._compile(content, normalizedFilename);
-      delete require.cache[normalizedFilename];  // might not be stubbed in the future.
-      return;
+      delete require.cache[normalizedFilename];
+      return false;
     }
 
     blanket.instrument({
@@ -38,28 +32,39 @@ module.exports = function(blanket) {
     }, function(instrumented){
       var baseDirPath = blanket.normalizeBackslashes(path.dirname(normalizedFilename)) + '/.';
       try {
-        instrumented = instrumented.replace(/require\s*\(\s*("|')\./g,'require($1' + baseDirPath);
+        instrumented = instrumented.replace(/(^require| require)\s*\(\s*("|')\./g, 'require($2' + baseDirPath);
         localModule._compile(instrumented, normalizedFilename);
         delete require.cache[normalizedFilename];  // might be stubbed in the future.
       } catch(err){
-        console.log("Error parsing instrumented code: " + err);
+        console.log('Error parsing instrumented code: ' + err);
       }
     });
   };
 
-  // Source all JS files so that they count towards the denominator.
-  require('./testdom')('<html><body></body></html>');
-  var antifilters = blanket.options('antifilter');
-  var pattern = './' + blanket.options('filter') + '/**/*.js';
-  glob.sync(pattern).forEach(function(path) {
-    var pathFromRoot = path.slice(2);
-    for (var i = 0; i < antifilters.length; i++) {
-      var antifilter = antifilters[i];
-      if (pathFromRoot.slice(0, antifilter.length) == antifilter) {
-        return;
+  var matches = function(_path, test) {
+    var bool = false;
+    if (test instanceof RegExp) {
+      bool = test.test(_path);
+    }
+    if (typeof test === 'string') {
+      bool = _path.indexOf(test) !== -1;
+    }
+    if (test instanceof Array) {
+      for (var i = 0; !bool && i < test.length; i++) {
+        bool = matches(_path, test[i]);
       }
     }
+    return bool;
+  };
+
+  // Source all JS files so that they count towards the denominator.
+  var pattern = './**/*.js';
+  glob.sync(pattern).forEach(function(_path) {
+    if (!matches(_path, blanket.options('filter')) || matches(_path, blanket.options('antifilter'))) {
+      return;
+    }
     // Find files relative to this file
-    require('../../' + pathFromRoot);
+    require('../../' + _path);
   });
 };
+

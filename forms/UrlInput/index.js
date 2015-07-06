@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React             = require('react');
 var SelectInput       = require('../SelectInput');
@@ -9,6 +9,7 @@ var classNamesArray   = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'UrlInput',
+
   mixins: [LocalStorageMixin],
 
   propTypes: {
@@ -33,13 +34,6 @@ module.exports = React.createClass({
     label: React.PropTypes.string,
     protocolLabel: React.PropTypes.string,
     errorMessage: React.PropTypes.string
-  },
-
-  getInitialState: function() {
-    return {
-      protocol: '',
-      path: ''
-    };
   },
 
   getDefaultProps: function() {
@@ -68,7 +62,14 @@ module.exports = React.createClass({
       layout: 'full',
       spacing: 'loose',
       protocolLabel: 'protocol',
-      label: 'url',
+      label: 'url'
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      protocol: '',
+      path: ''
     };
   },
 
@@ -103,7 +104,7 @@ module.exports = React.createClass({
   },
 
   mask: function(value) {
-    return value.replace(" ", "");
+    return value.replace(' ', '');
   },
 
   render: function() {
@@ -113,7 +114,7 @@ module.exports = React.createClass({
     var classes = classNamesArray([
       'hui-UrlInput--' + props.layout,
       'hui-UrlInput--' + props.spacing,
-      "hui-UrlInput"
+      'hui-UrlInput'
     ]);
 
     return (

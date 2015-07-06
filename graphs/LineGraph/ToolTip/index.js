@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _            = require('lodash');
 var React        = require('react');
@@ -35,9 +35,9 @@ module.exports = React.createClass({
     var pathData;
 
     if (this.props.isFlipOver) {
-      pathData = "M190 100 L190 0";
+      pathData = 'M190 100 L190 0';
     } else {
-      pathData = "M10 100 L10 0";
+      pathData = 'M10 100 L10 0';
     }
 
     return (
@@ -56,24 +56,24 @@ module.exports = React.createClass({
 
   renderTipContent: function() {
     var props = this.props;
-    var data  = props.data;
-    var date, content, classes;
+    var data = props.data;
+    var date, classes;
 
     classes = classNames({
-      "hui-ToolTip__text--left": !props.isFlipOver,
-      "hui-ToolTip__text--right": props.isFlipOver,
-    }, "hui-ToolTip__text");
+      'hui-ToolTip__text--left': !props.isFlipOver,
+      'hui-ToolTip__text--right': props.isFlipOver
+    }, 'hui-ToolTip__text');
 
     if (_.isEmpty(data)) {
       return false;
     } else {
-      date = moment(data.date).format("ddd MMM DD, YYYY");
+      date = moment(data.date).format('ddd MMM DD, YYYY');
 
       return (
         <div className={ classes } >
           <p className="hui-ToolTip__date" >{ date }</p>
           <p>
-            { props.label + ": " }
+            { props.label + ': ' }
             <span className="hui-ToolTip__value"> { formatNumber(data.value, props.totalFormat) } </span>
             { " / " }
             <span className="hui-ToolTip__total"> { formatNumber(data.total, props.totalFormat) } </span>
@@ -91,8 +91,8 @@ module.exports = React.createClass({
     var style    = { left: x, top: y - 3 };
 
     var classes = classNames({
-      "hui-ToolTip--left": props.isFlipOver
-    }, "hui-ToolTip");
+      'hui-ToolTip--left': props.isFlipOver
+    }, 'hui-ToolTip');
 
     if (!props.show) {
       return false;

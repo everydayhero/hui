@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var UrlInput  = require('../../../forms/UrlInput');
@@ -6,13 +6,14 @@ var formMixin = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'UrlInputExample',
+
   mixins: [formMixin],
 
   t: function(name) {
     var translation = {
       website_url_label: 'Website Url:',
-      website_url_tip: 'past your url here.',
-      website_url_hint: 'you can even past the http part!'
+      website_url_tip: 'paste your url here.',
+      website_url_hint: 'you can even paste the http part!'
     };
 
     return (translation[name]);
@@ -26,7 +27,7 @@ module.exports = React.createClass({
     <div>
       <h3 className="DemoPage__h3" id="UrlInput">UrlInput</h3>
 
-      { this.urlInput("website_url") }
+      { this.urlInput('website_url') }
 
       <UrlInput
         id={ url }

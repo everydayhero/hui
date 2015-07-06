@@ -1,33 +1,27 @@
-"use strict";
+'use strict';
 
-jest.dontMock('../');
-jest.dontMock('lodash');
-jest.dontMock('moment');
-jest.dontMock('../../DatePickerDay');
+var DatePicker = require('../');
+var moment = require('moment');
 
 describe('DatePicker', function() {
-  var React       = require('react/addons');
-  var DatePicker  = require('../');
-  var moment      = require('moment');
-  var TestUtils   = React.addons.TestUtils;
   var date, component, passedDate;
 
   beforeEach(function() {
     date = moment();
     passedDate = null;
-    var onChangeSelection = function(value) { passedDate = value; };
-    component = TestUtils.renderIntoDocument(<DatePicker date={ date } onChangeSelection={ onChangeSelection }/>);
+    var onChangeSelection = val => passedDate = val;
+    component = renderIntoDocument(<DatePicker date={ date } onChangeSelection={ onChangeSelection }/>);
   });
 
   it('should set the month state', function() {
     var month = 1;
     component.setMonth(month);
-    expect(passedDate.month()).toEqual(month);
+    passedDate.month().should.equal(month);
   });
 
   it('should set the year state', function() {
     var year = 2015;
     component.setYear(year);
-    expect(passedDate.year()).toEqual(year);
+    passedDate.year().should.equal(year);
   });
 });

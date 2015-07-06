@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
-var Icon       = require('../Helpers/Icon');
+var Icon       = require('../atoms/Icon');
 var classnames = require('classnames');
 
 module.exports = {
@@ -76,8 +76,8 @@ module.exports = {
 
     this.setState({
       hasError: !valid,
-      valid: valid,
-      waiting: false
+      waiting: false,
+      valid
     }, function() {
       if (onError) { onError(!valid); }
     });
@@ -114,20 +114,19 @@ module.exports = {
                : (props.required && !props.value) ? 'caret-left'
                : false;
 
-    if (!icon) { return; }
-
     if (props.onIconClick) {
-      return (
+      return icon && (
         <a href="" className={ className } onClick={ props.onIconClick }>
           <Icon icon={ icon } fixedWidth={ true } />
         </a>
       );
+    } else {
+      return icon && (
+        <span className={ className }>
+          <Icon icon={ icon } fixedWidth={ true } />
+        </span>
+      );
     }
-    return (
-      <span className={ className }>
-        <Icon icon={ icon } fixedWidth={ true } />
-      </span>
-    );
   },
 
   renderPlaceHolder: function() {
@@ -136,7 +135,7 @@ module.exports = {
     }
 
     return (
-        <span className='hui-TextInput__placeHolder'>
+        <span className="hui-TextInput__placeHolder">
           { this.props.placeHolder }
         </span>
       );

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var DateInput = require('../../../forms/DateInput');
@@ -25,17 +25,17 @@ module.exports = React.createClass({
     <div>
       <h3 className="DemoPage__h3">DateInput</h3>
 
-      { this.dateInput("start_on") }
+      { this.dateInput('start_on') }
 
       <FormRow htmlFor="end_on" tip="I'm very helpful.">
         <DateInput
           className="campaign__endOn"
           value={ this.state.form.end_on }
-          onChange={ change("end_on") } />
+          onChange={ change('end_on') } />
         <DateInput
           className="campaign__endOn"
           value={ this.state.form.end_on2 }
-          onChange={ change("end_on2") } />
+          onChange={ change('end_on2') } />
       </FormRow>
     </div>
     );

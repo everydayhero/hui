@@ -1,27 +1,27 @@
-require('node-jsx').install();
-var express     = require('express')
-var app         = express();
-var compression = require('compression');
-var morgan      = require('morgan');
-var React       = require('react/addons');
-var ejs         = require('ejs');
+'use strict';
 
-var ReactApp    = React.createFactory(require('./DemoPage'));
-var staticPath  = __dirname + '/dist/';
-var port        = Number(process.env.PORT || 5000);
+import express from 'express'
+import compression from 'compression'
+import morgan from 'morgan'
+import React from 'react/addons'
 
-app.use(morgan());
-app.use(compression());
+const app = express()
 
-function sendStaticFile(name) {
-  return function (_, res) {
-    var content = React.renderToString(ReactApp({}));
-    res.render(staticPath + name, {content: content});
-  };
-}
+const ReactApp = React.createFactory(require('./DemoPage'))
+const staticPath = __dirname + '/dist/'
+const port = Number(process.env.PORT || 5000)
 
-app.use(express.static(staticPath));
-app.get('/', sendStaticFile('index.ejs'));
-app.get('*', sendStaticFile('index.ejs'));
+app.use(compression())
+app.use(morgan())
 
-app.listen(port, console.log.bind(this, 'Port: ' + port));
+const sendStaticFile = name =>
+  (_, res) => {
+    let content = React.renderToString(ReactApp({}))
+    res.render(staticPath + name, { content })
+  }
+
+app.use(express.static(staticPath))
+app.get('/', sendStaticFile('index.ejs'))
+app.get('*', sendStaticFile('index.ejs'))
+
+app.listen(port, console.log.bind(this, 'Port: ' + port))

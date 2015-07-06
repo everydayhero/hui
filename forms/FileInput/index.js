@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
 var React           = require('react');
 var filepicker      = require('../../lib/filepicker');
-var Icon            = require('../../Helpers/Icon');
+var Icon            = require('../../atoms/Icon');
 var inputMessage    = require('../../mixins/inputMessage');
 var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'FileInput',
 
-  mixins: [inputMessage,],
+  mixins: [inputMessage],
 
   propTypes: {
     disabled: React.PropTypes.bool,
@@ -24,7 +24,7 @@ module.exports = React.createClass({
     options: React.PropTypes.object,
     services: React.PropTypes.arrayOf(React.PropTypes.string),
     spacing: React.PropTypes.string,
-    value: React.PropTypes.object,
+    value: React.PropTypes.object
   },
 
   getDefaultProps: function() {
@@ -37,7 +37,7 @@ module.exports = React.createClass({
       noFileLabel: 'No file selected',
       options: {},
       services: ['CONVERT', 'COMPUTER'],
-      spacing: 'loose',
+      spacing: 'loose'
     };
   },
 
@@ -98,7 +98,7 @@ module.exports = React.createClass({
   },
 
   getBrowseLabel: function(filename) {
-    return filename ? "Replace" : "Browse";
+    return filename ? 'Replace' : 'Browse';
   },
 
   render: function() {
@@ -117,7 +117,7 @@ module.exports = React.createClass({
       this.shouldShowError() && 'hui-FileInput--error',
       props.disabled && 'hui-FileInput--disabled',
       state.focused && 'hui-FileInput--focused',
-      "hui-FileInput"
+      'hui-FileInput'
     ]);
 
     global.ENV = global.ENV || {};
@@ -150,5 +150,5 @@ module.exports = React.createClass({
         { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
       </div>
     );
-  },
+  }
 });

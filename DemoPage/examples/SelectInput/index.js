@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React       = require('react');
 var SelectInput = require('../../../forms/SelectInput');
@@ -6,13 +6,14 @@ var formMixin   = require('../../../mixins/reactForm.mixin');
 
 module.exports = React.createClass({
   displayName: 'SelectInputExample',
+
   mixins: [formMixin],
 
   t: function(name) {
     var translation = {
-      toys_label: 'Toys Select:',
-      toys_hint: 'These are some toys',
-      toy_tip: 'What toy do you want?'
+      'toys_label': 'Toys Select:',
+      'toys_hint': 'These are some toys',
+      'toy_tip': 'What toy do you want?'
     };
 
     return (translation[name]);
@@ -30,7 +31,7 @@ module.exports = React.createClass({
     <div>
       <h3 className="DemoPage__h3" id="SelectInput">SelectInput</h3>
 
-      { this.selectInput("toys", { options: options }) }
+      { this.selectInput('toys', { options }) }
 
       <SelectInput
         id="toys"

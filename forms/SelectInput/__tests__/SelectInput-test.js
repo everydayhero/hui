@@ -1,15 +1,8 @@
-"use strict";
+'use strict';
 
-jest.autoMockOff();
+var Select      = require('../');
 
 describe('SelectInput', function() {
-  var React       = require('react/addons');
-  var Select      = require('../');
-  var TestUtils   = React.addons.TestUtils;
-  var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
-  var findByClass = TestUtils.findRenderedDOMComponentWithClass;
-  var scryByTag   = TestUtils.scryRenderedDOMComponentsWithTag;
-  var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
   var options = [
         { value: 'six', label: 'Item 6' },
         { value: 'seven', label: 'Item 7' }
@@ -19,30 +12,30 @@ describe('SelectInput', function() {
     var element, select;
 
     beforeEach(function() {
-      element = TestUtils.renderIntoDocument(
-          <Select options={ [{value: 1, label: 'Item x'}] } prompt='Please select' />
+      element = renderIntoDocument(
+          <Select options={ [{ value: 1, label: 'Item x' }] } prompt="Please select" />
         );
       select = findByTag(element, 'select');
     });
 
-    it('value of null', function() {
-      expect(select.getDOMNode().value).toBe('1');
+    it('no value', function() {
+      select.getDOMNode().value.should.equal('1');
     });
 
-    it('id of null', function() {
-      expect(select.getDOMNode().id).toBe(null);
+    it('no id', function() {
+      select.getDOMNode().id.should.equal('');
     });
 
-    it('name of null', function() {
-      expect(select.getDOMNode().name).toBe(null);
+    it('no name', function() {
+      select.getDOMNode().name.should.equal('');
     });
 
     it('does not render blank option', function() {
       var firstOption = scryByTag(element, 'option')[0];
       var node = firstOption.getDOMNode();
 
-      expect(node.value).toEqual('1');
-      expect(node.textContent).toEqual('Item x');
+      node.value.should.equal('1');
+      node.textContent.should.equal('Item x');
     });
   });
 
@@ -50,7 +43,7 @@ describe('SelectInput', function() {
     var element, select;
 
     beforeEach(function() {
-      element = TestUtils.renderIntoDocument(
+      element = renderIntoDocument(
           <Select
             type="email"
             value="six"
@@ -62,47 +55,47 @@ describe('SelectInput', function() {
     });
 
     it('value of six', function() {
-      expect(select.getDOMNode().value).toBe('six');
+      select.getDOMNode().value.should.equal('six');
     });
 
-    it('display value when selction', function() {
+    it('display value when selection', function() {
       var display = findByClass(element, 'hui-SelectInput__selected');
 
-      expect(display.getDOMNode().textContent).toContain("Item 6");
+      display.getDOMNode().textContent.should.contain('Item 6');
     });
 
     it('id is select-seven', function() {
-      expect(select.getDOMNode().id).toBe('seven');
+      select.getDOMNode().id.should.equal('seven');
     });
 
     it('name is select-seven', function() {
-      expect(select.getDOMNode().name).toBe('seven');
+      select.getDOMNode().name.should.equal('seven');
     });
 
     it('blank option is rendered', function() {
       var firstOption = scryByTag(element, 'option')[0];
       var node = firstOption.getDOMNode();
 
-      expect(node.value).toEqual('');
-      expect(node.textContent).toEqual('');
+      node.value.should.equal('');
+      node.textContent.should.equal('');
     });
   });
 
   describe('onChange', function() {
     it('is fired onChange', function() {
-      var listener = jest.genMockFunction();
-      var element = TestUtils.renderIntoDocument(
+      var listener = sinon.spy();
+      var element = renderIntoDocument(
             <Select
               onChange={ listener }
               options={ options } />
           );
 
-      expect(listener.mock.calls.length).toBe(0);
+      listener.should.have.not.been.called;
 
       var select = findByTag(element, 'select');
-      TestUtils.Simulate.change(select);
+      Simulate.change(select);
 
-      expect(listener.mock.calls.length).toBe(1);
+      listener.should.have.been.called;
     });
   });
 
@@ -110,21 +103,21 @@ describe('SelectInput', function() {
     var element, label, labels;
 
     it('says what the label says', function() {
-      element = TestUtils.renderIntoDocument(
+      element = renderIntoDocument(
         <Select label="words"/>
       );
       label = findByTag(element, 'label');
 
-      expect(label.getDOMNode().textContent).toBe('words');
+      label.getDOMNode().textContent.should.equal('words');
     });
 
     it('is there if there is no value', function() {
-      element = TestUtils.renderIntoDocument(
+      element = renderIntoDocument(
         <Select label="words"/>
       );
       labels = scryByTag(element, 'label');
 
-      expect(labels.length).toBe(1);
+      labels.length.should.equal(1);
     });
   });
 
@@ -132,52 +125,52 @@ describe('SelectInput', function() {
     var element, errorClasses;
 
     it('defaults valid to true', function() {
-      element = TestUtils.renderIntoDocument(
+      element = renderIntoDocument(
         <Select/>
       );
       errorClasses = scryByClass(element, 'hui-Input--error');
 
-      expect(errorClasses.length).toBe(0);
+      errorClasses.length.should.equal(0);
     });
 
     it('when valid no hui-Input--error class', function() {
-      element = TestUtils.renderIntoDocument(
+      element = renderIntoDocument(
         <Select valid={true} />
       );
       errorClasses = scryByClass(element, 'hui-Input--error');
 
-      expect(errorClasses.length).toBe(0);
+      errorClasses.length.should.equal(0);
     });
 
     it('when invalid there is a hui-SelectInput--error class', function() {
-      element = TestUtils.renderIntoDocument(
-        <Select errors={["I'm an error"]} />
+      element = renderIntoDocument(
+        <Select errors={ ['I am an error'] } />
       );
       errorClasses = scryByClass(element, 'hui-SelectInput--error');
 
-      expect(errorClasses.length).toBe(1);
+      errorClasses.length.should.equal(1);
     });
 
     it('shows errors', function() {
-      element = TestUtils.renderIntoDocument(
-        <Select errors={["I'm an error"]}/>
+      element = renderIntoDocument(
+        <Select errors={ ['I am an error'] }/>
       );
       errorClasses = scryByClass(element, 'hui-InputErrors');
 
-      expect(errorClasses.length).toBe(1);
+      errorClasses.length.should.equal(1);
     });
 
     it('shows errors when required', function() {
-      element = TestUtils.renderIntoDocument(
-        <Select errorMessage={ "I'm an error" } required={ true }/>
+      element = renderIntoDocument(
+        <Select errorMessage={ 'I am an error' } required={ true }/>
       );
 
       var select = findByTag(element, 'select');
-      TestUtils.Simulate.change(select);
+      Simulate.change(select);
 
       errorClasses = scryByClass(element, 'hui-InputErrors');
 
-      expect(errorClasses.length).toBe(1);
+      errorClasses.length.should.equal(1);
     });
   });
 });

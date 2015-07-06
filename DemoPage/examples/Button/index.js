@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React     = require('react');
 var Button    = require('../../../buttons/Button');
@@ -16,20 +16,20 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button id="get-started" kind='cta' label='Get Started' icon='chevron-right'/>
+          <Button id="get-started" kind="cta" label="Get Started" icon="chevron-right"/>
         </div>
       </div>
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Thin Example</h4>
         <div className="DemoPage__example--button">
-          <Button kind='cta' label='Give' thin={ true } href="/give"/>
+          <Button kind="cta" label="Give" thin={ true } href="/give"/>
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Disabled Example</h4>
         <div className="DemoPage__example--button">
-          <Button kind='cta' label='Give' thin={ true } disabled={ true }/>
+          <Button kind="cta" label="Give" thin={ true } disabled={ true }/>
         </div>
       </div>
 
@@ -38,14 +38,14 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button kind='primary' label='Save' icon='chevron-right'/>
+          <Button kind="primary" label="Save" icon="chevron-right"/>
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button kind='primary' inverse={ true } label='Sign Up' icon='chevron-right'/>
+          <Button kind="primary" inverse={ true } label="Sign Up" icon="chevron-right"/>
         </div>
       </div>
 
@@ -54,14 +54,14 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button kind='secondary' label='Sign In' icon='chevron-right'/>
+          <Button kind="secondary" label="Sign In" icon="chevron-right"/>
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button kind='secondary' inverse={ true } label='Sign In' icon='chevron-right'/>
+          <Button kind="secondary" inverse={ true } label="Sign In" icon="chevron-right"/>
         </div>
       </div>
 
@@ -70,14 +70,14 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button kind='tertiary' label='Prev' icon='chevron-left' iconLeft={ true }/>
+          <Button kind="tertiary" label="Prev" icon="chevron-left" iconLeft={ true }/>
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Inverse Example</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button kind='tertiary' inverse={ true } label='Edit' icon='edit'/>
+          <Button kind="tertiary" inverse={ true } label="Edit" icon="edit"/>
         </div>
       </div>
 
@@ -86,35 +86,34 @@ module.exports = React.createClass({
 
       <div className="DemoPage__group">
         <div className="DemoPage__example--button">
-          <Button  borderless={ true } kind='cta' label='Download' icon='download'/>
+          <Button  borderless={ true } kind="cta" label="Download" icon="download"/>
         </div>
       </div>
 
-
       <div className="DemoPage__group">
         <div className="DemoPage__example--button--inverse">
-          <Button  borderless={ true } kind='cta' label='Download' icon='download' inverse={ true }/>
+          <Button  borderless={ true } kind="cta" label="Download" icon="download" inverse={ true }/>
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Primary Example</h4>
         <div className="DemoPage__example--button">
-          <Button borderless={ true } kind='primary'label='Download' icon='download' />
+          <Button borderless={ true } kind="primary" label="Download" icon="download" />
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">Primary Example Inverse</h4>
         <div className="DemoPage__example--button--inverse">
-          <Button borderless={ true } kind='primary'label='Download' icon='download' inverse={ true } />
+          <Button borderless={ true } kind="primary" label="Download" icon="download" inverse={ true } />
         </div>
       </div>
 
       <div className="DemoPage__group">
         <h4 className="DemoPage__h4">CTA disabled Example</h4>
         <div className="DemoPage__example--button">
-          <Button borderless={ true } kind='cta' disabled={ true } label='Download' icon='download'/>
+          <Button borderless={ true } kind="cta" disabled={ true } label="Download" icon="download"/>
         </div>
       </div>
     </div>

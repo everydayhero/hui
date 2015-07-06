@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 var React           = require('react');
-var Icon            = require('../../Helpers/Icon');
+var Icon            = require('../../atoms/Icon');
 var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({

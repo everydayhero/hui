@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 var React                = require('react');
-var LoadingProgress      = require('../../../Helpers/LoadingProgress');
+var LoadingProgress      = require('../../../atoms/LoadingProgress');
 var Button               = require('../../../buttons/Button');
 var timeout;
 

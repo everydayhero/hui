@@ -50,36 +50,33 @@ module.exports = React.createClass({
   },
 
   renderScaleLines: function() {
+    if (this.props.collection.length !== 0) {
+      var props = this.props;
+      var series = props.collection[0].series;
+      var scaleLineGap = this.getWidth() / ( series.length - 1 );
+      var xPos = 0;
+      var paths = [];
+      var scaleIncrement = this.getScaleIncrement();
 
-    if (this.props.collection.length == 0) {
-      return;
+      for (var i = 0; i < series.length; i += scaleIncrement) {
+        paths.push(
+          <g
+            transform={ 'translate(' + (props.gutter.left + OFFSET) + ', 0)' }
+            key={ i }>
+            <text
+              x={ xPos }
+              y={ props.height }
+              textAnchor="middle"
+              className="hui-XScale__label">
+                { moment(series[i].date).format(props.dateFormat) }
+            </text>
+          </g>);
+
+        xPos += (scaleLineGap * scaleIncrement);
+      }
+
+      return paths;
     }
-
-    var props = this.props;
-    var series = props.collection[0].series;
-    var scaleLineGap = this.getWidth() / ( series.length - 1 );
-    var xPos = 0;
-    var paths = [];
-    var scaleIncrement = this.getScaleIncrement();
-
-    for (var i = 0; i < series.length; i += scaleIncrement) {
-      paths.push(
-        <g
-          transform={ "translate("+ (props.gutter.left + OFFSET) + ", 0)" }
-          key={ i }>
-          <text
-            x={ xPos }
-            y={ props.height }
-            textAnchor="middle"
-            className="hui-XScale__label">
-              { moment(series[i].date).format(props.dateFormat) }
-          </text>
-        </g>);
-
-      xPos += (scaleLineGap * scaleIncrement);
-    };
-
-    return paths;
   },
 
   render: function() {

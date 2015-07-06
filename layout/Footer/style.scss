@@ -67,16 +67,16 @@
 }
 
 @media screen and (min-width: 920px) {
-    .hui-Footer__legalLink + .hui-Footer__legalLink,
-    .hui-Footer__beneficiaryInfo + .hui-Footer__beneficiaryInfo {
-      border-left: 1px solid currentColor;
+  .hui-Footer__legalLink + .hui-Footer__legalLink,
+  .hui-Footer__beneficiaryInfo + .hui-Footer__beneficiaryInfo {
+    border-left: 1px solid currentColor;
   }
 }
 
 @media screen and (max-width: 919px) {
-    .hui-Footer__siteLinksLeft,
-    .hui-Footer__siteLinksRight {
-      width: 50%;
+  .hui-Footer__siteLinksLeft,
+  .hui-Footer__siteLinksRight {
+    width: 50%;
   }
 
   .hui-Footer__siteLink {

@@ -1,33 +1,27 @@
-"use strict";
+'use strict';
 
-jest.autoMockOff();
+var Input = require('../');
+var moment = require('moment');
 
 describe('DatePicker', function() {
-  var React       = require('react/addons');
-  var Input       = require('../');
-  var moment      = require('moment');
-  var TestUtils   = React.addons.TestUtils;
-  var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
-  var findByClass = TestUtils.findRenderedDOMComponentWithClass;
-
   describe('defaults', function() {
     var element, input;
 
     beforeEach(function() {
-      element = TestUtils.renderIntoDocument(<Input />);
+      element = renderIntoDocument(<Input />);
       input = findByClass(element, 'hui-TextInput__input');
     });
 
-    it('value of null', function() {
-      expect(input.getDOMNode().value).toBe('');
+    it('no value', function() {
+      input.getDOMNode().value.should.equal('');
     });
 
-    it('id of null', function() {
-      expect(input.getDOMNode().id).toBe(null);
+    it('no id', function() {
+      input.getDOMNode().id.should.equal('');
     });
 
-    it('name of null', function() {
-      expect(input.getDOMNode().name).toBe(null);
+    it('no name', function() {
+      input.getDOMNode().name.should.equal('');
     });
   });
 
@@ -35,17 +29,17 @@ describe('DatePicker', function() {
     var element, input;
 
     beforeEach(function() {
-      element = TestUtils.renderIntoDocument(<Input value="2015-12-09" id="seven" />);
+      element = renderIntoDocument(<Input value="2015-12-09" id="seven" />);
       input = findByClass(element, 'hui-TextInput__input');
     });
 
     it('value of 09/12/2015', function() {
-      expect(input.getDOMNode().value).toBe('09/12/2015');
+      input.getDOMNode().value.should.equal('09/12/2015');
     });
 
     describe('Passed an id of seven', function() {
       it('id is seven', function() {
-        expect(input.getDOMNode().id).toBe('seven');
+        input.getDOMNode().id.should.equal('seven');
       });
     });
 
@@ -54,30 +48,30 @@ describe('DatePicker', function() {
   describe('onChange', function() {
     it('is fired onChange', function() {
       var parsedValue;
-      var initialValue = "2015-12-09";
+      var initialValue = '2015-12-09';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
+      var element = renderIntoDocument(
             <Input onChange={ listener }/>
           );
       element.onDateChange(moment(initialValue));
 
-      expect(parsedValue).toBe(initialValue);
+      parsedValue.should.equal(initialValue);
     });
   });
 
   describe('toggle datepicker', function() {
     it('shows/hides onClick', function() {
-      var element = TestUtils.renderIntoDocument(<Input />);
+      var element = renderIntoDocument(<Input />);
       var input = findByClass(element, 'hui-TextInput__input');
 
-      TestUtils.Simulate.focus(input);
+      Simulate.focus(input);
 
-      expect(element.state.open).toBe(true);
+      element.state.open.should.equal(true);
 
-      element._clickBody({target: 'foo'});
+      element._clickBody({ target: 'foo' });
 
-      expect(element.state.open).toBe(false);
+      element.state.open.should.equal(false);
     });
   });
 
@@ -85,47 +79,39 @@ describe('DatePicker', function() {
     it('clears field on click clear field', function() {
       var parsedValue = 'foo';
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input value="2015-12-09" onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input value="2015-12-09" onChange={ listener } />);
 
       var clear = findByClass(element, 'hui-TextInput__iconButton');
       element.close();
-      TestUtils.Simulate.click(clear);
+      Simulate.click(clear);
 
-      expect(parsedValue).toBe(null);
+      expect(parsedValue).to.equal(null);
     });
   });
 
   describe('formats', function() {
     it('allow optional display formats', function() {
-      var element = TestUtils.renderIntoDocument(
-          <Input value="2015-12-09" displayFormat="MM/DD/YYYY" />
-        );
+      var element = renderIntoDocument(<Input value="2015-12-09" displayFormat="MM/DD/YYYY" />);
       var input = findByTag(element, 'input');
 
-      expect(input.getDOMNode().value).toBe('12/09/2015');
+      input.getDOMNode().value.should.equal('12/09/2015');
     });
 
     it('allow optional value formats', function() {
-      var element = TestUtils.renderIntoDocument(
-          <Input value="2010-10-20 4:30 +0000"  valueFormat="YYYY-MM-DD HH:mm Z" />
-        );
+      var element = renderIntoDocument(<Input value="2010-10-20 4:30 +0000"  valueFormat="YYYY-MM-DD HH:mm Z" />);
       var input = findByTag(element, 'input');
 
-      expect(input.getDOMNode().value).toBe('20/10/2010');
+      input.getDOMNode().value.should.equal('20/10/2010');
     });
 
     it('outputs optional value formats', function() {
-      var listener = jest.genMockFunction();
-      var element = TestUtils.renderIntoDocument(
-          <Input
+      var listener = sinon.spy();
+      var element = renderIntoDocument(<Input
             valueFormat="YYYY-MM-DD HH:mm Z"
-            onChange={ listener } />
-        );
-      element.onDateChange(moment("2015-12-09"));
+            onChange={ listener } />);
+      element.onDateChange(moment('2015-12-09'));
 
-      expect(listener.mock.calls.length).toBeGreaterThan(1);
+      listener.should.have.been.called;
     });
   });
 
@@ -135,14 +121,12 @@ describe('DatePicker', function() {
       var initialValue = '12/09/1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format DD/MM/YY', function() {
@@ -150,14 +134,12 @@ describe('DatePicker', function() {
       var initialValue = '12/09/79';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format MMM DD YY', function() {
@@ -165,14 +147,12 @@ describe('DatePicker', function() {
       var initialValue = 'Sep 12 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format DD MMM YY', function() {
@@ -180,14 +160,12 @@ describe('DatePicker', function() {
       var initialValue = '12 Sep 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format Do MMM YY', function() {
@@ -195,14 +173,12 @@ describe('DatePicker', function() {
       var initialValue = '12th September 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format MMM Do YY', function() {
@@ -210,14 +186,12 @@ describe('DatePicker', function() {
       var initialValue = '12th September 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format DD-MM-YYYY', function() {
@@ -225,14 +199,12 @@ describe('DatePicker', function() {
       var initialValue = '12-09-1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format DD MM YYYY', function() {
@@ -240,14 +212,12 @@ describe('DatePicker', function() {
       var initialValue = '12 09 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } />
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } />);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
 
     it('allows typed in date with format MM DD YYYY when US countryCode set', function() {
@@ -255,14 +225,12 @@ describe('DatePicker', function() {
       var initialValue = '09 12 1979';
 
       var listener = function(value) { parsedValue = value; };
-      var element = TestUtils.renderIntoDocument(
-          <Input onChange={ listener } countryCode="us"/>
-        );
+      var element = renderIntoDocument(<Input onChange={ listener } countryCode="us"/>);
       var input = findByTag(element, 'input');
-      TestUtils.Simulate.change(input, {target: {value: initialValue}});
+      Simulate.change(input, { target: { value: initialValue }});
       element.close();
 
-      expect(parsedValue).toBe("1979-09-12");
+      parsedValue.should.equal('1979-09-12');
     });
   });
 });

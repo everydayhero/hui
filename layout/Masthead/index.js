@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var React = require('react');
 
@@ -32,7 +32,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var alt = ["everydayhero", this.props.appName].join(' ');
+    var alt = ['everydayhero', this.props.appName].join(' ');
 
     return (
       <h1 className="hui-Masthead">

@@ -1,8 +1,7 @@
-"use strict";
+'use strict';
 
 var React      = require('react');
 var Footer     = require('../../../layout/Footer');
-var Highlight  = require('react-highlight');
 var ImagePath  = ('../images/hui_edh_mark@x2.gif');
 
 module.exports = React.createClass({
