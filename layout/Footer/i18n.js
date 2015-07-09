@@ -13,11 +13,11 @@ module.exports = {
 
     right_1: 'Press',
     right_2: 'Events',
-    right_3: 'Nonprofits',
+    right_3: 'Notforprofits',
     right_4: 'Developers',
     right_1_url: '{portal}press/',
     right_2_url: '{portal}events/',
-    right_3_url: '{portal}nonprofits/',
+    right_3_url: '{portal}notforprofits/',
     right_4_url: '{portal}developers-giving-ecosystem/',
 
     legal_1: 'Privacy Policy',
