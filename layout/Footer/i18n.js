@@ -13,7 +13,7 @@ module.exports = {
 
     right_1: 'Press',
     right_2: 'Events',
-    right_3: 'Notforprofits',
+    right_3: 'Not for profits',
     right_4: 'Partners',
     right_1_url: '{portal}press/',
     right_2_url: '{portal}events/',
