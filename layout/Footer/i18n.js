@@ -15,12 +15,12 @@ module.exports = {
 
     right_1: 'Press',
     right_2: 'Events',
-    right_3: 'Notforprofits',
-    right_4: 'Developers',
+    right_3: 'Not for profits',
+    right_4: 'Partners',
     right_1_url: '{portal}press/',
     right_2_url: '{portal}events/',
     right_3_url: '{portal}notforprofits/',
-    right_4_url: '{portal}developers-giving-ecosystem/',
+    right_4_url: '{portal}partners-giving-ecosystem/',
 
     legal_1: 'Privacy Policy',
     legal_2: 'Terms of Service',
