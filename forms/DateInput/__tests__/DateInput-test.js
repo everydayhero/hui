@@ -9,6 +9,7 @@ describe('DatePicker', function() {
   var TestUtils   = React.addons.TestUtils;
   var findByTag   = TestUtils.findRenderedDOMComponentWithTag;
   var findByClass = TestUtils.findRenderedDOMComponentWithClass;
+  var scryByClass = TestUtils.scryRenderedDOMComponentsWithClass;
 
   describe('defaults', function() {
     var element, input;
@@ -63,6 +64,25 @@ describe('DatePicker', function() {
       element.onDateChange(moment(initialValue));
 
       expect(parsedValue).toBe(initialValue);
+    });
+
+    it('changes to new value if it was prefilled', function() {
+      var initialValue = '2015-07-11';
+      var today = moment().format('YYYY-MM-DD');
+      var currentValue;
+      var element = TestUtils.renderIntoDocument(
+        <Input
+          value={ initialValue }
+          onChange={ function(value) { currentValue = value; } } />
+      );
+
+      var input = findByClass(element, 'hui-TextInput__input');
+      TestUtils.Simulate.focus(input);
+
+      var day = findByClass(element, 'hui-DatePickerDay--today');
+      TestUtils.Simulate.click(day);
+
+      expect(today).toBe(currentValue);
     });
   });
 
