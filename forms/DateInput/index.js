@@ -78,7 +78,6 @@ module.exports = React.createClass({
         target = target.parentNode;
       }
     }
-
     this.close();
   },
 
@@ -129,7 +128,7 @@ module.exports = React.createClass({
     var props = this.props;
     var state = this.state;
 
-    if (state.open && state.tempValue !== null) {
+    if (state.open && !!state.tempValue) {
       return state.tempValue;
     }
 
@@ -160,9 +159,17 @@ module.exports = React.createClass({
     }
   },
 
-  onInputEdit: function(value) {
+  localisedValue: function () {
     var props = this.props;
-    var parsedDate = moment(value, dateFormats[props.countryCode]);
+    var dateFormat = dateFormats[props.countryCode];
+
+    return moment(props.value, dateFormat).format(props.displayFormat)
+  },
+
+  onInputEdit: function(inputValue) {
+    var props = this.props;
+    var dateFormat = dateFormats[props.countryCode];
+    var parsedDate = moment(inputValue, dateFormat);
     var currentDate = moment();
 
     if (parsedDate.isValid()) {
@@ -171,16 +178,15 @@ module.exports = React.createClass({
       }
     }
 
-    if (!value) {
+    if (!inputValue) {
       this.clear();
       this.setState({ tempValue: null });
-    } else {
+    } else if(inputValue !== this.localisedValue()) {
       this.setState({
-        date: parsedDate.isValid() && value ? parsedDate : this.state.date,
-        tempValue: value ? value : ''
+        date: parsedDate.isValid() && parsedDate,
+        tempValue: inputValue
       });
     }
-
   },
 
   onChangeSelection: function(date) {
