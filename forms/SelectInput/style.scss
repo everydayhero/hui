@@ -13,22 +13,27 @@
 }
 
 .hui-SelectInput__displayValue {
-  background-image: none;
-  position: absolute;
-  top: 0px;
+  padding-right: 30px;
   font-size: 15px;
   width: 100%;
 }
 
 .hui-SelectInput__selected,
 .hui-SelectInput__selected--noSelection {
-  position: absolute;
-  top: 9px;
-  left: 0px;
+  width: 100%;
+  border: medium none;
+  outline: 0px none;
+  background: transparent none repeat scroll 0px 0px;
   color: $hui-text-input-text;
+  line-height: $hui-x-7 - 1;
+  height: 27px;
+  font-size: 15px;
   letter-spacing: 0.10em;
-  line-height: $hui-x-9 - 1;
-  pointer-events:none;
+  text-transform: none;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hui-SelectInput__selected--noSelection {

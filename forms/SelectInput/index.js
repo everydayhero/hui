@@ -152,11 +152,11 @@ module.exports = React.createClass({
     }
 
     return (
-      <span className="hui-SelectInput__displayValue">
-        <span className={ className }>
+      <div className="hui-SelectInput__displayValue">
+        <div className={ className }>
           { displayValue }
-        </span>
-      </span>
+        </div>
+      </div>
     );
   },
 
