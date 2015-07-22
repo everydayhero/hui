@@ -23,7 +23,8 @@ module.exports = React.createClass({
     var options = [
       { value: 'transformer', label: 'Transformer' },
       { value: 'lego', label: 'Lego' },
-      { value: 'ps4', label: 'PS4' }
+      { value: 'ps4', label: 'PS4' },
+      { value: 'anything', label: 'Anything as long as it is red and has flashing lights' }
     ];
 
     return (
