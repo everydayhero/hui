@@ -9,6 +9,10 @@ module.exports = React.createClass({
   displayName: 'DateInputExample',
   mixins: [formMixin],
 
+  initialiseForm: function(form) {
+    form.start_on = '2015-07-11'
+  },
+
   t: function(name) {
     var translation = {
       start_on_label: 'Start On:',

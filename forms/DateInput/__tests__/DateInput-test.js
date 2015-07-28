@@ -58,6 +58,25 @@ describe('DatePicker', function() {
 
       parsedValue.should.equal(initialValue);
     });
+
+    it('changes to new value if it was prefilled', function() {
+      var initialValue = '2015-07-11';
+      var today = moment().format('YYYY-MM-DD');
+      var currentValue;
+      var element = TestUtils.renderIntoDocument(
+        <Input
+          value={ initialValue }
+          onChange={ function(value) { currentValue = value; } } />
+      );
+
+      var input = findByClass(element, 'hui-TextInput__input');
+      TestUtils.Simulate.focus(input);
+
+      var day = findByClass(element, 'hui-DatePickerDay--today');
+      TestUtils.Simulate.click(day);
+
+      expect(today).to.equal(currentValue);
+    });
   });
 
   describe('toggle datepicker', function() {
