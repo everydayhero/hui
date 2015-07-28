@@ -10,7 +10,7 @@ module.exports = React.createClass({
   mixins: [formMixin],
 
   initialiseForm: function(form) {
-    form.start_on = "2015-07-11"
+    form.start_on = '2015-07-11'
   },
 
   t: function(name) {
