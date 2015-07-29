@@ -25,6 +25,7 @@ import FormRow from './examples/FormRow'
 import Fieldset from './examples/Fieldset'
 import LoadingProgress from './examples/LoadingProgress'
 import FooterExample from './examples/Footer'
+import TagList from './examples/TagList'
 
 const imagePath = './images/';
 
@@ -84,6 +85,7 @@ export default React.createClass({
             <ImageInput />
             <FormRow />
             <Fieldset />
+            <TagList />
           </div>
         </div>
       </div>

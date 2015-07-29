@@ -1,0 +1,20 @@
+.hui-TagListItem {
+  display: inline-block;
+  margin: 8px 8px 8px 0;
+}
+
+.hui-TagListItem__label {
+  background-color: $hui-rule-grey;
+  padding: $hui-x-1 $hui-x-2;
+  border-radius: 6px;
+  color: $hui-primary-grey;
+  font-family: lato,helvetica,arial,sans-serif;
+}
+
+.hui-TagListItem__iconButton {
+  border: 0;
+  background-color: transparent;
+  color: $hui-primary-grey;
+  padding-left: $hui-x-2;
+}
+
