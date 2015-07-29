@@ -2,12 +2,17 @@
 
 var React   = require('react');
 var TagList = require('../../../forms/TagList');
+var items;
 
 module.exports = React.createClass({
   displayName: 'TagListExample',
 
+  onItemRemoved: function(data) {
+    return data;
+  },
+
   render: function() {
-    var items = [
+    items = [
       { id: '1', name: 'American Red Cross' },
       { id: '2', name: 'Save the Animals' },
       { id: '3', name: 'A really long name for a charity' },
@@ -25,6 +30,7 @@ module.exports = React.createClass({
       <TagList
         className="Your-TagList"
         id="charities"
+        onItemRemoved={ this.onItemRemoved }
         items={ items } />
     </div>
     );

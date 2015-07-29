@@ -11,6 +11,10 @@
   font-family: lato,helvetica,arial,sans-serif;
 }
 
+.hui-TagListItem__icon--right {
+  padding-left: $hui-x-2;
+}
+
 .hui-TagListItem__iconButton {
   border: 0;
   background-color: transparent;

@@ -23,6 +23,14 @@ module.exports = React.createClass({
     };
   },
 
+  onClick: function(e) {
+    var props = this.props;
+    var onIconClick = props.onIconClick;
+    e.preventDefault();
+
+    return onIconClick && onIconClick(props.item);
+  },
+
   renderIcon: function() {
     var props = this.props;
     var className = classnames({
@@ -33,9 +41,9 @@ module.exports = React.createClass({
     var icon = props.icon;
 
     return icon && (
-      <button className={ className } onClick={ props.onIconClick }>
+      <span id={ props.item.id } className={ className } onClick={ this.onClick }>
         <Icon icon={ icon } fixedWidth={ true } />
-      </button>
+      </span>
     );
   },
 
