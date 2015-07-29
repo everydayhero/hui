@@ -41,9 +41,9 @@ module.exports = React.createClass({
     var icon = props.icon;
 
     return icon && (
-      <span id={ props.item.id } className={ className } onClick={ this.onClick }>
+      <button id={ props.item.id } className={ className } onClick={ this.onClick }>
         <Icon icon={ icon } fixedWidth={ true } />
-      </span>
+      </button>
     );
   },
 
@@ -52,10 +52,10 @@ module.exports = React.createClass({
 
     return (
       <div className="hui-TagListItem">
-        <label className="hui-TagListItem__label">
+        <div className="hui-TagListItem__label">
           { props.item.name }
           { this.renderIcon() }
-        </label>
+        </div>
       </div>
     );
   }
