@@ -1,7 +1,6 @@
 'use strict';
 
 var React      = require('react/addons');
-var classnames = require('classnames');
 var Icon       = require('../../../atoms/Icon');
 
 module.exports = React.createClass({
@@ -10,7 +9,6 @@ module.exports = React.createClass({
   propTypes: {
     item: React.PropTypes.object,
     icon: React.PropTypes.string,
-    iconPosition: React.PropTypes.string,
     onIconClick: React.PropTypes.func.isRequired
   },
 
@@ -18,7 +16,6 @@ module.exports = React.createClass({
     return {
       item: {},
       icon: 'remove',
-      iconPosition: 'right',
       onIconClick: null
     };
   },
@@ -33,15 +30,10 @@ module.exports = React.createClass({
 
   renderIcon: function() {
     var props = this.props;
-    var className = classnames({
-      'hui-TagListItem__icon': true,
-      'hui-TagListItem__icon--right': (props.iconPosition === 'right'),
-      'hui-TagListItem__iconButton': props.onIconClick
-    });
     var icon = props.icon;
 
     return icon && (
-      <button id={ props.item.id } className={ className } onClick={ this.onClick }>
+      <button id={ props.item.id } className="hui-TagListItem__iconButton" onClick={ this.onClick }>
         <Icon icon={ icon } fixedWidth={ true } />
       </button>
     );
