@@ -24,7 +24,7 @@ module.exports = React.createClass({
       spin && 'fa-spin',
       'fa-' + (this.props.icon || '')
     ]).join(' ');
-    var wrapperClasses = compact(['IconWrapper', this.props.className]).join(' ');
+    var wrapperClasses = compact(['hui-IconWrapper', this.props.className]).join(' ');
 
     return (
       <span className={ wrapperClasses }><i className={ classes } /></span>
