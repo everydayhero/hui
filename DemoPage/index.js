@@ -26,6 +26,7 @@ import Fieldset from './examples/Fieldset'
 import LoadingProgress from './examples/LoadingProgress'
 import FooterExample from './examples/Footer'
 import TagList from './examples/TagList'
+import Modal from './examples/Modal'
 
 const imagePath = './images/';
 
@@ -45,6 +46,7 @@ export default React.createClass({
             <TopBarLink href="#buttons">Buttons</TopBarLink>
             <TopBarLink href="#graphs">Graphs</TopBarLink>
             <TopBarLink href="#forms">Forms</TopBarLink>
+            <TopBarLink href="#modals">modals</TopBarLink>
         </TopBar>
 
         <div className="DemoPage__content">
@@ -86,6 +88,11 @@ export default React.createClass({
             <FormRow />
             <Fieldset />
             <TagList />
+          </div>
+
+          <h2 className="DemoPage__h2" id="modals">Modals</h2>
+          <div className="DemoPage__group">
+            <Modal />
           </div>
         </div>
       </div>

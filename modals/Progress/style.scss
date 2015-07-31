@@ -1,0 +1,18 @@
+.hui-Progress {
+  width: 100%;
+  text-align: center;
+}
+
+.hui-Progress__item {
+  font-size: $hui-x-4;
+  padding: $hui-x-2;
+  color: $hui-link-secondary;
+
+  &:hover {
+    color: $hui-link-primary;
+  }
+}
+
+.hui-Progress__item--active {
+  color: $hui-link-primary;
+}

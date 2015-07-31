@@ -41,6 +41,10 @@
 @import "forms/TextInput/style";
 @import "forms/UrlInput/style";
 
+//modals
+@import "modals/Overlay/style";
+@import "modals/Progress/style";
+
 * {
   margin: 0;
   padding: 0;
