@@ -3,6 +3,7 @@
 var React    = require('react');
 var Overlay  = require('../../../modals/Overlay');
 var Progress = require('../../../modals/Progress');
+var Step     = require('../../../modals/Step');
 
 module.exports = React.createClass({
   displayName: 'ModalExample',
@@ -36,6 +37,9 @@ module.exports = React.createClass({
         <a href="#" onClick={ this.open }>Open Overlay</a>
         <Overlay open={ state.open } onClose={ this.close }>
           <Progress total={ 4 } active={ state.active } onChange={ this.onChange } />
+          <Step>
+            { state.active }
+          </Step>
         </Overlay>
       </div>
     );

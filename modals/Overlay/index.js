@@ -2,6 +2,8 @@
 
 var React = require('react');
 var Icon  = require('../../atoms/Icon');
+var orginalOverflowY;
+var body;
 
 module.exports = React.createClass({
   displayName: 'Overlay',
@@ -12,11 +14,19 @@ module.exports = React.createClass({
     }
   },
 
+  componentWillMount: function() {
+    body = document.getElementsByTagName('body')[0];
+    orginalOverflowY = body.style.overflowY;
+  },
+
   render: function() {
     var props = this.props;
     if (!props.open) {
+      body.style.overflowY = orginalOverflowY;
       return null;
     }
+
+    body.style.overflowY = 'hidden';
 
     return (
       <div className="hui-Overlay">

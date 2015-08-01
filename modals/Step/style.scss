@@ -1,0 +1,16 @@
+.hui-Step {
+  min-width: $hui-x-144;
+  min-height: $hui-x-144;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  box-shadow: 1px 1px 6px 2px rgba(219,219,219,1);
+  margin-bottom: $hui-x-8;
+}
+
+@include media-max($hui-x-144) {
+  .hui-Step {
+    width: 100%;
+    min-height: 100%;
+  }
+}
