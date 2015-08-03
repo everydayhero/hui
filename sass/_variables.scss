@@ -10,6 +10,7 @@ $hui-x-8: 32px;
 $hui-x-9: 36px;
 $hui-x-10: 40px;
 
+$hui-x-12: 48px;
 $hui-x-13: 52px;
 
 $hui-x-16: 64px;
@@ -41,4 +42,17 @@ $hui-radius-input-border: 5px;
 //borders
 $hui-border-radius: 2px;
 
-$hui-font-family: 'Lato', helvetica, arial, sans-serif;
+$font-copy: 'Lato', helvetica, arial, sans-serif;
+$hui-font-family: $font-copy;
+
+$bp-xxxxs: 220px;
+$bp-xxxs: 320px;
+$bp-xxs: 420px;
+$bp-xs: 520px;
+$bp-s: 620px;
+$bp-m: 720px;
+$bp-l: 820px;
+$bp-xl: 920px;
+$bp-xxl: 1020px;
+$bp-xxxl: 1120px;
+$bp-xxxxl: 1220px;

@@ -1,0 +1,12 @@
+.hui-Wizard {
+  width: $hui-x-128;
+  margin: 0 auto;
+  padding-top: $hui-x-12;
+
+  @include media-max($bp-xs) {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: $hui-x-7;
+  }
+}

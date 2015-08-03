@@ -1,0 +1,51 @@
+.Overlay {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: $font-copy;
+
+  line-height: normal;
+  position: fixed;
+  background: $grey-dark;
+  background: transparentize($grey-dark, 0.2);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  transform: translateZ(200px);
+}
+
+.Overlay--inverse {
+  background: transparentize(white, 0.2);
+}
+
+.Overlay__close {
+  position: absolute;
+  right: $hui-x-9;
+  top: $hui-x-9;
+  display: block;
+  font-size: $hui-x-9;
+  line-height:$hui-x-9;
+  color: white;
+
+  &:hover {
+    color: $hui-primary-green;
+  }
+
+  @include media-max($bp-xs) {
+    right: $hui-x-3;
+    top: $hui-x-4;
+    font-size: 30px;
+  }
+}
+
+.Overlay__close--inverse {
+  color: $hui-medium-grey;
+}
+
+.Overlay-open {
+  overflow: hidden;
+}

@@ -1,5 +1,5 @@
 .hui-Step {
-  min-width: $hui-x-144;
+  width: 100%;
   min-height: $hui-x-144;
   top: 0px;
   left: 0px;
@@ -8,9 +8,8 @@
   margin-bottom: $hui-x-8;
 }
 
-@include media-max($hui-x-144) {
+@include media-max($bp-xs) {
   .hui-Step {
-    width: 100%;
     min-height: 100%;
   }
 }

@@ -28,14 +28,15 @@ module.exports = React.createClass({
     var index = 0;
 
     while(index < total && total !== 0) {
+      var icon = index > this.props.active ? 'circle-thin' : 'circle';
       var classNames = classNamesArray([
         'hui-Progress__item',
         (index === this.props.active) && 'hui-Progress__item--active'
       ]);
 
       items.push(
-        <a href="#" key={ index }className={ classNames } onClick={ this.onChange(index) }>
-          <Icon icon="circle"/>
+        <a href="#" key={ index } className={ classNames } onClick={ this.onChange(index) }>
+          <Icon icon={ icon }/>
         </a>
       );
 
