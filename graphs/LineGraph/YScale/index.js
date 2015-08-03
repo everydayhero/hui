@@ -36,24 +36,13 @@ module.exports = React.createClass({
   },
 
   getScaleLines: function() {
-    var props = this.props;
-    var numberOfScaleLine = Math.floor(this.getHeight() / props.minScaleLineGap);
-    var upperBound = this.getUpperBound();
-    var delta;
-
-    while(numberOfScaleLine > 0) {
-      delta = Math.ceil(upperBound / numberOfScaleLine);
-
-      if(upperBound % numberOfScaleLine === 0) {
-        delta = Math.ceil(upperBound / numberOfScaleLine);
-        break;
-      }
-      numberOfScaleLine--;
-    }
+    var numberOfScaleLines = Math.floor(this.getHeight() / this.props.minScaleLineGap);
+    var distance = this.getUpperBound() - this.getLowerBound();
+    while(distance % numberOfScaleLines > 1) { --numberOfScaleLines; }
 
     return {
-      total: numberOfScaleLine,
-      delta
+      total: numberOfScaleLines,
+      delta: Math.ceil(distance / numberOfScaleLines)
     };
   },
 
