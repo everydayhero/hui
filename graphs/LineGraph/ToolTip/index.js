@@ -15,7 +15,9 @@ module.exports = React.createClass({
     data: React.PropTypes.object,
     label: React.PropTypes.string,
     isFlipOver: React.PropTypes.bool,
-    totalFormat: React.PropTypes.string
+    totalFormat: React.PropTypes.string,
+    showDate: React.PropTypes.bool,
+    showTotal: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
@@ -24,6 +26,8 @@ module.exports = React.createClass({
       data: {},
       label: null,
       isFlipOver: false,
+      showDate: true,
+      showTotal: true,
       position: {
         x: 0,
         y: 0
@@ -56,30 +60,65 @@ module.exports = React.createClass({
 
   renderTipContent: function() {
     var props = this.props;
-    var data = props.data;
-    var date, classes;
-
-    classes = classNames({
+    var classes = classNames({
       'hui-ToolTip__text--left': !props.isFlipOver,
       'hui-ToolTip__text--right': props.isFlipOver
     }, 'hui-ToolTip__text');
 
-    if (_.isEmpty(data)) {
+    if (_.isEmpty(props.data)) {
       return false;
     } else {
-      date = moment(data.date).format('ddd MMM DD, YYYY');
-
       return (
         <div className={ classes } >
-          <p className="hui-ToolTip__date" >{ date }</p>
-          <p>
-            { props.label + ': ' }
-            <span className="hui-ToolTip__value"> { formatNumber(data.value, props.totalFormat) } </span>
-            { " / " }
-            <span className="hui-ToolTip__total"> { formatNumber(data.total, props.totalFormat) } </span>
-          </p>
+          { this.renderDate() }
+          { this.renderTip() }
         </div>
       );
+    }
+  },
+
+  renderDate: function() {
+    var props = this.props;
+
+    if(props.showDate) {
+      var date = moment(props.data.date).format('ddd MMM DD, YYYY');
+      return (<p className="hui-ToolTip__date" >{ date }</p>);
+    } else {
+      return false;
+    }
+  },
+
+  renderTip: function() {
+    var props = this.props;
+
+    return (
+      <p>
+        { this.renderLabel() }
+        <span className="hui-ToolTip__value">{ formatNumber(props.data.value, props.totalFormat) }</span>
+        { this.renderTotal() }
+      </p>
+    );
+  },
+
+  renderLabel: function() {
+    var props = this.props;
+
+    if(props.label) {
+      return props.label + ': '
+    } else {
+      return false;
+    }
+  },
+
+  renderTotal: function() {
+    var props = this.props;
+
+    if(props.showTotal) {
+      return (
+        <span className="hui-ToolTip__total">/ { formatNumber(props.data.total, props.totalFormat) }</span>
+      );
+    } else {
+      return false;
     }
   },
 

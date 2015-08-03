@@ -20,6 +20,7 @@ module.exports = React.createClass({
     line: React.PropTypes.bool,
     area: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
+    showTipDate: React.PropTypes.bool,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,
       right: React.PropTypes.number,
@@ -41,9 +42,8 @@ module.exports = React.createClass({
       stacked: false,
       line: false,
       area: true,
-      valueConverter: function(number) {
-        return number;
-      },
+      showTipDate: true,
+      valueConverter: _.identity,
       loading: false,
       emptyState: false
     }
@@ -179,7 +179,9 @@ module.exports = React.createClass({
           position={ state.tipPosition }
           label={ props.tipLabel }
           totalFormat={ props.totalFormat }
-          isFlipOver={ state.isFlipOver } />
+          isFlipOver={ state.isFlipOver }
+          showDate={ props.showTipDate }
+          showTotal={ state.collection.length > 1 } />
       );
       graph = this.renderGraph();
     }

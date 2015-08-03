@@ -36,16 +36,33 @@ describe('ToolTip', function() {
       scryByClass(component, 'hui-ToolTip__text--left').length.should.equal(1);
     });
 
-    it('should render the date', function() {
-      scryByClass(component, 'hui-ToolTip__date').length.should.equal(1);
-    });
-
     it('should render the value', function() {
       scryByClass(component, 'hui-ToolTip__value').length.should.equal(1);
     });
 
+  });
+
+  describe('date', function() {
+    it('should render the date', function() {
+      var component = renderIntoDocument(<ToolTip data={ data } show={ true } />);
+      scryByClass(component, 'hui-ToolTip__date').length.should.equal(1);
+    });
+
+    it('should not render the date', function() {
+      var component = renderIntoDocument(<ToolTip data={ data } show={ true } showDate={ false } />);
+      scryByClass(component, 'hui-ToolTip__date').length.should.equal(0);
+    });
+  });
+
+  describe('total', function() {
     it('should render the total', function() {
+      var component = renderIntoDocument(<ToolTip data={ data } show={ true } />);
       scryByClass(component, 'hui-ToolTip__total').length.should.equal(1);
+    });
+
+    it('should not render the total', function() {
+      var component = renderIntoDocument(<ToolTip data={ data } show={ true } showTotal={ false } />);
+      scryByClass(component, 'hui-ToolTip__total').length.should.equal(0);
     });
   });
 
