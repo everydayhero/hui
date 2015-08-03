@@ -13,7 +13,7 @@
 .hui-Overlay__wrapper {
   text-align: left;
   display: inline-block;
-  margin-top: $hui-x-8;
+  margin-top: 10%;
   min-width: $hui-x-54;
   position: relative;
   top: 0px;
@@ -24,6 +24,7 @@
   .hui-Overlay__wrapper {
     width: 100%;
     height: 100%;
+    margin-top: $hui-x-8;
   }
 }
 
