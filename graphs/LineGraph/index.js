@@ -17,7 +17,8 @@ module.exports = React.createClass({
     valueConverter: React.PropTypes.func,
     totalFormat: React.PropTypes.string,
     stacked: React.PropTypes.bool,
-    lined: React.PropTypes.bool,
+    line: React.PropTypes.bool,
+    area: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,

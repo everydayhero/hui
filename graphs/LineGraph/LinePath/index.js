@@ -51,7 +51,7 @@ module.exports = React.createClass({
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
       height: this.getPathHeight(),
-      closed: !props.lined
+      closed: !props.line
     });
   },
 
