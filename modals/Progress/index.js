@@ -10,7 +10,7 @@ module.exports = React.createClass({
   getDefaultProps: function() {
     return {
       total: 1,
-      active: 1
+      active: 0
     }
   },
 

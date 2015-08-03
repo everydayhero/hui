@@ -23,11 +23,11 @@ describe('Progress', function() {
       expect(items.length).to.equal(4);
     });
 
-    it('should mark a current item', function() {
-      component = renderIntoDocument(<Progress total={ 4 } current={ 2 }/>);
+    it('should mark a active item', function() {
+      component = renderIntoDocument(<Progress total={ 4 } active={ 2 }/>);
       var items = scryByClass(component, 'hui-Progress__item');
 
-      expect(items[2].getDOMNode().className).to.contain('hui-Progress__item--current');
+      expect(items[2].getDOMNode().className).to.contain('hui-Progress__item--active');
     });
 
     it('should return the index clicked', function() {
@@ -35,7 +35,7 @@ describe('Progress', function() {
       var onChange = function(index) {
         itemClicked = index;
       }
-      component = renderIntoDocument(<Progress total={ 4 } current={ 2 } onChange={ onChange }/>);
+      component = renderIntoDocument(<Progress total={ 4 } active={ 2 } onChange={ onChange }/>);
       var items = scryByClass(component, 'hui-Progress__item');
 
       Simulate.click(items[2]);
