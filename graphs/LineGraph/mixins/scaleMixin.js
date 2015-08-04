@@ -1,7 +1,6 @@
 'use strict';
 
 var _ = require('lodash');
-
 var flip = _.curry(function(f, x, y) { return f(y, x); });
 var pluck = flip(_.pluck);
 
@@ -19,15 +18,23 @@ module.exports = {
     return values(this.props.collection);
   },
 
+  getValuesForIndex: function(index) {
+    return _.pluck(this.props.collection[index].series, 'calculatedValue');
+  },
+
+  getMinForIndex: function(index) {
+    return _.min(this.getValuesForIndex(index));
+  },
+
   getMaxForIndex: function(index) {
-    return _.max(_.pluck(this.props.collection[index].series, 'calculatedValue'));
+    return _.max(this.getValuesForIndex(index));
   },
 
   getBound: function(value) {
     var power = Math.max(1, Math.floor(Math.log(Math.max(1, Math.abs(value))) / Math.LN10));
     var division = Math.pow(10, power) * 0.5;
     var delta = division - (value % division);
-    return value >= 0 ? value + delta : value - delta;
+    return value >= 0 ? Math.ceil(value + delta) : Math.floor(value - delta);
   },
 
   getLowerBound: function() {

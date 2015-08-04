@@ -10,7 +10,7 @@ describe('scaleMixin', function() {
         [
           { series:
             [
-              { calculatedValue: 5 },
+              { calculatedValue: -23 },
               { calculatedValue: 2 }
             ]
           },
@@ -29,6 +29,10 @@ describe('scaleMixin', function() {
 
     it('gives upperBound of 25', function() {
       scaleMixin.getUpperBound().should.equal(25);
+    });
+
+    it('gives lowerBound of -25', function() {
+      scaleMixin.getLowerBound().should.equal(-25);
     });
 
     it('gives getMaxForIndex of 5', function() {

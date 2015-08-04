@@ -30,12 +30,13 @@ module.exports = React.createClass({
 
   getDrawingHeight: function() {
     var props = this.props;
-
     return props.height - props.gutter.bottom  - props.gutter.top;
   },
 
   getScalePercentage: function() {
-    return this.getMaxForIndex(this.props.index) / this.getUpperBound();
+    var graphHeight = this.getMaxForIndex(this.props.index) - this.getMinForIndex(this.props.index);
+    var boundsHeight = this.getUpperBound() - this.getLowerBound();
+    return graphHeight / boundsHeight;
   },
 
   getPathHeight: function() {
@@ -56,8 +57,10 @@ module.exports = React.createClass({
   },
 
   getTranslateY: function() {
-    var translationPercentage = 1 - this.getScalePercentage();
-    return this.props.gutter.top + (this.getDrawingHeight() * translationPercentage);
+    var upper = this.getUpperBound();
+    var max = this.getMaxForIndex(this.props.index);
+    var translationPercentage = (upper - max) / upper;
+    return this.props.gutter.top + Math.floor((this.getDrawingHeight() * translationPercentage));
   },
 
   calculateTotal: function(dataPoint) {
