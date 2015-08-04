@@ -18,11 +18,11 @@ describe('Tag List Item', function() {
     });
 
     it('should render remove icon', function() {
-      findByClass(component, 'hui-TagListItem__icon');
+      findByClass(component, 'hui-TagListItem__iconButton');
     });
 
     it('should call onIconClick when icon is clicked', function() {
-      var icon = findByClass(component, 'hui-TagListItem__icon');
+      var icon = findByClass(component, 'hui-TagListItem__iconButton');
       TestUtils.Simulate.click(icon);
 
       expect(onIconClick).to.have.been.calledOnce;

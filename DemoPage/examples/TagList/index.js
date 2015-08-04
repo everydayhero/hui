@@ -42,7 +42,8 @@ module.exports = React.createClass({
       <h3 className="DemoPage__h3" id="TagList">TagList</h3>
       <p className="DemoPage__p">Basic Tag List.</p>
       <TagList
-        className="Your-TagList"
+        layout="half"
+        spacing="fitted"
         id="charities"
         onItemIconClicked={ this.onItemRemoved }
         items={ this.state.charities } />
