@@ -7,7 +7,7 @@ describe('Tag List', function() {
     var items = ['foo', 'bar'];
     var component = renderIntoDocument(<TagList items={ items } />);
     it('should render tag list', function() {
-      findByClass(component, 'TagList');
+      findByClass(component, 'hui-TagList');
     });
   });
 });
