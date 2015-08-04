@@ -56,7 +56,7 @@ module.exports = React.createClass({
     var yPos = this.getHeight();
     var scaleLineGap = this.getScaleLineGap();
     var count = 0;
-    var label = 0;
+    var label = this.getLowerBound();
     var format = '00 a';
 
     while(scaleLines.total + 1 !== count) {
