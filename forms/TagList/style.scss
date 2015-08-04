@@ -1,0 +1,5 @@
+.hui-TagList {
+  @extend %hui-input-base;
+}
+
+@include input-sizes(TagList);

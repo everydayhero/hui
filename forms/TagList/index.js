@@ -1,8 +1,9 @@
 'use strict';
 
-var React    = require('react/addons');
-var ListItem = require('./Item');
-var _        = require('lodash');
+var React           = require('react/addons');
+var ListItem        = require('./Item');
+var _               = require('lodash');
+var classNamesArray = require('../../lib/classNamesArray');
 
 module.exports = React.createClass({
   displayName: 'TagList',
@@ -12,7 +13,16 @@ module.exports = React.createClass({
     items: React.PropTypes.arrayOf(React.PropTypes.shape({
       id: React.PropTypes.string,
       name: React.PropTypes.string
-    })).isRequired
+    })).isRequired,
+    spacing: React.PropTypes.string,
+    layout: React.PropTypes.string
+  },
+
+  getDefaultProps: function() {
+    return {
+      layout: 'full',
+      spacing: 'loose'
+    };
   },
 
   onClickItemIcon: function(data) {
@@ -37,8 +47,15 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var props   = this.props;
+    var classes = classNamesArray([
+      'hui-TagList--' + props.layout,
+      'hui-TagList--' + props.spacing,
+      'hui-TagList'
+    ]);
+
     return (
-      <div className="TagList">
+      <div className={ classes }>
         <div className="TagList__list">
           { this.renderItems() }
         </div>
