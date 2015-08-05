@@ -26,12 +26,17 @@ import Fieldset from './examples/Fieldset'
 import LoadingProgress from './examples/LoadingProgress'
 import FooterExample from './examples/Footer'
 import TagList from './examples/TagList'
-import Wizard from './examples/Wizard'
+import WizardRouter from './examples/Wizard'
 
 const imagePath = './images/';
 
 export default React.createClass({
   displayName: 'DemoPage',
+
+  openWizard(e) {
+    e.preventDefault();
+    WizardRouter.transitionTo('wizard', { step: 0 });
+  },
 
   render() {
     return (
@@ -92,7 +97,7 @@ export default React.createClass({
 
           <h2 className="DemoPage__h2" id="wizard">Wizard</h2>
           <div className="DemoPage__group">
-            <Wizard />
+            <a href="#" onClick={ this.openWizard }>Open Wizard</a>
           </div>
         </div>
       </div>

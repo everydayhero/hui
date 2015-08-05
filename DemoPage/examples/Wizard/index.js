@@ -1,22 +1,32 @@
 'use strict';
 
 var React            = require('react');
+var Router           = require('react-router');
+var AppHandler       = require('./AppHandler');
+var Route            = Router.Route;
+var NotFoundRoute    = Router.NotFoundRoute;
 var OnboardingWizard = require('./OnboardingWizard');
-var renderModal = require('../../../lib/renderModal');
+var router;
 
-module.exports = React.createClass({
-  displayName: 'WizardExample',
+if (typeof document === 'object') {
+  var routes = (
+    <Route name="root" path="/" handler={ AppHandler }>
+      <Route name="wizard" path="wizard/:step" handler={ OnboardingWizard } />
+      <NotFoundRoute handler={ AppHandler } />
+    </Route>
+  );
 
-  open: function(e) {
-    e.preventDefault();
-    renderModal(OnboardingWizard);
-  },
+  var div = document.createElement('div');
+  document.body.appendChild(div);
 
-  render: function() {
-    return (
-      <div>
-        <a href="#" onClick={ this.open }>Open Overlay</a>
-      </div>
-    );
-  }
-});
+  router = Router.create({
+    routes,
+    location: Router.HistoryLocation
+  });
+
+  router.run(function(Handler) {
+    React.render(<Handler/>, div);
+  });
+}
+
+module.exports = router;
