@@ -34,7 +34,9 @@ module.exports = React.createClass({
   },
 
   getScalePercentage: function() {
-    var graphHeight = this.getMaxForIndex(this.props.index) - this.getMinForIndex(this.props.index);
+    var minForIndex = this.getMinForIndex(this.props.index);
+    var graphMinForIndex = minForIndex > 0 ? Math.min(this.getLowerBound(), minForIndex) : minForIndex;
+    var graphHeight = this.getMaxForIndex(this.props.index) - graphMinForIndex;
     var boundsHeight = this.getUpperBound() - this.getLowerBound();
     return graphHeight / boundsHeight;
   },

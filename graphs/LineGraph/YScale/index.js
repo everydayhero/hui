@@ -38,7 +38,7 @@ module.exports = React.createClass({
   getScaleLines: function() {
     var numberOfScaleLines = Math.floor(this.getHeight() / this.props.minScaleLineGap);
     var distance = this.getUpperBound() - this.getLowerBound();
-    while(distance % numberOfScaleLines > 1) { --numberOfScaleLines; }
+    while(numberOfScaleLines > 0 && distance % numberOfScaleLines !== 0) { --numberOfScaleLines; }
 
     return {
       total: numberOfScaleLines,

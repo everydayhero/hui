@@ -1,6 +1,7 @@
 'use strict';
 
 var YScale = require('../index');
+var _ = require('lodash');
 
 describe('YScale', function() {
   var collection = [
@@ -29,6 +30,9 @@ describe('YScale', function() {
     bottom: 20
   }
 
+  var textContent = function(label) { return label.getDOMNode().textContent; };
+  var scryLabels = function(component, transform) { return _.map(scryByClass(component, 'hui-YScale__label'), transform); };
+
   describe('default', function() {
     var component;
 
@@ -47,18 +51,17 @@ describe('YScale', function() {
     });
 
     it('renders the correct labels', function() {
-      var scaleLabels = scryByClass(component, 'hui-YScale__label');
-      var label = 0, i = 0
-
-      for (i; i < scaleLabels.length; i++) {
-        scaleLabels[i].getDOMNode().textContent.should.contain(label.toString());
-        label += 5;
-      }
+      var labels = scryLabels(component, textContent);
+      labels.should.include('0 ');
+      labels.should.include('5 ');
+      labels.should.include('10 ');
+      labels.should.include('15 ');
+      labels.should.include('20 ');
+      labels.should.include('25 ');
     });
 
     it('renders the correct number of scale lines', function() {
       var scaleLines = scryByClass(component, 'hui-YScale__line');
-
       scaleLines.length.should.equal(6);
     });
   });
