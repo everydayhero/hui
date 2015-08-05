@@ -25,14 +25,7 @@ module.exports = React.createClass({
     collection: React.PropTypes.array.isRequired,
     collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
-    width: React.PropTypes.number.isRequired,
-    zeroLowerBound: React.PropTypes.bool
-  },
-
-  getDefaultProps: function() {
-    return {
-      zeroLowerBound: true
-    }
+    width: React.PropTypes.number.isRequired
   },
 
   getDrawingHeight: function() {
@@ -41,7 +34,9 @@ module.exports = React.createClass({
   },
 
   getScalePercentage: function() {
-    var graphHeight = this.getMaxForIndex(this.props.index) - this.getMinForIndex(this.props.index);
+    var minForIndex = this.getMinForIndex(this.props.index);
+    var graphMinForIndex = minForIndex > 0 ? Math.min(this.getLowerBound(), minForIndex) : minForIndex;
+    var graphHeight = this.getMaxForIndex(this.props.index) - graphMinForIndex;
     var boundsHeight = this.getUpperBound() - this.getLowerBound();
     return graphHeight / boundsHeight;
   },

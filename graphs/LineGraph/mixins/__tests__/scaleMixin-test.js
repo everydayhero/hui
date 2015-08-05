@@ -114,13 +114,7 @@ describe('scaleMixin', function() {
     });
 
     it('gives lowerBound of 0', function() {
-      scaleMixin.props.zeroLowerBound = true;
       scaleMixin.getLowerBound().should.equal(0);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of 10', function() {
-      scaleMixin.props.zeroLowerBound = false;
-      scaleMixin.getLowerBound().should.equal(10);
     });
   });
 
@@ -143,12 +137,6 @@ describe('scaleMixin', function() {
     });
 
     it('gives lowerBound of 0', function() {
-      scaleMixin.props.zeroLowerBound = true;
-      scaleMixin.getLowerBound().should.equal(0);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of 0', function() {
-      scaleMixin.props.zeroLowerBound = false;
       scaleMixin.getLowerBound().should.equal(0);
     });
   })
@@ -171,13 +159,7 @@ describe('scaleMixin', function() {
       scaleMixin.getMinForIndex(1).should.equal(12);
     });
 
-    it('with zeroLowerBound: true gives lowerBound of -0.5', function() {
-      scaleMixin.props.zeroLowerBound = true; // i.e. is ignored for negative lower bounds
-      scaleMixin.getLowerBound().should.equal(-0.5);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of -0.5', function() {
-      scaleMixin.props.zeroLowerBound = false;
+    it('gives lowerBound of -0.5', function() {
       scaleMixin.getLowerBound().should.equal(-0.5);
     });
   });
@@ -200,13 +182,7 @@ describe('scaleMixin', function() {
       scaleMixin.getMinForIndex(1).should.equal(12);
     });
 
-    it('with zeroLowerBound: true gives lowerBound of -0.75', function() {
-      scaleMixin.props.zeroLowerBound = true; // i.e. is ignored for negative lower bounds
-      scaleMixin.getLowerBound().should.equal(-0.75);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of -0.75', function() {
-      scaleMixin.props.zeroLowerBound = false;
+    it('gives lowerBound of -0.75', function() {
       scaleMixin.getLowerBound().should.equal(-0.75);
     });
   });
@@ -229,13 +205,7 @@ describe('scaleMixin', function() {
       scaleMixin.getMinForIndex(1).should.equal(12);
     });
 
-    it('with zeroLowerBound: true gives lowerBound of -25', function() {
-      scaleMixin.props.zeroLowerBound = true; // i.e. is ignored for negative lower bounds
-      scaleMixin.getLowerBound().should.equal(-25);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of -25', function() {
-      scaleMixin.props.zeroLowerBound = false;
+    it('gives lowerBound of -25', function() {
       scaleMixin.getLowerBound().should.equal(-25);
     });
   });
@@ -258,13 +228,7 @@ describe('scaleMixin', function() {
       scaleMixin.getMinForIndex(1).should.equal(12);
     });
 
-    it('with zeroLowerBound: true gives lowerBound of -1000', function() {
-      scaleMixin.props.zeroLowerBound = true; // i.e. is ignored for negative lower bounds
-      scaleMixin.getLowerBound().should.equal(-1000);
-    });
-
-    it('with zeroLowerBound: false gives lowerBound of -1000', function() {
-      scaleMixin.props.zeroLowerBound = false;
+    it('gives lowerBound of -1000', function() {
       scaleMixin.getLowerBound().should.equal(-1000);
     });
   });

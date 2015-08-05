@@ -21,7 +21,6 @@ module.exports = React.createClass({
     area: React.PropTypes.bool,
     tipLabel: React.PropTypes.string,
     showTipDate: React.PropTypes.bool,
-    zeroLowerBound: React.PropTypes.bool,
     gutter: React.PropTypes.shape({
       left: React.PropTypes.number,
       right: React.PropTypes.number,
@@ -44,7 +43,6 @@ module.exports = React.createClass({
       line: false,
       area: true,
       showTipDate: true,
-      zeroLowerBound: true,
       valueConverter: _.identity,
       loading: false,
       emptyState: false
