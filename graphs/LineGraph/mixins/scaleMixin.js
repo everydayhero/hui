@@ -23,7 +23,8 @@ module.exports = {
   },
 
   getMinForIndex: function(index) {
-    return _.min(this.getValuesForIndex(index));
+    var minValue = _.min(this.getValuesForIndex(index));
+    return this.props.zeroLowerBound ? Math.min(0, minValue) : minValue;
   },
 
   getMaxForIndex: function(index) {
@@ -39,8 +40,8 @@ module.exports = {
   },
 
   getLowerBound: function() {
-    var bound = this.getBound(this.getMin());
-    return this.props.zeroLowerBound ? Math.min(0, bound) : bound;
+    var lowerBound = this.getBound(this.getMin());
+    return this.props.zeroLowerBound ? Math.min(0, lowerBound) : lowerBound;
   },
 
   getUpperBound: function() {

@@ -25,7 +25,14 @@ module.exports = React.createClass({
     collection: React.PropTypes.array.isRequired,
     collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
-    width: React.PropTypes.number.isRequired
+    width: React.PropTypes.number.isRequired,
+    zeroLowerBound: React.PropTypes.bool
+  },
+
+  getDefaultProps: function() {
+    return {
+      zeroLowerBound: true
+    }
   },
 
   getDrawingHeight: function() {
