@@ -31,7 +31,7 @@ module.exports = {
   },
 
   getBound: function(value) {
-    var valueToLog = value !== 0 ? Math.abs(value) : 1; // log 0 is undefined, resulting in infinity and/or NaN
+    var valueToLog = parseFloat(value) !== 0 ? Math.abs(parseFloat(value)) : 1; // log 0 is undefined, resulting in infinity and/or NaN
     var power = Math.floor(Math.log(valueToLog) / Math.LN10);
     var division = Math.pow(10, power) * 0.5;
     var multiplier = value / division;
