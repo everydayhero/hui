@@ -9,7 +9,7 @@ const app = express()
 
 const ReactApp = React.createFactory(require('./DemoPage'))
 const staticPath = __dirname + '/dist/'
-const port = Number(process.env.PORT || 5000)
+const port = Number(process.env.PORT || 8000)
 
 app.use(compression())
 app.use(morgan())

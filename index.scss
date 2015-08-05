@@ -8,6 +8,7 @@
 @import "atoms/LoadingProgress/style";
 @import "atoms/Separator/style";
 @import "atoms/SocialMediaLinks/style";
+@import "atoms/Overlay/style";
 
 // Buttons
 @import "buttons/Button/style";
@@ -40,6 +41,12 @@
 @import "forms/TextCountDownInput/style";
 @import "forms/TextInput/style";
 @import "forms/UrlInput/style";
+
+//wizard
+@import "wizard/Progress/style";
+@import "wizard/Step/style";
+@import "wizard/style";
+
 
 * {
   margin: 0;

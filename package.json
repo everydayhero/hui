@@ -1,6 +1,6 @@
 {
   "name": "hui",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",
   "files": [
@@ -37,6 +37,7 @@
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",
     "react": "^0.12.2",
+    "react-router": "^0.11.5",
     "remarkable": "^1.6.0"
   },
   "devDependencies": {
