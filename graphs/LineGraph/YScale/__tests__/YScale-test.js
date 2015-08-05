@@ -1,6 +1,7 @@
 'use strict';
 
 var YScale = require('../index');
+var _ = require('lodash');
 
 describe('YScale', function() {
   var collection = [
