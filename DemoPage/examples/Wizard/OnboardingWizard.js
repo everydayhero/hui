@@ -12,21 +12,12 @@ module.exports = React.createClass({
 
   mixins: [Router.State, Router.Navigation],
 
-  getInitialState: function() {
-    return {
-      active: 0
-    }
+  onChange: function(step) {
+    this.transitionTo('wizard', { step });
   },
 
-  onChange: function(index) {
-    this.transitionTo('wizard', { step: index });
-  },
-
-  next: function(index) {
-    var component = this;
-    return function() {
-      component.onChange(index);
-    }
+  next: function() {
+    this.onChange(parseInt(this.getParams().step) + 1);
   },
 
   close: function() {
@@ -34,7 +25,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var active = this.getParams().step;
+    var step = this.getParams().step;
 
     var steps = [
       <Step key="1">
@@ -47,7 +38,7 @@ module.exports = React.createClass({
         <p className="Step__proof">
           People who do this raise up to <span className="Step__proof_value">10 times</span> more.
         </p>
-        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next(1) } />
+        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next } />
       </Step>,
 
       <Step key="2">
@@ -60,7 +51,7 @@ module.exports = React.createClass({
         <p className="Step__proof">
           People who do this raise up to <span className="Step__proof_value">74% more</span> than those who don’t.
         </p>
-        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next(2) } />
+        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next } />
       </Step>,
 
       <Step key="3">
@@ -73,7 +64,7 @@ module.exports = React.createClass({
         <p className="Step__proof">
           People who share their page within an hour of creating it generally <span className="Step__proof_value">raise 52% more</span> than everyone else.
         </p>
-        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next(3) } />
+        <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next } />
       </Step>,
 
       <Step key="4">
@@ -92,7 +83,7 @@ module.exports = React.createClass({
 
     return (
       <Overlay onClose={ this.close } inverse={ true }>
-        <Wizard active={ active } onChange={ this.onChange } steps={ steps } />
+        <Wizard currentStep={ step } onChange={ this.onChange } children={ steps } />
       </Overlay>
     );
   }

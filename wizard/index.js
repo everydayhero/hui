@@ -8,17 +8,17 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      steps: []
+      children: [],
+      currentStep: 0
     };
   },
 
   render: function() {
     var props = this.props;
-
     return (
       <div className="hui-Wizard">
-        <Progress total={ props.steps.length } active={ props.active } onChange={ props.onChange } />
-        { props.steps.length > 0 && props.steps[props.active] }
+        <Progress total={ props.children.length } active={ props.currentStep } onChange={ props.onChange } />
+        { props.children[props.currentStep] || props.children }
       </div>
     );
   }
