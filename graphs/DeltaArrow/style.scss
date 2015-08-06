@@ -27,33 +27,33 @@
 .hui-DeltaArrow--loading,
 .hui-DeltaArrow--emptyState {
   svg {
-    fill: #d1d2d4;
+    fill: $grey-lighter;
   }
 }
 
 .hui-DeltaArrow--unknown {
   svg {
-    fill: #d1d2d4;
+    fill: $grey-lighter;
   }
   .hui-DeltaArrow__value {
-    bottom: $hui-x-1;
+    bottom: $x-1;
   }
 }
 
 .hui-DeltaArrow--up {
   svg {
-    fill: #85c27e;
+    fill: $green-light;
   }
   .hui-DeltaArrow__value {
-    bottom: $hui-x-1;
+    bottom: $x-1;
   }
 }
 
 .hui-DeltaArrow--down {
   svg {
-    fill: #ce522e;
+    fill: $error;
   }
   .hui-DeltaArrow__value {
-    top: $hui-x-1;
+    top: $x-1;
   }
 }

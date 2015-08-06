@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var protocol = 'https://';
-
-var urls = {
+let map = {
   dashboard: 'https://{{ domain }}/dashboard',
+  receipts: 'https://{{ domain }}/receipts',
+  account: 'https://{{ domain }}/supporter/edit',
   portal: {
     au: 'http://www.{{ domain }}/au/',
     ie: 'http://www.{{ domain }}/ie/',
@@ -24,6 +24,13 @@ var urls = {
     uk: 'http://{{ domain }}/uk/sign-in/',
     us: 'http://{{ domain }}/us/sign-in/',
     nz: 'http://{{ domain }}/nz/sign-in/'
+  },
+  log_out: {
+    au: 'http://{{ domain }}/au/sign-out/',
+    ie: 'http://{{ domain }}/ie/sign-out/',
+    uk: 'http://{{ domain }}/uk/sign-out/',
+    us: 'http://{{ domain }}/us/sign-out/',
+    nz: 'http://{{ domain }}/nz/sign-out/'
   },
   twitter: {
     au: 'https://twitter.com/everydayhero',
@@ -59,20 +66,12 @@ var urls = {
     uk: 'https://www.pinterest.com/everydayherouk',
     us: 'https://www.pinterest.com/everydayherous',
     nz: 'https://www.pinterest.com/everydayheronz'
-  },
-  supporter_domain: protocol + '{{ domain }}',
-  charity_endpoint: protocol + '{{ domain }}/api/v2/charities/',
-  user_endpoint: protocol + '{{ domain }}/quantified_dashboard/user'
-};
-
-module.exports = {
-  getUrl: function(key, domain, region) {
-    domain = domain || 'everydayhero.com';
-    region = region || 'au';
-    var url;
-    if(urls[key]) {
-      url = urls[key][region].replace('{{ domain }}', domain);
-    }
-    return url;
   }
-};
+}
+
+export default (key, domain, region) => {
+  domain = domain || 'everydayhero.com'
+  region = region || 'au'
+  let url = typeof map[key] === 'string' ? map[key] : map[key][region] || map[key].au
+  return url.replace('{{ domain }}', domain)
+}

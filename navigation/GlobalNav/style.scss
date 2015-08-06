@@ -1,0 +1,93 @@
+.hui-GlobalNav {
+  transition: all 160ms 200ms ease-out;
+  color: $grey;
+  width: 100%;
+  position: relative;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
+.hui-GlobalNav__primary,
+.hui-GlobalNav__secondary {
+  position: relative;
+  background-color: white;
+  display: table;
+  width: 100%;
+}
+
+.hui-GlobalNav__primary > *,
+.hui-GlobalNav__secondary > * {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.hui-GlobalNav__primary {
+  border-bottom: 1px solid $green;
+  z-index: 2;
+}
+
+.hui-GlobalNav__secondary {
+  transition: all 160ms ease-out;
+  z-index: 1;
+  margin-top: -37px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 0 3px $grey-light;
+}
+
+.hui-GlobalNav__campaign,
+.hui-GlobalNav__logo {
+  padding: $x-3 18px;
+  height: 58px;
+  min-width: 216px;
+  max-width: 240px;
+  color: inherit;
+}
+
+.hui-GlobalNav__logo img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.hui-GlobalNav__campaignName {
+  @extend %truncate;
+  font-size: 18px;
+}
+.hui-GlobalNav__campaignDetail {
+  @extend %truncate;
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.hui-GlobalNav--transparent {
+  color: $white;
+  .hui-GlobalNav__primary,
+  .hui-GlobalNav__secondary {
+    background-color: transparent;
+  }
+  .hui-GlobalNav__primary {
+    border-bottom: 1px solid $white;
+  }
+}
+
+@media screen and (max-width: 919px) {
+  .hui-GlobalNav__campaign,
+  .hui-GlobalNav__logo {
+    padding: $x-3 $x-2;
+    min-width: 150px;
+    max-width: 150px;
+  }
+  .hui-GlobalNav__secondary {
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@import "navigation/GlobalNav/SiteNav/style";
+@import "navigation/GlobalNav/NavAccount/style";
+@import "navigation/GlobalNav/NavLink/style";
+@import "navigation/GlobalNav/NavPages/style";
+@import "navigation/GlobalNav/NavSearch/style";
+@import "navigation/GlobalNav/NavUser/style";

@@ -6,7 +6,7 @@ describe('Footer', function() {
   var element;
 
   before(function() {
-    element = TestUtils.renderIntoDocument(<Footer />);
+    element = renderIntoDocument(<Footer />);
   });
 
   it('renders', function() {

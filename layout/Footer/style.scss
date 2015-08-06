@@ -3,9 +3,9 @@
 }
 
 .hui-Footer__beneficiary {
-  background-color: #7ec774;
-  padding: 40px;
-  font-size: 16px;
+  background-color: $green-light;
+  padding: $x-10;
+  font-size: $x-4;
   font-weight: 300;
   color: white;
 }
@@ -17,9 +17,9 @@
 }
 
 .hui-Footer__siteLinks {
-  color: #7ec774;
+  color: $green-light;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: $x-3;
   padding-top: 10px;
   padding-bottom: 30px;
   position: relative;
@@ -32,18 +32,18 @@
 }
 
 .hui-Footer__logo {
-  height: 32px;
+  height: $x-8;
   max-width: 100%;
   padding: 0 30px;
-  line-height: 13px;
+  line-height: $x-3;
   margin-bottom: -8px;
 }
 
 .hui-Footer__legalLinks {
-  color: #aaa;
-  border-top: 1px solid #eee;
-  padding: 20px 0;
-  font-size: 13px;
+  color: $grey-light;
+  border-top: 1px solid $grey-lighter;
+  padding: $x-5 0;
+  font-size: $x-3;
   font-weight: 300;
   font-style: italic;
   text-rendering: geometricPrecision;
@@ -53,7 +53,7 @@
 .hui-Footer__legalLink,
 .hui-Footer__beneficiaryInfo {
   display: inline-block;
-  padding: 0 13px;
+  padding: 0 $x-3;
   text-decoration: none;
   color: inherit;
   font-weight: inherit;
@@ -62,7 +62,7 @@
 }
 
 .hui-Footer__socialMedia {
-  color: #7ec774;
+  color: $green-light;
   text-align: center;
 }
 
@@ -81,7 +81,7 @@
 
   .hui-Footer__siteLink {
     display: block;
-    line-height: 48px;
+    line-height: $x-12;
   }
 
   .hui-Footer__logo {
@@ -95,13 +95,13 @@
 
   .hui-Footer__legalLink {
     display: block;
-    line-height: 44px;
+    line-height: $x-11;
   }
 }
 
 @media screen and (max-width: 500px) {
   .hui-Footer__siteLinks {
-    padding-top: 50px;
+    padding-top: $x-12;
   }
 
   .hui-Footer__logo {
@@ -110,7 +110,7 @@
   }
 
   .hui-Footer__beneficiaryInfo {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: $x-2;
+    padding-bottom: $x-2;
   }
 }

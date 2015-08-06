@@ -1,6 +1,4 @@
 .DemoPage {
-  margin-top: 64px;
-
   pre {
     margin-bottom: 18px;
   }
@@ -9,57 +7,56 @@
 .DemoPage__h2 {
   @extend %hui-rule-bottom;
   @extend %general-reset;
-  font-size: 28px;
-  margin-bottom: 24px;
+  font-size: $x-7;
+  margin-bottom: $x-6;
   padding-bottom: 12px;
-  margin-top: 36px;
+  margin-top: $x-9;
   font-weight: 200;
-  color: $hui-text-body;
+  color: $grey;
 }
 
 .DemoPage__h3 {
   @extend %general-reset;
-  font-size: 20px;
-  margin-bottom: 16px;
-  margin-top: 16px;
+  font-size: $x-5;
+  margin-bottom: $x-4;
+  margin-top: $x-4;
   font-weight: 700;
-  color: $hui-text-body;
+  color: $grey;
 }
 
 .DemoPage__h4 {
   @extend %general-reset;
-  font-size: 13px;
-  margin-bottom: 8px;
-  margin-top: 24px;
+  font-size: $x-3;
+  margin-bottom: $x-2;
+  margin-top: $x-6;
   font-weight: 800;
-  color: $hui-text-body;
+  color: $grey;
 }
 
 .DemoPage__p {
   @extend %general-reset;
-  margin-bottom: 16px;
-  color: $hui-text-body;
+  margin-bottom: $x-4;
+  color: $grey;
   font-size: 14px;
-  line-height: 16px;
+  line-height: $x-4;
 }
 
 .DemoPage__ul {
   @extend %general-reset;
-  margin-left: 24px;
-  margin-bottom: 24px;
-  color: $hui-text-body;
+  margin-left: $x-6;
+  margin-bottom: $x-6;
+  color: $grey;
   font-size: 14px;
 }
 
 .DemoPage__li {
-  line-height: 24px;
+  line-height: $x-6;
 }
 
 .DemoPage__content {
   max-width: 900px;
   margin: 0 auto;
-  margin-top: 64px;
-  padding: 24px;
+  padding: $x-6;
 }
 
 .DemoPage__example,
@@ -74,7 +71,7 @@
   min-height: 69px;
   margin-bottom: 18px;
   margin-top: 18px;
-  border: 1px $hui-border-grey solid;
+  border: 1px $grey-active solid;
   z-index: 1;
   background: white;
 }
@@ -99,14 +96,14 @@
 }
 
 .DemoPage__group {
-  padding-bottom: 20px;
+  padding-bottom: $x-5;
 }
 
 .DemoPage__example--button,
 .DemoPage__example--button--inverse {
-  padding: 24px;
+  padding: $x-6;
 }
 
 .DemoPage__example--button--inverse {
-  background: #666;
+  background: $grey;
 }

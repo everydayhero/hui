@@ -2,13 +2,13 @@
   @extend %general-reset;
   display: inline-block;
   font-size: 11px;
-  color: $hui-link-secondary;
-  margin-right: 16px;
+  color: $grey-active;
+  margin-right: $x-4;
   text-transform: uppercase;
   position: relative;
   top: -8px;
 
   &:hover {
-    color: $hui-link-active;
+    color: $green-active;
   }
 }

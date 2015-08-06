@@ -1,22 +1,10 @@
 'use strict';
 
-var gulp                = require('gulp');
-var gutil               = require('gulp-util');
-var concat              = require('gulp-concat');
-var source              = require('vinyl-source-stream');
-var buffer              = require('vinyl-buffer');
-
-// stylesheets
-var sass                = require('gulp-sass');
-var autoprefixer        = require('gulp-autoprefixer');
-var minifyCss           = require('gulp-minify-css');
-
-// javascripts
-var browserify          = require('browserify');
-var uglify              = require('gulp-uglify');
-
-// html
-var inject              = require('gulp-inject');
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' } });
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
 
 // Tasks
 require('./gulp_tasks/assets-deploy');
@@ -24,9 +12,9 @@ require('./gulp_tasks/lint');
 require('./gulp_tasks/assets-build');
 require('./gulp_tasks/docs');
 
-var debug        = !!gutil.env.debug;
-var src          = {};
-var exclude      = [
+var debug = !!$.util.env.debug;
+var src = {};
+var exclude = [
   '!./**/*test**',
   '!./__tests__/**',
   '!./test/**',
@@ -40,39 +28,35 @@ var exclude      = [
 process.env.NODE_ENV = debug ? 'development' : 'production';
 
 gulp.task('styles', function() {
-  var compress = debug ? gutil.noop : minifyCss;
   src.styles = [ 'index.scss' ];
 
-  return gulp
-    .src(src.styles)
-    .pipe(sass({
-      sourceMap: 'sass',
-      sourceComments: 'map',
-      precision: 10,
+  return gulp.src(src.styles)
+    .pipe($.sass({
       imagePath: 'images'
     }))
-    .pipe(concat('index.css'))
-    .pipe(autoprefixer())
-    .pipe(compress())
+    .pipe($.concat('index.css'))
+    .pipe($.autoprefixer())
+    .pipe($.if(!debug, $.minify()))
     .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('scripts', [ 'lint' ], function() {
-  var compress = debug ? gutil.noop : uglify;
   src.scripts = ['./**/*.js'].concat(exclude);
 
   var bundler = browserify({
-      entries: ['./index.js'],
-      debug: debug
-    });
+    entries: ['./index.js'],
+    transform: ['babelify'],
+    insertGlobals: true,
+    debug: debug
+  });
 
   return bundler
-      .bundle()
-      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-      .pipe(source('index.js'))
-      .pipe(buffer())
-      .pipe(compress())
-      .pipe(gulp.dest('./dist/scripts'));
+    .bundle()
+    .on('error', $.util.log.bind($.util, 'Browserify Error'))
+    .pipe(source('index.js'))
+    .pipe(buffer())
+    .pipe($.if(!debug, $.uglify()))
+    .pipe(gulp.dest('./dist/scripts'));
 });
 
 gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
@@ -80,24 +64,22 @@ gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
       'dist/*/index.*'
     ], { read: false });
 
-  return gulp
-    .src('index.ejs')
-    .pipe(inject(sources, {
+  return gulp.src('index.ejs')
+    .pipe($.inject(sources, {
       transform: function(filepath, file, i, length) {
         // remove `/dist` from the filepath
         filepath = '/' + filepath.split('/').slice(2).join('/');
-        return inject.transform(filepath, file, i, length);
+        return $.inject.transform(filepath, file, i, length);
       }
     }))
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', function() {
-  src.images = ['./**/images/*'].concat(exclude);
+  src.images = ['images/*.*'];
 
-  return gulp
-    .src(src.images)
-    .pipe(gulp.dest('dist/images'));
+  return gulp.src(src.images)
+    .pipe(gulp.dest('./dist/images'));
 });
 
 gulp.task('build', ['index']);

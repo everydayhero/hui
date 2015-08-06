@@ -26,15 +26,15 @@
   position: absolute;
   top: 9px;
   left: 0px;
-  color: $hui-text-input-text;
+  color: $grey;
   letter-spacing: 0.10em;
-  line-height: $hui-x-9 - 1;
+  line-height: $x-9 - 1;
   pointer-events:none;
-  padding-right: $hui-x-7;
+  padding-right: $x-7;
 }
 
 .hui-SelectInput__selected--noSelection {
-  color: $hui-label;
+  color: $grey-light;
 }
 
 .hui-SelectInput__inputWrap {

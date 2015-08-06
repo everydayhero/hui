@@ -1,0 +1,83 @@
+.hui-NavPagesPage {
+  color: $grey-active;
+  padding: 5px;
+  display: block;
+  border-bottom: 1px solid $grey-lighter;
+  text-decoration: none;
+  min-width: 200px;
+  &:hover, &:focus {
+    color: $green-active;
+  }
+}
+
+.hui-NavPagesPage,
+.hui-NavPagesPage__details {
+  overflow: hidden;
+}
+
+.hui-NavPagesPage__image {
+  float: left;
+  margin-right: $x-2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.hui-NavPagesPage__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  font-size: 18px;
+}
+
+.hui-NavPagesPage--active .hui-NavPagesPage__icon {
+  opacity: 0;
+}
+.hui-NavPagesPage--pending .hui-NavPagesPage__icon {
+  background-color: transparentize($success, 0.35);
+}
+.hui-NavPagesPage--disabled .hui-NavPagesPage__icon {
+  background-color: transparentize($grey, 0.35);
+}
+
+.hui-NavPagesPage__name {
+  font-weight: bold;
+  font-size: $x-3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hui-NavPagesPage__detail {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: $x-2;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hui-NavPagesPage__progress {
+  background-color: $grey-lighter;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin: 3px 0;
+}
+
+.hui-NavPagesPage__progressBar {
+  background-color: $green;
+  height: $x-1;
+}

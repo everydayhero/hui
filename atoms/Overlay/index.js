@@ -5,7 +5,7 @@ import Icon from '../Icon'
 
 import addClass from '../../lib/addClass'
 import removeClass from '../../lib/removeClass'
-import classNamesArray from '../../lib/classNamesArray';
+import classnames from 'classnames';
 
 export default React.createClass({
   displayName: 'Overlay',
@@ -48,8 +48,8 @@ export default React.createClass({
 
   render() {
     var props = this.props;
-    var classes = classNamesArray(['Overlay', props.inverse && 'Overlay--inverse', props.className]);
-    var closeClasses = classNamesArray(['Overlay__close', props.inverse && 'Overlay__close--inverse']);
+    var classes = classnames(['Overlay', props.inverse && 'Overlay--inverse', props.className]);
+    var closeClasses = classnames(['Overlay__close', props.inverse && 'Overlay__close--inverse']);
     var closeButton = props.onClose && props.showCloseButton &&
       <a href="#" className={ closeClasses } onClick={ this.onClose }><Icon icon="times" /></a>
 

@@ -1,11 +1,11 @@
 'use strict';
 
-var _                 = require('lodash');
-var React             = require('react');
-var Icon              = require('../../atoms/Icon');
-var LocalStorageMixin = require('../../mixins/localStorage');
-var inputMessage      = require('../../mixins/inputMessage');
-var classNamesArray   = require('../../lib/classNamesArray');
+import _ from 'lodash'
+import React from 'react'
+import Icon from '../../atoms/Icon'
+import LocalStorageMixin from '../../mixins/localStorage'
+import inputMessage from '../../mixins/inputMessage'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'SelectInput',
@@ -186,7 +186,7 @@ module.exports = React.createClass({
     var hasServerErrors = props.errors.length;
     var layout = props.layout;
     var spacing = props.spacing;
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-SelectInput--' + layout,
       'hui-SelectInput--' + spacing,
       'hui-SelectInput',

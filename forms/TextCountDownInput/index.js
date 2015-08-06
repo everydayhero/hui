@@ -1,8 +1,8 @@
 'use strict';
 
-var React           = require('react');
-var Input           = require('../TextInput');
-var classNamesArray = require('../../lib/classNamesArray');
+import React from 'react'
+import Input from '../TextInput'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'TextCountDownInput',
@@ -57,12 +57,12 @@ propTypes: {
     var maxed   = value.length > props.max;
     var maxWarn =  value.length > props.warnMax && value.length <= props.max;
     var errors  = props.errors;
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-TextCountDownInput--' + props.layout,
       'hui-TextCountDownInput--' + props.spacing,
       'hui-TextCountDownInput'
     ]);
-    var counterClasses = classNamesArray([
+    var counterClasses = classnames([
       maxed && 'hui-TextCountDownInput__counter--maxed',
       maxWarn && 'hui-TextCountDownInput__counter--warn',
       'hui-TextCountDownInput__counter'

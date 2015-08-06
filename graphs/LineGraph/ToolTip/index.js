@@ -2,7 +2,7 @@
 
 var _            = require('lodash');
 var React        = require('react');
-var classNames   = require('classnames');
+var classnames   = require('classnames');
 var moment       = require('moment');
 var formatNumber = require('../../../lib/formatNumber');
 
@@ -60,7 +60,7 @@ module.exports = React.createClass({
 
   renderTipContent: function() {
     var props = this.props;
-    var classes = classNames({
+    var classes = classnames({
       'hui-ToolTip__text--left': !props.isFlipOver,
       'hui-ToolTip__text--right': props.isFlipOver
     }, 'hui-ToolTip__text');
@@ -129,7 +129,7 @@ module.exports = React.createClass({
     var y        = position.y;
     var style    = { left: x, top: y - 3 };
 
-    var classes = classNames({
+    var classes = classnames({
       'hui-ToolTip--left': props.isFlipOver
     }, 'hui-ToolTip');
 

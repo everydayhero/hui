@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
     while(i++ < n) {
       var name = id + '_' + i;
-      links[t(name)] = t(name + '_url', { portal: urls.getUrl('portal', domain, region) });
+      links[t(name)] = t(name + '_url', { portal: urls('portal', domain, region) });
     }
 
     return links;
@@ -80,11 +80,11 @@ module.exports = React.createClass({
     var region = this.props.region;
 
     var socialMedia = [
-      { name: 'facebook', url: urls.getUrl('facebook', domain, region) },
-      { name: 'twitter', url: urls.getUrl('twitter', domain, region) },
-      { name: 'google-plus', url: urls.getUrl('google_plus', domain, region) },
-      { name: 'instagram', url: urls.getUrl('instagram', domain, region) },
-      { name: 'pinterest', url: urls.getUrl('pinterest', domain, region) }
+      { name: 'facebook', url: urls('facebook', domain, region) },
+      { name: 'twitter', url: urls('twitter', domain, region) },
+      { name: 'google-plus', url: urls('google_plus', domain, region) },
+      { name: 'instagram', url: urls('instagram', domain, region) },
+      { name: 'pinterest', url: urls('pinterest', domain, region) }
     ];
 
     return (
@@ -95,7 +95,7 @@ module.exports = React.createClass({
           <div className="hui-Footer__siteLinks">
             { this.renderLeftSiteLinks() }
 
-            <a href={ urls.getUrl('portal', domain, region) }><img className="hui-Footer__logo" src={ this.props.imagePath } /></a>
+            <a href={ urls('portal', domain, region) }><img className="hui-Footer__logo" src={ this.props.imagePath } /></a>
 
             { this.renderRightSiteLinks() }
           </div>

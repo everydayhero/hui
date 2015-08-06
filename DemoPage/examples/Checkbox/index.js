@@ -10,9 +10,9 @@ module.exports = React.createClass({
 
   t: function(name) {
     var translation = {
-      join_label: 'Join or not',
-      terms_label: 'Terms & Conditions',
-      opt_in_label: 'Opt in'
+      'join_label': 'Join or not',
+      'terms_label': 'Terms & Conditions',
+      'opt_in_label': 'Opt in'
     };
 
     return (translation[name]);

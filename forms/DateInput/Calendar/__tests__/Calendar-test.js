@@ -212,11 +212,11 @@ describe('Calendar', function() {
     var date = moment('2014-11-01');
     var element = renderIntoDocument(<Calendar date={ date } onSelectDate={ listener }/>);
 
-    it('triggers an onClick when a date is slected', function() {
+    it('triggers an onClick when a date is selected', function() {
       var dates = scryByClass(element, 'hui-DatePickerDay');
       Simulate.click(dates[0]);
 
-      listener.mock.calls.length.should.equal(1);
+      listener.should.have.been.called;
     });
   });
 });

@@ -1,0 +1,90 @@
+.AggregateSearchResultPage__avatar {
+  float: left;
+  display: block;
+  position: relative;
+  text-align: center;
+  width: $x-18;
+  height: $x-16;
+  margin-right: 10px;
+  padding: 0 5px;
+
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+  }
+
+  @include media-max($bp-xs) {
+    width: $x-12;
+    height: $x-12;
+    padding: 0;
+  }
+}
+
+.AggregateSearchResultPage__content {
+  display: block;
+  overflow: hidden;
+  padding-top: 2px;
+}
+
+.AggregateSearchResultPage__header {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: $x-5;
+  line-height: 1.2;
+  color: white;
+
+  @include media-max($bp-s) {
+    font-size: 17px;
+  }
+
+  @include media-max($bp-xs) {
+    font-size: 15px;
+  }
+
+  @include media-max($bp-xxxs) {
+    font-size: $x-3;
+  }
+}
+
+.AggregateSearchResultPage__subheader {
+  font-size: 0.7em;
+  color: $grey-lighter;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 0.5em;
+}
+
+.AggregateSearchResultPage__progress {
+  width: 100%;
+  background-color: $grey;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin: 3px 0;
+}
+
+.AggregateSearchResultPage__progress__bar {
+  height: $x-1;
+  background-color: $green-light;
+}
+
+.AggregateSearchResultPage__amount {
+  color: $green-light;
+  padding: 2px 0;
+}
+
+.AggregateSearchResultPage__for {
+  strong {
+    color: $grey-lighter;
+  }
+}
+
+.AggregateSearchResultPage__amount, .AggregateSearchResultPage__for {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

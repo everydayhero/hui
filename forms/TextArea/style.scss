@@ -16,14 +16,14 @@
   max-width: 100%;
   min-width: 100%;
   font-size: 15px;
-  line-height: 20px;
+  line-height: $x-5;
   border: 0px;
-  padding: 0px 8px 8px 8px;
+  padding: 0px $x-2 $x-2 $x-2;
 }
 
 .hui-TextArea__label {
   @extend %hui-input-label;
-  margin: 8px;
+  margin: $x-2;
 }
 
 .hui-TextArea--error .hui-TextArea__label {
@@ -39,7 +39,7 @@
 }
 
 .hui-TextArea--valid .hui-TextArea__icon {
-  color: #7ec774;
+  color: $green-light;
 }
 
 .hui-TextArea__iconButton {

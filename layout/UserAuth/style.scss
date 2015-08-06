@@ -1,13 +1,13 @@
 .hui-UserAuth {
   display: block;
   vertical-align: top;
-  right: $hui-x-6;
+  right: $x-6;
   position: absolute;
-  top: $hui-x-3;
+  top: $x-3;
 }
 
 .hui-UserAuth__signIn {
   @extend %hui-link;
   vertical-align: middle;
-  margin-left: $hui-x-3;
+  margin-left: $x-3;
 }

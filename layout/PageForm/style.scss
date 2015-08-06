@@ -1,6 +1,6 @@
 .hui-PageForm {
-  padding-top: 21px;
-  padding-bottom: 39px;
+  padding-top: $x-5;
+  padding-bottom: $x-10;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center center;
@@ -10,16 +10,16 @@
 
 .hui-PageForm__title {
   font-family: 'Amatic SC',lato,helvetica,arial,sans-serif;
-  font-size: 36px;
+  font-size: $x-9;
   font-weight: normal;
   text-transform: uppercase;
-  margin: 0 0 13px;
+  margin: 0 0 $x-3;
 }
 
 .hui-PageForm__icon {
-  font-size: 44px;
+  font-size: $x-11;
   color: white;
-  margin-bottom: 13px;
+  margin-bottom: $x-3;
   display: inline-block;
-  margin-bottom: 13px;
+  margin-bottom: $x-3;
 }

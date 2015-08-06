@@ -1,9 +1,7 @@
 'use strict';
 
 import React from 'react'
-import TopBar from '../layout/TopBar'
-import TopBarLink from '../layout/TopBarLink'
-import Masthead from '../layout/Masthead'
+import GlobalNav from '../navigation/GlobalNav'
 import TopBarExample from './examples/TopBar'
 import PageFormExample from './examples/PageForm'
 import DeltaArrow from './examples/DeltaArrow'
@@ -28,7 +26,7 @@ import FooterExample from './examples/Footer'
 import TagList from './examples/TagList'
 import WizardRouter from './examples/Wizard'
 
-const imagePath = './images/';
+const IMG_PATH = './images/';
 
 export default React.createClass({
   displayName: 'DemoPage',
@@ -41,18 +39,7 @@ export default React.createClass({
   render() {
     return (
       <div className="DemoPage">
-        <TopBar fixed={ true }>
-          <Masthead
-            appName={ "HUI (◠‿◠)" }
-            href="/"
-            imagePath={ imagePath } />
-            <TopBarLink href="#how-to-use">How to use</TopBarLink>
-            <TopBarLink href="#layout">Layout</TopBarLink>
-            <TopBarLink href="#buttons">Buttons</TopBarLink>
-            <TopBarLink href="#graphs">Graphs</TopBarLink>
-            <TopBarLink href="#forms">Forms</TopBarLink>
-            <TopBarLink href="#wizard">Wizard</TopBarLink>
-        </TopBar>
+        <GlobalNav domain="everydayhero-staging.com" region="au" imgPath={ IMG_PATH } />
 
         <div className="DemoPage__content">
           <h2 className="DemoPage__h2" id="how-to-use">How To Use</h2>

@@ -1,0 +1,23 @@
+.hui-SiteNav {
+  width: 100%;
+}
+
+.hui-SiteNav--desktop {
+  padding-top: 3px;
+}
+
+.hui-SiteNav__navLinks {
+  display: table;
+  width: 100%;
+}
+
+.hui-SiteNav__navLinks > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 919px) {
+  .hui-SiteNav--desktop {
+    display: none;
+  }
+}

@@ -7,7 +7,7 @@ describe('Fieldset', function() {
     var element = renderIntoDocument(<Fieldset/>);
 
     it('it renders a Fieldset', function() {
-      findByClass(element, 'Fieldset');
+      findByClass(element, 'hui-Fieldset');
     });
 
     it('does not render a legend', function() {

@@ -11,12 +11,12 @@
 }
 
 .hui-UrlInput__path {
-  padding-left: $hui-x-3;
+  padding-left: $x-3;
 }
 
 .hui-UrlInput__protocol {
-  max-width: $hui-x-9;
-  padding-right: $hui-x-3;
+  max-width: $x-9;
+  padding-right: $x-3;
 }
 
 @include input-sizes(UrlInput);

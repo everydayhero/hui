@@ -12,10 +12,10 @@
 
 .hui-ToolTip__text {
   position: absolute;
-  background: $hui-tooltip-bg-white;
+  background: $white;
   top: 0px;
-  padding: $hui-x-3;
-  box-shadow: 2px 2px 5px $hui-drop-shadow;
+  padding: $x-3;
+  box-shadow: 2px 2px 5px $grey;
 }
 
 .hui-ToolTip__text--left {

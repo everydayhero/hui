@@ -7,20 +7,20 @@
 
 .hui-TextCountDownInput__counter {
   position: absolute;
-  color: $hui-input-counter;
+  color: $grey-lighter;
   right: 31px;
   top: 10px;
-  line-height: 24px;
+  line-height: $x-6;
   font-size: 14px;
   z-index: 3;
 }
 
 .hui-TextCountDownInput__counter--maxed {
-  color: tomato;
+  color: $error;
 }
 
 .hui-TextCountDownInput__counter--warn {
-  color: orange;
+  color: $alert;
 }
 
 @include input-sizes(TextCountDownInput);

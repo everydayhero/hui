@@ -25,7 +25,7 @@ describe('Tag List Item', function() {
       var icon = findByClass(component, 'hui-TagListItem__iconButton');
       TestUtils.Simulate.click(icon);
 
-      expect(onIconClick).to.have.been.calledOnce;
+      onIconClick.should.have.been.called;
     });
   });
 });

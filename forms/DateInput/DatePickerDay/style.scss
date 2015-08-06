@@ -2,26 +2,26 @@
   display: inline-block;
   width: 30px;
   text-align: center;
-  border-radius: 4px;
-  padding: 0px 4px;
-  color: $hui-primary-green;
-  font-family: $hui-font-family;
+  border-radius: $x-1;
+  padding: 0px$x-1;
+  color: $green;
+  font-family: $font-copy;
   &:hover {
-    background-color: $hui-secondary-hover-grey;
+    background-color: $grey-lighter;
   }
 }
 
 .hui-DatePickerDay--today {
   font-weight: bold;
-  background-color: $hui-secondary-grey;
-  color: $hui-primary-green;
+  background-color: $grey-lighter;
+  color: $green;
 }
 
 .hui-DatePickerDay--selected {
-  background: $hui-selected-background-green;
+  background: $green-active;
   color: white;
 
   &:hover {
-    color: $hui-hover-inverse-green;
+    color: $green-lighter;
   }
 }

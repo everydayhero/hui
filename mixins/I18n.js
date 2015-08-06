@@ -1,20 +1,20 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var i18n = require('../lib/i18n');
-var Remarkable = require('remarkable');
-var md = new Remarkable({ xhtmlOut: true, breaks: true });
+import React from 'react'
+import i18n from '../lib/i18n'
+import Remarkable from 'remarkable'
+let md = new Remarkable({ xhtmlOut: true, breaks: true })
 
-module.exports = {
-  t: function(key, params) {
-    return i18n.t(this.constructor.i18n, key, params);
+export default {
+  t(key, params) {
+    return i18n.t(this.constructor.i18n, key, params, this.props.region)
   },
 
-  tm: function(key, params) {
+  tm(key, params) {
     return (
       <span dangerouslySetInnerHTML={{
         __html: md.render(this.t(key, params))
       }} />
-    );
+    )
   }
-};
+}

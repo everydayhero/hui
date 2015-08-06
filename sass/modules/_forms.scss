@@ -9,11 +9,11 @@
   display: block;
   width: 100%;
   height: 42px;
-  border-radius: 2px;
-  background-color: white;
-  border: 1px solid #aaa;
-  border-bottom: 1px solid $hui-text-input-text;
-  padding: 4px 8px 0;
+  border-radius: $border-radius;
+  background-color: $white;
+  border: 1px solid $grey-lighter;
+  border-bottom: 1px solid $grey;
+  padding: $x-1 $x-2 0;
 }
 
 %hui-input-label {
@@ -21,41 +21,41 @@
   letter-spacing: 0.16em;
   font-size: 9px;
   line-height: 9px;
-  color: $hui-text-input-text;
+  color: $grey;
   position: relative;
   display: block;
   width: 100%;
-  font-family: $hui-font-family;
+  font-family: $font-copy;
 }
 
 %hui-input-disabled {
-  border-bottom-color: #aaa;
-  color: #aaa;
+  border-bottom-color: $grey-light;
+  color: $grey-light;
 }
 
 %hui-input-error {
-  border-bottom-color: tomato;
-  color: tomato;
+  border-bottom-color: $error;
+  color: $error;
 }
 
 %hui-input-focused {
-  border-bottom-color: #7ec774;
-  color: #7ec774;
+  border-bottom-color: $green-light;
+  color: $green-light;
 }
 
 %error-message {
   opacity: 1;
   top: 0;
-  color: white;
-  background-color: tomato;
-  margin: 0 8px;
+  color: $white;
+  background-color: $error;
+  margin: 0 $x-2;
 }
 
 %hui-input-base {
   float: left;
   position: relative;
   text-align: left;
-  font-family: $hui-font-family;
+  font-family: $font-copy;
 }
 
 %hui-text-input--readOnly {
@@ -71,26 +71,26 @@
 }
 
 %form-instruction {
-  padding-bottom: $hui-x-3;
-  font-size: $hui-x-4;
+  padding-bottom: $x-3;
+  font-size: $x-4;
 }
 
 %hui-placeholder {
   @extend %hui-text-input-label;
-  padding: 0 $hui-x-4;
-  color: $hui-input-label;
+  padding: 0 $x-4;
+  color: $grey-light;
 }
 
 %hui-form-row-label {
-  font-size: $hui-x-4;
+  font-size: $x-4;
   display: block;
 }
 
 %hui-text-area {
   @extend %hui-input-wrap;
   @extend %hui-text-input;
-  padding: $hui-x-3;
-  min-height: $hui-x-36;
+  padding: $x-3;
+  min-height: $x-36;
   font-family: "Lato", Helvetica, Arial, sans-serif;
 }
 

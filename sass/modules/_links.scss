@@ -1,13 +1,13 @@
  %hui-input-button {
-  background: $hui-medium-grey;
+  background: $grey-light;
   border-style: solid;
   border-width: 1px;
   cursor: pointer;
-  padding-right: $hui-x-5;
-  padding-left: $hui-x-5;
+  padding-right: $x-5;
+  padding-left: $x-5;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 13px;
+  font-size: $x-3;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-weight: normal;
   letter-spacing: 0.1em;
@@ -15,7 +15,7 @@
   text-align: center;
   text-decoration: none;
   color: snow;
-  line-height: 40px;
+  line-height: $x-10;
 }
 
 %hui-button-reset {
@@ -25,12 +25,12 @@
 }
 
 %hui-link {
-  font-size: 13px;
+  font-size: $x-3;
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  color: $hui-link-primary;
+  color: $green-dark;
   border: none;
   outline: none;
   &:active, &:hover {
-    color: $hui-link-active;
+    color: $green-active;
   }
 }

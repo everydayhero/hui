@@ -1,8 +1,8 @@
 'use strict';
 
-var React           = require('react');
-var Icon            = require('../../atoms/Icon');
-var classNamesArray = require('../../lib/classNamesArray');
+import React from 'react'
+import Icon from '../../atoms/Icon'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'Button',
@@ -79,7 +79,7 @@ module.exports = React.createClass({
     var clickHandler = props.disabled ? this.ignoreClick : this.propogateClick;
     var kind = props.borderless ? props.kind + '-borderless' : props.kind;
 
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-Button',
       'hui-Button--' + kind,
       props.disabled && 'hui-Button--disabled',

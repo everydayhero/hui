@@ -1,47 +1,44 @@
-$hui-border-green: #00b44d;
-$hui-bg: #FBF9F4;
-$hui-link-secondary: #8e8e8e;
-$hui-link-primary: #00b44d;
-$hui-link-active: #109e4d;
-$hui-text-body: #585858;
-$hui-border-grey: #bcbec0;
-$hui-label: #b3b3b3;
-$hui-header-secondary: #575757;
-$hui-header-primary: #82c57a;
-$hui-header-fieldset-border-active: #82c57a;
-$hui-header-fieldset-border: #d1d2d4;
-$hui-legend: #8d8d8d;
-$hui-drop-shadow: #575757;
-$hui-disabled-button: #e5e5e5;
+// everydayhero brand colours
+$green-active: #2bb65a;
+$green-lighter: #89C480;
+$green-light: #89C480;
+$green: #2E9C53;
+$green-dark: #0A5E0D;
 
-$data-series-colors: #7fc675, #2e7e9b, #87768d, #a49f7f, #7ac9a4, #c1cb89, #e3a23f, #f18791, #da714f, #b24852, #593149, #145f80, #848b3f, #c9802a, #bf3b26, #99788a, #6eb4d2, #4886a2, #5e5e5f, #92d0b0, #a67260, #be8ba7, #615ba8, #6d846c, #576976, #6c6670, #77766c, #7ba894, #a3aa83, #b79056, #9c7679, #8a695a, #975756, #4f4048, #4b5968;
+$white: #FFFFFF;
+$cream: #FDFCF7;
 
-$hui-error-background: lighten(tomato, 8%);
-$hui-input-label: #b3b3b3;
-$hui-input-background: #f2f2f2;
-$hui-input-text: #b3b3b3;
-$hui-input-counter: #e6e6e6;
-
-$hui-primary-grey: #666666;
-$hui-primary-green: #00a044;
-$hui-primary-border-grey: #b3b3b3;
-
-$hui-medium-grey: #b3b3b3;
-$hui-secondary-grey: #f2f2f2;
-
-$hui-rule-grey: #e6e6e6;
-$hui-background-dropdown-white: white;
-$hui-secondary-hover-grey: #dbdbdb;
-$hui-hover-green: #00b44d;
-
-$hui-selected-background-green: lighten($hui-primary-green, 8%);
-$hui-hover-inverse-green: lighten($hui-primary-green, 50%);
-
-$hui-tooltip-bg-white: #ffffff;
-
-$hui-input-overlength-red: lighten(tomato, 8%);
-
-$hui-text-input-text: #525252;
-$hui-fieldset-background: #F5F5F5;
-
+$grey-lightest: #F5F5F5;
+$grey-lighter: #DEDEDE;
+$grey-light: #B3B3B3;
+$grey-active: #8E8E8E;
+$grey: #585858;
 $grey-dark: #262A2D;
+
+// State colours
+$error: #FF6347;
+$alert: #FFBE40;
+$success: #AFEEEE;
+
+// Footprint colours
+$community: #35163d;
+$community-secondary: #583048;
+$effort: #cf4c22;
+$effort-secondary: #e2a13f;
+$voice: #b14750;
+$voice-secondary: #f18790;
+$money: #307c99;
+$money-secondary: #6db4d1;
+
+// Social media colours
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$youtube: #bb0000;
+$twitter: #00aced;
+$pinterest: #cb2027;
+$linkedin: #007bb6;
+$instagram: #517fa4;
+$mmf: #002d72;
+
+// Graph colours
+$data-series-colors: #7fc675, #2e7e9b, #87768d, #a49f7f, #7ac9a4, #c1cb89, #e3a23f, #f18791, #da714f, #b24852, #593149, #145f80, #848b3f, #c9802a, #bf3b26, #99788a, #6eb4d2, #4886a2, #5e5e5f, #92d0b0, #a67260, #be8ba7, #615ba8, #6d846c, #576976, #6c6670, #77766c, #7ba894, #a3aa83, #b79056, #9c7679, #8a695a, #975756, #4f4048, #4b5968;

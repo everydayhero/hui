@@ -1,12 +1,12 @@
 .hui-Legend {
   @extend %general-reset;
-  margin-top: $hui-x-4;
-  margin-left: $hui-x-10;
+  margin-top: $x-4;
+  margin-left: $x-10;
 }
 
 .hui-Legend__item{
   display: inline-block;
-  margin-right: $hui-x-4;
+  margin-right: $x-4;
 
   &:last-child {
     margin-right: 0;
@@ -28,16 +28,16 @@
 .hui-Legend__dot {
   display: table-cell;
   border-radius: 50%;
-  width: $hui-x-3;
-  height: $hui-x-3;
+  width: $x-3;
+  height: $x-3;
 }
 
 .hui-Legend__label {
   display: table-cell;
-  line-height: $hui-x-3;
-  padding-left: $hui-x-1;
+  line-height: $x-3;
+  padding-left: $x-1;
   font-size: 11px;
-  color: $hui-link-secondary;
+  color: $grey-light;
   text-transform: uppercase;
   font-weight: 300;
 }

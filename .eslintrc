@@ -11,6 +11,7 @@
     "jsx": true
   },
   "rules": {
+    "valid-typeof": 0,
     "array-bracket-spacing": [1, "never"],
     "no-unused-expressions": 0,
     "no-floating-decimal": 1,
@@ -82,6 +83,7 @@
     "react/wrap-multilines": 1
   },
   "globals": {
+    "_": 1,
     "describe": 1,
     "before": 1,
     "beforeEach": 1,

@@ -1,10 +1,10 @@
 'use strict';
 
-var React           = require('react');
-var filepicker      = require('../../lib/filepicker');
-var Icon            = require('../../atoms/Icon');
-var inputMessage    = require('../../mixins/inputMessage');
-var classNamesArray = require('../../lib/classNamesArray');
+import React from 'react'
+import filepicker from '../../lib/filepicker'
+import Icon from '../../atoms/Icon'
+import inputMessage from '../../mixins/inputMessage'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'FileInput',
@@ -110,7 +110,7 @@ module.exports = React.createClass({
     var browseLabel     = this.getBrowseLabel(filename);
     var hasServerErrors = props.errors.length;
     var resetButton;
-    var classes = classNamesArray([
+    var classes = classnames([
       'hui-FileInput--' + props.layout,
       'hui-FileInput--' + props.spacing,
       !!filename && 'hui-FileInput--hasFile',

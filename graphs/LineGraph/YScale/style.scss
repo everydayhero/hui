@@ -1,6 +1,6 @@
 .hui-YScale__line {
   fill: none;
-  stroke: #e6e7e8;
+  stroke: $grey-lighter;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-miterlimit: 10;
@@ -9,7 +9,7 @@
 }
 
 .hui-YScale__label {
-  font-size: $hui-x-3;
+  font-size: $x-3;
   font-weight: 200;
-  transform: translate(0px, $hui-x-1);
+  transform: translate(0px, $x-1);
 }

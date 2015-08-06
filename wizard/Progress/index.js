@@ -1,8 +1,8 @@
 'use strict';
 
-var React           = require('react');
-var Icon            = require('../../atoms/Icon');
-var classNamesArray = require('../../lib/classNamesArray');
+var React  = require('react');
+var Icon = require('../../atoms/Icon');
+var classnames = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Progress',
@@ -29,13 +29,13 @@ module.exports = React.createClass({
 
     while(index < total && total !== 0) {
       var icon = index > this.props.active ? 'circle-thin' : 'circle';
-      var classNames = classNamesArray([
+      var classes = classnames([
         'hui-Progress__item',
         (index === this.props.active) && 'hui-Progress__item--active'
       ]);
 
       items.push(
-        <a href="#" key={ index } className={ classNames } onClick={ this.onChange(index) }>
+        <a href="#" key={ index } className={ classes } onClick={ this.onChange(index) }>
           <Icon icon={ icon }/>
         </a>
       );

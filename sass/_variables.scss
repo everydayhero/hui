@@ -1,51 +1,47 @@
-//x-heights
-$hui-x-1: 4px;
-$hui-x-2: 8px;
-$hui-x-3: 12px;
-$hui-x-4: 16px;
-$hui-x-5: 20px;
-$hui-x-6: 24px;
-$hui-x-7: 28px;
-$hui-x-8: 32px;
-$hui-x-9: 36px;
-$hui-x-10: 40px;
+// X-heights
+$x-1: 4px;
+$x-2: 8px;
+$x-3: 12px;
+$x-4: 16px;
+$x-5: 20px;
+$x-6: 24px;
+$x-7: 28px;
+$x-8: 32px;
+$x-9: 36px;
+$x-10: 40px;
+$x-11: 44px;
+$x-12: 48px;
+$x-13: 52px;
 
-$hui-x-12: 48px;
-$hui-x-13: 52px;
+$x-16: 64px;
 
-$hui-x-16: 64px;
+$x-18: 72px;
+$x-19: 76px;
 
-$hui-x-19: 76px;
+$x-22: 88px;
 
-$hui-x-22: 88px;
+$x-36: 144px;
 
-$hui-x-36: 144px;
+$x-48: 192px;
 
-$hui-x-48: 192px;
+$x-54: 216px;
 
-$hui-x-54: 216px;
+$x-128: 512px;
 
-$hui-x-128: 512px;
+$x-144: 576px;
 
-$hui-x-144: 576px;
+$x-169: 676px;
 
-$hui-x-169: 676px;
+$x-180: 720px;
 
-$hui-x-180: 720px;
+$x-229: 916px;
 
-$hui-x-229: 916px;
+$x-250: 1000px;
 
-$hui-x-250: 1000px;
+// Borders
+$border-radius: 2px;
 
-$hui-radius-input-border: 5px;
-
-//borders
-$hui-border-radius: 2px;
-
-$font-copy: 'Lato', helvetica, arial, sans-serif;
-$font-headline: 'Amatic SC',lato,helvetica,arial,sans-serif;
-$hui-font-family: $font-copy;
-
+// Breakpoints
 $bp-xxxxs: 220px;
 $bp-xxxs: 320px;
 $bp-xxs: 420px;
@@ -57,3 +53,7 @@ $bp-xl: 920px;
 $bp-xxl: 1020px;
 $bp-xxxl: 1120px;
 $bp-xxxxl: 1220px;
+
+// Typography
+$font-copy: 'Lato', helvetica, arial, sans-serif;
+$font-headline: 'Amatic SC',lato,helvetica,arial,sans-serif;
