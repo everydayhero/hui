@@ -8,7 +8,7 @@ var headers = {
    'Cache-Control': 'max-age=315360000, no-transform, public'
  };
 
-gulp.task('assets-deploy', ['assets-build'], function() {
+gulp.task('assets-deploy', function() {
   if (!process.env.AWS_KEY || !process.env.AWS_SECRET) {
     console.error('ERROR: No AWS credentials found.');
     return;
