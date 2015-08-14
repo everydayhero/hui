@@ -40,7 +40,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('scripts', [ 'lint' ], function() {
+gulp.task('scripts', function() {
   src.scripts = ['./**/*.js'].concat(exclude);
 
   var bundler = browserify({
@@ -59,7 +59,7 @@ gulp.task('scripts', [ 'lint' ], function() {
     .pipe(gulp.dest('./dist/scripts'));
 });
 
-gulp.task('index', [ 'styles', 'scripts', 'images'], function() {
+gulp.task('index', [ 'styles', 'lint', 'scripts', 'images'], function() {
   var sources = gulp.src([
       'dist/*/index.*'
     ], { read: false });

@@ -25,6 +25,7 @@ import LoadingProgress from './examples/LoadingProgress'
 import FooterExample from './examples/Footer'
 import TagList from './examples/TagList'
 import WizardRouter from './examples/Wizard'
+import AvatarInput from './examples/AvatarInput'
 
 const IMG_PATH = './images/';
 
@@ -80,6 +81,7 @@ export default React.createClass({
             <FormRow />
             <Fieldset />
             <TagList />
+            <AvatarInput />
           </div>
 
           <h2 className="DemoPage__h2" id="wizard">Wizard</h2>

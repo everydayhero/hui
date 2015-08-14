@@ -1,0 +1,33 @@
+@import "../InputErrors/style";
+
+.hui-AvatarInput {
+  width: 250px;
+  text-align: center;
+}
+
+.hui-AvatarInput__card {
+  padding: $x-3;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: black;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px -2px black;
+  margin-bottom: $x-5;
+  cursor: pointer;
+}
+
+.hui-AvatarInput__preview {
+  width: 100%;
+  min-height: 230px;
+  background-color: $grey-light;
+  border-radius: 2px;
+  display: block;
+}
+
+.hui-AvatarInput__pageName {
+  margin-top: $x-3;
+  margin-bottom: $x-2;
+  font-family: $font-copy;
+  font-size: 15px;
+  color: $grey-dark;
+}
