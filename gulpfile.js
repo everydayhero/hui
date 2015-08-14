@@ -59,7 +59,7 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./dist/scripts'));
 });
 
-gulp.task('index', [ 'styles', 'lint', 'scripts', 'images'], function() {
+gulp.task('index', [ 'lint', 'styles', 'scripts', 'images'], function() {
   var sources = gulp.src([
       'dist/*/index.*'
     ], { read: false });

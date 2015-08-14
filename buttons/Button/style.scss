@@ -51,7 +51,11 @@
 .hui-Button--cta,
 .hui-Button--primary,
 .hui-Button--secondary,
-.hui-Button--tertiary {
+.hui-Button--tertiary,
+.hui-Button--facebook,
+.hui-Button--twitter,
+.hui-Button--googleplus,
+.hui-Button--pinterest {
   border-width: 1px;
   border-style: solid;
   border-radius: $border-radius;
@@ -76,12 +80,17 @@ a.hui-Button {
   border-width: 0;
   overflow: hidden;
   position: relative;
+  border-color: rgba($white, 0.4);
 }
 
 .hui-Button--cta,
 .hui-Button--primary,
 .hui-Button--secondary,
-.hui-Button--tertiary {
+.hui-Button--tertiary,
+.hui-Button--facebook,
+.hui-Button--twitter,
+.hui-Button--googleplus,
+.hui-Button--pinterest {
   .hui-Button__icon {
     margin-left: -5px;
     border-style: solid;
@@ -92,7 +101,11 @@ a.hui-Button {
 .hui-Button--cta-borderless,
 .hui-Button--primary-borderless,
 .hui-Button--secondary-borderless,
-.hui-Button--tertiary-borderless {
+.hui-Button--tertiary-borderless,
+.hui-Button--facebook-borderless,
+.hui-Button--twitter-borderless,
+.hui-Button--googleplus-borderless,
+.hui-Button--pinterest-borderless {
   .hui-Button__icon {
     margin-left: -30px;
   }
@@ -140,6 +153,34 @@ a.hui-Button {
   }
 }
 
+.hui-Button--facebook {
+  &:before {
+    background-color: darken($facebook, 10%);
+    box-shadow: 0 0 90px 60px darken($facebook, 10%);
+  }
+}
+
+.hui-Button--twitter {
+  &:before {
+    background-color: darken($twitter, 10%);
+    box-shadow: 0 0 90px 60px darken($twitter, 10%);
+  }
+}
+
+.hui-Button--googleplus {
+  &:before {
+    background-color: darken($googleplus, 10%);
+    box-shadow: 0 0 90px 60px darken($googleplus, 10%);
+  }
+}
+
+.hui-Button--pinterest {
+  &:before {
+    background-color: darken($pinterest, 10%);
+    box-shadow: 0 0 90px 60px darken($pinterest, 10%);
+  }
+}
+
 .hui-Button--primary,
 .hui-Button--tertiary {
   border-color: $grey;
@@ -176,6 +217,23 @@ a.hui-Button {
   &:active {
     color: $grey;
   }
+}
+
+.hui-Button--facebook {
+  color: white;
+  background-color: $facebook;
+}
+.hui-Button--twitter {
+  color: white;
+  background-color: $twitter;
+}
+.hui-Button--googleplus {
+  color: white;
+  background-color: $googleplus;
+}
+.hui-Button--pinterest {
+    color: white;
+  background-color: $pinterest;
 }
 
 .hui-Button--primary.hui-Button--inverse {
@@ -220,7 +278,11 @@ a.hui-Button {
 .hui-Button--cta-borderless,
 .hui-Button--primary-borderless,
 .hui-Button--secondary-borderless,
-.hui-Button--tertiary-borderless  {
+.hui-Button--tertiary-borderless,
+.hui-Button--facebook-borderless,
+.hui-Button--twitter-borderless,
+.hui-Button--googleplus-borderless,
+.hui-Button--pinterest-borderless  {
 
   .hui-Button__label {
     padding: 0 12px;
@@ -244,7 +306,11 @@ a.hui-Button {
 .hui-Button--cta-borderless,
 .hui-Button--primary-borderless,
 .hui-Button--secondary-borderless,
-.hui-Button--tertiary-borderless {
+.hui-Button--tertiary-borderless,
+.hui-Button--facebook-borderless,
+.hui-Button--twitter-borderless,
+.hui-Button--googleplus-borderless,
+.hui-Button--pinterest-borderless {
   &.hui-Button--inverse {
     background: none;
     color: white;
@@ -269,10 +335,23 @@ a.hui-Button {
   }
 }
 
+.hui-Button--facebook,
+.hui-Button--twitter,
+.hui-Button--googleplus,
+.hui-Button--pinterest {
+  .hui-Button__icon {
+    font-size: $x-5;
+  }
+}
+
 .hui-Button--cta-borderless,
 .hui-Button--primary-borderless,
 .hui-Button--secondary-borderless,
-.hui-Button--tertiary-borderless {
+.hui-Button--tertiary-borderless,
+.hui-Button--facebook-borderless,
+.hui-Button--twitter-borderless,
+.hui-Button--googleplus-borderless,
+.hui-Button--pinterest-borderless {
   &.hui-Button--disabled {
     border: 0px;
     background: transparent;

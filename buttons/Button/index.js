@@ -20,7 +20,11 @@ module.exports = React.createClass({
       'cta', 'cta-borderless',
       'primary', 'primary-borderless',
       'secondary', 'secondary-borderless',
-      'tertiary', 'tertiary-borderless'
+      'tertiary', 'tertiary-borderless',
+      'facebook', 'facebook-borderless',
+      'twitter', 'twitter-borderless',
+      'googleplus', 'googleplus-borderless',
+      'pinterest', 'pinterest-borderless'
     ]).isRequired,
     label: React.PropTypes.string,
     onClick: React.PropTypes.func,
