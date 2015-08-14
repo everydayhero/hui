@@ -12,7 +12,8 @@ var serviceConfigs = {
   },
   twitter: {
     name: 'twitter',
-    url: 'https://twitter.com/share?url={url}&text={title}'
+    url: 'https://twitter.com/share?url={url}&text={title}',
+    icon: 'twitter'
   },
   googleplus: {
     name: 'googleplus',
@@ -45,13 +46,14 @@ module.exports = React.createClass({
 
   openFacebookShare: function() {
     var props = this.props;
+
     window.FB.ui({
       method: 'share',
       href: this.props.shareUrl
     }, props.onComplete);
   },
 
-  handleClick: function() {
+  onClick: function() {
     var props = this.props;
     var service = serviceConfigs[props.kind];
     var popUpConfig = {
@@ -76,10 +78,11 @@ module.exports = React.createClass({
 
   render: function() {
     var props = this.props;
+    var service = serviceConfigs[props.kind];
 
     return (
-      <Button kind={ serviceConfigs[props.kind].name } icon={ props.kind } onClick={ this.handleClick }>
-        { props.label || serviceConfigs[props.kind].name }
+      <Button kind={ props.kind } icon={ service.icon } onClick={ this.onClick }>
+        { props.label || service.name }
       </Button>
     );
   }

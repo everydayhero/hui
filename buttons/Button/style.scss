@@ -80,6 +80,7 @@ a.hui-Button {
   border-width: 0;
   overflow: hidden;
   position: relative;
+  border-color: rgba($white, 0.4);
 }
 
 .hui-Button--cta,
@@ -149,6 +150,34 @@ a.hui-Button {
   }
   .hui-Button__icon {
     border-color: $green-light;
+  }
+}
+
+.hui-Button--facebook {
+  &:before {
+    background-color: darken($facebook, 10%);
+    box-shadow: 0 0 90px 60px darken($facebook, 10%);
+  }
+}
+
+.hui-Button--twitter {
+  &:before {
+    background-color: darken($twitter, 10%);
+    box-shadow: 0 0 90px 60px darken($twitter, 10%);
+  }
+}
+
+.hui-Button--googleplus {
+  &:before {
+    background-color: darken($googleplus, 10%);
+    box-shadow: 0 0 90px 60px darken($googleplus, 10%);
+  }
+}
+
+.hui-Button--pinterest {
+  &:before {
+    background-color: darken($pinterest, 10%);
+    box-shadow: 0 0 90px 60px darken($pinterest, 10%);
   }
 }
 
@@ -303,6 +332,15 @@ a.hui-Button {
   .hui-Button__icon {
     border-color: $grey-light !important;
     border-style: dashed !important;
+  }
+}
+
+.hui-Button--facebook,
+.hui-Button--twitter,
+.hui-Button--googleplus,
+.hui-Button--pinterest {
+  .hui-Button__icon {
+    font-size: $x-5;
   }
 }
 
