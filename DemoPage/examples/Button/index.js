@@ -1,7 +1,8 @@
 'use strict';
 
-var React     = require('react');
-var Button    = require('../../../buttons/Button');
+var React  = require('react');
+var Button = require('../../../buttons/Button');
+var Share  = require('../../../buttons/Share');
 
 module.exports = React.createClass({
   displayName: 'ButtonExample',
@@ -114,6 +115,16 @@ module.exports = React.createClass({
         <h4 className="DemoPage__h4">CTA disabled Example</h4>
         <div className="DemoPage__example--button">
           <Button borderless={ true } kind="cta" disabled={ true } label="Download" icon="download"/>
+        </div>
+      </div>
+
+      <div className="DemoPage__group">
+        <h4 className="DemoPage__h4">Share Example</h4>
+        <div className="DemoPage__example--button">
+          <Share kind="facebook" label="Share" onComplete={ function() { console.log('complete'); } }/>
+          <Share kind="twitter" label="Tweet"/>
+          <Share kind="googleplus" label="Share"/>
+          <Share kind="pinterest" label="Pin"/>
         </div>
       </div>
     </div>
