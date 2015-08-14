@@ -91,5 +91,10 @@
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1",
     "wget": "0.0.1"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   }
 }
