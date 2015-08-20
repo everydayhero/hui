@@ -40,10 +40,13 @@ module.exports = {
 
   getLowerBound: function() {
     var lowerBound = this.getBound(this.getMin());
-    return Math.min(0, lowerBound);
+    var maxLowerBound = 0;
+    return Math.min(maxLowerBound, lowerBound);
   },
 
   getUpperBound: function() {
-    return this.getBound(this.getMax());
+    var upperBound = this.getBound(this.getMax());
+    var minUpperBound = this.props.minUpperBound + this.getLowerBound();
+    return Math.max(minUpperBound, upperBound);
   }
 };
