@@ -44,7 +44,7 @@ module.exports = React.createClass({
     return props.height - props.gutter.bottom  - props.gutter.top;
   },
 
-  getPathDrawiningHeight: function() {
+  getPathDrawingHeight: function() {
     return this.getDrawingHeight() * this.getScalePercentage();
   },
 
@@ -56,7 +56,7 @@ module.exports = React.createClass({
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
-      height: this.getPathDrawiningHeight(),
+      height: this.getPathDrawingHeight(),
       closed: !props.line
     });
   },
