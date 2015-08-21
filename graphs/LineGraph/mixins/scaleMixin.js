@@ -31,7 +31,7 @@ module.exports = {
   },
 
   getPathHeight: function(index) {
-    return this.getMaxForIndex(index) - this.getMinForIndex(index);
+    return this.getMaxForIndex(index) - Math.min(0, this.getMinForIndex(index));
   },
 
   getBoundsHeight: function() {
