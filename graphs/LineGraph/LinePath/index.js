@@ -35,20 +35,16 @@ module.exports = React.createClass({
     }
   },
 
+  getScalePercentage: function() {
+    return this.getPathHeight(this.props.index) / this.getBoundsHeight();
+  },
+
   getDrawingHeight: function() {
     var props = this.props;
     return props.height - props.gutter.bottom  - props.gutter.top;
   },
 
-  getScalePercentage: function() {
-    var minForIndex = this.getMinForIndex(this.props.index);
-    var graphMinForIndex = minForIndex > 0 ? Math.min(this.getLowerBound(), minForIndex) : minForIndex;
-    var graphHeight = this.getMaxForIndex(this.props.index) - graphMinForIndex;
-    var boundsHeight = this.getUpperBound() - this.getLowerBound();
-    return graphHeight / boundsHeight;
-  },
-
-  getPathHeight: function() {
+  getPathDrawiningHeight: function() {
     return this.getDrawingHeight() * this.getScalePercentage();
   },
 
@@ -60,16 +56,14 @@ module.exports = React.createClass({
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
-      height: this.getPathHeight(),
+      height: this.getPathDrawiningHeight(),
       closed: !props.line
     });
   },
 
   getTranslateY: function() {
-    var upper = this.getUpperBound();
-    var max = this.getMaxForIndex(this.props.index);
-    var translationPercentage = (upper - max) / upper;
-    return this.props.gutter.top + Math.floor((this.getDrawingHeight() * translationPercentage));
+    var translationPercentage = (this.getUpperBound() - this.getMaxForIndex(this.props.index)) / this.getBoundsHeight();
+    return this.props.gutter.top + this.getDrawingHeight() * translationPercentage;
   },
 
   calculateTotal: function(dataPoint) {

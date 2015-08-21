@@ -30,6 +30,14 @@ module.exports = {
     return _.max(this.getValuesForIndex(index));
   },
 
+  getPathHeight: function(index) {
+    return this.getMaxForIndex(index) - this.getMinForIndex(index);
+  },
+
+  getBoundsHeight: function() {
+    return this.getUpperBound() - this.getLowerBound();
+  },
+
   getBound: function(value) {
     var valueToLog = parseFloat(value) !== 0 ? Math.abs(parseFloat(value)) : 1; // log 0 is undefined, resulting in infinity and/or NaN
     var power = Math.floor(Math.log(valueToLog) / Math.LN10);
