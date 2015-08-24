@@ -3,6 +3,22 @@
 var scaleMixin = require('../scaleMixin');
 
 describe('scaleMixin', function() {
+  describe('minUpperBound', function() {
+    beforeEach(function() {
+      scaleMixin.props = {
+        minUpperBound: 200,
+        collection: [
+          { series: [{ calculatedValue: 0 }, { calculatedValue: 22 }] },
+          { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
+        ]
+      };
+    });
+
+    it('gives upperBound of 200', function() {
+      scaleMixin.getUpperBound().should.equal(200);
+    });
+  });
+
   describe('max 999', function() {
     beforeEach(function() {
       scaleMixin.props = {
