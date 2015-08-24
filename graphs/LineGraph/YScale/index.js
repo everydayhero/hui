@@ -15,6 +15,9 @@ module.exports = React.createClass({
     collection: React.PropTypes.array.isRequired,
     height: React.PropTypes.number.isRequired,
     minScaleLineGap: React.PropTypes.number,
+    minUpperBound: React.PropTypes.number,
+    scaleToLowerBound: React.PropTypes.bool,
+    scaleUnit: React.PropTypes.string,
     width: React.PropTypes.number.isRequired,
     gutter: React.PropTypes.shape({
       bottom: React.PropTypes.number.isRequired,
@@ -24,7 +27,10 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
-      minScaleLineGap: 20
+      minScaleLineGap: 20,
+      minUpperBound: 0,
+      scaleToLowerBound: false,
+      scaleUnit: ''
     };
   },
 
@@ -50,6 +56,12 @@ module.exports = React.createClass({
     return this.getHeight() / (this.getScaleLines().total);
   },
 
+  formatLabel: function(value) {
+    var format = (value > 1000) ? '0.0 a' : '00 a';
+    var label = numeral(value).format(format);
+    return label + this.props.scaleUnit;
+  },
+
   renderScaleLines: function() {
     var scaleLinePaths = [];
     var scaleLines = this.getScaleLines();
@@ -57,13 +69,11 @@ module.exports = React.createClass({
     var scaleLineGap = this.getScaleLineGap();
     var count = 0;
     var label = this.getLowerBound();
-    var format = '00 a';
 
     while(scaleLines.total + 1 !== count) {
       var path = Path()
                 .moveto({ x: 0, y: yPos })
                 .hlineto({ x: this.props.width });
-      format = (label > 1000) ? '0.0 a' : format;
 
       scaleLinePaths.push(
         <g
@@ -73,10 +83,11 @@ module.exports = React.createClass({
             className="hui-YScale__line"
             d={ path.print() } />
           <text
-            x="0"
+            x={ this.props.gutter.left - 5 }
             y={ yPos - TEXTOFFSET }
+            textAnchor="end"
             className="hui-YScale__label">
-              { numeral(label).format(format) }
+              { this.formatLabel(label) }
           </text>
         </g>
       );

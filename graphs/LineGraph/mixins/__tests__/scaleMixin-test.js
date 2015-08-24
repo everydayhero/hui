@@ -3,9 +3,46 @@
 var scaleMixin = require('../scaleMixin');
 
 describe('scaleMixin', function() {
+  describe('minUpperBound', function() {
+    beforeEach(function() {
+      scaleMixin.props = {
+        minUpperBound: 200,
+        collection: [
+          { series: [{ calculatedValue: 0 }, { calculatedValue: 22 }] },
+          { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
+        ]
+      };
+    });
+
+    it('gives upperBound of 200', function() {
+      scaleMixin.getUpperBound().should.equal(200);
+    });
+  });
+
+  describe('scaleToLowerBound', function() {
+    beforeEach(function() {
+      scaleMixin.props = {
+        scaleToLowerBound: true,
+        collection: [
+          { series: [{ calculatedValue: 11 }, { calculatedValue: 22 }] },
+          { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
+        ]
+      };
+    });
+
+    it('gives lowerBound of 10', function() {
+      scaleMixin.getLowerBound().should.equal(10);
+    });
+
+    it('gives minForIndex = lowerBound', function() {
+      scaleMixin.getMinForIndex(1).should.equal(scaleMixin.getLowerBound());
+    });
+  });
+
   describe('max 999', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 999 }, { calculatedValue: 70 }] },
           { series: [{ calculatedValue: 566.6 }, { calculatedValue: 5 }] }
@@ -29,6 +66,7 @@ describe('scaleMixin', function() {
   describe('max 24', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 5 }, { calculatedValue: -23 }] },
           { series: [{ calculatedValue: 3 }, { calculatedValue: 24 }] }
@@ -52,6 +90,7 @@ describe('scaleMixin', function() {
   describe('max 0.71', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 0.123 }, { calculatedValue: 0.71 }] },
           { series: [{ calculatedValue: 0.5666 }, { calculatedValue: 0.5 }] }
@@ -75,6 +114,7 @@ describe('scaleMixin', function() {
   describe('max 0.5', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 0.123 }, { calculatedValue: 0.50 }] },
           { series: [{ calculatedValue: 0.4666 }, { calculatedValue: 0.49 }] }
@@ -98,6 +138,7 @@ describe('scaleMixin', function() {
   describe('min 10', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 10 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
@@ -121,6 +162,7 @@ describe('scaleMixin', function() {
   describe('min 0', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: 0 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
@@ -144,6 +186,7 @@ describe('scaleMixin', function() {
   describe('min -0.5', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: -0.5 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
@@ -167,6 +210,7 @@ describe('scaleMixin', function() {
   describe('min -0.71', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: -0.71 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
@@ -190,6 +234,7 @@ describe('scaleMixin', function() {
   describe('min -24', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: -24 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
@@ -213,6 +258,7 @@ describe('scaleMixin', function() {
   describe('min -999', function() {
     beforeEach(function() {
       scaleMixin.props = {
+        minUpperBound: 0,
         collection: [
           { series: [{ calculatedValue: -999 }, { calculatedValue: 22 }] },
           { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }

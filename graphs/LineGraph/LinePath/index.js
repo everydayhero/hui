@@ -25,7 +25,20 @@ module.exports = React.createClass({
     collection: React.PropTypes.array.isRequired,
     collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
-    width: React.PropTypes.number.isRequired
+    width: React.PropTypes.number.isRequired,
+    minUpperBound: React.PropTypes.number,
+    scaleToLowerBound: React.PropTypes.bool
+  },
+
+  getDefaultProps: function() {
+    return {
+      minUpperBound: 0,
+      scaleToLowerBound: false
+    }
+  },
+
+  getScalePercentage: function() {
+    return this.getPathHeight(this.props.index) / this.getBoundsHeight();
   },
 
   getDrawingHeight: function() {
@@ -33,49 +46,46 @@ module.exports = React.createClass({
     return props.height - props.gutter.bottom  - props.gutter.top;
   },
 
-  getScalePercentage: function() {
-    var minForIndex = this.getMinForIndex(this.props.index);
-    var graphMinForIndex = minForIndex > 0 ? Math.min(this.getLowerBound(), minForIndex) : minForIndex;
-    var graphHeight = this.getMaxForIndex(this.props.index) - graphMinForIndex;
-    var boundsHeight = this.getUpperBound() - this.getLowerBound();
-    return graphHeight / boundsHeight;
+  getPathDrawingHeight: function() {
+    return this.getDrawingHeight() * this.getScalePercentage();
   },
 
-  getPathHeight: function() {
-    return this.getDrawingHeight() * this.getScalePercentage();
+  capPoint: function(series, getPoint) {
+    var lowerBound = this.getLowerBound();
+    var point = getPoint(series)
+    return { value: lowerBound, calculatedValue: lowerBound, date: point.date }
+  },
+
+  cappedSeries: function(series) {
+    return [this.capPoint(series, _.first)].concat(series, [this.capPoint(series, _.last)]);
   },
 
   graphLine: function() {
     var props = this.props;
 
     return GraphLine({
-      data: [props.collection[props.index].series],
+      data: [this.cappedSeries(props.collection[props.index].series)],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
-      height: this.getPathHeight(),
-      closed: !props.line
+      height: this.getPathDrawingHeight(),
+      closed: !props.line && !props.scaleToLowerBound
     });
   },
 
   getTranslateY: function() {
-    var upper = this.getUpperBound();
-    var max = this.getMaxForIndex(this.props.index);
-    var translationPercentage = (upper - max) / upper;
-    return this.props.gutter.top + Math.floor((this.getDrawingHeight() * translationPercentage));
+    var translationPercentage = (this.getUpperBound() - this.getMaxForIndex(this.props.index)) / this.getBoundsHeight();
+    return this.props.gutter.top + this.getDrawingHeight() * translationPercentage;
   },
 
   calculateTotal: function(dataPoint) {
-    var props          = this.props,
+    var props = this.props,
         collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter,
-        total          = 0;
+        valueConverter = props.valueConverter;
 
-    _.forEach(props.collection, function(set) {
-      total += valueConverter(set.series[dataPoint][collectionValueKey])
-    });
-
-    return total;
+    return props.collection.reduce(function(total, set) {
+      return total + valueConverter(set.series[dataPoint][collectionValueKey])
+    }, 0);
   },
 
   calculateOffset: function(pointPos) {

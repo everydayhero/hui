@@ -80,11 +80,11 @@ describe('LinePath', function() {
     });
 
     it('should render the correct getPathHeight', function() {
-      component.getPathHeight().should.equal(96);
+      component.getPathDrawingHeight().should.equal(96);
     });
 
     it('should render the correct getTranslateY', function() {
-      height = component.getTranslateY() + component.getPathHeight();
+      height = component.getTranslateY() + component.getPathDrawingHeight();
 
       height.should.equal(component.getDrawingHeight() + gutters.top);
     });
