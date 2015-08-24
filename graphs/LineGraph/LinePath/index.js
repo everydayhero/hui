@@ -26,12 +26,14 @@ module.exports = React.createClass({
     collectionValueKey: React.PropTypes.string.isRequired,
     valueConverter: React.PropTypes.func,
     width: React.PropTypes.number.isRequired,
-    minUpperBound: React.PropTypes.number
+    minUpperBound: React.PropTypes.number,
+    scaleToLowerBound: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
     return {
-      minUpperBound: 0
+      minUpperBound: 0,
+      scaleToLowerBound: false
     }
   },
 
@@ -48,16 +50,26 @@ module.exports = React.createClass({
     return this.getDrawingHeight() * this.getScalePercentage();
   },
 
+  capPoint: function(series, getPoint) {
+    var lowerBound = this.getLowerBound();
+    var point = getPoint(series)
+    return { value: lowerBound, calculatedValue: lowerBound, date: point.date }
+  },
+
+  cappedSeries: function(series) {
+    return [this.capPoint(series, _.first)].concat(series, [this.capPoint(series, _.last)]);
+  },
+
   graphLine: function() {
     var props = this.props;
 
     return GraphLine({
-      data: [props.collection[props.index].series],
+      data: [this.cappedSeries(props.collection[props.index].series)],
       xaccessor: date,
       yaccessor: function(d) { return d.calculatedValue; },
       width: props.width - props.gutter.left - props.gutter.right,
       height: this.getPathDrawingHeight(),
-      closed: !props.line
+      closed: !props.line && !props.scaleToLowerBound
     });
   },
 
@@ -67,16 +79,13 @@ module.exports = React.createClass({
   },
 
   calculateTotal: function(dataPoint) {
-    var props          = this.props,
+    var props = this.props,
         collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter,
-        total          = 0;
+        valueConverter = props.valueConverter;
 
-    _.forEach(props.collection, function(set) {
-      total += valueConverter(set.series[dataPoint][collectionValueKey])
-    });
-
-    return total;
+    return props.collection.reduce(function(total, set) {
+      return total + valueConverter(set.series[dataPoint][collectionValueKey])
+    }, 0);
   },
 
   calculateOffset: function(pointPos) {

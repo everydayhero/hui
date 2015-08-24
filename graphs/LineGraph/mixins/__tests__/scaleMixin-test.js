@@ -19,6 +19,26 @@ describe('scaleMixin', function() {
     });
   });
 
+  describe('scaleToLowerBound', function() {
+    beforeEach(function() {
+      scaleMixin.props = {
+        scaleToLowerBound: true,
+        collection: [
+          { series: [{ calculatedValue: 11 }, { calculatedValue: 22 }] },
+          { series: [{ calculatedValue: 12 }, { calculatedValue: 14 }] }
+        ]
+      };
+    });
+
+    it('gives lowerBound of 10', function() {
+      scaleMixin.getLowerBound().should.equal(10);
+    });
+
+    it('gives minForIndex = lowerBound', function() {
+      scaleMixin.getMinForIndex(1).should.equal(scaleMixin.getLowerBound());
+    });
+  });
+
   describe('max 999', function() {
     beforeEach(function() {
       scaleMixin.props = {

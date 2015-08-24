@@ -39,7 +39,7 @@ describe('YScale', function() {
     beforeEach(function() {
       component = renderIntoDocument(
         <YScale
-          scaleUnit='m'
+          scaleUnit="m"
           collection={ collection }
           height={ 200 }
           width={ 200 }

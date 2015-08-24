@@ -23,7 +23,7 @@ module.exports = {
   },
 
   getMinForIndex: function(index) {
-    return _.min(this.getValuesForIndex(index));
+    return this.props.scaleToLowerBound ? this.getLowerBound() : _.min(this.getValuesForIndex(index));
   },
 
   getMaxForIndex: function(index) {
@@ -38,22 +38,21 @@ module.exports = {
     return this.getUpperBound() - this.getLowerBound();
   },
 
-  getBound: function(value) {
+  getBound: function(value, bound) {
     var valueToLog = parseFloat(value) !== 0 ? Math.abs(parseFloat(value)) : 1; // log 0 is undefined, resulting in infinity and/or NaN
     var power = Math.floor(Math.log(valueToLog) / Math.LN10);
     var division = Math.pow(10, power) * 0.5;
     var multiplier = value / division;
-    return value >= 0 ? Math.ceil(multiplier) * division : Math.floor(multiplier) * division;
+    return bound(multiplier) * division;
   },
 
   getLowerBound: function() {
-    var lowerBound = this.getBound(this.getMin());
-    var maxLowerBound = 0;
-    return Math.min(maxLowerBound, lowerBound);
+    var lowerBound = this.getBound(this.getMin(), Math.floor);
+    return this.props.scaleToLowerBound ? lowerBound : Math.min(0, lowerBound);
   },
 
   getUpperBound: function() {
-    var upperBound = this.getBound(this.getMax());
+    var upperBound = this.getBound(this.getMax(), Math.ceil);
     var minUpperBound = this.props.minUpperBound + this.getLowerBound();
     return Math.max(minUpperBound, upperBound);
   }

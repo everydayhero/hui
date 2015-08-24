@@ -16,6 +16,7 @@ module.exports = React.createClass({
     height: React.PropTypes.number.isRequired,
     minScaleLineGap: React.PropTypes.number,
     minUpperBound: React.PropTypes.number,
+    scaleToLowerBound: React.PropTypes.bool,
     scaleUnit: React.PropTypes.string,
     width: React.PropTypes.number.isRequired,
     gutter: React.PropTypes.shape({
@@ -28,6 +29,7 @@ module.exports = React.createClass({
     return {
       minScaleLineGap: 20,
       minUpperBound: 0,
+      scaleToLowerBound: false,
       scaleUnit: ''
     };
   },
