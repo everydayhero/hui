@@ -33,6 +33,31 @@ describe('YScale', function() {
   var textContent = function(label) { return label.getDOMNode().textContent; };
   var scryLabels = function(component, transform) { return map(scryByClass(component, 'hui-YScale__label'), transform); };
 
+  describe('scaleUnits', function() {
+    var component;
+
+    beforeEach(function() {
+      component = renderIntoDocument(
+        <YScale
+          scaleUnit='m'
+          collection={ collection }
+          height={ 200 }
+          width={ 200 }
+          gutter= { gutters } />
+      );
+    });
+
+    it('renders the correct labels with scaleUnit', function() {
+      var labels = scryLabels(component, textContent);
+      labels.should.include('0 m');
+      labels.should.include('5 m');
+      labels.should.include('10 m');
+      labels.should.include('15 m');
+      labels.should.include('20 m');
+      labels.should.include('25 m');
+    });
+  });
+
   describe('default', function() {
     var component;
 
