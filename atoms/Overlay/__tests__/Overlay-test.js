@@ -14,7 +14,7 @@ describe('Overlay', () => {
     let spy = sinon.spy();
     let overlay = <Overlay onClose={ spy } />;
     let element = renderIntoDocument(overlay);
-    let closeButton = findByClass(element, 'Overlay__close');
+    let closeButton = findByClass(element, 'hui-Overlay__close');
     Simulate.click(closeButton);
 
     spy.should.have.been.called;
@@ -24,7 +24,7 @@ describe('Overlay', () => {
     let spy = sinon.spy();
     let overlay = <Overlay onClose={ spy } />;
     let element = renderIntoDocument(overlay);
-    let closeButton = findByClass(element, 'Overlay__close');
+    let closeButton = findByClass(element, 'hui-Overlay__close');
 
     closeButton.should.exist;
   });
@@ -32,7 +32,7 @@ describe('Overlay', () => {
   it('hides close button without onClose', () => {
     let overlay = <Overlay />;
     let element = renderIntoDocument(overlay);
-    let closeButton = scryByClass(element, 'Overlay__close')[0];
+    let closeButton = scryByClass(element, 'hui-Overlay__close')[0];
 
     expect(closeButton).to.not.exist;
   });
@@ -41,7 +41,7 @@ describe('Overlay', () => {
     let spy = sinon.spy();
     let overlay = <Overlay onClose={ spy } showCloseButton={ false }/>;
     let element = renderIntoDocument(overlay);
-    let closeButton = scryByClass(element, 'Overlay__close')[0];
+    let closeButton = scryByClass(element, 'hui-Overlay__close')[0];
 
     expect(closeButton).to.not.exist;
   });
@@ -51,6 +51,6 @@ describe('Overlay', () => {
     let overlay = <Overlay onClose={  spy } inverse={ true }/>;
     let element = renderIntoDocument(overlay);
 
-    findByClass(element, 'Overlay--inverse');
+    findByClass(element, 'hui-Overlay--inverse');
   });
 });
