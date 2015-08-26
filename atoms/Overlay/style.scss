@@ -1,4 +1,4 @@
-.Overlay {
+.hui-Overlay {
   margin: 0;
   padding: 0;
   outline: 0;
@@ -18,11 +18,11 @@
   transform: translateZ(200px);
 }
 
-.Overlay--inverse {
+.hui-Overlay--inverse {
   background: transparentize(white, 0.2);
 }
 
-.Overlay__close {
+.hui-Overlay__close {
   position: absolute;
   right: $x-9;
   top: $x-9;
@@ -42,10 +42,10 @@
   }
 }
 
-.Overlay__close--inverse {
+.hui-Overlay__close--inverse {
   color: $grey-light;
 }
 
-.Overlay-open {
+.hui-Overlay-open {
   overflow: hidden;
 }

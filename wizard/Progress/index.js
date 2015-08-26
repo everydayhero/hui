@@ -1,7 +1,6 @@
 'use strict';
 
 var React  = require('react');
-var Icon = require('../../atoms/Icon');
 var classnames = require('classnames');
 
 module.exports = React.createClass({
@@ -26,18 +25,17 @@ module.exports = React.createClass({
     var items = [];
     var total = this.props.total;
     var index = 0;
+    var active = parseInt(this.props.active);
 
     while(index < total && total !== 0) {
-      var icon = index > this.props.active ? 'circle-thin' : 'circle';
       var classes = classnames([
         'hui-Progress__item',
-        (index === this.props.active) && 'hui-Progress__item--active'
+        (index === active) && 'hui-Progress__item--active',
+        (active >= index) && 'hui-Progress__item--viewed'
       ]);
 
       items.push(
-        <a href="#" key={ index } className={ classes } onClick={ this.onChange(index) }>
-          <Icon icon={ icon }/>
-        </a>
+        <a href="#" key={ index } className={ classes } onClick={ this.onChange(index) }/>
       );
 
       index++;

@@ -6,14 +6,25 @@
 
 .hui-Progress__item {
   font-size: $x-4;
-  padding: $x-2;
+  margin: $x-2;
   color: $grey-active;
-
+  border-radius: $x-4;
+  width: $x-4;
+  height: $x-4;
+  border: 1px solid $grey-light;
+  display: inline-block;
   &:hover {
-    color: $green;
+    background-color: $green;
+    border: 1px solid $green;
   }
 }
 
+.hui-Progress__item--viewed {
+  background-color: $grey-light;
+  border: 1px solid $grey-light;
+}
+
 .hui-Progress__item--active {
-  color: $grey-light;
+  background-color: $green-light;
+  border: 1px solid $green-light;
 }
