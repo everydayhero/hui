@@ -1,16 +1,26 @@
 'use strict';
 
-var React   = require('react');
-var Overlay = require('../../../atoms/Overlay');
-var Step    = require('../../../wizard/Step');
-var Wizard  = require('../../../wizard');
-var Button  = require('../../../buttons/Button');
+var React       = require('react');
+var Overlay     = require('../../../atoms/Overlay');
+var Step        = require('../../../wizard/Step');
+var Wizard      = require('../../../wizard');
+var Button      = require('../../../buttons/Button');
+var AvatarInput = require('../../../forms/AvatarInput');
+var TextArea    = require('../../../forms/TextArea');
+
 var Router  = require('react-router');
 
 module.exports = React.createClass({
   displayName: 'OnboardingWizard',
 
   mixins: [Router.State, Router.Navigation],
+
+  getInitialState: function() {
+    return {
+      page: {},
+      updateInProgress: false
+    }
+  },
 
   onChange: function(step) {
     this.transitionTo('wizard', { step });
@@ -24,8 +34,19 @@ module.exports = React.createClass({
     this.transitionTo('root');
   },
 
+  onInputChange: function(key) {
+    var component = this;
+
+    return function(value) {
+      var page = component.state.page;
+      page[key] = value;
+      component.setState({ page });
+    }
+  },
+
   render: function() {
     var step = this.getParams().step;
+    var page = this.state.page;
 
     var steps = [
       <Step key="1">
@@ -38,6 +59,7 @@ module.exports = React.createClass({
         <p className="Step__proof">
           People who do this raise up to <span className="Step__proof_value">10 times</span> more.
         </p>
+        <AvatarInput value={ page.avatar } onChange={ this.onAvatarChange }/>
         <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next } />
       </Step>,
 
@@ -51,6 +73,7 @@ module.exports = React.createClass({
         <p className="Step__proof">
           People who do this raise up to <span className="Step__proof_value">74% more</span> than those who don’t.
         </p>
+        <TextArea value={ page.story } onChange={ this.onInputChange('story') } label="Your Story"/>
         <Button borderless={ true } kind="primary" label="Skip" icon="chevron-right" onClick={ this.next } />
       </Step>,
 

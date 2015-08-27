@@ -26,11 +26,11 @@ export default React.createClass({
   },
 
   componentWillMount() {
-    addClass(document.body, 'Overlay-open')
+    addClass(document.body, 'hui-Overlay-open')
   },
 
   componentWillUnmount() {
-    removeClass(document.body, 'Overlay-open')
+    removeClass(document.body, 'hui-Overlay-open')
   },
 
   keyHandler(event) {
@@ -48,8 +48,8 @@ export default React.createClass({
 
   render() {
     var props = this.props;
-    var classes = classnames(['Overlay', props.inverse && 'Overlay--inverse', props.className]);
-    var closeClasses = classnames(['Overlay__close', props.inverse && 'Overlay__close--inverse']);
+    var classes = classnames(['hui-Overlay', props.inverse && 'hui-Overlay--inverse', props.className]);
+    var closeClasses = classnames(['hui-Overlay__close', props.inverse && 'hui-Overlay__close--inverse']);
     var closeButton = props.onClose && props.showCloseButton &&
       <a href="#" className={ closeClasses } onClick={ this.onClose }><Icon icon="times" /></a>
 
