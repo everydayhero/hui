@@ -17,7 +17,8 @@ module.exports = React.createClass({
     isFlipOver: React.PropTypes.bool,
     totalFormat: React.PropTypes.string,
     showDate: React.PropTypes.bool,
-    showTotal: React.PropTypes.bool
+    showTotal: React.PropTypes.bool,
+    scaleUnit: React.PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -28,6 +29,7 @@ module.exports = React.createClass({
       isFlipOver: false,
       showDate: true,
       showTotal: true,
+      scaleUnit: '',
       position: {
         x: 0,
         y: 0
@@ -92,11 +94,11 @@ module.exports = React.createClass({
     var props = this.props;
 
     return (
-      <p>
+      <span>
         { this.renderLabel() }
-        <span className="hui-ToolTip__value">{ formatNumber(props.data.value, props.totalFormat) }</span>
+        <span className="hui-ToolTip__value">{ formatNumber(props.data.value, props.totalFormat) + props.scaleUnit }</span>
         { this.renderTotal() }
-      </p>
+      </span>
     );
   },
 
@@ -115,7 +117,7 @@ module.exports = React.createClass({
 
     if(props.showTotal) {
       return (
-        <span className="hui-ToolTip__total">/ { formatNumber(props.data.total, props.totalFormat) }</span>
+        <span className="hui-ToolTip__total">/ { formatNumber(props.data.total, props.totalFormat) + props.scaleUnit }</span>
       );
     } else {
       return false;
