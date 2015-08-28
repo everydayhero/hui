@@ -181,7 +181,8 @@ module.exports = React.createClass({
           totalFormat={ props.totalFormat }
           isFlipOver={ state.isFlipOver }
           showDate={ props.showTipDate }
-          showTotal={ state.collection.length > 1 } />
+          showTotal={ state.collection.length > 1 },
+          scaleUnit={ props.scaleUnit } />
       );
       graph = this.renderGraph();
     }
