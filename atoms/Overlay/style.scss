@@ -22,6 +22,10 @@
   background: transparentize(white, 0.2);
 }
 
+.hui-Overlay--scroll {
+  overflow-y: auto;
+}
+
 .hui-Overlay__close {
   position: absolute;
   right: $x-9;

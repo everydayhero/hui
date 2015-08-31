@@ -14,14 +14,16 @@ export default React.createClass({
     className: React.PropTypes.string,
     onClose: React.PropTypes.func,
     showCloseButton: React.PropTypes.bool,
-    inverse: React.PropTypes.bool
+    inverse: React.PropTypes.bool,
+    scroll: React.PropTypes.bool
   },
 
   getDefaultProps() {
     return {
       className: '',
       showCloseButton: true,
-      inverse: false
+      inverse: false,
+      scroll: false
     }
   },
 
@@ -48,7 +50,12 @@ export default React.createClass({
 
   render() {
     var props = this.props;
-    var classes = classnames(['hui-Overlay', props.inverse && 'hui-Overlay--inverse', props.className]);
+    var classes = classnames([
+      'hui-Overlay',
+      props.inverse && 'hui-Overlay--inverse',
+      props.scroll && 'hui-Overlay--scroll',
+      props.className
+    ]);
     var closeClasses = classnames(['hui-Overlay__close', props.inverse && 'hui-Overlay__close--inverse']);
     var closeButton = props.onClose && props.showCloseButton &&
       <a href="#" className={ closeClasses } onClick={ this.onClose }><Icon icon="times" /></a>

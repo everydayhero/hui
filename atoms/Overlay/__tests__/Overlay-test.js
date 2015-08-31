@@ -47,10 +47,16 @@ describe('Overlay', () => {
   });
 
   it('inverts the background', () => {
-    let spy = sinon.spy();
-    let overlay = <Overlay onClose={  spy } inverse={ true }/>;
+    let overlay = <Overlay inverse={ true }/>;
     let element = renderIntoDocument(overlay);
 
     findByClass(element, 'hui-Overlay--inverse');
+  });
+
+  it('allows scrolling on the overlay', () => {
+    let overlay = <Overlay scroll={ true }/>;
+    let element = renderIntoDocument(overlay);
+
+    findByClass(element, 'hui-Overlay--scroll');
   });
 });

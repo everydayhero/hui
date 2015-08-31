@@ -9,6 +9,7 @@
   text-align: center;
   padding: $x-16;
   color: $grey;
+  box-sizing: border-box;
 }
 
 @include media-max($bp-xs) {
