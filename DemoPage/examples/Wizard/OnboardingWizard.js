@@ -105,7 +105,7 @@ module.exports = React.createClass({
     ];
 
     return (
-      <Overlay onClose={ this.close } inverse={ true }>
+      <Overlay onClose={ this.close } inverse={ true } scroll={ true }>
         <Wizard currentStep={ step } onChange={ this.onChange } children={ steps } />
       </Overlay>
     );
