@@ -12,16 +12,16 @@
 
 .hui-LoadingProgress__bar {
   width: 0%;
-  animation: complete 1000ms ease;
+  animation: hui-complete 1000ms ease;
 }
 
 .hui-LoadingProgress__bar--inProgress {
-  animation: progress 10000ms cubic-bezier(0.015, 0.780, 0.100, 1.005);
+  animation: hui-progress 10000ms cubic-bezier(0.015, 0.780, 0.100, 1.005);
   width: 90%;
   height: $x-1;
 }
 
-@keyframes progress {
+@keyframes hui-progress {
   0% {
     height: $x-1;
     width: 0%;
@@ -36,7 +36,7 @@
   }
 }
 
-@keyframes complete {
+@keyframes hui-complete {
   0% {
     height: $x-1;
   }
