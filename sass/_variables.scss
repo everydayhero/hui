@@ -57,3 +57,7 @@ $bp-xxxxl: 1220px;
 // Typography
 $font-copy: 'Lato', helvetica, arial, sans-serif;
 $font-headline: 'Amatic SC',lato,helvetica,arial,sans-serif;
+
+// animations
+$ease-in-out-slow: all 0.5s cubic-bezier(1, 0, 0, 1);
+$ease-in-out-fast: all 0.1s cubic-bezier(1, 0, 0, 1);
