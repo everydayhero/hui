@@ -26,6 +26,7 @@ import FooterExample from './examples/Footer'
 import TagList from './examples/TagList'
 import WizardRouter from './examples/Wizard'
 import AvatarInput from './examples/AvatarInput'
+import FlashMessage from './examples/FlashMessage'
 
 const IMG_PATH = './images/';
 
@@ -49,6 +50,7 @@ export default React.createClass({
           <div className="DemoPage__group">
             <TopBarExample/>
             <LoadingProgress/>
+            <FlashMessage/>
             <PageFormExample/>
             <FooterExample/>
           </div>

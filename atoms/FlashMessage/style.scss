@@ -1,0 +1,62 @@
+.hui-FlashMessage {
+  width: 100%;
+  height: 0;
+  position: fixed;
+  top: -$x-13;
+  z-index: 10;
+  text-align: center;
+  transition: $ease-in-out-fast;
+}
+
+.hui-FlashMessage__message {
+  height: $x-13;
+  line-height: $x-13;
+  display: inline-block;
+  padding: 0 $x-1 0 $x-5;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0 0 $border-radius $border-radius;
+  color: $grey-dark;
+  font-family: $font-copy;
+}
+
+.hui-FlashMessage__message--success {
+  background-color: $flash-success-background;
+}
+
+.hui-FlashMessage__message--alert {
+  background-color: $flash-alert-background;
+}
+
+.hui-FlashMessage__message--error {
+  background-color: $flash-error-background;
+}
+
+.hui-FlashMessage__icon {
+  float: left;
+  color: white;
+  margin-right: $x-5;
+  font-size: $x-4;
+}
+
+.hui-FlashMessage__dismiss {
+  color: white;
+  cursor: pointer;
+  height: $x-13;
+  width: $x-13;
+  display: inline-block;
+}
+
+.hui-FlashMessage__dismiss {
+  @extend %hui-button-reset;
+  font-size: $x-4;
+  color: $grey;
+  &:hover {
+    color: white;
+  }
+}
+
+.hui-FlashMessage--show {
+  transition: $ease-in-out-slow;
+  top: 0px;
+}
