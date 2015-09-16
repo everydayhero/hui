@@ -25,17 +25,20 @@
   text-transform: uppercase;
   margin: 0 0 13px;
   letter-spacing: normal;
+  line-height: 40px;
 }
 
 .Step__description {
   font-size: $x-4;
   padding-bottom: $x-4;
+  line-height: 22px;
 }
 
-.Step__proof {
-  font-size: $x-4;
+.Step__proof, .Step__proof p {
+  font-size: 14px;
   font-style: italic;
   padding-bottom: $x-4;
+  line-height: 22px;
 }
 
 .Step__proof_value {
