@@ -65,7 +65,7 @@ module.exports = React.createClass({
 
       <Step key="2">
         <h2 className="Step__header">
-          Explain why you care
+          A few words about why you are fundraising
         </h2>
         <p className="Step__description">
            Tell people what motivated you to start fundraising and why you chose to support your charity.
