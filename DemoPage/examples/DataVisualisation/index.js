@@ -62,13 +62,13 @@ module.exports = React.createClass({
       <h3 className="DemoPage__h3" id="DataVisualisation">DataVisualisation</h3>
       <p>The HUI data visualisation is a combination of a number of graph component. These componets can also be used independantly of the data visualisation.</p>
       <div className="DemoPage__example--visualisation">
-        <DataVisualisation {...this.state} title={ 'Example Data' }  />
+        <DataVisualisation {...this.state} title={ 'Example Data' } period={ 'LAST 7 DAYS' }  />
       </div>
       <div className="DemoPage__example--visualisation">
-        <DataVisualisation {...this.state} title={ 'Example Loading Data' } loading={ true } />
+        <DataVisualisation {...this.state} title={ 'Example Loading Data' } period={ 'LAST 7 DAYS' } loading={ true } />
       </div>
       <div className="DemoPage__example--visualisation">
-        <DataVisualisation {...this.state} title={ 'Example Empty Data' } emptyState={ true } />
+        <DataVisualisation {...this.state} title={ 'Example Empty Data' } period={ 'LAST 7 DAYS' } emptyState={ true } />
       </div>
     </div>
     );

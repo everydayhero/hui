@@ -15,6 +15,7 @@ module.exports = React.createClass({
     valueConverter: React.PropTypes.func,
     stacked: React.PropTypes.bool,
     title: React.PropTypes.string.isRequired,
+    period: React.PropTypes.string,
     total: React.PropTypes.number,
     totalFormat: React.PropTypes.string,
     legendKeys: React.PropTypes.arrayOf(React.PropTypes.string),
@@ -105,6 +106,7 @@ module.exports = React.createClass({
     return (
       <div className="hui-DataVisualisation">
         <h2 className="hui-DataVisualisation__title">{ this.props.title }</h2>
+        <h5 className="hui-DataVisualisation__period">{ this.props.period }</h5>
         <div className="hui-DataVisualisation__valueGroup">
           { this.renderTotal() }
           { this.renderDeltaArrow() }

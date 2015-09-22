@@ -17,6 +17,12 @@
   font-weight: 300;
 }
 
+.hui-DataVisualisation__period {
+  display: block;
+  position: absolute;
+  padding-top: $x-8;
+}
+
 .hui-DataVisualisation__valueGroup {
   text-align: right;
   top: -10px;
