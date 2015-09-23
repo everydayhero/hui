@@ -85,7 +85,7 @@ gulp.task('images', function() {
 gulp.task('build', ['index']);
 gulp.task('default', [ 'build' ]);
 
-gulp.task('watch', function() {
+gulp.task('watch', ['styles', 'scripts', 'index'], function() {
   gulp.watch(src.styles, [ 'styles' ]);
   gulp.watch(src.scripts, [ 'scripts' ]);
   gulp.watch('index.ejs', [ 'index' ]);
