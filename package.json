@@ -38,6 +38,7 @@
     "bluebird": "^2.9.34",
     "classnames": "~1.2.0",
     "exenv": "^1.2.0",
+    "jsonp": "^0.2.0",
     "lodash": "^3.8.0",
     "moment": "2.8.3",
     "numeral": "^1.5.3",
