@@ -2,7 +2,7 @@
 
 var React           = require('react/addons');
 var PureRenderMixin = React.addons.PureRenderMixin;
-var Icon            = require('../../helpers/Icon');
+var Icon            = require('../../../atoms/Icon');
 
 module.exports = React.createClass({
   displayName: 'AddressStatus',

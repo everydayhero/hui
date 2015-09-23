@@ -5,9 +5,9 @@ var PureRenderMixin     = React.addons.PureRenderMixin;
 var cx                  = require('react/lib/cx');
 var _                   = require('lodash');
 var countries           = require('./countries');
-var Input               = require('../../forms/Input');
+var Input               = require('../../TextInput');
 var CountrySelectItem   = require('../CountrySelectItem');
-var FlagIcon            = require('../../helpers/FlagIcon');
+var FlagIcon            = require('../../../atoms/FlagIcon');
 var addEventListener    = require('../../../lib/addEventListener');
 var removeEventListener = require('../../../lib/removeEventListener');
 

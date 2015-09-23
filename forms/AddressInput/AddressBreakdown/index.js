@@ -3,9 +3,9 @@
 var React           = require('react/addons');
 var PureRenderMixin = React.addons.PureRenderMixin;
 var cx              = require('react/lib/cx');
-var I18nMixin       = require('../../mixins/I18n');
-var Input           = require('../../forms/Input');
-var Select          = require('../../forms/Select');
+var I18nMixin       = require('../../../mixins/I18n');
+var Input           = require('../../TextInput');
+var Select          = require('../../SelectInput');
 var countryList     = require('../CountrySelect/countries');
 
 module.exports = React.createClass({

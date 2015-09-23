@@ -3,7 +3,7 @@
 var React           = require('react/addons');
 var PureRenderMixin = React.addons.PureRenderMixin;
 var cx              = require('react/lib/cx');
-var FlagIcon        = require('../../helpers/FlagIcon');
+var FlagIcon        = require('../../../atoms/FlagIcon');
 
 module.exports = React.createClass({
   displayName: 'CountrySelectItem',
