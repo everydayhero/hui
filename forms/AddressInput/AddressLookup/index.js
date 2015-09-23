@@ -39,14 +39,7 @@ module.exports = React.createClass({
       country: 'AU',
       spacing: 'loose',
       output: function() {},
-      validate: function() {},
-      defaultI18n: {
-        inputLabel: 'Street Address',
-        inputLabelGB: 'Postcode',
-        manualEntryButton: 'Can\'t see your Address? Enter manually',
-        resetButton: 'Clear and search again',
-        error: 'Sorry, we couldn\'t find that address'
-      }
+      validate: function() {}
     };
   },
 
@@ -134,8 +127,9 @@ module.exports = React.createClass({
       input,
       error: null,
       addressList: null
+    }, function () {
+      this.getList(input);
     });
-    this.getList(input);
   },
 
   reset: function() {
@@ -284,15 +278,13 @@ module.exports = React.createClass({
         ref={ 'lookup' }
         required={ this.props.required }
         error={ this.state.error }
-        i18n={{
-          name: this.props.prefix + 'lookup',
-          label: this.t('inputLabel' + this.state.country.iso) || this.t('inputLabel'),
-          error: this.t('error')
-        }}
+        name={ this.props.prefix + 'lookup' }
+        label={ this.t('inputLabel' + this.state.country.iso) || this.t('inputLabel') }
+        errorMessage={ this.t('error') }
         value={ this.state.input }
         spacing={ 'compact' }
         autoFocus={ this.state.focusOnMount }
-        output={ this.setInput } />
+        onChange={ this.setInput } />
     );
   },
 
@@ -379,5 +371,9 @@ module.exports = React.createClass({
         { this.renderAddress(address) }
       </div>
     );
+  },
+
+  statics: {
+    i18n: require('./i18n')
   }
 });
