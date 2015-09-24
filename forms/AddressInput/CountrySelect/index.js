@@ -139,13 +139,11 @@ module.exports = React.createClass({
         autoFocus
         ref={ 'countryFilter' }
         key={ 'countryFilter' }
-        i18n={{
-          name: this.props.prefix + 'countryFilter',
-          label: 'Find Country'
-        }}
+        name={ this.props.prefix + 'countryFilter' }
+        label={ 'Find Country' }
         spacing={ 'compact' }
         value={ this.state.filter }
-        output={ this.setFilter } />
+        onChange={ this.setFilter } />
     );
   },
 

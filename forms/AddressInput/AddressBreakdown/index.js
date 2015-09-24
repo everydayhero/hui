@@ -89,82 +89,72 @@ module.exports = React.createClass({
           autoFocus={ props.autoFocus }
           ref={ 'street_address' }
           key={ 'street_address' }
-          i18n={{
-            name: prefix + 'street_address',
-            label: t('street_address', { scope: iso })
-          }}
+          name={ prefix + 'street_address' }
+          label={ t('street_address', { scope: iso }) }
           value={ address.street_address }
           required={ required }
           showIcon={ false }
           spacing={ 'tight' }
           validate={ validate }
-          output={ onChange('street_address') } />
+          onChange={ onChange('street_address') } />
         <Input
           key={ 'extended_address' }
           ref={ 'extended_address' }
-          i18n={{
-            name: prefix + 'extended_address',
-            label: t('extended_address', { scope: iso })
-          }}
+          name={ prefix + 'extended_address' }
+          label={ t('extended_address', { scope: iso }) }
           validate={ validate }
           value={ address.extended_address }
           showIcon={ false }
           spacing={ 'tight' }
-          output={ onChange('extended_address') } />
+          onChange={ onChange('extended_address') } />
         <Input
-          key={ 'locality' }
-          ref={ 'locality' }
-          i18n={{
-            name: prefix + 'locality',
-            label: t('locality', { scope: iso })
-          }}
+          key="locality"
+          ref="locality"
+          name={ prefix + 'locality' }
+          label={ t('locality', { scope: iso }) }
           validate={ validate }
           value={ address.locality }
-          width={ 'wide' }
+          layout="twoThirds"
           required={ required }
           showIcon={ false }
-          spacing={ 'tight' }
-          output={ onChange('locality') } />
+          spacing="tight"
+          onChange={ onChange('locality') } />
         <Input
-          key={ 'region' }
-          ref={ 'region' }
-          i18n={{
-            name: prefix + 'region',
-            label: t('region', { scope: iso })
-          }}
+          key="region"
+          ref="region"
+          name={ prefix + 'region' }
+          label={ t('region', { scope: iso }) }
           validate={ validate }
           value={ address.region }
-          width={ 'narrow' }
+          layout="third"
           showIcon={ false }
-          spacing={ 'tight' }
-          output={ onChange('region') } />
+          spacing="tight"
+          onChange={ onChange('region') } />
         <Select
-          key={ 'country_name' }
-          ref={ 'country_name' }
-          i18n={{
-            name: prefix + 'country_name',
-            label: t('country_name', { scope: iso })
-          }}
+          key="country_name"
+          ref="country_name"
+          name={ prefix + 'country_name' }
+          valueKey="iso"
+          labelKey="name"
+          label={ t('country_name', { scope: iso }) }
           value={ address.country_name }
-          width={ 'wide' }
+          layout="twoThirds"
           required={ required }
-          spacing={ 'tight' }
+          spacing="tight"
           options={ countryList }
-          output={ this.handleCountryChange } />
+          onChange={ this.handleCountryChange } />
         <Input
-          key={ 'postal_code' }
-          ref={ 'postal_code' }
-          i18n={{
-            name: prefix + 'postal_code',
-            label: t('postal_code', { scope: iso })
-          }}
+          key="postal_code"
+          ref="postal_code"
+          name={ prefix + 'postal_code' }
+          label={ t('postal_code', { scope: iso }) }
           validate={ validate }
           value={ address.postal_code }
-          width={ 'narrow' }
+          layout="third"
           required={ required }
           showIcon={ false }
-          spacing={ 'tight' }
-          output={ onChange('postal_code') } />
+          spacing="tight"
+          onChange={ onChange('postal_code') } />
         { props.children }
         <input type="hidden" name={ props.prefix + 'country_iso' } value={ iso } />
         <input type="hidden" name={ props.prefix + 'paf_validated' } value={ address.paf_validated } />
