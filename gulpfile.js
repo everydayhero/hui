@@ -11,6 +11,7 @@ require('./gulp_tasks/assets-deploy');
 require('./gulp_tasks/lint');
 require('./gulp_tasks/assets-build');
 require('./gulp_tasks/docs');
+require('./gulp_tasks/flag_sprite');
 
 var debug = !!$.util.env.debug;
 var src = {};

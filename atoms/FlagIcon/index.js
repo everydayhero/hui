@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
     return (
       <span className={ classes }>
-        <i className={ 'flag ' + this.props.country.toLowerCase() } />
+        <i className={ 'flag flag-' + this.props.country.toLowerCase() } />
       </span>
     );
   }
