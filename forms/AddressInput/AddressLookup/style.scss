@@ -1,10 +1,10 @@
 .AddressLookup {
   box-sizing: border-box;
-  color: $ehw-grey-dark;
+  color: $grey-dark;
   overflow: auto;
   position: relative;
   text-align: left;
-  font-family: $ehw-sans-serif-fonts;
+  font-family: $font-copy;
   float: left;
   width: 100%;
 }
@@ -14,14 +14,16 @@
 }
 
 .AddressLookup__list {
-  border: 1px solid $ehw-grey-light;
+  @extend %hui-input-border;
+  padding: 0;
+  height: auto;
   position: relative;
   z-index: 1;
-  border-radius: 0 0 $ehw-border-radius $ehw-border-radius;
+  border-radius: 0 0 $border-radius $border-radius;
   background-color: #fff;
   float: left;
   width: 100%;
-  margin-top: -9px;
+  margin-top: -10px;
 }
 
 .AddressLookup__scroll-container {
@@ -34,7 +36,7 @@
 }
 
 .AddressLookup__list-google:before {
-  content: image-url( "widgets-powered-by-google" + $ehw-version + ".png" );
+  content: image-url( "widgets-powered-by-google.png" );
   position: absolute;
   display: block;
   font-size: 0;
@@ -43,10 +45,10 @@
 }
 
 .AddressLookup__error {
-  border-radius: 0 0 $ehw-border-radius $ehw-border-radius;
+  border-radius: 0 0 $border-radius $border-radius;
   padding: 5px 8px;
   margin: 0 8px;
-  background-color: $ehw-color-error;
+  background-color: $error;
   color: #fff;
   font-size: 13px;
 }

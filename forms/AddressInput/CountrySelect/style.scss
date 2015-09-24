@@ -4,7 +4,7 @@
   z-index: 2;
   margin: 8px 8px;
   margin-left: -100px;
-  border-radius: $ehw-border-radius;
+  border-radius: $border-radius;
   overflow: hidden;
 }
 
@@ -25,14 +25,16 @@
 
 .CountrySelect__toggle:hover,
 .CountrySelect__toggle:focus {
-  background-color: $ehw-green-light;
+  background-color: $green-light;
   color: white;
   outline: none;
 }
 
 .CountrySelect__list {
-  border: 1px solid $ehw-grey-light;
-  border-radius: 0 0 $ehw-border-radius $ehw-border-radius;
+  @extend %hui-input-border;
+  padding: 0;
+  height: auto;
+  border-radius: 0 0 $border-radius $border-radius;
   background-color: #fff;
   max-height: 300px;
   overflow-y: scroll;
