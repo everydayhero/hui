@@ -7,16 +7,15 @@ var svg2png   = require('gulp-svg2png')
 
 gulp.task('svgFlagSprite', function () {
   return gulp.src(['./images/flags/*.svg'])
-    .pipe(svgmin({
-      plugins: [
-        {
-          cleanupNumericValues: {
-            floatPrecision: 2
+    .pipe(svgmin())
+    .pipe(svgSprite({
+      variables: {
+        png: function() {
+          return function(sprite, render) {
+            return render(sprite).split('.svg').join('.png');
           }
         }
-      ]
-    }))
-    .pipe(svgSprite({
+      },
       mode: {
         css: {
           dest: './',
@@ -24,7 +23,10 @@ gulp.task('svgFlagSprite', function () {
           sprite: '../../images/flags_sprite.svg',
           layout: 'vertical',
           render: {
-            'scss': { dest: '_flags_sprite.scss' }
+            'scss': {
+              dest: '_flags_sprite.scss',
+              template: 'atoms/FlagIcon/_flags_sprite.scss.mst'
+            }
           }
         }
       }
@@ -34,7 +36,7 @@ gulp.task('svgFlagSprite', function () {
 
 gulp.task('pngFlagSprite', ['svgFlagSprite'], function() {
   return gulp.src('./images/flags_sprite*.svg')
-    .pipe(svg2png())
+    .pipe(svg2png(0.1))
     .pipe(gulp.dest('./images/'));
 });
 
