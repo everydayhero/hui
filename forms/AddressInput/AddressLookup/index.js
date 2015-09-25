@@ -200,8 +200,11 @@ module.exports = React.createClass({
     if (input.length >= minChars) {
       this.setState({
         loading: true,
-        addressList: null,
-        cancelSearch: addressAPI.search(input, this.state.country.iso, this.setList)
+        addressList: null
+      }, function () {
+        this.setState({
+          cancelSearch: addressAPI.search(input, this.state.country.iso, this.setList)
+        })
       });
     }
   }, 250, { trailing: true }),
