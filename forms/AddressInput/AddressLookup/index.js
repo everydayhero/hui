@@ -226,7 +226,13 @@ module.exports = React.createClass({
   setAddress: function(address) {
     if (this.validate(address && address.address, this.setError)) {
       address.address.paf_validated = this.isPAFLookup();
-      this.setState({ error: false, address: address.address, addressList: null, loading: false, focusOnMount: true }, this.output);
+      this.setState({
+        error: false,
+        address: address.address,
+        addressList: null,
+        loading: false,
+        focusOnMount: true
+      }, this.onChange);
     }
     this.props.validate(address);
   },
