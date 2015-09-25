@@ -152,10 +152,13 @@ module.exports = React.createClass({
     return function(value) {
       var custom = this.state.custom || _.clone(this.state.address);
       custom[key] = value;
-      custom.paf_validated = false;
+      var hasChanged = !_.isEqual(custom, this.state.address);
+      if (hasChanged) {
+        custom.paf_validated = false;
+      }
       this.setState({
-        custom: (_.isEqual(custom, this.state.address)) ? null : custom
-      }, this.output);
+        custom: hasChanged ? custom : null
+      }, this.onChange);
     }.bind(this);
   },
 
