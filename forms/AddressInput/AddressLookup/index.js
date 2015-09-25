@@ -127,7 +127,7 @@ module.exports = React.createClass({
       input,
       error: null,
       addressList: null
-    }, function () {
+    }, function() {
       this.getList(input);
     });
   },
