@@ -22,7 +22,7 @@ module.exports = React.createClass({
 
   propTypes: {
     address: React.PropTypes.object,
-    output: React.PropTypes.func,
+    onChange: React.PropTypes.func,
     prefix: React.PropTypes.string,
     required: React.PropTypes.bool,
     validate: React.PropTypes.func,
@@ -38,7 +38,7 @@ module.exports = React.createClass({
       required: true,
       country: 'AU',
       spacing: 'loose',
-      output: function() {},
+      onChange: function() {},
       validate: function() {}
     };
   },
@@ -144,7 +144,7 @@ module.exports = React.createClass({
   },
 
   resetComplete: function() {
-    this.output();
+    this.onChange();
     this.validate('', this.props.validate);
   },
 
@@ -179,8 +179,8 @@ module.exports = React.createClass({
     });
   },
 
-  output: function() {
-    this.props.output(this.state.custom || this.state.address);
+  onChange: function() {
+    this.props.onChange(this.state.custom || this.state.address);
   },
 
   isPAFLookup: function () {
