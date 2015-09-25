@@ -7,7 +7,16 @@ var svg2png   = require('gulp-svg2png')
 
 gulp.task('svgFlagSprite', function () {
   return gulp.src(['./images/flags/*.svg'])
-    .pipe(svgmin())
+    .pipe(svgmin({
+      multipass: true,
+      plugins: [
+        {
+          cleanupNumericValues: {
+            floatPrecision: 1
+          }
+        }
+      ]
+    }))
     .pipe(svgSprite({
       variables: {
         png: function() {
