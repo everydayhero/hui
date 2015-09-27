@@ -10,6 +10,7 @@ import Legend from './examples/Legend'
 import Visualisation from './examples/DataVisualisation'
 import TextInput from './examples/TextInput'
 import ReadOnlyAddress from './examples/ReadOnlyAddress'
+import AddressInput from './examples/AddressInput'
 import Checkbox from './examples/Checkbox'
 import TextArea from './examples/TextArea'
 import SelectInput from './examples/SelectInput'
@@ -72,6 +73,7 @@ export default React.createClass({
           <div className="DemoPage__group">
             <TextInput />
             <ReadOnlyAddress />
+            <AddressInput />
             <Checkbox />
             <TextArea />
             <SelectInput />

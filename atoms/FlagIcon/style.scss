@@ -1,0 +1,29 @@
+@import "flags_sprite";
+
+.FlagIcon {
+  display: inline-block;
+  height: 18px;
+}
+
+.flag {
+  display: inline-block;
+  width: 24px;
+  height: 18px;
+  background-size: 100% auto;
+}
+
+.flag-bl { @extend .flag-fr }
+.flag-cc { @extend .flag-au }
+.flag-gf { @extend .flag-fr }
+.flag-gp { @extend .flag-fr }
+.flag-hm { @extend .flag-au }
+.flag-mf { @extend .flag-fr }
+.flag-mq { @extend .flag-fr }
+.flag-nc { @extend .flag-fr }
+.flag-pm { @extend .flag-fr }
+.flag-re { @extend .flag-fr }
+.flag-tf { @extend .flag-fr }
+.flag-um { @extend .flag-us }
+.flag-vg { @extend .flag-vi }
+.flag-wf { @extend .flag-fr }
+.flag-yt { @extend .flag-fr }

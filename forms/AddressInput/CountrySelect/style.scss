@@ -1,0 +1,62 @@
+.CountrySelect {
+  float: right;
+  position: relative;
+  z-index: 2;
+  margin: 8px 8px;
+  margin-left: -100px;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+.CountrySelect--open {
+  width: 100%;
+  margin: 0;
+}
+
+.CountrySelect__toggle {
+  transition: all 80ms ease-out;
+  padding: 4px 24px 4px 8px;
+  cursor: pointer;
+  background-color: #eee;
+  line-height: 18px;
+  text-align: right;
+  font-size: 12px;
+}
+
+.CountrySelect__toggle:hover,
+.CountrySelect__toggle:focus {
+  background-color: $green-light;
+  color: white;
+  outline: none;
+}
+
+.CountrySelect__list {
+  @extend %hui-input-border;
+  padding: 0;
+  height: auto;
+  border-radius: 0 0 $border-radius $border-radius;
+  background-color: #fff;
+  max-height: 300px;
+  overflow-y: scroll;
+  float: left;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+.CountrySelect__flag {
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.CountrySelect__caret {
+  transition: none;
+  display: block;
+  width: 8px;
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+}

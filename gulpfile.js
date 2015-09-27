@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' } });
+var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' }});
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
@@ -11,6 +11,7 @@ require('./gulp_tasks/assets-deploy');
 require('./gulp_tasks/lint');
 require('./gulp_tasks/assets-build');
 require('./gulp_tasks/docs');
+require('./gulp_tasks/flag_sprite');
 
 var debug = !!$.util.env.debug;
 var src = {};
@@ -28,7 +29,7 @@ var exclude = [
 process.env.NODE_ENV = debug ? 'development' : 'production';
 
 gulp.task('styles', function() {
-  src.styles = [ 'index.scss' ];
+  src.styles = ['index.scss'];
 
   return gulp.src(src.styles)
     .pipe($.sass({
@@ -59,10 +60,10 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./dist/scripts'));
 });
 
-gulp.task('index', [ 'lint', 'styles', 'scripts', 'images'], function() {
+gulp.task('index', ['lint', 'styles', 'scripts', 'images'], function() {
   var sources = gulp.src([
-      'dist/*/index.*'
-    ], { read: false });
+    'dist/*/index.*'
+  ], { read: false });
 
   return gulp.src('index.ejs')
     .pipe($.inject(sources, {
@@ -83,10 +84,10 @@ gulp.task('images', function() {
 });
 
 gulp.task('build', ['index']);
-gulp.task('default', [ 'build' ]);
+gulp.task('default', ['build']);
 
-gulp.task('watch', function() {
-  gulp.watch(src.styles, [ 'styles' ]);
-  gulp.watch(src.scripts, [ 'scripts' ]);
-  gulp.watch('index.ejs', [ 'index' ]);
+gulp.task('watch', ['styles', 'scripts', 'index'], function() {
+  gulp.watch(['**/*.scss'].concat(exclude), ['styles']);
+  gulp.watch(src.scripts, ['scripts']);
+  gulp.watch('index.ejs', ['index']);
 });

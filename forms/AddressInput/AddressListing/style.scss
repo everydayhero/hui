@@ -1,0 +1,19 @@
+.AddressListing {
+  transition: all 80ms ease-out;
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.AddressListing--focused {
+  background-color: rgba(126,199,116,0.1);
+}
+
+.AddressListing {
+  border-bottom: 1px solid #eee;
+}
+
+.AddressListing__details {
+  transition: all 80ms ease-out;
+  font-size: 13px;
+}

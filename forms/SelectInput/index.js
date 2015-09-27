@@ -207,7 +207,7 @@ module.exports = React.createClass({
             <select
               autoComplete={ props.autoComplete }
               className="hui-SelectInput__input"
-              id={ props.id }
+              id={ props.id || props.name }
               disabled={ props.disabled }
               name={ props.name || props.id }
               onBlur={ this.onBlur }

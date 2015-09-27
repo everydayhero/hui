@@ -20,6 +20,8 @@
     "start": "babel-node server.js",
     "build": "gulp build",
     "dev-build": "gulp build --debug true",
+    "watch": "gulp watch --debug true",
+    "dev": "npm run dev-build && (npm run watch & npm run start)",
     "deploy_assets": "bin/deploy_assets"
   },
   "repository": {
@@ -36,13 +38,13 @@
     "bluebird": "^2.9.34",
     "classnames": "~1.2.0",
     "exenv": "^1.2.0",
+    "jsonp": "^0.2.0",
     "lodash": "^3.8.0",
     "moment": "2.8.3",
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",
     "react": "^0.12.2",
     "react-router": "^0.11.5",
-    "remarkable": "^1.6.0",
     "remarkable": "^1.6.0",
     "superagent": "^1.2.0"
   },
@@ -70,6 +72,9 @@
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "^2.0.4",
+    "gulp-svg-sprite": "^1.2.10",
+    "gulp-svg2png": "^0.3.0",
+    "gulp-svgmin": "^1.2.0",
     "gulp-uglify": "^1.1.0",
     "gulp-util": "^3.0.2",
     "jsdom": "^3.1.2",
