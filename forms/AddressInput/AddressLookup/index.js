@@ -309,7 +309,9 @@ module.exports = React.createClass({
       <div className={ classes }>
         <div className="AddressLookup__scroll-container">
           { this.renderListing() }
-          { this.renderManualButton() }
+          <div className="AddressLookup__manual-wrapper">
+             { this.renderManualButton() }
+          </div>
         </div>
       </div>
     );
@@ -336,7 +338,7 @@ module.exports = React.createClass({
 
   renderManualButton: function() {
     return (
-      <button className="hui-Button hui-Button--primary-borderless hui-Button--hasIcon hui-Button--iconLeft AddressLookup__manual" tabIndex="0" onClick={ this.setManualEntry } onKeyPress={ this.setManualEntry }>
+      <button className="hui-Button hui-Button--secondary hui-Button--hasIcon hui-Button--iconLeft AddressLookup__manual" tabIndex="0" onClick={ this.setManualEntry } onKeyPress={ this.setManualEntry }>
         <span className="hui-IconWrapper hui-Button__icon">
           <i className="hui-Icon fa fa-info-circle" />
         </span>
