@@ -1,29 +1,30 @@
 'use strict'
 
 import Promise from 'bluebird'
-let userData = {
-  name: 'Test User',
-  image_url: 'http://test/path',
-  page_ids: [1, 2, 3]
-}
-let success = new Promise.resolve({ dashboard_user: userData })
-let failure = new Promise.reject('no user')
-let getJSON = sinon.stub()
-let NavUser = mockrequire('../', {
-  '../../../lib/getJSON': getJSON
-})
-let onLoad = sinon.spy()
-let defaultProps = {
-  domain: 'everydaytest.com',
-  region: 'au',
-  onLoad
-}
 
 describe('NavUser', () => {
+
+  let userData = {
+    name: 'Test User',
+    image_url: 'http://test/path',
+    page_ids: [1, 2, 3]
+  }
+  let success = new Promise.resolve({ dashboard_user: userData })
+  let getJSON = sinon.stub()
+  let NavUser = mockrequire('../', {
+    '../../../lib/getJSON': getJSON
+  })
+  let onLoad = sinon.spy()
+  let defaultProps = {
+    domain: 'everydaytest.com',
+    region: 'au',
+    onLoad
+  }
+
   beforeEach(() => onLoad.reset())
 
   it('shows onboarding calls to action without a user', (done) => {
-    getJSON.returns(failure)
+    getJSON.returns(new Promise.reject('no user'))
     let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
     setTimeout(() => {
       onLoad.should.not.have.been.called
