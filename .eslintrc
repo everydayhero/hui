@@ -86,6 +86,7 @@
   "globals": {
     "_": 1,
     "describe": 1,
+    "context": 1,
     "before": 1,
     "beforeEach": 1,
     "after": 1,
