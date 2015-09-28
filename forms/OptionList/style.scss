@@ -1,0 +1,13 @@
+.OptionList {
+  padding: 0 16px 32px;
+}
+
+.OptionList__list {
+  @extend %hui-input-border;
+  height: auto;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+  border-radius: $border-radius;
+}
+

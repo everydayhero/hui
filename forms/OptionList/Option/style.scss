@@ -1,0 +1,21 @@
+.OptionListOption {
+  font-family: $font-copy;
+  transition: all 80ms ease-out;
+  background-color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.OptionListOption--candidate {
+  background-color: rgba(126, 199, 116, 0.1);
+}
+
+.OptionListOption--selected {
+  background-color: rgba(126, 199, 116, 0.2);
+}
+
+.OptionListOption__radio--hidden {
+  position: absolute;
+  left: -100%;
+}
