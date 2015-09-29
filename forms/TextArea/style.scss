@@ -19,6 +19,7 @@
   line-height: $x-5;
   border: 0px;
   padding: 0px $x-2 $x-2 $x-2;
+  box-sizing: border-box;
 }
 
 .hui-TextArea__label {
