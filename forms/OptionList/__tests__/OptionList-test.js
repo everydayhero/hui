@@ -53,8 +53,8 @@ describe('OptionList', () => {
             { value: '3', label: 'Ben' }
           ]
           let element = renderIntoDocument(<OptionList options={ options } />)
-          let radios  = scryByTag(element, 'input')
-          Simulate.keyDown(radios[0].getDOMNode(), { keyCode: 40 })
+          let radio   = element.refs['option-radio-0']
+          Simulate.keyDown(radio.getDOMNode(), { keyCode: 40 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '2', label: 'Tex' })
         })
@@ -67,11 +67,11 @@ describe('OptionList', () => {
             { value: '3', label: 'Ben' }
           ]
           let element = renderIntoDocument(<OptionList options={ options } />)
-          let radios  = scryByTag(element, 'input')
+          let radio   = element.refs['option-radio-2']
           element.setState({
             selectionCandidate: options[2]
           })
-          Simulate.keyDown(radios[2].getDOMNode(), { keyCode: 40 })
+          Simulate.keyDown(radio.getDOMNode(), { keyCode: 40 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '1', label: 'Tim' })
         })
@@ -86,11 +86,11 @@ describe('OptionList', () => {
             { value: '3', label: 'Ben' }
           ]
           let element = renderIntoDocument(<OptionList options={ options } />)
-          let radios  = scryByTag(element, 'input')
+          let radio   = element.refs['option-radio-2']
           element.setState({
             selectionCandidate: options[2]
           })
-          Simulate.keyDown(radios[2].getDOMNode(), { keyCode: 38 })
+          Simulate.keyDown(radio.getDOMNode(), { keyCode: 38 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '2', label: 'Tex' })
         })
@@ -103,8 +103,8 @@ describe('OptionList', () => {
             { value: '3', label: 'Ben' }
           ]
           let element = renderIntoDocument(<OptionList options={ options } />)
-          let radios  = scryByTag(element, 'input')
-          Simulate.keyDown(radios[0].getDOMNode(), { keyCode: 38 })
+          let radio   = element.refs['option-radio-0']
+          Simulate.keyDown(radio.getDOMNode(), { keyCode: 38 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '3', label: 'Ben' })
         })
@@ -118,15 +118,16 @@ describe('OptionList', () => {
           { value: '3', label: 'Ben' }
         ]
         let element = renderIntoDocument(<OptionList options={ options } />)
-        let radios  = scryByTag(element, 'input')
-        Simulate.keyDown(radios[0].getDOMNode(), { keyCode: 13 })
+        let radio0  = element.refs['option-radio-0']
+        Simulate.keyDown(radio0.getDOMNode(), { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '1', label: 'Tim' })
 
         element.setState({
           selectionCandidate: options[2]
         })
-        Simulate.keyDown(radios[2].getDOMNode(), { keyCode: 13 })
+        let radio2 = element.refs['option-radio-2']
+        Simulate.keyDown(radio2.getDOMNode(), { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '3', label: 'Ben' })
       })
@@ -141,25 +142,50 @@ describe('OptionList', () => {
         { value: '3', label: 'Ben' }
       ]
       let element = renderIntoDocument(<OptionList options={ options } />)
-      let option = scryByTag(element, 'li')[1]
+      let option = scryByTag(element, 'label')[1]
 
       TestUtils.SimulateNative.mouseOver(option.getDOMNode())
       expect(element.state.selectionCandidate).to.eql(options[1])
     })
   })
 
-  describe('clicking an option', () => {
-    it('sets state.selected to the clicked option', () => {
+  describe('selecting an option', () => {
+    it('sets state.selected to the selected option and focuses the target radio', () => {
       let options = [
         { value: '1', label: 'Tim' },
         { value: '2', label: 'Tex' },
         { value: '3', label: 'Ben' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
-      let option = scryByTag(element, 'li')[1]
+      let element     = renderIntoDocument(<OptionList options={ options } />)
+      let optionRadio = element.refs['option-radio-1']
 
-      Simulate.click(option.getDOMNode())
+      let mockEvent = {
+        target: {
+          checked: true,
+          focus: sinon.spy()
+        }
+      }
+
+      Simulate.change(optionRadio.getDOMNode(), mockEvent)
       expect(element.state.selected).to.eql(options[1])
+      expect(mockEvent.target.focus).to.be.called
+    })
+  })
+
+  describe('#focus', () => {
+    it('focuses the radio belonging to the selected option', () => {
+      let options = [
+        { value: '1', label: 'Tim' },
+        { value: '2', label: 'Tex' },
+        { value: '3', label: 'Ben' }
+      ]
+      let element   = renderIntoDocument(<OptionList options={ options } />)
+      element.setState({ selected: options[1] })
+      let radioElem = element.refs['option-radio-1'].getDOMNode()
+      sinon.spy(radioElem, 'focus')
+      element.focus()
+
+      expect(radioElem.focus).to.be.called
     })
   })
 })

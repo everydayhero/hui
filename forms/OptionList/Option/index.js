@@ -15,7 +15,7 @@ export default React.createClass({
     return (
       <div
         ref="option"
-        className={ `OptionListOption ${ this.props.className }` }>
+        className={ `hui-OptionListOption ${ this.props.className }` }>
         { this.props.label }
       </div>
     )

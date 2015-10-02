@@ -1,13 +1,7 @@
-.OptionList {
-  padding: 0 16px 32px;
-}
+@include input-sizes(OptionList);
 
-.OptionList__list {
-  @extend %hui-input-border;
-  height: auto;
-  padding: 0;
+.hui-OptionList__list {
   list-style: none;
   background-color: #fff;
-  border-radius: $border-radius;
 }
 

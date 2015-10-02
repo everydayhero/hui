@@ -1,21 +1,31 @@
-.OptionListOption {
+.hui-OptionListOption {
+  display: block;
   font-family: $font-copy;
   transition: all 80ms ease-out;
   background-color: #fff;
-  padding: 10px;
+  padding: 10px 8px;
   cursor: pointer;
   border-bottom: 1px solid #eee;
+  transform: translateZ(0);
 }
 
-.OptionListOption--candidate {
+.hui-OptionListOption--empty {
+  cursor: auto;
+}
+
+.hui-OptionListOption--candidate {
   background-color: rgba(126, 199, 116, 0.1);
 }
 
-.OptionListOption--selected {
+.hui-OptionListOption--selected {
   background-color: rgba(126, 199, 116, 0.2);
 }
 
-.OptionListOption__radio--hidden {
+.hui-OptionListOption__radio-label {
+  display: block;
+}
+
+.hui-OptionListOption__radio--hidden {
   position: absolute;
   left: -100%;
 }
