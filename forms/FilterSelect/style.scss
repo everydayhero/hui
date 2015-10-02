@@ -1,0 +1,46 @@
+@import "../InputErrors/style";
+
+@include input-sizes(FilterSelect);
+
+.hui-FilterSelect {
+  @extend %hui-input-base;
+}
+
+.hui-FilterSelect .hui-FilterSelect__filter-input {
+  padding-bottom: 0;
+}
+
+.hui-FilterSelect__display {
+  cursor: pointer;
+}
+
+.hui-FilterSelect__option-list {
+  float: left;
+  width: 100%;
+}
+
+.hui-FilterSelect__scroll-container {
+  @extend %hui-input-border;
+  height: auto;
+  padding: 0;
+  float: left;
+  width: 100%;
+  margin-top: -2px;
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hui-FilterSelect__option-list .hui-OptionList__list {
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.hui-FilterSelect--error .hui-TextInput__message {
+  @extend %error-message;
+  top: 10px;
+}
+
+.hui-FilterSelect--error .hui-TextInput__label {
+  @extend %hui-input-error;
+}
