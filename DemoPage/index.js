@@ -11,13 +11,18 @@ import Visualisation from './examples/DataVisualisation'
 import TextInput from './examples/TextInput'
 import ReadOnlyAddress from './examples/ReadOnlyAddress'
 import AddressInput from './examples/AddressInput'
+import AddressFieldset from './examples/AddressFieldset'
+import AddressFieldsetWithLookup from './examples/AddressFieldsetWithLookup'
+import AddressLookup from './examples/AddressLookup'
 import Checkbox from './examples/Checkbox'
 import TextArea from './examples/TextArea'
 import SelectInput from './examples/SelectInput'
 import UrlInput from './examples/UrlInput'
+import UrlSearchSelect from './examples/UrlSearchSelect'
 import DateInput from './examples/DateInput'
 import DateSelect from './examples/DateSelect'
 import FileInput from './examples/FileInput'
+import FilterSelect from './examples/FilterSelect'
 import ImageInput from './examples/ImageInput'
 import ButtonExample from './examples/Button'
 import FormRow from './examples/FormRow'
@@ -74,13 +79,18 @@ export default React.createClass({
             <TextInput />
             <ReadOnlyAddress />
             <AddressInput />
+            <AddressLookup />
+            <AddressFieldset />
+            <AddressFieldsetWithLookup />
             <Checkbox />
             <TextArea />
             <SelectInput />
             <UrlInput />
+            <UrlSearchSelect />
             <DateInput />
             <DateSelect />
             <FileInput />
+            <FilterSelect />
             <ImageInput />
             <FormRow />
             <Fieldset />
