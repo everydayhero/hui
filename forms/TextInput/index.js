@@ -34,6 +34,7 @@ module.exports = React.createClass({
     onError: React.PropTypes.func,
     onBlur: React.PropTypes.func,
     onTab: React.PropTypes.func,
+    onKeyDown: React.PropTypes.func,
     readOnly: React.PropTypes.bool,
     required: React.PropTypes.bool,
     showIcon: React.PropTypes.bool,
@@ -62,6 +63,7 @@ module.exports = React.createClass({
       onError: null,
       onBlur: function() {},
       onTab: function() {},
+      onKeyDown: function() {},
       onIconClick: null,
       readOnly: false,
       required: false,
@@ -125,7 +127,10 @@ module.exports = React.createClass({
             id={ props.id || props.name }
             name={ props.name }
             ref="input"
-            onKeyDown={ this.onTab }
+            onKeyDown={ (e) => {
+              this.onTab(e)
+              this.props.onKeyDown(e)
+            } }
             type={ props.type }
             value={ this.maskValue(value) } />
           { this.renderPlaceHolder() }
