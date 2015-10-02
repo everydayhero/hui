@@ -1,0 +1,41 @@
+@include input-sizes(AddressLookup);
+
+.hui-AddressLookup {
+  float: left;
+  position: relative;
+}
+
+.hui-AddressLookup__country-select {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  z-index: 1;
+  width: auto;
+}
+
+.hui-AddressLookup--loose .hui-AddressLookup__country-select {
+  right: 16px;
+}
+
+.hui-AddressLookup__country-select--active {
+  position: static;
+  width: 100%;
+}
+
+.hui-AddressLookup_url-search-select--inactive {
+  display: none
+}
+
+.hui-AddressLookup__country-select .hui-CountrySelectDisplay__wrap {
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  height: 40px;
+  margin-top: 1px;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.hui-AddressLookup_url-search-select .hui-TextInput__icon {
+  right: 90 + $x-2;
+}
