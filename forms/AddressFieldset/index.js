@@ -114,7 +114,6 @@ export default React.createClass({
           name={ this.props.prefix + 'street_address' }
           label={ this.t('street_address', { scope: this.state.countryCode }) }
           value={ this.state.address.street_address }
-          showIcon={ false }
           spacing={ this.props.internalSpacing }
           onChange={ this.handleChange('street_address') } />
         <Input
@@ -123,7 +122,6 @@ export default React.createClass({
           name={ this.props.prefix + 'extended_address' }
           label={ this.t('extended_address', { scope: this.state.countryCode }) }
           value={ this.state.address.extended_address }
-          showIcon={ false }
           spacing={ this.props.internalSpacing }
           onChange={ this.handleChange('extended_address') } />
         <Input
@@ -133,7 +131,6 @@ export default React.createClass({
           label={ this.t('locality', { scope: this.state.countryCode }) }
           value={ this.state.address.locality }
           layout="twoThirds"
-          showIcon={ false }
           spacing={ this.props.internalSpacing }
           onChange={ this.handleChange('locality') } />
         <Input
@@ -143,7 +140,6 @@ export default React.createClass({
           label={ this.t('region', { scope: this.state.countryCode }) }
           value={ this.state.address.region }
           layout="third"
-          showIcon={ false }
           spacing={ this.props.internalSpacing }
           onChange={ this.handleChange('region') } />
         <CountrySelect
@@ -162,7 +158,6 @@ export default React.createClass({
           label={ this.t('postal_code', { scope: this.state.countryCode }) }
           value={ this.state.address.postal_code }
           layout="third"
-          showIcon={ false }
           spacing={ this.props.internalSpacing }
           onChange={ this.handleChange('postal_code') } />
         { this.props.children }
