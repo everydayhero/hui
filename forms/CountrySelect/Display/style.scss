@@ -6,11 +6,11 @@
 
 .hui-CountrySelectDisplay__wrap {
   @extend %hui-input-border;
+  position: relative;
   text-align: left;
-  cursor: pointer;
   padding-right: 25px;
   padding-left: 12px;
-  padding-top: 0;
+  padding-top: 10px;
 }
 
 .hui-CountrySelectDisplay__icon {
@@ -19,7 +19,6 @@
   top: 50%;
   transform: translateY(-50%);
 }
-
 
 .hui-CountrySelectDisplay__flag-icon {
   display: inline-block;

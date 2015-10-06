@@ -36,9 +36,7 @@ export default React.createClass({
 
     return (
       <div className={ classes }>
-        <button
-          className="hui-CountrySelectDisplay__wrap"
-          onClick={ this.props.openFilter }>
+        <div className="hui-CountrySelectDisplay__wrap">
           <FlagIcon
             className="hui-CountrySelectDisplay__flag-icon"
             country={ (!!selected && selected.value) } />
@@ -46,7 +44,7 @@ export default React.createClass({
             { !!selected && selected.value }
           </span>
           <Icon className="hui-CountrySelectDisplay__icon" icon="caret-down" />
-        </button>
+        </div>
       </div>
     )
   }

@@ -34,6 +34,7 @@ export default React.createClass({
       this.props.className,
       'hui-CountrySelect'
     ])
+
     return (
       <FilterSelect
         className={ classes }
