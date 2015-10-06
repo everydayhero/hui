@@ -7,12 +7,16 @@ import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import getJSON from '../../lib/getJSON'
 import apiRoutes from '../../api'
+import i18nMixin from '../../mixins/i18n'
+import i18n from './i18n'
 
 const addressesSearchUrl = apiRoutes('addresses_search')
 const addressUrl = apiRoutes('address')
 
 export default React.createClass({
   displayName: 'AddressLookup',
+
+  mixins: [i18nMixin],
 
   propTypes: {
     layout: React.PropTypes.string,
@@ -139,5 +143,9 @@ export default React.createClass({
           onSelection={ this.handleCountrySelection } />
       </div>
     )
+  },
+
+  statics: {
+    i18n
   }
 })
