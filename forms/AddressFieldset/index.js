@@ -1,12 +1,10 @@
 'use strict'
 
 import React from 'react'
-import find from 'lodash/collection/find'
 import classnames from 'classnames'
 import i18nMixin from '../../mixins/i18n'
 import Input from '../TextInput'
 import CountrySelect from '../CountrySelect'
-import countries from '../CountrySelect/countries'
 import i18n from './i18n'
 
 export default React.createClass({
@@ -49,17 +47,6 @@ export default React.createClass({
     }
   },
 
-  componentWillReceiveProps (nextProps) {
-    let newCountry = find(countries, (country) => {
-      return country.label === (nextProps.address && nextProps.address.country_name)
-    })
-
-    this.setState({
-      address: nextProps.address,
-      countryCode: newCountry && newCountry.value
-    })
-  },
-
   getPAFValidated (oldValue, newValue) {
     var pafValidated = this.state.address.paf_validated
     return (oldValue === newValue) ? pafValidated : false
@@ -67,11 +54,10 @@ export default React.createClass({
 
   handleChange (property) {
     return (value) => {
-
       this.setState({
         address: {
           ...this.state.address,
-          paf_validated: getPAFValidated(this.state.address[property], value),
+          paf_validated: this.getPAFValidated(this.state.address[property], value),
           [property]: value
         }
       }, () => {
@@ -83,15 +69,9 @@ export default React.createClass({
 
   handleCountrySelection (country) {
     this.setState({
-      countryCode: country.value,
-      address: {
-        ...this.state.address,
-        paf_validated: getPAFValidated(this.state.countryCode, country.value),
-        country_name: country.label
-      }
+      countryCode: country.value
     }, () => {
-      this.props.onChange(`${this.props.prefix}country_name`, country.value)
-      this.props.afterChange(this.state.address)
+      this.handleChange('country_name')(country.label)
     })
   },
 
