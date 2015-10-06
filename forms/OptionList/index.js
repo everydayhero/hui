@@ -30,17 +30,8 @@ export default React.createClass({
   getInitialState () {
     return {
       selected: this.props.selectedOption,
-      selectionCandidate: this.getInitialCandidate()
+      selectionCandidate: this.props.options[0]
     }
-  },
-
-  getInitialCandidate () {
-    let visibleSelected = this.props.selectedOption &&
-      find(this.props.options, (option) => {
-        return this.props.selectedOption.value === option.value
-      })
-
-    return visibleSelected || this.props.options[0]
   },
 
   setSelected (option) {
