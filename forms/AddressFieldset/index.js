@@ -15,6 +15,7 @@ export default React.createClass({
   mixins: [i18nMixin],
 
   propTypes: {
+    header: React.PropTypes.element,
     address: React.PropTypes.object,
     countryCode: React.PropTypes.string,
     prefix: React.PropTypes.string,
@@ -100,8 +101,12 @@ export default React.createClass({
       'hui-AddressFieldset--' + this.props.spacing,
       'hui-AddressFieldset--' + this.props.layout
     ])
+
     return (
       <div className={ classes }>
+        <div className="hui-AddressFieldset__header">
+          { this.props.header }
+        </div>
         <Input
           autoFocus={ this.props.autoFocus }
           ref="street_address"
