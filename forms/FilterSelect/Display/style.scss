@@ -1,0 +1,37 @@
+@include input-sizes(FilterSelectDisplay);
+
+.hui-FilterSelectDisplay {
+  @extend %hui-input-base;
+}
+
+.hui-FilterSelectDisplay__wrap {
+  @extend %hui-input-border;
+  position: relative;
+  padding-right: 25px;
+}
+
+.hui-FilterSelectDisplay__label {
+  @extend %hui-input-label;
+}
+
+.hui-FilterSelectDisplay__icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hui-FilterSelectDisplay__value {
+  position: absolute;
+  top: 9px;
+  left: 0px;
+  color: $grey;
+  letter-spacing: 0.10em;
+  line-height: $x-9 - 1;
+  font-size: 15px;
+  padding-left: $x-2;
+  width: 100%;
+  max-height: $x-8;
+  overflow: hidden;
+}
+

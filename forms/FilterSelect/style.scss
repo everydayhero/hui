@@ -11,7 +11,28 @@
 }
 
 .hui-FilterSelect__display {
+  postion: relative;
+}
+
+.hui-FilterSelect__display-input {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
   cursor: pointer;
+}
+
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__wrap,
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__selected,
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__label {
+  @extend %hui-input-disabled;
+}
+
+.hui-FilterSelect--focused .hui-FilterSelectDisplay__wrap,
+.hui-FilterSelect--focused .hui-FilterSelectDisplay__label {
+  @extend %hui-input-focused;
 }
 
 .hui-FilterSelect__option-list {

@@ -4,6 +4,7 @@ import React from 'react'
 import find from 'lodash/collection/find'
 import validatable from '../../mixins/validatable'
 import inputMessage from '../../mixins/inputMessage'
+import FilterSelectDisplay from './Display'
 import OptionList from '../OptionList'
 import TextInput from '../TextInput'
 import classnames from 'classnames'
@@ -37,6 +38,7 @@ export default React.createClass({
       filterLabel: 'Filter',
       properties: ['label'],
       value: '',
+      Display: FilterSelectDisplay,
       onChange: () => {},
       onSelection: () => {},
       onOpen: () => {},
@@ -55,6 +57,7 @@ export default React.createClass({
     })
 
     return {
+      focused: false,
       value: this.props.value || '',
       filteredOptions: this.props.options,
       selectedOption: selected,
@@ -98,6 +101,10 @@ export default React.createClass({
     })
   },
 
+  setFocus (focused) {
+    this.setState({ focused })
+  },
+
   handleSelection (option) {
     this.setState({
       isOpen: false,
@@ -105,6 +112,7 @@ export default React.createClass({
       filterValue: option.label,
       value: option.value
     }, () => {
+      this.refs.displayInput.getDOMNode().focus()
       this.validate(option.value)
       this.props.onChange(option.value)
       this.props.onSelection(option)
@@ -120,26 +128,35 @@ export default React.createClass({
     }
   },
 
+  handleDisplayKeyDown (e) {
+    let key = e.keyCode || e.which
+
+    if (key === 40) {
+      e.preventDefault()
+      this.openOptionList()
+    }
+  },
+
   renderDisplay () {
     let Display = this.props.Display
     let selected = this.state.selectedOption
 
-    if (Display) {
-      return (<Display openFilter={this.openOptionList} selected={ selected } />)
-    } else {
-      return (
-        <TextInput
-          readOnly
+    return  (
+      <div className="hui-FilterSelect__display">
+        <Display selected={ selected } />
+
+        <input
           ref="displayInput"
-          className="hui-FilterSelect__display"
-          spacing="compact"
-          icon="chevron-down"
-          placeHolder={ this.props.placeHolder }
-          label={ this.props.label }
-          value={ this.state.selectedOption && this.state.selectedOption.label }
-          onFocus={ this.openOptionList }/>
-      )
-    }
+          type="text"
+          readOnly
+          className="hui-FilterSelect__display-input"
+          value={ (!!selected && selected.value) }
+          onFocus={ () => { this.setFocus(true) } }
+          onBlur={  () => { this.setFocus(false) }  }
+          onKeyDown={ this.handleDisplayKeyDown }
+          onClick={ this.openOptionList } />
+      </div>
+    )
   },
 
   renderFilter () {
@@ -175,6 +192,7 @@ export default React.createClass({
       'hui-FilterSelect',
       !!this.state.value && !!this.state.value.trim() && 'hui-FilterSelect--hasValue',
       this.state.valid && 'hui-FilterSelect--valid',
+      this.state.focused && 'hui-FilterSelect--focused',
       this.shouldShowError() && 'hui-FilterSelect--error'
     ])
 
