@@ -1,5 +1,7 @@
 'use strict'
 
 export default {
-  en: {}
+  en: {
+    reset: 'Clear and search again'
+  }
 }

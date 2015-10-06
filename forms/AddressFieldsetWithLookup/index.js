@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'
 import i18nMixin from '../../mixins/i18n'
@@ -22,9 +23,7 @@ export default React.createClass({
   getDefaultProps () {
     return {
       prefix: '',
-      address: {
-        paf_validated: false
-      },
+      address: null,
       onChange: () => {}
     }
   },
@@ -33,6 +32,12 @@ export default React.createClass({
     return {
       address: this.props.address
     }
+  },
+
+  clearAddress () {
+    this.setState({
+      address: null
+    })
   },
 
   handleLookupChange (address) {
@@ -51,16 +56,36 @@ export default React.createClass({
     })
   },
 
+  renderLookup () {
+    return (
+      <AddressLookup
+        onChange={ this.handleLookupChange }
+        address={ this.state.address } />
+    )
+  },
+
+  renderFieldset () {
+    let header = (<Button
+      kind="secondary-borderless"
+      icon="remove"
+      iconLeft
+      onClick={ this.clearAddress }>
+      { this.t('reset') }
+    </Button>)
+
+    return (
+      <AddressFieldset
+        header={ header }
+        prefix={ this.props.prefix }
+        afterChange={ this.handleFieldsetChange }
+        address={ this.state.address }/>
+    )
+  },
+
   render () {
     return (
       <div>
-        <AddressLookup
-          onChange={ this.handleLookupChange }
-          address={ this.state.address } />
-        <AddressFieldset
-          prefix={ this.props.prefix }
-          afterChange={ this.handleFieldsetChange }
-          address={ this.state.address }/>
+        { !this.state.address ? this.renderLookup() : this.renderFieldset() }
       </div>
     )
   },
