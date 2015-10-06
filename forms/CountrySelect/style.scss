@@ -1,1 +1,12 @@
 @include input-sizes(CountrySelect);
+
+.hui-CountrySelect.hui-FilterSelect--disabled .hui-CountrySelectDisplay__wrap,
+.hui-CountrySelect.hui-FilterSelect--disabled .hui-CountrySelectDisplay__selected,
+.hui-CountrySelect.hui-FilterSelect--disabled .hui-CountrySelectDisplay__label {
+  @extend %hui-input-disabled;
+}
+
+.hui-CountrySelect.hui-FilterSelect--focused .hui-CountrySelectDisplay__wrap,
+.hui-CountrySelect.hui-FilterSelect--focused .hui-CountrySelectDisplay__label {
+  @extend %hui-input-focused;
+}
