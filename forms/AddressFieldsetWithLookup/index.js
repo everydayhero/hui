@@ -1,10 +1,12 @@
 'use strict'
 
 import React from 'react'
+import find from 'lodash/collection/find'
 import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'
 import i18nMixin from '../../mixins/i18n'
+import countries from '../CountrySelect/countries'
 import i18n from './i18n'
 
 export default React.createClass({
@@ -30,8 +32,15 @@ export default React.createClass({
 
   getInitialState () {
     return {
+      countryCode: this.props.countryCode,
       address: this.props.address
     }
+  },
+
+  getCountryName(value) {
+    return (find(countries, (country) => {
+      return country.value === value
+    }) || countries[0]).label
   },
 
   clearAddress () {
@@ -52,7 +61,9 @@ export default React.createClass({
   },
 
   handleLookupChange (address) {
+    let countryCode = this.refs.lookup.state.selectedCountry.value
     this.setState({
+      countryCode,
       address
     }, () => {
       this.props.onChange(address)
@@ -90,7 +101,7 @@ export default React.createClass({
 
   renderFieldset () {
     let header = (<Button
-      kind="secondary-borderless"
+      kind="primary-borderless"
       icon="remove"
       iconLeft
       onClick={ this.clearAddress }>
