@@ -1,10 +1,12 @@
 'use strict'
 
 import React from 'react'
+import find from 'lodash/collection/find'
 import classnames from 'classnames'
 import i18nMixin from '../../mixins/i18n'
 import Input from '../TextInput'
 import CountrySelect from '../CountrySelect'
+import countries from '../CountrySelect/countries'
 import i18n from './i18n'
 
 export default React.createClass({
@@ -43,12 +45,18 @@ export default React.createClass({
   getInitialState () {
     return {
       address: this.props.address,
-      countryCode: this.props.countryCode
+      countryCode: (this.getSelectedCountry() || countries[0]).value
     }
   },
 
+  getSelectedCountry () {
+    return find(countries, (country) => {
+      return country.label === this.props.address.country_name
+    })
+  },
+
   getPAFValidated (oldValue, newValue) {
-    var pafValidated = this.state.address.paf_validated
+    var pafValidated = this.props.address.paf_validated
     return (oldValue === newValue) ? pafValidated : false
   },
 
@@ -57,7 +65,7 @@ export default React.createClass({
       this.setState({
         address: {
           ...this.state.address,
-          paf_validated: this.getPAFValidated(this.state.address[property], value),
+          paf_validated: this.getPAFValidated(this.props.address[property], value),
           [property]: value
         }
       }, () => {
