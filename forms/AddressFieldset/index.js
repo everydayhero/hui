@@ -21,8 +21,7 @@ export default React.createClass({
     spacing: React.PropTypes.string,
     internalSpacing: React.PropTypes.string,
     onChange: React.PropTypes.func,
-    afterChange: React.PropTypes.func,
-    validations: React.PropTypes.object
+    afterChange: React.PropTypes.func
   },
 
   getDefaultProps: function() {
@@ -37,8 +36,7 @@ export default React.createClass({
       spacing: 'loose',
       internalSpacing: 'tight',
       onChange: () => {},
-      afterChange: () => {},
-      validate: () => {}
+      afterChange: () => {}
     }
   },
 
@@ -58,6 +56,18 @@ export default React.createClass({
   getPAFValidated (oldValue, newValue) {
     var pafValidated = this.props.address.paf_validated
     return (oldValue === newValue) ? pafValidated : false
+  },
+
+  validate () {
+    [
+      'street_address',
+      'locality',
+      'region',
+      'postal_code'
+    ].forEach((inputKey) => {
+      let input = this.refs[inputKey]
+      !!input && !!input.validate && input.validate()
+    })
   },
 
   handleChange (property) {
@@ -103,6 +113,8 @@ export default React.createClass({
             name={ this.props.prefix + 'street_address' }
             label={ this.t('street_address', { scope: this.state.countryCode }) }
             value={ this.state.address.street_address }
+            required
+            errorMessage={ this.t('street_address_blank_error', { scope: this.state.countryCode }) }
             spacing={ this.props.internalSpacing }
             onChange={ this.handleChange('street_address') } />
           <Input
@@ -119,6 +131,8 @@ export default React.createClass({
             name={ this.props.prefix + 'locality' }
             label={ this.t('locality', { scope: this.state.countryCode }) }
             value={ this.state.address.locality }
+            required
+            errorMessage={ this.t('locality_blank_error', { scope: this.state.countryCode }) }
             layout="twoThirds"
             spacing={ this.props.internalSpacing }
             onChange={ this.handleChange('locality') } />
@@ -128,6 +142,8 @@ export default React.createClass({
             name={ this.props.prefix + 'region' }
             label={ this.t('region', { scope: this.state.countryCode }) }
             value={ this.state.address.region }
+            required
+            errorMessage={ this.t('region_blank_error', { scope: this.state.countryCode }) }
             layout="third"
             spacing={ this.props.internalSpacing }
             onChange={ this.handleChange('region') } />
@@ -146,6 +162,8 @@ export default React.createClass({
             name={ this.props.prefix + 'postal_code' }
             label={ this.t('postal_code', { scope: this.state.countryCode }) }
             value={ this.state.address.postal_code }
+            required
+            errorMessage={ this.t('postal_code_blank_error', { scope: this.state.countryCode }) }
             layout="third"
             spacing={ this.props.internalSpacing }
             onChange={ this.handleChange('postal_code') } />

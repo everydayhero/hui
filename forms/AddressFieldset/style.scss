@@ -4,6 +4,14 @@
   float: left;
 }
 
+.hui-AddressFieldset__header {
+  text-align: right;
+}
+
+.hui-AddressFieldsetWithLookup__reset .hui-Button__label {
+  letter-spacing: initial;
+}
+
 .hui-AddressFieldset__wrap--internal-tight {
   margin-left: -$x-1;
   margin-right: -$x-1;

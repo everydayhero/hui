@@ -66,6 +66,7 @@ export default React.createClass({
       countryCode,
       address
     }, () => {
+      this.refs.fieldset.validate()
       this.props.onChange(address)
     })
   },
@@ -101,6 +102,7 @@ export default React.createClass({
 
   renderFieldset () {
     let header = (<Button
+      className="hui-AddressFieldsetWithLookup__reset"
       kind="primary-borderless"
       icon="remove"
       iconLeft
@@ -110,6 +112,7 @@ export default React.createClass({
 
     return (
       <AddressFieldset
+        ref="fieldset"
         header={ header }
         prefix={ this.props.prefix }
         afterChange={ this.handleFieldsetChange }
