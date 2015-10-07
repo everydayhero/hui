@@ -37,6 +37,7 @@ export default React.createClass({
   getInitialState () {
     return {
       selectedCountry: this.props.selectedCountry,
+      minQueryLength: this.props.selectedCountry.value === 'GB' ? 7 : 5,
       pendingRequest: null,
       address: null
     }
@@ -51,12 +52,12 @@ export default React.createClass({
     })
   },
 
-  isPAFLookup: function () {
+  isPAFLookup () {
     return ((!!this.state.selectedCountry &&
         this.state.selectedCountry.value) === 'GB')
   },
 
-  isGoogleLookup: function () {
+  isGoogleLookup () {
     return !this.isPAFLookup()
   },
 
@@ -99,6 +100,7 @@ export default React.createClass({
 
   handleCountrySelection (country) {
     this.setState({
+      minQueryLength: country.value === 'GB' ? 7 : 5,
       isSelectingCountry: false,
       selectedCountry: country
     })
@@ -119,6 +121,7 @@ export default React.createClass({
     ])
     let urlSearchSelectClasses = classnames({
       'hui-AddressLookup_url-search-select': true,
+      'hui-AddressLookup_url-search-select--google': this.isGoogleLookup(),
       'hui-AddressLookup_url-search-select--inactive': this.state.isSelectingCountry
     })
     let countrySelectClasses = classnames({
@@ -128,11 +131,13 @@ export default React.createClass({
     return (
       <div className={ classes }>
         <UrlSearchSelect
+          label={ this.t('search_prompt', { scope: this.state.selectedCountry.value }) }
           className={ urlSearchSelectClasses }
           url={ addressesSearchUrl + '.jsonp' }
           params={ { country_code: this.state.selectedCountry.value } }
           spacing="compact"
           manualActions={ this.props.manualActions }
+          minQueryLength={ this.state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
