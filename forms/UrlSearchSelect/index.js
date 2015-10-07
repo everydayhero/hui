@@ -78,6 +78,12 @@ export default React.createClass({
     })
   },
 
+  setWaiting (waiting) {
+    this.refs.searchInput.setState({
+      waiting
+    })
+  },
+
   fetchResults () {
     let request = getJSON(this.props.url, this.getParams())
     request.then((response) => {
@@ -87,9 +93,7 @@ export default React.createClass({
         isOpen: true,
         results
       }, () => {
-        this.refs.searchInput.setState({
-          waiting: false
-        })
+        this.setWaiting(false)
       })
     })
     return request
@@ -103,9 +107,7 @@ export default React.createClass({
     this.setState({
       pendingRequest: request
     }, () => {
-      this.refs.searchInput.setState({
-        waiting: true
-      })
+      this.setWaiting(true)
     })
     return request
   }, 250, { trailing: true }),

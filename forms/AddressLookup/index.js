@@ -67,6 +67,7 @@ export default React.createClass({
   },
 
   fetchAddress (id) {
+    this.refs.searchSelect.setWaiting(true)
     let request = getJSON(this.getAddressUrl(id))
     request.then((response) => {
       let address = response.address
@@ -78,6 +79,7 @@ export default React.createClass({
         address
       }, () => {
         this.props.onChange(address)
+        this.refs.searchSelect.setWaiting(false)
       })
     })
     return request
@@ -131,6 +133,7 @@ export default React.createClass({
     return (
       <div className={ classes }>
         <UrlSearchSelect
+          ref="searchSelect"
           label={ this.t('search_prompt', { scope: this.state.selectedCountry.value }) }
           className={ urlSearchSelectClasses }
           url={ addressesSearchUrl + '.jsonp' }
