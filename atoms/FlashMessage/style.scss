@@ -3,9 +3,10 @@
   height: 0;
   position: fixed;
   top: -$x-19;
-  z-index: 10;
   text-align: center;
   transition: $ease-in-out-fast;
+  z-index: 1001;
+  transform: translateZ(200px);
 }
 
 .hui-FlashMessage__message {
