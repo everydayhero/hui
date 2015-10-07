@@ -6,7 +6,7 @@
 
 import _ from 'lodash'
 import { canUseDOM } from 'exenv'
-import addEventListener from '../../lib/addEventListener'
+import addEventListener from '../lib/addEventListener'
 
 var breakpoints = {
   phone: 450,
