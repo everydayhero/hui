@@ -93,16 +93,44 @@ describe('FilterSelect', () => {
     })
   })
 
-  describe('the display TextInput', () => {
-    it('calls #openOptionList on focus', () => {
+  describe('the display select', () => {
+    it('sets state.focused to true on focus', () => {
       let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      let input = element.refs.displayInput.refs.input.getDOMNode()
+      let input = element.refs.displayInput.getDOMNode()
       Simulate.focus(input)
+      let subject = element.state.focused
+
+      expect(subject).to.eq(true)
+    })
+
+    it('sets state.isOpen to true on click', () => {
+      let element = renderIntoDocument(
+        <FilterSelect options={ [] } />
+      )
+      let input = element.refs.displayInput.getDOMNode()
+      Simulate.click(input)
       let subject = element.state.isOpen
 
       expect(subject).to.eq(true)
+    })
+
+    context('when the input has focus', () => {
+      describe('hitting the down arrow', () => {
+        it('opens the optionList', () => {
+          let element = renderIntoDocument(
+            <FilterSelect options={ [] } />
+          )
+          let input = element.refs.displayInput.getDOMNode()
+          Simulate.focus(input)
+          Simulate.keyDown(input, { keyCode: 40 })
+
+          let subject = element.state.isOpen
+
+          expect(subject).to.eq(true)
+        })
+      })
     })
   })
 

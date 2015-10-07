@@ -137,6 +137,11 @@ export default React.createClass({
     }
   },
 
+  handleDisplayClick (e) {
+    e.preventDefault()
+    this.openOptionList()
+  },
+
   renderDisplay () {
     let Display = this.props.Display
     let selected = this.state.selectedOption
@@ -145,16 +150,16 @@ export default React.createClass({
       <div className="hui-FilterSelect__display">
         <Display selected={ selected } />
 
-        <input
+        <select
           ref="displayInput"
-          type="text"
           readOnly
           className="hui-FilterSelect__display-input"
           value={ (!!selected && selected.value) }
           onFocus={ () => { this.setFocus(true) } }
           onBlur={  () => { this.setFocus(false) }  }
           onKeyDown={ this.handleDisplayKeyDown }
-          onClick={ this.openOptionList } />
+          onMouseDown={ (e) => { e.preventDefault() } }
+          onClick={ this.handleDisplayClick } />
       </div>
     )
   },
