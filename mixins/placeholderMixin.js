@@ -1,5 +1,7 @@
 'use strict';
 
+require('console-polyfill');
+
 var React = require('react');
 
 module.exports = {

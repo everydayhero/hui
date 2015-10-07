@@ -1,5 +1,7 @@
 'use strict'
 
+import 'console-polyfill'
+
 import Promise from 'bluebird'
 import React from 'react'
 import cx from 'react/lib/cx'
