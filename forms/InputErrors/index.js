@@ -1,22 +1,26 @@
 'use strict';
 
-var React = require('react');
+import React from 'react'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'InputErrors',
 
-  render: function() {
-    var errors     = this.props.errors;
-    var ErrorsList = [];
-
-    if (errors && errors.length > 0) {
-      for (var i = 0; i < errors.length; i++) {
-        ErrorsList.push(<li key={ 'key' + i }> { errors[i] } </li>);
-      }
-
-      return <ul className="hui-InputErrors"> { ErrorsList } </ul>;
+  getDefaultProps () {
+    return {
+      errors: []
     }
+  },
 
-    return false;
+  render () {
+    var errors     = this.props.errors;
+    var errorsList = errors.map((error, i) => {
+      return <li key={ 'error' + i }>{ error }</li>
+    })
+
+    return (
+      <ul className="hui-InputErrors">
+        { errorsList }
+      </ul>
+    )
   }
 });
