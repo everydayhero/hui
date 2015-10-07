@@ -17,11 +17,11 @@ export default React.createClass({
   propTypes: {
     header: React.PropTypes.element,
     address: React.PropTypes.object,
-    countryCode: React.PropTypes.string,
     prefix: React.PropTypes.string,
     spacing: React.PropTypes.string,
     internalSpacing: React.PropTypes.string,
     onChange: React.PropTypes.func,
+    afterChange: React.PropTypes.func,
     validations: React.PropTypes.object
   },
 
@@ -38,6 +38,7 @@ export default React.createClass({
       spacing: 'loose',
       internalSpacing: 'tight',
       onChange: () => {},
+      afterChange: () => {},
       validate: () => {}
     }
   },
