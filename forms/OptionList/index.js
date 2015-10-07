@@ -50,16 +50,29 @@ export default React.createClass({
   },
 
   keyHandlers: {
-    13: function (index, options) {
-      let option = options[index]
+    9: function () {
+      this.setSelected(this.state.selected)
+    },
+    13: function (e, index) {
+      e.preventDefault()
+      let option = this.props.options[index]
       this.setSelected(option)
     },
-    40: function (index, options) {
+    32: function (e, index) {
+      e.preventDefault()
+      let option = this.props.options[index]
+      this.setSelected(option)
+    },
+    40: function (e, index) {
+      e.preventDefault()
+      let options = this.props.options
       let newIndex = index + 1 === options.length ? 0 : index + 1
       let option = options[newIndex]
       this.setSelectionCandidate(option)
     },
-    38: function (index, options) {
+    38: function (e, index) {
+      e.preventDefault()
+      let options = this.props.options
       let newIndex = index === 0 ? options.length - 1 : index - 1
       let option = options[newIndex]
       this.setSelectionCandidate(option)
@@ -75,8 +88,7 @@ export default React.createClass({
     let index = options.indexOf(currentOption)
 
     if (this.keyHandlers[key]) {
-      e.preventDefault()
-      this.keyHandlers[key].call(this, index, options)
+      this.keyHandlers[key].call(this, e, index)
     }
   },
 
