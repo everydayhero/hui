@@ -68,15 +68,13 @@ export default React.createClass({
     9: function () {
       this.setSelected(this.state.selected)
     },
-    13: function (e, index) {
+    13: function (e) {
       e.preventDefault()
-      let option = this.props.options[index]
-      this.setSelected(option)
+      this.setSelected(this.state.selectionCandidate)
     },
-    32: function (e, index) {
+    32: function (e) {
       e.preventDefault()
-      let option = this.props.options[index]
-      this.setSelected(option)
+      this.setSelected(this.state.selectionCandidate)
     },
     40: function (e, index) {
       e.preventDefault()
