@@ -134,12 +134,33 @@ export default React.createClass({
     })
   },
 
+  keyHandlers: {
+    9: function () {
+      let optionList = this.refs.optionList
+      if (optionList) {
+        optionList.keyHandlers[9].call(optionList)
+      }
+    },
+    13: function (e) {
+      let optionList = this.refs.optionList
+      if (optionList) {
+        optionList.keyHandlers[13].call(optionList, e)
+      }
+    },
+    40: function (e) {
+      let optionList = this.refs.optionList
+      if (optionList) {
+        e.preventDefault()
+        optionList.focus()
+      }
+    }
+  },
+
   handleKeyDown (e) {
     let key = e.keyCode || e.which
 
-    if (key === 40 && this.refs.optionList) {
-      e.preventDefault()
-      this.refs.optionList.focus()
+    if (this.keyHandlers[key]) {
+      this.keyHandlers[key].call(this, e)
     }
   },
 
