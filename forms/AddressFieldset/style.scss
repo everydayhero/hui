@@ -3,3 +3,18 @@
 .hui-AddressFieldset {
   float: left;
 }
+
+.hui-AddressFieldset__wrap--internal-tight {
+  margin-left: -$x-1;
+  margin-right: -$x-1;
+}
+
+.hui-AddressFieldset__wrap--internal-fitted {
+  margin-left: -$x-4;
+  margin-right: -$x-4;
+}
+
+.hui-AddressFieldset__wrap--internal-loose {
+  margin-left: -$x-4;
+  margin-right: -$x-4;
+}

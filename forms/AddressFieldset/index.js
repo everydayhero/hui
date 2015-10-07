@@ -30,7 +30,6 @@ export default React.createClass({
       address: {
         paf_validated: false
       },
-      countryCode: 'AU',
       autoFocus: false,
       prefix: '',
       required: false,
@@ -93,65 +92,67 @@ export default React.createClass({
 
     return (
       <div className={ classes }>
-        <div className="hui-AddressFieldset__header">
-          { this.props.header }
+        <div className={ `hui-AddressFieldset__wrap hui-AddressFieldset__wrap--internal-${this.props.internalSpacing }` }>
+          <div className="hui-AddressFieldset__header">
+            { this.props.header }
+          </div>
+          <Input
+            autoFocus={ this.props.autoFocus }
+            ref="street_address"
+            key="street_address"
+            name={ this.props.prefix + 'street_address' }
+            label={ this.t('street_address', { scope: this.state.countryCode }) }
+            value={ this.state.address.street_address }
+            spacing={ this.props.internalSpacing }
+            onChange={ this.handleChange('street_address') } />
+          <Input
+            key="extended_address"
+            ref="extended_address"
+            name={ this.props.prefix + 'extended_address' }
+            label={ this.t('extended_address', { scope: this.state.countryCode }) }
+            value={ this.state.address.extended_address }
+            spacing={ this.props.internalSpacing }
+            onChange={ this.handleChange('extended_address') } />
+          <Input
+            key="locality"
+            ref="locality"
+            name={ this.props.prefix + 'locality' }
+            label={ this.t('locality', { scope: this.state.countryCode }) }
+            value={ this.state.address.locality }
+            layout="twoThirds"
+            spacing={ this.props.internalSpacing }
+            onChange={ this.handleChange('locality') } />
+          <Input
+            key="region"
+            ref="region"
+            name={ this.props.prefix + 'region' }
+            label={ this.t('region', { scope: this.state.countryCode }) }
+            value={ this.state.address.region }
+            layout="third"
+            spacing={ this.props.internalSpacing }
+            onChange={ this.handleChange('region') } />
+          <CountrySelect
+            key="country_name"
+            ref="country_name"
+            name={ this.props.prefix + 'country_name' }
+            label={ this.t('country_name', { scope: this.state.countryCode }) }
+            layout="twoThirds"
+            spacing={ this.props.internalSpacing }
+            value={ this.state.countryCode }
+            onSelection={ this.handleCountrySelection } />
+          <Input
+            key="postal_code"
+            ref="postal_code"
+            name={ this.props.prefix + 'postal_code' }
+            label={ this.t('postal_code', { scope: this.state.countryCode }) }
+            value={ this.state.address.postal_code }
+            layout="third"
+            spacing={ this.props.internalSpacing }
+            onChange={ this.handleChange('postal_code') } />
+          { this.props.children }
+          <input type="hidden" name={ this.props.prefix + 'country_iso' } value={ this.state.countryCode } />
+          <input type="hidden" name={ this.props.prefix + 'paf_validated' } value={ this.state.address.paf_validated } />
         </div>
-        <Input
-          autoFocus={ this.props.autoFocus }
-          ref="street_address"
-          key="street_address"
-          name={ this.props.prefix + 'street_address' }
-          label={ this.t('street_address', { scope: this.state.countryCode }) }
-          value={ this.state.address.street_address }
-          spacing={ this.props.internalSpacing }
-          onChange={ this.handleChange('street_address') } />
-        <Input
-          key="extended_address"
-          ref="extended_address"
-          name={ this.props.prefix + 'extended_address' }
-          label={ this.t('extended_address', { scope: this.state.countryCode }) }
-          value={ this.state.address.extended_address }
-          spacing={ this.props.internalSpacing }
-          onChange={ this.handleChange('extended_address') } />
-        <Input
-          key="locality"
-          ref="locality"
-          name={ this.props.prefix + 'locality' }
-          label={ this.t('locality', { scope: this.state.countryCode }) }
-          value={ this.state.address.locality }
-          layout="twoThirds"
-          spacing={ this.props.internalSpacing }
-          onChange={ this.handleChange('locality') } />
-        <Input
-          key="region"
-          ref="region"
-          name={ this.props.prefix + 'region' }
-          label={ this.t('region', { scope: this.state.countryCode }) }
-          value={ this.state.address.region }
-          layout="third"
-          spacing={ this.props.internalSpacing }
-          onChange={ this.handleChange('region') } />
-        <CountrySelect
-          key="country_name"
-          ref="country_name"
-          name={ this.props.prefix + 'country_name' }
-          label={ this.t('country_name', { scope: this.state.countryCode }) }
-          layout="twoThirds"
-          spacing={ this.props.internalSpacing }
-          value={ this.state.countryCode }
-          onSelection={ this.handleCountrySelection } />
-        <Input
-          key="postal_code"
-          ref="postal_code"
-          name={ this.props.prefix + 'postal_code' }
-          label={ this.t('postal_code', { scope: this.state.countryCode }) }
-          value={ this.state.address.postal_code }
-          layout="third"
-          spacing={ this.props.internalSpacing }
-          onChange={ this.handleChange('postal_code') } />
-        { this.props.children }
-        <input type="hidden" name={ this.props.prefix + 'country_iso' } value={ this.state.countryCode } />
-        <input type="hidden" name={ this.props.prefix + 'paf_validated' } value={ this.state.address.paf_validated } />
       </div>
     )
   },
