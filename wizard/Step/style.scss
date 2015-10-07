@@ -15,6 +15,7 @@
 @include media-max($bp-xs) {
   .hui-Step {
     min-height: 100%;
+    padding: $x-8;
   }
 }
 
