@@ -8,6 +8,7 @@ module.exports = React.createClass({
   displayName: 'Button',
 
   propTypes: {
+    className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -84,6 +85,7 @@ module.exports = React.createClass({
     var kind = props.borderless ? props.kind + '-borderless' : props.kind;
 
     var classes = classnames([
+      this.props.className,
       'hui-Button',
       'hui-Button--' + kind,
       props.disabled && 'hui-Button--disabled',
