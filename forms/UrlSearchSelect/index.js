@@ -164,15 +164,13 @@ export default React.createClass({
           onChange={ this.handleSearchInputChange }/>
         { this.state.isOpen ?
           <div className="hui-UrlSearchSelect__dropdown">
-            <div className="hui-UrlSearchSelect__scroll-container">
-              <OptionList
-                ref="optionList"
-                spacing="compact"
-                className="hui-UrlSearchSelect__option-list"
-                options={ this.state.results }
-                selectedOption={ this.state.selectedOption }
-                onSelection={ this.handleSelection } />
-            </div>
+            <OptionList
+              ref="optionList"
+              spacing="compact"
+              className="hui-UrlSearchSelect__option-list"
+              options={ this.state.results }
+              selectedOption={ this.state.selectedOption }
+              onSelection={ this.handleSelection } />
 
             { !!this.props.manualActions.length &&
               <div className="hui-UrlSearchSelect__manual-actions">

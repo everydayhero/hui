@@ -41,19 +41,11 @@
 }
 
 .hui-FilterSelect__option-list {
-  float: left;
-  width: 100%;
-}
-
-.hui-FilterSelect__scroll-container {
   @extend %hui-input-border;
   height: auto;
-  padding: 0;
+  margin-top: -2px;
   float: left;
   width: 100%;
-  margin-top: -2px;
-  max-height: 300px;
-  overflow-y: auto;
   position: relative;
   z-index: 1;
 }

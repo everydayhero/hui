@@ -175,16 +175,14 @@ export default React.createClass({
           value={ this.state.filterValue }
           onKeyDown={ this.handleFilterKeyDown }
           onChange={ this.filter } />
-        <div className="hui-FilterSelect__scroll-container">
-          <OptionList
-            className="hui-FilterSelect__option-list"
-            ref="optionList"
-            spacing="compact"
-            Option={ this.props.Option }
-            onSelection={ this.handleSelection }
-            selectedOption={ this.state.selectedOption }
-            options={ this.state.filteredOptions } />
-        </div>
+        <OptionList
+          className="hui-FilterSelect__option-list"
+          ref="optionList"
+          spacing="compact"
+          Option={ this.props.Option }
+          onSelection={ this.handleSelection }
+          selectedOption={ this.state.selectedOption }
+          options={ this.state.filteredOptions } />
       </div>
     )
   },

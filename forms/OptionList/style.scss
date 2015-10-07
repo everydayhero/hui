@@ -1,5 +1,12 @@
 @include input-sizes(OptionList);
 
+.hui-OptionList__scroll-container {
+  float: left;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 .hui-OptionList__list {
   list-style: none;
   background-color: #fff;

@@ -197,9 +197,11 @@ export default React.createClass({
     ])
     return (
       <div className={ classes }>
-        <ul className="hui-OptionList__list">
-          { this.props.options.length ? this.renderOptions() : this.renderEmptyState() }
-        </ul>
+        <div ref="scrollContainer" className="hui-OptionList__scroll-container">
+          <ul className="hui-OptionList__list">
+            { this.props.options.length ? this.renderOptions() : this.renderEmptyState() }
+          </ul>
+        </div>
       </div>
     )
   }
