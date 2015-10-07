@@ -167,7 +167,7 @@ export default React.createClass({
   renderFilter () {
     return (
       <div>
-         <TextInput
+        <TextInput
           ref="filterInput"
           spacing="compact"
           className="hui-FilterSelect__filter-input"
