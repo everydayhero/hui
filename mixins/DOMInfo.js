@@ -6,6 +6,7 @@
 
 import _ from 'lodash'
 import { canUseDOM } from 'exenv'
+import addEventListener from '../../lib/addEventListener'
 
 var breakpoints = {
   phone: 450,
@@ -22,11 +23,13 @@ var sizes = {
 
 var resizeHandlers = [];
 
-if (canUseDOM) window.addEventListener('resize', function(e) {
-  resizeHandlers.forEach(function(handler) {
-    handler(e);
-  });
-}, false);
+if (canUseDOM) {
+  addEventListener('resize', function(e) {
+    resizeHandlers.forEach(function(handler) {
+      handler(e);
+    });
+  }, false);
+}
 
 function findSize(o, w) {
   return _.findKey(o, function(d) {
