@@ -5,6 +5,15 @@ import classnames from 'classnames'
 import find from 'lodash/collection/find'
 import Option from './Option'
 
+const NullComponent = {
+  getDOMNode() {
+    return {
+      offsetTop: 0,
+      focus () {}
+    }
+  }
+}
+
 export default React.createClass({
   displayName: 'OptionList',
 
@@ -32,6 +41,12 @@ export default React.createClass({
       selected: this.props.selectedOption,
       selectionCandidate: this.props.selectedOption || this.props.options[0]
     }
+  },
+
+  componentDidMount () {
+    let selectedAndCandidateRefs = this.getSelectedAndCandidateRefs()
+    let scrollPos = selectedAndCandidateRefs.selected.option.getDOMNode().offsetTop
+    this.refs.scrollContainer.getDOMNode().scrollTop = scrollPos
   },
 
   setSelected (option) {
@@ -109,24 +124,46 @@ export default React.createClass({
     }
   },
 
-  _setFocus () {
+  getSelectedAndCandidateRefs () {
     let selected = this.state.selected
     let candidate = this.state.selectionCandidate
 
-    Object.keys(this.refs).forEach((key) => {
-      if (key.match(/^option-component-/g)) {
-        let option = this.refs[key]
-        let index = key.split('-').pop()
+    return Object.keys(this.refs).reduce((result, ref) => {
+      if (ref.match(/^option-component-/g)) {
+        let option = this.refs[ref]
+        let index = ref.split('-').pop()
 
         if (selected && (option.props.value === selected.value)) {
-          let radio = this.refs[`option-radio-${index}`].getDOMNode()
-          radio.focus()
+          let radio = this.refs[`option-radio-${index}`]
+          result.selected = {
+            option,
+            radio
+          }
         } else if (candidate && (option.props.value === candidate.value)) {
-          let radio = this.refs[`option-radio-${index}`].getDOMNode()
-          radio.focus()
+          let radio = this.refs[`option-radio-${index}`]
+          result.candidate = {
+            option,
+            radio
+          }
         }
       }
+      return result
+    }, {
+      selected: {
+        option: NullComponent,
+        radio: NullComponent
+      },
+      candidate: {
+        option: NullComponent,
+        radio: NullComponent
+      }
     })
+  },
+
+  _setFocus () {
+    let selectedAndCandidateRefs = this.getSelectedAndCandidateRefs()
+    selectedAndCandidateRefs.selected.radio.getDOMNode().focus()
+    selectedAndCandidateRefs.candidate.radio.getDOMNode().focus()
   },
 
   focus () {
