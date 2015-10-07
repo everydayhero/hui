@@ -7,7 +7,7 @@ import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import getJSON from '../../lib/getJSON'
 import apiRoutes from '../../api'
-import i18nMixin from '../../mixins/i18n'
+import i18nMixin from '../../mixins/I18n'
 import i18n from './i18n'
 
 const addressesSearchUrl = apiRoutes('addresses_search')

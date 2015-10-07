@@ -5,7 +5,7 @@ import find from 'lodash/collection/find'
 import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'
-import i18nMixin from '../../mixins/i18n'
+import i18nMixin from '../../mixins/I18n'
 import countries from '../CountrySelect/countries'
 import i18n from './i18n'
 
