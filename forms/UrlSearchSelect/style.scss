@@ -16,17 +16,29 @@
   width: 100%;
 }
 
-.hui-UrlSearchSelect__scroll-container {
+.hui-UrlSearchSelect__dropdown {
   @extend %hui-input-border;
   height: auto;
   padding: 0;
   float: left;
   width: 100%;
   margin-top: -2px;
-  max-height: 300px;
-  overflow-y: auto;
   position: relative;
   z-index: 1;
+}
+
+.hui-UrlSearchSelect__manual-actions {
+  border-top: 1px solid #eee;
+  padding: 8px;
+  float: left;
+  width: 100%;
+}
+
+.hui-UrlSearchSelect__scroll-container {
+  float: left;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .hui-UrlSearchSelect__option-list .OptionList__list {

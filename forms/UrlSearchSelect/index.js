@@ -23,6 +23,7 @@ export default React.createClass({
     minQueryLength: React.PropTypes.number,
     responseProperty: React.PropTypes.string,
     deserializeResponse: React.PropTypes.func,
+    manualActions: React.PropTypes.array,
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     hint: React.PropTypes.string,
@@ -38,6 +39,7 @@ export default React.createClass({
       label: 'Search',
       queryProperty: 'q',
       minQueryLength: 5,
+      manualActions: [],
       responseProperty: 'resources',
       onChange: () => {},
       onSelection: () => {},
@@ -159,14 +161,22 @@ export default React.createClass({
           onKeyDown={ this.handleKeyDown }
           onChange={ this.handleSearchInputChange }/>
         { this.state.isOpen ?
-          <div className="hui-UrlSearchSelect__scroll-container">
-            <OptionList
-              ref="optionList"
-              spacing="compact"
-              className="hui-UrlSearchSelect__option-list"
-              options={ this.state.results }
-              selectedOption={ this.state.selectedOption }
-              onSelection={ this.handleSelection } /></div> : null }
+          <div className="hui-UrlSearchSelect__dropdown">
+            <div className="hui-UrlSearchSelect__scroll-container">
+              <OptionList
+                ref="optionList"
+                spacing="compact"
+                className="hui-UrlSearchSelect__option-list"
+                options={ this.state.results }
+                selectedOption={ this.state.selectedOption }
+                onSelection={ this.handleSelection } />
+            </div>
+
+            { !!this.props.manualActions.length &&
+              <div className="hui-UrlSearchSelect__manual-actions">
+                { this.props.manualActions }
+              </div> }
+          </div> : null }
         { this.renderMessage(!!this.props.errorMessage || !!this.props.errors.length || !!this.props.hint) }
       </div>
     )

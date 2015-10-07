@@ -40,6 +40,17 @@ export default React.createClass({
     })
   },
 
+  setEmptyAddress () {
+    let countryCode = this.refs.lookup.state.selectedCountry.value
+    this.setState({
+      countryCode,
+      address: {
+        country_name: this.getCountryName(countryCode),
+        paf_validated: false
+      }
+    })
+  },
+
   handleLookupChange (address) {
     this.setState({
       address
@@ -56,9 +67,22 @@ export default React.createClass({
     })
   },
 
+  renderManualButton: function() {
+    return (
+      <Button
+        kind="secondary"
+        className="hui-AddressFieldsetWithLookup__manual-entry"
+        onClick={ this.setEmptyAddress }>
+        { this.t('manual_entry_button') }
+      </Button>
+    )
+  },
+
   renderLookup () {
     return (
       <AddressLookup
+        ref="lookup"
+        manualActions={ [this.renderManualButton()] }
         onChange={ this.handleLookupChange }
         address={ this.state.address } />
     )
@@ -84,7 +108,7 @@ export default React.createClass({
 
   render () {
     return (
-      <div>
+      <div className="hui-AddressFieldsetWithLookup">
         { !this.state.address ? this.renderLookup() : this.renderFieldset() }
       </div>
     )

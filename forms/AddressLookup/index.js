@@ -128,11 +128,11 @@ export default React.createClass({
     return (
       <div className={ classes }>
         <UrlSearchSelect
-          label="Search for your street address"
           className={ urlSearchSelectClasses }
           url={ addressesSearchUrl + '.jsonp' }
           params={ { country_code: this.state.selectedCountry.value } }
           spacing="compact"
+          manualActions={ this.props.manualActions }
           deserializeResponse={ this.deserializeAddressesResponse }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
