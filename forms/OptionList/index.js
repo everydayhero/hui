@@ -30,7 +30,7 @@ export default React.createClass({
   getInitialState () {
     return {
       selected: this.props.selectedOption,
-      selectionCandidate: this.props.options[0]
+      selectionCandidate: this.props.selectedOption
     }
   },
 
