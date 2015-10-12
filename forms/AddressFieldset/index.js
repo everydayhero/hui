@@ -21,7 +21,9 @@ export default React.createClass({
     spacing: React.PropTypes.string,
     internalSpacing: React.PropTypes.string,
     onChange: React.PropTypes.func,
-    afterChange: React.PropTypes.func
+    onError: React.PropTypes.func,
+    afterChange: React.PropTypes.func,
+    validations: React.PropTypes.object
   },
 
   getDefaultProps: function() {
@@ -31,11 +33,12 @@ export default React.createClass({
       },
       autoFocus: false,
       prefix: '',
-      required: false,
       layout: 'full',
       spacing: 'loose',
       internalSpacing: 'tight',
       onChange: () => {},
+      onError: () => {},
+      validations: {},
       afterChange: () => {}
     }
   },
@@ -43,7 +46,8 @@ export default React.createClass({
   getInitialState () {
     return {
       address: this.props.address,
-      countryCode: (this.getSelectedCountry() || countries[0]).value
+      countryCode: (this.getSelectedCountry() || countries[0]).value,
+      errors: {}
     }
   },
 
@@ -85,6 +89,24 @@ export default React.createClass({
     }
   },
 
+  isInError () {
+    return Object.keys(this.state.errors).some((key) => {
+      return !!this.state.errors[key]
+    })
+  },
+
+  handleError (key) {
+    return (value) => {
+      this.setState({
+        errors: {
+          [key]: value
+        }
+      }, () => {
+        this.props.onError(this.isInError())
+      })
+    }
+  },
+
   handleCountrySelection (country) {
     this.setState({
       countryCode: country.value
@@ -94,6 +116,8 @@ export default React.createClass({
   },
 
   render () {
+    let validations = this.props.validations
+
     let classes = classnames([
       'hui-AddressFieldset',
       'hui-AddressFieldset--' + this.props.spacing,
@@ -113,16 +137,18 @@ export default React.createClass({
             name={ this.props.prefix + 'street_address' }
             label={ this.t('street_address', { scope: this.state.countryCode }) }
             value={ this.state.address.street_address }
-            required
+            required={ !!validations.street_address && validations.street_address.required }
             errorMessage={ this.t('street_address_blank_error', { scope: this.state.countryCode }) }
             spacing={ this.props.internalSpacing }
-            onChange={ this.handleChange('street_address') } />
+            onChange={ this.handleChange('street_address') }
+            onError={ this.handleError('street_address') } />
           <Input
             key="extended_address"
             ref="extended_address"
             name={ this.props.prefix + 'extended_address' }
             label={ this.t('extended_address', { scope: this.state.countryCode }) }
             value={ this.state.address.extended_address }
+            required={ !!validations.extended_address && validations.extended_address.required }
             spacing={ this.props.internalSpacing }
             onChange={ this.handleChange('extended_address') } />
           <Input
@@ -131,7 +157,7 @@ export default React.createClass({
             name={ this.props.prefix + 'locality' }
             label={ this.t('locality', { scope: this.state.countryCode }) }
             value={ this.state.address.locality }
-            required
+            required={ !!validations.locality && validations.locality.required }
             errorMessage={ this.t('locality_blank_error', { scope: this.state.countryCode }) }
             layout="twoThirds"
             spacing={ this.props.internalSpacing }
@@ -142,7 +168,7 @@ export default React.createClass({
             name={ this.props.prefix + 'region' }
             label={ this.t('region', { scope: this.state.countryCode }) }
             value={ this.state.address.region }
-            required
+            required={ !!validations.region && validations.region.required }
             errorMessage={ this.t('region_blank_error', { scope: this.state.countryCode }) }
             layout="third"
             spacing={ this.props.internalSpacing }
@@ -155,6 +181,7 @@ export default React.createClass({
             layout="twoThirds"
             spacing={ this.props.internalSpacing }
             value={ this.state.countryCode }
+            required={ !!validations.country_name && validations.country_name.required }
             onSelection={ this.handleCountrySelection } />
           <Input
             key="postal_code"
@@ -162,7 +189,7 @@ export default React.createClass({
             name={ this.props.prefix + 'postal_code' }
             label={ this.t('postal_code', { scope: this.state.countryCode }) }
             value={ this.state.address.postal_code }
-            required
+            required={ !!validations.postal_code && validations.postal_code.required }
             errorMessage={ this.t('postal_code_blank_error', { scope: this.state.countryCode }) }
             layout="third"
             spacing={ this.props.internalSpacing }
