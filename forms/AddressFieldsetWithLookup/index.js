@@ -15,18 +15,22 @@ export default React.createClass({
   mixins: [i18nMixin],
 
   propTypes: {
+    spacing: React.PropTypes.string,
     address: React.PropTypes.object,
     countryCode: React.PropTypes.string,
     prefix: React.PropTypes.string,
     onChange: React.PropTypes.func,
+    onError: React.PropTypes.func,
     validations: React.PropTypes.object
   },
 
   getDefaultProps () {
     return {
+      spacing: 'loose',
       prefix: '',
       address: null,
-      onChange: () => {}
+      onChange: () => {},
+      onError: () => {}
     }
   },
 
@@ -94,6 +98,8 @@ export default React.createClass({
     return (
       <AddressLookup
         ref="lookup"
+        spacing={ this.props.spacing }
+        countryCode={ this.props.countryCode }
         manualActions={ [this.renderManualButton()] }
         onChange={ this.handleLookupChange }
         address={ this.state.address } />
@@ -113,8 +119,11 @@ export default React.createClass({
     return (
       <AddressFieldset
         ref="fieldset"
+        spacing={ this.props.spacing }
         header={ header }
         prefix={ this.props.prefix }
+        validations={ this.props.validations }
+        onError={ this.props.onError }
         afterChange={ this.handleFieldsetChange }
         address={ this.state.address }/>
     )
