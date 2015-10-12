@@ -110,7 +110,7 @@ export default React.createClass({
     let header = (<Button
       className="hui-AddressFieldsetWithLookup__reset"
       kind="primary-borderless"
-      icon="remove"
+      icon="times"
       iconLeft
       onClick={ this.clearAddress }>
       { this.t('reset') }
