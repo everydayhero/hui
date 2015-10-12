@@ -12,6 +12,7 @@ export default React.createClass({
         <h3 className="DemoPage__h3" id="AddressFieldsetWithLookup">AddressFieldsetWithLookup</h3>
 
         <AddressFieldsetWithLookup
+          countryCode="US"
           prefix="address_with_lookup_" />
       </div>
     )
