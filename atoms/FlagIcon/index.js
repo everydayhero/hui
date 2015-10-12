@@ -18,11 +18,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var classes = _.compact(['FlagIcon', this.props.className]).join(' ');
+    var classes = _.compact(['hui-FlagIcon', this.props.className]).join(' ');
 
     return (
       <span className={ classes }>
-        <i className={ 'flag flag-' + (!!this.props.country && this.props.country.toLowerCase()) } />
+        <i className={ 'hui-Flag hui-Flag-' + (!!this.props.country && this.props.country.toLowerCase()) } />
       </span>
     );
   }
