@@ -159,11 +159,12 @@ export default React.createClass({
   },
 
   handleDisplayChange (e) {
-    let option = find(this.props.options, (option) => {
-      return option.value === e.target.value
+    let value = !!e.target && e.target.value
+    let selected = find(this.props.options, (option) => {
+      return option.value === value
     })
 
-    this.handleSelection(option)
+    this.handleSelection(selected)
   },
 
   handleDisplayClick (e) {
@@ -181,6 +182,7 @@ export default React.createClass({
 
         <select
           ref="displayInput"
+          value={ !!selected && selected.value }
           className="hui-FilterSelect__display-input"
           onChange={ this.handleDisplayChange }
           onFocus={ (e) => { e.preventDefault(); this.setFocus(true) } }
@@ -192,7 +194,6 @@ export default React.createClass({
           { this.props.options.map((option) => {
             return (
               <option
-                selected={ option.value === selected.value }
                 value={ option.value }
                 label={ option.label }>
                 { option.label }
