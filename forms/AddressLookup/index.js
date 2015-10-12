@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import find from 'lodash/collection/find'
 import classnames from 'classnames'
 import UrlSearchSelect from '../UrlSearchSelect'
 import CountrySelect from '../CountrySelect'
@@ -21,13 +22,14 @@ export default React.createClass({
   propTypes: {
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
+    countryCode: React.PropTypes.string,
     selectedCountry: React.PropTypes.object,
     onChange: React.PropTypes.func
   },
 
   getDefaultProps () {
     return {
-      selectedCountry: countries[0],
+      countryCode: 'AU',
       onChange: () => {},
       layout: 'full',
       spacing: 'loose'
@@ -36,11 +38,17 @@ export default React.createClass({
 
   getInitialState () {
     return {
-      selectedCountry: this.props.selectedCountry,
-      minQueryLength: this.props.selectedCountry.value === 'GB' ? 7 : 5,
+      selectedCountry: this.findCountry(this.props.countryCode),
+      minQueryLength: this.props.countryCode === 'GB' ? 7 : 5,
       pendingRequest: null,
       address: null
     }
+  },
+
+  findCountry (code) {
+    return find(countries, (country) => {
+      return country.value === code
+    })
   },
 
   deserializeAddressesResponse (response) {

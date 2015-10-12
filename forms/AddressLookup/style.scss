@@ -13,8 +13,20 @@
   width: auto;
 }
 
+.hui-AddressLookup--compact .hui-AddressLookup__country-select {
+  right: 0
+}
+
+.hui-AddressLookup--tight .hui-AddressLookup__country-select {
+  right: $x-1 + 1;
+}
+
+.hui-AddressLookup--fitted .hui-AddressLookup__country-select {
+  right: $x-4 + 1;
+}
+
 .hui-AddressLookup--loose .hui-AddressLookup__country-select {
-  right: 16px;
+  right: $x-4 + 1;
 }
 
 .hui-AddressLookup__country-select--active {
@@ -32,8 +44,7 @@
   border-bottom: none;
   height: 40px;
   margin-top: 1px;
-  border-radius: 0;
-  background-color: transparent;
+  border-radius: 0 $border-radius $border-radius 0;
 }
 
 .hui-AddressLookup_url-search-select .hui-TextInput__icon {
