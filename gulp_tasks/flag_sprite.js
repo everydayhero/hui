@@ -28,7 +28,7 @@ gulp.task('svgFlagSprite', function () {
       mode: {
         css: {
           dest: './',
-          prefix: '.flag-%s',
+          prefix: '.hui-Flag-%s',
           sprite: '../../images/flags_sprite.svg',
           layout: 'vertical',
           render: {

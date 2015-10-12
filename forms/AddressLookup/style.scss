@@ -1,0 +1,71 @@
+@include input-sizes(AddressLookup);
+
+.hui-AddressLookup {
+  float: left;
+  position: relative;
+}
+
+.hui-AddressLookup__country-select {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  z-index: 1;
+  width: auto;
+}
+
+.hui-AddressLookup--compact .hui-AddressLookup__country-select {
+  right: 0
+}
+
+.hui-AddressLookup--tight .hui-AddressLookup__country-select {
+  right: $x-1 + 1;
+}
+
+.hui-AddressLookup--fitted .hui-AddressLookup__country-select {
+  right: $x-4 + 1;
+}
+
+.hui-AddressLookup--loose .hui-AddressLookup__country-select {
+  right: $x-4 + 1;
+}
+
+.hui-AddressLookup__country-select--active {
+  position: static;
+  width: 100%;
+}
+
+.hui-AddressLookup_url-search-select--inactive {
+  display: none
+}
+
+.hui-AddressLookup__country-select .hui-CountrySelectDisplay__wrap {
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  height: 40px;
+  margin-top: 1px;
+  border-radius: 0 $border-radius $border-radius 0;
+}
+
+.hui-AddressLookup_url-search-select .hui-TextInput__icon {
+  right: 90 + $x-2;
+}
+
+.hui-AddressLookup_url-search-select--google .hui-UrlSearchSelect__dropdown:after {
+  content: "";
+  background-image: url("../images/powered_by_google_on_white.png");
+  background-image: url("../images/powered_by_google_on_white.svg");
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 108px;
+  height: 15px;
+  float: right;
+  margin: 8px;
+  display: block;
+  font-size: 0;
+}
+
+.hui-AddressLookup_url-search-select--google .hui-UrlSearchSelect__manual-actions {
+  padding-bottom: 0;
+}

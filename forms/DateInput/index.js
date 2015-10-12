@@ -5,6 +5,8 @@ import React from 'react'
 import DatePicker from './DatePicker'
 import TextInput from '../TextInput'
 import classnames from 'classnames'
+import addEventListener from '../../lib/addEventListener'
+import removeEventListener from '../../lib/removeEventListener'
 
 var dateFormats = {
   uk: ['DD', 'YYYY', 'DD-MM', 'MMM DD', 'MMM Do', 'DD-MM-YY', 'DD-MM-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD'],
@@ -53,13 +55,13 @@ module.exports = React.createClass({
 
   componentWillMount: function() {
     if (typeof document === 'object') {
-      document.addEventListener('click', this._clickBody);
+      addEventListener('click', this._clickBody, document);
     }
   },
 
   componentWillUnmount: function() {
     if (typeof document === 'object') {
-      document.removeEventListener('click', this._clickBody);
+      removeEventListener('click', this._clickBody, document);
     }
   },
 

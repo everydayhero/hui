@@ -1,5 +1,7 @@
 'use strict';
 
+import 'console-polyfill'
+
 import React from 'react'
 import I18n from '../../../mixins/I18n'
 

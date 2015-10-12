@@ -3,10 +3,12 @@
 let map = {
   user: `https://{{ domain }}/quantified_dashboard/user.json`,
   page: `https://{{ domain }}/api/v2/pages`,
+  address: `https://{{ domain }}/api/v2/addresses/{{ countryCode }}`,
   aggregate_search: `https://{{ domain }}/api/v2/search/aggregate`,
   campaign_search: `https://{{ domain }}/api/v2/search/campaigns`,
   charity_search: `https://{{ domain }}/api/v2/search/charities`,
-  page_search: `https://{{ domain }}/api/v2/search/pages`
+  page_search: `https://{{ domain }}/api/v2/search/pages`,
+  addresses_search: `https://{{ domain }}/api/v2/addresses`
 }
 
 export default (key, domain) => {

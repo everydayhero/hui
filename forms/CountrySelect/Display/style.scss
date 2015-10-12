@@ -1,0 +1,33 @@
+@include input-sizes(CountrySelectDisplay);
+
+.hui-CountrySelectDisplay {
+  @extend %hui-input-base;
+}
+
+.hui-CountrySelectDisplay__wrap {
+  @extend %hui-input-border;
+  position: relative;
+  text-align: left;
+  padding-right: 25px;
+  padding-left: 12px;
+  padding-top: 10px;
+}
+
+.hui-CountrySelectDisplay__icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hui-CountrySelectDisplay__flag-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.hui-CountrySelectDisplay__value {
+  line-height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+}

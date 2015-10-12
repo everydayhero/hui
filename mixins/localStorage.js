@@ -1,5 +1,7 @@
 'use strict';
 
+require('console-polyfill')
+
 // Modified from https://github.com/STRML/react-localstorage
 
 const ls = global.localStorage

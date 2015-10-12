@@ -1,0 +1,64 @@
+@import "../InputErrors/style";
+
+@include input-sizes(FilterSelect);
+
+.hui-FilterSelect {
+  @extend %hui-input-base;
+  position: relative;
+}
+
+.hui-FilterSelect .hui-FilterSelect__filter-input {
+  padding-bottom: 0;
+}
+
+.hui-FilterSelect__display {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.hui-FilterSelect__display-input {
+  appearance: none;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__wrap,
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__selected,
+.hui-FilterSelect--disabled .hui-FilterSelectDisplay__label {
+  @extend %hui-input-disabled;
+}
+
+.hui-FilterSelect--focused .hui-FilterSelectDisplay__wrap,
+.hui-FilterSelect--focused .hui-FilterSelectDisplay__label {
+  @extend %hui-input-focused;
+}
+
+.hui-FilterSelect__option-list {
+  @extend %hui-input-border;
+  height: auto;
+  margin-top: -2px;
+  float: left;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hui-FilterSelect__option-list .hui-OptionList__list {
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.hui-FilterSelect--error .hui-TextInput__message {
+  @extend %error-message;
+  top: 10px;
+}
+
+.hui-FilterSelect--error .hui-TextInput__label {
+  @extend %hui-input-error;
+}

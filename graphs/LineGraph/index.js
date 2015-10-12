@@ -1,12 +1,14 @@
 'use strict';
 
-var _                  = require('lodash');
-var React              = require('react');
-var LinePath           = require('./LinePath');
-var YScale             = require('./YScale');
-var XScale             = require('./XScale');
-var ToolTip            = require('./ToolTip');
-var LoadingPlaceholder = require('./LoadingPlaceholder');
+var _                   = require('lodash');
+var React               = require('react');
+var LinePath            = require('./LinePath');
+var YScale              = require('./YScale');
+var XScale              = require('./XScale');
+var ToolTip             = require('./ToolTip');
+var LoadingPlaceholder  = require('./LoadingPlaceholder');
+var addEventListener    = require('../../lib/addEventListener');
+var removeEventListener = require('../../lib/removeEventListener');
 
 module.exports = React.createClass({
   displayName: 'LineGraph',
@@ -55,7 +57,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 });
-    window.addEventListener('resize', this.handleResizeDebounce);
+    addEventListener('resize', this.handleResizeDebounce);
     this.handleResize();
   },
 
@@ -64,7 +66,7 @@ module.exports = React.createClass({
   },
 
   componentWillUnmount: function() {
-    window.removeEventListener('resize', this.handleResizeDebounce);
+    removeEventListener('resize', this.handleResizeDebounce);
   },
 
   transformCollection: function() {

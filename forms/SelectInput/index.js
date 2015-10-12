@@ -172,6 +172,7 @@ module.exports = React.createClass({
       return (
         <option
           key={ index }
+          label={ option[labelKey] }
           value={ optionValue } >
           { option[labelKey] }
         </option>

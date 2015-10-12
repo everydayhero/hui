@@ -1,0 +1,48 @@
+@import "../InputErrors/style";
+
+@include input-sizes(UrlSearchSelect);
+
+.hui-UrlSearchSelect {
+  float: left;
+  width: 100%;
+}
+
+.hui-UrlSearchSelect--open .hui-UrlSearchSelect__search-input {
+  padding-bottom: 0;
+}
+
+.hui-UrlSearchSelect__option-list {
+  float: left;
+  width: 100%;
+}
+
+.hui-UrlSearchSelect__dropdown {
+  @extend %hui-input-border;
+  height: auto;
+  padding: 0;
+  float: left;
+  width: 100%;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+.hui-UrlSearchSelect__manual-actions {
+  border-top: 1px solid #eee;
+  padding: 8px;
+  float: left;
+  width: 100%;
+}
+
+.hui-UrlSearchSelect__option-list .OptionList__list {
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.hui-UrlSearchSelect--error .hui-TextInput__message {
+  @extend %error-message;
+  top: 10px;
+}
+
+.hui-UrlSearchSelect--error .hui-TextInput__label {
+  @extend %hui-input-error;
+}
