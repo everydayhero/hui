@@ -158,6 +158,14 @@ export default React.createClass({
     }
   },
 
+  handleDisplayChange (e) {
+    let option = find(this.props.options, (option) => {
+      return option.value === e.target.value
+    })
+
+    this.handleSelection(option)
+  },
+
   handleDisplayClick (e) {
     e.preventDefault()
     this.openOptionList()
@@ -173,14 +181,25 @@ export default React.createClass({
 
         <select
           ref="displayInput"
-          readOnly
           className="hui-FilterSelect__display-input"
-          value={ (!!selected && selected.value) }
-          onFocus={ () => { this.setFocus(true) } }
-          onBlur={  () => { this.setFocus(false) }  }
+          onChange={ this.handleDisplayChange }
+          onFocus={ (e) => { e.preventDefault(); this.setFocus(true) } }
+          onBlur={ () => { this.setFocus(false) } }
           onKeyDown={ this.handleDisplayKeyDown }
-          onMouseDown={ (e) => { e.preventDefault() } }
-          onClick={ this.handleDisplayClick } />
+          onMouseDown={ this.handleDisplayClick }
+          onClick={ this.handleDisplayClick }>
+
+          { this.props.options.map((option) => {
+            return (
+              <option
+                selected={ option.value === selected.value }
+                value={ option.value }
+                label={ option.label }>
+                { option.label }
+              </option>
+            )
+          }) }
+        </select>
       </div>
     )
   },
