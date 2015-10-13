@@ -33,6 +33,7 @@ import TagList from './examples/TagList'
 import WizardRouter from './examples/Wizard'
 import AvatarInput from './examples/AvatarInput'
 import FlashMessage from './examples/FlashMessage'
+import Tabs from './examples/Tabs'
 
 const IMG_PATH = './images/';
 
@@ -59,6 +60,7 @@ export default React.createClass({
             <FlashMessage/>
             <PageFormExample/>
             <FooterExample/>
+            <Tabs/>
           </div>
 
           <h2 className="DemoPage__h2" id="buttons">Buttons</h2>

@@ -1,0 +1,21 @@
+.hui-Tabs_content {
+  background: white;
+}
+
+.hui-Tabs__tab {
+  background: $grey;
+  color: white;
+  padding: $x-3;
+  font-family: 'Lato', sans-serif;
+  border-right: 1px solid lighten($grey, 5%);
+  display: inline-block;
+
+  &:last-child {
+    border-right: 0px;
+  }
+}
+
+.hui-Tabs__tab--active {
+  background: white;
+  color: #575d62;
+}
