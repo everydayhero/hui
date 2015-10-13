@@ -34,8 +34,6 @@ gulp.task('assets-styles', function() {
   return gulp
     .src(['./assets.scss'])
     .pipe(sass({
-      sourceMap: 'sass',
-      sourceComments: 'map',
       precision: 10,
       imagePath: 'images'
     }))
