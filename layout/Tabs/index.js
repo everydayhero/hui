@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'Tabs',
@@ -21,13 +22,19 @@ module.exports = React.createClass({
   },
 
   renderTabLabels: function() {
-    let tabs = this.props.tabs
+    let props = this.props
     let tabLabels = []
-    let component = this;
+    let component = this
 
-    tabs.forEach(function(tab, index) {
+    props.tabs.forEach(function(tab, index) {
+      let classes = classnames([
+        props.className,
+        'hui-Tabs__tab',
+        index === props.active && 'hui-Tabs__tab--active'
+      ]);
+
       tabLabels.push(
-        <a href="#" onClick={ component.onChange(index) }>
+        <a href="#" className={ classes } onClick={ component.onChange(index) }>
           { tab.label }
         </a>
       )
@@ -41,8 +48,10 @@ module.exports = React.createClass({
 
     return (
       <div className="hui-Tabs">
-        { this.renderTabLabels() }
-        <div className="hui.Tabs_active">
+        <div>
+          { this.renderTabLabels() }
+        </div>
+        <div className="hui-Tabs_content">
           { props.tabs[props.active].content }
         </div>
       </div>
