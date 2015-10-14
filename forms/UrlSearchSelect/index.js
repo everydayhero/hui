@@ -46,6 +46,7 @@ export default React.createClass({
       responseProperty: 'resources',
       onChange: () => {},
       onSelection: () => {},
+      onError: () => {},
       hint: '',
       emptyLabel: '',
       errorMessage: '',
@@ -174,6 +175,8 @@ export default React.createClass({
     this.setState({
       hasError,
       isOpen: hasError
+    }, () => {
+      this.props.onError(hasError)
     })
   },
 

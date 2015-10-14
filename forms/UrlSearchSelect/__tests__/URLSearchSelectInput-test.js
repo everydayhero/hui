@@ -109,4 +109,21 @@ describe('UrlSearchSelect', () => {
       })
     })
   })
+
+  describe('requireValue()', () => {
+    context('when props.required is true and there is no selectedOption', () => {
+      it('sets state.hasError and calls props.onError', () => {
+        let onError = sinon.spy()
+        let element = renderIntoDocument(
+          <UrlSearchSelect
+            required
+            onError={ onError }
+            url="http://everydayhero.com" />
+        )
+        element.requireValue()
+        expect(element.state.hasError).to.eq(true)
+        expect(onError).calledWith(true)
+      })
+    })
+  })
 })
