@@ -3,7 +3,8 @@
 }
 
 .hui-Pagination__pager {
- @extend %general-reset;
+  @extend %general-reset;
+  @extend %a-reset;
   transition: all 160ms ease-out;
   display: inline-block;
   position: relative;

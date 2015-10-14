@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   propTypes: {
     currentPage: React.PropTypes.number,
-    count: React.PropTypes.bool,
+    count: React.PropTypes.number,
     inverse: React.PropTypes.bool,
     onChange: React.PropTypes.func
   },

@@ -17,6 +17,7 @@ import AddressLookup from './examples/AddressLookup'
 import Checkbox from './examples/Checkbox'
 import TextArea from './examples/TextArea'
 import SelectInput from './examples/SelectInput'
+import SearchInput from './examples/SearchInput'
 import UrlInput from './examples/UrlInput'
 import UrlSearchSelect from './examples/UrlSearchSelect'
 import DateInput from './examples/DateInput'
@@ -91,6 +92,7 @@ export default React.createClass({
             <Checkbox />
             <TextArea />
             <SelectInput />
+            <SearchInput />
             <UrlInput />
             <UrlSearchSelect />
             <DateInput />
