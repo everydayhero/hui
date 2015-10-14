@@ -60,6 +60,10 @@ export default React.createClass({
             <FlashMessage/>
             <PageFormExample/>
             <FooterExample/>
+          </div>
+
+          <h2 className="DemoPage__h2" id="layout">Navigation</h2>
+          <div className="DemoPage__group">
             <Tabs/>
           </div>
 

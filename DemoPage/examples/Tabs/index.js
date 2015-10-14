@@ -1,14 +1,17 @@
 'use strict'
 
 import React from 'react'
-import Tabs from '../../../layout/Tabs'
+import Tabs from '../../../navigation/Tabs'
+import Pagination from '../../../navigation/Pagination'
 
 export default React.createClass({
   displayName: 'TabsExample',
 
   getInitialState () {
     return {
-      active: 0
+      active: 0,
+      currentPage: 0,
+      count: 3
     }
   },
 
@@ -18,11 +21,23 @@ export default React.createClass({
     })
   },
 
+  onPage: function(increment) {
+    let currentPage = this.state.currentPage + increment
+    this.setState({ currentPage })
+  },
+
   render: function() {
+    let state = this.state
     let tabs = [
       {
         label: 'Raise',
-        content: <p>Amount raised goes here</p>
+        content: (
+          <div>
+            <p>Amount raised goes here</p>
+            <p>On Page: { state.currentPage }</p>
+            <Pagination {...state} onChange={ this.onPage } />
+          </div>
+        )
       },
       {
         label: 'Distance',

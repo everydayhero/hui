@@ -1,0 +1,80 @@
+.hui-Pagination {
+  text-align: center;
+}
+
+.hui-Pagination__pager {
+ @extend %general-reset;
+  transition: all 160ms ease-out;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin: 2px;
+  line-height: $x-9;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline-color: transparent;
+  outline-style: none;
+  vertical-align: middle;
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius;
+  border-color: $grey;
+  font-size: 14px;
+  width: 40px;
+  letter-spacing: 0.15em;
+  position: relative;
+  color: $grey;
+
+  &:active {
+    color: $grey-active;
+  }
+
+  &:hover, &:focus {
+    color: $green-active;
+    border-color: $green-active;
+  }
+
+  .fa-chevron-right {
+    padding-left: 2px;
+    // ᕙ(⇀‸↼‶)ᕗ FONT AWESOME !!!
+  }
+}
+
+.hui-Pagination__pager--disabled {
+  color: $grey-light;
+  border-color: $grey-light;
+
+  &:hover, &:focus {
+    color: $grey-light;
+    border-color: $grey-light;
+  }
+}
+
+.hui-Pagination__pager--inverse {
+  color: $grey-lightest;
+  border-color: $grey-lightest;
+
+  &:active {
+    color: white;
+    border-color: white;
+  }
+
+  &:hover, &:focus {
+    color: $white;
+    border-color: $white;
+  }
+
+  &.hui-Pagination__pager--disabled {
+    color: $grey-light;
+    border-color: $grey-light;
+
+    &:hover, &:focus {
+      color: $grey-light;
+      border-color: $grey-light;
+    }
+  }
+}
