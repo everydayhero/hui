@@ -32,6 +32,7 @@ export default React.createClass({
     return {
       countryCode: 'AU',
       onChange: () => {},
+      onError: () => {},
       layout: 'full',
       spacing: 'loose'
     }
@@ -154,6 +155,7 @@ export default React.createClass({
           manualActions={ this.props.manualActions }
           minQueryLength={ this.state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
+          onError={ this.props.onError }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
           spacing="compact"

@@ -111,6 +111,7 @@ export default React.createClass({
         spacing={ this.props.spacing }
         countryCode={ this.props.countryCode }
         manualActions={ [this.renderManualButton()] }
+        onError={ this.props.onError }
         onChange={ this.handleLookupChange }
         address={ this.state.address } />
     )
