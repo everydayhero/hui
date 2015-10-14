@@ -30,7 +30,8 @@ export default React.createClass({
       prefix: '',
       address: null,
       onChange: () => {},
-      onError: () => {}
+      onError: () => {},
+      validations: {}
     }
   },
 
@@ -83,6 +84,13 @@ export default React.createClass({
     })
   },
 
+  isAnyFieldRequired () {
+    return Object.keys(this.props.validations).some((key) => {
+      return !!this.props.validations[key] &&
+        this.props.validations[key].required
+    })
+  },
+
   renderManualButton: function() {
     return (
       <Button
@@ -98,6 +106,8 @@ export default React.createClass({
     return (
       <AddressLookup
         ref="lookup"
+        required={ this.isAnyFieldRequired() }
+        errorMessage={ this.props.errorMessage }
         spacing={ this.props.spacing }
         countryCode={ this.props.countryCode }
         manualActions={ [this.renderManualButton()] }

@@ -21,6 +21,7 @@ export default React.createClass({
 
   propTypes: {
     layout: React.PropTypes.string,
+    required: React.PropTypes.bool,
     spacing: React.PropTypes.string,
     countryCode: React.PropTypes.string,
     selectedCountry: React.PropTypes.object,
@@ -147,6 +148,8 @@ export default React.createClass({
           url={ addressesSearchUrl + '.jsonp' }
           params={ { country_code: this.state.selectedCountry.value } }
           spacing="compact"
+          required={ this.props.required }
+          errorMessage={ this.props.errorMessage }
           manualActions={ this.props.manualActions }
           minQueryLength={ this.state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
