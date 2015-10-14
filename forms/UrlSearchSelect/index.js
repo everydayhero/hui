@@ -9,11 +9,13 @@ import OptionList from '../OptionList'
 import getJSON from '../../lib/getJSON'
 import merge from 'lodash/object/merge'
 import debounce from 'lodash/function/debounce'
+import i18nable from '../../mixins/I18n'
+import i18n from './i18n'
 
 export default React.createClass({
   displayName: 'UrlSearchSelect',
 
-  mixins: [validatable, inputMessage],
+  mixins: [i18nable, validatable, inputMessage],
 
   propTypes: {
     label: React.PropTypes.string,
@@ -27,6 +29,7 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     hint: React.PropTypes.string,
+    emptyLabel: React.PropTypes.string,
     errorMessage: React.PropTypes.string,
     errors: React.PropTypes.array,
     validate: React.PropTypes.func,
@@ -44,6 +47,7 @@ export default React.createClass({
       onChange: () => {},
       onSelection: () => {},
       hint: '',
+      emptyLabel: '',
       errorMessage: '',
       errors: [],
       validate: () => {},
@@ -202,6 +206,7 @@ export default React.createClass({
               ref="optionList"
               spacing="compact"
               className="hui-UrlSearchSelect__option-list"
+              emptyLabel={ this.props.emptyLabel || this.t('empty_label') }
               options={ this.state.results }
               selectedOption={ this.state.selectedOption }
               onSelection={ this.handleSelection } />
@@ -215,5 +220,9 @@ export default React.createClass({
         { this.renderMessage(this.state.hasError) }
       </div>
     )
+  },
+
+  statics: {
+    i18n
   }
 })
