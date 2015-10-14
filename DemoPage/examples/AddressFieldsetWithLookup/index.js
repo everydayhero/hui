@@ -13,6 +13,10 @@ export default React.createClass({
 
         <AddressFieldsetWithLookup
           countryCode="US"
+          errorMessage="Please find your address, or enter manually"
+          validations={{
+            street_address: { required: true }
+          }}
           prefix="address_with_lookup_" />
       </div>
     )
