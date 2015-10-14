@@ -150,6 +150,7 @@ export default React.createClass({
           spacing="compact"
           required={ this.props.required }
           errorMessage={ this.props.errorMessage }
+          emptyLabel={ this.props.emptyLabel || this.t('empty_label', { scope: this.state.selectedCountry.value }) }
           manualActions={ this.props.manualActions }
           minQueryLength={ this.state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
