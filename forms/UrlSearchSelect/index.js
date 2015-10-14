@@ -129,6 +129,7 @@ export default React.createClass({
       value: option.value,
       queryValue: option.label
     }, () => {
+      this.requireValue()
       this.props.onChange(option.value)
       this.props.onSelection(option)
     })
@@ -164,13 +165,22 @@ export default React.createClass({
     }
   },
 
+  requireValue () {
+    let hasError = this.props.required && !this.state.selectedOption
+    this.setState({
+      hasError,
+      isOpen: hasError
+    })
+  },
+
   render () {
     let classes = classnames([
       this.props.className,
       'hui-UrlSearchSelect--' + this.props.layout,
       'hui-UrlSearchSelect--' + this.props.spacing,
       'hui-UrlSearchSelect',
-      !!this.state.isOpen && 'hui-UrlSearchSelect--open'
+      !!this.state.isOpen && 'hui-UrlSearchSelect--open',
+      !!this.state.hasError && 'hui-UrlSearchSelect--error'
     ])
 
     return (
@@ -180,7 +190,10 @@ export default React.createClass({
           className="hui-UrlSearchSelect__search-input"
           spacing="compact"
           value={ this.state.queryValue }
+          icon="chevron-down"
           label={ this.props.label }
+          showError={ this.state.hasError }
+          onBlur={ this.requireValue }
           onKeyDown={ this.handleKeyDown }
           onChange={ this.handleSearchInputChange }/>
         { this.state.isOpen ?
@@ -198,7 +211,8 @@ export default React.createClass({
                 { this.props.manualActions }
               </div> }
           </div> : null }
-        { this.renderMessage(!!this.props.errorMessage || !!this.props.errors.length || !!this.props.hint) }
+
+        { this.renderMessage(this.state.hasError) }
       </div>
     )
   }

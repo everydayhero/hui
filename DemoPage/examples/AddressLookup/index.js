@@ -27,6 +27,8 @@ export default React.createClass({
         <h3 className="DemoPage__h3" id="AddressLookup">AddressLookup</h3>
 
         <AddressLookup
+          required
+          errorMessage="You need to find an address, please :)"
           onChange={ this.handleChange }/>
 
         <p className="DemoPage__p">
