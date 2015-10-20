@@ -1,0 +1,85 @@
+.hui-LeaderboardRow {
+  display: table;
+  width: 100%;
+  height: 84px;
+  font-family: $font-copy;
+  border-box: box-sizing;
+  padding: $x-2;
+  color: $grey;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.hui-LeaderboardRow__rank {
+  display: table-cell;
+  min-width: 76px;
+  font-size: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.hui-LeaderboardRow__avatar {
+  width: 76px;
+  height: 76px;
+  display: table-cell;
+}
+
+.hui-LeaderboardRow__details {
+  display: inline-block;
+  width: 100%;
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 8px;
+}
+
+.hui-LeaderboardRow__flipContainer {
+  perspective: 1000;
+  position: absolute;
+  width: 100%;
+  display: block
+}
+
+.hui-LeaderboardRow--selected .hui-LeaderboardRow__flipper {
+  transform: rotateX(-180deg);
+  transform-origin: 100% 14px;
+}
+
+.hui-LeaderboardRow__flipper {
+  transition: 0.2s;
+  transform-style: preserve-3d;
+  position: relative;
+  display: block;
+}
+
+.hui-LeaderboardRow__ctas, .hui-LeaderboardRow__stats {
+  backface-visibility: hidden;
+  display: block;
+  position: absolute;
+  top: -12px;
+  left: -2px;
+}
+
+.hui-LeaderboardRow__stats {
+  z-index: 2;
+  transform: rotateX(0deg);
+  top: 10px;
+  left: 0px;
+  color: $grey;
+}
+
+.hui-LeaderboardRow__ctas {
+  transform: rotateX(180deg);
+}
+
+.hui-LeaderboardRow--selected {
+  background-color: $green-active;
+  color: white;
+}
+
+.hui-LeaderboardRow__value {
+  min-width: 100px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    font-size: 20px;
+}

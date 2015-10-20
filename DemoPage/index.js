@@ -35,6 +35,7 @@ import WizardRouter from './examples/Wizard'
 import AvatarInput from './examples/AvatarInput'
 import FlashMessage from './examples/FlashMessage'
 import Tabs from './examples/Tabs'
+import Leaderboard from './examples/Leaderboard'
 
 const IMG_PATH = './images/';
 
@@ -104,6 +105,11 @@ export default React.createClass({
             <Fieldset />
             <TagList />
             <AvatarInput />
+          </div>
+
+          <h2 className="DemoPage__h2" id="forms">Leaderboard</h2>
+          <div className="DemoPage__group">
+            <Leaderboard/>
           </div>
 
           <h2 className="DemoPage__h2" id="wizard">Wizard</h2>

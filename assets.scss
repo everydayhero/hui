@@ -7,6 +7,7 @@
 @import "atoms/Separator/style";
 @import "atoms/SocialMediaLinks/style";
 @import "atoms/Overlay/style";
+@import "atoms/ProgressBar/style";
 @import "atoms/FlashMessage/style";
 @import "atoms/FlagIcon/style";
 
@@ -71,3 +72,6 @@
 @import "wizard/Progress/style";
 @import "wizard/Step/style";
 @import "wizard/style";
+
+// Leaderboard
+@import "leaderboard/style";

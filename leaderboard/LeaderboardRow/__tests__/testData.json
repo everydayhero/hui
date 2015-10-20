@@ -1,0 +1,59 @@
+{
+  "id":1238561,
+  "slug":"team-telethon-type-1",
+  "gift_aid_eligible":false,
+  "charity_uid":"au-3256",
+  "campaign_uid":"au-19283",
+  "owner_uid":108993,
+  "owner_type":"Team",
+  "uid":1238561,
+  "state":"active",
+  "target_cents":500000,
+  "name":"Team Telethon Type 1",
+  "team_uid":null,
+  "team_member_uids":[
+    1233174,
+    1239651,
+    1240721,
+    1241368,
+    1233779
+  ],
+  "team_leader_page_uid":1233174,
+  "expires_at":"2015-12-31T00:00:00.000Z",
+  "amount":{
+    "cents":252150,
+    "currency":{
+      "iso_code":"AUD",
+      "name":"Australian Dollar",
+      "symbol":"$"
+    }
+  },
+  "cached_offline_amount_cents":0,
+  "campaign_date":null,
+  "fitness_activity_overview":{
+    "bike":{
+      "duration_in_seconds":67562,
+      "calories":12518,
+      "distance_in_meters":441480
+    }
+  },
+  "story":"We're cycling across Australia to raise awareness and funds for families with kids who have type 1 diabetes, for the Telethon Type 1 Diabetes Family Centre in Perth.\r\n\r\nType 1 is tough. The Family Centre is here to help. We provide peer and psychosocial support, education and information, to kids with type 1 and their families. \r\n\r\nEvery member of our team is impacted by type 1 diabetes. We have skin in the game - we are determined, strong, and ready to ride! ",
+  "image":{
+    "original_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/original/missing.gif",
+    "tiny_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/tiny/missing.gif",
+    "small_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/small/missing.gif",
+    "medium_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/medium/missing.gif",
+    "large_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/large/missing.gif",
+    "extra_large_image_url":"https://d1kjwiy0ppa2tf.cloudfront.net/assets/pages/images/extra_large/missing.gif"
+  },
+  "created_at":"2015-10-12T09:22:24.000Z",
+  "updated_at":"2015-10-19T07:47:30.000Z",
+  "url":"https://greatsoutherncrossing.everydayhero.com/au/team-telethon-type-1",
+  "campaign_name":"The Great Southern Crossing",
+  "charity_name":"Telethon Type 1 Diabetes Family Centre",
+  "invitation_id":null,
+  "coordinate":{
+    "lat":-31.89,
+    "lon":115.8
+  }
+}

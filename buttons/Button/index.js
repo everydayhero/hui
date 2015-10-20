@@ -31,6 +31,7 @@ module.exports = React.createClass({
     onClick: React.PropTypes.func,
     target: React.PropTypes.string,
     thin: React.PropTypes.bool,
+    slim: React.PropTypes.bool,
     type: React.PropTypes.oneOf(
       ['submit', 'reset', 'button']
     ),
@@ -49,6 +50,7 @@ module.exports = React.createClass({
       label: '',
       target: null,
       thin: false,
+      slim: false,
       type: 'button'
     };
   },
@@ -90,7 +92,8 @@ module.exports = React.createClass({
       'hui-Button--' + kind,
       props.disabled && 'hui-Button--disabled',
       props.inverse && 'hui-Button--inverse',
-      props.thin && 'hui-Button--thin',
+      !props.slim && props.thin && 'hui-Button--thin',
+      props.slim && 'hui-Button--slim',
       props.icon && 'hui-Button--hasIcon',
       props.iconLeft && 'hui-Button--iconLeft',
       props.uppercase && 'hui-Button--uppercase'
