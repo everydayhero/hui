@@ -1,0 +1,63 @@
+@import "../TextInput/style";
+
+.hui-SearchInput {
+  float: left;
+
+  .hui-TextInput__label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.hui-SearchInput__wrapper {
+  width: 100%;
+  display: table;
+}
+
+.hui-SearchInput__input, .hui-SearchInput__submitWrapper {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.hui-SearchInput__submitWrapper {
+  width: 42px;
+}
+
+.hui-SearchInput__submit {
+  @extend %general-reset;
+  @extend %a-reset;
+  transition: all 160ms ease-out;
+  display: inline-block;
+  overflow: hidden;
+  line-height: $x-9;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline-color: transparent;
+  outline-style: none;
+  vertical-align: middle;
+  background-color: transparent;
+  font-size: 14px;
+  width: 42px;
+  height: 42px;
+  position: relative;
+  color: white;
+  background-color: $green;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+
+  &:hover, &:focus {
+    color: white;
+    background-color: $green-active;
+    border-color: $green-active;
+  }
+
+  &:active {
+    color: white;
+    background-color: $green;
+  }
+}
+
+@include input-sizes(SearchInput);
