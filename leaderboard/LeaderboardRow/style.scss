@@ -3,7 +3,7 @@
   width: 100%;
   height: 84px;
   font-family: $font-copy;
-  border-box: box-sizing;
+  box-sizing: border-box;
   padding: $x-2;
   color: $grey;
   transition: 0.2s;
@@ -77,9 +77,46 @@
 }
 
 .hui-LeaderboardRow__value {
-  min-width: 100px;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: right;
-    font-size: 20px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  font-size: 20px;
 }
+
+.hui-LeaderboardRow__pageName {
+    font-size: 14px;
+}
+
+.hui-LeaderboardRow__charityName {
+    font-size: 12px;
+}
+
+.hui-LeaderboardRow--narrow {
+  height: 136px;
+
+  .hui-LeaderboardRow__flipContainer {
+    width: 100%;
+    top: 85px;
+    left: 8px;
+  }
+
+  .hui-LeaderboardRow__stats {
+    width: 100%;
+    padding-right: 16px;
+  }
+
+  .hui-ProgressBar {
+    width: 100%;
+  }
+
+  .hui-LeaderboardRow__value {
+    vertical-align: top;
+  }
+
+  .hui-LeaderboardRow__rank {
+    display: block;
+    text-align: left;
+    vertical-align: top;
+  }
+}
+
