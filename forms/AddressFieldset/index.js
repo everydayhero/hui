@@ -22,6 +22,7 @@ export default React.createClass({
     internalSpacing: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onError: React.PropTypes.func,
+    onCountrySelect: React.PropTypes.func,
     afterChange: React.PropTypes.func,
     validations: React.PropTypes.object
   },
@@ -36,6 +37,7 @@ export default React.createClass({
       layout: 'full',
       spacing: 'loose',
       internalSpacing: 'tight',
+      onCountrySelect: () => {},
       onChange: () => {},
       onError: () => {},
       validations: {},
@@ -112,6 +114,7 @@ export default React.createClass({
       countryCode: country.value
     }, () => {
       this.handleChange('country_name')(country.label)
+      this.props.onCountrySelect(country.value)
     })
   },
 
