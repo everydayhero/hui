@@ -97,6 +97,16 @@ describe('Button', function() {
     });
   });
 
+  describe('slim', function() {
+    beforeEach(function() {
+      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" slim={ true } />);
+    });
+
+    it('renders a slim button', function(){
+      findByClass(component, 'hui-Button--slim');
+    });
+  });
+
   describe('iconSpin', function() {
     beforeEach(function() {
       component = renderIntoDocument(<Button kind="cta" label="Log In" icon="refresh" iconSpin={ true } />);

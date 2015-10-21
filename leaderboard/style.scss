@@ -1,0 +1,14 @@
+@import "../LeaderboardRow/style";
+
+.hui-Leaderboard__row {
+  background-color: white;
+  position: relative;
+
+  &:nth-child(even) {
+    background-color: $grey-lightest;
+  }
+
+  &:hover {
+    background-color: $grey-lighter;
+  }
+}

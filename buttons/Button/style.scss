@@ -132,6 +132,10 @@ a.hui-Button {
   opacity: 1;
 }
 
+.hui-Button--slim.hui-Button--hasIcon .hui-Button__icon {
+  width: 30px;
+}
+
 .hui-Button--cta,
 .hui-Button--primary {
   line-height: $x-11;
@@ -139,6 +143,10 @@ a.hui-Button {
 
 .hui-Button--thin {
   line-height: $x-9;
+}
+
+.hui-Button--slim {
+  line-height: $x-7;
 }
 
 .hui-Button--cta,

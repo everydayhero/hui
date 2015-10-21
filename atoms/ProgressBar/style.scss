@@ -1,0 +1,14 @@
+.hui-ProgressBar {
+  display: block;
+  width: 200px;
+  height: 10px;
+  background-color: $grey;
+  margin-bottom: 4px;
+}
+
+.hui-ProgressBar__progress {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background-color: $green;
+}
