@@ -1,5 +1,11 @@
 @import "../LeaderboardRow/style";
 
+.hui-Leaderboard {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .hui-Leaderboard__row {
   background-color: white;
   position: relative;

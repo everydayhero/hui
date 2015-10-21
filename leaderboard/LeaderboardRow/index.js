@@ -56,7 +56,7 @@ module.exports = React.createClass({
   handleResize: function() {
     let domNode = this.getDOMNode()
     this.setState({
-      narrow: domNode.offsetWidth <= 600
+      narrow: domNode.offsetWidth <= 460
     });
   },
 
@@ -65,9 +65,9 @@ module.exports = React.createClass({
     props.onSelect && props.onSelect(props.data, props.index)
   },
 
-  onMouseOut: function() {
+  onMouseLeave: function() {
     let props = this.props
-    props.onMouseOut && props.onMouseOut()
+    props.onMouseLeave && props.onMouseLeave()
   },
 
   renderFlipper: function() {
@@ -99,7 +99,7 @@ module.exports = React.createClass({
   },
 
   renderRank: function() {
-    let formattedRank = numeral(this.props.index + 1).format('0o')
+    let formattedRank = numeral(this.props.data.rank).format('0o')
 
     return <div className="hui-LeaderboardRow__rank">{ formattedRank }</div>
   },
@@ -116,7 +116,7 @@ module.exports = React.createClass({
     ])
 
     return (
-      <div className={ classes } onClick={ this.onSelect } onMouseOver={ this.onSelect } onMouseOut={ this.onMouseOut }>
+      <div className={ classes } onClick={ this.onSelect } onMouseEnter={ this.onSelect } onMouseLeave={ this.onMouseLeave }>
         { !state.narrow && this.renderRank() }
         <img src={ data.image.medium_image_url } className="hui-LeaderboardRow__avatar"/>
         <div className="hui-LeaderboardRow__details">
