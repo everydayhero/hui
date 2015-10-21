@@ -7,7 +7,7 @@ module.exports = React.createClass({
 
   propTypes: {
     onSelect: React.PropTypes.func,
-    rowComponent: React.PropTypes.element,
+    rowComponent: React.PropTypes.func,
     rowData: React.PropTypes.array,
     valuePath: React.PropTypes.string
   },
@@ -61,7 +61,7 @@ module.exports = React.createClass({
 
       rows.push(
         <div key={ index } className="hui-Leaderboard__row">
-          { props.rowComponent(row) }
+          { React.createFactory(props.rowComponent)(row) }
         </div>
       )
     })
