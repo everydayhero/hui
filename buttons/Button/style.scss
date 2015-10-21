@@ -147,6 +147,11 @@ a.hui-Button {
 
 .hui-Button--slim {
   line-height: $x-7;
+
+  .hui-Button__label {
+    padding: 0 $x-2;
+    letter-spacing: 0.12em;
+  }
 }
 
 .hui-Button--cta,

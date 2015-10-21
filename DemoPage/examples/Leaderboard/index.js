@@ -22,19 +22,23 @@ module.exports = React.createClass({
 
   render: function() {
     let onSelect  = this.onSelect
+    let rowData = raisedData.leaderboard.pages
+    rowData.forEach(function(item, index){
+      item.rank = index + 1
+    })
 
     return (
-    <div>
-      <h3 className="DemoPage__h3" id="Leaderboard">Leaderboard</h3>
+      <div>
+        <h3 className="DemoPage__h3" id="Leaderboard">Leaderboard</h3>
 
-      <Leaderboard
-        onSelect={ onSelect }
-        selectedIndex={ this.props.selectedIndex }
-        rowData={ raisedData.leaderboard.pages }
-        valueSymbol="$"
-        valueType="money"
-        rowComponent={ LeaderboardRow } />
-    </div>
+        <Leaderboard
+          onSelect={ onSelect }
+          selectedIndex={ this.props.selectedIndex }
+          rowData={ raisedData.leaderboard.pages }
+          valueSymbol="$"
+          valueType="money"
+          rowComponent={ LeaderboardRow } />
+      </div>
     )
   }
 })

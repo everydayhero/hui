@@ -1,7 +1,7 @@
 .hui-LeaderboardRow {
   display: table;
   width: 100%;
-  height: 84px;
+  height: 80px;
   font-family: $font-copy;
   box-sizing: border-box;
   padding: $x-2;
@@ -12,15 +12,15 @@
 
 .hui-LeaderboardRow__rank {
   display: table-cell;
-  min-width: 76px;
+  min-width: 72px;
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
 }
 
 .hui-LeaderboardRow__avatar {
-  width: 76px;
-  height: 76px;
+  width: 72px;
+  height: 72px;
   display: table-cell;
 }
 
@@ -55,14 +55,14 @@
   backface-visibility: hidden;
   display: block;
   position: absolute;
-  top: -12px;
+  top: -9px;
   left: -2px;
 }
 
 .hui-LeaderboardRow__stats {
   z-index: 2;
   transform: rotateX(0deg);
-  top: 10px;
+  top: 6px;
   left: 0px;
   color: $grey;
 }
@@ -80,15 +80,18 @@
   display: table-cell;
   vertical-align: middle;
   text-align: right;
-  font-size: 20px;
+  padding-right: 4px;
+  font-size: 15px;
 }
 
 .hui-LeaderboardRow__pageName {
-    font-size: 14px;
+  margin: 2px 0px;
+  font-size: 12px;
 }
 
 .hui-LeaderboardRow__charityName {
-    font-size: 12px;
+  margin: 2px 0px;
+  font-size: 12px;
 }
 
 .hui-LeaderboardRow--narrow {
@@ -103,6 +106,7 @@
   .hui-LeaderboardRow__stats {
     width: 100%;
     padding-right: 16px;
+    box-sizing: border-box;
   }
 
   .hui-ProgressBar {
@@ -111,6 +115,7 @@
 
   .hui-LeaderboardRow__value {
     vertical-align: top;
+    padding-top: 26px;
   }
 
   .hui-LeaderboardRow__rank {
@@ -120,3 +125,6 @@
   }
 }
 
+.hui-LeaderboardRow__raised {
+  font-size: 12px;
+}

@@ -34,7 +34,7 @@ module.exports = React.createClass({
       ]);
 
       tabLabels.push(
-        <a href="#" className={ classes } onClick={ component.onChange(index) }>
+        <a href="#" key={ index } className={ classes } onClick={ component.onChange(index) }>
           { tab.label }
         </a>
       )

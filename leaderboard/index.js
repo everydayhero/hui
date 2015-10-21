@@ -33,7 +33,7 @@ module.exports = React.createClass({
     onSelect && onSelect(item, index)
   },
 
-  onMouseOut: function() {
+  onMouseLeave: function() {
     let onDeSelect = this.props.onDeSelect
     this.setState({
       selectedIndex: -1
@@ -51,7 +51,7 @@ module.exports = React.createClass({
       let row = {
         data,
         onSelect: component.onSelect,
-        onMouseOut: component.onMouseOut,
+        onMouseLeave: component.onMouseLeave,
         valuePath: props.valuePath,
         valueType: props.valueType,
         valueSymbol: props.valueSymbol,
