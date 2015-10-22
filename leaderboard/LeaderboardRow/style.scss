@@ -33,42 +33,36 @@
 }
 
 .hui-LeaderboardRow__flipContainer {
-  perspective: 1000;
-  position: absolute;
-  width: 100%;
-  display: block
-}
-
-.hui-LeaderboardRow--selected .hui-LeaderboardRow__flipper {
-  transform: rotateX(-180deg);
-  transform-origin: 100% 14px;
-}
-
-.hui-LeaderboardRow__flipper {
-  transition: 0.2s;
-  transform-style: preserve-3d;
   position: relative;
-  display: block;
-}
-
-.hui-LeaderboardRow__ctas, .hui-LeaderboardRow__stats {
-  backface-visibility: hidden;
-  display: block;
-  position: absolute;
-  top: -9px;
-  left: -2px;
-}
-
-.hui-LeaderboardRow__stats {
-  z-index: 2;
-  transform: rotateX(0deg);
-  top: 6px;
-  left: 0px;
-  color: $grey;
 }
 
 .hui-LeaderboardRow__ctas {
   transform: rotateX(180deg);
+  transition: 0.2s;
+  backface-visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 2px;
+}
+
+.hui-LeaderboardRow__stats {
+  transition: 0.2s;
+  backface-visibility: hidden;
+  opacity: 1;
+  color: $grey;
+  position: absolute;
+  top: 8px;
+}
+
+.hui-LeaderboardRow--selected .hui-LeaderboardRow__ctas {
+  transform: rotateX(0deg);
+  opacity: 1;
+  color: $grey;
+}
+
+.hui-LeaderboardRow--selected .hui-LeaderboardRow__stats {
+  transform: rotateX(180deg);
+  opacity: 0;
 }
 
 .hui-LeaderboardRow--selected {
@@ -101,6 +95,7 @@
     width: 100%;
     top: 85px;
     left: 8px;
+    position: absolute;
   }
 
   .hui-LeaderboardRow__stats {
