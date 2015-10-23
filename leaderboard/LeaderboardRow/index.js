@@ -118,7 +118,9 @@ module.exports = React.createClass({
     return (
       <div className={ classes } onClick={ this.onSelect } onMouseEnter={ this.onSelect } onMouseLeave={ this.onMouseLeave }>
         { !state.narrow && this.renderRank() }
-        <img src={ data.image.medium_image_url } className="hui-LeaderboardRow__avatar"/>
+        <div className="hui-LeaderboardRow__avatar">
+          <img src={ data.image.medium_image_url }/>
+        </div>
         <div className="hui-LeaderboardRow__details">
           { state.narrow && this.renderRank() }
           <h2 className="hui-LeaderboardRow__pageName">
