@@ -80,6 +80,8 @@
 
 .hui-TextInput--error .hui-TextInput__message {
   @extend %error-message;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .hui-TextInput--error .hui-TextInput__icon {

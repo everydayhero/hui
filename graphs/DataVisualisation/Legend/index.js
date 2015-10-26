@@ -16,7 +16,7 @@ module.exports = React.createClass({
     return this.props.keys.map(function(key) {
       var givenClassName = ' ' + key.className || '';
       return (
-        <div className={ 'hui-Legend__item' + givenClassName }>
+        <div key={ key.label } className={ 'hui-Legend__item' + givenClassName }>
           <div className="hui-Legend__content">
             <div className="hui-Legend__dot"></div>
             <div className="hui-Legend__label">

@@ -1,151 +1,167 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var Icon       = require('../atoms/Icon');
-var classnames = require('classnames');
+import React from 'react'
+import Icon from '../atoms/Icon'
+import classnames from 'classnames'
 
-module.exports = {
-  componentDidMount: function() {
-    var props = this.props;
-    if (props.disabled) { return; }
-
-    var value = this.props.value;
-    var validate = props.validate;
-    var onError = props.onError;
-    if (props.autoFocus) { this.refs.input.getDOMNode().focus(); }
-    if (value && validate) { this.validate(); }
-    if (onError && validate) { onError(!validate(value)); }
-
-    this.setValueQuietly(this.refs.input.getDOMNode().value);
+export default {
+  componentDidMount() {
+    let props = this.props
+    if (props.disabled || props.readOnly) { return }
+    let node = this.refs.input.getDOMNode()
+    let value = node.value
+    if (props.autoFocus) { node.focus() }
+    if (value && props.validate) { this.validate() }
+    this.setValue(value)
   },
 
-  componentWillReceiveProps: function(nextProps) {
-    var state = this.state;
-
-    if (nextProps.showError && !state.hasError && !state.valid && !state.focused) { this.validate(); }
+  componentWillReceiveProps(nextProps) {
+    let state = this.state
+    if (nextProps.disabled || nextProps.readOnly) { return }
+    if (nextProps.showError && !state.hasError && !state.valid && !state.focused) { this.validate() }
   },
 
-  maskValue: function(value) {
-    if (!this.props.mask) { return value; }
-    return this.props.mask(value);
+  componentWillUnmount() {
+    if (this.props.onUnmount) { this.props.onUnmount() }
   },
 
-  handleChange: function(e) {
-    this.setValueQuietly(e.target.value);
+  maskValue(value) {
+    if (!this.props.mask) { return value }
+    return this.props.mask(value)
   },
 
-  setValueQuietly: function(value) {
-    var props = this.props;
+  expose(value) {
+    value = this.maskValue(value)
+    let props = this.props
+    let onChange = props.onChange
+    let onError = props.onError
+    let validate = props.validate
 
-    if (props.readOnly || props.disabled) { return false; }
-
-    this.setState({
-      hasError: false,
-      valid: false
-    });
-
-    var onChange = props.onChange;
-    var onError = props.onError;
-    var validate = props.validate;
-
-    if (onChange) { onChange(value); }
-    if (onError && validate) { onError(!validate(value)); }
+    if (onChange) { onChange(value) }
+    if (onError && validate && props.required) { onError(!validate(value)) }
   },
 
-  handleFocus: function() {
-    this.setState({ focused: true });
+  validate(val) {
+    let props = this.props
+    if (!props.required) { return }
+    let value = val || this.props.value
+    let hasValue = value && !!value.trim()
+    if (hasValue && props.validate) {
+      this.setState({ waiting: true })
+      props.validate(value, this.setValid)
+    } else {
+      this.setValid(hasValue)
+    }
+  },
 
-    if (this.props.onFocus) {
-      this.props.onFocus({
+  handleChange(e) {
+    let props = this.props
+    let value = e.target.value
+    if (props.disabled || props.readOnly || (!!props.limit && value.length > props.limit)) {
+      return e.preventDefault()
+    }
+    this.setValue(value)
+    if (!this.state.focused) { this.validate(value) }
+  },
+
+  handleFocus() {
+    let props = this.props
+    if (props.disabled || props.readOnly) { return }
+
+    this.setState({ focused: true })
+    if (props.onFocus) {
+      props.onFocus({
         element: this.getDOMNode(),
-        value: this.props.value
+        value: props.value
+      })
+    }
+  },
+
+  handleBlur() {
+    let props = this.props
+    if (props.disabled || props.readOnly) { return }
+
+    this.setState({ focused: false })
+    this.validate()
+    if (props.onBlur) {
+      props.onBlur(props.value, val => {
+        this.setValue(val);
+        this.validate(val);
       });
     }
   },
 
-  handleBlur: function() {
-    var props = this.props;
-
-    this.setState({ focused: false });
-    if (props.required) { this.validate(); }
-    this.props.onBlur(props.value);
+  setValue(value) {
+    if (this.props.disabled || this.props.readOnly) { return }
+    this.setState({
+      hasError: false,
+      valid: false,
+      value: this.maskValue(value)
+    })
+    this.expose(value)
   },
 
-  setValid: function(valid) {
-    var onError = this.props.onError;
-
+  setValid(valid) {
+    let onError = this.props.onError
+    if (onError) { onError(!valid); }
     this.setState({
       hasError: !valid,
       waiting: false,
       valid
-    }, function() {
-      if (onError) { onError(!valid); }
-    });
+    })
   },
 
-  validate: function() {
-    var props = this.props;
-    var value = this.props.value || '';
-    var hasValue = !!value.trim();
-
-    if (hasValue && props.validate) {
-      this.setState({ waiting: true });
-      props.validate(value, this.setValid);
-    } else {
-      this.setValid(hasValue);
-    }
-  },
-
-  renderIcon: function() {
-    var props = this.props;
-    var errors = props.errors || [];
-    var hasServerErrors = errors.length;
-    var className = classnames({
+  renderIcon() {
+    let props = this.props
+    let errors = props.errors || []
+    let hasServerErrors = errors.length
+    let className = classnames({
       'hui-TextInput__icon': true,
       'hui-TextInput__icon--left': (props.iconPosition === 'left'),
       'hui-TextInput__iconButton': props.onIconClick
-    });
-    var state = this.state;
-    var icon = !props.showIcon ? false
+    })
+    let state = this.state
+    let icon = !props.showIcon ? false
                : state.waiting ? 'refresh'
                : (state.valid && !hasServerErrors) ? 'check'
+               : state.hasError ? 'times'
                : props.disabled ? 'minus'
                : props.icon ? props.icon
                : (props.required && !props.value) ? 'caret-left'
-               : false;
+               : false
 
     if (props.onIconClick) {
       return icon && (
         <a href="" className={ className } onClick={ props.onIconClick }>
           <Icon icon={ icon } fixedWidth={ true } />
         </a>
-      );
+      )
     } else {
       return icon && (
         <span className={ className }>
           <Icon icon={ icon } fixedWidth={ true } />
         </span>
-      );
+      )
     }
   },
 
-  renderPlaceHolder: function() {
+  renderPlaceHolder() {
     if (!this.props.placeHolder || this.props.value) {
-      return false;
+      return false
     }
 
     return (
-        <span className="hui-TextInput__placeHolder">
-          { this.props.placeHolder }
-        </span>
-      );
+      <span className="hui-TextInput__placeHolder">
+        { this.props.placeHolder }
+      </span>
+    )
   },
 
-  inputMethods: function(bool) {
+  inputMethods(bool) {
     return bool && {
       onBlur: this.handleBlur,
       onChange: this.handleChange,
       onFocus: this.handleFocus
-    };
+    }
   }
-};
+}

@@ -47,10 +47,7 @@ describe('UrlSearchSelect', () => {
       let element = renderIntoDocument(
         <UrlSearchSelect params={ { some: 'Param' }  }  url="http://everydayhero.com" />
       )
-      element.setState({
-        queryValue: 'foobar'
-      })
-      element.fetchResults()
+      element.fetchResults('foobar')
 
       expect(mockGetJSON).calledWith('http://everydayhero.com', {
         q: 'foobar',
@@ -84,17 +81,13 @@ describe('UrlSearchSelect', () => {
     })
   })
 
-  describe('#queueResultFetch', () => {
-    it('cancels the previous pending request', (done) => {
+  describe('#cancelRequest', () => {
+    it('cancels the previous pending request', () => {
       let element = renderIntoDocument(
         <UrlSearchSelect url="http://everydayhero.com" />
       )
-      let one = element.queueResultFetch()
-      sinon.spy(one, 'cancel')
-      element.queueResultFetch().done(() => {
-        expect(one.cancel).to.be.called
-        done()
-      })
+      element.cancelRequest()
+      expect(element.state.pendingRequest).to.be.false
     })
   })
 
