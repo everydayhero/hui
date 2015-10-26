@@ -83,12 +83,9 @@
   width: 100px;
 }
 
-.hui-LeaderboardRow__pageName {
-  font-size: 12px;
-  @extend %truncate;
-}
-
+.hui-LeaderboardRow__pageName,
 .hui-LeaderboardRow__charityName {
+  margin: 0;
   font-size: 12px;
   @extend %truncate;
 }
