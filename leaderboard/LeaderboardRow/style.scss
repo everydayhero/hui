@@ -79,7 +79,7 @@
   display: table-cell;
   vertical-align: middle;
   text-align: right;
-  font-size: 20px;
+  font-size: 16px;
   width: 100px;
 }
 
@@ -88,6 +88,15 @@
   margin: 0;
   font-size: 12px;
   @extend %truncate;
+}
+
+.hui-LeaderboardRow__charityName {
+  margin: 0;
+  max-width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 11px;
 }
 
 .hui-LeaderboardRow--narrow {
@@ -113,6 +122,7 @@
   .hui-LeaderboardRow__value {
     vertical-align: top;
     padding-top: 26px;
+    font-size: 16px;
   }
 
   .hui-LeaderboardRow__rank {

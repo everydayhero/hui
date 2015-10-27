@@ -55,6 +55,7 @@ module.exports = React.createClass({
         valuePath: props.valuePath,
         valueType: props.valueType,
         valueSymbol: props.valueSymbol,
+        valueFormat: props.valueFormat,
         index,
         isSelected: component.state.selectedIndex === index
       }

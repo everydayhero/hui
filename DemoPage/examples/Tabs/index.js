@@ -32,7 +32,7 @@ export default React.createClass({
       {
         label: 'Raise',
         content: (
-          <div key='raised'>
+          <div key="raised">
             <p>Amount raised goes here</p>
             <p>On Page: { state.currentPage }</p>
             <Pagination {...state} onChange={ this.onPage } />
@@ -41,11 +41,11 @@ export default React.createClass({
       },
       {
         label: 'Distance',
-        content: <p key='distance'>Distance goes here</p>
+        content: <p key="distance">Distance goes here</p>
       },
       {
         label: 'Elevation',
-        content: <p key='elevation'>Elevation goes here</p>
+        content: <p key="elevation">Elevation goes here</p>
       }
     ]
 

@@ -32,6 +32,7 @@ module.exports = React.createClass({
       valueType: 'money',
       valueSymbol: '$',
       valuePath: 'amount.cents',
+      valueFormat: '0.00',
       data: {},
       isSelected: false
     }
@@ -74,8 +75,8 @@ module.exports = React.createClass({
     let props = this.props
     let data = props.data
     let symbol = data.amount.currency.symbol
-    let formattedRaised = numeric.money(symbol, data.amount.cents)
-    let formattedGoal = numeric.money(symbol, data.target_cents)
+    let formattedRaised = numeric.money(symbol, data.amount.cents, '0.00')
+    let formattedGoal = numeric.money(symbol, data.target_cents, '0.00')
 
     return (
       <div className="hui-LeaderboardRow__flipContainer">
@@ -107,7 +108,7 @@ module.exports = React.createClass({
   render: function() {
     let props = this.props
     let data = props.data
-    let value = numeric[props.valueType](props.valueSymbol, _.get(data, props.valuePath))
+    let value = numeric[props.valueType](props.valueSymbol, _.get(data, props.valuePath), props.valueFormat)
     let state = this.state
     let classes = classnames([
       'hui-LeaderboardRow',
