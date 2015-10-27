@@ -1,7 +1,12 @@
-.hui-Tabs_content {
-  background: white;
+.hui-Tabs {
   height: 100%;
+}
+
+.hui-Tabs_content {
+  height: 100%;
+  min-height: 200px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .hui-Tabs__tab {
