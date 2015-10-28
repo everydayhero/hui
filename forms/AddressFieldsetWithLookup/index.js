@@ -30,6 +30,7 @@ export default React.createClass({
     prefix: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onError: React.PropTypes.func,
+    onUnmount: React.PropTypes.func,
     showError: React.PropTypes.bool,
     storeLocally: React.PropTypes.bool,
     validations: React.PropTypes.shape({
@@ -51,6 +52,7 @@ export default React.createClass({
       countryCode: 'au',
       onChange: () => {},
       onError: () => {},
+      onUnmount: () => {},
       validations: {}
     }
   },
@@ -69,6 +71,10 @@ export default React.createClass({
     let errors = this.state.errors
     props.onChange(props.prefill)
     props.onError(includes(errors, true) || isEmpty(errors))
+  },
+
+  componentWillUnmount() {
+    this.props.onUnmount()
   },
 
   clearAddress() {
