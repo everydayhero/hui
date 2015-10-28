@@ -3,4 +3,5 @@
 /dist/
 npm-debug.log
 docs/
+/build/
 browserify-cache.json

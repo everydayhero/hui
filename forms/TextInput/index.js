@@ -1,32 +1,44 @@
-'use strict';
+'use strict'
 
-var React             = require('react/addons');
-var LocalStorageMixin = require('../../mixins/localStorage');
-var inputMessage      = require('../../mixins/inputMessage');
-var textInput         = require('../../mixins/textInput');
-var classnames        = require('classnames');
+import React from 'react/addons'
+import LocalStorageMixin from '../../mixins/localStorage'
+import inputMessage from '../../mixins/inputMessage'
+import textInput from '../../mixins/textInput'
+import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TextInput',
 
   mixins: [LocalStorageMixin, inputMessage, textInput],
 
   propTypes: {
-    className: React.PropTypes.string,
-    autoComplete: React.PropTypes.bool,
-    storeLocally: React.PropTypes.bool,
-    autoFocus: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    hasError: React.PropTypes.bool,
-    showError: React.PropTypes.bool,
+    id: React.PropTypes.string,
     name: React.PropTypes.string,
+    type: React.PropTypes.oneOf(['text', 'number']),
+    value: React.PropTypes.string,
     label: React.PropTypes.string,
     placeHolder: React.PropTypes.string,
-    errors: React.PropTypes.array,
+    className: React.PropTypes.string,
     errorMessage: React.PropTypes.string,
     hint: React.PropTypes.string,
     icon: React.PropTypes.string,
     iconPosition: React.PropTypes.string,
+    spacing: React.PropTypes.oneOf(['compact', 'tight', 'fitted', 'loose']),
+    layout: React.PropTypes.oneOf(['full', 'wide', 'twoThirds', 'half', 'narrow', 'quarter', 'threeQuarters', 'eighth', 'sevenEighths', 'third']),
+
+    autoComplete: React.PropTypes.bool,
+    storeLocally: React.PropTypes.bool,
+    autoFocus: React.PropTypes.bool,
+    readOnly: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
+    showError: React.PropTypes.bool,
+    required: React.PropTypes.bool,
+    showIcon: React.PropTypes.bool,
+
+    errors: React.PropTypes.array,
+
+    limit: React.PropTypes.number,
+
     mask: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
@@ -35,70 +47,67 @@ module.exports = React.createClass({
     onBlur: React.PropTypes.func,
     onTab: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
-    readOnly: React.PropTypes.bool,
-    required: React.PropTypes.bool,
-    showIcon: React.PropTypes.bool,
-    spacing: React.PropTypes.string,
-    type: React.PropTypes.string,
-    value: React.PropTypes.string,
-    layout: React.PropTypes.string,
     onIconClick: React.PropTypes.func
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
+      id: '',
+      name: '',
+      type: 'text',
+      value: '',
+      label: 'Input',
+      placeHolder: '',
       className: '',
+      errorMessage: '',
+      hint: '',
+      icon: '',
+      iconPosition: 'right',
+      spacing: 'loose',
+      layout: 'full',
+
       autoComplete: true,
       storeLocally: false,
       autoFocus: false,
       disabled: false,
       showError: false,
-      icon: null,
-      iconPosition: 'right',
-      initialise: null,
-      mask: null,
-      onFocus: null,
-      onChange: null,
-      validate: null,
-      onError: null,
-      onBlur: function() {},
-      onTab: function() {},
-      onKeyDown: function() {},
-      onIconClick: null,
-      readOnly: false,
       required: false,
       showIcon: true,
-      name: null,
-      id: null,
-      label: 'Input',
+
       errors: [],
-      errorMessage: '',
-      hint: '',
-      type: 'text',
-      value: '',
-      layout: 'full',
-      spacing: 'loose'
-    };
+
+      limit: 0,
+
+      mask: str => str,
+      onFocus: () => {},
+      onChange: () => {},
+      validate: null,
+      onError: () => {},
+      onBlur: () => {},
+      onTab: () => {},
+      onKeyDown: () => {},
+      onIconClick: () => {}
+    }
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       hasError: false,
       focused: false,
       valid: false,
       waiting: false
-    };
+    }
   },
 
-  render: function() {
-    var props = this.props;
-    var state = this.state;
-    var errors = props.errors || [];
-    var valueType = typeof props.value;
-    var value = (valueType === 'string' || valueType === 'number') ? props.value.toString() : '';
-    var hasServerErrors = errors.length;
-    var iconsLeft = (props.iconPosition === 'left');
-    var classes = classnames([
+  render() {
+    let props = this.props
+    let state = this.state
+    let errors = props.errors || []
+    let valueType = typeof props.value
+    let value = (valueType === 'string' || valueType === 'number') ? props.value.toString() : ''
+    let hasServerErrors = errors.length
+    let iconsLeft = (props.iconPosition === 'left')
+    let classes = classnames([
       props.className,
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
@@ -108,13 +117,13 @@ module.exports = React.createClass({
       state.valid && 'hui-TextInput--valid',
       this.shouldShowError() && 'hui-TextInput--error',
       props.disabled && 'hui-TextInput--disabled'
-    ]);
+    ])
 
-    var inputClassName = classnames({
+    let inputClassName = classnames({
       'hui-TextInput__input--icon-left': iconsLeft,
       'hui-TextInput__input--icon': !iconsLeft,
       'hui-TextInput__input': true
-    });
+    })
 
     return (
       <div className={ classes }>
@@ -132,12 +141,12 @@ module.exports = React.createClass({
               this.props.onKeyDown(e)
             } }
             type={ props.type }
-            value={ this.maskValue(value) } />
+            value={ value } />
           { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>
         { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
       </div>
-    );
+    )
   }
-});
+})

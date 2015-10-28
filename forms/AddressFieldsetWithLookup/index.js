@@ -2,96 +2,116 @@
 
 import React from 'react'
 import find from 'lodash/collection/find'
+import includes from 'lodash/collection/includes'
+import isEmpty from 'lodash/lang/isEmpty'
 import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'
-import i18nMixin from '../../mixins/I18n'
 import countries from '../CountrySelect/countries'
+import I18n from '../../mixins/I18n'
 import i18n from './i18n'
 
 export default React.createClass({
   displayName: 'AddressFieldsetWithLookup',
 
-  mixins: [i18nMixin],
+  mixins: [I18n],
 
   propTypes: {
     spacing: React.PropTypes.string,
-    address: React.PropTypes.object,
+    prefill: React.PropTypes.shape({
+      street_address: React.PropTypes.string,
+      extended_address: React.PropTypes.string,
+      locality: React.PropTypes.string,
+      region: React.PropTypes.string,
+      country_name: React.PropTypes.string,
+      postal_code: React.PropTypes.string
+    }),
     countryCode: React.PropTypes.string,
     prefix: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onError: React.PropTypes.func,
-    validations: React.PropTypes.object
+    showError: React.PropTypes.bool,
+    storeLocally: React.PropTypes.bool,
+    validations: React.PropTypes.shape({
+      street_address: React.PropTypes.array,
+      extended_address: React.PropTypes.array,
+      locality: React.PropTypes.array,
+      region: React.PropTypes.array,
+      country_name: React.PropTypes.array,
+      postal_code: React.PropTypes.array
+    })
   },
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
       spacing: 'loose',
       prefix: '',
-      address: null,
+      prefill: null,
+      showError: false,
+      countryCode: 'au',
       onChange: () => {},
       onError: () => {},
       validations: {}
     }
   },
 
-  getInitialState () {
+  getInitialState() {
+    let countryCode = this.props.countryCode.toUpperCase()
     return {
-      countryCode: this.props.countryCode,
-      address: this.props.address
+      countryCode,
+      country: find(countries, country => country.value === countryCode),
+      address: this.props.prefill
     }
   },
 
-  getCountryName(value) {
-    return (find(countries, (country) => {
-      return country.value === value
-    }) || countries[0]).label
+  componentDidMount() {
+    let props = this.props
+    let errors = this.state.errors
+    props.onChange(props.prefill)
+    props.onError(includes(errors, true) || isEmpty(errors))
   },
 
-  clearAddress () {
-    this.setState({
-      address: null
-    })
+  clearAddress() {
+    this.setState({ address: null })
+    this.props.onChange(null)
+    this.props.onError(true)
   },
 
-  setEmptyAddress () {
-    let countryCode = this.refs.lookup.state.selectedCountry.value
+  setEmptyAddress() {
     this.setState({
-      countryCode,
       address: {
-        country_name: this.getCountryName(countryCode),
+        street_address: this.state.queryString,
+        country_name: this.state.country.label,
         paf_validated: false
       }
     })
   },
 
-  handleLookupChange (address) {
-    let countryCode = this.refs.lookup.state.selectedCountry.value
-    this.setState({
-      countryCode,
-      address
-    }, () => {
-      this.refs.fieldset.validate()
-      this.props.onChange(address)
-    })
+  handleError(err) {
+    if (typeof err !== 'boolean') {
+      this.setEmptyAddress()
+    }
+    this.props.onError(err)
   },
 
-  handleFieldsetChange (address) {
-    this.setState({
-      address
-    }, () => {
-      this.props.onChange(address)
-    })
+  handleCountrySelect(country) {
+    this.setState({ country, countryCode: country.value })
   },
 
-  isAnyFieldRequired () {
-    return Object.keys(this.props.validations).some((key) => {
-      return !!this.props.validations[key] &&
-        this.props.validations[key].required
-    })
+  handleAddressChange(address) {
+    if (typeof address === 'string') {
+      return this.setState({ queryString: address })
+    }
+    this.setState({ address }, () => this.props.onChange(address))
   },
 
-  renderManualButton: function() {
+  isAnyFieldRequired() {
+    let validations = this.props.validations
+    return Object.keys(validations)
+            .some(key => !!validations[key] && validations[key].length)
+  },
+
+  renderManualButton() {
     return (
       <Button
         kind="secondary"
@@ -102,45 +122,54 @@ export default React.createClass({
     )
   },
 
-  renderLookup () {
+  renderResetButton() {
+    return (
+      <Button
+        className="hui-AddressFieldsetWithLookup__reset"
+        kind="primary-borderless"
+        icon="times"
+        iconLeft
+        onClick={ this.clearAddress }>
+        { this.t('reset') }
+      </Button>
+    )
+  },
+
+  renderLookup() {
     return (
       <AddressLookup
         ref="lookup"
         required={ this.isAnyFieldRequired() }
-        errorMessage={ this.props.errorMessage }
+        errorMessage={ this.t('error_message') }
         spacing={ this.props.spacing }
-        countryCode={ this.props.countryCode }
-        manualActions={ [this.renderManualButton()] }
-        onError={ this.props.onError }
-        onChange={ this.handleLookupChange }
-        address={ this.state.address } />
+        countryCode={ this.state.countryCode }
+        selectedCountry={ this.state.country }
+        manualAction={ this.renderManualButton() }
+        onError={ this.handleError }
+        onCountrySelect={ this.handleCountrySelect }
+        onChange={ this.handleAddressChange } />
     )
   },
 
-  renderFieldset () {
-    let header = (<Button
-      className="hui-AddressFieldsetWithLookup__reset"
-      kind="primary-borderless"
-      icon="times"
-      iconLeft
-      onClick={ this.clearAddress }>
-      { this.t('reset') }
-    </Button>)
-
+  renderFieldset() {
     return (
       <AddressFieldset
         ref="fieldset"
         spacing={ this.props.spacing }
-        header={ header }
+        header={ this.renderResetButton() }
         prefix={ this.props.prefix }
+        storeLocally={ this.props.storeLocally }
+        autoFocus={ true }
+        showError={ this.props.showError }
         validations={ this.props.validations }
         onError={ this.props.onError }
-        afterChange={ this.handleFieldsetChange }
+        onCountrySelect={ this.handleCountrySelect }
+        onChange={ this.handleAddressChange }
         address={ this.state.address }/>
     )
   },
 
-  render () {
+  render() {
     return (
       <div className="hui-AddressFieldsetWithLookup">
         { !this.state.address ? this.renderLookup() : this.renderFieldset() }

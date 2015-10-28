@@ -315,7 +315,7 @@ describe('TextInput', function() {
     it('will execute onError callback on load if has validate method', function() {
       var validate = sinon.stub().returns(true);
       var onError = sinon.stub();
-      renderIntoDocument(<TextInput validate={ validate } onError={ onError } />);
+      renderIntoDocument(<TextInput required={ true } validate={ validate } onError={ onError } />);
 
       validate.should.have.been.calledWith('');
       onError.should.have.been.calledWith(false);
