@@ -10,18 +10,22 @@ export default React.createClass({
   displayName: 'CountrySelect',
 
   propTypes: {
+    value: React.PropTypes.string,
+    data: React.PropTypes.object,
     displayProperty: React.PropTypes.string,
-    selectedCountry: React.PropTypes.object,
+    onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     onOpen: React.PropTypes.func,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string
   },
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
-      value: 'AU',
-      displayProp: 'label',
+      value: countries[0].value,
+      data: countries[0],
+      displayProperty: 'value',
+      onChange: () => {},
       onSelection: () => {},
       onOpen: () => {},
       layout: 'full',
@@ -29,23 +33,23 @@ export default React.createClass({
     }
   },
 
-  render () {
+  componentDidMount() {
+    this.props.onChange(this.props.value)
+    this.props.onSelection(this.props.data)
+  },
+
+  render() {
     let classes = classnames([
       this.props.className,
       'hui-CountrySelect'
     ])
 
     return (
-      <FilterSelect
+      <FilterSelect { ...this.props }
         className={ classes }
-        spacing={ this.props.spacing }
-        layout={ this.props.layout }
         label="Select your country"
         options={ countries }
-        value={ this.props.value }
-        Display={ CountrySelectDisplay }
-        onOpen={ this.props.onOpen }
-        onSelection={ this.props.onSelection } />
+        Display={ CountrySelectDisplay } />
     )
   }
 })

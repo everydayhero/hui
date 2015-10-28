@@ -2,6 +2,7 @@
 
 import React from 'react'
 import find from 'lodash/collection/find'
+import isEqual from 'lodash/lang/isEqual'
 import validatable from '../../mixins/validatable'
 import inputMessage from '../../mixins/inputMessage'
 import FilterSelectDisplay from './Display'
@@ -16,6 +17,7 @@ export default React.createClass({
 
   propTypes: {
     value: React.PropTypes.string,
+    data: React.PropTypes.object,
     options: React.PropTypes.array.isRequired,
     properties: React.PropTypes.array,
     onChange: React.PropTypes.func,
@@ -25,6 +27,7 @@ export default React.createClass({
     errorMessage: React.PropTypes.string,
     errors: React.PropTypes.array,
     validate: React.PropTypes.func,
+    displayProperty: React.PropTypes.string,
     Display: React.PropTypes.func,
     Option: React.PropTypes.func,
     layout: React.PropTypes.string,
@@ -38,6 +41,7 @@ export default React.createClass({
       filterLabel: 'Filter',
       properties: ['label'],
       value: '',
+      data: null,
       Display: FilterSelectDisplay,
       onChange: () => {},
       onSelection: () => {},
@@ -52,31 +56,29 @@ export default React.createClass({
   },
 
   getInitialState () {
-    let selected = find(this.props.options, (option) => {
-      return (!!option.value && option.value) === this.props.value
-    })
-
+    let props = this.props
     return {
       focused: false,
-      value: this.props.value || '',
-      filteredOptions: this.props.options,
-      selectedOption: selected,
+      value: props.value || '',
+      filteredOptions: props.options,
+      selectedOption: this.getSelected(props.value, props.data),
       isOpen: false,
       filterValue: ''
     }
   },
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.value) {
-      let selected = find(this.props.options, (option) => {
-        return (!!option.value && option.value) === nextProps.value
-      })
-
+    if (nextProps.value !== this.props.value || !isEqual(nextProps.data, this.props.data)) {
       this.setState({
         value: nextProps.value,
-        selectedOption: selected
+        data: nextProps.data,
+        selectedOption: this.getSelected(nextProps.value, nextProps.data)
       })
     }
+  },
+
+  getSelected(value, data) {
+    return find(this.props.options, opt => (opt.value && opt.value === value) || (opt.label && opt.label === value) || isEqual(opt, data))
   },
 
   filter (filterValue) {
@@ -94,11 +96,9 @@ export default React.createClass({
 
   openOptionList () {
     this.setState({
-      isOpen: true
-    }, () => {
-      this.props.onOpen()
-      this.refs.filterInput.refs.input.getDOMNode().focus()
-    })
+      isOpen: true,
+      filterValue: ''
+    }, this.props.onOpen)
   },
 
   setFocus (focused) {
@@ -120,19 +120,19 @@ export default React.createClass({
   },
 
   filterKeyHandlers: {
-    9: function () {
+    9() {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[9].call(optionList)
       }
     },
-    13: function (e) {
+    13(e) {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[13].call(optionList, e)
       }
     },
-    40: function (e) {
+    40(e) {
       let optionList = this.refs.optionList
       if (optionList) {
         e.preventDefault()
@@ -160,11 +160,7 @@ export default React.createClass({
 
   handleDisplayChange (e) {
     let value = !!e.target && e.target.value
-    let selected = find(this.props.options, (option) => {
-      return option.value === value
-    })
-
-    this.handleSelection(selected)
+    this.handleSelection(this.getSelected(value))
   },
 
   handleDisplayClick (e) {
@@ -176,9 +172,9 @@ export default React.createClass({
     let Display = this.props.Display
     let selected = this.state.selectedOption
 
-    return  (
+    return (
       <div className="hui-FilterSelect__display">
-        <Display selected={ selected } />
+        <Display selected={ selected } displayProperty={ this.props.displayProperty }/>
 
         <select
           ref="displayInput"
@@ -194,6 +190,7 @@ export default React.createClass({
           { this.props.options.map((option) => {
             return (
               <option
+                key={ option.value }
                 value={ option.value }
                 label={ option.label }>
                 { option.label }
@@ -210,6 +207,7 @@ export default React.createClass({
       <div>
         <TextInput
           ref="filterInput"
+          autoFocus={ true }
           spacing="compact"
           className="hui-FilterSelect__filter-input"
           label={ this.props.filterLabel }

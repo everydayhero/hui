@@ -11,6 +11,7 @@ export default React.createClass({
   propTypes: {
     spacing: React.PropTypes.string,
     layout: React.PropTypes.string,
+    displayProperty: React.PropTypes.string,
     selected: React.PropTypes.object,
     openFilter: React.PropTypes.func
   },
@@ -19,6 +20,7 @@ export default React.createClass({
     return {
       spacing: 'compact',
       layout: 'full',
+      displayProperty: 'value',
       selected: null,
       openFilter: () => {}
     }
@@ -41,7 +43,7 @@ export default React.createClass({
             className="hui-CountrySelectDisplay__flag-icon"
             country={ (!!selected && selected.value) } />
           <span className="hui-CountrySelectDisplay__value">
-            { !!selected && selected.value }
+            { !!selected && selected[props.displayProperty] }
           </span>
           <Icon className="hui-CountrySelectDisplay__icon" icon="caret-down" />
         </div>

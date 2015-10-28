@@ -9,13 +9,13 @@ import OptionList from '../OptionList'
 import getJSON from '../../lib/getJSON'
 import merge from 'lodash/object/merge'
 import debounce from 'lodash/function/debounce'
-import i18nable from '../../mixins/I18n'
+import I18n from '../../mixins/I18n'
 import i18n from './i18n'
 
 export default React.createClass({
   displayName: 'UrlSearchSelect',
 
-  mixins: [i18nable, validatable, inputMessage],
+  mixins: [I18n, validatable, inputMessage],
 
   propTypes: {
     label: React.PropTypes.string,
@@ -25,24 +25,26 @@ export default React.createClass({
     minQueryLength: React.PropTypes.number,
     responseProperty: React.PropTypes.string,
     deserializeResponse: React.PropTypes.func,
-    manualActions: React.PropTypes.array,
+    manualAction: React.PropTypes.node,
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
+    onError: React.PropTypes.func,
     hint: React.PropTypes.string,
     emptyLabel: React.PropTypes.string,
     errorMessage: React.PropTypes.string,
     errors: React.PropTypes.array,
     validate: React.PropTypes.func,
     layout: React.PropTypes.string,
-    spacing: React.PropTypes.string
+    spacing: React.PropTypes.string,
+    pendingRequest: React.PropTypes.bool
   },
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
       label: 'Search',
       queryProperty: 'q',
       minQueryLength: 5,
-      manualActions: [],
+      manualAction: [],
       responseProperty: 'resources',
       onChange: () => {},
       onSelection: () => {},
@@ -53,81 +55,81 @@ export default React.createClass({
       errors: [],
       validate: () => {},
       layout: 'full',
-      spacing: 'loose'
+      spacing: 'loose',
+      pendingRequest: false
     }
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       isOpen: false,
-      params: this.props.params,
       value: '',
       results: [],
-      pendingRequest: null
+      pendingRequest: this.props.pendingRequest
     }
   },
 
-  deserializeResponse (response) {
+  deserializeResponse(response) {
     let method = this.props.deserializeResponse || this.defaultDeserializer
     return method.call(this, response)
   },
 
-  defaultDeserializer (response) {
+  defaultDeserializer(response) {
     return response[this.props.responseProperty]
   },
 
-  getParams () {
+  getParams(query) {
     return merge(this.props.params, {
-      __jsonp: this.props.jsonp,
-      [this.props.queryProperty]: this.state.queryValue
+      [this.props.queryProperty]: query
     })
   },
 
-  setWaiting (waiting) {
-    this.refs.searchInput.setState({
-      waiting
-    })
-  },
-
-  fetchResults () {
-    let request = getJSON(this.props.url, this.getParams())
-    request.then((response) => {
-      let results = this.deserializeResponse(response)
-      this.setState({
-        pendingRequest: null,
-        isOpen: true,
-        results
-      }, () => {
-        this.setWaiting(false)
+  fetchResults(query) {
+    let endState = { pendingRequest: null, isOpen: true }
+    return getJSON(this.props.url, this.getParams(query))
+      .then(response => {
+        if (!response) { return }
+        let results = this.deserializeResponse(response)
+        this.setState({
+          ...endState,
+          results
+        })
       })
-    })
-    return request
+      .catch(err => {
+        this.setState(endState)
+        this.props.onError(err)
+      })
   },
 
-  queueResultFetch: debounce(function (query) {
+  cancelRequest() {
     if (this.state.pendingRequest) {
       this.state.pendingRequest.cancel()
+      this.setState({ pendingRequest: null })
     }
-    let request = this.fetchResults(query)
-    this.setState({
-      pendingRequest: request
-    }, () => {
-      this.setWaiting(true)
-    })
-    return request
+  },
+
+  queueResultFetch: debounce(function(query) {
+    if (this.isMounted()) {
+      this.setState({ pendingRequest: this.fetchResults(query) })
+    }
   }, 250, { trailing: true }),
 
-  handleSearchInputChange (query) {
+  handleSearchInputChange(query) {
+    let queryBelowMin = query.length < this.props.minQueryLength
+    this.cancelRequest()
     this.setState({
-      queryValue: query
+      queryValue: query,
+      hasError: false,
+      results: queryBelowMin ? [] : this.state.results,
+      isOpen: queryBelowMin ? false : this.state.isOpen
     }, () => {
-      if (query.length < this.props.minQueryLength) return
-
-      this.queueResultFetch(query)
+      this.props.onChange(query)
+      if (query.length >= this.props.minQueryLength) { this.queueResultFetch(query) }
     })
   },
 
-  handleSelection (option) {
+  handleSelection(option) {
+    if (!option) { return }
     this.setState({
       isOpen: false,
       selectedOption: option,
@@ -141,19 +143,19 @@ export default React.createClass({
   },
 
   keyHandlers: {
-    9: function () {
+    9() {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[9].call(optionList)
       }
     },
-    13: function (e) {
+    13(e) {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[13].call(optionList, e)
       }
     },
-    40: function (e) {
+    40(e) {
       let optionList = this.refs.optionList
       if (optionList) {
         e.preventDefault()
@@ -162,7 +164,7 @@ export default React.createClass({
     }
   },
 
-  handleKeyDown (e) {
+  handleKeyDown(e) {
     let key = e.keyCode || e.which
 
     if (this.keyHandlers[key]) {
@@ -170,7 +172,7 @@ export default React.createClass({
     }
   },
 
-  requireValue () {
+  requireValue() {
     let hasError = this.props.required && !this.state.selectedOption
     this.setState({
       hasError,
@@ -180,15 +182,20 @@ export default React.createClass({
     })
   },
 
-  render () {
+  render() {
+    let props = this.props
+    let state = this.state
     let classes = classnames([
-      this.props.className,
-      'hui-UrlSearchSelect--' + this.props.layout,
-      'hui-UrlSearchSelect--' + this.props.spacing,
+      props.className,
+      'hui-UrlSearchSelect--' + props.layout,
+      'hui-UrlSearchSelect--' + props.spacing,
       'hui-UrlSearchSelect',
-      !!this.state.isOpen && 'hui-UrlSearchSelect--open',
-      !!this.state.hasError && 'hui-UrlSearchSelect--error'
+      !!state.isOpen && 'hui-UrlSearchSelect--open',
+      !!state.hasError && 'hui-UrlSearchSelect--error'
     ])
+    let inputIcon = state.pendingRequest || props.pendingRequest ? 'refresh'
+      : state.isOpen ? 'chevron-down'
+      : 'search'
 
     return (
       <div className={ classes }>
@@ -196,31 +203,31 @@ export default React.createClass({
           ref="searchInput"
           className="hui-UrlSearchSelect__search-input"
           spacing="compact"
-          value={ this.state.queryValue }
-          icon="chevron-down"
-          label={ this.props.label }
-          showError={ this.state.hasError }
+          value={ state.queryValue }
+          icon={ inputIcon }
+          label={ props.label }
+          showError={ state.hasError }
           onBlur={ this.requireValue }
           onKeyDown={ this.handleKeyDown }
           onChange={ this.handleSearchInputChange }/>
-        { this.state.isOpen ?
+        { state.isOpen ?
           <div className="hui-UrlSearchSelect__dropdown">
             <OptionList
               ref="optionList"
               spacing="compact"
               className="hui-UrlSearchSelect__option-list"
-              emptyLabel={ this.props.emptyLabel || this.t('empty_label') }
-              options={ this.state.results }
-              selectedOption={ this.state.selectedOption }
+              emptyLabel={ props.emptyLabel || this.t('empty_label') }
+              options={ state.results }
+              selectedOption={ state.selectedOption }
               onSelection={ this.handleSelection } />
 
-            { !!this.props.manualActions.length &&
-              <div className="hui-UrlSearchSelect__manual-actions">
-                { this.props.manualActions }
+            { !!props.manualAction &&
+              <div className="hui-UrlSearchSelect__manual-action">
+                { props.manualAction }
               </div> }
           </div> : null }
 
-        { this.renderMessage(this.state.hasError) }
+        { this.renderMessage(state.hasError) }
       </div>
     )
   },

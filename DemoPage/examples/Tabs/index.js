@@ -35,7 +35,7 @@ export default React.createClass({
           <div key="raised">
             <p>Amount raised goes here</p>
             <p>On Page: { state.currentPage }</p>
-            <Pagination {...state} onChange={ this.onPage } />
+            <Pagination { ...state } onChange={ this.onPage } />
           </div>
         )
       },

@@ -195,17 +195,19 @@ module.exports = React.createClass({
   },
 
   getList: _.debounce(function(input) {
-    var minChars = this.isPAFLookup() ? 5 : 7;
-    this.state.cancelSearch();
-    if (input.length >= minChars) {
-      this.setState({
-        loading: true,
-        addressList: null
-      }, function () {
+    if (this.isMounted()) {
+      var minChars = this.isPAFLookup() ? 5 : 7;
+      this.state.cancelSearch();
+      if (input.length >= minChars) {
         this.setState({
-          cancelSearch: addressAPI.search(input, this.state.country.iso, this.setList)
-        })
-      });
+          loading: true,
+          addressList: null
+        }, function () {
+          this.setState({
+            cancelSearch: addressAPI.search(input, this.state.country.iso, this.setList)
+          })
+        });
+      }
     }
   }, 250, { trailing: true }),
 

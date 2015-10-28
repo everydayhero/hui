@@ -3,11 +3,11 @@
 let map = {
   user: `https://{{ domain }}/quantified_dashboard/user.json`,
   page: `https://{{ domain }}/api/v2/pages`,
-  address: `https://{{ domain }}/api/v2/addresses/{{ countryCode }}`,
   aggregate_search: `https://{{ domain }}/api/v2/search/aggregate`,
   campaign_search: `https://{{ domain }}/api/v2/search/campaigns`,
   charity_search: `https://{{ domain }}/api/v2/search/charities`,
   page_search: `https://{{ domain }}/api/v2/search/pages`,
+  address: `https://{{ domain }}/api/v2/addresses`,
   addresses_search: `https://{{ domain }}/api/v2/addresses`
 }
 

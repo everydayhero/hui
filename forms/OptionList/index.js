@@ -65,25 +65,25 @@ export default React.createClass({
   },
 
   keyHandlers: {
-    9: function () {
+    9() {
       this.setSelected(this.state.selected)
     },
-    13: function (e) {
+    13(e) {
       e.preventDefault()
       this.setSelected(this.state.selectionCandidate)
     },
-    32: function (e) {
+    32(e) {
       e.preventDefault()
       this.setSelected(this.state.selectionCandidate)
     },
-    40: function (e, index) {
+    40(e, index) {
       e.preventDefault()
       let options = this.props.options
       let newIndex = index + 1 === options.length ? 0 : index + 1
       let option = options[newIndex]
       this.setSelectionCandidate(option)
     },
-    38: function (e, index) {
+    38(e, index) {
       e.preventDefault()
       let options = this.props.options
       let newIndex = index === 0 ? options.length - 1 : index - 1

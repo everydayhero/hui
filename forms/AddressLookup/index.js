@@ -1,14 +1,14 @@
 'use strict'
 
 import React from 'react'
-import find from 'lodash/collection/find'
+import forEach from 'lodash/collection/forEach'
 import classnames from 'classnames'
 import UrlSearchSelect from '../UrlSearchSelect'
 import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import getJSON from '../../lib/getJSON'
 import apiRoutes from '../../api'
-import i18nMixin from '../../mixins/I18n'
+import I18n from '../../mixins/I18n'
 import i18n from './i18n'
 
 const addressesSearchUrl = apiRoutes('addresses_search')
@@ -17,7 +17,7 @@ const addressUrl = apiRoutes('address')
 export default React.createClass({
   displayName: 'AddressLookup',
 
-  mixins: [i18nMixin],
+  mixins: [I18n],
 
   propTypes: {
     layout: React.PropTypes.string,
@@ -25,35 +25,44 @@ export default React.createClass({
     spacing: React.PropTypes.string,
     countryCode: React.PropTypes.string,
     selectedCountry: React.PropTypes.object,
-    onChange: React.PropTypes.func
+    onError: React.PropTypes.func,
+    onChange: React.PropTypes.func,
+    onCountrySelect: React.PropTypes.func,
+    manualAction: React.PropTypes.node,
+    address: React.PropTypes.shape({
+      street_address: React.PropTypes.string,
+      extended_address: React.PropTypes.string,
+      locality: React.PropTypes.string,
+      region: React.PropTypes.string,
+      country_name: React.PropTypes.string,
+      postal_code: React.PropTypes.string
+    })
   },
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
-      countryCode: 'AU',
+      countryCode: countries[0].value,
+      selectedCountry: countries[0],
+      onCountrySelect: () => {},
       onChange: () => {},
       onError: () => {},
       layout: 'full',
-      spacing: 'loose'
+      spacing: 'loose',
+      manualAction: null
     }
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
-      selectedCountry: this.findCountry(this.props.countryCode),
+      selectedCountry: this.props.selectedCountry,
       minQueryLength: this.props.countryCode === 'GB' ? 7 : 5,
       pendingRequest: null,
       address: null
     }
   },
 
-  findCountry (code) {
-    return find(countries, (country) => {
-      return country.value === code
-    })
-  },
-
-  deserializeAddressesResponse (response) {
+  deserializeAddressesResponse(response) {
+    if (!response || !response.addresses) { return [] }
     return response.addresses.map((address) => {
       return {
         value: address.id,
@@ -62,105 +71,102 @@ export default React.createClass({
     })
   },
 
-  isPAFLookup () {
+  isPAFLookup() {
     return ((!!this.state.selectedCountry &&
         this.state.selectedCountry.value) === 'GB')
   },
 
-  isGoogleLookup () {
+  isGoogleLookup() {
     return !this.isPAFLookup()
   },
 
-  getAddressUrl (id) {
-    let addressBase = addressUrl.replace('{{ countryCode }}', this.state.selectedCountry.value)
-    return `${addressBase}/${id}.jsonp`
+  removeNull(o) {
+    return forEach(o, (d, k) => o[k] = d === null ? '' : d)
   },
 
-  fetchAddress (id) {
-    this.refs.searchSelect.setWaiting(true)
-    let request = getJSON(this.getAddressUrl(id))
-    request.then((response) => {
-      let address = response.address
-      if (this.isPAFLookup()) {
-        address.paf_validated = true
-      }
-      this.setState({
-        pendingRequest: null,
-        address
-      }, () => {
-        this.props.onChange(address)
-        this.refs.searchSelect.setWaiting(false)
+  fetchAddress(id) {
+    return getJSON(`${addressUrl}/${this.state.selectedCountry.value}/${id}`)
+      .then(response => {
+        let address = this.removeNull(response.address)
+        if (this.isPAFLookup()) {
+          address.paf_validated = true
+        }
+        this.setState({
+          pendingRequest: null,
+          address
+        }, () => {
+          this.props.onChange(address)
+        })
       })
-    })
-    return request
+      .catch(this.props.onError)
   },
 
-  queueFetchAddress (id) {
+  handleAddressSelection(address) {
     if (this.state.pendingRequest) {
       this.state.pendingRequest.cancel()
     }
-    let request = this.fetchAddress(id)
     this.setState({
-      pendingRequest: request
+      pendingRequest: this.fetchAddress(address.value)
     })
-    return request
   },
 
-  handleAddressSelection (address) {
-    this.queueFetchAddress(address.value)
-  },
-
-  handleCountrySelection (country) {
+  handleCountrySelection(country) {
     this.setState({
       minQueryLength: country.value === 'GB' ? 7 : 5,
       isSelectingCountry: false,
       selectedCountry: country
-    })
+    }, () => this.props.onCountrySelect(country))
   },
 
-  handleCountrySelectOpen () {
+  handleCountrySelectOpen() {
     this.setState({
       isSelectingCountry: true
     })
   },
 
-  render () {
-    var classes = classnames([
-      this.props.className,
-      'hui-AddressLookup--' + this.props.layout,
-      'hui-AddressLookup--' + this.props.spacing,
+  render() {
+    let props = this.props
+    let state = this.state
+    let classes = classnames([
+      props.className,
+      'hui-AddressLookup--' + props.layout,
+      'hui-AddressLookup--' + props.spacing,
       'hui-AddressLookup'
     ])
     let urlSearchSelectClasses = classnames({
       'hui-AddressLookup_url-search-select': true,
       'hui-AddressLookup_url-search-select--google': this.isGoogleLookup(),
-      'hui-AddressLookup_url-search-select--inactive': this.state.isSelectingCountry
+      'hui-AddressLookup_url-search-select--inactive': state.isSelectingCountry
     })
     let countrySelectClasses = classnames({
       'hui-AddressLookup__country-select': true,
-      'hui-AddressLookup__country-select--active': this.state.isSelectingCountry
+      'hui-AddressLookup__country-select--active': state.isSelectingCountry
     })
     return (
       <div className={ classes }>
         <UrlSearchSelect
           ref="searchSelect"
-          label={ this.t('search_prompt', { scope: this.state.selectedCountry.value }) }
+          label={ this.t('search_prompt', { scope: state.selectedCountry.value }) }
           className={ urlSearchSelectClasses }
-          url={ addressesSearchUrl + '.jsonp' }
-          params={ { country_code: this.state.selectedCountry.value } }
+          url={ addressesSearchUrl }
+          params={ { country_code: state.selectedCountry.value } }
           spacing="compact"
-          required={ this.props.required }
-          errorMessage={ this.props.errorMessage }
-          emptyLabel={ this.props.emptyLabel || this.t('empty_label', { scope: this.state.selectedCountry.value }) }
-          manualActions={ this.props.manualActions }
-          minQueryLength={ this.state.minQueryLength }
+          pendingRequest={ !!state.pendingRequest }
+          required={ props.required }
+          errorMessage={ props.errorMessage }
+          emptyLabel={ props.emptyLabel || this.t('empty_label', { scope: state.selectedCountry.value }) }
+          manualAction={ props.manualAction }
+          minQueryLength={ state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
           onError={ this.props.onError }
+          onChange={ this.props.onChange }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
           spacing="compact"
+          displayProperty="value"
           className={ countrySelectClasses }
-          value={ this.state.selectedCountry.value }
+          value={ state.selectedCountry.value }
+          data={ state.selectedCountry }
           onOpen={ this.handleCountrySelectOpen }
           onSelection={ this.handleCountrySelection } />
       </div>

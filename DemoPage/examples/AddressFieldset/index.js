@@ -26,15 +26,20 @@ export default React.createClass({
   },
 
   render: function() {
+    let address = this.state.address
+
     return (
       <div>
         <h3 className="DemoPage__h3" id="AddressFieldset">AddressFieldset</h3>
 
         <AddressFieldset
-          afterChange={ this.handleChange }/>
+          storeLocally={ true }
+          onChange={ this.handleChange }/>
 
         <p className="DemoPage__p">
-          { this.state.address.street_address || 'No address selected' }
+          { address.street_address
+            ? `${address.street_address}, ${address.extended_address}, ${address.locality}, ${address.region}, ${address.country_name}, ${address.postal_code}`
+            : 'No address selected' }
         </p>
       </div>
     )
