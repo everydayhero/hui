@@ -5,6 +5,8 @@ var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' }})
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
+var browserifyInc = require('browserify-incremental');
+var merge = require('lodash/object/merge');
 
 // Tasks
 require('./gulp_tasks/assets-deploy');
@@ -44,12 +46,15 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
   src.scripts = ['./**/*.js'].concat(exclude);
 
-  var bundler = browserify({
+  var bundler = browserify(merge(browserifyInc.args, {
     entries: ['./index.js'],
     transform: ['babelify'],
     insertGlobals: true,
     debug: debug
-  });
+  }))
+  browserifyInc(bundler, {
+    cacheFile: './browserify-cache.json'
+  })
 
   return bundler
     .bundle()
