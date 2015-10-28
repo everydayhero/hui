@@ -3,6 +3,7 @@
 // Requires I18n mixin
 
 import merge from 'lodash/object/merge'
+import isEmpty from 'lodash/lang/isEmpty'
 import cloneDeep from 'lodash/lang/cloneDeep'
 import React from 'react'
 import validation from '../lib/validation'
@@ -50,7 +51,7 @@ export default {
   setErrors() {
     let errors = cloneDeep(this.errors)
     this.setState({ errors })
-    if (this.props.onError) { this.props.onError(errors) }
+    if (this.props.onError) { this.props.onError(isEmpty(errors) || errors) }
   },
 
   onFieldError(key) {

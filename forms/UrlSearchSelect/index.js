@@ -26,6 +26,7 @@ export default React.createClass({
     responseProperty: React.PropTypes.string,
     deserializeResponse: React.PropTypes.func,
     manualAction: React.PropTypes.node,
+    showError: React.PropTypes.bool,
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     onError: React.PropTypes.func,
@@ -46,6 +47,7 @@ export default React.createClass({
       minQueryLength: 5,
       manualAction: [],
       responseProperty: 'resources',
+      showError: false,
       onChange: () => {},
       onSelection: () => {},
       onError: () => {},
@@ -66,6 +68,12 @@ export default React.createClass({
       value: '',
       results: [],
       pendingRequest: this.props.pendingRequest
+    }
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.showError !== this.props.showError) {
+      this.setState({ hasError: nextProps.showError })
     }
   },
 
@@ -183,8 +191,7 @@ export default React.createClass({
   },
 
   render() {
-    let props = this.props
-    let state = this.state
+    let { props, state } = this
     let classes = classnames([
       props.className,
       'hui-UrlSearchSelect--' + props.layout,

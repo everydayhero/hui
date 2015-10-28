@@ -1,41 +1,41 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var InputErrors = require('../forms/InputErrors');
+import React from 'react'
+import InputErrors from '../forms/InputErrors'
 
-module.exports = {
-  onTab: function(e) {
-    var props = this.props;
+export default {
+  onTab(e) {
+    let props = this.props
     if(e.key === 'Tab' && props.onTab) {
-      props.onTab(props.value);
+      props.onTab(props.value)
     }
   },
 
-  shouldShowError: function() {
-    var props = this.props;
-    var errors = props.errors || [];
+  shouldShowError() {
+    let props = this.props
+    let errors = props.errors || []
 
-    return this.state.hasError || errors.length || props.showError;
+    return this.state.hasError || errors.length
   },
 
-  renderMessage: function(hasMessage) {
-    var props = this.props;
-    var message;
+  renderMessage(hasMessage) {
+    let props = this.props
+    let message
 
-    var errors = this.state.hasError
+    let errors = this.state.hasError
       ? [props.errorMessage]
-      : props.errors || [];
+      : props.errors || []
 
     if (errors.length > 0) {
-      message = (<InputErrors errors={ errors } />);
+      message = (<InputErrors errors={ errors } />)
     } else {
-      message = this.props.hint;
+      message = this.props.hint
     }
 
     return hasMessage && (
       <div className="hui-TextInput__message">
         { message }
       </div>
-    );
+    )
   }
-};
+}

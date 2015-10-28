@@ -22,6 +22,7 @@ export default React.createClass({
   propTypes: {
     layout: React.PropTypes.string,
     required: React.PropTypes.bool,
+    showError: React.PropTypes.bool,
     spacing: React.PropTypes.string,
     countryCode: React.PropTypes.string,
     selectedCountry: React.PropTypes.object,
@@ -43,6 +44,7 @@ export default React.createClass({
     return {
       countryCode: countries[0].value,
       selectedCountry: countries[0],
+      showError: false,
       onCountrySelect: () => {},
       onChange: () => {},
       onError: () => {},
@@ -158,6 +160,7 @@ export default React.createClass({
           manualAction={ props.manualAction }
           minQueryLength={ state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
+          showError={ this.props.showError }
           onError={ this.props.onError }
           onChange={ this.props.onChange }
           onSelection={ this.handleAddressSelection } />
