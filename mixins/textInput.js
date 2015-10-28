@@ -33,12 +33,10 @@ export default {
   expose(value) {
     value = this.maskValue(value)
     let props = this.props
-    let onChange = props.onChange
-    let onError = props.onError
-    let validate = props.validate
+    let { onChange, onError, validate, required } = props
 
     if (onChange) { onChange(value) }
-    if (onError && validate && props.required) { onError(!validate(value)) }
+    if (onError && validate && required) { onError(!validate(value)) }
   },
 
   validate(val) {
