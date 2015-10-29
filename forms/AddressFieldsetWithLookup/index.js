@@ -8,13 +8,14 @@ import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'
 import countries from '../CountrySelect/countries'
+import localStorage from '../../mixins/localStorage'
 import I18n from '../../mixins/I18n'
 import i18n from './i18n'
 
 export default React.createClass({
   displayName: 'AddressFieldsetWithLookup',
 
-  mixins: [I18n],
+  mixins: [I18n, localStorage],
 
   propTypes: {
     spacing: React.PropTypes.string,
@@ -151,6 +152,7 @@ export default React.createClass({
         countryCode={ this.state.countryCode }
         selectedCountry={ this.state.country }
         manualAction={ this.renderManualButton() }
+        showError={ this.props.showError }
         onError={ this.handleError }
         onCountrySelect={ this.handleCountrySelect }
         onChange={ this.handleAddressChange } />

@@ -202,7 +202,7 @@ describe('TextInput', function() {
     });
 
     it('does have TextInput--error class when errors is present', function() {
-      element = renderIntoDocument(<TextInput error={ true } errorMessage="foo" showError={ true }/>);
+      element = renderIntoDocument(<TextInput errors={ [true] } errorMessage="foo" />);
       errorClasses = scryByClass(element, 'hui-TextInput--error');
 
       errorClasses.length.should.equal(1);
