@@ -39,7 +39,7 @@ describe('NavUser', () => {
     }, 15)
   })
 
-  it('loads a user', (done) => {
+  xit('loads a user', (done) => {
     getJSON.returns(success)
     let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
     setTimeout(() => {
@@ -54,7 +54,7 @@ describe('NavUser', () => {
     }, 15)
   })
 
-  it('accepts a user', (done) => {
+  xit('accepts a user', (done) => {
     getJSON.returns(success)
     let element = renderIntoDocument(<NavUser { ...defaultProps } user={ userData }/>)
     setTimeout(() => {
