@@ -2,7 +2,7 @@
 
 var React               = require('react/addons');
 var PureRenderMixin     = React.addons.PureRenderMixin;
-var cx                  = require('react/lib/cx');
+var cx                  = require('classnames');
 var I18nMixin           = require('../../../mixins/I18n');
 var _                   = require('lodash');
 var Input               = require('../../TextInput');

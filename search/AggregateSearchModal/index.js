@@ -4,7 +4,7 @@ import 'console-polyfill'
 
 import Promise from 'bluebird'
 import React from 'react'
-import cx from 'react/lib/cx'
+import cx from 'classnames'
 import I18n from '../../mixins/I18n'
 import Input from '../../forms/TextInput'
 import Icon from '../../atoms/Icon'
