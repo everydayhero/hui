@@ -29,7 +29,7 @@ describe('NavPagesPage', () => {
     page.getDOMNode().href.should.equal(testPage.url)
   })
 
-  it('displays page image with page state icon', () => {
+  xit('displays page image with page state icon', () => {
     let imgWrap = findByClass(page, 'hui-NavPagesPage__image')
     findByTag(imgWrap, 'img').getDOMNode().src.should.equal(testPage.image.small_image_url)
     findByClass(imgWrap, 'hui-NavPagesPage__icon').should.exist

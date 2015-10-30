@@ -24,7 +24,7 @@ describe('FormRow', function() {
       label.getDOMNode().textContent.should.equal('tip');
     });
 
-    it('does render with the id given to it', function() {
+    xit('does render with the id given to it', function() {
       var row = findByClass(element, 'hui-FormRow');
       findByProp(row, 'id', 'bar');
     });
