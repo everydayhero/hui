@@ -2,7 +2,7 @@
 
 var React           = require('react/addons');
 var PureRenderMixin = React.addons.PureRenderMixin;
-var cx              = require('react/lib/cx');
+var cx              = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'AddressListing',
