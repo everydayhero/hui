@@ -34,7 +34,6 @@ export default React.createClass({
     emptyLabel: React.PropTypes.string,
     errorMessage: React.PropTypes.string,
     errors: React.PropTypes.array,
-    validate: React.PropTypes.func,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
     pendingRequest: React.PropTypes.bool
@@ -55,7 +54,6 @@ export default React.createClass({
       emptyLabel: '',
       errorMessage: '',
       errors: [],
-      validate: () => {},
       layout: 'full',
       spacing: 'loose',
       pendingRequest: false
@@ -214,8 +212,10 @@ export default React.createClass({
           icon={ inputIcon }
           label={ props.label }
           showError={ state.hasError }
+          required={ props.required }
           onBlur={ this.requireValue }
           onKeyDown={ this.handleKeyDown }
+          onError={ props.onError }
           onChange={ this.handleSearchInputChange }/>
         { state.isOpen ?
           <div className="hui-UrlSearchSelect__dropdown">

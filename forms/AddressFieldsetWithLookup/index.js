@@ -2,7 +2,6 @@
 
 import React from 'react'
 import find from 'lodash/collection/find'
-import includes from 'lodash/collection/includes'
 import isEmpty from 'lodash/lang/isEmpty'
 import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
@@ -68,10 +67,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    let props = this.props
-    let errors = this.state.errors
-    props.onChange(props.prefill)
-    props.onError(includes(errors, true) || isEmpty(errors))
+    this.isAnyFieldRequired() && this.props.onError(isEmpty(this.state.address))
   },
 
   componentWillUnmount() {
