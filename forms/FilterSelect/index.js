@@ -207,7 +207,7 @@ export default React.createClass({
       <div>
         <TextInput
           ref="filterInput"
-          autoFocus={ true }
+          autoFocus
           spacing="compact"
           className="hui-FilterSelect__filter-input"
           label={ this.props.filterLabel }
