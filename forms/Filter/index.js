@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-// import I18n from '../../mixins/i18n'
 import textInputProps from '../../mixins/textInputProps'
 import Input from '../TextInput'
 
@@ -9,6 +8,7 @@ export default React.createClass({
   displayName: 'Filter',
 
   propTypes: {
+    filterValue: React.PropTypes.string,
     inputOptions: React.PropTypes.shape(textInputProps.types),
     collection: React.PropTypes.array,
     properties: React.PropTypes.array,
@@ -17,28 +17,35 @@ export default React.createClass({
 
   getDefaultProps () {
     return {
+      filterValue: '',
       inputOptions: textInputProps.defaults,
       collection: [],
       properties: ['name'],
-      onFilter: () => {}
+      onFilter: () => {},
+      onChange: () => {}
     }
   },
 
   getInitialState () {
-    return { filterValue: '' }
+    return {
+      filterValue: this.props.filterValue
+    }
   },
 
   filter (filterValue) {
     const query   = new RegExp(filterValue.split('').join('.*'), 'gi')
     const results = this.props.collection.filter((option) => {
       return this.props.properties.some((property) => {
-        return option[property] && option[property].match(query)
+        return !!option[property] && option[property].match(query)
       })
     })
 
     this.props.onFilter(results)
+
     this.setState({
       filterValue
+    }, () => {
+      this.props.onChange(filterValue)
     })
   },
 
