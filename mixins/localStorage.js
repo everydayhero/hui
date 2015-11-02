@@ -17,11 +17,9 @@ function getLocalStorageKey(component) {
   return component.props.localStorageKey || component.props.name || getDisplayName(component) || 'react-localstorage'
 }
 
-function loadStateFromLocalStorage(component, cb) {
+function loadStateFromLocalStorage(component, done) {
   let key = getLocalStorageKey(component)
   let settingState = false
-
-  const done = () => cb()
 
   try {
     let storedState = JSON.parse(ls.getItem(key))
@@ -44,9 +42,8 @@ export default {
 
   componentWillMount () {
     if (!ls || !this.props.storeLocally) return
-    let self = this
-    loadStateFromLocalStorage(this, function() {
-      ls.setItem(getLocalStorageKey(self), JSON.stringify(self.state))
+    loadStateFromLocalStorage(this, () => {
+      ls.setItem(getLocalStorageKey(this), JSON.stringify(this.state))
     })
   }
 }
