@@ -41,6 +41,25 @@
   line-height: $x-4;
 }
 
+.DemoPage__pre-wrap {
+  @extend %general-reset;
+  padding: 0 16px 32px;
+  float: left;
+  width: 100%;
+}
+
+.DemoPage__pre {
+  font-family: monospace;
+  margin-bottom: $x-4;
+  color: $grey;
+  font-size: 14px;
+  line-height: $x-4;
+  padding: 1em;
+  border-radius: $border-radius;
+  background-color: $grey;
+  color: whitesmoke;
+}
+
 .DemoPage__ul {
   @extend %general-reset;
   margin-left: $x-6;

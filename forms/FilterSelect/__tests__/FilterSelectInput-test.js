@@ -47,52 +47,6 @@ describe('FilterSelect', () => {
     })
   })
 
-  describe('#filter', () => {
-    context('when no property array has been passed', () => {
-      it('fuzzy matches the `label` propery of each props.options to the value of refs.filterInput', () => {
-        let options = [
-          { value: '1', label: 'Tim Rogers' },
-          { value: '2', label: 'Tex Perkins' },
-          { value: '3', label: 'Ben Ely' }
-        ]
-        let element = renderIntoDocument(
-          <FilterSelect options={ options } />
-        )
-
-        element.filter('t r')
-        let subject = element.state.filteredOptions
-
-        expect(subject).to.eql([
-          { value: '1', label: 'Tim Rogers' },
-          { value: '2', label: 'Tex Perkins' }
-        ])
-      })
-    })
-
-    context('when a property array has been passed', () => {
-      it('matches on those specified properties', () => {
-        let options = [
-          { value: '1', label: 'Tim Rogers' },
-          { value: '2', label: 'Tex Perkins' },
-          { value: 'G', label: 'Ben Ely' }
-        ]
-        let element = renderIntoDocument(
-          <FilterSelect
-            options={ options }
-            properties={ ['value', 'label'] } />
-        )
-
-        element.filter('G')
-        let subject = element.state.filteredOptions
-
-        expect(subject).to.eql([
-          { value: '1', label: 'Tim Rogers' },
-          { value: 'G', label: 'Ben Ely' }
-        ])
-      })
-    })
-  })
-
   describe('the display select', () => {
     it('sets state.focused to true on focus', () => {
       let element = renderIntoDocument(
@@ -135,7 +89,7 @@ describe('FilterSelect', () => {
   })
 
   describe('the filter TextInput', () => {
-    it('calls #filter on change', () => {
+    it('filters the options on change', () => {
       let options = [
         { value: '1', label: 'Tim Rogers' },
         { value: '2', label: 'Tex Perkins' },
@@ -146,7 +100,7 @@ describe('FilterSelect', () => {
       )
       element.openOptionList()
 
-      let input = element.refs.filterInput.refs.input.getDOMNode()
+      let input = element.refs.filter.refs.filterInput.refs.input.getDOMNode()
       Simulate.change(input, { target: { value: 'Per' }})
 
       let subject = element.state.filteredOptions
@@ -168,7 +122,7 @@ describe('FilterSelect', () => {
         )
         element.openOptionList()
 
-        let input = element.refs.filterInput.refs.input.getDOMNode()
+        let input = element.refs.filter.refs.filterInput.refs.input.getDOMNode()
         Simulate.change(input, { target: { value: 'Per' }})
         Simulate.change(input, { target: { value: '' }})
 

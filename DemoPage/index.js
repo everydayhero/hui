@@ -23,6 +23,7 @@ import UrlSearchSelect from './examples/UrlSearchSelect'
 import DateInput from './examples/DateInput'
 import DateSelect from './examples/DateSelect'
 import FileInput from './examples/FileInput'
+import Filter from './examples/Filter'
 import FilterSelect from './examples/FilterSelect'
 import ImageInput from './examples/ImageInput'
 import ButtonExample from './examples/Button'
@@ -99,6 +100,7 @@ export default React.createClass({
             <DateInput />
             <DateSelect />
             <FileInput />
+            <Filter />
             <FilterSelect />
             <ImageInput />
             <FormRow />

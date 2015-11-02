@@ -7,7 +7,7 @@ import validatable from '../../mixins/validatable'
 import inputMessage from '../../mixins/inputMessage'
 import FilterSelectDisplay from './Display'
 import OptionList from '../OptionList'
-import TextInput from '../TextInput'
+import Filter from '../Filter'
 import classnames from 'classnames'
 
 export default React.createClass({
@@ -78,20 +78,12 @@ export default React.createClass({
   },
 
   getSelected(value, data) {
-    return find(this.props.options, opt => (opt.value && opt.value === value) || (opt.label && opt.label === value) || isEqual(opt, data))
+    return find(this.props.options, opt => (opt.value && opt.value === value) ||
+        (opt.label && opt.label === value) || isEqual(opt, data))
   },
 
-  filter (filterValue) {
-    let query = new RegExp(filterValue.split('').join('.*'), 'gi')
-
-    return this.setState({
-      filterValue,
-      filteredOptions: this.props.options.filter((option) => {
-        return this.props.properties.some((property) => {
-          return option[property] && option[property].match(query)
-        })
-      })
-    })
+  handleFilter (filteredOptions) {
+    return this.setState({ filteredOptions })
   },
 
   openOptionList () {
@@ -117,6 +109,10 @@ export default React.createClass({
       this.props.onChange(option.value)
       this.props.onSelection(option)
     })
+  },
+
+  handleFilterChange (filterValue) {
+    this.setState({ filterValue })
   },
 
   filterKeyHandlers: {
@@ -205,15 +201,20 @@ export default React.createClass({
   renderFilter () {
     return (
       <div>
-        <TextInput
-          ref="filterInput"
-          autoFocus={ true }
-          spacing="compact"
-          className="hui-FilterSelect__filter-input"
+        <Filter
+          ref="filter"
+          inputOptions={{
+            autoFocus: true,
+            spacing: 'compact',
+            className: 'hui-FilterSelect__filter-input',
+            onKeyDown: this.handleFilterKeyDown
+          }}
+          filterValue={ this.state.filterValue }
+          properties={ this.props.properties }
+          collection={ this.props.options }
           label={ this.props.filterLabel }
-          value={ this.state.filterValue }
-          onKeyDown={ this.handleFilterKeyDown }
-          onChange={ this.filter } />
+          onChange={ this.handleFilterChange }
+          onFilter={ this.handleFilter } />
         <OptionList
           className="hui-FilterSelect__option-list"
           ref="optionList"
