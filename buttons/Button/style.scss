@@ -154,6 +154,10 @@ a.hui-Button {
   }
 }
 
+a.hui-Button--slim {
+  line-height: $x-7 - 1;
+}
+
 .hui-Button--cta,
 .hui-Button--secondary {
   border-color: $green;
