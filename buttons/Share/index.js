@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var Button    = require('../Button');
-var openPopup = require('../../lib/openPopup');
-var format    = require('../../lib/format');
+var React     = require('react')
+var Button    = require('../Button')
+var openPopup = require('../../lib/openPopup')
+var format    = require('../../lib/format')
 var serviceConfigs = {
   facebook: {
     name: 'facebook',
@@ -25,65 +25,76 @@ var serviceConfigs = {
     url: 'https://pinterest.com/pin/create/bookmarklet/?media={img}&url={url}&description={title}',
     icon: 'pinterest'
   }
-};
+}
 
 module.exports = React.createClass({
   displayName: 'Share',
   propTypes: {
-    kind: React.PropTypes.oneOf(['facebook', 'twitter', 'googleplus', 'pinterest']).isRequired
+    kind: React.PropTypes.oneOf([
+      'facebook',
+      'twitter',
+      'googleplus',
+      'pinterest'
+    ]).isRequired
   },
 
   getDefaultProps: function() {
-    var window = window || false;
-    var document = document || false;
+    let window = typeof window !== 'undefined' ? window : null
+    let document = typeof document !== 'undefined' ? document : null
 
     return {
-      shareUrl: window ? window.location.href : '',
-      shareTitle: document ? document.title : '',
+      shareUrl: (!!window && window.location.href) || '',
+      shareTitle: (!!document && document.title) || '',
       shareImage: ''
-    };
+    }
   },
 
   openFacebookShare: function() {
-    var props = this.props;
+    var { shareUrl, onComplete } = this.props
 
     window.FB.ui({
       method: 'share',
-      href: this.props.shareUrl
-    }, props.onComplete);
+      href: shareUrl
+    }, onComplete)
   },
 
   onClick: function() {
-    var props = this.props;
-    var service = serviceConfigs[props.kind];
+    var {
+      kind,
+      shareUrl,
+      shareTitle,
+      onComplete,
+      shareImage
+    } = this.props
+    var service = serviceConfigs[kind]
     var popUpConfig = {
       toolbar: 0,
       status: 0,
       width: 640,
       height: 320
-    };
+    }
     var urlParams = {
-      'url': props.shareUrl || window.location.href,
-      'title': props.shareTitle || document.title,
-      'img': props.shareImage
-    };
-    var url = format(service.url, urlParams, true);
+      'url': encodeURIComponent(shareUrl),
+      'title': shareTitle,
+      'img': shareImage
+    }
+    var url = format(service.url, urlParams, true)
 
-    if (typeof window.FB === 'object' && props.kind === 'facebook') {
-      this.openFacebookShare();
+    if (typeof window.FB === 'object' && kind === 'facebook') {
+      this.openFacebookShare()
     } else {
-      openPopup(url, popUpConfig, props.onComplete);
+      openPopup(url, popUpConfig, onComplete)
     }
   },
 
   render: function() {
-    var props = this.props;
-    var service = serviceConfigs[props.kind];
+    var props = this.props
+    var service = serviceConfigs[props.kind]
 
     return (
-      <Button kind={ props.kind } icon={ service.icon } onClick={ this.onClick }>
+      <Button {...props} kind={ props.kind } icon={ service.icon } onClick={ this.onClick }>
         { props.label || service.name }
       </Button>
-    );
+    )
   }
-});
+})
