@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Button from '../../buttons/Button'
+import Share from '../../buttons/Share'
 import ProgressBar from '../../atoms/ProgressBar'
 import numeral from 'numeral'
 import classnames from 'classnames'
@@ -18,10 +19,27 @@ module.exports = React.createClass({
   mixins: [i18nMixin],
 
   propTypes: {
+    shareUrl: React.PropTypes.string,
     onSelect: React.PropTypes.func,
     onView: React.PropTypes.func,
     index: React.PropTypes.number,
-    data: React.PropTypes.object,
+    data: React.PropTypes.shape({
+      name: React.PropTypes.string.isRequired,
+      charity_name: React.PropTypes.string.isRequired,
+      target_cents: React.PropTypes.number.isRequired,
+      url: React.PropTypes.string.isRequired,
+      share_url: React.PropTypes.string,
+      rank: React.PropTypes.number.isRequired,
+      amount: React.PropTypes.shape({
+        cents: React.PropTypes.number.isRequired,
+        currency: React.PropTypes.shape({
+          symbol: React.PropTypes.string
+        })
+      }).isRequired,
+      image: React.PropTypes.shape({
+        medium_image_url: React.PropTypes.string
+      }).isRequired
+    }).isRequired,
     isSelected: React.PropTypes.bool,
     valueType: React.PropTypes.oneOf(['money', 'distance']),
     valueSymbol: React.PropTypes.oneOf(['$', '£', '€', 'km', 'mi', 'm']),
@@ -90,10 +108,10 @@ module.exports = React.createClass({
           </div>
 
           <div className="hui-LeaderboardRow__ctas">
-            <Button kind="primary" inverse={ true } icon="heart" href={ data.url } slim={ true }>Give</Button>
-            <Button kind="primary" inverse={ true } icon="chevron-right" slim={ true } onView={ props.onView }>View Team</Button>
+            <Button kind="primary" inverse slim icon="heart" href={ data.url }>Give</Button>
+            <Button kind="primary" inverse slim icon="chevron-right" onClick={ props.onView }>View Team</Button>
+            { !!data.share_url && <Share kind="facebook" inverse slim label="Share" shareUrl={ data.share_url } /> }
           </div>
-
         </div>
       </div>
     )
@@ -117,7 +135,11 @@ module.exports = React.createClass({
     ])
 
     return (
-      <div className={ classes } onClick={ this.onSelect } onMouseEnter={ this.onSelect } onMouseLeave={ this.onMouseLeave }>
+      <div
+        className={ classes }
+        onClick={ this.onSelect }
+        onMouseEnter={ this.onSelect }
+        onMouseLeave={ this.onMouseLeave }>
         { !state.narrow && this.renderRank() }
         <div className="hui-LeaderboardRow__avatar">
           <img src={ data.image.medium_image_url }/>
