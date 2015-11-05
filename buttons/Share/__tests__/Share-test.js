@@ -34,7 +34,7 @@ describe('Share', function() {
       Simulate.click(button);
 
       expect(openPopup).to.equal(true);
-      expect(passedUrl).to.equal('http://www.facebook.com/sharer.php?u=' + shareUrl);
+      expect(passedUrl).to.equal('http://www.facebook.com/sharer.php?u=http%3A%2F%2Ffoo.com');
       expect(passedCallback).to.equal(onComplete);
     });
   });

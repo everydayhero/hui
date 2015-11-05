@@ -23,8 +23,10 @@ module.exports = React.createClass({
   render: function() {
     let onSelect  = this.onSelect
     let rowData = raisedData.leaderboard.pages
+    let { protocol, host } = location
     rowData.forEach(function(item, index){
       item.rank = index + 1
+      item.share_url = `${protocol}//${host}/#/tracker/team/${ item.uid }`
     })
 
     return (
