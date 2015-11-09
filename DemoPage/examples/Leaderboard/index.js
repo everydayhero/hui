@@ -32,7 +32,7 @@ module.exports = React.createClass({
     let rowData = raisedData.leaderboard.pages
     rowData.forEach((item, index) => {
       item.rank = index + 1
-      item.share_url = this.getShareUrl(item.uuid)
+      item.share_url = this.getShareUrl(item.uid)
     })
 
     return (
