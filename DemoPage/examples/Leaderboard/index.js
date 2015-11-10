@@ -20,13 +20,19 @@ module.exports = React.createClass({
     })
   },
 
+  getShareUrl: function (id) {
+    if (typeof location === 'undefined') { return '' }
+
+    let { protocol, host } = location
+    return `${protocol}//${host}/#/tracker/team/${ id }`
+  },
+
   render: function() {
     let onSelect  = this.onSelect
     let rowData = raisedData.leaderboard.pages
-    let { protocol, host } = location
-    rowData.forEach(function(item, index){
+    rowData.forEach((item, index) => {
       item.rank = index + 1
-      item.share_url = `${protocol}//${host}/#/tracker/team/${ item.uid }`
+      item.share_url = this.getShareUrl(item.uid)
     })
 
     return (
