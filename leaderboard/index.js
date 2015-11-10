@@ -1,11 +1,14 @@
 'use strict'
 
 import React from 'react'
+import OptionList from '../forms/OptionList'
+import find from 'lodash/collection/find'
 
 module.exports = React.createClass({
   displayName: 'Leaderboard',
 
   propTypes: {
+    selectedId: React.PropTypes.string,
     onSelect: React.PropTypes.func,
     rowComponent: React.PropTypes.func,
     rowData: React.PropTypes.array,
@@ -14,66 +17,59 @@ module.exports = React.createClass({
 
   getDefaultProps: function() {
     return {
+      onSelect: () => {},
       valuePath: 'amount.cents'
     }
   },
 
-  getInitialState: function() {
-    return {
-      selectedIndex: -1
-    }
-  },
-
-  onSelect: function(item, index) {
-    let onSelect = this.props.onSelect
-    this.setState({
-      selectedIndex: index
+  getSelected() {
+    return find(this.props.rowData, (datum) => {
+      let { id } = datum
+      let { selectedId } = this.props
+      if (!id || !selectedId) return undefined
+      return id.toString() === selectedId.toString()
     })
-
-    onSelect && onSelect(item, index)
   },
 
-  onMouseLeave: function() {
-    let onDeSelect = this.props.onDeSelect
-    this.setState({
-      selectedIndex: -1
-    })
+  prepareRows() {
+    let {
+      rowData,
+      valuePath,
+      valueType,
+      valueSymbol,
+      valueFormat
+    } = this.props
 
-    onDeSelect && onDeSelect()
-  },
-
-  renderRows: function() {
-    let component = this
-    let props = component.props
-    let rows = [];
-
-    props.rowData.forEach(function(data, index) {
-      let row = {
+    return rowData.map((data) => {
+      let { id, name } = data
+      return {
+        id,
+        name,
         data,
-        onSelect: component.onSelect,
-        onMouseLeave: component.onMouseLeave,
-        valuePath: props.valuePath,
-        valueType: props.valueType,
-        valueSymbol: props.valueSymbol,
-        valueFormat: props.valueFormat,
-        index,
-        isSelected: component.state.selectedIndex === index
+        valuePath,
+        valueType,
+        valueSymbol,
+        valueFormat
       }
-
-      rows.push(
-        <div key={ index } className="hui-Leaderboard__row">
-          { React.createFactory(props.rowComponent)(row) }
-        </div>
-      )
     })
-
-    return rows
   },
 
-  render: function() {
+  render() {
+    let {
+      onSelect,
+      rowComponent
+    } = this.props
+
     return (
       <div className="hui-Leaderboard">
-        { this.renderRows() }
+        <OptionList
+          spacing="compact"
+          options={ this.prepareRows() }
+          valueKey="id"
+          labelKey="name"
+          selectedOption={ this.getSelected() }
+          onSelection={ onSelect }
+          Display={ rowComponent } />
       </div>
     )
   }

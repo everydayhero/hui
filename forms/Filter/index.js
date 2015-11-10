@@ -32,6 +32,10 @@ export default React.createClass({
     }
   },
 
+  blur () {
+    this.refs.filterInput.blur()
+  },
+
   filter (filterValue) {
     const query   = new RegExp(filterValue.split('').join('.*'), 'gi')
     const results = this.props.collection.filter((option) => {

@@ -3,24 +3,18 @@
 import React from 'react'
 import classnames from 'classnames'
 import find from 'lodash/collection/find'
-import Option from './Option'
-
-const NullComponent = {
-  getDOMNode() {
-    return {
-      offsetTop: 0,
-      focus () {}
-    }
-  }
-}
+import Item from './Item'
+import DefaultDisplay from './DefaultDisplay'
 
 export default React.createClass({
   displayName: 'OptionList',
 
   propTypes: {
     options: React.PropTypes.array.isRequired,
+    valueKey: React.PropTypes.string,
+    labelKey: React.PropTypes.string,
     onSelection: React.PropTypes.func,
-    Option: React.PropTypes.func,
+    Display: React.PropTypes.func,
     emptyLabel: React.PropTypes.string,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string
@@ -28,7 +22,9 @@ export default React.createClass({
 
   getDefaultProps () {
     return {
-      Option,
+      Display: DefaultDisplay,
+      valueKey: 'value',
+      labelKey: 'label',
       onSelection: () => {},
       emptyLabel: 'No options to display',
       layout: 'full',
@@ -43,10 +39,21 @@ export default React.createClass({
     }
   },
 
-  componentDidMount () {
-    let selectedAndCandidateRefs = this.getSelectedAndCandidateRefs()
-    let scrollPos = selectedAndCandidateRefs.selected.option.getDOMNode().offsetTop
-    this.refs.scrollContainer.getDOMNode().scrollTop = scrollPos
+  componentWillReceiveProps (nextProps) {
+    let { selectedOption } = nextProps
+    var newState = { focused: false }
+    if (selectedOption) {
+      newState = {
+        ...newState,
+        selected: selectedOption,
+        selectionCandidate: selectedOption
+      }
+    }
+    this.setState(newState)
+  },
+
+  setScroll (pos) {
+    this.refs.scrollContainer.getDOMNode().scrollTop = pos
   },
 
   setSelected (option) {
@@ -60,7 +67,19 @@ export default React.createClass({
 
   setSelectionCandidate (option) {
     this.setState({
-      selectionCandidate: option
+      selectionCandidate: option,
+      focused: true
+    })
+  },
+
+  getVisibleCandidate () {
+    const { selectionCandidate } = this.state
+    const { options, valueKey } = this.props
+
+    if (!selectionCandidate) return false
+
+    return find(options, (option) => {
+      return option[valueKey] === selectionCandidate[valueKey]
     })
   },
 
@@ -92,13 +111,11 @@ export default React.createClass({
     }
   },
 
-  handleKeyDown (e) {
+  handleOptionKeyDown (e) {
     let key = e.keyCode || e.which
     let options = this.props.options
-    let currentOption = find(options, (option) => {
-      return option.value === this.state.selectionCandidate.value
-    })
-    let index = options.indexOf(currentOption)
+    let visibleCandidate = this.getVisibleCandidate()
+    let index = options.indexOf(visibleCandidate)
 
     if (this.keyHandlers[key]) {
       this.keyHandlers[key].call(this, e, index)
@@ -106,124 +123,73 @@ export default React.createClass({
   },
 
   isCandidate(option) {
-    let candidate = this.state.selectionCandidate
-    return candidate && (option.value === candidate.value)
+    let { selectionCandidate } = this.state
+    let { valueKey } = this.props
+
+    return selectionCandidate && (option[valueKey] === selectionCandidate[valueKey])
   },
 
   isSelected(option) {
-    let selected = this.state.selected
-    return selected && (option.value === selected.value)
+    let { selected } = this.state
+    let { valueKey } = this.props
+
+    return selected && (option[valueKey] === selected[valueKey])
   },
 
-  handleRadioChange (e, option) {
-    if (e.target.checked) {
-      e.target.focus()
-      this.setSelected(option)
-    }
+  handleOptionChange(option) {
+    this.setSelected(option)
   },
 
-  getSelectedAndCandidateRefs () {
-    let selected = this.state.selected
-    let candidate = this.state.selectionCandidate
+  handleOptionMouseOver(option) {
+    this.setSelectionCandidate(option)
+  },
 
-    return Object.keys(this.refs).reduce((result, ref) => {
-      if (ref.match(/^option-component-/g)) {
-        let option = this.refs[ref]
-        let index = ref.split('-').pop()
-
-        if (selected && (option.props.value === selected.value)) {
-          let radio = this.refs[`option-radio-${index}`]
-          result.selected = {
-            option,
-            radio
-          }
-        } else if (candidate && (option.props.value === candidate.value)) {
-          let radio = this.refs[`option-radio-${index}`]
-          result.candidate = {
-            option,
-            radio
-          }
-        }
-      }
-      return result
-    }, {
-      selected: {
-        option: NullComponent,
-        radio: NullComponent
-      },
-      candidate: {
-        option: NullComponent,
-        radio: NullComponent
-      }
+  focus() {
+    this.setState({
+      focused: true
     })
   },
 
-  _setFocus () {
-    let selectedAndCandidateRefs = this.getSelectedAndCandidateRefs()
-    selectedAndCandidateRefs.selected.radio.getDOMNode().focus()
-    selectedAndCandidateRefs.candidate.radio.getDOMNode().focus()
-  },
+  renderOptions() {
+    let {
+      Display,
+      valueKey,
+      labelKey
+    } = this.props
 
-  focus () {
-    let visibleCandidate = this.state.selectionCandidate &&
-      find(this.props.options, (option) => {
-        return this.state.selectionCandidate.value === option.value
-      })
-
-    if (!visibleCandidate) {
-      this.setState({
-        selectionCandidate: this.props.options[0]
-      }, this._setFocus)
-    } else {
-      this._setFocus()
-    }
-  },
-
-  renderOptions () {
     return this.props.options.map((option, index) => {
-      let OptionClass = this.props.Option
-
-      let classes = classnames({
-        'hui-OptionListOption--candidate': this.isCandidate(option),
-        'hui-OptionListOption--selected': this.isSelected(option)
-      })
-
+      let isCandidate = this.isCandidate(option)
+      let { focused } = this.state
       return (
-        <li key={ option.value }>
-          <input
-            ref={ `option-radio-${index}` }
-            className="hui-OptionListOption__radio--hidden"
-            type="radio"
-            value={ option.value }
-            checked={ this.isSelected(option) }
-            onKeyDown={ this.handleKeyDown }
-            id={ `option-list-item-${option.value}` }
-            onChange={ (e) => this.handleRadioChange(e, option) }
-            name="selected-option" />
-
-          <label
-            onMouseOver={ () => this.setSelectionCandidate(option) }
-            className="hui-OptionListOption__radio-label" htmlFor={ `option-list-item-${option.value}` }>
-            <OptionClass
-              ref={ `option-component-${index}` }
-              className={ classes }
-              label={ option.label }
-              value={ option.value }  />
-          </label>
-        </li>
+        <Item
+          ref={ `option-list-item-${ index }` }
+          key={ `option-list-item-${ index }` }
+          Display={ Display }
+          option={ option }
+          valueKey={ valueKey }
+          labelKey={ labelKey }
+          isSelected={ this.isSelected(option) }
+          isCandidate={ isCandidate }
+          isFocused={ focused && isCandidate }
+          onChange={ this.handleOptionChange }
+          onMouseOver={ this.handleOptionMouseOver }
+          onKeyDown={ this.handleOptionKeyDown }
+          setScroll={ this.setScroll } />
       )
     })
   },
 
-  renderEmptyState () {
+  renderEmptyState() {
     return (
       <li>
-        <em className="hui-OptionListOption hui-OptionListOption--empty">{ this.props.emptyLabel }</em>
+        <em className="hui-OptionListItem hui-OptionListItem--empty">
+          { this.props.emptyLabel }
+        </em>
       </li>
     )
   },
 
-  render () {
+  render() {
     let classes = classnames([
       this.props.className,
       'hui-OptionList--' + this.props.layout,

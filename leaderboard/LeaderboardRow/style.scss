@@ -9,6 +9,7 @@
   color: $grey;
   transition: 0.2s;
   cursor: pointer;
+  position: relative;
 }
 
 .hui-LeaderboardRow__rank {
@@ -68,6 +69,10 @@
 .hui-LeaderboardRow--selected .hui-LeaderboardRow__stats {
   transform: rotateX(180deg);
   opacity: 0;
+}
+
+.hui-LeaderboardRow--candidate {
+  background-color: $green-light;
 }
 
 .hui-LeaderboardRow--selected {

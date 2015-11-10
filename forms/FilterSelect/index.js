@@ -130,8 +130,10 @@ export default React.createClass({
     },
     40(e) {
       let optionList = this.refs.optionList
+      let filter = this.refs.filter
       if (optionList) {
         e.preventDefault()
+        filter.blur()
         optionList.focus()
       }
     }

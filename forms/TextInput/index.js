@@ -27,6 +27,10 @@ export default React.createClass({
     }
   },
 
+  blur () {
+    this.refs.input.getDOMNode().blur()
+  },
+
   render() {
     let props = this.props
     let state = this.state
