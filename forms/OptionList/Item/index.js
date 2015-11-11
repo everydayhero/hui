@@ -11,6 +11,8 @@ export default React.createClass({
     Display: React.PropTypes.func,
     isSelected: React.PropTypes.bool,
     isCandidate: React.PropTypes.bool,
+    shouldFocus: React.PropTypes.bool,
+    shouldScroll: React.PropTypes.bool,
     valueKey: React.PropTypes.string,
     labelKey: React.PropTypes.string,
     onChange: React.PropTypes.func,
@@ -25,6 +27,8 @@ export default React.createClass({
       Display: DefaultDisplay,
       isSelected: false,
       isCandidate: false,
+      shouldFocus: false,
+      shouldScroll: false,
       valueKey: 'value',
       labelKey: 'label',
       onChange: () => {},
@@ -44,20 +48,21 @@ export default React.createClass({
   },
 
   shouldComponentUpdate (nextProps) {
-    let { isSelected, isCandidate, isFocused } = this.props
+    let { option, isSelected, isCandidate, shouldFocus } = this.props
     return (
+      nextProps.option.id   !== option.id   ||
       nextProps.isSelected  !== isSelected  ||
       nextProps.isCandidate !== isCandidate ||
-      nextProps.isFocused   !== isFocused
+      nextProps.shouldFocus !== shouldFocus
     )
   },
 
   componentDidUpdate () {
-    let { isFocused, isCandidate } = this.props
+    let { shouldFocus, isCandidate, shouldScroll } = this.props
 
-    if (isFocused) {
+    if (shouldFocus) {
       this.focus()
-    } else if (!isFocused && isCandidate) {
+    } else if (!shouldFocus && shouldScroll && isCandidate) {
       let scrollPos = this.getDOMNode().offsetTop - 20
       this.props.setScroll(scrollPos)
     }
@@ -102,7 +107,7 @@ export default React.createClass({
         key={ option[valueKey] }
         className="hui-OptionListItem">
         <input
-          autoFocus={ this.props.isFocused }
+          autoFocus={ this.props.shouldFocus }
           type="radio"
           ref="radio"
           id={ `option-list-item-${option[valueKey]}` }

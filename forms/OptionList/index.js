@@ -34,6 +34,7 @@ export default React.createClass({
 
   getInitialState () {
     return {
+      shouldScroll: true,
       selected: this.props.selectedOption,
       selectionCandidate: this.props.selectedOption || this.props.options[0]
     }
@@ -41,15 +42,16 @@ export default React.createClass({
 
   componentWillReceiveProps (nextProps) {
     let { selectedOption } = nextProps
-    var newState = { focused: false }
-    if (selectedOption) {
-      newState = {
-        ...newState,
+    let { valueKey } = this.props
+    let { selected } = this.state
+    if (selectedOption && (!selected || (selectedOption[valueKey] !== selected[valueKey]))) {
+      this.setState({
+        focused: false,
+        shouldScroll: true,
         selected: selectedOption,
         selectionCandidate: selectedOption
-      }
+      })
     }
-    this.setState(newState)
   },
 
   setScroll (pos) {
@@ -58,6 +60,7 @@ export default React.createClass({
 
   setSelected (option) {
     this.setState({
+      shouldScroll: false,
       selectionCandidate: option,
       selected: option
     }, () => {
@@ -159,7 +162,7 @@ export default React.createClass({
 
     return this.props.options.map((option, index) => {
       let isCandidate = this.isCandidate(option)
-      let { focused } = this.state
+      let { focused, shouldScroll } = this.state
       return (
         <Item
           ref={ `option-list-item-${ index }` }
@@ -168,9 +171,10 @@ export default React.createClass({
           option={ option }
           valueKey={ valueKey }
           labelKey={ labelKey }
-          isSelected={ this.isSelected(option) }
+          shouldScroll={ shouldScroll }
+          shouldFocus={ focused && isCandidate }
           isCandidate={ isCandidate }
-          isFocused={ focused && isCandidate }
+          isSelected={ this.isSelected(option) }
           onChange={ this.handleOptionChange }
           onMouseOver={ this.handleOptionMouseOver }
           onKeyDown={ this.handleOptionKeyDown }

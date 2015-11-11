@@ -120,7 +120,6 @@ module.exports = React.createClass({
     let state = this.state
     let classes = classnames([
       'hui-LeaderboardRow',
-      props.isHighlighted && 'hui-LeaderboardRow--highlighted',
       props.isSelected && 'hui-LeaderboardRow--selected',
       props.isCandidate && 'hui-LeaderboardRow--candidate',
       this.state.narrow && 'hui-LeaderboardRow--narrow'
