@@ -1,4 +1,4 @@
-.hui-OptionListOption {
+.hui-OptionListDisplay {
   display: block;
   text-align: left;
   font-family: $font-copy;
@@ -10,23 +10,15 @@
   transform: translateZ(0);
 }
 
-.hui-OptionListOption--empty {
+.hui-OptionListDisplay--empty {
   cursor: auto;
 }
 
-.hui-OptionListOption--candidate {
+.hui-OptionListDisplay--candidate {
   background-color: rgba(126, 199, 116, 0.1);
 }
 
-.hui-OptionListOption--selected {
+.hui-OptionListDisplay--selected {
   background-color: rgba(126, 199, 116, 0.2);
 }
 
-.hui-OptionListOption__radio-label {
-  display: block;
-}
-
-.hui-OptionListOption__radio--hidden {
-  position: absolute;
-  left: -100%;
-}

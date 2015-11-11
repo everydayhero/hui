@@ -79,16 +79,6 @@ module.exports = React.createClass({
     });
   },
 
-  onSelect: function() {
-    let props = this.props
-    props.onSelect && props.onSelect(props.data, props.index)
-  },
-
-  onMouseLeave: function() {
-    let props = this.props
-    props.onMouseLeave && props.onMouseLeave()
-  },
-
   renderFlipper: function() {
     let props = this.props
     let data = props.data
@@ -131,15 +121,12 @@ module.exports = React.createClass({
     let classes = classnames([
       'hui-LeaderboardRow',
       props.isSelected && 'hui-LeaderboardRow--selected',
+      props.isCandidate && 'hui-LeaderboardRow--candidate',
       this.state.narrow && 'hui-LeaderboardRow--narrow'
     ])
 
     return (
-      <div
-        className={ classes }
-        onClick={ this.onSelect }
-        onMouseEnter={ this.onSelect }
-        onMouseLeave={ this.onMouseLeave }>
+      <div className={ classes }>
         { !state.narrow && this.renderRank() }
         <div className="hui-LeaderboardRow__avatar">
           <img src={ data.image.medium_image_url }/>
