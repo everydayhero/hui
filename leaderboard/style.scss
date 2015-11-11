@@ -1,14 +1,1 @@
 @import "./LeaderboardRow/style";
-
-.hui-Leaderboard .hui-OptionListItem {
-  background-color: white;
-  position: relative;
-
-  &:nth-child(even) {
-    background-color: $grey-lightest;
-  }
-
-  &:hover {
-    background-color: $grey-lighter;
-  }
-}

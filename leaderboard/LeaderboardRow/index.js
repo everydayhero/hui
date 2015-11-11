@@ -108,9 +108,7 @@ module.exports = React.createClass({
   },
 
   renderRank: function() {
-    let formattedRank = numeral(this.props.data.rank).format('0o')
-
-    return <div className="hui-LeaderboardRow__rank">{ formattedRank }</div>
+    return <div className="hui-LeaderboardRow__rank">{ this.props.data.rank }</div>
   },
 
   render: function() {

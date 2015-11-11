@@ -5,29 +5,32 @@
   height: 80px;
   font-family: $font-copy;
   box-sizing: border-box;
-  padding: $x-2;
   color: $grey;
   transition: 0.2s;
   cursor: pointer;
   position: relative;
+
+  border-bottom: thin solid $grey-lightest;
 }
 
 .hui-LeaderboardRow__rank {
   display: table-cell;
-  width: 72px;
+  width: 86px;
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
+  background-color: rgba($grey, 0.1);
 }
 
 .hui-LeaderboardRow__avatar {
-  width: 72px;
-  height: 72px;
+  width: 86px;
+  padding: 8px;
   display: table-cell;
 
   img {
     width: 100%;
     display: block;
+    border: 4px solid white;
   }
 }
 
@@ -35,11 +38,13 @@
   width: 100%;
   display: table-cell;
   vertical-align: top;
-  padding-left: 8px;
+  padding: 8px;
+  padding-left: 0;
 }
 
 .hui-LeaderboardRow__flipContainer {
   position: relative;
+  margin-top: 5px
 }
 
 .hui-LeaderboardRow__ctas {
@@ -48,22 +53,26 @@
   backface-visibility: hidden;
   opacity: 0;
   position: absolute;
-  top: 2px;
+  top: 0;
+
+  & > a, & > button {
+    margin-top: 0;
+  }
+
+  & > a:first-child, & > button:first-child {
+    margin-left: 0;
+  }
 }
 
 .hui-LeaderboardRow__stats {
   transition: 0.2s;
   backface-visibility: hidden;
   opacity: 1;
-  color: $grey;
-  position: absolute;
-  top: 8px;
 }
 
 .hui-LeaderboardRow--selected .hui-LeaderboardRow__ctas {
   transform: rotateX(0deg);
   opacity: 1;
-  color: $grey;
 }
 
 .hui-LeaderboardRow--selected .hui-LeaderboardRow__stats {
@@ -72,7 +81,8 @@
 }
 
 .hui-LeaderboardRow--candidate {
-  background-color: $green-light;
+  background-color: $grey-lightest;
+  border-color: white;
 }
 
 .hui-LeaderboardRow--selected {
@@ -85,6 +95,7 @@
   vertical-align: middle;
   text-align: right;
   font-size: 16px;
+  padding-right: 16px;
   width: 100px;
 }
 
@@ -92,6 +103,7 @@
 .hui-LeaderboardRow__charityName {
   margin: 0;
   font-size: 12px;
+  line-height: 1.5em;
   @extend %truncate;
 }
 
@@ -134,6 +146,7 @@
     display: block;
     text-align: left;
     vertical-align: top;
+    background-color: transparent;
   }
 }
 
