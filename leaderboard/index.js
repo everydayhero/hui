@@ -43,11 +43,11 @@ module.exports = React.createClass({
     } = this.props
 
     return rowData.map((data) => {
-      let { id, name, charity_uid } = data
+      let { id, name, charity_name } = data
       return {
         id,
         name,
-        charity_uid,
+        charity_name,
         data,
         valuePath,
         valueType,
@@ -71,7 +71,7 @@ module.exports = React.createClass({
           options={ this.prepareRows() }
           valueKey="id"
           labelKey="name"
-          highlightedKey="charity_uid"
+          highlightedKey="charity_name"
           highlightedValue={ highlightedCharity }
           selectedOption={ this.getSelected() }
           onSelection={ onSelect }
