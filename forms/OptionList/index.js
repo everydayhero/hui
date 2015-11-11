@@ -44,14 +44,16 @@ export default React.createClass({
     let { selectedOption } = nextProps
     let { valueKey } = this.props
     let { selected } = this.state
+    var newState = { focused: false }
     if (selectedOption && (!selected || (selectedOption[valueKey] !== selected[valueKey]))) {
-      this.setState({
-        focused: false,
+      newState = {
+        ...newState,
         shouldScroll: true,
         selected: selectedOption,
         selectionCandidate: selectedOption
-      })
+      }
     }
+    this.setState(newState)
   },
 
   setScroll (pos) {
