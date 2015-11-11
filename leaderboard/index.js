@@ -12,12 +12,14 @@ module.exports = React.createClass({
     onSelect: React.PropTypes.func,
     rowComponent: React.PropTypes.func,
     rowData: React.PropTypes.array,
-    valuePath: React.PropTypes.string
+    valuePath: React.PropTypes.string,
+    highlightedCharity: React.PropTypes.string
   },
 
   getDefaultProps: function() {
     return {
       onSelect: () => {},
+      highlightedCharity: '',
       valuePath: 'amount.cents'
     }
   },
@@ -41,10 +43,11 @@ module.exports = React.createClass({
     } = this.props
 
     return rowData.map((data) => {
-      let { id, name } = data
+      let { id, name, charity_uid } = data
       return {
         id,
         name,
+        charity_uid,
         data,
         valuePath,
         valueType,
@@ -57,6 +60,7 @@ module.exports = React.createClass({
   render() {
     let {
       onSelect,
+      highlightedCharity,
       rowComponent
     } = this.props
 
@@ -67,6 +71,8 @@ module.exports = React.createClass({
           options={ this.prepareRows() }
           valueKey="id"
           labelKey="name"
+          highlightedKey="charity_uid"
+          highlightedValue={ highlightedCharity }
           selectedOption={ this.getSelected() }
           onSelection={ onSelect }
           Display={ rowComponent } />

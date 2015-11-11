@@ -40,6 +40,8 @@ module.exports = React.createClass({
       }).isRequired
     }).isRequired,
     isSelected: React.PropTypes.bool,
+    isCandidate: React.PropTypes.bool,
+    isHighlighted: React.PropTypes.bool,
     valueType: React.PropTypes.oneOf(['money', 'distance']),
     valueSymbol: React.PropTypes.oneOf(['$', '£', '€', 'km', 'mi', 'm']),
   },
@@ -51,6 +53,8 @@ module.exports = React.createClass({
       valuePath: 'amount.cents',
       valueFormat: '0.00',
       data: {},
+      isHighlighted: false,
+      isCandidate: false,
       isSelected: false
     }
   },
@@ -119,6 +123,7 @@ module.exports = React.createClass({
       'hui-LeaderboardRow',
       props.isSelected && 'hui-LeaderboardRow--selected',
       props.isCandidate && 'hui-LeaderboardRow--candidate',
+      props.isHighlighted && 'hui-LeaderboardRow--highlighted',
       this.state.narrow && 'hui-LeaderboardRow--narrow'
     ])
 

@@ -48,12 +48,19 @@ export default React.createClass({
   },
 
   shouldComponentUpdate (nextProps) {
-    let { option, isSelected, isCandidate, shouldFocus } = this.props
+    let {
+      option,
+      isSelected,
+      isCandidate,
+      isHighlighted,
+      shouldFocus
+    } = this.props
     return (
-      nextProps.option.id   !== option.id   ||
-      nextProps.isSelected  !== isSelected  ||
-      nextProps.isCandidate !== isCandidate ||
-      nextProps.shouldFocus !== shouldFocus
+      nextProps.option.id     !== option.id     ||
+      nextProps.isSelected    !== isSelected    ||
+      nextProps.isHighlighted !== isHighlighted ||
+      nextProps.isCandidate   !== isCandidate   ||
+      nextProps.shouldFocus   !== shouldFocus
     )
   },
 
@@ -95,6 +102,7 @@ export default React.createClass({
   render () {
     let {
       Display,
+      isHighlighted,
       isSelected,
       isCandidate,
       option,
@@ -124,6 +132,7 @@ export default React.createClass({
           htmlFor={ `option-list-item-${option[valueKey]}` }>
           <Display
             { ...option }
+            isHighlighted={ isHighlighted }
             isSelected={ isSelected }
             isCandidate={ isCandidate }
             label={ option[labelKey] }

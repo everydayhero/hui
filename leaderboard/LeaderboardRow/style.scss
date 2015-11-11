@@ -19,7 +19,7 @@
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
-  background-color: rgba($grey, 0.1);
+  background-color: $grey-lighter;
 }
 
 .hui-LeaderboardRow__avatar {
@@ -88,6 +88,35 @@
 .hui-LeaderboardRow--selected {
   background-color: $green-active;
   color: white;
+
+  .hui-LeaderboardRow__rank {
+    background-color: darken($green-active, 10%);
+  }
+}
+
+.hui-LeaderboardRow--highlighted {
+  background-color: lighten($alert, 30%);
+
+  .hui-LeaderboardRow__rank {
+    background-color: lighten($alert, 20%);
+  }
+}
+
+.hui-LeaderboardRow--highlighted.hui-LeaderboardRow--candidate {
+  background-color: lighten($alert, 20%);
+
+  .hui-LeaderboardRow__rank {
+    background-color: lighten($alert, 10%);
+  }
+}
+
+.hui-LeaderboardRow--selected.hui-LeaderboardRow--highlighted {
+  color: white;
+  background-color: $alert;
+
+  .hui-LeaderboardRow__rank {
+    background-color: darken($alert, 10%);
+  }
 }
 
 .hui-LeaderboardRow__value {
