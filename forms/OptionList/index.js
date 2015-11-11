@@ -146,7 +146,7 @@ export default React.createClass({
   isHighlighted(option) {
     let { highlightedKey, highlightedValue } = this.props
 
-    return highlightedValue && (option[highlightedKey] === highlightedValue)
+    return !!highlightedValue && (option[highlightedKey] === highlightedValue)
   },
 
   handleOptionChange(option) {

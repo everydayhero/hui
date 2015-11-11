@@ -177,6 +177,11 @@
     vertical-align: top;
     background-color: transparent;
   }
+
+  &.hui-LeaderboardRow--highlighted.hui-LeaderboardRow--candidate .hui-LeaderboardRow__rank,
+  &.hui-LeaderboardRow--highlighted.hui-LeaderboardRow--selected .hui-LeaderboardRow__rank {
+    background-color: transparent;
+  }
 }
 
 .hui-LeaderboardRow__raised {
