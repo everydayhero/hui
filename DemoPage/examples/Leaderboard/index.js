@@ -45,6 +45,7 @@ module.exports = React.createClass({
           rowData={ raisedData.leaderboard.pages }
           valueSymbol="$"
           valueType="money"
+          highlightedCharity="au-1795"
           rowComponent={ LeaderboardRow } />
       </div>
     )

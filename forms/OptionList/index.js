@@ -13,6 +13,8 @@ export default React.createClass({
     options: React.PropTypes.array.isRequired,
     valueKey: React.PropTypes.string,
     labelKey: React.PropTypes.string,
+    highlightedKey: React.PropTypes.string,
+    highlightedValue: React.PropTypes.string,
     onSelection: React.PropTypes.func,
     Display: React.PropTypes.func,
     emptyLabel: React.PropTypes.string,
@@ -141,6 +143,12 @@ export default React.createClass({
     return selected && (option[valueKey] === selected[valueKey])
   },
 
+  isHighlighted(option) {
+    let { highlightedKey, highlightedValue } = this.props
+
+    return !!highlightedValue && (option[highlightedKey] === highlightedValue)
+  },
+
   handleOptionChange(option) {
     this.setSelected(option)
   },
@@ -175,6 +183,7 @@ export default React.createClass({
           labelKey={ labelKey }
           shouldScroll={ shouldScroll }
           shouldFocus={ focused && isCandidate }
+          isHighlighted={ this.isHighlighted(option) }
           isCandidate={ isCandidate }
           isSelected={ this.isSelected(option) }
           onChange={ this.handleOptionChange }

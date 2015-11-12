@@ -4,7 +4,6 @@ import React from 'react'
 import Button from '../../buttons/Button'
 import Share from '../../buttons/Share'
 import ProgressBar from '../../atoms/ProgressBar'
-import numeral from 'numeral'
 import classnames from 'classnames'
 import _ from 'lodash'
 import addEventListener from '../../lib/addEventListener'
@@ -41,6 +40,8 @@ module.exports = React.createClass({
       }).isRequired
     }).isRequired,
     isSelected: React.PropTypes.bool,
+    isCandidate: React.PropTypes.bool,
+    isHighlighted: React.PropTypes.bool,
     valueType: React.PropTypes.oneOf(['money', 'distance']),
     valueSymbol: React.PropTypes.oneOf(['$', '£', '€', 'km', 'mi', 'm']),
   },
@@ -52,6 +53,8 @@ module.exports = React.createClass({
       valuePath: 'amount.cents',
       valueFormat: '0.00',
       data: {},
+      isHighlighted: false,
+      isCandidate: false,
       isSelected: false
     }
   },
@@ -108,9 +111,7 @@ module.exports = React.createClass({
   },
 
   renderRank: function() {
-    let formattedRank = numeral(this.props.data.rank).format('0o')
-
-    return <div className="hui-LeaderboardRow__rank">{ formattedRank }</div>
+    return <div className="hui-LeaderboardRow__rank">{ this.props.data.rank }</div>
   },
 
   render: function() {
@@ -122,6 +123,7 @@ module.exports = React.createClass({
       'hui-LeaderboardRow',
       props.isSelected && 'hui-LeaderboardRow--selected',
       props.isCandidate && 'hui-LeaderboardRow--candidate',
+      props.isHighlighted && 'hui-LeaderboardRow--highlighted',
       this.state.narrow && 'hui-LeaderboardRow--narrow'
     ])
 
