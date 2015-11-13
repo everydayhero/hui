@@ -155,8 +155,8 @@ describe('OptionList', () => {
     })
   })
 
-  describe('selecting an option', () => {
-    it('sets state.selected to the selected option', () => {
+  describe('selecting an option (the selection is made by a user action in the component)', () => {
+    it('sets state.selected to the selected option and state.shouldScroll to false', () => {
       let options = [
         { value: '1', label: 'Tim' },
         { value: '2', label: 'Tex' },
@@ -174,6 +174,7 @@ describe('OptionList', () => {
 
       Simulate.change(radio.getDOMNode(), mockEvent)
       expect(element.state.selected).to.eql(options[1])
+      expect(element.state.shouldScroll).to.eql(false)
     })
   })
 
@@ -194,6 +195,57 @@ describe('OptionList', () => {
       element.focus()
 
       expect(radio.focus).to.be.called
+    })
+  })
+
+  describe('props.selectedOption', () => {
+    let options = [
+      { value: '1', label: 'Tim' },
+      { value: '2', label: 'Tex' },
+      { value: '3', label: 'Ben' }
+    ]
+    let Parent = React.createClass({
+      displayName: 'Parent',
+      getInitialState () {
+        return {
+          selected: options[0]
+        }
+      },
+      render () {
+        return (
+          <OptionList
+            ref="optionList"
+            options={ options }
+            selectedOption={ this.state.selected }/>
+        )
+      }
+    })
+
+    context('when props.selectedOption is not null (the selection is made from props)', () => {
+      it('sets state.selected to the passed prop and state.shouldScroll to true', () => {
+        let element = renderIntoDocument(<Parent />)
+        expect(element.refs.optionList.state.selected.label).to.eq('Tim')
+
+        element.setState({
+          selected: {
+            value: '2', label: 'Tex'
+          }
+        })
+        expect(element.refs.optionList.state.selected.label).to.eq('Tex')
+        expect(element.refs.optionList.state.shouldScroll).to.eq(true)
+      })
+    })
+
+    context('when props.selectedOption is null', () => {
+      it('sets state.selected to null, clearing the current selection', () => {
+        let element = renderIntoDocument(<Parent />)
+        expect(element.refs.optionList.state.selected.label).to.eq('Tim')
+
+        element.setState({
+          selected: null
+        })
+        expect(element.refs.optionList.state.selected).to.eq(null)
+      })
     })
   })
 })

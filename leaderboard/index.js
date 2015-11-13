@@ -28,9 +28,9 @@ module.exports = React.createClass({
     return find(this.props.rowData, (datum) => {
       let { id } = datum
       let { selectedId } = this.props
-      if (!id || !selectedId) return undefined
+      if (!id || !selectedId) return null
       return id.toString() === selectedId.toString()
-    })
+    }) || null
   },
 
   prepareRows() {
