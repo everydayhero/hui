@@ -54,6 +54,12 @@ export default React.createClass({
         selected: selectedOption,
         selectionCandidate: selectedOption
       }
+    } else if (selectedOption === null) {
+      newState = {
+        ...newState,
+        shouldScroll: false,
+        selected: null
+      }
     }
     this.setState(newState)
   },
@@ -140,7 +146,7 @@ export default React.createClass({
     let { selected } = this.state
     let { valueKey } = this.props
 
-    return selected && (option[valueKey] === selected[valueKey])
+    return !!selected && (option[valueKey] === selected[valueKey])
   },
 
   isHighlighted(option) {
