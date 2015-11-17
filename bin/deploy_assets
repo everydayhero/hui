@@ -5,4 +5,5 @@ set -e
 git checkout master
 git pull
 ./bin/version_check
+gulp assets-build
 gulp assets-deploy
