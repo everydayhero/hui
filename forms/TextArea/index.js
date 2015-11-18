@@ -107,9 +107,10 @@ module.exports = React.createClass({
             id={ props.id }
             ref="input"
             value={ props.value }
+            disabled={ props.disabled }
+            onBlur={ this.handleBlur }
             onChange={ this.handleChange }
             onFocus={ this.handleFocus }
-            onBlur={ this.handleBlur }
             onTab={ this.onTab }>
           </textarea>
         </div>
