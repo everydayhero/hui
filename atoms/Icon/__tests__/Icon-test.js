@@ -31,4 +31,11 @@ describe('Icon', function() {
     Simulate.mouseDown(findByClass(element, 'hui-IconWrapper'));
     handler.should.have.been.called;
   });
+
+  it('does not execute an onClick handler when disabled', function() {
+    var handler = sinon.spy();
+    var element = renderIntoDocument(<Icon disabled={ true } icon="lock" onClick={ handler }/>);
+    Simulate.mouseDown(findByClass(element, 'hui-IconWrapper'));
+    handler.should.not.have.been.called;
+  });
 });

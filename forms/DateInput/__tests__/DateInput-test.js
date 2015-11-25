@@ -100,9 +100,9 @@ describe('DatePicker', function() {
       var listener = function(value) { parsedValue = value; };
       var element = renderIntoDocument(<Input value="2015-12-09" onChange={ listener } />);
 
-      var clear = findByClass(element, 'hui-TextInput__iconButton');
+      var clear = findByClass(element, 'hui-Icon');
       element.close();
-      Simulate.click(clear);
+      Simulate.mouseDown(clear);
 
       expect(parsedValue).to.equal(null);
     });

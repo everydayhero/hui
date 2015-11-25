@@ -88,13 +88,6 @@
   @extend %hui-input-error;
 }
 
-.hui-TextInput__iconButton {
-  @extend %general-reset;
-  @extend %a-reset;
-  background: none;
-  margin-top: -11px;
-}
-
 .hui-TextInput--disabled .hui-TextInput__label {
   @extend %hui-input-disabled;
 }

@@ -115,8 +115,7 @@ export default {
     let hasServerErrors = errors.length
     let className = classnames({
       'hui-TextInput__icon': true,
-      'hui-TextInput__icon--left': (props.iconPosition === 'left'),
-      'hui-TextInput__iconButton': props.onIconClick
+      'hui-TextInput__icon--left': (props.iconPosition === 'left')
     })
     let state = this.state
     let icon = !props.showIcon ? false
@@ -126,21 +125,13 @@ export default {
                : props.disabled ? 'minus'
                : props.icon ? props.icon
                : (props.required && !props.value) ? 'caret-left'
-               : false
+               : false;
 
-    if (props.onIconClick) {
-      return icon && (
-        <a href="" className={ className } onClick={ props.onIconClick }>
-          <Icon icon={ icon } fixedWidth={ true } />
-        </a>
-      )
-    } else {
-      return icon && (
-        <span className={ className }>
-          <Icon icon={ icon } fixedWidth={ true } />
-        </span>
-      )
-    }
+    return icon && (
+      <span className={ className }>
+        <Icon icon={ icon } onClick={ props.onIconClick } disabled={ props.disabled } fixedWidth={ true } />
+      </span>
+    );
   },
 
   renderPlaceHolder() {
