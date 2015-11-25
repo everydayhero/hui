@@ -62,7 +62,6 @@ export default {
   },
   defaults: {
     id: '',
-    name: '',
     type: 'text',
     value: '',
     label: 'Input',

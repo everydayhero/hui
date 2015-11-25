@@ -75,7 +75,8 @@ module.exports = React.createClass({
         icon="rocket"
         onChange={ change('demo_input_05') } />
       <TextInput
-        id="demo_input_icon"
+        id="demo_input_icon_left"
+        name="demo_input_icon_left"
         value={ this.state.form.demo_input_06 }
         label="custom icon left postion"
         icon="search"
