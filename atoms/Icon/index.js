@@ -7,12 +7,13 @@ module.exports = React.createClass({
   displayName: 'Icon',
 
   propTypes: {
-    icon: React.PropTypes.string.isRequired,
     className: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
     fixedWidth: React.PropTypes.bool,
+    icon: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func,
     spin: React.PropTypes.bool,
-    type: React.PropTypes.string,
-    onClick: React.PropTypes.func
+    type: React.PropTypes.string
   },
 
   getDefaultProps() {
@@ -21,6 +22,13 @@ module.exports = React.createClass({
       spin: false,
       type: '',
       onClick: () => {}
+    }
+  },
+
+  onClick(e) {
+    var props = this.props;
+    if (!props.disabled) {
+      props.onClick(e);
     }
   },
 
@@ -37,7 +45,7 @@ module.exports = React.createClass({
     var wrapperClasses = compact(['hui-IconWrapper', this.props.className]).join(' ');
 
     return (
-      <span className={ wrapperClasses } onTouchStart={ this.props.onClick } onMouseDown={ this.props.onClick }><i className={ classes } /></span>
+      <span className={ wrapperClasses } onTouchStart={ this.onClick } onMouseDown={ this.onClick }><i className={ classes } /></span>
     );
   }
 });
