@@ -22,7 +22,7 @@
     "dev-build": "gulp build --debug true",
     "watch": "gulp watch --debug true",
     "dev": "npm run dev-build && (npm run watch & npm run start)",
-    "deploy_assets": "bin/deploy_assets"
+    "deploy-assets": "bin/deploy_assets"
   },
   "repository": {
     "type": "git",
