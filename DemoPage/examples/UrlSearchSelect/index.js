@@ -21,9 +21,9 @@ export default React.createClass({
     })
   },
 
-  handleChange (pageUrl) {
+  handleSelection (page) {
     this.setState({
-      pageUrl
+      pageUrl: page.value
     })
   },
 
@@ -43,7 +43,7 @@ export default React.createClass({
           } }
           jsonp
           queryProperty="srsearch"
-          onChange={ this.handleChange }
+          onSelection={ this.handleSelection }
           deserializeResponse={ this.deserializeWikipediaResponse } />
 
         <p className="DemoPage__p">
