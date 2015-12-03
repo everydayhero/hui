@@ -53,14 +53,15 @@ export default React.createClass({
       isSelected,
       isCandidate,
       isHighlighted,
-      shouldFocus
+      shouldFocus,
+      valueKey
     } = this.props
     return (
-      nextProps.option.id     !== option.id     ||
-      nextProps.isSelected    !== isSelected    ||
-      nextProps.isHighlighted !== isHighlighted ||
-      nextProps.isCandidate   !== isCandidate   ||
-      nextProps.shouldFocus   !== shouldFocus
+      nextProps.option[valueKey] !== option[valueKey] ||
+      nextProps.isSelected       !== isSelected       ||
+      nextProps.isHighlighted    !== isHighlighted    ||
+      nextProps.isCandidate      !== isCandidate      ||
+      nextProps.shouldFocus      !== shouldFocus
     )
   },
 
