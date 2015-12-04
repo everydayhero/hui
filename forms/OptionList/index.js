@@ -3,6 +3,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import find from 'lodash/collection/find'
+import debounce from 'lodash/function/debounce'
 import Item from './Item'
 import DefaultDisplay from './DefaultDisplay'
 
@@ -15,6 +16,8 @@ export default React.createClass({
     labelKey: React.PropTypes.string,
     highlightedKey: React.PropTypes.string,
     highlightedValue: React.PropTypes.string,
+    onBlur: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     Display: React.PropTypes.func,
     emptyLabel: React.PropTypes.string,
@@ -27,6 +30,8 @@ export default React.createClass({
       Display: DefaultDisplay,
       valueKey: 'value',
       labelKey: 'label',
+      onBlur: () => {},
+      onFocus: () => {},
       onSelection: () => {},
       emptyLabel: 'No options to display',
       layout: 'full',
@@ -169,6 +174,23 @@ export default React.createClass({
     })
   },
 
+  setFocus: debounce(function (value) {
+    const { onFocus, onBlur } = this.props
+    this.setState({
+      focused: value
+    }, () => {
+      value ? onFocus() : onBlur()
+    })
+  }, 100),
+
+  handleBlur() {
+    this.setFocus(false)
+  },
+
+  handleFocus() {
+    this.setFocus(true)
+  },
+
   renderOptions() {
     let {
       Display,
@@ -203,7 +225,7 @@ export default React.createClass({
   renderEmptyState() {
     return (
       <li>
-        <em className="hui-OptionListItem hui-OptionListItem--empty">
+        <em className="hui-OptionListDisplay hui-OptionListDisplay--empty">
           { this.props.emptyLabel }
         </em>
       </li>
@@ -218,7 +240,10 @@ export default React.createClass({
       'hui-OptionList'
     ])
     return (
-      <div className={ classes }>
+      <div
+        className={ classes }
+        onFocus={ this.handleFocus }
+        onBlur={ this.handleBlur }>
         <div ref="scrollContainer" className="hui-OptionList__scroll-container">
           <ul className="hui-OptionList__list">
             { this.props.options.length ? this.renderOptions() : this.renderEmptyState() }

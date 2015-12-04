@@ -44,7 +44,7 @@ export default React.createClass({
       label: 'Search',
       queryProperty: 'q',
       minQueryLength: 5,
-      manualAction: [],
+      manualAction: null,
       responseProperty: 'resources',
       showError: false,
       onChange: () => {},
@@ -86,6 +86,7 @@ export default React.createClass({
 
   getParams(query) {
     return merge(this.props.params, {
+      __jsonp: this.props.jsonp,
       [this.props.queryProperty]: query
     })
   },
@@ -148,6 +149,18 @@ export default React.createClass({
     })
   },
 
+  setFocus: debounce(function (value) {
+    !value && this.requireValue()
+  }, 100),
+
+  handleBlur() {
+    this.setFocus(false)
+  },
+
+  handleFocus() {
+    this.setFocus(true)
+  },
+
   keyHandlers: {
     9() {
       let optionList = this.refs.optionList
@@ -179,7 +192,9 @@ export default React.createClass({
   },
 
   requireValue() {
-    let hasError = this.props.required && !this.state.selectedOption
+    let { required } = this.props
+    let { selectedOption } = this.state
+    let hasError = !!required && !selectedOption
     this.setState({
       hasError,
       isOpen: hasError
@@ -203,7 +218,10 @@ export default React.createClass({
       : 'search'
 
     return (
-      <div className={ classes }>
+      <div
+        onBlur={ this.handleBlur }
+        onFocus={ this.handleFocus }
+        className={ classes }>
         <TextInput
           ref="searchInput"
           className="hui-UrlSearchSelect__search-input"
@@ -213,7 +231,6 @@ export default React.createClass({
           label={ props.label }
           showError={ state.hasError }
           required={ props.required }
-          onBlur={ this.requireValue }
           onKeyDown={ this.handleKeyDown }
           onError={ props.onError }
           onChange={ this.handleSearchInputChange }/>

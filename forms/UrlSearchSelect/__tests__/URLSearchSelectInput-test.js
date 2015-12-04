@@ -119,4 +119,19 @@ describe('UrlSearchSelect', () => {
       })
     })
   })
+
+  describe('setFocus()', () => {
+    it('calls requireValue() whenever there is a blur event within the component', () => {
+      let element = renderIntoDocument(
+        <UrlSearchSelect
+          required
+          url="http://everydayhero.com" />
+      )
+      Simulate.focus(element.refs.searchInput.getDOMNode())
+      expect(element.state.hasError).to.eq(false)
+
+      Simulate.blur(element.refs.searchInput.getDOMNode())
+      expect(element.state.hasError).to.eq(true)
+    })
+  })
 })
