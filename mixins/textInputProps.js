@@ -8,7 +8,9 @@ export default {
     name: React.PropTypes.string,
     type: React.PropTypes.oneOf([
       'text',
-      'number'
+      'number',
+      'password',
+      'email'
     ]),
     value: React.PropTypes.string,
     label: React.PropTypes.string,
