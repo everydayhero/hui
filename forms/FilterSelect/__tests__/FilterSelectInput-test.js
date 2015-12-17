@@ -47,6 +47,19 @@ describe('FilterSelect', () => {
     })
   })
 
+  describe('the handleOptionListBlur', () => {
+    it('sets state.focused and state.isOpen to false', () => {
+      const element = renderIntoDocument(
+        <FilterSelect options={ [] } />
+      )
+      element.openOptionList()
+      expect(element.state.isOpen).to.eq(true)
+
+      element.handleOptionListBlur()
+      expect(element.state.isOpen).to.eq(false)
+    })
+  })
+
   describe('the display select', () => {
     it('sets state.focused to true on focus', () => {
       let element = renderIntoDocument(
