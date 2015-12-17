@@ -16,9 +16,14 @@ export default React.createClass({
   mixins: [validatable, inputMessage],
 
   propTypes: {
+    id: React.PropTypes.string,
+    name: React.PropTypes.string,
     value: React.PropTypes.string,
+    label: React.PropTypes.string,
     data: React.PropTypes.object,
     options: React.PropTypes.array.isRequired,
+    labelKey: React.PropTypes.string,
+    valueKey: React.PropTypes.string,
     properties: React.PropTypes.array,
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
@@ -41,6 +46,8 @@ export default React.createClass({
       filterLabel: 'Filter',
       properties: ['label'],
       value: '',
+      labelKey: 'label',
+      valueKey: 'value',
       data: null,
       Display: FilterSelectDisplay,
       onChange: () => {},
