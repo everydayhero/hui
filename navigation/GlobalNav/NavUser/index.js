@@ -91,14 +91,14 @@ export default React.createClass({
     let noUser = !state.loading && isEmpty(state.user)
     let hasUser = !state.loading && !isEmpty(state.user)
     let classes = cx([
-        props.transparent && 'hui-NavUser--transparent'
-      ], 'hui-NavUser')
+      props.transparent && 'hui-NavUser--transparent'
+    ], 'hui-NavUser')
 
     return (
       <div className={ classes }>
         { state.loading && <Icon icon="circle-o-notch" className="hui-NavUser__loading" /> }
 
-        { noUser && <Button kind={ transparent ? 'secondary' : 'cta' } inverse={ transparent } thin={ true } label={ t('register') } href={ urls('register', domain, props.region) } /> }
+        { noUser && <Button kind={ transparent ? 'secondary' : 'cta' } inverse={ transparent } thin label={ t('register') } href={ urls('register', domain, props.region) } /> }
 
         { noUser && <NavLink transparent={ props.transparent } kind="cta" href={ urls('log_in', domain, props.region) } label={ t('log_in') } /> }
 

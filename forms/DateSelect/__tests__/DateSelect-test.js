@@ -31,8 +31,8 @@ describe('DateSelect', function() {
     var element;
     var date;
     var onChange = function(value) {
-          date = value;
-        };
+      date = value;
+    };
 
     beforeEach(function() {
       element = renderIntoDocument(

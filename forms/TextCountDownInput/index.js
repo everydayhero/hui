@@ -7,7 +7,7 @@ import classnames from 'classnames'
 module.exports = React.createClass({
   displayName: 'TextCountDownInput',
 
-propTypes: {
+  propTypes: {
     autoComplete: React.PropTypes.bool,
     storeLocally: React.PropTypes.bool,
     autoFocus: React.PropTypes.bool,

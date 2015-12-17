@@ -68,11 +68,11 @@ module.exports = {
   },
 
   getDeviceFallback: function(device, obj) {
-    var devices = ['phone', 'tablet', 'laptop', 'desktop', 'tv'],
-        length = devices.length,
-        i = devices.indexOf(device),
-        fallback,
-        inc = 0;
+    var devices = ['phone', 'tablet', 'laptop', 'desktop', 'tv'];
+    var length = devices.length;
+    var i = devices.indexOf(device);
+    var fallback;
+    var inc = 0;
     while (!fallback && inc++ <= length) {
       fallback = obj[devices[i - inc]] || obj[devices[i + inc]];
     }

@@ -70,10 +70,10 @@ module.exports = React.createClass({
   },
 
   transformCollection: function() {
-    var props              = this.props,
-        collectionValueKey = props.collectionValueKey,
-        valueConverter     = props.valueConverter,
-        collection         = _.clone(props.collection, true);
+    var props              = this.props;
+    var collectionValueKey = props.collectionValueKey;
+    var valueConverter     = props.valueConverter;
+    var collection         = _.clone(props.collection, true);
 
     return _.map(collection, function(set, collectionIndex) {
       var series = _.map(set.series, function(dataPoint, pointIndex) {
@@ -159,13 +159,13 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var state      = this.state,
-        props      = this.props,
-        loading    = props.loading,
-        emptyState = props.emptyState,
-        emptyData,
-        tooltip,
-        graph;
+    var state      = this.state;
+    var props      = this.props;
+    var loading    = props.loading;
+    var emptyState = props.emptyState;
+    var emptyData;
+    var tooltip;
+    var graph;
 
     if ((loading === true || emptyState === true) && state.width) {
       graph = (

@@ -79,9 +79,9 @@ module.exports = React.createClass({
   },
 
   calculateTotal: function(dataPoint) {
-    var props = this.props,
-        collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter;
+    var props = this.props;
+    var collectionValueKey = props.collectionValueKey;
+    var valueConverter = props.valueConverter;
 
     return props.collection.reduce(function(total, set) {
       return total + valueConverter(set.series[dataPoint][collectionValueKey])
@@ -103,9 +103,9 @@ module.exports = React.createClass({
   },
 
   onMouseOver: function(data, dataPoint, pos) {
-    var props          = this.props,
-        collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter;
+    var props          = this.props;
+    var collectionValueKey = props.collectionValueKey;
+    var valueConverter = props.valueConverter;
 
     return function() {
       var tipInfo = {

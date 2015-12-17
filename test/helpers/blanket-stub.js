@@ -2,12 +2,11 @@
 // based on https://github.com/alex-seville/blanket/blob/master/src/node-loaders/coffee-script.js
 'use strict';
 
-var transform = require('./stub-transform'),
-    glob = require('glob'),
-    path = require('path');
+var transform = require('./stub-transform');
+var glob = require('glob');
+var path = require('path');
 
 module.exports = function(blanket) {
-
   var origJs = require.extensions['.js'];
 
   require.extensions['.js'] = function(localModule, filename) {

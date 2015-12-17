@@ -8,19 +8,19 @@ describe('Tabs', function() {
     let tabs
     let activeId = 0
     let tabItems = [
-        {
-          label: 'Raise',
-          content: <p>Amount raised goes here</p>
-        },
-        {
-          label: 'Distance',
-          content: <p>Distance goes here</p>
-        },
-        {
-          label: 'Elevation',
-          content: <p>Elevation goes here</p>
-        }
-      ]
+      {
+        label: 'Raise',
+        content: <p>Amount raised goes here</p>
+      },
+      {
+        label: 'Distance',
+        content: <p>Distance goes here</p>
+      },
+      {
+        label: 'Elevation',
+        content: <p>Elevation goes here</p>
+      }
+    ]
 
     let onChange = sinon.spy()
 

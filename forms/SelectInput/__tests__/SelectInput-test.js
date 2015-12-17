@@ -4,9 +4,9 @@ var Select      = require('../');
 
 describe('SelectInput', function() {
   var options = [
-        { value: 'six', label: 'Item 6' },
-        { value: 'seven', label: 'Item 7' }
-      ];
+    { value: 'six', label: 'Item 6' },
+    { value: 'seven', label: 'Item 7' }
+  ];
 
   describe('defaults', function() {
     var element, select;
@@ -48,7 +48,7 @@ describe('SelectInput', function() {
             type="email"
             value="six"
             id="seven"
-            includeBlank={ true }
+            includeBlank
             options={ options } />
         );
       select = findByTag(element, 'select');
@@ -135,7 +135,7 @@ describe('SelectInput', function() {
 
     it('when valid no hui-Input--error class', function() {
       element = renderIntoDocument(
-        <Select valid={true} />
+        <Select valid />
       );
       errorClasses = scryByClass(element, 'hui-Input--error');
 
@@ -162,7 +162,7 @@ describe('SelectInput', function() {
 
     it('shows errors when required', function() {
       element = renderIntoDocument(
-        <Select errorMessage={ 'I am an error' } required={ true }/>
+        <Select errorMessage={ 'I am an error' } required />
       );
 
       var select = findByTag(element, 'select');

@@ -55,13 +55,13 @@ module.exports = React.createClass({
   },
 
   renderTotal: function() {
-    var props          = this.props,
-        total          = props.total,
-        totalFormat    = props.totalFormat,
-        title          = props.title,
-        valueConverter = props.valueConverter,
-        loading        = props.loading,
-        emptyState     = props.emptyState;
+    var props          = this.props;
+    var total          = props.total;
+    var totalFormat    = props.totalFormat;
+    var title          = props.title;
+    var valueConverter = props.valueConverter;
+    var loading        = props.loading;
+    var emptyState     = props.emptyState;
 
     if (emptyState) {
       return (
@@ -74,10 +74,10 @@ module.exports = React.createClass({
   },
 
   renderDeltaArrow: function() {
-    var props      = this.props,
-        delta      = props.delta,
-        loading    = props.loading,
-        emptyState = props.emptyState;
+    var props      = this.props;
+    var delta      = props.delta;
+    var loading    = props.loading;
+    var emptyState = props.emptyState;
 
     if (emptyState) {
       return <DeltaArrow delta={ delta } emptyState={ emptyState } />;
@@ -88,10 +88,10 @@ module.exports = React.createClass({
   },
 
   renderLegend: function() {
-    var props      = this.props,
-        loading    = props.loading,
-        legendKeys = props.legendKeys,
-        emptyState = props.emptyState;
+    var props      = this.props;
+    var loading    = props.loading;
+    var legendKeys = props.legendKeys;
+    var emptyState = props.emptyState;
 
     if (loading || emptyState || !legendKeys) {
       return false;

@@ -7,8 +7,8 @@ var reactStub = 'module.exports = require("react").createClass({render:function(
 
 module.exports = function(filename) {
   if (global.reactModulesToStub) {
-    var stubs = global.reactModulesToStub,
-        i = stubs.length;
+    var stubs = global.reactModulesToStub;
+    var i = stubs.length;
     while (i--) {
       if (filename.indexOf(stubs[i]) !== -1) {
         return reactStub;

@@ -29,12 +29,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var loading    = this.props.loading,
-        emptyState = this.props.emptyState,
-        className = classnames({
-          'hui-SingleNumber--loading': loading,
-          'hui-SingleNumber--emptyState': emptyState
-        }, 'hui-SingleNumber');
+    var loading    = this.props.loading;
+    var emptyState = this.props.emptyState;
+    var className = classnames({
+      'hui-SingleNumber--loading': loading,
+      'hui-SingleNumber--emptyState': emptyState
+    }, 'hui-SingleNumber');
 
     return (
       <div className={ className }>

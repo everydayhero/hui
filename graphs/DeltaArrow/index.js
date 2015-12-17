@@ -21,12 +21,12 @@ module.exports = React.createClass({
   },
 
   renderTriangle: function() {
-    var props      = this.props,
-        delta      = props.delta,
-        loading    = props.loading,
-        emptyState = props.emptyState,
-        showBlankState = (delta === null || delta > 0 || loading === true || emptyState === true),
-        path;
+    var props      = this.props;
+    var delta      = props.delta;
+    var loading    = props.loading;
+    var emptyState = props.emptyState;
+    var showBlankState = (delta === null || delta > 0 || loading === true || emptyState === true);
+    var path;
 
     if (showBlankState) {
       path = 'M2.8,38c-1.1,0-1.6-0.8-1-1.7l19.6-34c0.6-1,1.5-1,2,0l19.6,34c0.5,1,0.1,1.7-1,1.7H2.8z';
@@ -42,18 +42,18 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var props      = this.props,
-        delta      = props.delta,
-        loading    = props.loading,
-        emptyState = props.emptyState,
-        text,
-        className = classnames({
-          'hui-DeltaArrow--emptyState': emptyState,
-          'hui-DeltaArrow--loading': loading,
-          'hui-DeltaArrow--unknown': delta === null && !loading && !emptyState,
-          'hui-DeltaArrow--up': delta > 0 && !loading && !emptyState,
-          'hui-DeltaArrow--down': delta < 0 && !loading && !emptyState
-        });
+    var props      = this.props;
+    var delta      = props.delta;
+    var loading    = props.loading;
+    var emptyState = props.emptyState;
+    var text;
+    var className = classnames({
+      'hui-DeltaArrow--emptyState': emptyState,
+      'hui-DeltaArrow--loading': loading,
+      'hui-DeltaArrow--unknown': delta === null && !loading && !emptyState,
+      'hui-DeltaArrow--up': delta > 0 && !loading && !emptyState,
+      'hui-DeltaArrow--down': delta < 0 && !loading && !emptyState
+    });
 
     if (delta === 0) {
       return null;
