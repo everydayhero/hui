@@ -11,6 +11,7 @@ export default React.createClass({
     label: React.PropTypes.string,
     spacing: React.PropTypes.string,
     layout: React.PropTypes.string,
+    displayProperty: React.PropTypes.string,
     selected: React.PropTypes.object
   },
 
@@ -19,28 +20,34 @@ export default React.createClass({
       label: 'Selected option',
       spacing: 'compact',
       layout: 'full',
+      displayProperty: 'label',
       selected: null
     }
   },
 
   render () {
-    let props = this.props
-    let selected = props.selected
+    const {
+      label,
+      selected,
+      displayProperty,
+      spacing,
+      layout
+    } = this.props
 
-    let classes = classnames([
+    const classes = classnames([
       'hui-FilterSelectDisplay',
-      'hui-FilterSelectDisplay--' + props.spacing,
-      'hui-FilterSelectDisplay--' + props.layout
+      'hui-FilterSelectDisplay--' + spacing,
+      'hui-FilterSelectDisplay--' + layout
     ])
 
     return (
       <div className={ classes }>
         <div className="hui-FilterSelectDisplay__wrap">
           <label className="hui-FilterSelectDisplay__label">
-            { props.label }
+            { label }
           </label>
           <div className="hui-FilterSelectDisplay__value">
-            { !!selected && selected.label }
+            { !!selected && selected[displayProperty] }
           </div>
           <Icon
             icon="chevron-down"
