@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import FilterSelect from '../'
 
@@ -47,7 +47,7 @@ describe('FilterSelect', () => {
     })
   })
 
-  describe('the handleOptionListBlur', () => {
+  describe('#handleOptionListBlur', () => {
     it('sets state.focused and state.isOpen to false', () => {
       const element = renderIntoDocument(
         <FilterSelect options={ [] } />
