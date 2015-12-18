@@ -176,11 +176,13 @@ export default React.createClass({
 
   setFocus: debounce(function (value) {
     const { onFocus, onBlur } = this.props
-    this.setState({
-      focused: value
-    }, () => {
-      value ? onFocus() : onBlur()
-    })
+    if (this.isMounted()) {
+      this.setState({
+        focused: value
+      }, () => {
+        value ? onFocus() : onBlur()
+      })
+    }
   }, 100),
 
   handleBlur() {

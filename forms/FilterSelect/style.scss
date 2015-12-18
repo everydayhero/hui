@@ -5,6 +5,7 @@
 .hui-FilterSelect {
   @extend %hui-input-base;
   position: relative;
+  box-sizing: border-box;
 }
 
 .hui-FilterSelect .hui-FilterSelect__filter-input {
@@ -46,6 +47,7 @@
   margin-top: -2px;
   float: left;
   width: 100%;
+  box-sizing: border-box;
   position: relative;
   z-index: 1;
 }

@@ -4,23 +4,23 @@ var LinePath    = require('../index');
 
 describe('LinePath', function() {
   var collection = [
-        { series: [
-          { date: 1, calculatedValue: 5 },
-          { date: 2, calculatedValue: 22 },
-          { date: 3, calculatedValue: 96 },
-          { date: 4, calculatedValue: 5 },
-          { date: 5, calculatedValue: 10 },
-          { date: 6, calculatedValue: 24 }
-        ] },
-        { series: [
-          { date: 1, calculatedValue: 4 },
-          { date: 2, calculatedValue: 6 },
-          { date: 3, calculatedValue: 90 },
-          { date: 4, calculatedValue: 2 },
-          { date: 5, calculatedValue: 4 },
-          { date: 6, calculatedValue: 23 }
-        ] }
-      ];
+    { series: [
+      { date: 1, calculatedValue: 5 },
+      { date: 2, calculatedValue: 22 },
+      { date: 3, calculatedValue: 96 },
+      { date: 4, calculatedValue: 5 },
+      { date: 5, calculatedValue: 10 },
+      { date: 6, calculatedValue: 24 }
+    ] },
+    { series: [
+      { date: 1, calculatedValue: 4 },
+      { date: 2, calculatedValue: 6 },
+      { date: 3, calculatedValue: 90 },
+      { date: 4, calculatedValue: 2 },
+      { date: 5, calculatedValue: 4 },
+      { date: 6, calculatedValue: 23 }
+    ] }
+  ];
 
   var gutters = {
     top: 10,
@@ -41,8 +41,8 @@ describe('LinePath', function() {
           width={ 200 }
           height={ height }
           index={ 0 }
-          line={ true }
-          area={ true }
+          line
+          area
           gutter={ gutters }
           className="classname1"
           collectionValueKey="" />

@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-var _           = require('lodash');
-var React       = require('react');
-var GraphLine  = require('paths-js/stock');
-var scaleMixin = require('../mixins/scaleMixin');
+import _          from 'lodash'
+import React      from 'react'
+import GraphLine  from 'paths-js/stock'
+import scaleMixin from '../mixins/scaleMixin'
 
 function date(series) {
-  var d = new Date(series.date);
+  const d = new Date(series.date)
 
-  return d.getTime();
+  return d.getTime()
 }
 
 module.exports = React.createClass({
@@ -38,101 +38,95 @@ module.exports = React.createClass({
   },
 
   getScalePercentage: function() {
-    return this.getPathHeight(this.props.index) / this.getBoundsHeight();
+    return this.getPathHeight(this.props.index) / this.getBoundsHeight()
   },
 
   getDrawingHeight: function() {
-    var props = this.props;
-    return props.height - props.gutter.bottom  - props.gutter.top;
+    const props = this.props
+    return props.height - props.gutter.bottom  - props.gutter.top
   },
 
   getPathDrawingHeight: function() {
-    return this.getDrawingHeight() * this.getScalePercentage();
+    return this.getDrawingHeight() * this.getScalePercentage()
   },
 
   capPoint: function(series, getPoint) {
-    var lowerBound = this.getLowerBound();
-    var point = getPoint(series)
+    const lowerBound = this.getLowerBound()
+    const point = getPoint(series)
     return { value: lowerBound, calculatedValue: lowerBound, date: point.date }
   },
 
   cappedSeries: function(series) {
-    return [this.capPoint(series, _.first)].concat(series, [this.capPoint(series, _.last)]);
+    return [this.capPoint(series, _.first)].concat(series, [this.capPoint(series, _.last)])
   },
 
   graphLine: function() {
-    var props = this.props;
+    const props = this.props
 
     return GraphLine({
       data: [this.cappedSeries(props.collection[props.index].series)],
       xaccessor: date,
-      yaccessor: function(d) { return d.calculatedValue; },
+      yaccessor: function(d) { return d.calculatedValue },
       width: props.width - props.gutter.left - props.gutter.right,
       height: this.getPathDrawingHeight(),
       closed: !props.line && !props.scaleToLowerBound
-    });
+    })
   },
 
   getTranslateY: function() {
-    var translationPercentage = (this.getUpperBound() - this.getMaxForIndex(this.props.index)) / this.getBoundsHeight();
-    return this.props.gutter.top + this.getDrawingHeight() * translationPercentage;
+    const translationPercentage = (this.getUpperBound() - this.getMaxForIndex(this.props.index)) / this.getBoundsHeight()
+    return this.props.gutter.top + this.getDrawingHeight() * translationPercentage
   },
 
   calculateTotal: function(dataPoint) {
-    var props = this.props,
-        collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter;
+    const props = this.props
+    const collectionValueKey = props.collectionValueKey
+    const valueConverter = props.valueConverter
 
     return props.collection.reduce(function(total, set) {
       return total + valueConverter(set.series[dataPoint][collectionValueKey])
-    }, 0);
+    }, 0)
   },
 
   calculateOffset: function(pointPos) {
-    return this.props.width - pointPos.x;
+    return this.props.width - pointPos.x
   },
 
   isFlipOver: function(pointPos) {
-    var isFlipOver = false;
-
-    if (this.calculateOffset(pointPos) < 200) {
-      isFlipOver = true;
-    }
-
-    return isFlipOver;
+    return this.calculateOffset(pointPos) < 200
   },
 
   onMouseOver: function(data, dataPoint, pos) {
-    var props          = this.props,
-        collectionValueKey = props.collectionValueKey,
-        valueConverter = props.valueConverter;
+    const props          = this.props
+    const collectionValueKey = props.collectionValueKey
+    const valueConverter = props.valueConverter
 
     return function() {
-      var tipInfo = {
+      const tipInfo = {
         date: data.date,
         value: valueConverter(data[collectionValueKey]),
         total: this.calculateTotal(dataPoint)
       }
 
-      this.props.onPointOver(tipInfo, pos, this.isFlipOver(pos));
-    }.bind(this);
+      this.props.onPointOver(tipInfo, pos, this.isFlipOver(pos))
+    }.bind(this)
   },
 
   onMouseOut: function() {
-    this.props.onPointLeave();
+    this.props.onPointLeave()
   },
 
   renderTipTargets: function() {
-    var graphLine = this.graphLine();
-    var targets = [];
-    var translateX = this.props.gutter.left;
-    var translateY = this.getTranslateY();
-    var onMouseOver = this.onMouseOver;
-    var onMouseOut = this.onMouseOut;
+    const graphLine = this.graphLine()
+    const targets = []
+    const translateX = this.props.gutter.left
+    const translateY = this.getTranslateY()
+    const onMouseOver = this.onMouseOver
+    const onMouseOut = this.onMouseOut
 
     _.forEach(graphLine.curves[0].item, function(series, dataPoint) {
-      var y = graphLine.yscale(series.calculatedValue) + translateY;
-      var x = graphLine.xscale(date(series)) + translateX;
+      const y = graphLine.yscale(series.calculatedValue) + translateY
+      const x = graphLine.xscale(date(series)) + translateX
       targets.push(<circle
         cx={ x }
         cy={ y }
@@ -140,15 +134,15 @@ module.exports = React.createClass({
         className="hui-LinePath__target"
         onMouseOver={ onMouseOver(series, dataPoint, { x, y }) }
         onMouseOut={ onMouseOut } />
-      );
-    });
+      )
+    })
 
-    return targets;
+    return targets
   },
 
   renderPath: function(type) {
     if (!this.props[type]) {
-      return false;
+      return false
     }
 
     return (
@@ -156,17 +150,17 @@ module.exports = React.createClass({
         transform={ 'translate(' + this.props.gutter.left + ', ' + this.getTranslateY() + ')' }
         className={ 'hui-LinePath__' + type }
         d={ this.graphLine().curves[0][type].path.print() }/>
-    );
+    )
   },
 
   render: function() {
-    var givenClassName = this.props.className || '';
+    const givenClassName = this.props.className || ''
     return (
       <g className={ 'hui-LinePath ' + givenClassName }>
         { this.renderPath('area') }
         { this.renderPath('line') }
         { this.renderTipTargets() }
       </g>
-    );
+    )
   }
-});
+})

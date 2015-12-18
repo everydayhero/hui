@@ -11,18 +11,18 @@ module.exports = React.createClass({
     var props = this.props;
     var address = props.value || {};
     var fields = _.compact([
-        address.street_address,
-        address.street_address_2,
-        address.locality,
-        address.region,
-        address.postal_code,
-        address.country_name
-      ]);
+      address.street_address,
+      address.street_address_2,
+      address.locality,
+      address.region,
+      address.postal_code,
+      address.country_name
+    ]);
 
     return (
       <TextInput
         {...props}
-        readOnly={ true }
+        readOnly
         value={ fields.join(', ') } />
     );
   }

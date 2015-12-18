@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var numeral    = require('numeral');
-var classnames = require('classnames');
+import React      from 'react'
+import numeral    from 'numeral'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'SingleNumber',
@@ -17,24 +17,24 @@ module.exports = React.createClass({
       format: '0.0a',
       loading: false,
       emptyState: false
-    };
+    }
   },
 
   metricFormatted: function() {
-    var props = this.props;
+    const props = this.props
 
     if (!props.loading && !props.emptyState) {
-      return numeral(props.value).format(props.format);
+      return numeral(props.value).format(props.format)
     }
   },
 
   render: function() {
-    var loading    = this.props.loading,
-        emptyState = this.props.emptyState,
-        className = classnames({
-          'hui-SingleNumber--loading': loading,
-          'hui-SingleNumber--emptyState': emptyState
-        }, 'hui-SingleNumber');
+    const loading    = this.props.loading
+    const emptyState = this.props.emptyState
+    const className  = classnames({
+      'hui-SingleNumber--loading': loading,
+      'hui-SingleNumber--emptyState': emptyState
+    }, 'hui-SingleNumber')
 
     return (
       <div className={ className }>
@@ -42,6 +42,6 @@ module.exports = React.createClass({
           { this.metricFormatted() }
         </div>
       </div>
-    );
+    )
   }
-});
+})

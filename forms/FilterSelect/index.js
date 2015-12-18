@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import find from 'lodash/collection/find'
@@ -16,9 +16,14 @@ export default React.createClass({
   mixins: [validatable, inputMessage],
 
   propTypes: {
+    id: React.PropTypes.string,
+    name: React.PropTypes.string,
     value: React.PropTypes.string,
+    label: React.PropTypes.string,
     data: React.PropTypes.object,
     options: React.PropTypes.array.isRequired,
+    labelKey: React.PropTypes.string,
+    valueKey: React.PropTypes.string,
     properties: React.PropTypes.array,
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
@@ -41,6 +46,8 @@ export default React.createClass({
       filterLabel: 'Filter',
       properties: ['label'],
       value: '',
+      labelKey: 'label',
+      valueKey: 'value',
       data: null,
       Display: FilterSelectDisplay,
       onChange: () => {},
@@ -78,8 +85,11 @@ export default React.createClass({
   },
 
   getSelected(value, data) {
-    return find(this.props.options, opt => (opt.value && opt.value === value) ||
-        (opt.label && opt.label === value) || isEqual(opt, data))
+    const { valueKey } = this.props
+    return find(this.props.options, opt => (
+      opt[valueKey] && opt[valueKey].toString() === value.toString()) ||
+      isEqual(opt, data)
+    )
   },
 
   handleFilter (filteredOptions) {
@@ -93,20 +103,37 @@ export default React.createClass({
     }, this.props.onOpen)
   },
 
+  closeOptionList () {
+    this.setState({
+      isOpen: false
+    })
+  },
+
   setFocus (focused) {
     this.setState({ focused })
   },
 
+  handleOptionListFocus () {
+    this.setFocus(true)
+    this.openOptionList()
+  },
+
+  handleOptionListBlur () {
+    this.setFocus(false)
+    this.closeOptionList()
+  },
+
   handleSelection (option) {
+    const { labelKey, valueKey } = this.props
     this.setState({
       isOpen: false,
       selectedOption: option,
-      filterValue: option.label,
-      value: option.value
+      filterValue: option[labelKey],
+      value: option[valueKey] && option[valueKey].toString()
     }, () => {
       this.refs.displayInput.getDOMNode().focus()
-      this.validate(option.value)
-      this.props.onChange(option.value)
+      this.validate(option[valueKey])
+      this.props.onChange(option[valueKey])
       this.props.onSelection(option)
     })
   },
@@ -167,16 +194,28 @@ export default React.createClass({
   },
 
   renderDisplay () {
-    let Display = this.props.Display
-    let selected = this.state.selectedOption
+    const selected = this.state.selectedOption
+    const {
+      id,
+      label,
+      name,
+      Display,
+      valueKey,
+      labelKey
+    } = this.props
 
     return (
       <div className="hui-FilterSelect__display">
-        <Display selected={ selected } displayProperty={ this.props.displayProperty }/>
+        <Display
+          label={ label }
+          selected={ selected }
+          displayProperty={ this.props.displayProperty }/>
 
         <select
+          id={ id }
           ref="displayInput"
-          value={ !!selected && selected.value }
+          name={ name }
+          value={ !!selected && selected[valueKey] }
           className="hui-FilterSelect__display-input"
           onChange={ this.handleDisplayChange }
           onFocus={ (e) => { e.preventDefault(); this.setFocus(true) } }
@@ -189,9 +228,9 @@ export default React.createClass({
             return (
               <option
                 key={ option.value }
-                value={ option.value }
-                label={ option.label }>
-                { option.label }
+                value={ option[valueKey] }
+                label={ option[labelKey] }>
+                { option[labelKey] }
               </option>
             )
           }) }
@@ -201,6 +240,21 @@ export default React.createClass({
   },
 
   renderFilter () {
+    const {
+      filterValue,
+      selectedOption,
+      filteredOptions
+    } = this.state
+
+    const {
+      properties,
+      options,
+      filterLabel,
+      Option,
+      labelKey,
+      valueKey
+    } = this.props
+
     return (
       <div>
         <Filter
@@ -209,22 +263,27 @@ export default React.createClass({
             autoFocus: true,
             spacing: 'compact',
             className: 'hui-FilterSelect__filter-input',
+            onBlur: this.handleFilterBlur,
             onKeyDown: this.handleFilterKeyDown
           }}
-          filterValue={ this.state.filterValue }
-          properties={ this.props.properties }
-          collection={ this.props.options }
-          label={ this.props.filterLabel }
+          filterValue={ filterValue }
+          properties={ properties }
+          collection={ options }
+          label={ filterLabel }
           onChange={ this.handleFilterChange }
           onFilter={ this.handleFilter } />
         <OptionList
           className="hui-FilterSelect__option-list"
           ref="optionList"
           spacing="compact"
-          Option={ this.props.Option }
+          Option={ Option }
           onSelection={ this.handleSelection }
-          selectedOption={ this.state.selectedOption }
-          options={ this.state.filteredOptions } />
+          onBlur={ this.handleOptionListBlur }
+          onFocus={ this.handleOptionListFocus }
+          selectedOption={ selectedOption }
+          labelKey={ labelKey }
+          valueKey={ valueKey }
+          options={ filteredOptions } />
       </div>
     )
   },
