@@ -48,7 +48,19 @@ describe('FilterSelect', () => {
   })
 
   describe('#handleOptionListBlur', () => {
-    it('sets state.focused and state.isOpen to false', () => {
+    it('sets state.focused to false', () => {
+      const element = renderIntoDocument(
+        <FilterSelect options={ [] } />
+      )
+      element.openOptionList()
+      element.setFocus(true)
+      expect(element.state.focused).to.eq(true)
+
+      element.handleOptionListBlur()
+      expect(element.state.focused).to.eq(false)
+    })
+
+    it('sets state.isOpen to false', () => {
       const element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
@@ -57,6 +69,28 @@ describe('FilterSelect', () => {
 
       element.handleOptionListBlur()
       expect(element.state.isOpen).to.eq(false)
+    })
+  })
+
+  describe('#handleOptionListFocus', () => {
+    it('sets state.focused to true', () => {
+      const element = renderIntoDocument(
+        <FilterSelect options={ [] } />
+      )
+      expect(element.state.focused).to.eq(false)
+
+      element.handleOptionListFocus()
+      expect(element.state.focused).to.eq(true)
+    })
+
+    it('sets state.isOpen to true', () => {
+      const element = renderIntoDocument(
+        <FilterSelect options={ [] } />
+      )
+      expect(element.state.isOpen).to.eq(false)
+
+      element.handleOptionListFocus()
+      expect(element.state.isOpen).to.eq(true)
     })
   })
 
