@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React   = require('react');
-var Graph   = require('../LineGraph');
-var DeltaArrow = require('../DeltaArrow');
-var SingleNumber = require('./SingleNumber');
-var Legend = require('./Legend');
+import React        from 'react'
+import Graph        from '../LineGraph'
+import DeltaArrow   from '../DeltaArrow'
+import SingleNumber from './SingleNumber'
+import Legend       from './Legend'
 
 module.exports = React.createClass({
   displayName: 'DataVisualisation',
@@ -29,15 +29,15 @@ module.exports = React.createClass({
     return {
       stacked: true,
       valueConverter: function(number) {
-        return number;
+        return number
       },
       loading: false,
       emptyState: false
-    };
+    }
   },
 
   renderGraph: function() {
-    var props = this.props;
+    const props = this.props
 
     if (props.collection) {
       return (
@@ -50,56 +50,56 @@ module.exports = React.createClass({
           tipLabel={ props.tipLabel }
           loading={ props.loading }
           emptyState={ props.emptyState }/>
-      );
+      )
     }
   },
 
   renderTotal: function() {
-    var props          = this.props;
-    var total          = props.total;
-    var totalFormat    = props.totalFormat;
-    var title          = props.title;
-    var valueConverter = props.valueConverter;
-    var loading        = props.loading;
-    var emptyState     = props.emptyState;
+    const props          = this.props
+    const total          = props.total
+    const totalFormat    = props.totalFormat
+    const title          = props.title
+    const valueConverter = props.valueConverter
+    const loading        = props.loading
+    const emptyState     = props.emptyState
 
     if (emptyState) {
       return (
         <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } emptyState={ emptyState }/>
-      );
+      )
     }
     return (
       <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
-    );
+    )
   },
 
   renderDeltaArrow: function() {
-    var props      = this.props;
-    var delta      = props.delta;
-    var loading    = props.loading;
-    var emptyState = props.emptyState;
+    const props      = this.props
+    const delta      = props.delta
+    const loading    = props.loading
+    const emptyState = props.emptyState
 
     if (emptyState) {
-      return <DeltaArrow delta={ delta } emptyState={ emptyState } />;
+      return <DeltaArrow delta={ delta } emptyState={ emptyState } />
     }
     if (loading || delta) {
-      return <DeltaArrow delta={ delta } loading={ loading } />;
+      return <DeltaArrow delta={ delta } loading={ loading } />
     }
   },
 
   renderLegend: function() {
-    var props      = this.props;
-    var loading    = props.loading;
-    var legendKeys = props.legendKeys;
-    var emptyState = props.emptyState;
+    const props      = this.props
+    const loading    = props.loading
+    const legendKeys = props.legendKeys
+    const emptyState = props.emptyState
 
     if (loading || emptyState || !legendKeys) {
-      return false;
+      return false
     }
 
     return (
       <Legend keys={ legendKeys } />
-    );
+    )
   },
 
   render: function() {
@@ -114,6 +114,6 @@ module.exports = React.createClass({
         { this.renderGraph() }
         { this.renderLegend() }
       </div>
-    );
+    )
   }
-});
+})

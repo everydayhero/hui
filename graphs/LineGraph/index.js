@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-var _                   = require('lodash');
-var React               = require('react');
-var LinePath            = require('./LinePath');
-var YScale              = require('./YScale');
-var XScale              = require('./XScale');
-var ToolTip             = require('./ToolTip');
-var LoadingPlaceholder  = require('./LoadingPlaceholder');
-var addEventListener    = require('../../lib/addEventListener');
-var removeEventListener = require('../../lib/removeEventListener');
+import _                   from 'lodash'
+import React               from 'react'
+import LinePath            from './LinePath'
+import YScale              from './YScale'
+import XScale              from './XScale'
+import ToolTip             from './ToolTip'
+import LoadingPlaceholder  from './LoadingPlaceholder'
+import addEventListener    from '../../lib/addEventListener'
+import removeEventListener from '../../lib/removeEventListener'
 
 module.exports = React.createClass({
   displayName: 'LineGraph',
@@ -52,54 +52,54 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    this.setState({ collection: this.transformCollection() });
+    this.setState({ collection: this.transformCollection() })
   },
 
   componentDidMount: function() {
-    this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 });
-    addEventListener('resize', this.handleResizeDebounce);
-    this.handleResize();
+    this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 })
+    addEventListener('resize', this.handleResizeDebounce)
+    this.handleResize()
   },
 
   componentWillReceiveProps: function() {
-    this.setState({ collection: this.transformCollection() });
+    this.setState({ collection: this.transformCollection() })
   },
 
   componentWillUnmount: function() {
-    removeEventListener('resize', this.handleResizeDebounce);
+    removeEventListener('resize', this.handleResizeDebounce)
   },
 
   transformCollection: function() {
-    var props              = this.props;
-    var collectionValueKey = props.collectionValueKey;
-    var valueConverter     = props.valueConverter;
-    var collection         = _.clone(props.collection, true);
+    const props              = this.props
+    const collectionValueKey = props.collectionValueKey
+    const valueConverter     = props.valueConverter
+    const collection         = _.clone(props.collection, true)
 
     return _.map(collection, function(set, collectionIndex) {
-      var series = _.map(set.series, function(dataPoint, pointIndex) {
-        var value = valueConverter(dataPoint[collectionValueKey]);
+      const series = _.map(set.series, function(dataPoint, pointIndex) {
+        const value = valueConverter(dataPoint[collectionValueKey])
 
         if (props.stacked && collectionIndex !== 0) {
-          dataPoint.calculatedValue = value + collection[collectionIndex - 1].series[pointIndex].calculatedValue;
+          dataPoint.calculatedValue = value + collection[collectionIndex - 1].series[pointIndex].calculatedValue
         } else {
-          dataPoint.calculatedValue = value;
+          dataPoint.calculatedValue = value
         }
 
-        return dataPoint;
-      });
+        return dataPoint
+      })
 
-      set.series = series;
+      set.series = series
 
-      return set;
-    });
+      return set
+    })
   },
 
   handleResize: function() {
-    var domNode = this.getDOMNode();
+    const domNode = this.getDOMNode()
     this.setState({
       height: domNode.offsetHeight,
       width: domNode.offsetWidth
-    });
+    })
   },
 
   showTip: function(data, position, isFlipOver) {
@@ -108,20 +108,20 @@ module.exports = React.createClass({
       tipPosition: position,
       tipData: data,
       isFlipOver
-    });
+    })
   },
 
   hideTip: function() {
     this.setState({
       showTip: false
-    });
+    })
   },
 
   renderLinePath: function() {
-    var paths  = [];
-    var state  = this.state;
-    var props  = this.props;
-    var collection = state.collection;
+    const paths  = []
+    const state  = this.state
+    const props  = this.props
+    const collection = state.collection
 
     for (var i = collection.length - 1; i >= 0; i--) {
       paths.push(
@@ -137,16 +137,16 @@ module.exports = React.createClass({
           onPointLeave={ this.hideTip }
           collectionValueKey={ props.collectionValueKey }
           valueConverter={ props.valueConverter } />
-      );
+      )
     }
 
-    return paths;
+    return paths
   },
 
   renderGraph: function() {
-    var state = this.state;
+    const state = this.state
     if (!state.collection || !state.width) {
-      return false;
+      return false
     }
 
     return (
@@ -155,24 +155,24 @@ module.exports = React.createClass({
         <YScale {...this.props} collection={ state.collection } height={ state.height } width={ state.width } />
         <XScale {...this.props} collection={ state.collection } height={ state.height } width={ state.width } />
       </g>
-    );
+    )
   },
 
   render: function() {
-    var state      = this.state;
-    var props      = this.props;
-    var loading    = props.loading;
-    var emptyState = props.emptyState;
-    var emptyData;
-    var tooltip;
-    var graph;
+    const state      = this.state
+    const props      = this.props
+    const loading    = props.loading
+    const emptyState = props.emptyState
+    var emptyData
+    var tooltip
+    var graph
 
     if ((loading === true || emptyState === true) && state.width) {
       graph = (
         <LoadingPlaceholder
           height={ state.height }
           width={ state.width } />
-      );
+      )
     } else {
       tooltip = (
         <ToolTip
@@ -185,15 +185,15 @@ module.exports = React.createClass({
           showDate={ props.showTipDate }
           showTotal={ state.collection.length > 1 }
           scaleUnit={ props.scaleUnit } />
-      );
-      graph = this.renderGraph();
+      )
+      graph = this.renderGraph()
     }
 
     if(emptyState === true) {
       emptyData =  (
       <span className="hui-LineGraph__emptyState">
         No Information to Display
-      </span>);
+      </span>)
     }
 
     return (
@@ -204,6 +204,6 @@ module.exports = React.createClass({
           { graph }
         </svg>
       </div>
-    );
+    )
   }
-});
+})

@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var numeral    = require('numeral');
-var classnames = require('classnames');
+import React      from 'react'
+import numeral    from 'numeral'
+import classnames from 'classnames'
 
 module.exports = React.createClass({
   displayName: 'DeltaArrow',
@@ -17,56 +17,56 @@ module.exports = React.createClass({
     return {
       loading: false,
       emptyState: false
-    };
+    }
   },
 
   renderTriangle: function() {
-    var props      = this.props;
-    var delta      = props.delta;
-    var loading    = props.loading;
-    var emptyState = props.emptyState;
-    var showBlankState = (delta === null || delta > 0 || loading === true || emptyState === true);
-    var path;
+    const props      = this.props
+    const delta      = props.delta
+    const loading    = props.loading
+    const emptyState = props.emptyState
+    const showBlankState = (delta === null || delta > 0 || loading === true || emptyState === true)
+    var path
 
     if (showBlankState) {
-      path = 'M2.8,38c-1.1,0-1.6-0.8-1-1.7l19.6-34c0.6-1,1.5-1,2,0l19.6,34c0.5,1,0.1,1.7-1,1.7H2.8z';
+      path = 'M2.8,38c-1.1,0-1.6-0.8-1-1.7l19.6-34c0.6-1,1.5-1,2,0l19.6,34c0.5,1,0.1,1.7-1,1.7H2.8z'
     } else {
-      path = 'M42.1,1.3c1.1,0,1.5,0.8,1,1.7L23.5,37c-0.5,1-1.5,1-2,0L1.8,3c-0.5-1-0.1-1.7,1-1.7H42.1z';
+      path = 'M42.1,1.3c1.1,0,1.5,0.8,1,1.7L23.5,37c-0.5,1-1.5,1-2,0L1.8,3c-0.5-1-0.1-1.7,1-1.7H42.1z'
     }
 
     return (
       <svg>
         <path d={ path } />
       </svg>
-    );
+    )
   },
 
   render: function() {
-    var props      = this.props;
-    var delta      = props.delta;
-    var loading    = props.loading;
-    var emptyState = props.emptyState;
-    var text;
-    var className = classnames({
+    const props      = this.props
+    const delta      = props.delta
+    const loading    = props.loading
+    const emptyState = props.emptyState
+    var text
+    const className = classnames({
       'hui-DeltaArrow--emptyState': emptyState,
       'hui-DeltaArrow--loading': loading,
       'hui-DeltaArrow--unknown': delta === null && !loading && !emptyState,
       'hui-DeltaArrow--up': delta > 0 && !loading && !emptyState,
       'hui-DeltaArrow--down': delta < 0 && !loading && !emptyState
-    });
+    })
 
     if (delta === 0) {
-      return null;
+      return null
     }
 
     if (loading === true || emptyState === true) {
-      text = '';
+      text = ''
     } else if (delta === null ) {
-      text = '--%';
+      text = '--%'
     } else {
       text = numeral(delta).format('0a%')
                            .toString()
-                           .replace(/^-/, '');
+                           .replace(/^-/, '')
     }
 
     return (
@@ -76,6 +76,6 @@ module.exports = React.createClass({
           { text }
         </div>
       </div>
-    );
+    )
   }
-});
+})
