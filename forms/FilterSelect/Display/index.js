@@ -41,14 +41,19 @@ export default React.createClass({
       'hui-FilterSelectDisplay',
       'hui-FilterSelectDisplay--' + spacing,
       'hui-FilterSelectDisplay--' + layout,
-      label !== null && 'hui-FilterSelectDisplay--has-label'
+      label === null && 'hui-FilterSelectDisplay--no-label'
+    ])
+
+    const valueClasses = classnames([
+      'hui-FilterSelectDisplay__value',
+      label === null && 'hui-FilterSelectDisplay__value--no-label'
     ])
 
     return (
       <div className={ classes }>
         <div className="hui-FilterSelectDisplay__wrap">
-          { this.renderLabel('hui-FilterSelectDisplay')  }
-          <div className="hui-FilterSelectDisplay__value">
+          { this.renderLabel('FilterSelectDisplay')  }
+          <div className={ valueClasses }>
             { !!selected && selected[displayProperty] }
           </div>
           <Icon
