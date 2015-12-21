@@ -12,7 +12,6 @@ global.AssertionError = chai.AssertionError;
 global.sinon = require('sinon');
 
 global.reactModulesToStub = [
-  'examples',
   'FileInput/index',
   'edh-widgets'
 ];

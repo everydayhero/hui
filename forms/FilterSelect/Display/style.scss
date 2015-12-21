@@ -31,7 +31,12 @@
   font-size: 15px;
   padding-left: $x-2;
   width: 100%;
-  max-height: $x-8;
+  height: $x-8;
   overflow: hidden;
 }
 
+.hui-FilterSelectDisplay__value--no-label {
+  top: 0;
+  height: auto;
+  line-height: $x-10;
+}

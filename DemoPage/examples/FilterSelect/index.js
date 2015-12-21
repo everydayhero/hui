@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import FilterSelect from '../../../forms/FilterSelect'
@@ -25,6 +25,11 @@ export default React.createClass({
         <h3 className="DemoPage__h3" id="FilterSelect">FilterSelect</h3>
 
         <FilterSelect
+          value="2"
+          options={ options } />
+
+        <FilterSelect
+          label={ null }
           value="2"
           options={ options } />
       </div>
