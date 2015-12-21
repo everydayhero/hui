@@ -25,6 +25,17 @@ describe('FilterSelect', () => {
     })
   })
 
+  describe('props.value', () => {
+    context('when `null`', () => {
+      it('will guard aginst a null value and still render', () => {
+        let subject = renderIntoDocument(
+          <FilterSelect value={ null }  options={ [] } />
+        )
+        expect(subject).to.be.ok
+      })
+    })
+  })
+
   describe('#openOptionList', () => {
     it('sets state.isOpen to true', () => {
       let element = renderIntoDocument(
@@ -47,50 +58,25 @@ describe('FilterSelect', () => {
     })
   })
 
-  describe('#handleOptionListBlur', () => {
-    it('sets state.focused to false', () => {
-      const element = renderIntoDocument(
-        <FilterSelect options={ [] } />
-      )
-      element.openOptionList()
-      element.setFocus(true)
-      expect(element.state.focused).to.eq(true)
-
-      element.handleOptionListBlur()
-      expect(element.state.focused).to.eq(false)
-    })
-
+  describe('#closeOptionList', () => {
     it('sets state.isOpen to false', () => {
-      const element = renderIntoDocument(
+      let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      element.openOptionList()
-      expect(element.state.isOpen).to.eq(true)
+      element.closeOptionList()
+      let subject = element.state.isOpen
 
-      element.handleOptionListBlur()
-      expect(element.state.isOpen).to.eq(false)
-    })
-  })
-
-  describe('#handleOptionListFocus', () => {
-    it('sets state.focused to true', () => {
-      const element = renderIntoDocument(
-        <FilterSelect options={ [] } />
-      )
-      expect(element.state.focused).to.eq(false)
-
-      element.handleOptionListFocus()
-      expect(element.state.focused).to.eq(true)
+      expect(subject).to.eq(false)
     })
 
-    it('sets state.isOpen to true', () => {
-      const element = renderIntoDocument(
+    it('doesn\'t render an OptionList', () => {
+      let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      expect(element.state.isOpen).to.eq(false)
+      element.closeOptionList()
+      let subject = element.refs.optionList
 
-      element.handleOptionListFocus()
-      expect(element.state.isOpen).to.eq(true)
+      expect(subject).to.not.be.ok
     })
   })
 

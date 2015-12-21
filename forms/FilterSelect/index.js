@@ -5,6 +5,7 @@ import find from 'lodash/collection/find'
 import isEqual from 'lodash/lang/isEqual'
 import validatable from '../../mixins/validatable'
 import inputMessage from '../../mixins/inputMessage'
+import FocusAggregate from '../FocusAggregate'
 import FilterSelectDisplay from './Display'
 import OptionList from '../OptionList'
 import Filter from '../Filter'
@@ -28,6 +29,8 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     onOpen: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
+    onBlur: React.PropTypes.func,
     hint: React.PropTypes.string,
     errorMessage: React.PropTypes.string,
     errors: React.PropTypes.array,
@@ -53,6 +56,8 @@ export default React.createClass({
       onChange: () => {},
       onSelection: () => {},
       onOpen: () => {},
+      onFocus: () => {},
+      onBlur: () => {},
       hint: '',
       errorMessage: '',
       errors: [],
@@ -84,7 +89,7 @@ export default React.createClass({
     }
   },
 
-  getSelected(value, data) {
+  getSelected(value = '', data) {
     const { valueKey } = this.props
     return find(this.props.options, opt => (
       opt[valueKey] && opt[valueKey].toString() === value.toString()) ||
@@ -109,18 +114,22 @@ export default React.createClass({
     })
   },
 
-  setFocus (focused) {
-    this.setState({ focused })
+  handleFocus () {
+    this.setState({
+      focused: true
+    }, () => {
+      this.openOptionList()
+      this.props.onFocus()
+    })
   },
 
-  handleOptionListFocus () {
-    this.setFocus(true)
-    this.openOptionList()
-  },
-
-  handleOptionListBlur () {
-    this.setFocus(false)
-    this.closeOptionList()
+  handleBlur () {
+    this.setState({
+      focused: false
+    }, () => {
+      this.closeOptionList()
+      this.props.onBlur()
+    })
   },
 
   handleSelection (option) {
@@ -218,8 +227,13 @@ export default React.createClass({
           value={ !!selected && selected[valueKey] }
           className="hui-FilterSelect__display-input"
           onChange={ this.handleDisplayChange }
-          onFocus={ (e) => { e.preventDefault(); this.setFocus(true) } }
-          onBlur={ () => { this.setFocus(false) } }
+          onFocus={ (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.setState({
+              focused: true
+            })
+          } }
           onKeyDown={ this.handleDisplayKeyDown }
           onMouseDown={ this.handleDisplayClick }
           onClick={ this.handleDisplayClick }>
@@ -263,7 +277,6 @@ export default React.createClass({
             autoFocus: true,
             spacing: 'compact',
             className: 'hui-FilterSelect__filter-input',
-            onBlur: this.handleFilterBlur,
             onKeyDown: this.handleFilterKeyDown
           }}
           filterValue={ filterValue }
@@ -278,8 +291,6 @@ export default React.createClass({
           spacing="compact"
           Option={ Option }
           onSelection={ this.handleSelection }
-          onBlur={ this.handleOptionListBlur }
-          onFocus={ this.handleOptionListFocus }
           selectedOption={ selectedOption }
           labelKey={ labelKey }
           valueKey={ valueKey }
@@ -301,10 +312,13 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
+      <FocusAggregate
+        className={ classes }
+        onFocus={ this.handleFocus }
+        onBlur={ this.handleBlur }>
         { this.state.isOpen ? this.renderFilter() : this.renderDisplay() }
         { this.renderMessage(!!this.props.errorMessage || !!this.props.errors.length || !!this.props.hint) }
-      </div>
+      </FocusAggregate>
     )
   }
 })
