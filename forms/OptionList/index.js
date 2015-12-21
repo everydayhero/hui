@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import classnames from 'classnames'
@@ -6,6 +6,7 @@ import find from 'lodash/collection/find'
 import debounce from 'lodash/function/debounce'
 import Item from './Item'
 import DefaultDisplay from './DefaultDisplay'
+import FocusAggregate from '../FocusAggregate'
 
 export default React.createClass({
   displayName: 'OptionList',
@@ -169,28 +170,12 @@ export default React.createClass({
   },
 
   focus() {
+    let visibleCandidate = this.getVisibleCandidate()
+
     this.setState({
-      focused: true
+      focused: true,
+      selectionCandidate: visibleCandidate || this.props.options[0]
     })
-  },
-
-  setFocus: debounce(function (value) {
-    const { onFocus, onBlur } = this.props
-    if (this.isMounted()) {
-      this.setState({
-        focused: value
-      }, () => {
-        value ? onFocus() : onBlur()
-      })
-    }
-  }, 100),
-
-  handleBlur() {
-    this.setFocus(false)
-  },
-
-  handleFocus() {
-    this.setFocus(true)
   },
 
   renderOptions() {
@@ -203,6 +188,7 @@ export default React.createClass({
     return this.props.options.map((option, index) => {
       let isCandidate = this.isCandidate(option)
       let { focused, shouldScroll } = this.state
+
       return (
         <Item
           ref={ `option-list-item-${ index }` }
@@ -242,16 +228,16 @@ export default React.createClass({
       'hui-OptionList'
     ])
     return (
-      <div
+      <FocusAggregate
         className={ classes }
-        onFocus={ this.handleFocus }
-        onBlur={ this.handleBlur }>
+        onFocus={ this.props.onFocus }
+        onBlur={ this.props.onBlur }>
         <div ref="scrollContainer" className="hui-OptionList__scroll-container">
           <ul className="hui-OptionList__list">
             { this.props.options.length ? this.renderOptions() : this.renderEmptyState() }
           </ul>
         </div>
-      </div>
+      </FocusAggregate>
     )
   }
 })
