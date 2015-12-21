@@ -126,6 +126,12 @@ export default React.createClass({
     })
   },
 
+  handleCountrySelectBlur() {
+    this.setState({
+      isSelectingCountry: false
+    })
+  },
+
   render() {
     let props = this.props
     let state = this.state
@@ -170,6 +176,7 @@ export default React.createClass({
           className={ countrySelectClasses }
           value={ state.selectedCountry.value }
           data={ state.selectedCountry }
+          onBlur={ this.handleCountrySelectBlur }
           onOpen={ this.handleCountrySelectOpen }
           onSelection={ this.handleCountrySelection } />
       </div>
