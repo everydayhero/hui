@@ -171,6 +171,7 @@ export default React.createClass({
           onChange={ this.props.onChange }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
+          ref="countrySelect"
           spacing="compact"
           displayProperty="value"
           className={ countrySelectClasses }
