@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import validatable from '../../mixins/validatable'
@@ -251,7 +251,7 @@ export default React.createClass({
               </div> }
           </div> : null }
 
-        { this.renderMessage(state.hasError) }
+        { this.renderMessage() }
       </div>
     )
   },

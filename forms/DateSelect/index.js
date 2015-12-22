@@ -188,8 +188,8 @@ module.exports = React.createClass({
             prompt={ moment(props.promptValue).year().toString() }
             { ...passedProps }  />
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

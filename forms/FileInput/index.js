@@ -147,8 +147,8 @@ module.exports = React.createClass({
             <a href="#" ref="browse_files" onBlur={ this.onBlur } onFocus={ this.onFocus } className="hui-FileInput__browse" onClick={ this.browse }>{ browseLabel }</a>
           </div>
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

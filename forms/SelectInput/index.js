@@ -220,8 +220,8 @@ module.exports = React.createClass({
             </select>
           </div>
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

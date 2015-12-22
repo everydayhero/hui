@@ -114,8 +114,8 @@ module.exports = React.createClass({
             onTab={ this.onTab }>
           </textarea>
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

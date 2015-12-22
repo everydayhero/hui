@@ -77,7 +77,7 @@ export default React.createClass({
           { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
     )
   }
