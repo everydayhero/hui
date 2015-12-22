@@ -187,14 +187,13 @@ describe('OptionList', () => {
       ]
       let element = renderIntoDocument(<OptionList options={ options } />)
       element.setState({
-        selectionCandidate: options[1]
+        selectionCandidate: options[1],
+        focused: true
       })
-      let item  = element.refs['option-list-item-1']
-      let radio = item.refs.radio.getDOMNode()
-      sinon.spy(radio, 'focus')
+      let item = element.refs['option-list-item-1']
       element.focus()
 
-      expect(radio.focus).to.be.called
+      expect(document.activeElement).to.eql(item.refs.radio.getDOMNode())
     })
   })
 
