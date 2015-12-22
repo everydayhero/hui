@@ -43,9 +43,7 @@
 }
 
 .hui-TextInput__message {
-  transition: all 240ms 80ms ease-out;
   position: relative;
-  top: -35px;
   border-radius: 0 0 2px 2px;
   color: $grey;
   font-size: $x-3;
@@ -81,8 +79,6 @@
 
 .hui-TextInput--error .hui-TextInput__message {
   @extend %error-message;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 .hui-TextInput--error .hui-TextInput__icon {

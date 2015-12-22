@@ -3,7 +3,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import find from 'lodash/collection/find'
-import debounce from 'lodash/function/debounce'
 import Item from './Item'
 import DefaultDisplay from './DefaultDisplay'
 import FocusAggregate from '../FocusAggregate'

@@ -184,7 +184,6 @@ module.exports = React.createClass({
     var props = this.props
     var state = this.state
     var value = props.value
-    var hasServerErrors = props.errors.length
     var layout = props.layout
     var spacing = props.spacing
     var classes = classnames([

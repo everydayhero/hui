@@ -1,3 +1,21 @@
 %hui-errorMessage {
   padding: $x-2;
 }
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hui-TextInput__message {
+  clear: left;
+  animation-duration: 0.2s;
+  animation-name: fadeInDown;
+}

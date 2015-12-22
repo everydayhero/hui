@@ -130,7 +130,6 @@ module.exports = React.createClass({
     var dateValue = date ? date.date() : ''
     var monthValue = date ? date.month() : ''
     var yearValue = date ? date.year() : ''
-    var hasServerErrors = props.errors.length
     var passedProps = {
       includeBlank: props.includeBlank,
       autoComplete: props.autoComplete,

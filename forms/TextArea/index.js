@@ -87,7 +87,6 @@ module.exports = React.createClass({
     var props = this.props
     var state = this.state
     var value = props.value || ''
-    var hasServerErrors = props.errors.length
     var classes = classnames([
       'hui-TextArea--' + props.layout,
       'hui-TextArea--' + props.spacing,

@@ -108,7 +108,6 @@ module.exports = React.createClass({
     var filename        = file ? file.filename : null
     var inputLabel      = filename ? filename : props.noFileLabel
     var browseLabel     = this.getBrowseLabel(filename)
-    var hasServerErrors = props.errors.length
     var resetButton
     var classes = classnames([
       'hui-FileInput--' + props.layout,
