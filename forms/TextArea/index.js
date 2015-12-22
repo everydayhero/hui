@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import inputMessage from '../../mixins/inputMessage'
@@ -71,7 +71,7 @@ module.exports = React.createClass({
       value: '',
       layout: 'full',
       spacing: 'loose'
-    };
+    }
   },
 
   getInitialState: function() {
@@ -80,14 +80,14 @@ module.exports = React.createClass({
       focused: false,
       valid: false,
       waiting: false
-    };
+    }
   },
 
   render: function() {
-    var props = this.props;
-    var state = this.state;
-    var value = props.value || '';
-    var hasServerErrors = props.errors.length;
+    var props = this.props
+    var state = this.state
+    var value = props.value || ''
+    var hasServerErrors = props.errors.length
     var classes = classnames([
       'hui-TextArea--' + props.layout,
       'hui-TextArea--' + props.spacing,
@@ -97,7 +97,7 @@ module.exports = React.createClass({
       state.valid && 'hui-TextArea--valid',
       this.shouldShowError() && 'hui-TextArea--error',
       props.disabled && 'hui-TextArea--disabled'
-    ]);
+    ])
 
     return (
       <div className={ classes }>

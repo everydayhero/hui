@@ -163,7 +163,7 @@ export default React.createClass({
         header={ this.renderResetButton() }
         prefix={ this.props.prefix }
         storeLocally={ this.props.storeLocally }
-        autoFocus={ true }
+        autoFocus
         showError={ this.props.showError }
         validations={ this.props.validations }
         onError={ this.props.onError }

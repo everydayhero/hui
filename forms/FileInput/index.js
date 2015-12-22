@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import filepicker from '../../lib/filepicker'
@@ -38,78 +38,78 @@ module.exports = React.createClass({
       options: {},
       services: ['CONVERT', 'COMPUTER'],
       spacing: 'loose'
-    };
+    }
   },
 
   getInitialState: function() {
     return {
       hasError: false,
       focused: false
-    };
+    }
   },
 
   browse: function(e) {
-    var props = this.props;
-    var options = props.options;
+    var props = this.props
+    var options = props.options
 
-    options.mimetypes = options.mimetypes || props.mimetypes;
-    options.services = options.services || props.services;
+    options.mimetypes = options.mimetypes || props.mimetypes
+    options.services = options.services || props.services
 
-    e.preventDefault();
+    e.preventDefault()
     if (!props.disabled) {
-      filepicker.pick(options, this.onChange, this.focus);
+      filepicker.pick(options, this.onChange, this.focus)
     }
   },
 
   reset: function(e) {
-    e.preventDefault();
+    e.preventDefault()
     this.onChange({
       url: null,
       filename: null
-    });
+    })
   },
 
   focus: function() {
-    this.refs.browse_files.getDOMNode().focus();
+    this.refs.browse_files.getDOMNode().focus()
   },
 
   onBlur: function() {
-    var onBlur = this.props.onBlur;
+    var onBlur = this.props.onBlur
     if (onBlur) {
-      onBlur();
+      onBlur()
     }
-    this.setState({ focused: false });
+    this.setState({ focused: false })
   },
 
   onFocus: function() {
-    var onFocus = this.props.onFocus;
+    var onFocus = this.props.onFocus
     if (onFocus) {
-      onFocus();
+      onFocus()
     }
-    this.setState({ focused: true });
+    this.setState({ focused: true })
   },
 
   onChange: function(file) {
-    var onChange = this.props.onChange;
+    var onChange = this.props.onChange
     if (onChange) {
-      onChange(file);
+      onChange(file)
     }
-    this.focus();
+    this.focus()
   },
 
   getBrowseLabel: function(filename) {
-    return filename ? 'Replace' : 'Browse';
+    return filename ? 'Replace' : 'Browse'
   },
 
   render: function() {
-    var props           = this.props;
-    var state           = this.state;
-    var file            = props.value;
-    var filename        = file ? file.filename : null;
-    var inputLabel      = filename ? filename : props.noFileLabel;
-    var browseLabel     = this.getBrowseLabel(filename);
-    var hasServerErrors = props.errors.length;
-    var resetButton;
+    var props           = this.props
+    var state           = this.state
+    var file            = props.value
+    var filename        = file ? file.filename : null
+    var inputLabel      = filename ? filename : props.noFileLabel
+    var browseLabel     = this.getBrowseLabel(filename)
+    var hasServerErrors = props.errors.length
+    var resetButton
     var classes = classnames([
       'hui-FileInput--' + props.layout,
       'hui-FileInput--' + props.spacing,
@@ -118,13 +118,13 @@ module.exports = React.createClass({
       props.disabled && 'hui-FileInput--disabled',
       state.focused && 'hui-FileInput--focused',
       'hui-FileInput'
-    ]);
+    ])
 
-    global.ENV = global.ENV || {};
+    global.ENV = global.ENV || {}
 
     if (global.ENV.TEST_MODE) {
-      global.fileInputs = global.fileInputs || {};
-      global.fileInputs[props.id] = this;
+      global.fileInputs = global.fileInputs || {}
+      global.fileInputs[props.id] = this
     }
 
     if (filename) {
@@ -132,7 +132,7 @@ module.exports = React.createClass({
         <a href="#" className="hui-FileInput__reset" onClick={ this.reset }>
           <Icon icon="times-circle" />
         </a>
-      );
+      )
     }
 
     return (
