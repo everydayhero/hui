@@ -34,10 +34,8 @@ export default React.createClass({
   render() {
     let props = this.props
     let state = this.state
-    let errors = props.errors || []
     let valueType = typeof props.value
     let value = (valueType === 'string' || valueType === 'number') ? props.value.toString() : ''
-    let hasServerErrors = errors.length
     let iconsLeft = (props.iconPosition === 'left')
     let classes = classnames([
       props.className,
@@ -77,7 +75,7 @@ export default React.createClass({
           { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
     )
   }

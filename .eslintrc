@@ -13,6 +13,8 @@
   "rules": {
     "valid-typeof": 0,
     "no-alert": 0,
+    "no-undef": 2,
+    "no-unused-vars": 2,
     "array-bracket-spacing": [1, "never"],
     "no-unused-expressions": 0,
     "no-floating-decimal": 1,

@@ -18,7 +18,21 @@ export default {
     return this.state.hasError || errors.length
   },
 
-  renderMessage(hasMessage) {
+  shouldRenderMessage () {
+    const {
+      hint,
+      errorMessage,
+      errors
+    } = this.props
+
+    const { focused } = this.state
+
+    return (!!errorMessage && this.shouldShowError()) ||
+           (!!(errors || []).length && this.shouldShowError()) ||
+           (!!hint && focused)
+  },
+
+  renderMessage() {
     let props = this.props
     let message
 
@@ -32,7 +46,7 @@ export default {
       message = this.props.hint
     }
 
-    return hasMessage && (
+    return this.shouldRenderMessage() && (
       <div className="hui-TextInput__message">
         { message }
       </div>

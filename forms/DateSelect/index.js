@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import SelectInput from '../SelectInput'
@@ -50,93 +50,92 @@ module.exports = React.createClass({
       autoComplete: true,
       disabled: false,
       readOnly: false
-    };
+    }
   },
 
   getInitialState: function() {
     return {
       hasError: false,
       valid: false
-    };
+    }
   },
 
   onChange: function(type, value) {
-    var props = this.props;
-    var currentValue = props.value || moment(props.promptValue).format(props.format);
-    var date = moment(currentValue, props.format)[type](Number(value));
+    var props = this.props
+    var currentValue = props.value || moment(props.promptValue).format(props.format)
+    var date = moment(currentValue, props.format)[type](Number(value))
 
     if(props.onChange) {
-      props.onChange(date.format(props.format));
+      props.onChange(date.format(props.format))
     }
   },
 
   yearChange: function(value) {
-    this.onChange('year', value);
+    this.onChange('year', value)
   },
 
   monthChange: function(value) {
-    this.onChange('month', value);
+    this.onChange('month', value)
   },
 
   dateChange: function(value) {
-    this.onChange('date', value);
+    this.onChange('date', value)
   },
 
   getYears: function() {
-    var year = moment().year();
-    var minYear = 1899;
-    var years = [];
+    var year = moment().year()
+    var minYear = 1899
+    var years = []
     while(year !== minYear) {
-      years.push({ value: year.toString(), label: year });
-      year--;
+      years.push({ value: year.toString(), label: year })
+      year--
     }
 
-    return years;
+    return years
   },
 
   getMonths: function() {
-    var month = 0;
-    var months = [];
+    var month = 0
+    var months = []
 
     while(month !== 12) {
-      months.push({ value: month.toString(), label: this.props.months[month] });
-      month++;
+      months.push({ value: month.toString(), label: this.props.months[month] })
+      month++
     }
 
-    return months;
+    return months
   },
 
   getDays: function() {
-    var date = 1;
-    var dates = [];
-    var props = this.props;
-    var value = props.value || props.promptValue;
-    var momentDate = moment(value, props.format);
+    var date = 1
+    var dates = []
+    var props = this.props
+    var value = props.value || props.promptValue
+    var momentDate = moment(value, props.format)
     while(date !== momentDate.daysInMonth() + 1) {
-      dates.push({ value: date.toString(), label: date });
-      date++;
+      dates.push({ value: date.toString(), label: date })
+      date++
     }
 
-    return dates;
+    return dates
   },
 
   render: function() {
-    var props = this.props;
-    var state = this.state;
-    var date;
+    var props = this.props
+    var state = this.state
+    var date
     if (props.value) {
-      date = moment(props.value, props.format);
+      date = moment(props.value, props.format)
     }
-    var dateValue = date ? date.date() : '';
-    var monthValue = date ? date.month() : '';
-    var yearValue = date ? date.year() : '';
-    var hasServerErrors = props.errors.length;
+    var dateValue = date ? date.date() : ''
+    var monthValue = date ? date.month() : ''
+    var yearValue = date ? date.year() : ''
     var passedProps = {
       includeBlank: props.includeBlank,
       autoComplete: props.autoComplete,
       disabled: props.disabled,
       readOnly: props.readOnly
-    };
+    }
     var classes = classnames([
       'hui-DateSelect--' + props.layout,
       'hui-DateSelect--' + props.spacing,
@@ -145,11 +144,11 @@ module.exports = React.createClass({
       state.valid && 'hui-DateSelect--valid',
       this.shouldShowError() && 'hui-DateSelect--error',
       props.disabled && 'hui-DateSelect--disabled'
-    ]);
+    ])
 
-    monthValue = monthValue.toString();
-    yearValue = yearValue.toString();
-    dateValue = dateValue.toString();
+    monthValue = monthValue.toString()
+    yearValue = yearValue.toString()
+    dateValue = dateValue.toString()
 
     return (
       <div className={ classes }>
@@ -188,8 +187,8 @@ module.exports = React.createClass({
             prompt={ moment(props.promptValue).year().toString() }
             { ...passedProps }  />
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

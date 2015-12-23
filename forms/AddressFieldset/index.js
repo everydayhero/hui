@@ -92,7 +92,7 @@ export default React.createClass({
       required: methods && !!methods.length,
       showError: this.props.showError,
       validate: methods && validation[methods[0]],
-      errorMessage: this.t(name + 'blank_error', { scope: this.state.countryCode }),
+      errorMessage: this.t(name + '_blank_error', { scope: this.state.countryCode }),
       spacing: this.props.internalSpacing,
       storeLocally: this.props.storeLocally,
       localStorageKey: name

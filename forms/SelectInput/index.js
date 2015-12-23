@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import _ from 'lodash'
 import React from 'react'
@@ -61,94 +61,94 @@ module.exports = React.createClass({
       errors: [],
       label: 'Select',
       errorMessage: null
-    };
+    }
   },
 
   getInitialState: function() {
     return {
       focused: false
-    };
+    }
   },
 
   componentDidMount: function() {
-    var props = this.props;
+    var props = this.props
 
-    if (props.disabled) { return; }
-    if (props.autoFocus) { this.refs.input.getDOMNode().focus(); }
+    if (props.disabled) { return }
+    if (props.autoFocus) { this.refs.input.getDOMNode().focus() }
   },
 
   onChange: function(event) {
-    var onChange = this.props.onChange;
-    var value = event.target.value;
-    var hasError = this.props.required ? !value : false;
+    var onChange = this.props.onChange
+    var value = event.target.value
+    var hasError = this.props.required ? !value : false
 
     this.setState({
       value,
       hasError
-    });
+    })
 
     if (onChange) {
-      onChange(value);
+      onChange(value)
     }
   },
 
   onBlur: function() {
-    var props = this.props;
-    var hasError = props.required ? !props.value : false;
+    var props = this.props
+    var hasError = props.required ? !props.value : false
 
-    if (props.onBlur) { props.onBlur(props.value); }
-    this.setState({ focused: false, hasError });
+    if (props.onBlur) { props.onBlur(props.value) }
+    this.setState({ focused: false, hasError })
   },
 
   onFocus: function() {
-    var props = this.props;
-    if (props.onFocus) { props.onFocus(props.value); }
-    this.setState({ focused: true, valid: true });
+    var props = this.props
+    if (props.onFocus) { props.onFocus(props.value) }
+    this.setState({ focused: true, valid: true })
   },
 
   getSelected: function() {
-    var options = this.getOptions();
-    var props = this.props;
-    var criteria = {};
+    var options = this.getOptions()
+    var props = this.props
+    var criteria = {}
 
     if(props.value) {
-      criteria[props.valueKey] = props.value;
+      criteria[props.valueKey] = props.value
 
-      return _.where(options, criteria)[0];
+      return _.where(options, criteria)[0]
     }
   },
 
   getOptions: function() {
-    var props = this.props;
-    var options = props.options.slice();
-    var blank = {};
+    var props = this.props
+    var options = props.options.slice()
+    var blank = {}
 
     if (props.includeBlank) {
-      blank[props.valueKey] = '';
-      blank[props.labelKey] = '';
-      options.unshift(blank);
+      blank[props.valueKey] = ''
+      blank[props.labelKey] = ''
+      options.unshift(blank)
     }
 
-    return options;
+    return options
   },
 
   renderDisplayValue: function() {
-    var props          = this.props;
-    var value          = props.value;
-    var className      = 'hui-SelectInput__selected';
-    var displayValue   = props.prompt;
-    var selectedOption = this.getSelected();
-    var firstOption    = this.getOptions()[0];
-    var firstLabel     = firstOption && firstOption[props.labelKey];
+    var props          = this.props
+    var value          = props.value
+    var className      = 'hui-SelectInput__selected'
+    var displayValue   = props.prompt
+    var selectedOption = this.getSelected()
+    var firstOption    = this.getOptions()[0]
+    var firstLabel     = firstOption && firstOption[props.labelKey]
 
     if (!value && !firstLabel && !this.props.selectionMade) {
-      className += '--noSelection';
+      className += '--noSelection'
     }
 
     if (selectedOption) {
-      displayValue = selectedOption[props.labelKey];
+      displayValue = selectedOption[props.labelKey]
     } else if (firstLabel) {
-      displayValue = firstLabel;
+      displayValue = firstLabel
     }
 
     return (
@@ -157,17 +157,17 @@ module.exports = React.createClass({
           { displayValue }
         </div>
       </div>
-    );
+    )
   },
 
   renderOptions: function() {
-    var props = this.props;
-    var valueKey = props.valueKey;
-    var labelKey = props.labelKey;
-    var options = this.getOptions();
+    var props = this.props
+    var valueKey = props.valueKey
+    var labelKey = props.labelKey
+    var options = this.getOptions()
 
     return _.map(options, function(option, index) {
-      var optionValue = option[valueKey];
+      var optionValue = option[valueKey]
 
       return (
         <option
@@ -176,17 +176,16 @@ module.exports = React.createClass({
           value={ optionValue } >
           { option[labelKey] }
         </option>
-        );
-    });
+        )
+    })
   },
 
   render: function() {
-    var props = this.props;
-    var state = this.state;
-    var value = props.value;
-    var hasServerErrors = props.errors.length;
-    var layout = props.layout;
-    var spacing = props.spacing;
+    var props = this.props
+    var state = this.state
+    var value = props.value
+    var layout = props.layout
+    var spacing = props.spacing
     var classes = classnames([
       'hui-SelectInput--' + layout,
       'hui-SelectInput--' + spacing,
@@ -196,7 +195,7 @@ module.exports = React.createClass({
       state.valid && 'hui-SelectInput--valid',
       this.shouldShowError() && 'hui-SelectInput--error',
       props.disabled && 'hui-SelectInput--disabled'
-    ]);
+    ])
 
     return (
       <div className={ classes }>
@@ -220,8 +219,8 @@ module.exports = React.createClass({
             </select>
           </div>
         </div>
-        { this.renderMessage(props.errorMessage || hasServerErrors || props.hint) }
+        { this.renderMessage() }
       </div>
-    );
+    )
   }
-});
+})

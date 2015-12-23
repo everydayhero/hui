@@ -61,7 +61,7 @@ describe('FocusAggregate', () => {
   })
 
   context('when blur events occur multiple times within 100 ms', () => {
-    it('only calls props.onBlur once', () => {
+    it('only calls props.onBlur once', (done) => {
       const subject = sinon.spy()
       const element = renderIntoDocument(
         <TestComponent onBlur={ subject } />

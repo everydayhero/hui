@@ -317,7 +317,7 @@ export default React.createClass({
         onFocus={ this.handleFocus }
         onBlur={ this.handleBlur }>
         { this.state.isOpen ? this.renderFilter() : this.renderDisplay() }
-        { this.renderMessage(!!this.props.errorMessage || !!this.props.errors.length || !!this.props.hint) }
+        { this.renderMessage() }
       </FocusAggregate>
     )
   }
