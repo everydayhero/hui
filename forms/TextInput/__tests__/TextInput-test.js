@@ -208,6 +208,20 @@ describe('TextInput', function() {
 
       errorClasses.length.should.equal(1)
     })
+
+    it('does have a message element when errors is present', function() {
+      element = renderIntoDocument(<TextInput errors={ [true] } />)
+      const subject = findByClass(element, 'hui-TextInput__message')
+
+      expect(subject).to.be.ok
+    })
+
+    it('does not have a message element when errors is empty', function() {
+      element = renderIntoDocument(<TextInput errors={ [] } />)
+      const subject = scryByClass(element, 'hui-TextInput__message').length
+
+      expect(subject).to.eq(0)
+    })
   })
 
   describe('readOnly behavior', function() {
