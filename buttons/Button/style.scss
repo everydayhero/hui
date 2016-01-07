@@ -16,6 +16,7 @@
   outline-style: none;
   vertical-align: middle;
   background-color: transparent;
+  box-sizing: border-box;
 
   &:before {
     transition: all 200ms ease-out;
