@@ -20,8 +20,6 @@ module.exports = React.createClass({
   },
 
   getDefaultProps: function() {
-    global.ENV = global.ENV || {};
-
     return {
       options: {
         imageDim: [600, 600],
