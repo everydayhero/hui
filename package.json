@@ -16,7 +16,7 @@
     "sass/"
   ],
   "scripts": {
-    "test": "TEST_MODE=true && gulp lint && mocha `find . -name '*-test.js' -not -path '*node_modules*'`",
+    "test": "gulp lint && mocha `find . -name '*-test.js' -not -path '*node_modules*'`",
     "start": "babel-node server.js",
     "build": "gulp build",
     "dev-build": "gulp build --debug true",
