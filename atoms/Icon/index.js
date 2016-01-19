@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
-import React from 'react'
-import cx from 'classnames'
+var compact = require('lodash/array/compact');
+var React = require('react');
 
-export default React.createClass({
+module.exports = React.createClass({
   displayName: 'Icon',
 
   propTypes: {
@@ -18,7 +18,6 @@ export default React.createClass({
 
   getDefaultProps() {
     return {
-      disabled: false,
       fixedWidth: false,
       spin: false,
       type: '',
@@ -27,24 +26,26 @@ export default React.createClass({
   },
 
   onClick(e) {
-    !this.props.disabled && this.props.onClick(e)
+    var props = this.props;
+    if (!props.disabled) {
+      props.onClick(e);
+    }
   },
 
   render: function() {
-    let { icon, type, fixedWidth, spin, className} = this.props
-    spin = icon === 'circle-o-notch' || icon === 'spinner' || icon === 'refresh' || spin
-    let classes = cx([
+    var spin = this.props.icon === 'circle-o-notch' || this.props.icon === 'spinner' || this.props.icon === 'refresh' || this.props.spin;
+    var classes = compact([
       'hui-Icon',
-      type && ('hui-Icon--' + type),
+      this.props.type && ('hui-Icon--' + this.props.type),
       'fa',
-      fixedWidth && 'fa-fw',
+      this.props.fixedWidth && 'fa-fw',
       spin && 'fa-spin',
-      'fa-' + (icon || '')
-    ])
-    let wrapperClasses = cx(['hui-IconWrapper', className])
+      'fa-' + (this.props.icon || '')
+    ]).join(' ');
+    var wrapperClasses = compact(['hui-IconWrapper', this.props.className]).join(' ');
 
     return (
       <span className={ wrapperClasses } onTouchStart={ this.onClick } onMouseDown={ this.onClick }><i className={ classes } /></span>
-    )
+    );
   }
-})
+});
