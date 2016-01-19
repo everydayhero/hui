@@ -37,6 +37,7 @@ import AvatarInput from './examples/AvatarInput'
 import FlashMessage from './examples/FlashMessage'
 import Tabs from './examples/Tabs'
 import Leaderboard from './examples/Leaderboard'
+import ToggleableOptionForm from './examples/ToggleableOptionForm'
 
 const IMG_PATH = './images/';
 
@@ -117,6 +118,11 @@ export default React.createClass({
           <h2 className="DemoPage__h2" id="wizard">Wizard</h2>
           <div className="DemoPage__group">
             <a href="#" onClick={ this.openWizard }>Open Wizard</a>
+          </div>
+
+          <h2 className="DemoPage__h2" id="options">ToggleableOptionForm</h2>
+          <div className="DemoPage__group">
+            <ToggleableOptionForm />
           </div>
         </div>
       </div>
