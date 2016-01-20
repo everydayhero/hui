@@ -4,6 +4,7 @@ require('./testdom')('<html><body></body></html>');
 
 global._ = require('lodash');
 global.React = require('react/addons');
+global.Promise = require('bluebird');
 
 global.chai = require('chai');
 global.should = chai.should();

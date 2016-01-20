@@ -1,0 +1,87 @@
+.ToggleableOption {
+  position: relative;
+  padding: 0.8em;
+  padding-left: 2.8em;
+  border-top: 1px solid $grey-lighter;
+  border-radius: 2px;
+  line-height: 1.25em;
+  display: block;
+  overflow: hidden;
+}
+
+.ToggleableOption:first-child { border-top: none; }
+
+.ToggleableOption,
+.ToggleableOption__checkbox {
+ cursor: pointer;
+}
+
+.ToggleableOption__hiddenInput {
+  position: absolute;
+  top: -50%;
+  appearance: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.ToggleableOption__error,
+.ToggleableOption__loading {
+  font-weight: bold;
+  margin: 0 1em;
+}
+
+.ToggleableOption__error { color: $error; }
+.ToggleableOption__loading { color: $green-light; }
+
+.ToggleableOption__checkbox {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0.8em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ToggleableOption__checkbox:before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transition: all 120ms ease-out;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+.ToggleableOption__checkbox--checked:before,
+.ToggleableOption__checkbox--partial:before,
+.ToggleableOption__checkbox--loading:before,
+.ToggleableOption__checkbox--error:before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.ToggleableOption__checkbox { border-color: $grey-dark; color: $grey; }
+.ToggleableOption__checkbox--checked { border-color: $green; color: $green-light; }
+.ToggleableOption__checkbox--partial { border-color: $green-light; color: rgba(255,255,255,0.4); }
+.ToggleableOption__checkbox--loading { border-color: $grey; color: $grey-light; }
+.ToggleableOption__checkbox--error { border-color: $alert; color: $error; }
+
+.ToggleableOption__checkbox:before { background-color: $grey-dark; }
+.ToggleableOption__checkbox--checked:before { background-color: $green; }
+.ToggleableOption__checkbox--partial:before { background-color: $green-light; }
+.ToggleableOption__checkbox--loading:before { background-color: $grey; }
+.ToggleableOption__checkbox--error:before { background-color: $alert; }
+
+.ToggleableOption__checkbox--partial:before {
+  height: 14px;
+  width: 14px;
+}
