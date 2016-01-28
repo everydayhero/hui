@@ -89,7 +89,8 @@ export default React.createClass({
     }
   },
 
-  getSelected(value = '', data) {
+  getSelected(value, data) {
+    value = value || ''
     const { valueKey } = this.props
     return find(this.props.options, opt => (
       opt[valueKey] && opt[valueKey].toString() === value.toString()) ||
