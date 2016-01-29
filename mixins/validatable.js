@@ -18,11 +18,8 @@ export default {
     let value = this.state.value || ''
     let hasValue = !!value.trim()
 
-    if (hasValue && props.validate) {
-      this.setState({ waiting: true })
-      props.validate(value, this.setValid)
-    } else if (this.props.required) {
-      this.setValid(hasValue)
-    }
+    this.setState({ waiting: true })
+    props.validate && props.validate(value, this.setValid)
+    props.required && this.setValid(hasValue)
   }
 }
