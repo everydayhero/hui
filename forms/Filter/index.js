@@ -12,7 +12,8 @@ export default React.createClass({
     inputOptions: React.PropTypes.shape(textInputProps.types),
     collection: React.PropTypes.array,
     properties: React.PropTypes.array,
-    onFilter: React.PropTypes.func
+    onFilter: React.PropTypes.func,
+    maxResults: React.PropTypes.number,
   },
 
   getDefaultProps () {
@@ -22,7 +23,8 @@ export default React.createClass({
       collection: [],
       properties: ['name'],
       onFilter: () => {},
-      onChange: () => {}
+      onChange: () => {},
+      maxResults: 100
     }
   },
 
@@ -37,12 +39,13 @@ export default React.createClass({
   },
 
   filter (filterValue) {
+
     const query   = new RegExp(filterValue.split('').join('.*'), 'gi')
     const results = this.props.collection.filter((option) => {
       return this.props.properties.some((property) => {
         return !!option[property] && option[property].match(query)
       })
-    })
+    }).slice(0, this.props.maxResults -1)
 
     this.props.onFilter(results)
 
