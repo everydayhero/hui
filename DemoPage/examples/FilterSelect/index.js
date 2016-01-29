@@ -125,7 +125,9 @@ export default React.createClass({
         <h3 className="DemoPage__h3" id="FilterSelect">FilterSelect WAT</h3>
 
         <FilterSelect
-          value="2"
+          required
+          errorMessage="Please select an option"
+          value=" "
           options={ options } />
 
         <FilterSelect

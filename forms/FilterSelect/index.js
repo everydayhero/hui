@@ -130,6 +130,7 @@ export default React.createClass({
     }, () => {
       this.closeOptionList()
       this.props.onBlur()
+      this.validate()
     })
   },
 
@@ -142,9 +143,9 @@ export default React.createClass({
       value: option[valueKey] && option[valueKey].toString()
     }, () => {
       this.refs.displayInput.getDOMNode().focus()
-      this.validate(option[valueKey])
       this.props.onChange(option[valueKey])
       this.props.onSelection(option)
+      this.validate()
     })
   },
 

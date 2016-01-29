@@ -58,7 +58,7 @@
 
 .hui-FilterSelect--error .hui-TextInput__message {
   @extend %error-message;
-  top: 10px;
+  top: 0;
 }
 
 .hui-FilterSelect--error .hui-TextInput__label {
