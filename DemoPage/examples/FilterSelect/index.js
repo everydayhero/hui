@@ -122,7 +122,7 @@ export default React.createClass({
 
     return (
       <div>
-        <h3 className="DemoPage__h3" id="FilterSelect">FilterSelect WAT</h3>
+        <h3 className="DemoPage__h3" id="FilterSelect">FilterSelect</h3>
 
         <FilterSelect
           required
