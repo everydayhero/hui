@@ -30,6 +30,9 @@
   line-height: $x-9 - 1;
   font-size: 15px;
   padding-left: $x-2;
+  padding-right: $x-8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   width: 100%;
   height: $x-8;
   overflow: hidden;
