@@ -34,12 +34,13 @@ export default React.createClass({
     }
   },
 
-  blur () {
-    this.refs.filterInput.blur()
+  componentDidMount () {
+    if (this.props.focused === true) {
+      this.refs.filterInput.refs.input.getDOMNode().focus()
+    }
   },
 
   filter (filterValue) {
-
     const query   = new RegExp(filterValue.split('').join('.*'), 'gi')
     const results = this.props.collection.filter((option) => {
       return this.props.properties.some((property) => {

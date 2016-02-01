@@ -8,6 +8,7 @@ import inputMessage from '../../mixins/inputMessage'
 import FocusAggregate from '../FocusAggregate'
 import FilterSelectDisplay from './Display'
 import OptionList from '../OptionList'
+import DisplayWrap from './DisplayWrap'
 import Filter from '../Filter'
 import classnames from 'classnames'
 
@@ -119,7 +120,6 @@ export default React.createClass({
     this.setState({
       focused: true
     }, () => {
-      this.openOptionList()
       this.props.onFocus()
     })
   },
@@ -137,12 +137,12 @@ export default React.createClass({
   handleSelection (option) {
     const { labelKey, valueKey } = this.props
     this.setState({
-      isOpen: false,
+      focused: true,
       selectedOption: option,
       filterValue: option[labelKey],
       value: option[valueKey] && option[valueKey].toString()
     }, () => {
-      this.refs.displayInput.getDOMNode().focus()
+      this.closeOptionList()
       this.props.onChange(option[valueKey])
       this.props.onSelection(option)
       this.validate()
@@ -168,10 +168,8 @@ export default React.createClass({
     },
     40(e) {
       let optionList = this.refs.optionList
-      let filter = this.refs.filter
+      e.preventDefault()
       if (optionList) {
-        e.preventDefault()
-        filter.blur()
         optionList.focus()
       }
     }
@@ -201,12 +199,28 @@ export default React.createClass({
 
   handleDisplayClick (e) {
     e.preventDefault()
-    this.openOptionList()
+    this.setState({
+      focused: true
+    }, () => {
+      this.openOptionList()
+    })
+  },
+
+  handleDisplayFocus () {
+    this.setState({
+      focused: true
+    })
+  },
+
+  handleDisplayBlur () {
+    this.setState({
+      focused: false
+    })
   },
 
   renderDisplay () {
-    const selected = this.state.selectedOption
     const {
+      options,
       id,
       label,
       name,
@@ -214,44 +228,29 @@ export default React.createClass({
       valueKey,
       labelKey
     } = this.props
+    const {
+      focused,
+      selectedOption: selected
+    } = this.state
 
     return (
-      <div className="hui-FilterSelect__display">
-        <Display
-          label={ label }
-          selected={ selected }
-          displayProperty={ this.props.displayProperty }/>
-
-        <select
-          id={ id }
-          ref="displayInput"
-          name={ name }
-          value={ !!selected && selected[valueKey] }
-          className="hui-FilterSelect__display-input"
-          onChange={ this.handleDisplayChange }
-          onFocus={ (e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            this.setState({
-              focused: true
-            })
-          } }
-          onKeyDown={ this.handleDisplayKeyDown }
-          onMouseDown={ this.handleDisplayClick }
-          onClick={ this.handleDisplayClick }>
-
-          { this.props.options.map((option) => {
-            return (
-              <option
-                key={ option.value }
-                value={ option[valueKey] }
-                label={ option[labelKey] }>
-                { option[labelKey] }
-              </option>
-            )
-          }) }
-        </select>
-      </div>
+      <DisplayWrap
+        ref="displayInput"
+        options={ options }
+        id={ id }
+        label={ label }
+        name={ name }
+        Display={ Display }
+        valueKey={ valueKey }
+        labelKey={ labelKey }
+        focused={ focused }
+        selected={ selected }
+        onFocus={ this.handleDisplayFocus }
+        onBlur={ this.handleDisplayBlur }
+        onChange={ this.handleDisplayChange }
+        onKeyDown={ this.handleDisplayKeyDown }
+        onMouseDown={ this.handleDisplayClick }
+        onClick={ this.handleDisplayClick } />
     )
   },
 
@@ -276,11 +275,11 @@ export default React.createClass({
         <Filter
           ref="filter"
           inputOptions={{
-            autoFocus: true,
             spacing: 'compact',
             className: 'hui-FilterSelect__filter-input',
             onKeyDown: this.handleFilterKeyDown
           }}
+          focused
           filterValue={ filterValue }
           properties={ properties }
           collection={ options }
