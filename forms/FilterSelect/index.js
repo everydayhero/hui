@@ -226,7 +226,8 @@ export default React.createClass({
       name,
       Display,
       valueKey,
-      labelKey
+      labelKey,
+      displayProperty
     } = this.props
     const {
       focused,
@@ -239,6 +240,7 @@ export default React.createClass({
         options={ options }
         id={ id }
         label={ label }
+        displayProperty={ displayProperty }
         name={ name }
         Display={ Display }
         valueKey={ valueKey }
