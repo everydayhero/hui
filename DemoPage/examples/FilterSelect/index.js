@@ -10,9 +10,9 @@ export default React.createClass({
     let options = [
       { label: 'Fred Hollows Foundation', value: '1' },
       { label: 'Australian Red Cross', value: '2' },
-      { label: 'Indigenous Literacy Foundation', value: '3' },
-      { label: 'Australian Men’s Shed Association', value: '4' },
-      { label: 'Royal Flying Doctor Service', value: '5' },
+      { label: 'Indigenous Literacy Foundation Indigenous Literacy Foundation', value: '3' },
+      { label: 'Australian Men’s Shed Association Australian Men’s Shed Association', value: '4' },
+      { label: 'Royal Flying Doctor Service Royal Flying Doctor Service', value: '5' },
       { label: 'Lifeline', value: '6' },
       { label: 'Fitted For Work', value: '7' },
       { label: 'Thin Green Line Foundation', value: '8' },
