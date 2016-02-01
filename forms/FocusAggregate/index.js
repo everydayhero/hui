@@ -12,6 +12,9 @@ export default React.createClass({
       onBlur: () => {},
     }
   },
+  componentWillUnmount() {
+    clearTimeout(blurringTimer)
+  },
   handleFocus (e) {
     clearTimeout(blurringTimer)
     this.props.onFocus(e)
@@ -20,7 +23,7 @@ export default React.createClass({
     clearTimeout(blurringTimer)
     blurringTimer = setTimeout(() => {
       this.props.onBlur(e)
-    }, 100)
+    })
   },
   render () {
     const { children, className } = this.props
