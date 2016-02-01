@@ -85,6 +85,7 @@ export default React.createClass({
 
   setSelectionCandidate (option) {
     this.setState({
+      shouldScroll: false,
       selectionCandidate: option,
       focused: true
     })
