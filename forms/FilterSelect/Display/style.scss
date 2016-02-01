@@ -36,6 +36,7 @@
   width: 100%;
   height: $x-8;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hui-FilterSelectDisplay__value--no-label {
