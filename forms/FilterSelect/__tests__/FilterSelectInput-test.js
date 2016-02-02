@@ -35,6 +35,25 @@ describe('FilterSelect', () => {
       })
     })
   })
+  describe('available options', () => {
+    it('limits options passed to the option list to < props.maxResults', () => {
+      let collection = [
+        { id: '1', name: 'Tim Rogers' },
+        { id: '2', name: 'Tex Perkins' },
+        { id: 'G', name: 'Ben Ely' }
+      ]
+      let element = renderIntoDocument(
+        <FilterSelect
+          options={ collection }
+          maxResults={ 1 } />
+      )
+      let subject = element.state.filteredOptions
+
+      expect(subject).to.eql([
+        { id: '1', name: 'Tim Rogers' }
+      ])
+    })
+  })
 
   describe('#openOptionList', () => {
     it('sets state.isOpen to true', () => {

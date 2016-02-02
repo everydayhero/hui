@@ -40,7 +40,8 @@ export default React.createClass({
     Display: React.PropTypes.func,
     Option: React.PropTypes.func,
     layout: React.PropTypes.string,
-    spacing: React.PropTypes.string
+    spacing: React.PropTypes.string,
+    maxResults: React.PropTypes.number
   },
 
   getDefaultProps () {
@@ -64,7 +65,8 @@ export default React.createClass({
       errors: [],
       validate: () => {},
       layout: 'full',
-      spacing: 'loose'
+      spacing: 'loose',
+      maxResults: 100
     }
   },
 
@@ -73,7 +75,7 @@ export default React.createClass({
     return {
       focused: false,
       value: props.value || '',
-      filteredOptions: props.options,
+      filteredOptions: props.options.slice(0, props.maxResults),
       selectedOption: this.getSelected(props.value, props.data),
       isOpen: false,
       filterValue: ''
@@ -100,7 +102,8 @@ export default React.createClass({
   },
 
   handleFilter (filteredOptions) {
-    return this.setState({ filteredOptions })
+    const truncatedOptions = filteredOptions.slice(0, this.props.maxResults)
+    return this.setState({ filteredOptions: truncatedOptions })
   },
 
   openOptionList () {

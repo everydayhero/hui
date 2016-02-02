@@ -23,8 +23,7 @@ export default React.createClass({
       collection: [],
       properties: ['name'],
       onFilter: () => {},
-      onChange: () => {},
-      maxResults: 100
+      onChange: () => {}
     }
   },
 
@@ -46,7 +45,7 @@ export default React.createClass({
       return this.props.properties.some((property) => {
         return !!option[property] && option[property].match(query)
       })
-    }).slice(0, this.props.maxResults)
+    })
 
     this.props.onFilter(results)
 
