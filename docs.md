@@ -345,6 +345,11 @@ A read-only text input that comes with a handy copy button. Note: In Safari a se
 #### PropTypes
 
 - `disabled` [Boolean] – Disable input (Default false)
+- `label` [String] – Text label that appears at the top of the input
+- `labelCopied` [String] – Text label that appears on the copy button after a copy action
+- `labelCopy` [String] – Text label that appears on the copy button
+- `labelSelect` [String] – Fallback text label for the copy button, displays for Safari/Mobile Safari
+- `copyError` [String] – An error message that displays if the copy action fails
 - `id` [String] - Custom id attribute (Optional)
 - `name` [String] - Field name (Optional)
 - `onBlur` [Function] – On Blur callback (Optional)
