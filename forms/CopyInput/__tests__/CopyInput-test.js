@@ -32,4 +32,9 @@ describe('CopyInput', () => {
     element.setState({ copied: true })
     button.textContent.should.contain('Copied')
   })
+
+  it('shows an error message if a copy failed', () => {
+    element.setState({ errors: ['fail message'] })
+    element.getDOMNode().textContent.should.contain('fail message')
+  })
 })
