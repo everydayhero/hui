@@ -17,6 +17,7 @@ export default React.createClass({
     labelCopied: React.PropTypes.string,
     labelCopy: React.PropTypes.string,
     labelSelect: React.PropTypes.string,
+    copyError: React.PropTypes.string,
     layout: React.PropTypes.string,
     name: React.PropTypes.string,
     onBlur: React.PropTypes.func,
@@ -35,6 +36,7 @@ export default React.createClass({
       labelCopied: 'Copied',
       labelCopy: 'Copy',
       labelSelect: 'Select',
+      copyError: 'Copy command failed. Please try to copy manually instead.',
       layout: 'full',
       name: null,
       onBlur() {},
@@ -48,7 +50,10 @@ export default React.createClass({
   },
 
   getInitialState() {
-    return { copied: false }
+    return {
+      copied: false,
+      errors: []
+    }
   },
 
   handleFocus({ inputElement }) {
@@ -69,7 +74,7 @@ export default React.createClass({
         this.setState({ copied: false })
       }, 4000)
     } catch (error) {
-      console.warn('Copy command is not supported in this browser')
+      this.setState({ errors: [this.props.copyError] })
     }
   },
 
@@ -121,7 +126,8 @@ export default React.createClass({
               ref="copyInput"
               spacing="compact"
               layout="full"
-              onFocus={ this.handleFocus } />
+              onFocus={ this.handleFocus }
+              errors={ this.state.errors } />
           </div>
           { this.renderCopyButton() }
         </div>
