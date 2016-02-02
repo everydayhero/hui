@@ -63,14 +63,19 @@ export default {
   },
 
   handleFocus() {
-    let props = this.props
-    if (props.disabled || props.readOnly) { return }
+    const { disabled, readOnly, onFocus, value } = this.props
 
-    this.setState({ focused: true })
-    if (props.onFocus) {
-      props.onFocus({
+    if (disabled) { return }
+
+    if (!readOnly) {
+      this.setState({ focused: true })
+    }
+
+    if (onFocus) {
+      onFocus({
         element: this.getDOMNode(),
-        value: props.value
+        value,
+        inputElement: this.refs.input.getDOMNode()
       })
     }
   },
