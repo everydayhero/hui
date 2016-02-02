@@ -63,30 +63,6 @@ describe('Filter', () => {
           { id: 'G', name: 'Ben Ely' }
         ])
       })
-
-      it('returns a max number of results', () => {
-        let collection = [
-          { id: '1', name: 'Tim Rogers' },
-          { id: '2', name: 'Tex Perkins' },
-          { id: 'G', name: 'Ben Ely' }
-        ]
-        var subject = []
-        let handleFilter = (results) => {
-          subject = results
-        }
-        let element = renderIntoDocument(
-          <Filter
-            properties={ ['id', 'name'] }
-            collection={ collection }
-            maxResults={ 1 }
-            onFilter={ handleFilter }/>
-        )
-        element.filter('G')
-
-        expect(subject).to.eql([
-          { id: '1', name: 'Tim Rogers' }
-        ])
-      })
     })
   })
 
