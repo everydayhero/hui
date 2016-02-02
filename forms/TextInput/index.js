@@ -27,6 +27,10 @@ export default React.createClass({
     }
   },
 
+  focus() {
+    this.refs.input.getDOMNode().focus()
+  },
+
   blur () {
     this.refs.input.getDOMNode().blur()
   },
