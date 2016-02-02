@@ -50,13 +50,13 @@ export default React.createClass({
           onMouseDown={ onMouseDown }
           onClick={ onClick }>
 
-          { options.map((option) => {
+          { options.map((opt) => {
             return (
               <option
-                key={ option.value }
-                value={ option[valueKey] }
-                label={ option[labelKey] }>
-                { option[labelKey] }
+                key={ opt.value }
+                value={ opt[valueKey] }
+                label={ opt[labelKey] }>
+                { opt[labelKey] }
               </option>
             )
           }) }

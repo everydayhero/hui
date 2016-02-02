@@ -80,7 +80,7 @@ describe('Filter', () => {
           collection={ collection }
           onFilter={ subject }/>
       )
-      let input = findByTag(element, 'input');
+      let input = findByTag(element, 'input')
       Simulate.change(input, { target: { value: 'Tex Perkins' }})
       expect(subject).to.be.calledWith([
         { id: '2', name: 'Tex Perkins' }
