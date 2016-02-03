@@ -178,8 +178,10 @@ describe('OptionList', () => {
       let element = renderIntoDocument(<OptionList options={ options } />)
       let item    = element.refs['option-list-item-1']
       let label   = item.refs.label
+      let radio   = item.refs.radio
 
       Simulate.mouseDown(label.getDOMNode())
+      Simulate.blur(radio.getDOMNode())
       expect(element.state.selected).to.eql(options[1])
       expect(element.state.shouldScroll).to.eql(false)
     })

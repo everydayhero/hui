@@ -78,7 +78,15 @@ export default React.createClass({
 
   handleSelection () {
     let { onSelection, option } = this.props
-    onSelection(option)
+    this.down && onSelection(option)
+  },
+
+  handleDown () {
+    this.down = true
+  },
+
+  handleMove () {
+    this.down = false
   },
 
   handleMouseOver () {
@@ -114,13 +122,15 @@ export default React.createClass({
           className="hui-OptionListItem__radio--hidden"
           value={ option[valueKey] }
           checked={ isSelected }
+          onBlur={ this.handleSelection }
           onKeyDown={ this.handleKeyDown }
           readOnly />
 
         <label
           ref="label"
-          onMouseDown={ this.handleSelection }
-          onTouchStart={ this.handleSelection }
+          onMouseDown={ this.handleDown }
+          onTouchStart={ this.handleDown }
+          onTouchMove={ this.handleMove }
           onMouseOver={ this.handleMouseOver }
           className="hui-OptionListItem__radio-label"
           htmlFor={ `option-list-item-${option[valueKey]}` }>
