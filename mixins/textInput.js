@@ -114,22 +114,22 @@ export default {
     })
   },
 
-  iconClass() {
+  iconClassname() {
     const props = this.props
     const state = this.state
     const hasServerErrors = (props.errors || []).length
-    return !props.showIcon ? false
+    return !props.showIcon ? ''
      : state.waiting ? 'refresh'
      : (state.valid && !hasServerErrors) ? 'check'
      : state.hasError ? 'times'
      : props.disabled ? 'minus'
      : props.icon ? props.icon
      : (props.required && !props.value) ? 'caret-left'
-     : false
+     : ''
   },
 
   hasIcon() {
-    return !!this.iconClass()
+    return !!this.iconClassname()
   },
 
   renderIcon() {
@@ -138,7 +138,7 @@ export default {
       'hui-TextInput__icon': true,
       'hui-TextInput__icon--left': (props.iconPosition === 'left')
     })
-    let icon = this.iconClass()
+    let icon = this.iconClassname()
 
     return this.hasIcon() && (
       <span className={ className }>
