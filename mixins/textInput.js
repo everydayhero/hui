@@ -114,7 +114,7 @@ export default {
     })
   },
 
-  iconClassname() {
+  iconName() {
     const props = this.props
     const state = this.state
     const hasServerErrors = (props.errors || []).length
@@ -129,7 +129,7 @@ export default {
   },
 
   hasIcon() {
-    return !!this.iconClassname()
+    return !!this.iconName()
   },
 
   renderIcon() {
@@ -138,7 +138,7 @@ export default {
       'hui-TextInput__icon': true,
       'hui-TextInput__icon--left': (props.iconPosition === 'left')
     })
-    let icon = this.iconClassname()
+    let icon = this.iconName()
 
     return this.hasIcon() && (
       <span className={ className }>
