@@ -9,6 +9,7 @@ import LineGraph from './examples/LineGraph'
 import Legend from './examples/Legend'
 import Visualisation from './examples/DataVisualisation'
 import TextInput from './examples/TextInput'
+import CopyInput from './examples/CopyInput'
 import ReadOnlyAddress from './examples/ReadOnlyAddress'
 import AddressInput from './examples/AddressInput'
 import AddressFieldset from './examples/AddressFieldset'
@@ -87,6 +88,7 @@ export default React.createClass({
           <h2 className="DemoPage__h2" id="forms">Forms</h2>
           <div className="DemoPage__group">
             <TextInput />
+            <CopyInput />
             <ReadOnlyAddress />
             <AddressInput />
             <AddressLookup />

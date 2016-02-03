@@ -338,6 +338,38 @@ Basic text input.
 
 TextInput [Demo](https://shared-scripts.s3.amazonaws.com/hui-{{ latest-version }}/index.html#TextInput)
 
+### CopyInput
+
+A read-only text input that comes with a handy copy button. Note: In Safari a select button is rendered instead, as Safari currently does not support JavaScript based clipboard API's.
+
+#### PropTypes
+
+- `disabled` [Boolean] – Disable input (Default false)
+- `label` [String] – Text label that appears at the top of the input
+- `labelCopied` [String] – Text label that appears on the copy button after a copy action
+- `labelCopy` [String] – Text label that appears on the copy button
+- `labelSelect` [String] – Fallback text label for the copy button, displays for Safari/Mobile Safari
+- `copyError` [String] – An error message that displays if the copy action fails
+- `id` [String] - Custom id attribute (Optional)
+- `name` [String] - Field name (Optional)
+- `onBlur` [Function] – On Blur callback (Optional)
+- `onKeyDown` [Function] – On Keydown callback (Optional)
+- `readOnly` [Boolean] – Set input to read only (Default true)
+- `spacing` [String one of "loose", "tight" or "compact"] – Layout options (Default loose)
+- `value` [String, Intiger, Float] – Value of input
+- `layout` [String one of "full", "wide", "half", "narrow" or "quarter"] – Defines input layout width (Default Full)
+
+```html
+<CopyInput
+  id='demo_input'
+  name="demo_name"
+  value='http://your-share-url-here.com/'
+  label='Your text label here' />
+```
+
+CopyInput [Demo](https://shared-scripts.s3.amazonaws.com/hui-{{ latest-version }}/index.html#CopyInput)
+
+
 ### ReadOnlyAddress
 
 Read only address input (Contactinates address values with ",").

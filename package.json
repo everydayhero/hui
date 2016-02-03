@@ -1,6 +1,6 @@
 {
   "name": "hui",
-  "version": "3.4.7",
+  "version": "3.5.0",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",
   "files": [
@@ -36,6 +36,7 @@
     "babel": "^5.8.23",
     "babelify": "^6.1.2",
     "bluebird": "^2.9.34",
+    "bowser": "^1.0.0",
     "classnames": "~1.2.0",
     "console-polyfill": "^0.2.2",
     "exenv": "^1.2.0",
