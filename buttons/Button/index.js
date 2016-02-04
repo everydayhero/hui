@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import Icon from '../../atoms/Icon'
-import classnames from 'classnames'
+import cx from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Button',
 
   propTypes: {
@@ -38,7 +38,7 @@ module.exports = React.createClass({
     uppercase: React.PropTypes.bool
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       disabled: false,
       href: null,
@@ -52,42 +52,36 @@ module.exports = React.createClass({
       thin: false,
       slim: false,
       type: 'button'
-    };
-  },
-
-  getInitialState: function() {
-    return {
-      state: null
-    };
-  },
-
-  ignoreClick: function(e) {
-    e.preventDefault();
-  },
-
-  propogateClick: function(e) {
-    if (this.props.onClick) {
-      this.props.onClick(e);
     }
   },
 
-  icon: function() {
-    var props = this.props;
-
-    if (props.icon) {
-      return <Icon className="hui-Button__icon" icon={ props.icon } spin={ props.iconSpin } />;
-    }
+  getInitialState() {
+    return { state: null }
   },
 
-  render: function() {
-    var El;
-    var props = this.props;
-    var href = props.href;
-    var clickHandler = props.disabled ? this.ignoreClick : this.propogateClick;
-    var kind = props.borderless ? props.kind + '-borderless' : props.kind;
+  ignoreClick(e) {
+    e.preventDefault()
+  },
 
-    var classes = classnames([
-      this.props.className,
+  propogateClick(e) {
+    let { onClick } = this.props
+    !!onClick && onClick(e)
+  },
+
+  icon() {
+    let { icon, iconSpin } = this.props
+    return !!icon && <Icon className="hui-Button__icon" icon={ icon } spin={ iconSpin } />
+  },
+
+  render() {
+    let props = this.props
+    let href = props.href
+    let clickHandler = props.disabled ? this.ignoreClick : this.propogateClick
+    let kind = props.borderless ? props.kind + '-borderless' : props.kind
+    let El = !!href ? 'a' : 'button'
+
+    let classes = cx([
+      props.className,
       'hui-Button',
       'hui-Button--' + kind,
       props.disabled && 'hui-Button--disabled',
@@ -97,13 +91,7 @@ module.exports = React.createClass({
       props.icon && 'hui-Button--hasIcon',
       props.iconLeft && 'hui-Button--iconLeft',
       props.uppercase && 'hui-Button--uppercase'
-    ]);
-
-    if (href) {
-      El = 'a';
-    } else {
-      El = 'button';
-    }
+    ])
 
     return (
       <El target={ props.target } className={ classes }
@@ -117,6 +105,6 @@ module.exports = React.createClass({
         { this.icon() }
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
-    );
+    )
   }
-});
+})

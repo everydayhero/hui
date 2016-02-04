@@ -39,6 +39,7 @@ import FlashMessage from './examples/FlashMessage'
 import Tabs from './examples/Tabs'
 import Leaderboard from './examples/Leaderboard'
 import ToggleableOptionForm from './examples/ToggleableOptionForm'
+import PageContent from './examples/PageContent'
 
 const IMG_PATH = './images/';
 
@@ -63,6 +64,7 @@ export default React.createClass({
             <TopBarExample/>
             <LoadingProgress/>
             <FlashMessage/>
+            <PageContent/>
             <PageFormExample/>
             <FooterExample/>
           </div>
