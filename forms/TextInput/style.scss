@@ -25,6 +25,11 @@
   height: 27px;
   position: relative;
   box-sizing: border-box;
+
+  // Hides clear buttons in IE 10 & 11
+  &::-ms-clear {
+    display: none;
+  }
 }
 
 .hui-TextInput__input--icon {
