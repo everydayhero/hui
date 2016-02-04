@@ -1,0 +1,16 @@
+.LeadCopy {
+  display: block;
+  color: $grey;
+  font-family: $font-copy;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: $x-13;
+}
+
+@media screen and (max-width: $bp-xxxs) {
+  .LeadCopy {
+    font-size: 18px;
+    margin-bottom: $x-8;
+  }
+}

@@ -19,6 +19,8 @@
 @import "layout/TopBarLink/style";
 @import "layout/Masthead/style";
 @import "layout/UserAuth/style";
+@import "layout/PageContent/style";
+@import "layout/IconBanner/style";
 @import "layout/PageForm/style";
 @import "layout/Footer/style";
 @import "layout/Row/style";
@@ -78,3 +80,6 @@
 
 // Leaderboard
 @import "leaderboard/style";
+
+// Typography
+@import "typography/LeadCopy/style";
