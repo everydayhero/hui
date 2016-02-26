@@ -74,7 +74,7 @@ export default React.createClass({
     var props = this.props
 
     if (props.disabled) { return }
-    if (props.autoFocus) { this.refs.input.getDOMNode().focus() }
+    if (props.autoFocus) { this.refs.input.focus() }
   },
 
   onChange: function(event) {

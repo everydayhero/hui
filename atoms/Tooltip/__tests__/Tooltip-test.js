@@ -8,7 +8,7 @@ describe('Tooltip', () => {
 
   it('renders', () => {
     element = renderIntoDocument(<Tooltip text={ tipText }/>)
-    element.getDOMNode().textContent.should.equal(tipText)
+    findDOMNode(element).textContent.should.equal(tipText)
   })
 
   it('can be opened and closed', () => {

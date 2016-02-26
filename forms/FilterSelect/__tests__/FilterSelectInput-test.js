@@ -104,7 +104,7 @@ describe('FilterSelect', () => {
       let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      let input = element.refs.displayInput.refs.input.getDOMNode()
+      let input = element.refs.displayInput.refs.input
       Simulate.focus(input)
       let subject = element.state.focused
 
@@ -115,7 +115,7 @@ describe('FilterSelect', () => {
       let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      let input = element.refs.displayInput.refs.input.getDOMNode()
+      let input = element.refs.displayInput.refs.input
       Simulate.click(input)
       let subject = element.state.isOpen
 
@@ -128,7 +128,7 @@ describe('FilterSelect', () => {
           let element = renderIntoDocument(
             <FilterSelect options={ [] } />
           )
-          let input = element.refs.displayInput.refs.input.getDOMNode()
+          let input = element.refs.displayInput.refs.input
           Simulate.focus(input)
           Simulate.keyDown(input, { keyCode: 40 })
 
@@ -152,7 +152,7 @@ describe('FilterSelect', () => {
       )
       element.openOptionList()
 
-      let input = element.refs.filter.refs.filterInput.refs.input.getDOMNode()
+      let input = element.refs.filter.refs.filterInput.refs.input
       Simulate.change(input, { target: { value: 'Per' }})
 
       let subject = element.state.filteredOptions
@@ -174,7 +174,7 @@ describe('FilterSelect', () => {
         )
         element.openOptionList()
 
-        let input = element.refs.filter.refs.filterInput.refs.input.getDOMNode()
+        let input = element.refs.filter.refs.filterInput.refs.input
         Simulate.change(input, { target: { value: 'Per' }})
         Simulate.change(input, { target: { value: '' }})
 

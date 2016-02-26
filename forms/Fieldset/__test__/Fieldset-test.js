@@ -23,7 +23,7 @@ describe('Fieldset', function() {
     it('does render a legend', function() {
       var label = findByClass(element, 'hui-Fieldset__legend');
 
-      label.getDOMNode().textContent.should.equal('foo');
+      label.textContent.should.equal('foo');
     });
   });
 });

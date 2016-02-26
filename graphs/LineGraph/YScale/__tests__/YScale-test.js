@@ -30,7 +30,7 @@ describe('YScale', function() {
     bottom: 20
   }
 
-  var textContent = function(label) { return label.getDOMNode().textContent; };
+  var textContent = function(label) { return label.textContent; };
   var scryLabels = function(component, transform) { return map(scryByClass(component, 'hui-YScale__label'), transform); };
 
   describe('scaleUnits', function() {

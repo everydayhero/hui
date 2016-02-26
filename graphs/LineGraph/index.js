@@ -2,6 +2,7 @@
 
 import _                   from 'lodash'
 import React               from 'react'
+import ReactDOM            from 'react-dom'
 import LinePath            from './LinePath'
 import YScale              from './YScale'
 import XScale              from './XScale'
@@ -95,7 +96,7 @@ export default React.createClass({
   },
 
   handleResize: function() {
-    const domNode = this.getDOMNode()
+    const domNode = ReactDOM.findDOMNode(this)
     this.setState({
       height: domNode.offsetHeight,
       width: domNode.offsetWidth

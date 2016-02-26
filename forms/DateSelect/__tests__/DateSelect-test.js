@@ -15,15 +15,15 @@ describe('DateSelect', function() {
     var yearDisplay = scryByClass(element, 'hui-SelectInput__displayValue')[2];
 
     it('value of null', function() {
-      dateSelect.getDOMNode().value.should.equal('');
-      monthSelect.getDOMNode().value.should.equal('');
-      yearSelect.getDOMNode().value.should.equal('');
+      dateSelect.value.should.equal('');
+      monthSelect.value.should.equal('');
+      yearSelect.value.should.equal('');
     });
 
     it('shows a default display value of 1980-01-01', function() {
-      dateDisplay.getDOMNode().textContent.should.contain('1');
-      monthDisplay.getDOMNode().textContent.should.contain('Jan');
-      yearDisplay.getDOMNode().textContent.should.contain('1980');
+      dateDisplay.textContent.should.contain('1');
+      monthDisplay.textContent.should.contain('Jan');
+      yearDisplay.textContent.should.contain('1980');
     });
   });
 

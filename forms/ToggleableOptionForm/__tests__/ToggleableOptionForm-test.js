@@ -42,7 +42,7 @@ describe('ToggleableOptionForm', () => {
 
   it('renders option groups', () => {
     let element = renderIntoDocument(<ToggleableOptionForm { ...props }/>)
-    let text = element.getDOMNode().textContent
+    let text = ReactDOM.findDOMNode(element).textContent
     text.should.contain('Test Group One')
     text.should.contain('Test Group Two')
   })
@@ -51,7 +51,7 @@ describe('ToggleableOptionForm', () => {
     let url = `${ props.url }/test_one?access_token=${ props.token }&value=true`
     let element = renderIntoDocument(<ToggleableOptionForm { ...props }/>)
     let input = scryByClass(element, 'ToggleableOption__hiddenInput')[1]
-    input.getDOMNode().checked.should.be.false
+    input.checked.should.be.false
     Simulate.change(input, { target: { checked: true }})
     mockSync.should.have.callCount(1)
     mockSync.should.have.been.calledWith(url, 'put')

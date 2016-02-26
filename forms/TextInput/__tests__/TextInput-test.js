@@ -13,23 +13,23 @@ describe('TextInput', function() {
     })
 
     it('type of text', function() {
-      input.getDOMNode().type.should.equal('text')
+      input.type.should.equal('text')
     })
 
     it('value of null', function() {
-      input.getDOMNode().value.should.equal('')
+      input.value.should.equal('')
     })
 
     it('id of null', function() {
-      input.getDOMNode().id.should.equal('')
+      input.id.should.equal('')
     })
 
     it('name of null', function() {
-      input.getDOMNode().name.should.equal('')
+      input.name.should.equal('')
     })
 
     it('readOnly', function() {
-      input.getDOMNode().readOnly.should.equal(false)
+      input.readOnly.should.equal(false)
     })
 
     it('no placeholder element', function() {
@@ -46,20 +46,20 @@ describe('TextInput', function() {
       }
       element = renderIntoDocument(<TextInput { ...props } icon="bolt" width="half" />)
       findByClass(element, 'hui-TextInput__input')
-      findByProp(element, 'name', 'test_input')
+      findByAttribute(element, 'name', 'test_input')
 
-      var label = findByClass(element, 'hui-TextInput__label').getDOMNode()
+      var label = findByClass(element, 'hui-TextInput__label')
       label.textContent.should.contain('Test Input')
 
       element.setState({ focused: true })
-      var hint = findByClass(element, 'hui-TextInput__message').getDOMNode()
+      var hint = findByClass(element, 'hui-TextInput__message')
       hint.textContent.should.contain('This is a test')
 
       findByClass(element, 'fa-bolt')
 
       element.setValid(false)
 
-      var error = findByClass(element, 'hui-TextInput__message').getDOMNode()
+      var error = findByClass(element, 'hui-TextInput__message')
       error.textContent.should.contain('This input errored correctly')
     })
   })
@@ -80,19 +80,19 @@ describe('TextInput', function() {
     })
 
     it('type of email', function() {
-      input.getDOMNode().type.should.equal('email')
+      input.type.should.equal('email')
     })
 
     it('value of six', function() {
-      input.getDOMNode().value.should.equal('six')
+      input.value.should.equal('six')
     })
 
     it('id is TextInput-seven', function() {
-      input.getDOMNode().id.should.equal('seven')
+      input.id.should.equal('seven')
     })
 
     it('name is TextInput-seven', function() {
-      input.getDOMNode().name.should.equal('eight')
+      input.name.should.equal('eight')
     })
 
     it('placeHolder is present', function() {
@@ -126,7 +126,7 @@ describe('TextInput', function() {
     })
 
     it('value of 6', function() {
-      input.getDOMNode().value.should.equal('6')
+      input.value.should.equal('6')
     })
   })
 
@@ -145,19 +145,19 @@ describe('TextInput', function() {
     })
 
     it('type of email', function() {
-      input.getDOMNode().type.should.equal('email')
+      input.type.should.equal('email')
     })
 
     it('value of six', function() {
-      input.getDOMNode().value.should.equal('six')
+      input.value.should.equal('six')
     })
 
     it('id is TextInput-seven', function() {
-      input.getDOMNode().id.should.equal('seven')
+      input.id.should.equal('seven')
     })
 
     it('name is TextInput-seven', function() {
-      input.getDOMNode().name.should.equal('eight')
+      input.name.should.equal('eight')
     })
 
     it('icon is left', function() {
@@ -227,7 +227,7 @@ describe('TextInput', function() {
   describe('readOnly behavior', function() {
     it('will not alter input when readOnly', function() {
       var element = renderIntoDocument(<TextInput value="oldValue" readOnly />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
       Simulate.change(input, { target: { value: 'newValue' }})
 
       input.value.should.equal('oldValue')
@@ -238,7 +238,7 @@ describe('TextInput', function() {
       var onChange = sinon.spy()
       var validate = sinon.spy()
       var element = renderIntoDocument(<TextInput value="oldValue" disabled onFocus={ onFocus } onChange={ onChange } validate={ validate } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.focus(input)
       Simulate.change(input, { target: { value: 'newValue' }})
@@ -256,11 +256,11 @@ describe('TextInput', function() {
     it('will execute onFocus function on focus', function() {
       var onFocus = sinon.spy()
       var element = renderIntoDocument(<TextInput value="testValue" onFocus={ onFocus } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = element.refs.input
       Simulate.focus(input)
 
       var object = {
-        element: element.getDOMNode(),
+        element: findDOMNode(element),
         value: 'testValue',
         inputElement: input
       }
@@ -271,7 +271,7 @@ describe('TextInput', function() {
     it('will execute onChange function on change', function() {
       var onChange = sinon.spy()
       var element = renderIntoDocument(<TextInput value="oldValue" onChange={ onChange } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.change(input, { target: { value: 'newValue' }})
 
@@ -284,7 +284,7 @@ describe('TextInput', function() {
       }
       var mask = sinon.stub().returns('newValue--masked')
       var element = renderIntoDocument(<TextInput value="oldValue" mask={ mask } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
       Simulate.change(input, { target: { value: 'newValue' }})
@@ -299,7 +299,7 @@ describe('TextInput', function() {
         this.setProps({ value })
       }
       var element = renderIntoDocument(<TextInput required={ false } validate={ validate } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
       Simulate.blur(input)
 
@@ -312,7 +312,7 @@ describe('TextInput', function() {
       }
       var validate = sinon.stub()
       var element = renderIntoDocument(<TextInput required validate={ validate } />)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
       Simulate.change(input, { target: { value: 'testValue' }})
@@ -351,7 +351,7 @@ describe('TextInput', function() {
       var onBlur = sinon.spy()
       var value = 'foo'
       var element = renderIntoDocument(<TextInput required onBlur={ onBlur }  value={ value }/>)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.blur(input)
       onBlur.should.have.been.calledWith(value)
@@ -361,7 +361,7 @@ describe('TextInput', function() {
       var onTab = sinon.spy()
       var value = 'foo'
       var element = renderIntoDocument(<TextInput required onTab={ onTab }  value={ value }/>)
-      var input = findByClass(element, 'hui-TextInput__input').getDOMNode()
+      var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.keyDown(input, { key: 'Tab' })
       onTab.should.have.been.calledWith(value)

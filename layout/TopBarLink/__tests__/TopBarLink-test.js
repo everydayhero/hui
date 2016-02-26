@@ -14,7 +14,7 @@ describe('TopBarLinkLink', function() {
   });
 
   it('should render a href', function() {
-    var href = findByTag(component, 'a').getDOMNode().href;
+    var href = findByTag(component, 'a').href;
 
     href.should.contain('foo');
   });

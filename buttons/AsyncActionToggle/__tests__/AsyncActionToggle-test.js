@@ -23,10 +23,10 @@ describe('AsyncActionToggle', () => {
 
   it('displays pre- and post-action labels', (done) => {
     let element = renderIntoDocument(<AsyncActionToggle { ...props } />)
-    element.getDOMNode().textContent.should.contain(props.pre_action_label)
+    findDOMNode(element).textContent.should.contain(props.pre_action_label)
     Simulate.click(findByTag(element, 'button'))
     setTimeout(() => {
-      element.getDOMNode().textContent.should.contain(props.post_action_label)
+      findDOMNode(element).textContent.should.contain(props.post_action_label)
       done()
     }, 2)
   })
@@ -34,11 +34,11 @@ describe('AsyncActionToggle', () => {
   it('displays an error label if action fails', (done) => {
     let rejectAction = sinon.stub().returns(Promise.reject())
     let element = renderIntoDocument(<AsyncActionToggle { ...props } action={ rejectAction } />)
-    element.getDOMNode().textContent.should.contain(props.pre_action_label)
+    findDOMNode(element).textContent.should.contain(props.pre_action_label)
     Simulate.click(findByTag(element, 'button'))
     setTimeout(() => {
       rejectAction.should.have.been.called
-      element.getDOMNode().textContent.should.contain(props.error_label)
+      findDOMNode(element).textContent.should.contain(props.error_label)
       done()
     }, 1)
   })

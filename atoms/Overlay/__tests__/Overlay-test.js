@@ -7,7 +7,7 @@ describe('Overlay', () => {
     let overlay = <Overlay />;
     let element = renderIntoDocument(overlay);
 
-    element.getDOMNode().should.exist;
+    element.should.exist;
   });
 
   it('calls the onClose prop when clicking the close button', () => {

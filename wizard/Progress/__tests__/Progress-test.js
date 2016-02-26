@@ -27,7 +27,7 @@ describe('Progress', function() {
       component = renderIntoDocument(<Progress total={ 4 } active={ 2 }/>);
       var items = scryByClass(component, 'hui-Progress__item');
 
-      expect(items[2].getDOMNode().className).to.contain('hui-Progress__item--active');
+      expect(items[2].className).to.contain('hui-Progress__item--active');
     });
 
     it('should return the index clicked', function() {

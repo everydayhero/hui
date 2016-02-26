@@ -1,9 +1,10 @@
 'use strict'
 /**
 * This Mixin can only be called in/after ComponentDidMount(), as
-* getDOMNode() is unavailable until after the component is rendered.
+* ReactDOM.findDOMNode() will return undefined until after the component is rendered.
 */
 
+import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import { canUseDOM } from 'exenv'
 import addEventListener from '../lib/addEventListener'
@@ -92,7 +93,7 @@ module.exports = {
   },
 
   getComponentWidth: function () {
-    return this.getDOMNode().offsetWidth || 0
+    return ReactDOM.findDOMNode(this).offsetWidth || 0
   },
 
   getDevice: function() {

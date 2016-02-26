@@ -54,7 +54,7 @@ export default React.createClass({
   },
 
   focus: function() {
-    this.refs.browse_files.getDOMNode().focus();
+    this.refs.browse_files.focus()
   },
 
   onChange: function(file) {

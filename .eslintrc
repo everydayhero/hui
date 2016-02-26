@@ -114,7 +114,8 @@
     "findByClass": 1,
     "scryByTag": 1,
     "findByTag": 1,
-    "scryByProp": 1,
-    "findByProp": 1
+    "scryByAttribute": 1,
+    "findByAttribute": 1,
+    "findDOMNode": 1
   }
 }

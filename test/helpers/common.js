@@ -3,6 +3,8 @@
 require('./testdom')('<html><body></body></html>')
 
 global.React = require('react')
+const ReactDOM = require('react-dom')
+global.findDOMNode = ReactDOM.findDOMNode
 
 global.chai = require('chai')
 global.should = chai.should()

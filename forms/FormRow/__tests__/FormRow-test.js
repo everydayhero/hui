@@ -21,12 +21,11 @@ describe('FormRow', function() {
     it('does render a help text', function() {
       var label = findByClass(element, 'hui-FormRow__tip');
 
-      label.getDOMNode().textContent.should.equal('tip');
+      label.textContent.should.equal('tip')
     });
 
-    xit('does render with the id given to it', function() {
-      var row = findByClass(element, 'hui-FormRow');
-      findByProp(row, 'id', 'bar');
+    it('does render with the id given to it', function() {
+      findByAttribute(element, 'id', 'bar');
     });
   });
 });

@@ -55,8 +55,8 @@ describe('XScale', function() {
     it('renders the correct labels', function() {
       var scaleLabels = scryByClass(component, 'hui-XScale__label');
 
-      scaleLabels[0].getDOMNode().textContent.should.equal('Jan 1');
-      scaleLabels[1].getDOMNode().textContent.should.equal('Apr 1');
+      scaleLabels[0].textContent.should.equal('Jan 1');
+      scaleLabels[1].textContent.should.equal('Apr 1');
     });
   });
 });

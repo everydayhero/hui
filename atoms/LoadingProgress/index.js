@@ -9,7 +9,7 @@ export default React.createClass({
   style: function() {
     var style;
     if (this.refs.bar && !this.props.inProgress) {
-      style = { width: this.refs.bar.getDOMNode().offsetWidth || '100%' };
+      style = { width: this.refs.bar.offsetWidth || '100%' }
     }
 
     return style;
@@ -25,6 +25,6 @@ export default React.createClass({
       <div className="hui-LoadingProgress">
         <div className={ classes } ref="bar" style={ this.style() }></div>
       </div>
-    );
+    )
   }
-});
+})
