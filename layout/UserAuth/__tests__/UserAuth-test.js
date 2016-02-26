@@ -16,12 +16,12 @@ describe('UserAuth', function() {
   it('should render a Sign Up link', function() {
     var node = findByClass(component, 'hui-Button');
 
-    node.getDOMNode().textContent.should.contain('Sign Up');
+    node.textContent.should.contain('Sign Up');
   });
 
   it('should render a Sign In link', function() {
     var node = findByClass(component, 'hui-UserAuth__signIn');
 
-    node.getDOMNode().textContent.should.contain('Sign In');
+    node.textContent.should.contain('Sign In');
   });
 });

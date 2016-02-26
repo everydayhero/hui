@@ -9,7 +9,7 @@ describe('UrlInput', function() {
       element = renderIntoDocument(<UrlInput />);
       protocol = findByTag(element, 'select');
 
-      protocol.getDOMNode().value.should.equal('http://');
+      protocol.value.should.equal('http://');
     });
 
     it('strips the protocol from supplied paths and sets the protocol to match', function() {
@@ -18,8 +18,8 @@ describe('UrlInput', function() {
       protocol = findByTag(element, 'select');
       path = findByTag(element, 'input');
 
-      path.getDOMNode().value.should.equal('example.com');
-      protocol.getDOMNode().value.should.equal('https://');
+      path.value.should.equal('example.com');
+      protocol.value.should.equal('https://');
     });
   });
 
@@ -36,15 +36,15 @@ describe('UrlInput', function() {
     it('calls the onChange function whenever the path changes', function() {
       Simulate.change(path, { target: { value: 'https://example.com' }});
 
-      path.getDOMNode().value.should.equal('example.com');
+      path.value.should.equal('example.com');
       parsedValue.should.equal('https://example.com');
     });
 
     it('calls the onChange function whenever the protocol changes', function() {
       Simulate.change(protocol, { target: { value: 'https://' }});
 
-      path.getDOMNode().value.should.equal('example.org');
-      protocol.getDOMNode().value.should.equal('https://');
+      path.value.should.equal('example.org');
+      protocol.value.should.equal('https://');
       parsedValue.should.equal('https://example.org');
     });
 

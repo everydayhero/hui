@@ -1,6 +1,7 @@
 'use strict'
 
 import Item from '../'
+import ReactDOM from 'react-dom'
 
 describe('Item', () => {
   context('when a `Display` React class has been passed', () => {
@@ -19,9 +20,9 @@ describe('Item', () => {
           option={ option }
           Display={ MyCrazyDisplay }/>
       )
-      let subject = findByType(element, MyCrazyDisplay)
-        .getDOMNode()
-        .innerHTML
+      let subject = ReactDOM.findDOMNode(
+        findByType(element, MyCrazyDisplay)
+      ).textContent
 
       expect(subject).to.eq('sregoR miT')
     })

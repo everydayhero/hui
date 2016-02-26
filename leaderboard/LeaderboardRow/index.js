@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Button from '../../buttons/Button'
 import Share from '../../buttons/Share'
 import ProgressBar from '../../atoms/ProgressBar'
@@ -76,7 +77,7 @@ export default React.createClass({
   },
 
   handleResize: function() {
-    let domNode = this.getDOMNode()
+    let domNode = ReactDOM.findDOMNode(this)
     this.setState({
       narrow: domNode.offsetWidth <= 460
     });

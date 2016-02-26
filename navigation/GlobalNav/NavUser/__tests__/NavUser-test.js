@@ -31,42 +31,42 @@ describe('NavUser', () => {
     let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
     setTimeout(() => {
       onLoad.should.not.have.been.called
-      let register = findByClass(element, 'hui-Button--cta').getDOMNode()
+      let register = findByClass(element, 'hui-Button--cta')
       register.href.should.equal(`http://give.${defaultProps.domain}/au/get-started/`)
       register.textContent.should.contain('Get Started')
 
-      let logIn = findByClass(element, 'hui-NavLink--cta').getDOMNode()
+      let logIn = findByClass(element, 'hui-NavLink--cta')
       logIn.href.should.equal(`http://${defaultProps.domain}/au/sign-in/`)
       logIn.textContent.should.contain('Log in')
       done()
     }, 15)
   })
 
-  xit('loads a user', (done) => {
+  it('loads a user', (done) => {
     getJSON.returns(success)
     let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
     setTimeout(() => {
       onLoad.should.have.been.calledWith(userData)
-      let user = findByClass(element, 'hui-NavUser__user').getDOMNode()
+      let user = findByClass(element, 'hui-NavUser__user')
       user.href.should.equal(`https://${defaultProps.domain}/dashboard`)
       user.textContent.should.contain(userData.name)
 
-      let avatar = findByTag(findByClass(element, 'hui-NavUser__avatar'), 'img').getDOMNode()
+      let avatar = findByTag(element, 'img')
       avatar.src.should.equal(userData.image_url)
       done()
     }, 15)
   })
 
-  xit('accepts a user', (done) => {
+  it('accepts a user', (done) => {
     getJSON.returns(success)
     let element = renderIntoDocument(<NavUser { ...defaultProps } user={ userData }/>)
     setTimeout(() => {
       onLoad.should.not.have.been.called
-      let user = findByClass(element, 'hui-NavUser__user').getDOMNode()
+      let user = findByClass(element, 'hui-NavUser__user')
       user.href.should.equal(`https://${defaultProps.domain}/dashboard`)
       user.textContent.should.contain(userData.name)
 
-      let avatar = findByTag(findByClass(element, 'hui-NavUser__avatar'), 'img').getDOMNode()
+      let avatar = findByTag(element, 'img')
       avatar.src.should.equal(userData.image_url)
       done()
     }, 15)

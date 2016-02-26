@@ -140,7 +140,7 @@ export default React.createClass({
       filterValue: option[labelKey],
       value: option[valueKey] && option[valueKey].toString()
     }, () => {
-      this.refs.displayInput.getDOMNode().focus()
+      this.refs.displayInput.focus()
       this.validate(option[valueKey])
       this.props.onChange(option[valueKey])
       this.props.onSelection(option)

@@ -62,12 +62,12 @@ export default React.createClass({
   close() {
     this.setState({ open: false }, () => {
       removeListeners(['mousedown', 'touchstart'], this.handleClick)
-      setTimeout(() => this.refs.button.getDOMNode().blur(), 15)
+      setTimeout(() => this.refs.button.blur(), 15)
     })
   },
 
   handleClick(e) {
-    if (!this.refs.list.getDOMNode().contains(e.target || e.srcElement)) { this.close() }
+    if (!this.refs.list.contains(e.target || e.srcElement)) { this.close() }
   },
 
   renderPages() {

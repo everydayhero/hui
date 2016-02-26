@@ -8,7 +8,7 @@ export default {
   componentDidMount() {
     let props = this.props
     if (props.disabled || props.readOnly) { return }
-    let node = this.refs.input.getDOMNode()
+    let node = this.refs.input
     let value = node.value
     if (props.autoFocus) { node.focus() }
     if (value && props.validate) { this.validate() }
@@ -69,7 +69,7 @@ export default {
     this.setState({ focused: true })
     if (props.onFocus) {
       props.onFocus({
-        element: this.getDOMNode(),
+        element: this,
         value: props.value
       })
     }

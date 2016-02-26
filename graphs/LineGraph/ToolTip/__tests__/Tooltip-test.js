@@ -74,7 +74,7 @@ describe('ToolTip', function() {
     });
 
     it('should render the total formated', function() {
-      findByClass(component, 'hui-ToolTip__total').getDOMNode().textContent.should.contain('456.00');
+      findByClass(component, 'hui-ToolTip__total').textContent.should.contain('456.00');
     });
   });
 

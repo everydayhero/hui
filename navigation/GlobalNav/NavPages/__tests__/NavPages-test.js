@@ -52,7 +52,7 @@ describe('NavPages', () => {
   })
 
   it('contains page links', () => {
-    let list = pages.refs.list.getDOMNode().textContent
+    let list = pages.refs.list.textContent
     list.should.contain(testPage.name)
     list.should.contain(testPage.charity_name)
     list.should.contain(testPage.campaign_name)

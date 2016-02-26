@@ -11,7 +11,7 @@ describe('Button', function() {
     });
 
     it('renders a CTA button', function(){
-      findByProp(component, 'id', 'click-me');
+      findByAttribute(component, 'id', 'click-me');
     });
   });
 

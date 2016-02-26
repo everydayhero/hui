@@ -131,10 +131,10 @@ describe('UrlSearchSelect', () => {
           required
           url="http://everydayhero.com" />
       )
-      Simulate.focus(element.refs.searchInput.getDOMNode())
+      Simulate.focus(element.refs.searchInput)
       expect(element.state.hasError).to.eq(false)
 
-      Simulate.blur(element.refs.searchInput.getDOMNode())
+      Simulate.blur(element.refs.searchInput)
       expect(element.state.hasError).to.eq(true)
     })
   })

@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import I18n from '../../../mixins/I18n'
 import i18n from './i18n'
 
@@ -48,7 +49,7 @@ export default React.createClass({
     let t = this.t
     let portal = props.portal
     let mobile = kind === 'mobile'
-    let searching = mobile && this.state.searchFocused && this.getDOMNode().offsetWidth < 400
+    let searching = mobile && this.state.searchFocused && ReactDOM.findDOMNode(this).offsetWidth < 400
     let classes = cx('hui-SiteNav', 'hui-SiteNav--' + kind )
 
     return (

@@ -19,7 +19,7 @@ describe('AddressLookup', () => {
         <AddressLookup />
       )
       element.setState({ isSelectingCountry: true })
-      const countrySelect = element.refs.countrySelect.getDOMNode()
+      const countrySelect = element.refs.countrySelect
 
       Simulate.blur(countrySelect)
 

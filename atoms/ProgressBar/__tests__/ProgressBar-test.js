@@ -10,7 +10,7 @@ describe('ProgressBar', function() {
     }
     let element = renderIntoDocument(<ProgressBar goal={ data.goal } progress={ data.progress }/>)
     let progress = findByClass(element, 'hui-ProgressBar__progress')
-    let width = progress.getDOMNode().style.width
+    let width = progress.style.width
 
     width.should.equal('50%')
   })
@@ -22,7 +22,7 @@ describe('ProgressBar', function() {
     }
     let element = renderIntoDocument(<ProgressBar goal={ data.goal } progress={ data.progress }/>)
     let progress = findByClass(element, 'hui-ProgressBar__progress')
-    let width = progress.getDOMNode().style.width
+    let width = progress.style.width
 
     width.should.equal('0%')
   })
@@ -34,7 +34,7 @@ describe('ProgressBar', function() {
     }
     let element = renderIntoDocument(<ProgressBar goal={ data.goal } progress={ data.progress }/>)
     let progress = findByClass(element, 'hui-ProgressBar__progress')
-    let width = progress.getDOMNode().style.width
+    let width = progress.style.width
 
     width.should.equal('0%')
   })
@@ -46,7 +46,7 @@ describe('ProgressBar', function() {
     }
     let element = renderIntoDocument(<ProgressBar goal={ data.goal } progress={ data.progress }/>)
     let progress = findByClass(element, 'hui-ProgressBar__progress')
-    let width = progress.getDOMNode().style.width
+    let width = progress.style.width
 
     width.should.equal('100%')
   })

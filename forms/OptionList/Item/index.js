@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import DefaultDisplay from '../DefaultDisplay'
 
 export default React.createClass({
@@ -42,7 +43,7 @@ export default React.createClass({
     let { isSelected } = this.props
 
     if (isSelected) {
-      let scrollPos = this.getDOMNode().offsetTop - 20
+      let scrollPos = ReactDOM.findDOMNode(this).offsetTop - 20
       this.props.setScroll(scrollPos)
     }
   },
@@ -71,13 +72,13 @@ export default React.createClass({
     if (shouldFocus) {
       this.focus()
     } else if (!shouldFocus && shouldScroll && isCandidate) {
-      let scrollPos = this.getDOMNode().offsetTop - 20
+      let scrollPos = ReactDOM.findDOMNode(this).offsetTop - 20
       this.props.setScroll(scrollPos)
     }
   },
 
   focus () {
-    this.refs.radio.getDOMNode().focus()
+    this.refs.radio.focus()
   },
 
   handleChange (e) {

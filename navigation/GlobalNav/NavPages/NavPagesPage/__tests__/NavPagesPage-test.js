@@ -1,5 +1,6 @@
 'use strict'
 
+import ReactDOM from 'react-dom'
 import NavPagesPage from '../'
 
 let testPage = {
@@ -26,17 +27,16 @@ describe('NavPagesPage', () => {
   let page = renderIntoDocument(<NavPagesPage page={ testPage }/>)
 
   it('links to the page', () => {
-    page.getDOMNode().href.should.equal(testPage.url)
+    ReactDOM.findDOMNode(page).href.should.equal(testPage.url)
   })
 
-  xit('displays page image with page state icon', () => {
-    let imgWrap = findByClass(page, 'hui-NavPagesPage__image')
-    findByTag(imgWrap, 'img').getDOMNode().src.should.equal(testPage.image.small_image_url)
-    findByClass(imgWrap, 'hui-NavPagesPage__icon').should.exist
+  it('displays page image with page state icon', () => {
+    findByTag(page, 'img').src.should.equal(testPage.image.small_image_url)
+    findByClass(page, 'hui-NavPagesPage__icon').should.exist
   })
 
   it('displays page details', () => {
-    let details = findByClass(page, 'hui-NavPagesPage__details').getDOMNode().textContent
+    let details = findByClass(page, 'hui-NavPagesPage__details').textContent
     details.should.contain(testPage.name)
     details.should.contain(testPage.charity_name)
     details.should.contain(testPage.campaign_name)
@@ -44,7 +44,7 @@ describe('NavPagesPage', () => {
   })
 
   it('displays a progress bar', () => {
-    findByClass(page, 'hui-NavPagesPage__progressBar').getDOMNode().style.width.should.equal('50%')
+    findByClass(page, 'hui-NavPagesPage__progressBar').style.width.should.equal('50%')
   })
 })
 

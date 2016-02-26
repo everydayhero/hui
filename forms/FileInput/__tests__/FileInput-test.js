@@ -14,13 +14,13 @@ describe('FileInput', function() {
     it('should render the input field', function() {
       var input = findByClass(component, 'hui-FileInput__input');
 
-      input.getDOMNode().textContent.should.equal(noFileLabel);
+      input.textContent.should.equal(noFileLabel);
     });
 
     it('should render the browse button', function() {
       var button = findByClass(component, 'hui-FileInput__browse');
 
-      button.getDOMNode().textContent.should.equal('Browse');
+      button.textContent.should.equal('Browse');
     });
   });
 
@@ -36,19 +36,19 @@ describe('FileInput', function() {
     it('should render the input field', function() {
       var input = findByClass(component, 'hui-FileInput__input');
 
-      input.getDOMNode().textContent.should.equal(filename);
+      input.textContent.should.equal(filename);
     });
 
     it('should render the browse button', function() {
       var button = findByClass(component, 'hui-FileInput__browse');
 
-      button.getDOMNode().textContent.should.equal('Replace');
+      button.textContent.should.equal('Replace');
     });
 
     it('should render the reset button', function() {
       var button = findByClass(component, 'hui-FileInput__reset');
 
-      button.getDOMNode().should.exist;
+      button.should.exist;
     });
   });
 
@@ -57,7 +57,7 @@ describe('FileInput', function() {
       component.setProps({ errors: ['is not good'] });
       var errors = findByClass(component, 'hui-InputErrors');
 
-      errors.getDOMNode().textContent.should.contain('is not good');
+      errors.textContent.should.contain('is not good');
     });
   });
 });

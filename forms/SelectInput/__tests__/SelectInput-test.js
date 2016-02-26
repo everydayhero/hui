@@ -19,20 +19,20 @@ describe('SelectInput', function() {
     });
 
     it('no value', function() {
-      select.getDOMNode().value.should.equal('1');
+      select.value.should.equal('1');
     });
 
     it('no id', function() {
-      select.getDOMNode().id.should.equal('');
+      select.id.should.equal('');
     });
 
     it('no name', function() {
-      select.getDOMNode().name.should.equal('');
+      select.name.should.equal('');
     });
 
     it('does not render blank option', function() {
       var firstOption = scryByTag(element, 'option')[0];
-      var node = firstOption.getDOMNode();
+      var node = firstOption;
 
       node.value.should.equal('1');
       node.textContent.should.equal('Item x');
@@ -55,26 +55,26 @@ describe('SelectInput', function() {
     });
 
     it('value of six', function() {
-      select.getDOMNode().value.should.equal('six');
+      select.value.should.equal('six');
     });
 
     it('display value when selection', function() {
       var display = findByClass(element, 'hui-SelectInput__selected');
 
-      display.getDOMNode().textContent.should.contain('Item 6');
+      display.textContent.should.contain('Item 6');
     });
 
     it('id is select-seven', function() {
-      select.getDOMNode().id.should.equal('seven');
+      select.id.should.equal('seven');
     });
 
     it('name is select-seven', function() {
-      select.getDOMNode().name.should.equal('seven');
+      select.name.should.equal('seven');
     });
 
     it('blank option is rendered', function() {
       var firstOption = scryByTag(element, 'option')[0];
-      var node = firstOption.getDOMNode();
+      var node = firstOption;
 
       node.value.should.equal('');
       node.textContent.should.equal('');
@@ -108,7 +108,7 @@ describe('SelectInput', function() {
       );
       label = findByTag(element, 'label');
 
-      label.getDOMNode().textContent.should.equal('words');
+      label.textContent.should.equal('words');
     });
 
     it('is there if there is no value', function() {
