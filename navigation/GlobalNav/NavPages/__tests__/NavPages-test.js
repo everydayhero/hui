@@ -1,6 +1,11 @@
 'use strict'
 
 import Promise from 'bluebird'
+
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
 let testPage = {
   name: 'Test Page',
   charity_name: 'Test Charity',
@@ -22,18 +27,22 @@ let testPage = {
 }
 let results = { pages: [testPage] }
 let success = Promise.resolve(results)
-let NavPages = mockrequire('../', {
-  '../../../lib/getJSON': sinon.stub().returns(success)
-})
+
 let defaultProps = {
   kind: 'desktop',
   registerUrl: 'http://test/path',
   pages: [1]
 }
 
-describe('NavPages', () => {
-  let pages = renderIntoDocument(<NavPages { ...defaultProps }/>)
+let pages
+const NavPages = proxyquire('../', {
+  '../../../lib/getJSON': sinon.stub().returns(success)
+}).default
 
+describe('NavPages', () => {
+  before(() => {
+    pages = renderIntoDocument(<NavPages { ...defaultProps }/>)
+  })
   it('displays a list on focus', () => {
     let button = pages.refs.button
     expect(pages.refs.list).to.not.exist

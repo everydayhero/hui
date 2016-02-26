@@ -47,8 +47,4 @@ describe('AvatarInput', function() {
       expect(element.getDOMNode().src).to.equal(value.url);
     });
   });
-
-  after(function() {
-    mockcomponent('AvatarInput/index');
-  });
 });

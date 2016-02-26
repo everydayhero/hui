@@ -60,8 +60,4 @@ describe('FileInput', function() {
       errors.getDOMNode().textContent.should.contain('is not good');
     });
   });
-
-  after(function() {
-    mockcomponent('FileInput/index');
-  });
 });

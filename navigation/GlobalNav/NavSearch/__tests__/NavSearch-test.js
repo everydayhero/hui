@@ -1,10 +1,10 @@
 'use strict'
 
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
 let modal = sinon.spy()
-let NavSearch = mockrequire('../', {
-  '../../../lib/renderModal': modal,
-  '../../../search/AggregateSearchModal': 'testModal'
-})
 let onFocus = sinon.spy()
 let defaultProps = {
   kind: 'mobile',
@@ -14,8 +14,16 @@ let defaultProps = {
   onFocus
 }
 
+const NavSearch = proxyquire('../', {
+  '../../../lib/renderModal': modal,
+  '../../../search/AggregateSearchModal': 'testModal'
+}).default
+let search
+
 describe('NavSearch', () => {
-  let search = renderIntoDocument(<NavSearch { ...defaultProps }/>)
+  before(() => {
+    search = renderIntoDocument(<NavSearch { ...defaultProps }/>)
+  })
 
   it('renders a label and input', () => {
     findByClass(search, 'hui-NavSearch__label').getDOMNode().htmlFor.should.equal(defaultProps.name)

@@ -1,26 +1,29 @@
 'use strict'
 
 import Promise from 'bluebird'
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
+let userData = {
+  name: 'Test User',
+  image_url: 'http://test/path',
+  page_ids: [1, 2, 3]
+}
+let success = new Promise.resolve({ dashboard_user: userData })
+let getJSON = sinon.stub()
+let onLoad = sinon.spy()
+let defaultProps = {
+  domain: 'everydaytest.com',
+  region: 'au',
+  onLoad
+}
+
+const NavUser = proxyquire('../', {
+  '../../../lib/getJSON': getJSON
+}).default
 
 describe('NavUser', () => {
-
-  let userData = {
-    name: 'Test User',
-    image_url: 'http://test/path',
-    page_ids: [1, 2, 3]
-  }
-  let success = new Promise.resolve({ dashboard_user: userData })
-  let getJSON = sinon.stub()
-  let NavUser = mockrequire('../', {
-    '../../../lib/getJSON': getJSON
-  })
-  let onLoad = sinon.spy()
-  let defaultProps = {
-    domain: 'everydaytest.com',
-    region: 'au',
-    onLoad
-  }
-
   beforeEach(() => onLoad.reset())
 
   it('shows onboarding calls to action without a user', (done) => {
