@@ -11,7 +11,6 @@ import Visualisation from './examples/DataVisualisation'
 import TextInput from './examples/TextInput'
 import CopyInput from './examples/CopyInput'
 import ReadOnlyAddress from './examples/ReadOnlyAddress'
-import AddressInput from './examples/AddressInput'
 import AddressFieldset from './examples/AddressFieldset'
 import AddressFieldsetWithLookup from './examples/AddressFieldsetWithLookup'
 import AddressLookup from './examples/AddressLookup'
@@ -92,7 +91,6 @@ export default React.createClass({
             <TextInput />
             <CopyInput />
             <ReadOnlyAddress />
-            <AddressInput />
             <AddressLookup />
             <AddressFieldset />
             <AddressFieldsetWithLookup />
