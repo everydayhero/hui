@@ -12,7 +12,7 @@ import i18n from './i18n'
 import i18nMixin from '../../mixins/I18n'
 import numeric from '../../lib/numeric'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LeaderboardRow',
 
   mixins: [i18nMixin],

@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var TopBarLink  = require('../index');
+import TopBarLink from '../index'
 
 describe('TopBarLinkLink', function() {
   var component;

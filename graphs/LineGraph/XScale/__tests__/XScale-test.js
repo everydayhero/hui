@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var XScale    = require('../index');
+import XScale from '../'
 
 describe('XScale', function() {
   var collection = [

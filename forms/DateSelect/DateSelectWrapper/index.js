@@ -1,9 +1,9 @@
 'use strict';
 
-var React      = require('react');
-var DateSelect = require('../');
+import React      from 'react'
+import DateSelect from '../'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DateSelectWrapper',
 
   propTypes: {

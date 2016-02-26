@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var FlagIcon = require('../')
+import FlagIcon from '../'
 
 describe('FlagIcon', function () {
   it('renders a flag icon', function() {

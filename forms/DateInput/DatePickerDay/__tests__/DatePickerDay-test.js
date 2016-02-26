@@ -1,7 +1,9 @@
-'use strict';
+'use strict'
 
-var DatePickerDay = require('../');
-var moment = require('moment');
+import DatePickerDay from '../'
+import moment from 'moment'
+
+import ReactDOM from 'react-dom'
 
 describe('DatePickerDay', function() {
   describe('selected', function() {

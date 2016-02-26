@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Separator = require('../');
+import Separator from '../'
 
 describe('Separator', function() {
   var element;

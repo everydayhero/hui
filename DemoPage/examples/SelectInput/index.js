@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React       = require('react');
-var SelectInput = require('../../../forms/SelectInput');
-var formMixin   = require('../../../mixins/reactForm.mixin');
+import React       from 'react'
+import SelectInput from '../../../forms/SelectInput'
+import formMixin   from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SelectInputExample',
 
   mixins: [formMixin],

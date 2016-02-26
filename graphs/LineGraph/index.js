@@ -10,7 +10,7 @@ import LoadingPlaceholder  from './LoadingPlaceholder'
 import addEventListener    from '../../lib/addEventListener'
 import removeEventListener from '../../lib/removeEventListener'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LineGraph',
 
   propTypes: {

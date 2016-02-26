@@ -1,6 +1,6 @@
 'use strict';
 
-var Fieldset    = require('../');
+import Fieldset from '../'
 
 describe('Fieldset', function() {
   describe('defaults', function() {

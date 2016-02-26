@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var cx    = require('classnames');
+import React      from 'react'
+import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Fieldset',
 
   propTypes: {

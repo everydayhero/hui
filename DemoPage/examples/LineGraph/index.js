@@ -1,7 +1,7 @@
 'use strict';
 
-var React      = require('react');
-var LineGraph  = require('../../../graphs/LineGraph');
+import React     from 'react'
+import LineGraph from '../../../graphs/LineGraph'
 
 function getCollection(tick) {
   var collection = [{ series: [] }, { series: [] }, { series: [] }];
@@ -33,7 +33,7 @@ function getCollection(tick) {
   return collection;
 }
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LineGraphExample',
 
   getInitialState: function() {

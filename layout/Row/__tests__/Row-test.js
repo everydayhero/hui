@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Row = require('../');
+import Row from '../'
 
 describe('Row', function() {
   it('renders', function() {

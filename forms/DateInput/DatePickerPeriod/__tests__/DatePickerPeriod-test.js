@@ -1,6 +1,8 @@
-'use strict';
+'use strict'
 
-var DatePickerPeriod = require('../');
+import DatePickerPeriod from '../'
+
+import ReactDOM from 'react-dom'
 
 describe('DatePickerPeriod', function() {
   describe('selected', function() {

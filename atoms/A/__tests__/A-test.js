@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var A = require('../');
+import A from '../'
 
 describe('A', function() {
   var element;

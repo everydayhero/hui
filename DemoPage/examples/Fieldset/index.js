@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var FormRow   = require('../../../forms/FormRow');
-var formMixin = require('../../../mixins/reactForm.mixin');
-var TextInput = require('../../../forms/TextInput');
-var Fieldset = require('../../../forms/Fieldset');
+import React     from 'react'
+import FormRow   from '../../../forms/FormRow'
+import formMixin from '../../../mixins/reactForm.mixin'
+import TextInput from '../../../forms/TextInput'
+import Fieldset  from '../../../forms/Fieldset'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FieldsetExample',
   mixins: [formMixin],
 

@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var FlashMessage = require('../');
+import FlashMessage from '../'
 
 describe('FlashMessage', function() {
   it('does not show a flash message when false', function() {

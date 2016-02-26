@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var LinePath    = require('../index');
+import LinePath from '../'
 
 describe('LinePath', function() {
   var collection = [

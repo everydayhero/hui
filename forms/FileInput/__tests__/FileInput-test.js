@@ -1,7 +1,6 @@
-'use strict';
+'use strict'
 
-unmockcomponent('FileInput/index');
-var FileInput = require('../');
+import FileInput from '../'
 
 describe('FileInput', function() {
   var noFileLabel = 'No file selected';

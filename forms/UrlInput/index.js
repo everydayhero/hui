@@ -7,7 +7,7 @@ import Input from '../TextInput'
 import LocalStorageMixin from '../../mixins/localStorage'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'UrlInput',
 
   mixins: [LocalStorageMixin],

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var Icon = require('../Icon');
+import React from 'react'
+import Icon from '../Icon'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SocialMediaLinks',
 
   propTypes: {

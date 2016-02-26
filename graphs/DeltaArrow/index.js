@@ -4,7 +4,7 @@ import React      from 'react'
 import numeral    from 'numeral'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DeltaArrow',
 
   propTypes: {

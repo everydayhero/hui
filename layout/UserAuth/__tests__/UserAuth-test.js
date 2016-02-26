@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var UserAuth = require('../index');
+import UserAuth from '../index'
 
 describe('UserAuth', function() {
   var component;

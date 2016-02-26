@@ -1,6 +1,6 @@
 'use strict';
 
-var Progress = require('../index');
+import Progress from '../index'
 
 describe('Progress', function() {
   describe('default', function() {

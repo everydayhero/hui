@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Icon = require('../');
+import Icon from '../'
 
 describe('Icon', function() {
   it('renders an icon with default className', function() {

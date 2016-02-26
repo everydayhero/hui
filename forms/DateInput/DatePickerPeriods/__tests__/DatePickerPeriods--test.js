@@ -1,7 +1,7 @@
 'use strict';
 
-var DatePickerPeriods = require('../');
-var moment = require('moment');
+import DatePickerPeriods from '../'
+import moment from 'moment'
 
 describe('DatePickerPeriod', function() {
   describe('selection and navigation', function() {

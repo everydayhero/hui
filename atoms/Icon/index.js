@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var compact = require('lodash/array/compact');
-var React = require('react');
+import compact from 'lodash/array/compact'
+import React from 'react'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Icon',
 
   propTypes: {

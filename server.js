@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 import express from 'express'
 import compression from 'compression'
 import morgan from 'morgan'
-import React from 'react/addons'
+import React from 'react'
 
 const app = express()
 

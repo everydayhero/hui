@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Masthead = require('../index');
+import Masthead from '../index'
 
 describe('Masthead', function() {
   describe('default', function() {

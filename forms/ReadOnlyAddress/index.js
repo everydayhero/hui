@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var TextInput = require('../TextInput');
-var _         = require('lodash');
+import React     from 'react'
+import TextInput from '../TextInput'
+import _         from 'lodash'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'ReadOnlyAddress',
 
   render: function() {

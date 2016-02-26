@@ -1,6 +1,6 @@
 'use strict';
 
-var Page = require('../index');
+import Page from '../'
 
 describe('Demo Page', function() {
   describe('default', function() {

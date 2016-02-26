@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-var React              = require('react');
-var TextCountDownInput = require('../../../forms/TextCountDownInput');
-var TextInput          = require('../../../forms/TextInput');
-var formMixin          = require('../../../mixins/reactForm.mixin');
+import React              from 'react'
+import TextCountDownInput from '../../../forms/TextCountDownInput'
+import TextInput          from '../../../forms/TextInput'
+import formMixin          from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TextInputExample',
 
   mixins: [formMixin],

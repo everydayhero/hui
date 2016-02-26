@@ -1,6 +1,6 @@
 'use strict';
 
-var DateSelect = require('../');
+import DateSelect from '../'
 
 describe('DateSelect', function() {
   describe('defaults', function() {

@@ -1,11 +1,11 @@
 'use strict';
 
-var React                = require('react');
-var LoadingProgress      = require('../../../atoms/LoadingProgress');
-var Button               = require('../../../buttons/Button');
+import React           from 'react'
+import LoadingProgress from '../../../atoms/LoadingProgress'
+import Button          from '../../../buttons/Button'
 var timeout;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'PageFormExample',
 
   getInitialState: function() {

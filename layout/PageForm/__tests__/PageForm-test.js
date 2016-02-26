@@ -1,6 +1,6 @@
 'use strict';
 
-var PageForm    = require('../index');
+import PageForm from '../'
 
 describe('PageForm', function() {
   var pageImagePath = '../../images/alt_charity_bg.jpg';

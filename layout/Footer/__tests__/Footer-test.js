@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Footer = require('../');
+import Footer from '../'
 
 describe('Footer', function() {
   var element;

@@ -4,7 +4,7 @@ import React from 'react'
 import OptionList from '../forms/OptionList'
 import find from 'lodash/collection/find'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Leaderboard',
 
   propTypes: {

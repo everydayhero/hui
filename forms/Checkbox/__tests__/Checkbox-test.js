@@ -1,6 +1,6 @@
 'use strict';
 
-var Input       = require('../');
+import Input from '../'
 
 describe('Checkbox', function() {
   describe('defaults', function() {

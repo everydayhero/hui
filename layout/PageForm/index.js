@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var Icon       = require('../../atoms/Icon');
-var Separator  = require('../../atoms/Separator');
+import React     from 'react'
+import Icon      from '../../atoms/Icon'
+import Separator from '../../atoms/Separator'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'PageForm',
 
   propTypes: {

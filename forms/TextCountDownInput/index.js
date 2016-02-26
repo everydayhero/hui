@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import Input from '../TextInput'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TextCountDownInput',
 
   propTypes: {
