@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Legend    = require('../index');
+import Legend from '../'
 
 describe('Legend', function() {
   var keys = [

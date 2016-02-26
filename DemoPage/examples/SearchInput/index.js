@@ -4,7 +4,7 @@ import React       from 'react'
 import SearchInput from '../../../forms/SearchInput'
 import formMixin   from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SearchInputExample',
 
   mixins: [formMixin],

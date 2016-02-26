@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var FormRow = require('../');
+import FormRow from '../'
 
 describe('FormRow', function() {
   describe('defaults', function() {

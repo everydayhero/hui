@@ -6,7 +6,7 @@ import DeltaArrow   from '../DeltaArrow'
 import SingleNumber from './SingleNumber'
 import Legend       from './Legend'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DataVisualisation',
 
   propTypes: {

@@ -6,6 +6,7 @@ import Promise from 'bluebird'
 import React from 'react'
 import cx from 'classnames'
 import I18n from '../../mixins/I18n'
+import i18n from './i18n'
 import Input from '../../forms/TextInput'
 import Icon from '../../atoms/Icon'
 import Overlay from '../../atoms/Overlay'
@@ -17,10 +18,14 @@ import zipObject from 'lodash/array/zipObject'
 import map from 'lodash/collection/map'
 import isEmpty from 'lodash/lang/isEmpty'
 
+import campaign from '../AggregateSearchResultCampaign'
+import charity from '../AggregateSearchResultCharity'
+import page from '../AggregateSearchResultPage'
+
 let resultTypes = {
-  campaign: require('../AggregateSearchResultCampaign'),
-  charity: require('../AggregateSearchResultCharity'),
-  page: require('../AggregateSearchResultPage')
+  campaign,
+  charity,
+  page
 }
 
 export default React.createClass({
@@ -294,6 +299,6 @@ export default React.createClass({
   },
 
   statics: {
-    i18n: require('./i18n')
+    i18n
   }
 })

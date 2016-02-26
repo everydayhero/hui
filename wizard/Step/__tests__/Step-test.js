@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Step = require('../index');
+import Step from '../index'
 
 describe('Step', function() {
   describe('default', function() {

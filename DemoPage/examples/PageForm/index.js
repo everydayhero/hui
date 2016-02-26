@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-var React                = require('react');
-var PageForm             = require('../../../layout/PageForm');
-var Button               = require('../../../buttons/Button');
-var TextInput            = require('../../../forms/TextInput');
+import React     from 'react'
+import PageForm  from '../../../layout/PageForm'
+import Button    from '../../../buttons/Button'
+import TextInput from '../../../forms/TextInput'
 var backgroundImagePath  = ('../images/alt_charity_bg--blur.jpg');
 var separatorImagePath   = ('../images/separator_grey.png');
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'PageFormExample',
 
   render: function() {

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React             = require('react');
-var DatePickerPeriods = require('../DatePickerPeriods');
-var Calendar          = require('../Calendar');
+import React             from 'react'
+import DatePickerPeriods from '../DatePickerPeriods'
+import Calendar          from '../Calendar'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'hui-DatePicker',
 
   propTypes: {

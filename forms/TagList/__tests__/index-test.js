@@ -1,6 +1,6 @@
 'use strict';
 
-var TagList = require('../');
+import TagList from '../'
 
 describe('Tag List', function() {
   describe('default', function() {

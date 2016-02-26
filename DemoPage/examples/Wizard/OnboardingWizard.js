@@ -1,16 +1,16 @@
 'use strict';
 
-var React       = require('react');
-var Overlay     = require('../../../atoms/Overlay');
-var Step        = require('../../../wizard/Step');
-var Wizard      = require('../../../wizard');
-var Button      = require('../../../buttons/Button');
-var AvatarInput = require('../../../forms/AvatarInput');
-var TextArea    = require('../../../forms/TextArea');
+import React       from 'react'
+import Overlay     from '../../../atoms/Overlay'
+import Step        from '../../../wizard/Step'
+import Wizard      from '../../../wizard'
+import Button      from '../../../buttons/Button'
+import AvatarInput from '../../../forms/AvatarInput'
+import TextArea    from '../../../forms/TextArea'
 
-var Router  = require('react-router');
+import Router  from 'react-router'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'OnboardingWizard',
 
   mixins: [Router.State, Router.Navigation],

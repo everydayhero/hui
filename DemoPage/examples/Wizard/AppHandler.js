@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React        = require('react');
-var Router       = require('react-router');
+import React  from 'react'
+import Router from 'react-router'
 var RouteHandler = Router.RouteHandler;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'AppHandler',
 
   mixins: [Router.State],

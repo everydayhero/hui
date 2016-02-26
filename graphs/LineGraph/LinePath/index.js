@@ -11,7 +11,7 @@ function date(series) {
   return d.getTime()
 }
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LinePath',
 
   mixins: [scaleMixin],

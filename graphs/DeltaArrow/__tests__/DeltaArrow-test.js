@@ -1,6 +1,6 @@
 'use strict';
 
-var DeltaArrow = require('../index');
+import DeltaArrow from '../'
 
 describe('DeltaArrow', function() {
   describe('with positive number', function() {

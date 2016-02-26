@@ -17,7 +17,7 @@ dateFormats.au = dateFormats.uk;
 dateFormats.nz = dateFormats.uk;
 dateFormats.ie = dateFormats.uk;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DateInput',
 
   propTypes: {

@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var Input = require('../');
-var moment = require('moment');
+import Input from '../'
+import moment from 'moment'
 
 describe('DatePicker', function() {
   describe('defaults', function() {

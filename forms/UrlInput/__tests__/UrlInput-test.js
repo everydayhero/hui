@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var UrlInput = require('../');
+import UrlInput from '../'
 
 describe('UrlInput', function() {
   describe('defaults', function() {

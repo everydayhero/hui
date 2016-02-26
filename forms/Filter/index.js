@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import textInputProps from '../../mixins/textInputProps'
+import { types, defaults } from '../../mixins/textInputProps'
 import Input from '../TextInput'
 
 export default React.createClass({
@@ -9,7 +9,7 @@ export default React.createClass({
 
   propTypes: {
     filterValue: React.PropTypes.string,
-    inputOptions: React.PropTypes.shape(textInputProps.types),
+    inputOptions: React.PropTypes.shape(types),
     collection: React.PropTypes.array,
     properties: React.PropTypes.array,
     onFilter: React.PropTypes.func,
@@ -19,7 +19,7 @@ export default React.createClass({
   getDefaultProps () {
     return {
       filterValue: '',
-      inputOptions: textInputProps.defaults,
+      inputOptions: defaults,
       collection: [],
       properties: ['name'],
       onFilter: () => {},

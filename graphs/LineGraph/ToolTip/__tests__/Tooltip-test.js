@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var ToolTip     = require('../index');
+import ToolTip from '../'
 
 describe('ToolTip', function() {
   var data = { date: '2015-02-26', value: 123, total: 456 };

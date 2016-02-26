@@ -6,7 +6,7 @@ import Icon from '../../atoms/Icon'
 import inputMessage from '../../mixins/inputMessage'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FileInput',
 
   mixins: [inputMessage],

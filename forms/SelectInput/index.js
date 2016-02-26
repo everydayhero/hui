@@ -7,7 +7,7 @@ import LocalStorageMixin from '../../mixins/localStorage'
 import inputMessage from '../../mixins/inputMessage'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SelectInput',
 
   mixins: [LocalStorageMixin, inputMessage],

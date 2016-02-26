@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var SocialMediaLinks = require('../');
+import SocialMediaLinks from '../'
 var testLinks = [
   { name: 'faceSpace', url: 'www.facespace.com' },
   { name: 'instaUnfriend', url: 'www.instaunfriend.com' },

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React         = require('react');
-var CheckboxInput = require('../../../forms/Checkbox');
-var formMixin     = require('../../../mixins/reactForm.mixin');
+import React         from 'react'
+import CheckboxInput from '../../../forms/Checkbox'
+import formMixin     from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'CheckboxExample',
   mixins: [formMixin],
 

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var _ = require('lodash');
+import _ from 'lodash'
 var flip = _.curry(function(f, x, y) { return f(y, x); });
 var pluck = flip(_.pluck);
 
-module.exports = {
+export default {
   getMin: function() {
     return _.min(this.getValues());
   },

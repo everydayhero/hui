@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var DeltaArrow = require('../../../graphs/DeltaArrow');
+import React      from 'react'
+import DeltaArrow from '../../../graphs/DeltaArrow'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DeltaArrowExample',
 
   render: function() {

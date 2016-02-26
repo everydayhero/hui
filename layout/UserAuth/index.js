@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React  = require('react');
-var Button = require('../../buttons/Button');
+import React  from 'react'
+import Button from '../../buttons/Button'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'UserAuth',
 
   propTypes: {

@@ -1,23 +1,37 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var FormRow = require('../forms/FormRow');
+import React from 'react'
+import FormRow from '../forms/FormRow'
+import nullEmptyStringDeep from '../lib/nullEmptyStringDeep'
+
+import TextInput from '../forms/TextInput'
+import TextCountDownInput from '../forms/TextCountDownInput'
+import ReadOnlyAddress from '../forms/ReadOnlyAddress'
+import CheckBox from '../forms/Checkbox'
+import TextArea from '../forms/TextArea'
+import UrlInput from '../forms/UrlInput'
+import DateInput from '../forms/DateInput'
+import FileInput from '../forms/FileInput'
+import ImageInput from '../forms/ImageInput'
+import SelectInput from '../forms/SelectInput'
+import DateSelect from '../forms/DateSelect'
+import SearchInput from '../forms/SearchInput'
+
 var inputs = {
-  TextInput: require('../forms/TextInput'),
-  TextCountDownInput: require('../forms/TextCountDownInput'),
-  ReadOnlyAddress: require('../forms/ReadOnlyAddress'),
-  CheckBox: require('../forms/Checkbox'),
-  TextArea: require('../forms/TextArea'),
-  UrlInput: require('../forms/UrlInput'),
-  DateInput: require('../forms/DateInput'),
-  FileInput: require('../forms/FileInput'),
-  ImageInput: require('../forms/ImageInput'),
-  SelectInput: require('../forms/SelectInput'),
-  DateSelect: require('../forms/DateSelect'),
-  SearchInput: require('../forms/SearchInput')
+  TextInput,
+  TextCountDownInput,
+  ReadOnlyAddress,
+  CheckBox,
+  TextArea,
+  UrlInput,
+  DateInput,
+  FileInput,
+  ImageInput,
+  SelectInput,
+  DateSelect,
+  SearchInput
 };
 
-var nullEmptyStringDeep = require('../lib/nullEmptyStringDeep');
 var defaultMessage = { defaults: [{ message: '' }] };
 
 module.exports = {

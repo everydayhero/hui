@@ -5,7 +5,7 @@ import Leaderboard from '../../../leaderboard'
 import LeaderboardRow from '../../../leaderboard/LeaderboardRow'
 import raisedData from './raisedData.json'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Leaderboard',
 
   getInitialState: function() {

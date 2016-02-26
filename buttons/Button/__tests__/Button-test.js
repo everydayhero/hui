@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Button = require('../index');
+import Button from '../index'
 
 describe('Button', function() {
   var component;

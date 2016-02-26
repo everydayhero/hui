@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var LoadingProgress = require('../');
+import LoadingProgress from '../'
 
 describe('LoadingProgress', function() {
   it('does not show progress state if "inProgress" flag is false', function() {

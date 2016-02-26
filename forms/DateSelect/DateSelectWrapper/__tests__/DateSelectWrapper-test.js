@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var DateSelectWrapper = require('../');
+import DateSelectWrapper from '../'
 
 describe('DateSelectWrapper', function() {
 

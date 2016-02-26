@@ -1,6 +1,6 @@
 'use strict'
 
-var TextInput = require('../')
+import TextInput from '../'
 
 describe('TextInput', function() {
 

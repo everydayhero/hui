@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var DataVisualisation = require('../../../graphs/DataVisualisation');
+import React from 'react'
+import DataVisualisation from '../../../graphs/DataVisualisation'
 
 function getSeries(tick) {
   var series = [[], [], [], []];
@@ -39,7 +39,7 @@ function getSeries(tick) {
   return series;
 }
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DataVisualisationExample',
   getInitialState: function() {
     return {

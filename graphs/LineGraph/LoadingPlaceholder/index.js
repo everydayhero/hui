@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var Path  = require('paths-js/path');
+import React from 'react'
+import Path  from 'paths-js/path'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LoadingPlaceholder',
 
   propTypes: {

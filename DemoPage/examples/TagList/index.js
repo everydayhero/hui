@@ -1,7 +1,7 @@
 'use strict';
 
-var React   = require('react');
-var TagList = require('../../../forms/TagList');
+import React   from 'react'
+import TagList from '../../../forms/TagList'
 var items = [
   { id: '1', name: 'American Red Cross' },
   { id: '2', name: 'Save the Animals' },
@@ -14,7 +14,7 @@ var items = [
 ];
 var counter = items.length;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TagListExample',
 
   getInitialState: function() {

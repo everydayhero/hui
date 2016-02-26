@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Select      = require('../');
+import Select from '../'
 
 describe('SelectInput', function() {
   var options = [

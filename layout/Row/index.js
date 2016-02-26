@@ -1,10 +1,10 @@
 'use strict';
 
-var _ = require('lodash');
-var React = require('react');
-var DOMInfo = require('../../mixins/DOMInfo');
+import _ from 'lodash'
+import React from 'react'
+import DOMInfo from '../../mixins/DOMInfo'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Row',
 
   mixins: [DOMInfo],

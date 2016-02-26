@@ -1,7 +1,6 @@
 'use strict';
 
-unmockcomponent('AvatarInput/index');
-var AvatarInput = require('../');
+import AvatarInput from '../'
 
 describe('AvatarInput', function() {
   var component;

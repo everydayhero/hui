@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 import Icon from '../../atoms/Icon'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Pagination',
 
   propTypes: {

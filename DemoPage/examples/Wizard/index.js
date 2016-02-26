@@ -1,11 +1,15 @@
-'use strict';
+'use strict'
 
-var React            = require('react');
-var Router           = require('react-router');
-var AppHandler       = require('./AppHandler');
-var Route            = Router.Route;
-var NotFoundRoute    = Router.NotFoundRoute;
-var OnboardingWizard = require('./OnboardingWizard');
+import React            from 'react'
+import ReactDOM         from 'react-dom'
+import AppHandler       from './AppHandler'
+import OnboardingWizard from './OnboardingWizard'
+import Router, {
+  Route,
+  NotFoundRoute,
+  hashHistory
+} from 'react-router'
+
 var router;
 
 if (typeof document === 'object') {
@@ -29,4 +33,4 @@ if (typeof document === 'object') {
   });
 }
 
-module.exports = router;
+export default router;
