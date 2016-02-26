@@ -10,7 +10,6 @@ import Legend from './examples/Legend'
 import Visualisation from './examples/DataVisualisation'
 import TextInput from './examples/TextInput'
 import ReadOnlyAddress from './examples/ReadOnlyAddress'
-import AddressInput from './examples/AddressInput'
 import AddressFieldset from './examples/AddressFieldset'
 import AddressFieldsetWithLookup from './examples/AddressFieldsetWithLookup'
 import AddressLookup from './examples/AddressLookup'
@@ -87,7 +86,6 @@ export default React.createClass({
           <div className="DemoPage__group">
             <TextInput />
             <ReadOnlyAddress />
-            <AddressInput />
             <AddressLookup />
             <AddressFieldset />
             <AddressFieldsetWithLookup />
