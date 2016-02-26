@@ -1,27 +1,31 @@
-'use strict';
+'use strict'
 
 import Promise from 'bluebird'
 
-var mockResult = {
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
+let mockResult = {
   resources: [
     { label: 'Label', value: 'Value' }
   ]
 }
 
-var mockGetJSON = sinon.spy(function () {
+let mockGetJSON = sinon.spy(function () {
   return new Promise((resolve) => {
     return resolve(mockResult)
   })
 })
 
-var mockDebounce = function (func) {
+let mockDebounce = function (func) {
   return func
 }
 
-var UrlSearchSelect = mockrequire('../', {
+const UrlSearchSelect = proxyquire('../', {
   '../../lib/getJSON': mockGetJSON,
   'lodash/function/debounce': mockDebounce
-})
+}).default
 
 describe('UrlSearchSelect', () => {
   describe('initialisation', () => {
