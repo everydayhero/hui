@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react/addons'
+import React from 'react'
 import LocalStorageMixin from '../../mixins/localStorage'
 import inputMessage from '../../mixins/inputMessage'
 import textInput from '../../mixins/textInput'
