@@ -7,7 +7,7 @@ describe('Demo Page', function() {
     var page;
 
     beforeEach(function() {
-      page = renderIntoDocument(<Page/>);
+      page = renderIntoDocument(Page)
     });
 
     it('should render Page', function() {
