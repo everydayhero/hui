@@ -19,7 +19,7 @@ describe('AddressLookup', () => {
         <AddressLookup />
       )
       element.setState({ isSelectingCountry: true })
-      const countrySelect = element.refs.countrySelect
+      const countrySelect = findByClass(element, 'hui-FilterSelect__display-input')
 
       Simulate.blur(countrySelect)
 

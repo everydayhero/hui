@@ -131,7 +131,7 @@ describe('UrlSearchSelect', () => {
           required
           url="http://everydayhero.com" />
       )
-      Simulate.blur(element.refs.searchInput)
+      Simulate.blur(element.refs.searchInput.refs.input)
       setTimeout(() => {
         expect(element.state.hasError).to.eq(true)
         done()
