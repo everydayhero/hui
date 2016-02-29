@@ -5,8 +5,8 @@ import FormRow from '../'
 describe('FormRow', function() {
   describe('defaults', function() {
     var element = renderIntoDocument(
-          <FormRow/>
-        );
+      <FormRow/>
+    );
 
     it('it renders a FormRow', function() {
       findByClass(element, 'hui-FormRow');
@@ -15,13 +15,13 @@ describe('FormRow', function() {
 
   describe('properties', function() {
     var element = renderIntoDocument(
-          <FormRow label="foo" id="bar" tip="tip"/>
-        );
+      <FormRow label="foo" id="bar" tip="tip"/>
+    );
 
     it('does render a help text', function() {
       var label = findByClass(element, 'hui-FormRow__tip');
 
-      label.textContent.should.equal('tip')
+      label.getDOMNode().textContent.should.equal('tip');
     });
 
     it('does render with the id given to it', function() {
