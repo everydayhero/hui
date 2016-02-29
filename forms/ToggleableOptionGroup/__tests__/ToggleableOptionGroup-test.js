@@ -42,10 +42,9 @@ describe('ToggleableOptionGroup', () => {
     findByClass(element, 'ToggleableOptionGroup__PrimaryOption')
   })
 
-  xit('executes onChange callback on secondary options to match primary option changes', () => {
+  it('executes onChange callback on secondary options to match primary option changes', () => {
     let element = renderIntoDocument(<ToggleableOptionGroup { ...props } />)
-    let primary = findByClass(element, 'ToggleableOptionGroup__PrimaryOption')
-    let input = findByClass(primary, 'ToggleableOption__hiddenInput')
+    let input = scryByClass(element, 'ToggleableOption__hiddenInput')[0]
     input.getDOMNode().checked.should.be.false
     Simulate.change(input, { target: { checked: true }})
     props.onChange.should.have.callCount(2)
