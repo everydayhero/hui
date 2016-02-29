@@ -119,29 +119,26 @@ export default React.createClass({
   },
 
   renderLinePath: function() {
-    const paths  = []
     const state  = this.state
     const props  = this.props
     const collection = state.collection
 
-    for (var i = collection.length - 1; i >= 0; i--) {
-      paths.push(
+    return collection.map((elem, index) => {
+      return (
         <LinePath
           {...props}
           collection={ collection }
-          className={ collection[i].className }
-          index={ i }
+          className={ elem.className }
+          index={ index }
           width={ state.width }
           height={ state.height }
-          key={ i }
+          key={ index }
           onPointOver={ this.showTip }
           onPointLeave={ this.hideTip }
           collectionValueKey={ props.collectionValueKey }
           valueConverter={ props.valueConverter } />
       )
-    }
-
-    return paths
+    })
   },
 
   renderGraph: function() {

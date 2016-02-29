@@ -118,26 +118,25 @@ export default React.createClass({
 
   renderTipTargets: function() {
     const graphLine = this.graphLine()
-    const targets = []
     const translateX = this.props.gutter.left
     const translateY = this.getTranslateY()
     const onMouseOver = this.onMouseOver
     const onMouseOut = this.onMouseOut
 
-    _.forEach(graphLine.curves[0].item, function(series, dataPoint) {
+    return graphLine.curves[0].item.map((series, index) => {
       const y = graphLine.yscale(series.calculatedValue) + translateY
       const x = graphLine.xscale(date(series)) + translateX
-      targets.push(<circle
-        cx={ x }
-        cy={ y }
-        r="6"
-        className="hui-LinePath__target"
-        onMouseOver={ onMouseOver(series, dataPoint, { x, y }) }
-        onMouseOut={ onMouseOut } />
+      return (
+        <circle
+          key={ index }
+          cx={ x }
+          cy={ y }
+          r="6"
+          className="hui-LinePath__target"
+          onMouseOver={ onMouseOver(series, index, { x, y }) }
+          onMouseOut={ onMouseOut } />
       )
     })
-
-    return targets
   },
 
   renderPath: function(type) {
