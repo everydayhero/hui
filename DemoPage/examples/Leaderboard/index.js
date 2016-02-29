@@ -21,10 +21,7 @@ export default React.createClass({
   },
 
   getShareUrl: function (id) {
-    if (typeof location === 'undefined') { return '' }
-
-    let { protocol, host } = location
-    return `${protocol}//${host}/#/tracker/team/${ id }`
+    return `/share/team/${ id }`
   },
 
   render: function() {
