@@ -16,7 +16,7 @@ export default React.createClass({
     shouldScroll: React.PropTypes.bool,
     valueKey: React.PropTypes.string,
     labelKey: React.PropTypes.string,
-    onChange: React.PropTypes.func,
+    onSelection: React.PropTypes.func,
     onMouseOver: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
     setScroll: React.PropTypes.func
@@ -32,7 +32,7 @@ export default React.createClass({
       shouldScroll: false,
       valueKey: 'value',
       labelKey: 'label',
-      onChange: () => {},
+      onSelection: () => {},
       onMouseOver: () => {},
       onKeyDown: () => {},
       setScroll: () => {}
@@ -70,34 +70,33 @@ export default React.createClass({
     let { shouldFocus, isCandidate, shouldScroll } = this.props
 
     if (shouldFocus) {
-      this.focus()
+      this.refs.radio.focus()
     } else if (!shouldFocus && shouldScroll && isCandidate) {
       let scrollPos = ReactDOM.findDOMNode(this).offsetTop - 20
       this.props.setScroll(scrollPos)
     }
   },
 
-  focus () {
-    this.refs.radio.focus()
+  handleSelection () {
+    let { onSelection, option } = this.props
+    this.down && onSelection(option)
   },
 
-  handleChange (e) {
-    let { onChange, option } = this.props
+  handleDown () {
+    this.down = true
+  },
 
-    if (e.target.checked) {
-      onChange(option)
-    }
+  handleMove () {
+    this.down = false
   },
 
   handleMouseOver () {
     let { onMouseOver, option } = this.props
-
     onMouseOver(option)
   },
 
   handleKeyDown (e) {
     let { onKeyDown } = this.props
-
     onKeyDown(e)
   },
 
@@ -117,18 +116,22 @@ export default React.createClass({
         key={ option[valueKey] }
         className="hui-OptionListItem">
         <input
-          autoFocus={ this.props.shouldFocus }
           type="radio"
           ref="radio"
           id={ `option-list-item-${option[valueKey]}` }
+          name={ `option-list-item-${option[valueKey]}` }
           className="hui-OptionListItem__radio--hidden"
           value={ option[valueKey] }
           checked={ isSelected }
+          onBlur={ this.handleSelection }
           onKeyDown={ this.handleKeyDown }
-          onChange={ this.handleChange }
-          name="selected-option" />
+          readOnly />
 
         <label
+          ref="label"
+          onMouseDown={ this.handleDown }
+          onTouchStart={ this.handleDown }
+          onTouchMove={ this.handleMove }
           onMouseOver={ this.handleMouseOver }
           className="hui-OptionListItem__radio-label"
           htmlFor={ `option-list-item-${option[valueKey]}` }>

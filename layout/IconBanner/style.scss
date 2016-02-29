@@ -1,0 +1,70 @@
+$icon-size: 150px;
+
+.IconBanner {
+  width: $icon-size;
+  height: $icon-size;
+  position: absolute;
+  top: -($icon-size / 3);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.IconBanner__icon {
+  font-size: 55px;
+  position: relative;
+  display: block;
+  border-radius: $icon-size / 2 $icon-size / 2 0 0;
+  background-color: white;
+  color: $green;
+  width: $icon-size;
+  height: $icon-size / 2;
+  line-height: $icon-size;
+  text-align: center;
+  transform: rotateZ(-10deg);
+}
+
+.IconBanner::before,
+.IconBanner::after,
+.IconBanner__icon::before,
+.IconBanner__icon::after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  background-color: $green;
+  position: absolute;
+  z-index: -1;
+}
+
+.IconBanner::before,
+.IconBanner__icon::before {
+  opacity: 0.7;
+}
+
+.IconBanner::before {
+  width: 160px;
+  height: 80px;
+  left: -18px;
+  top: -30px;
+  border-radius: 80px 80px 0 0;
+}
+
+.IconBanner__icon::before {
+  width: $icon-size * 0.35;
+  height: $icon-size * 0.35;
+  left: -50px;
+  top: -60px;
+}
+
+.IconBanner::after {
+  width: $icon-size * 0.7;
+  height: $icon-size * 0.7;
+  right: -5px;
+  top: -47px;
+}
+
+.IconBanner__icon::after {
+  width: $icon-size * 0.15;
+  height: $icon-size * 0.15;
+  right: -60px;
+  top: -55px;
+}

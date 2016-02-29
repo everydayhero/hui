@@ -8,6 +8,7 @@ import inputMessage from '../../mixins/inputMessage'
 import FocusAggregate from '../FocusAggregate'
 import FilterSelectDisplay from './Display'
 import OptionList from '../OptionList'
+import DisplayWrap from './DisplayWrap'
 import Filter from '../Filter'
 import classnames from 'classnames'
 
@@ -39,7 +40,8 @@ export default React.createClass({
     Display: React.PropTypes.func,
     Option: React.PropTypes.func,
     layout: React.PropTypes.string,
-    spacing: React.PropTypes.string
+    spacing: React.PropTypes.string,
+    maxResults: React.PropTypes.number
   },
 
   getDefaultProps () {
@@ -63,7 +65,8 @@ export default React.createClass({
       errors: [],
       validate: () => {},
       layout: 'full',
-      spacing: 'loose'
+      spacing: 'loose',
+      maxResults: 100
     }
   },
 
@@ -72,7 +75,7 @@ export default React.createClass({
     return {
       focused: false,
       value: props.value || '',
-      filteredOptions: props.options,
+      filteredOptions: props.options.slice(0, props.maxResults),
       selectedOption: this.getSelected(props.value, props.data),
       isOpen: false,
       filterValue: ''
@@ -89,7 +92,8 @@ export default React.createClass({
     }
   },
 
-  getSelected(value = '', data) {
+  getSelected(value, data) {
+    value = value || ''
     const { valueKey } = this.props
     return find(this.props.options, opt => (
       opt[valueKey] && opt[valueKey].toString() === value.toString()) ||
@@ -98,7 +102,8 @@ export default React.createClass({
   },
 
   handleFilter (filteredOptions) {
-    return this.setState({ filteredOptions })
+    const truncatedOptions = filteredOptions.slice(0, this.props.maxResults)
+    return this.setState({ filteredOptions: truncatedOptions })
   },
 
   openOptionList () {
@@ -118,7 +123,6 @@ export default React.createClass({
     this.setState({
       focused: true
     }, () => {
-      this.openOptionList()
       this.props.onFocus()
     })
   },
@@ -129,21 +133,22 @@ export default React.createClass({
     }, () => {
       this.closeOptionList()
       this.props.onBlur()
+      this.validate()
     })
   },
 
   handleSelection (option) {
     const { labelKey, valueKey } = this.props
     this.setState({
-      isOpen: false,
+      focused: true,
       selectedOption: option,
       filterValue: option[labelKey],
       value: option[valueKey] && option[valueKey].toString()
     }, () => {
-      this.refs.displayInput.focus()
-      this.validate(option[valueKey])
+      this.closeOptionList()
       this.props.onChange(option[valueKey])
       this.props.onSelection(option)
+      this.validate()
     })
   },
 
@@ -166,10 +171,8 @@ export default React.createClass({
     },
     40(e) {
       let optionList = this.refs.optionList
-      let filter = this.refs.filter
+      e.preventDefault()
       if (optionList) {
-        e.preventDefault()
-        filter.blur()
         optionList.focus()
       }
     }
@@ -199,57 +202,60 @@ export default React.createClass({
 
   handleDisplayClick (e) {
     e.preventDefault()
-    this.openOptionList()
+    this.setState({
+      focused: true
+    }, () => {
+      this.openOptionList()
+    })
+  },
+
+  handleDisplayFocus () {
+    this.setState({
+      focused: true
+    })
+  },
+
+  handleDisplayBlur () {
+    this.setState({
+      focused: false
+    })
   },
 
   renderDisplay () {
-    const selected = this.state.selectedOption
     const {
+      options,
       id,
       label,
       name,
       Display,
       valueKey,
-      labelKey
+      labelKey,
+      displayProperty
     } = this.props
+    const {
+      focused,
+      selectedOption: selected
+    } = this.state
 
     return (
-      <div className="hui-FilterSelect__display">
-        <Display
-          label={ label }
-          selected={ selected }
-          displayProperty={ this.props.displayProperty }/>
-
-        <select
-          id={ id }
-          ref="displayInput"
-          name={ name }
-          value={ !!selected && selected[valueKey] }
-          className="hui-FilterSelect__display-input"
-          onChange={ this.handleDisplayChange }
-          onFocus={ (e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            this.setState({
-              focused: true
-            })
-          } }
-          onKeyDown={ this.handleDisplayKeyDown }
-          onMouseDown={ this.handleDisplayClick }
-          onClick={ this.handleDisplayClick }>
-
-          { this.props.options.map((option) => {
-            return (
-              <option
-                key={ option.value }
-                value={ option[valueKey] }
-                label={ option[labelKey] }>
-                { option[labelKey] }
-              </option>
-            )
-          }) }
-        </select>
-      </div>
+      <DisplayWrap
+        ref="displayInput"
+        options={ options }
+        id={ id }
+        label={ label }
+        displayProperty={ displayProperty }
+        name={ name }
+        Display={ Display }
+        valueKey={ valueKey }
+        labelKey={ labelKey }
+        focused={ focused }
+        selected={ selected }
+        onFocus={ this.handleDisplayFocus }
+        onBlur={ this.handleDisplayBlur }
+        onChange={ this.handleDisplayChange }
+        onKeyDown={ this.handleDisplayKeyDown }
+        onMouseDown={ this.handleDisplayClick }
+        onClick={ this.handleDisplayClick } />
     )
   },
 
@@ -274,11 +280,11 @@ export default React.createClass({
         <Filter
           ref="filter"
           inputOptions={{
-            autoFocus: true,
             spacing: 'compact',
             className: 'hui-FilterSelect__filter-input',
             onKeyDown: this.handleFilterKeyDown
           }}
+          focused
           filterValue={ filterValue }
           properties={ properties }
           collection={ options }

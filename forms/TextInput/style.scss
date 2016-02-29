@@ -23,8 +23,17 @@
   letter-spacing: 0.05em;
   line-height: 27px;
   height: 27px;
-  padding-right: 30px;
   position: relative;
+  box-sizing: border-box;
+
+  // Hides clear buttons in IE 10 & 11
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.hui-TextInput__input--icon {
+  padding-right: 30px;
 }
 
 .hui-TextInput__placeHolder {

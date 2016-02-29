@@ -12,7 +12,8 @@ export default React.createClass({
     inputOptions: React.PropTypes.shape(types),
     collection: React.PropTypes.array,
     properties: React.PropTypes.array,
-    onFilter: React.PropTypes.func
+    onFilter: React.PropTypes.func,
+    maxResults: React.PropTypes.number,
   },
 
   getDefaultProps () {
@@ -32,8 +33,10 @@ export default React.createClass({
     }
   },
 
-  blur () {
-    this.refs.filterInput.blur()
+  componentDidMount () {
+    if (this.props.focused === true) {
+      this.refs.filterInput.refs.input.focus()
+    }
   },
 
   filter (filterValue) {

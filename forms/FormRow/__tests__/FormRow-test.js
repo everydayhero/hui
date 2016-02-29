@@ -26,7 +26,7 @@ describe('FormRow', function() {
 
     xit('does render with the id given to it', function() {
       var row = findByClass(element, 'hui-FormRow');
-      findByProp(row, 'id', 'bar');
+      findByAttribute(row, 'id', 'bar');
     });
   });
 });

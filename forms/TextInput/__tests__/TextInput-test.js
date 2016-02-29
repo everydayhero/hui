@@ -261,7 +261,8 @@ describe('TextInput', function() {
 
       var object = {
         element,
-        value: 'testValue'
+        value: 'testValue',
+        inputElement: input
       }
 
       onFocus.should.have.been.calledWith(object)

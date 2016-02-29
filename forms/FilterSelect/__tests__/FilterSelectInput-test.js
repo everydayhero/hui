@@ -16,7 +16,7 @@ describe('FilterSelect', () => {
       expect(subject).to.eql(options)
     })
 
-    it('renders a TextInput for displaying the selected option', () => {
+    it('renders a Select for displaying the selected option', () => {
       let subject = renderIntoDocument(
         <FilterSelect options={ [] } />
       ).refs.displayInput
@@ -33,6 +33,25 @@ describe('FilterSelect', () => {
         )
         expect(subject).to.be.ok
       })
+    })
+  })
+  describe('available options', () => {
+    it('limits options passed to the option list to < props.maxResults', () => {
+      let collection = [
+        { id: '1', name: 'Tim Rogers' },
+        { id: '2', name: 'Tex Perkins' },
+        { id: 'G', name: 'Ben Ely' }
+      ]
+      let element = renderIntoDocument(
+        <FilterSelect
+          options={ collection }
+          maxResults={ 1 } />
+      )
+      let subject = element.state.filteredOptions
+
+      expect(subject).to.eql([
+        { id: '1', name: 'Tim Rogers' }
+      ])
     })
   })
 
@@ -85,7 +104,7 @@ describe('FilterSelect', () => {
       let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      let input = element.refs.displayInput
+      let input = element.refs.displayInput.refs.input
       Simulate.focus(input)
       let subject = element.state.focused
 
@@ -96,7 +115,7 @@ describe('FilterSelect', () => {
       let element = renderIntoDocument(
         <FilterSelect options={ [] } />
       )
-      let input = element.refs.displayInput
+      let input = element.refs.displayInput.refs.input
       Simulate.click(input)
       let subject = element.state.isOpen
 
@@ -109,7 +128,7 @@ describe('FilterSelect', () => {
           let element = renderIntoDocument(
             <FilterSelect options={ [] } />
           )
-          let input = element.refs.displayInput
+          let input = element.refs.displayInput.refs.input
           Simulate.focus(input)
           Simulate.keyDown(input, { keyCode: 40 })
 

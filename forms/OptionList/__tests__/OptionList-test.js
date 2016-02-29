@@ -154,6 +154,19 @@ describe('OptionList', () => {
       TestUtils.SimulateNative.mouseOver(option)
       expect(element.state.selectionCandidate).to.eql(options[1])
     })
+
+    it('sets state.shouldScroll to false', () => {
+      let options = [
+        { value: '1', label: 'Tim' },
+        { value: '2', label: 'Tex' },
+        { value: '3', label: 'Ben' }
+      ]
+      let element = renderIntoDocument(<OptionList options={ options } />)
+      let option = scryByTag(element, 'label')[1]
+
+      TestUtils.SimulateNative.mouseOver(option)
+      expect(element.state.shouldScroll).to.eql(false)
+    })
   })
 
   describe('selecting an option (the selection is made by a user action in the component)', () => {
@@ -165,15 +178,11 @@ describe('OptionList', () => {
       ]
       let element = renderIntoDocument(<OptionList options={ options } />)
       let item    = element.refs['option-list-item-1']
+      let label   = item.refs.label
       let radio   = item.refs.radio
 
-      let mockEvent = {
-        target: {
-          checked: true
-        }
-      }
-
-      Simulate.change(radio, mockEvent)
+      Simulate.mouseDown(label)
+      Simulate.blur(radio)
       expect(element.state.selected).to.eql(options[1])
       expect(element.state.shouldScroll).to.eql(false)
     })

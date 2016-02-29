@@ -88,6 +88,7 @@ export default React.createClass({
 
   setSelectionCandidate (option) {
     this.setState({
+      shouldScroll: false,
       selectionCandidate: option,
       focused: true
     })
@@ -163,7 +164,7 @@ export default React.createClass({
     return !!highlightedValue && (option[highlightedKey] === highlightedValue)
   },
 
-  handleOptionChange(option) {
+  handleOptionSelection(option) {
     this.setSelected(option)
   },
 
@@ -204,7 +205,7 @@ export default React.createClass({
           isHighlighted={ this.isHighlighted(option) }
           isCandidate={ isCandidate }
           isSelected={ this.isSelected(option) }
-          onChange={ this.handleOptionChange }
+          onSelection={ this.handleOptionSelection }
           onMouseOver={ this.handleOptionMouseOver }
           onKeyDown={ this.handleOptionKeyDown }
           setScroll={ this.setScroll } />

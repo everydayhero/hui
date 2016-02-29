@@ -25,4 +25,6 @@ export default React.createClass({
       <div className="hui-LoadingProgress">
         <div className={ classes } ref="bar" style={ this.style() }></div>
       </div>
+    )
   }
+})

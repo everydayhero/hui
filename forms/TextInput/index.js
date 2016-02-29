@@ -46,8 +46,8 @@ export default React.createClass({
     ])
 
     let inputClassName = classnames({
-      'hui-TextInput__input--icon-left': iconsLeft,
-      'hui-TextInput__input--icon': !iconsLeft,
+      'hui-TextInput__input--icon-left': this.hasIcon() && iconsLeft,
+      'hui-TextInput__input--icon': this.hasIcon() && !iconsLeft,
       'hui-TextInput__input': true
     })
 

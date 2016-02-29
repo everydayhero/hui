@@ -1,0 +1,72 @@
+@import "../TextInput/style";
+
+.hui-CopyInput {
+  float: left;
+
+  .hui-TextInput__label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .hui-TextInput__input {
+    padding-right: 0;
+  }
+}
+
+.hui-CopyInput__wrapper {
+  width: 100%;
+  display: table;
+
+  .hui-IconWrapper {
+    padding-right: $x-1;
+  }
+}
+
+.hui-CopyInput__input {
+  width: 100%;
+}
+
+.hui-CopyInput__input, .hui-CopyInput__buttonWrapper {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.hui-CopyInput__button {
+  @extend %general-reset;
+  @extend %a-reset;
+  transition: all 160ms ease-out;
+  display: inline-block;
+  overflow: hidden;
+  line-height: $x-9;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline-color: transparent;
+  outline-style: none;
+  vertical-align: middle;
+  background-color: transparent;
+  font-size: 14px;
+  padding: 0 $x-4;
+  width: 100px;
+  height: 42px;
+  position: relative;
+  color: white;
+  background-color: $green;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+
+  &:hover, &:focus {
+    color: white;
+    background-color: $green-active;
+    border-color: $green-active;
+  }
+
+  &:active {
+    color: white;
+    background-color: $green;
+  }
+}
+
+@include input-sizes(CopyInput);

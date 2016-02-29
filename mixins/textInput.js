@@ -63,14 +63,19 @@ export default {
   },
 
   handleFocus() {
-    let props = this.props
-    if (props.disabled || props.readOnly) { return }
+    const { disabled, readOnly, onFocus, value } = this.props
 
-    this.setState({ focused: true })
-    if (props.onFocus) {
-      props.onFocus({
+    if (disabled) { return }
+
+    if (!readOnly) {
+      this.setState({ focused: true })
+    }
+
+    if (onFocus) {
+      onFocus({
         element: this,
-        value: props.value
+        value,
+        inputElement: this.refs.input
       })
     }
   },
@@ -109,29 +114,37 @@ export default {
     })
   },
 
+  iconName() {
+    const props = this.props
+    const state = this.state
+    const hasServerErrors = (props.errors || []).length
+    return !props.showIcon ? ''
+     : state.waiting ? 'refresh'
+     : (state.valid && !hasServerErrors) ? 'check'
+     : state.hasError ? 'times'
+     : props.disabled ? 'minus'
+     : props.icon ? props.icon
+     : (props.required && !props.value) ? 'caret-left'
+     : ''
+  },
+
+  hasIcon() {
+    return !!this.iconName()
+  },
+
   renderIcon() {
     let props = this.props
-    let errors = props.errors || []
-    let hasServerErrors = errors.length
     let className = classnames({
       'hui-TextInput__icon': true,
       'hui-TextInput__icon--left': (props.iconPosition === 'left')
     })
-    let state = this.state
-    let icon = !props.showIcon ? false
-               : state.waiting ? 'refresh'
-               : (state.valid && !hasServerErrors) ? 'check'
-               : state.hasError ? 'times'
-               : props.disabled ? 'minus'
-               : props.icon ? props.icon
-               : (props.required && !props.value) ? 'caret-left'
-               : false;
+    let icon = this.iconName()
 
-    return icon && (
+    return this.hasIcon() && (
       <span className={ className }>
-        <Icon icon={ icon } onClick={ props.onIconClick } disabled={ props.disabled } fixedWidth={ true } />
+        <Icon icon={ icon } onClick={ props.onIconClick } disabled={ props.disabled } fixedWidth />
       </span>
-    );
+    )
   },
 
   renderPlaceHolder() {
