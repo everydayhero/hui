@@ -1,9 +1,9 @@
 'use strict';
 // Via http://www.asbjornenge.com/wwc/testing_react_components.html
-module.exports = function(markup) {
+module.exports = function(markup, options) {
   if (typeof document !== 'undefined') return;
   var jsdom = require('jsdom').jsdom;
-  global.document = jsdom(markup || '');
+  global.document = jsdom(markup || '', options);
   global.window = document.defaultView;
   global.navigator = {
     userAgent: 'node.js'
