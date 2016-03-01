@@ -1,11 +1,11 @@
 'use strict'
 
-var React  = require('react');
-var moment = require('moment');
+import React  from 'react'
+import moment from 'moment'
 var OFFSET = 12;
 // top stop dates running off the edge of the svg
 
-module.exports = React.createClass({
+export default React.createClass({
 
   displayName: 'XScale',
 

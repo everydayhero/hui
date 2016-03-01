@@ -1,10 +1,7 @@
-'use strict';
+'use strict'
 
 import './env'
-import React from 'react'
+import ReactDOM from 'react-dom'
 import DemoPage from './DemoPage'
-const content = document.getElementById('content')
 
-global.React = React
-
-React.render(<DemoPage/>, content)
+ReactDOM.render(DemoPage, document.getElementById('content'))

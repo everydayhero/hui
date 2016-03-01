@@ -6,7 +6,7 @@ import Icon from '../../atoms/Icon'
 import inputMessage from '../../mixins/inputMessage'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FileInput',
 
   mixins: [inputMessage],
@@ -70,7 +70,7 @@ module.exports = React.createClass({
   },
 
   focus: function() {
-    this.refs.browse_files.getDOMNode().focus()
+    this.refs.browse_files.focus()
   },
 
   onBlur: function() {

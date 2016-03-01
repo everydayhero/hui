@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var SocialMediaLinks = require('../');
+import SocialMediaLinks from '../'
 var testLinks = [
   { name: 'faceSpace', url: 'www.facespace.com' },
   { name: 'instaUnfriend', url: 'www.instaunfriend.com' },
@@ -27,9 +27,9 @@ describe('SocialMediaLinks', function() {
   });
 
   it('shows social media links', function() {
-    findByProp(element, 'href', testLinks[0].url).should.exist;
-    findByProp(element, 'href', testLinks[1].url).should.exist;
-    findByProp(element, 'href', testLinks[2].url).should.exist;
+    findByAttribute(element, 'href', testLinks[0].url).should.exist;
+    findByAttribute(element, 'href', testLinks[1].url).should.exist;
+    findByAttribute(element, 'href', testLinks[2].url).should.exist;
   });
 
   it('shows social media icons', function() {

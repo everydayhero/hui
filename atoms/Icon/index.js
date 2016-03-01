@@ -31,7 +31,7 @@ export default React.createClass({
   },
 
   render: function() {
-    let { icon, type, fixedWidth, spin, className} = this.props
+    let { icon, type, fixedWidth, spin, className } = this.props
     spin = icon === 'circle-o-notch' || icon === 'spinner' || icon === 'refresh' || spin
     let classes = cx([
       'hui-Icon',

@@ -38,12 +38,12 @@ describe('Tabs', function() {
     it('should render Content', function() {
       let content = findByClass(tabs, 'hui-Tabs_content')
 
-      expect(content.getDOMNode().textContent).to.contain('Amount raised goes here')
+      expect(content.textContent).to.contain('Amount raised goes here')
     })
 
     it('should select a tab', function() {
       let tabLinks = scryByClass(tabs, 'hui-Tabs__tab')
-      Simulate.click(tabLinks[2].getDOMNode())
+      Simulate.click(tabLinks[2])
 
       onChange.should.have.been.calledWith(2)
     })
@@ -52,7 +52,7 @@ describe('Tabs', function() {
       tabs = renderIntoDocument(<Tabs tabs={ tabItems } active={ 2 }/>)
       let content = findByClass(tabs, 'hui-Tabs__tab--active')
 
-      expect(content.getDOMNode().textContent).to.contain(tabItems[2].label)
+      expect(content.textContent).to.contain(tabItems[2].label)
     })
   })
 })

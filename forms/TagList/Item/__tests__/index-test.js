@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var TagListItem = require('../');
+import TagListItem from '../'
 
 describe('Tag List Item', function() {
   describe('default', function() {
@@ -13,7 +13,7 @@ describe('Tag List Item', function() {
     });
 
     it('should render tag name when it is present', function() {
-      node = findByClass(component, 'hui-TagListItem__label').getDOMNode();
+      node = findByClass(component, 'hui-TagListItem__label');
       expect(node.textContent).to.equal(item.name);
     });
 

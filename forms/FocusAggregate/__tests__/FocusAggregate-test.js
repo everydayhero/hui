@@ -21,7 +21,7 @@ describe('FocusAggregate', () => {
       const element = renderIntoDocument(
         <TestComponent onFocus={ subject } />
       )
-      const input = element.refs.input1.getDOMNode()
+      const input = element.refs.input1
       Simulate.focus(input)
       expect(subject).to.be.called
     })
@@ -33,7 +33,7 @@ describe('FocusAggregate', () => {
       const element = renderIntoDocument(
         <TestComponent onBlur={ subject } />
       )
-      const input = element.refs.input1.getDOMNode()
+      const input = element.refs.input1
       Simulate.blur(input)
       expect(subject).not.to.be.called
       setTimeout(() => {
@@ -49,7 +49,7 @@ describe('FocusAggregate', () => {
       const element = renderIntoDocument(
         <TestComponent onBlur={ subject } />
       )
-      const input = element.refs.input1.getDOMNode()
+      const input = element.refs.input1
       Simulate.blur(input)
       Simulate.focus(input)
       expect(subject).not.to.be.called
@@ -66,8 +66,8 @@ describe('FocusAggregate', () => {
       const element = renderIntoDocument(
         <TestComponent onBlur={ subject } />
       )
-      const input1= element.refs.input1.getDOMNode()
-      const input2= element.refs.input1.getDOMNode()
+      const input1= element.refs.input1
+      const input2= element.refs.input1
       Simulate.blur(input1)
       Simulate.blur(input2)
       setTimeout(() => {
@@ -85,7 +85,7 @@ describe('FocusAggregate', () => {
       const element = renderIntoDocument(
         <TestComponent onFocus={ handleFocus } />
       )
-      const input1= element.refs.input1.getDOMNode()
+      const input1= element.refs.input1
       Simulate.focus(input1, { target: { value: 'WOOOOOT!' }})
     })
   })

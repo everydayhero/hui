@@ -1,14 +1,15 @@
-'use strict';
+'use strict'
 
-var _ = require('lodash');
-var React = require('react');
-var I18n = require('../../mixins/I18n');
-var Row = require('../Row');
-var A = require('../../atoms/A');
-var SocialMediaLinks = require('../../atoms/SocialMediaLinks');
-var urls = require('../../urls');
+import _ from 'lodash'
+import React from 'react'
+import I18n from '../../mixins/I18n'
+import i18n from './i18n'
+import Row from '../Row'
+import A from '../../atoms/A'
+import SocialMediaLinks from '../../atoms/SocialMediaLinks'
+import urls from '../../urls'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Footer',
 
   mixins: [I18n],
@@ -112,6 +113,6 @@ module.exports = React.createClass({
   },
 
   statics: {
-    i18n: require('./i18n')
+    i18n
   }
 });

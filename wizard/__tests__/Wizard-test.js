@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Wizard = require('../index');
+import Wizard from '../index'
 
 describe('Wizard', function() {
   describe('default', function() {

@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var Input = require('../');
-var moment = require('moment');
+import Input from '../'
+import moment from 'moment'
 
 describe('DatePicker', function() {
   describe('defaults', function() {
@@ -13,15 +13,15 @@ describe('DatePicker', function() {
     });
 
     it('no value', function() {
-      input.getDOMNode().value.should.equal('');
+      input.value.should.equal('')
     });
 
     it('no id', function() {
-      input.getDOMNode().id.should.equal('');
+      input.id.should.equal('')
     });
 
     it('no name', function() {
-      input.getDOMNode().name.should.equal('');
+      input.name.should.equal('')
     });
   });
 
@@ -34,12 +34,12 @@ describe('DatePicker', function() {
     });
 
     it('value of 09/12/2015', function() {
-      input.getDOMNode().value.should.equal('09/12/2015');
+      input.value.should.equal('09/12/2015')
     });
 
     describe('Passed an id of seven', function() {
       it('id is seven', function() {
-        input.getDOMNode().id.should.equal('seven');
+        input.id.should.equal('seven')
       });
     });
 
@@ -113,14 +113,14 @@ describe('DatePicker', function() {
       var element = renderIntoDocument(<Input value="2015-12-09" displayFormat="MM/DD/YYYY" />);
       var input = findByTag(element, 'input');
 
-      input.getDOMNode().value.should.equal('12/09/2015');
+      input.value.should.equal('12/09/2015')
     });
 
     it('allow optional value formats', function() {
       var element = renderIntoDocument(<Input value="2010-10-20 4:30 +0000"  valueFormat="YYYY-MM-DD HH:mm Z" />);
       var input = findByTag(element, 'input');
 
-      input.getDOMNode().value.should.equal('20/10/2010');
+      input.value.should.equal('20/10/2010')
     });
 
     it('outputs optional value formats', function() {

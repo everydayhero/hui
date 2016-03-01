@@ -63,7 +63,7 @@ export default React.createClass({
   },
 
   selectAndCopy() {
-    this.refs.copyInput.focus()
+    this.refs.copyInput.refs.input.focus()
 
     try {
       document.execCommand('copy')

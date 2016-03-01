@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var DateInput = require('../../../forms/DateInput');
-var formMixin = require('../../../mixins/reactForm.mixin');
-var FormRow   = require('../../../forms/FormRow');
+import React     from 'react'
+import DateInput from '../../../forms/DateInput'
+import formMixin from '../../../mixins/reactForm.mixin'
+import FormRow   from '../../../forms/FormRow'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DateInputExample',
   mixins: [formMixin],
 

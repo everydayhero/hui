@@ -1,6 +1,6 @@
 'use strict';
 
-var DeltaArrow = require('../index');
+import DeltaArrow from '../'
 
 describe('DeltaArrow', function() {
   describe('with positive number', function() {
@@ -16,7 +16,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = findByClass(component, 'hui-DeltaArrow__value');
-      node.getDOMNode().textContent.should.equal('12%');
+      node.textContent.should.equal('12%');
     });
   });
 
@@ -33,7 +33,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = findByClass(component, 'hui-DeltaArrow__value');
-      node.getDOMNode().textContent.should.equal('50%');
+      node.textContent.should.equal('50%');
     });
   });
 
@@ -46,7 +46,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage with one signicant number', function() {
       node = findByClass(component, 'hui-DeltaArrow__value');
-      node.getDOMNode().textContent.should.equal('1k%');
+      node.textContent.should.equal('1k%');
     });
   });
 
@@ -63,7 +63,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = findByClass(component, 'hui-DeltaArrow__value');
-      node.getDOMNode().textContent.should.equal('');
+      node.textContent.should.equal('');
     });
   });
 
@@ -80,7 +80,7 @@ describe('DeltaArrow', function() {
 
     it('should render formatted percentage', function() {
       node = findByClass(component, 'hui-DeltaArrow__value');
-      node.getDOMNode().textContent.should.equal('');
+      node.textContent.should.equal('');
     });
   });
 });

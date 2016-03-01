@@ -1,13 +1,15 @@
-'use strict';
+'use strict'
 
-var DatePickerPeriod = require('../');
+import DatePickerPeriod from '../'
+
+import ReactDOM from 'react-dom'
 
 describe('DatePickerPeriod', function() {
   describe('selected', function() {
     var element = renderIntoDocument(<DatePickerPeriod value={ 2014 } current={ 2014 }/>);
 
     it('renders as selected', function() {
-      var className = element.getDOMNode().className;
+      var className = ReactDOM.findDOMNode(element).className
 
       className.should.contain('hui-DatePickerPeriod--selected');
     });
@@ -20,7 +22,7 @@ describe('DatePickerPeriod', function() {
       var listener = val => parsedValue = val;
       var element = renderIntoDocument(<DatePickerPeriod onSelect={ listener } value={ value } />);
 
-      var period = element.getDOMNode();
+      var period = ReactDOM.findDOMNode(element);
       Simulate.click(period);
 
       parsedValue.should.equal(value);

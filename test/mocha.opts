@@ -1,4 +1,4 @@
 --recursive
---compilers .:test/helpers/compiler.js
+--compilers js:babel-register
 --ui bdd
 --require test/helpers/common.js

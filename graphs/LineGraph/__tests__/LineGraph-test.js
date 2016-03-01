@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var LineGraph = require('../index');
+import LineGraph from '../'
 
 describe('LineGraph', function() {
   var collection = [

@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var A = require('../');
+import A from '../'
 
 describe('A', function() {
   var element;
@@ -12,7 +12,7 @@ describe('A', function() {
 
   it('renders a link', function() {
     element.should.exist;
-    var link = findByProp(element, 'href', 'testurl');
+    var link = findByAttribute(element, 'href', 'testurl');
     link.should.exist;
   });
 

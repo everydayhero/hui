@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var FlashMessage = require('../');
+import FlashMessage from '../'
 
 describe('FlashMessage', function() {
   it('does not show a flash message when false', function() {
@@ -9,7 +9,7 @@ describe('FlashMessage', function() {
     var element = renderIntoDocument(component);
 
     var showClass = scryByClass(element, 'hui-FlashMessage__message--show');
-    var messageText = findByClass(element, 'hui-FlashMessage__message').getDOMNode().textContent;
+    var messageText = findByClass(element, 'hui-FlashMessage__message').textContent;
 
     findByClass(element, 'hui-FlashMessage__message--success');
     expect(showClass.length).to.equal(0);

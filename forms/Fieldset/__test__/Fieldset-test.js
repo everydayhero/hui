@@ -1,6 +1,6 @@
 'use strict';
 
-var Fieldset    = require('../');
+import Fieldset from '../'
 
 describe('Fieldset', function() {
   describe('defaults', function() {
@@ -23,7 +23,7 @@ describe('Fieldset', function() {
     it('does render a legend', function() {
       var label = findByClass(element, 'hui-Fieldset__legend');
 
-      label.getDOMNode().textContent.should.equal('foo');
+      label.textContent.should.equal('foo');
     });
   });
 });

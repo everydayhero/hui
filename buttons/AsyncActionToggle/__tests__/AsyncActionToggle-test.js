@@ -1,5 +1,6 @@
 'use strict'
 
+import ReactDOM from 'react-dom'
 import AsyncActionToggle from '../'
 import Promise from 'bluebird'
 
@@ -13,8 +14,8 @@ let props = {
 
 describe('AsyncActionToggle', () => {
   it('executes an action on click', (done) => {
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } />)
-    Simulate.click(findByTag(element, 'button'))
+    let component = renderIntoDocument(<AsyncActionToggle { ...props } />)
+    Simulate.click(findByTag(component, 'button'))
     setTimeout(() => {
       props.action.should.have.been.called
       done()
@@ -22,23 +23,26 @@ describe('AsyncActionToggle', () => {
   })
 
   it('displays pre- and post-action labels', (done) => {
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } />)
-    element.getDOMNode().textContent.should.contain(props.pre_action_label)
-    Simulate.click(findByTag(element, 'button'))
+    let component = renderIntoDocument(<AsyncActionToggle { ...props } />)
+    let element = ReactDOM.findDOMNode(component)
+
+    element.textContent.should.contain(props.pre_action_label)
+    Simulate.click(findByTag(component, 'button'))
     setTimeout(() => {
-      element.getDOMNode().textContent.should.contain(props.post_action_label)
+      element.textContent.should.contain(props.post_action_label)
       done()
     }, 1)
   })
 
   it('displays an error label if action fails', (done) => {
     let rejectAction = sinon.stub().returns(Promise.reject())
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } action={ rejectAction } />)
-    element.getDOMNode().textContent.should.contain(props.pre_action_label)
-    Simulate.click(findByTag(element, 'button'))
+    let component = renderIntoDocument(<AsyncActionToggle { ...props } action={ rejectAction } />)
+    let element = ReactDOM.findDOMNode(component)
+    element.textContent.should.contain(props.pre_action_label)
+    Simulate.click(findByTag(component, 'button'))
     setTimeout(() => {
       rejectAction.should.have.been.called
-      element.getDOMNode().textContent.should.contain(props.error_label)
+      element.textContent.should.contain(props.error_label)
       done()
     }, 1)
   })

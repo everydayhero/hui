@@ -1,5 +1,6 @@
 'use strict'
 
+import ReactDOM from 'react-dom'
 import CopyInput from '../'
 
 describe('CopyInput', () => {
@@ -7,8 +8,8 @@ describe('CopyInput', () => {
 
   beforeEach(() => {
     element = renderIntoDocument(<CopyInput value="foobar" name="underTest" id="baz" />)
-    input   = findByProp(element, 'name', 'underTest').getDOMNode()
-    button  = findByClass(element, 'hui-CopyInput__button').getDOMNode()
+    input   = findByAttribute(element, 'name', 'underTest')
+    button  = findByClass(element, 'hui-CopyInput__button')
   })
 
   it('renders a text field with a given value', () => {
@@ -35,6 +36,6 @@ describe('CopyInput', () => {
 
   it('shows an error message if a copy failed', () => {
     element.setState({ errors: ['fail message'] })
-    element.getDOMNode().textContent.should.contain('fail message')
+    ReactDOM.findDOMNode(element).textContent.should.contain('fail message')
   })
 })

@@ -1,6 +1,6 @@
 'use strict';
 
-var Input       = require('../');
+import Input from '../'
 
 describe('Checkbox', function() {
   describe('defaults', function() {
@@ -10,19 +10,19 @@ describe('Checkbox', function() {
     var input = findByTag(element, 'input');
 
     it('type of checkbox', function() {
-      input.getDOMNode().type.should.equal('checkbox');
+      input.type.should.equal('checkbox');
     });
 
     it('value of null', function() {
-      input.getDOMNode().value.should.equal('');
+      input.value.should.equal('');
     });
 
     it('id of null', function() {
-      input.getDOMNode().id.should.equal('');
+      input.id.should.equal('');
     });
 
     it('name of null', function() {
-      input.getDOMNode().name.should.equal('');
+      input.name.should.equal('');
     });
   });
 
@@ -35,7 +35,7 @@ describe('Checkbox', function() {
     it('contains a label', function() {
       var label = findByClass(element, 'hui-Checkbox__label');
 
-      label.getDOMNode().nodeName.toLowerCase().should.equal('label');
+      label.nodeName.toLowerCase().should.equal('label');
     });
   });
 
@@ -49,7 +49,7 @@ describe('Checkbox', function() {
     it('contains a span label', function() {
       var label = findByClass(element, 'hui-Checkbox__label');
 
-      label.getDOMNode().nodeName.toLowerCase().should.equal('span');
+      label.nodeName.toLowerCase().should.equal('span');
     });
   });
 
@@ -60,20 +60,20 @@ describe('Checkbox', function() {
     var input = findByTag(element, 'input');
 
     it('type of checkbox', function() {
-      input.getDOMNode().type.should.equal('checkbox');
+      input.type.should.equal('checkbox');
     });
 
     it('value of true', function() {
-      input.getDOMNode().checked.should.equal(true);
+      input.checked.should.equal(true);
     });
 
     describe('Passed an id of seven', function() {
       it('id is seven', function() {
-        input.getDOMNode().id.should.equal('seven');
+        input.id.should.equal('seven');
       });
 
       it('name is seven', function() {
-        input.getDOMNode().name.should.equal('seven');
+        input.name.should.equal('seven');
       });
     });
   });

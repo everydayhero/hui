@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var numeral    = require('numeral');
-var Path       = require('paths-js/path');
-var scaleMixin = require('../mixins/scaleMixin');
+import React      from 'react'
+import numeral    from 'numeral'
+import Path       from 'paths-js/path'
+import scaleMixin from '../mixins/scaleMixin'
 var TEXTOFFSET = 8;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'YScale',
 
   mixins: [scaleMixin],

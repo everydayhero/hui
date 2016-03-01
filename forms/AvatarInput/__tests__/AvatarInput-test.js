@@ -1,7 +1,6 @@
 'use strict';
 
-unmockcomponent('AvatarInput/index');
-var AvatarInput = require('../');
+import AvatarInput from '../'
 
 describe('AvatarInput', function() {
   var component;
@@ -24,7 +23,7 @@ describe('AvatarInput', function() {
     it('should render a blank image', function() {
       var element = findByClass(component, 'hui-AvatarInput__preview');
 
-      expect(element.getDOMNode().tagName).to.equal('SPAN');
+      expect(element.tagName).to.equal('SPAN');
     });
   });
 
@@ -39,17 +38,13 @@ describe('AvatarInput', function() {
     it('should render the page name', function() {
       var element = findByClass(component, 'hui-AvatarInput__pageName');
 
-      element.getDOMNode().textContent.should.equal(pageName);
+      element.textContent.should.equal(pageName);
     });
 
     it('should render an image', function() {
       var element = findByClass(component, 'hui-AvatarInput__preview');
 
-      expect(element.getDOMNode().src).to.equal(value.url);
+      expect(element.src).to.equal(value.url);
     });
-  });
-
-  after(function() {
-    mockcomponent('AvatarInput/index');
   });
 });

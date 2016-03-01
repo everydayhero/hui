@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var _            = require('lodash');
-var React        = require('react');
-var classnames   = require('classnames');
-var moment       = require('moment');
-var formatNumber = require('../../../lib/formatNumber');
+import _            from 'lodash'
+import React        from 'react'
+import classnames   from 'classnames'
+import moment       from 'moment'
+import formatNumber from '../../../lib/formatNumber'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'ToolTip',
 
   propTypes: {

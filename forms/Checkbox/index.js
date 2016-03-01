@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var classnames = require('classnames');
-var Errors     = require('../InputErrors');
+import React      from 'react'
+import classnames from 'classnames'
+import Errors     from '../InputErrors'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Checkbox',
 
   propTypes: {

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var FileInput = require('../FileInput');
+import React     from 'react'
+import FileInput from '../FileInput'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'hui-ImageInput',
 
   propTypes: {

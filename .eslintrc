@@ -94,6 +94,7 @@
     "beforeEach": 1,
     "after": 1,
     "it": 1,
+    "xit": 1,
     "React": 1,
     "chai": 1,
     "should": 1,
@@ -113,7 +114,7 @@
     "findByClass": 1,
     "scryByTag": 1,
     "findByTag": 1,
-    "scryByProp": 1,
-    "findByProp": 1
+    "scryByAttribute": 1,
+    "findByAttribute": 1
   }
 }

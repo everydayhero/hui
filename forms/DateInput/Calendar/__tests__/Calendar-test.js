@@ -1,7 +1,7 @@
 'use strict';
 
-var Calendar = require('../');
-var moment = require('moment');
+import Calendar from '../'
+import moment from 'moment'
 
 describe('Calendar', function() {
   describe('Jan 2014', function() {

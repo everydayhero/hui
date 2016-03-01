@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React            = require('react');
-var DatePickerPeriod = require('../DatePickerPeriod');
-var Icon             = require('../../../atoms/Icon');
+import React            from 'react'
+import DatePickerPeriod from '../DatePickerPeriod'
+import Icon             from '../../../atoms/Icon'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DatePickerPeriods',
 
   propTypes: {

@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var DateSelectWrapper = require('../');
+import DateSelectWrapper from '../'
 
 describe('DateSelectWrapper', function() {
 
@@ -11,8 +11,8 @@ describe('DateSelectWrapper', function() {
         );
     var hiddenField = findByTag(element, 'input');
 
-    hiddenField.getDOMNode().value.should.equal('');
-    hiddenField.getDOMNode().name.should.equal('foo');
+    hiddenField.value.should.equal('');
+    hiddenField.name.should.equal('foo');
   });
 
   describe('change value', function() {
@@ -29,7 +29,7 @@ describe('DateSelectWrapper', function() {
     Simulate.change(monthSelect, { target: { value: 10 }});
     Simulate.change(yearSelect, { target: { value: 2002 }});
 
-    hiddenField.getDOMNode().value.should.equal('2002-11-05');
+    hiddenField.value.should.equal('2002-11-05');
   });
 
   describe('start with value', function() {
@@ -40,6 +40,6 @@ describe('DateSelectWrapper', function() {
         );
     var hiddenField = findByTag(element, 'input');
 
-    hiddenField.getDOMNode().value.should.equal('2001-12-12');
+    hiddenField.value.should.equal('2001-12-12');
   });
 });

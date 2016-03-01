@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = {
+export default {
   en: {
     left_1: 'About',
     left_2: 'Jobs',

@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React       = require('react');
-var AvaratInput = require('../../../forms/AvatarInput');
-var formMixin   = require('../../../mixins/reactForm.mixin');
+import React       from 'react'
+import AvaratInput from '../../../forms/AvatarInput'
+import formMixin   from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'AvaratInputExample',
   mixins: [formMixin],
 

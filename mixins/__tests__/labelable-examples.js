@@ -20,7 +20,7 @@ export default function (Component, props = {}) {
           <Component
             { ...props }
             label="Yo" />
-        ).refs.label.getDOMNode().textContent
+        ).refs.label.textContent
 
         expect(subject).to.eq('Yo')
       })

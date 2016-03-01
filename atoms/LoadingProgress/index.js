@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-var React = require('react');
-var _     = require('lodash');
+import React from 'react'
+import _     from 'lodash'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LoadingProgress',
 
   style: function() {
     var style;
     if (this.refs.bar && !this.props.inProgress) {
-      style = { width: this.refs.bar.getDOMNode().offsetWidth || '100%' };
+      style = { width: this.refs.bar.offsetWidth || '100%' }
     }
 
     return style;
@@ -25,6 +25,6 @@ module.exports = React.createClass({
       <div className="hui-LoadingProgress">
         <div className={ classes } ref="bar" style={ this.style() }></div>
       </div>
-    );
+    )
   }
-});
+})

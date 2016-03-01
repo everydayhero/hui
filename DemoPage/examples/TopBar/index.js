@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var TopBar     = require('../../../layout/TopBar');
-var Masthead   = require('../../../layout/Masthead');
-var UserAuth   = require('../../../layout/UserAuth');
+import React    from 'react'
+import TopBar   from '../../../layout/TopBar'
+import Masthead from '../../../layout/Masthead'
+import UserAuth from '../../../layout/UserAuth'
 var imagePath  = './images/';
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TopBarExample',
 
   render: function() {

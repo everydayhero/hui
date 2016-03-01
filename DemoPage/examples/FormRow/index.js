@@ -1,11 +1,11 @@
 'use strict';
 
-var React     = require('react');
-var FormRow   = require('../../../forms/FormRow');
-var formMixin = require('../../../mixins/reactForm.mixin');
-var TextInput = require('../../../forms/TextInput');
+import React     from 'react'
+import FormRow   from '../../../forms/FormRow'
+import formMixin from '../../../mixins/reactForm.mixin'
+import TextInput from '../../../forms/TextInput'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FormRowExample',
   mixins: [formMixin],
 
