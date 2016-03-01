@@ -5,7 +5,7 @@ import NavLink from '../'
 let when = describe
 let defaultProps = {
   label: 'TestLabel',
-  href: 'http://test/path',
+  href: 'http://localhost:8000/',
   kind: 'cta'
 }
 

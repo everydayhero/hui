@@ -1,6 +1,8 @@
 'use strict'
 
-require('./testdom')('<html><body></body></html>')
+require('./testdom')('<html><body></body></html>', {
+  url: 'http://localhost:8000'
+})
 
 global.React = require('react')
 const ReactDOM = require('react-dom')
