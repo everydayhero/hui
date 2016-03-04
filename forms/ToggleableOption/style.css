@@ -1,15 +1,20 @@
+.ToggleableOption__wrapper {
+  position: relative;
+  display: block;
+  border-top: 1px solid $grey-lighter;
+}
+
 .ToggleableOption {
   position: relative;
   padding: 0.8em;
   padding-left: 2.8em;
-  border-top: 1px solid $grey-lighter;
   border-radius: 2px;
   line-height: 1.25em;
   display: block;
   overflow: hidden;
 }
 
-.ToggleableOption:first-child { border-top: none; }
+.ToggleableOption__wrapper:first-child { border-top: none; }
 
 .ToggleableOption,
 .ToggleableOption__checkbox {
@@ -84,4 +89,14 @@
 .ToggleableOption__checkbox--partial:before {
   height: 14px;
   width: 14px;
+}
+
+.ToggleableOption__tooltip {
+  position: absolute;
+  right: 0;
+  top: -4px;
+}
+
+.ToggleableOption__tooltip + .ToggleableOption {
+  padding-right: 3em;
 }
