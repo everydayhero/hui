@@ -45,3 +45,18 @@ $ npm start             # run local server to view demo page
 * API updates and large additions/changes are major versions – e.g. (1).0.0
 
 The version number should be updated in the `package.json` before publishing.
+
+## Development
+
+The main, stable branch is `master`. All work should be contained in isolated
+feature branches and will be merged into `master` when peer reviewed on GitHub.
+
+We maintain version branches for major version bumps. These will be maintained until previous version are deprecated.
+
+### Getting code into master
+
+1. Commit code to a branch
+2. Push code to Github, open PR against Master
+3. Code is reviewed by peers, on approval, code is merged (not by code author)
+4. Code is deployed to QA.
+5. Assuming code passes QA, code is released to production.
