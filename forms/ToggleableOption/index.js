@@ -3,6 +3,7 @@
 import React from 'react'
 import cx from 'classnames'
 import Icon from '../../atoms/Icon'
+import Tooltip from '../../atoms/Tooltip'
 import I18n from '../../mixins/I18n'
 
 export default React.createClass({
@@ -15,7 +16,12 @@ export default React.createClass({
     partialChecked: React.PropTypes.bool,
     name: React.PropTypes.string.isRequired,
     label: React.PropTypes.string.isRequired,
+    description: React.PropTypes.string,
     value: React.PropTypes.bool.isRequired
+  },
+
+  getDefaultProps() {
+    return { description: '' }
   },
 
   getInitialState() {
@@ -43,7 +49,7 @@ export default React.createClass({
 
   render() {
     let { loading, error } = this.state
-    let { partialChecked, name, label, value } = this.props
+    let { partialChecked, name, label, value, description } = this.props
     let classes = cx([
       'ToggleableOption__checkbox',,
       value && 'ToggleableOption__checkbox--checked',
@@ -58,18 +64,21 @@ export default React.createClass({
       : ''
 
     return (
-      <label className="ToggleableOption" htmlFor={ name }>
-        <input className="ToggleableOption__hiddenInput"
-          id={ name }
-          type="checkbox"
-          checked={ value }
-          name={ name }
-          onChange={ this.handleChange } />
-        <Icon className={ classes } icon={ icon } />
-        { label }
-        { error && <span className="ToggleableOption__error">{ this.t('error_message') }</span> }
-        { loading && <span className="ToggleableOption__loading">{ this.t('loading_message') }</span> }
-      </label>
+      <span className="ToggleableOption__wrapper">
+        { description && <Tooltip text={ description } className="ToggleableOption__tooltip" /> }
+        <label className="ToggleableOption" htmlFor={ name }>
+          <input className="ToggleableOption__hiddenInput"
+            id={ name }
+            type="checkbox"
+            checked={ value }
+            name={ name }
+            onChange={ this.handleChange } />
+          <Icon className={ classes } icon={ icon } />
+          { label }
+          { error && <span className="ToggleableOption__error">{ this.t('error_message') }</span> }
+          { loading && <span className="ToggleableOption__loading">{ this.t('loading_message') }</span> }
+        </label>
+      </span>
     )
   },
 
