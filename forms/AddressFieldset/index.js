@@ -123,7 +123,7 @@ export default React.createClass({
             { props.header }
           </div>
 
-          { this.renderAddressField('street_address', { autoFocus: props.autoFocus }) }
+          { this.renderAddressField('street_address', { autoFocus: !props.address.street_address && props.autoFocus }) }
           { this.renderAddressField('extended_address') }
           { this.renderAddressField('locality', { layout: 'twoThirds' }) }
           { this.renderAddressField('region', { layout: 'third' }) }
