@@ -1,6 +1,6 @@
 {
-  "name": "hui",
-  "version": "3.6.7",
+  "name": "hero-ui",
+  "version": "4.0.3-rc",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",
   "files": [
@@ -72,6 +72,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-awspublish": "^1.0.6",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.1.1",
     "gulp-if": "^1.2.5",
@@ -105,19 +106,5 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "wget": "0.0.1"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "react",
-            "es2015",
-            "stage-0"
-          ]
-        }
-      ]
-    ]
   }
 }
