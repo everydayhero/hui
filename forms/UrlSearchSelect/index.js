@@ -36,12 +36,15 @@ export default React.createClass({
     errors: React.PropTypes.array,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
-    pendingRequest: React.PropTypes.bool
+    pendingRequest: React.PropTypes.bool,
+    initialValue: React.PropTypes.number,
+    initialLabel: React.PropTypes.string
   },
 
   getDefaultProps() {
     return {
       label: 'Search',
+      params: {},
       queryProperty: 'q',
       minQueryLength: 5,
       manualAction: null,
@@ -56,14 +59,17 @@ export default React.createClass({
       errors: [],
       layout: 'full',
       spacing: 'loose',
-      pendingRequest: false
+      pendingRequest: false,
+      initialValue: null,
+      initialLabel: ''
     }
   },
 
   getInitialState() {
     return {
       isOpen: false,
-      value: '',
+      value: this.props.initialValue,
+      queryValue: this.props.initialLabel,
       results: [],
       pendingRequest: this.props.pendingRequest
     }
@@ -122,6 +128,7 @@ export default React.createClass({
   }, 250, { trailing: true }),
 
   handleSearchInputChange(query) {
+    if (query === this.state.queryValue) { return }
     let queryBelowMin = query.length < this.props.minQueryLength
     this.cancelRequest()
     this.setState({
@@ -129,10 +136,7 @@ export default React.createClass({
       hasError: false,
       results: queryBelowMin ? [] : this.state.results,
       isOpen: queryBelowMin ? false : this.state.isOpen
-    }, () => {
-      this.props.onChange(query)
-      if (query.length >= this.props.minQueryLength) { this.queueResultFetch(query) }
-    })
+    }, () => (query.length >= this.props.minQueryLength) && this.queueResultFetch(query))
   },
 
   handleSelection(option) {
@@ -149,16 +153,12 @@ export default React.createClass({
     })
   },
 
-  setFocus: debounce(function (value) {
-    !value && this.requireValue()
+  debouncedRequireValue: debounce(function() {
+    this.requireValue()
   }, 100),
 
   handleBlur() {
-    this.setFocus(false)
-  },
-
-  handleFocus() {
-    this.setFocus(true)
+    this.debouncedRequireValue()
   },
 
   keyHandlers: {
@@ -220,7 +220,6 @@ export default React.createClass({
     return (
       <div
         onBlur={ this.handleBlur }
-        onFocus={ this.handleFocus }
         className={ classes }>
         <TextInput
           ref="searchInput"
