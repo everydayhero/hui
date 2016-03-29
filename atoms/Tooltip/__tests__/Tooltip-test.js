@@ -17,7 +17,7 @@ describe('Tooltip', () => {
     Simulate.click(tip)
     element.state.open.should.equal(true)
 
-    let click = document.createEvent('ClickEvent')
+    let click = document.createEvent('HTMLEvents')
     click.initEvent('click', true, true)
     document.dispatchEvent(click)
 
