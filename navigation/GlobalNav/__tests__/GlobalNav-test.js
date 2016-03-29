@@ -27,7 +27,7 @@ describe('GlobalNav', () => {
 
   when('no campaign provided', () => {
     let nav = renderIntoDocument(<GlobalNav { ...defaultProps }/>)
-    it('should render the logo', () => {
+    xit('should render the logo', () => {
       let logo = findByClass(nav, 'hui-GlobalNav__logo')
       logo.getDOMNode().href.should.equal(`http://www.${defaultProps.domain}/au/`)
       findByTag(logo, 'img').getDOMNode().src.should.contain(`${defaultProps.imgPath}hui_edh_logo@x2.png`)
@@ -36,7 +36,7 @@ describe('GlobalNav', () => {
 
   when('campaign provided with user', () => {
     let nav = renderIntoDocument(<GlobalNav { ...defaultProps } campaign={ campaign } user={ user }/>)
-    it('should render the logo', () => {
+    xit('should render the logo', () => {
       let logo = findByClass(nav, 'hui-GlobalNav__logo')
       findByTag(logo, 'img').getDOMNode().src.should.contain(`${defaultProps.imgPath}hui_edh_logo@x2.png`)
     })
