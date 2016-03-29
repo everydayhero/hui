@@ -1,5 +1,11 @@
 'use strict'
 
+import ReactDOM from 'react-dom'
+
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
 let options = {
   test_group_one: {
     label: 'Test Group One',
@@ -29,9 +35,9 @@ let options = {
   }
 }
 let mockSync = sinon.stub().returns(Promise.resolve({ results: options }))
-let ToggleableOptionForm = mockrequire('../', {
+let ToggleableOptionForm = proxyquire('../', {
   '../../lib/sync': mockSync
-})
+}).default
 
 describe('ToggleableOptionForm', () => {
   let props = {
