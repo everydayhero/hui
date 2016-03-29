@@ -44,7 +44,7 @@ export default React.createClass({
 
   render: function() {
     var props = this.props;
-    var classes = cx({
+    var classes = classnames({
       'hui-Fieldset': true,
       'hui-Fieldset--with-legend': props.legend,
       'hui-Fieldset--focused': this.state.focused
