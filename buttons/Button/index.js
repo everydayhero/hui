@@ -3,6 +3,7 @@
 import React from 'react'
 import Icon from '../../atoms/Icon'
 import cx from 'classnames'
+import dataAttributesFromProps from '../../lib/dataAttributesFromProps'
 
 export default React.createClass({
   displayName: 'Button',
@@ -96,15 +97,14 @@ export default React.createClass({
     ])
 
     return (
-      <El target={ props.target } className={ classes }
+      <El { ...dataAttributesFromProps(props) } target={ props.target } className={ classes }
         id={ props.id }
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
         href={ href }
         disabled={ props.disabled && 'disabled' }
-        onClick={ clickHandler }
-        data={ props.data }>
+        onClick={ clickHandler }>
         { this.icon() }
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
