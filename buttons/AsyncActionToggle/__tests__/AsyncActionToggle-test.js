@@ -28,7 +28,7 @@ describe('AsyncActionToggle', () => {
     setTimeout(() => {
       element.getDOMNode().textContent.should.contain(props.post_action_label)
       done()
-    }, 1)
+    }, 2)
   })
 
   it('displays an error label if action fails', (done) => {
