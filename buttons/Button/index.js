@@ -9,6 +9,7 @@ export default React.createClass({
 
   propTypes: {
     className: React.PropTypes.string,
+    data: React.PropTypes.object,
     disabled: React.PropTypes.bool,
     href: React.PropTypes.string,
     icon: React.PropTypes.string,
@@ -40,6 +41,7 @@ export default React.createClass({
 
   getDefaultProps() {
     return {
+      data: null,
       disabled: false,
       href: null,
       icon: '',
@@ -101,7 +103,8 @@ export default React.createClass({
         to={ href }
         href={ href }
         disabled={ props.disabled && 'disabled' }
-        onClick={ clickHandler }>
+        onClick={ clickHandler }
+        data={ props.data }>
         { this.icon() }
         <span className="hui-Button__label">{ props.label || props.children }</span>
       </El>
