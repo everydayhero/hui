@@ -17,7 +17,7 @@ module.exports = {
     right_4: 'Partners',
     right_1_url: '{portal}press/',
     right_2_url: '{portal}events/',
-    right_3_url: '{portal}notforprofits/',
+    right_3_url: '{portal}charities/',
     right_4_url: '{portal}partners-giving-ecosystem/',
 
     legal_1: 'Privacy Policy',
@@ -85,7 +85,8 @@ module.exports = {
   },
   us: {
     registration_number: 'EIN:',
-    left_3: 'Blog'
+    left_3: 'Blog',
+    right_3_url: '{portal}nonprofits/'
   },
   ie: {
     registration_number: 'VAT:',
