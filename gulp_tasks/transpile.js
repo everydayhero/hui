@@ -1,6 +1,5 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
-var spawn = require('child_process').spawn;
 var sourceDirectories = [
   "atoms",
   "buttons",
@@ -44,8 +43,4 @@ gulp.task('transpile-images', function() {
   return gulp
     .src('./images/*')
     .pipe(gulp.dest(`${destination}/images`));
-});
-
-gulp.task('publish-npm', function(){
-   spawn('npm', ['publish transpiled'], { stdio: 'inherit' });
 });
