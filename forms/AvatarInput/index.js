@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import filepicker from '../../lib/filepicker'
 import Button from '../../buttons/Button'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'AvatarInput',
 
   propTypes: {
@@ -54,7 +54,7 @@ module.exports = React.createClass({
   },
 
   focus: function() {
-    this.refs.browse_files.getDOMNode().focus();
+    this.refs.browse_files.focus()
   },
 
   onChange: function(file) {

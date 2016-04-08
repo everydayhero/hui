@@ -1,7 +1,8 @@
-'use strict';
+'use strict'
 
 import moment from 'moment'
 import React from 'react'
+import ReactDOM from 'react-dom'
 import DatePicker from './DatePicker'
 import TextInput from '../TextInput'
 import classnames from 'classnames'
@@ -17,7 +18,7 @@ dateFormats.au = dateFormats.uk;
 dateFormats.nz = dateFormats.uk;
 dateFormats.ie = dateFormats.uk;
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DateInput',
 
   propTypes: {
@@ -71,7 +72,7 @@ module.exports = React.createClass({
     }
 
     var target = e.target;
-    var node = this.getDOMNode();
+    var node = ReactDOM.findDOMNode(this)
 
     while (target) {
       if (target === node) {
@@ -156,7 +157,7 @@ module.exports = React.createClass({
       this.clear();
       this.close();
     } else {
-      var input = this.refs.input.getDOMNode();
+      var input = this.refs.input
       input.getElementsByTagName('input')[0].focus();
     }
   },

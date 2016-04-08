@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React      = require('react/addons');
-var Icon       = require('../../../atoms/Icon');
+import React from 'react'
+import Icon  from '../../../atoms/Icon'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TagListItem',
 
   propTypes: {

@@ -70,7 +70,10 @@ export default React.createClass({
   },
 
   setScroll (pos) {
-    this.refs.scrollContainer.getDOMNode().scrollTop = pos
+    const scrollContainer = this.refs.scrollContainer
+    if (scrollContainer) {
+      scrollContainer.scrollTop = pos
+    }
   },
 
   setSelected (option) {

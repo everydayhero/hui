@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var TextCountDownInput   = require('../');
+import TextCountDownInput from '../'
 
 describe('TextCountDownInput', function() {
   describe('counter behavior', function() {

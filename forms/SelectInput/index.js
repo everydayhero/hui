@@ -7,7 +7,7 @@ import LocalStorageMixin from '../../mixins/localStorage'
 import inputMessage from '../../mixins/inputMessage'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'SelectInput',
 
   mixins: [LocalStorageMixin, inputMessage],
@@ -74,7 +74,7 @@ module.exports = React.createClass({
     var props = this.props
 
     if (props.disabled) { return }
-    if (props.autoFocus) { this.refs.input.getDOMNode().focus() }
+    if (props.autoFocus) { this.refs.input.focus() }
   },
 
   onChange: function(event) {

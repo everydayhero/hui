@@ -29,16 +29,15 @@ describe('GlobalNav', () => {
     let nav = renderIntoDocument(<GlobalNav { ...defaultProps }/>)
     it('should render the logo', () => {
       let logo = findByClass(nav, 'hui-GlobalNav__logo')
-      logo.getDOMNode().href.should.equal(`http://www.${defaultProps.domain}/au/`)
-      findByTag(logo, 'img').getDOMNode().src.should.contain(`${defaultProps.imgPath}hui_edh_logo@x2.png`)
+      logo.href.should.equal(`http://www.${defaultProps.domain}/au/`)
+      findByAttribute(nav, 'src', `${defaultProps.imgPath}hui_edh_logo@x2.png`)
     })
   })
 
   when('campaign provided with user', () => {
     let nav = renderIntoDocument(<GlobalNav { ...defaultProps } campaign={ campaign } user={ user }/>)
     it('should render the logo', () => {
-      let logo = findByClass(nav, 'hui-GlobalNav__logo')
-      findByTag(logo, 'img').getDOMNode().src.should.contain(`${defaultProps.imgPath}hui_edh_logo@x2.png`)
+      findByAttribute(nav, 'src', `${defaultProps.imgPath}hui_edh_logo@x2.png`)
     })
   })
 
@@ -46,9 +45,9 @@ describe('GlobalNav', () => {
     let nav = renderIntoDocument(<GlobalNav { ...defaultProps } campaign={ campaign }/>)
     it('should render the campaign details', () => {
       let campaignDetails = findByClass(nav, 'hui-GlobalNav__campaign')
-      campaignDetails.getDOMNode().href.should.equal(campaign.url)
-      campaignDetails.getDOMNode().textContent.should.contain(campaign.name)
-      campaignDetails.getDOMNode().textContent.should.contain(campaign.detail)
+      campaignDetails.href.should.equal(campaign.url)
+      campaignDetails.textContent.should.contain(campaign.name)
+      campaignDetails.textContent.should.contain(campaign.detail)
     })
   })
 

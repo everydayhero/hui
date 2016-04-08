@@ -1,24 +1,27 @@
-'use strict';
+'use strict'
 
-window.FB;
-var openPopup = false;
-var openFacebookShare = false;
-var onComplete = function() {};
-var passedUrl;
-var passedCallback;
-var shareUrl = 'http://foo.com';
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
 
-var Share = mockrequire('../index', {
-  '../../lib/openPopup': function(url, config, callback) {
-    openPopup = true;
-    passedUrl = url;
-    passedCallback = callback;
+window.FB = {}
+var openPopup = false
+var openFacebookShare = false
+var onComplete = function() {}
+var passedUrl
+var passedCallback
+var shareUrl = 'http://foo.com'
+
+var component
+const Share = proxyquire('../', {
+  '../../lib/openPopup': function (url, config, callback) {
+    openPopup = true
+    passedUrl = url
+    passedCallback = callback
   }
-});
+}).default
 
 describe('Share', function() {
-  var component;
-
   describe('default', function() {
     beforeEach(function() {
       openPopup = false;

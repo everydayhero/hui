@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-var React         = require('react');
-var moment        = require('moment');
-var _             = require('lodash');
-var DatePickerDay = require('../DatePickerDay');
+import  React         from 'react'
+import  moment        from 'moment'
+import  _             from 'lodash'
+import  DatePickerDay from '../DatePickerDay'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'hui-Calendar',
 
   propTypes: {

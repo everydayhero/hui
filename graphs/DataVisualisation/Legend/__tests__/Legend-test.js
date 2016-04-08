@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Legend    = require('../index');
+import Legend from '../'
 
 describe('Legend', function() {
   var keys = [
@@ -37,7 +37,7 @@ describe('Legend', function() {
       keys.forEach(function(key) {
         var legendItems = scryByClass(component, key.className);
 
-        legendItems[0].getDOMNode().textContent.should.equal(key.label);
+        legendItems[0].textContent.should.equal(key.label);
       });
     });
 

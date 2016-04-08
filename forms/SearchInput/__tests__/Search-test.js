@@ -17,14 +17,14 @@ describe('SearchInput', function() {
 
     it('should return the value on submit', function() {
       let submit = findByClass(search, 'hui-SearchInput__submit')
-      Simulate.click(submit.getDOMNode())
+      Simulate.click(submit)
 
       onSubmit.should.have.been.calledWith(value)
     })
 
     it('should return the value on input change', function() {
       let input = findByClass(search, 'hui-TextInput__label')
-      Simulate.change(input.getDOMNode())
+      Simulate.change(input)
 
       onChange.should.have.been.calledWith(value)
     })

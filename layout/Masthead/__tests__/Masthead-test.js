@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Masthead = require('../index');
+import Masthead from '../index'
 
 describe('Masthead', function() {
   describe('default', function() {
@@ -20,7 +20,7 @@ describe('Masthead', function() {
     });
 
     it('should render a anchor with href foo', function() {
-      var href = findByTag(component, 'a').getDOMNode().href;
+      var href = findByTag(component, 'a').href;
 
       href.should.contain('foo');
     });

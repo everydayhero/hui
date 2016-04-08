@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-var FormRow = require('../');
+import FormRow from '../'
 
 describe('FormRow', function() {
   describe('defaults', function() {
     var element = renderIntoDocument(
-          <FormRow/>
-        );
+      <FormRow/>
+    );
 
     it('it renders a FormRow', function() {
       findByClass(element, 'hui-FormRow');
@@ -15,8 +15,8 @@ describe('FormRow', function() {
 
   describe('properties', function() {
     var element = renderIntoDocument(
-          <FormRow label="foo" id="bar" tip="tip"/>
-        );
+      <FormRow label="foo" id="bar" tip="tip"/>
+    );
 
     it('does render a help text', function() {
       var label = findByClass(element, 'hui-FormRow__tip');
@@ -25,8 +25,7 @@ describe('FormRow', function() {
     });
 
     it('does render with the id given to it', function() {
-      var row = findByClass(element, 'hui-FormRow');
-      findByProp(row, 'id', 'bar');
+      findByAttribute(element, 'id', 'bar');
     });
   });
 });

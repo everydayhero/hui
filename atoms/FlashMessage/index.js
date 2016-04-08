@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React      = require('react/addons');
-var Icon       = require('../Icon');
-var classnames = require('classnames');
+import React      from 'react'
+import Icon       from '../Icon'
+import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FlashMessage',
   propTypes: {
     type: React.PropTypes.string,

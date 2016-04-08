@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react/addons'
+import React from 'react'
 import LocalStorageMixin from '../../mixins/localStorage'
 import inputMessage from '../../mixins/inputMessage'
 import textInput from '../../mixins/textInput'
@@ -28,11 +28,11 @@ export default React.createClass({
   },
 
   focus() {
-    this.refs.input.getDOMNode().focus()
+    this.refs.input.focus()
   },
 
   blur () {
-    this.refs.input.getDOMNode().blur()
+    this.refs.input.blur()
   },
 
   render() {

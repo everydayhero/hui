@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var FileInput = require('../../../forms/FileInput');
-var formMixin = require('../../../mixins/reactForm.mixin');
+import React     from 'react'
+import FileInput from '../../../forms/FileInput'
+import formMixin from '../../../mixins/reactForm.mixin'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FileInputExample',
   mixins: [formMixin],
 

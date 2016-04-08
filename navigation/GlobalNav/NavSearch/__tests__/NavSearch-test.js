@@ -1,10 +1,10 @@
 'use strict'
 
+const proxyquire = require('proxyquire')
+  .noCallThru()
+  .noPreserveCache()
+
 let modal = sinon.spy()
-let NavSearch = mockrequire('../', {
-  '../../../lib/renderModal': modal,
-  '../../../search/AggregateSearchModal': 'testModal'
-})
 let onFocus = sinon.spy()
 let defaultProps = {
   kind: 'mobile',
@@ -14,17 +14,25 @@ let defaultProps = {
   onFocus
 }
 
+const NavSearch = proxyquire('../', {
+  '../../../lib/renderModal': modal,
+  '../../../search/AggregateSearchModal': 'testModal'
+}).default
+let search
+
 describe('NavSearch', () => {
-  let search = renderIntoDocument(<NavSearch { ...defaultProps }/>)
+  before(() => {
+    search = renderIntoDocument(<NavSearch { ...defaultProps }/>)
+  })
 
   it('renders a label and input', () => {
-    findByClass(search, 'hui-NavSearch__label').getDOMNode().htmlFor.should.equal(defaultProps.name)
-    let input = search.refs.input.getDOMNode()
+    findByClass(search, 'hui-NavSearch__label').htmlFor.should.equal(defaultProps.name)
+    let input = search.refs.input
     input.id.should.equal(defaultProps.name)
   })
 
   it('executes onFocus callback', () => {
-    let input = search.refs.input.getDOMNode()
+    let input = search.refs.input
     Simulate.focus(input)
     onFocus.should.have.been.calledWith(true)
     findByClass(search, 'hui-NavSearch--focused').should.exist
@@ -33,7 +41,7 @@ describe('NavSearch', () => {
   })
 
   it('launches an aggregate search modal', () => {
-    let input = search.refs.input.getDOMNode()
+    let input = search.refs.input
     Simulate.focus(input)
     Simulate.change(input, { target: { value: 'dog' }})
     search.triggerSearch()

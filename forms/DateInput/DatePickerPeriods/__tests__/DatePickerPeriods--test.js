@@ -1,7 +1,7 @@
 'use strict';
 
-var DatePickerPeriods = require('../');
-var moment = require('moment');
+import DatePickerPeriods from '../'
+import moment from 'moment'
 
 describe('DatePickerPeriod', function() {
   describe('selection and navigation', function() {
@@ -20,15 +20,15 @@ describe('DatePickerPeriod', function() {
     it('renders three periods around current', function() {
       var periods = scryByClass(element, 'hui-DatePickerPeriod');
 
-      periods[0].getDOMNode().textContent.should.contain('2013');
-      periods[1].getDOMNode().textContent.should.contain('2014');
-      periods[2].getDOMNode().textContent.should.contain('2015');
+      periods[0].textContent.should.contain('2013');
+      periods[1].textContent.should.contain('2014');
+      periods[2].textContent.should.contain('2015');
     });
 
     it('renders a selected period', function() {
       var selected = findByClass(element, 'hui-DatePickerPeriod--selected');
 
-      selected.getDOMNode().textContent.should.contain('2014');
+      selected.textContent.should.contain('2014');
     });
 
     it('navigates forward', function() {
@@ -36,7 +36,7 @@ describe('DatePickerPeriod', function() {
       var periods = scryByClass(element, 'hui-DatePickerPeriod');
       Simulate.click(forward);
 
-      periods[2].getDOMNode().textContent.should.contain('2016');
+      periods[2].textContent.should.contain('2016');
     });
 
     it('navigates backwards', function() {
@@ -44,7 +44,7 @@ describe('DatePickerPeriod', function() {
       var periods = scryByClass(element, 'hui-DatePickerPeriod');
       Simulate.click(back);
 
-      periods[0].getDOMNode().textContent.should.contain('2013');
+      periods[0].textContent.should.contain('2013');
     });
   });
 
@@ -64,9 +64,9 @@ describe('DatePickerPeriod', function() {
     it('renders three periods around current', function() {
       var periods = scryByClass(element, 'hui-DatePickerPeriod');
 
-      periods[0].getDOMNode().textContent.should.contain('Oct');
-      periods[1].getDOMNode().textContent.should.contain('Nov');
-      periods[2].getDOMNode().textContent.should.contain('Dec');
+      periods[0].textContent.should.contain('Oct');
+      periods[1].textContent.should.contain('Nov');
+      periods[2].textContent.should.contain('Dec');
     });
 
     it('loops on forward', function() {
@@ -74,7 +74,7 @@ describe('DatePickerPeriod', function() {
       var periods = scryByClass(element, 'hui-DatePickerPeriod');
       Simulate.click(forward);
 
-      periods[2].getDOMNode().textContent.should.contain('Jan');
+      periods[2].textContent.should.contain('Jan');
     });
 
     it('loops on back', function() {
@@ -87,7 +87,7 @@ describe('DatePickerPeriod', function() {
       periods = scryByClass(element, 'hui-DatePickerPeriod');
       Simulate.click(back);
 
-      periods[0].getDOMNode().textContent.should.contain('Jan');
+      periods[0].textContent.should.contain('Jan');
     });
   });
 });

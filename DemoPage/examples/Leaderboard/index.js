@@ -5,7 +5,7 @@ import Leaderboard from '../../../leaderboard'
 import LeaderboardRow from '../../../leaderboard/LeaderboardRow'
 import raisedData from './raisedData.json'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Leaderboard',
 
   getInitialState: function() {
@@ -21,10 +21,7 @@ module.exports = React.createClass({
   },
 
   getShareUrl: function (id) {
-    if (typeof location === 'undefined') { return '' }
-
-    let { protocol, host } = location
-    return `${protocol}//${host}/#/tracker/team/${ id }`
+    return `/share/team/${ id }`
   },
 
   render: function() {

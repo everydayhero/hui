@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var Button = require('../index');
+import Button from '../index'
 
 describe('Button', function() {
   var component;
@@ -11,7 +11,7 @@ describe('Button', function() {
     });
 
     it('renders a CTA button', function(){
-      findByProp(component, 'id', 'click-me');
+      findByAttribute(component, 'id', 'click-me');
     });
   });
 

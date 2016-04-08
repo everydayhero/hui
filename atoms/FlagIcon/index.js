@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var _      = require('lodash');
-var React  = require('react');
+import _      from 'lodash'
+import React  from 'react'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FlagIcon',
 
   propTypes: {

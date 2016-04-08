@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-var React      = require('react');
-var Footer     = require('../../../layout/Footer');
+import React  from 'react'
+import Footer from '../../../layout/Footer'
 var ImagePath  = ('../images/hui_edh_mark@x2.gif');
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'FooterExample',
 
   render: function() {

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var React     = require('react');
-var Legend    = require('../../../graphs/DataVisualisation/Legend');
+import React  from 'react'
+import Legend from '../../../graphs/DataVisualisation/Legend'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LegendExample',
 
   render: function() {

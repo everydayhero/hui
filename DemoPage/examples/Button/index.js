@@ -1,10 +1,10 @@
 'use strict';
 
-var React  = require('react');
-var Button = require('../../../buttons/Button');
-var Share  = require('../../../buttons/Share');
+import React  from 'react'
+import Button from '../../../buttons/Button'
+import Share  from '../../../buttons/Share'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'ButtonExample',
 
   render: function() {

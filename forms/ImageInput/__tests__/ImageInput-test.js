@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var ImageInput = require('../');
+import ImageInput from '../'
 
 describe('Image Input', function() {
   var component;

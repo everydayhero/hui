@@ -1,9 +1,9 @@
 'use strict';
 
-var React    = require('react');
-var Progress = require('./Progress');
+import React    from 'react'
+import Progress from './Progress'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Wizard',
 
   getDefaultProps: function() {

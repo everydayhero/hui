@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var ToolTip     = require('../index');
+import ToolTip from '../'
 
 describe('ToolTip', function() {
   var data = { date: '2015-02-26', value: 123, total: 456 };
@@ -74,7 +74,7 @@ describe('ToolTip', function() {
     });
 
     it('should render the total formated', function() {
-      findByClass(component, 'hui-ToolTip__total').getDOMNode().textContent.should.contain('456.00');
+      findByClass(component, 'hui-ToolTip__total').textContent.should.contain('456.00');
     });
   });
 

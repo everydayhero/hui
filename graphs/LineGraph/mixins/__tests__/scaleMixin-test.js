@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var scaleMixin = require('../scaleMixin');
+import scaleMixin from '../scaleMixin'
 
 describe('scaleMixin', function() {
   describe('minUpperBound', function() {

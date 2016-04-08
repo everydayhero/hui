@@ -1,7 +1,8 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import I18n from '../../../mixins/I18n'
+import i18n from './i18n'
 
 import NavLink from '../NavLink'
 import Icon from '../../../atoms/Icon'
@@ -41,12 +42,12 @@ export default React.createClass({
   close() {
     this.setState({ open: false }, () => {
       removeListeners(['mousedown', 'touchstart'], this.handleClick)
-      setTimeout(() => this.refs.button.getDOMNode().blur(), 15)
+      setTimeout(() => this.refs.button.blur(), 15)
     })
   },
 
   handleClick(e) {
-    if (!this.refs.list.getDOMNode().contains(e.target || e.srcElement)) { this.close() }
+    if (!this.refs.list.contains(e.target || e.srcElement)) { this.close() }
   },
 
   render() {
@@ -78,6 +79,6 @@ export default React.createClass({
   },
 
   statics: {
-    i18n: require('./i18n')
+    i18n
   }
 })

@@ -6,7 +6,7 @@ import LocalStorageMixin from '../../mixins/localStorage'
 import textInput from '../../mixins/textInput'
 import classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'hui-TextArea',
 
   mixins: [inputMessage, LocalStorageMixin, textInput],

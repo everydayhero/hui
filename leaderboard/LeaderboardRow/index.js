@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Button from '../../buttons/Button'
 import Share from '../../buttons/Share'
 import ProgressBar from '../../atoms/ProgressBar'
@@ -12,7 +13,7 @@ import i18n from './i18n'
 import i18nMixin from '../../mixins/I18n'
 import numeric from '../../lib/numeric'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'LeaderboardRow',
 
   mixins: [i18nMixin],
@@ -76,7 +77,7 @@ module.exports = React.createClass({
   },
 
   handleResize: function() {
-    let domNode = this.getDOMNode()
+    let domNode = ReactDOM.findDOMNode(this)
     this.setState({
       narrow: domNode.offsetWidth <= 460
     });

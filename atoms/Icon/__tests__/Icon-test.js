@@ -1,29 +1,29 @@
-'use strict';
+'use strict'
 
-var Icon = require('../');
+import Icon from '../'
 
 describe('Icon', function() {
   it('renders an icon with default className', function() {
     var element = renderIntoDocument(
-        <Icon icon="lock"/>
-      );
-    var iconClass = element.getDOMNode().children[0].className;
-    iconClass.should.equal('hui-Icon fa fa-lock');
-  });
+      <Icon icon="lock"/>
+    )
+    var icon = findByClass(element, 'hui-Icon')
+    icon.className.should.equal('hui-Icon fa fa-lock')
+  })
 
   it('renders an icon with fixedWidth className', function() {
     var element = renderIntoDocument(
-        <Icon icon="lock" fixedWidth={ true }/>
-      );
-    var iconClass = element.getDOMNode().children[0].className;
-    iconClass.should.equal('hui-Icon fa fa-fw fa-lock');
-  });
+      <Icon icon="lock" fixedWidth/>
+    )
+    var icon = findByClass(element, 'hui-Icon')
+    icon.className.should.equal('hui-Icon fa fa-fw fa-lock')
+  })
 
   it('renders an icon with spin className', function() {
-    var element = renderIntoDocument(<Icon icon="lock" spin={ true }/>);
-    var iconClass = element.getDOMNode().children[0].className;
-    iconClass.should.equal('hui-Icon fa fa-spin fa-lock');
-  });
+    var element = renderIntoDocument(<Icon icon="lock" spin/>)
+    var icon = findByClass(element, 'hui-Icon')
+    icon.className.should.equal('hui-Icon fa fa-spin fa-lock')
+  })
 
   it('executes an onClick handler', function() {
     var handler = sinon.spy();

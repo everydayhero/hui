@@ -1,10 +1,10 @@
 'use strict';
 
-var React      = require('react');
-var moment     = require('moment');
-var classnames = require('classnames');
+import  React      from 'react'
+import  moment     from 'moment'
+import  classnames from 'classnames'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'hui-DatePickerDay',
 
   propTypes: {

@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var TopBar = require('../index');
+import TopBar from '../index'
 
 describe('TopBar', function() {
 

@@ -1,9 +1,10 @@
-'use strict';
+'use strict'
 
 import 'console-polyfill'
 
 import React from 'react'
 import I18n from '../../../mixins/I18n'
+import i18n from './i18n'
 
 import Button from '../../../buttons/Button'
 import Icon from '../../../atoms/Icon'
@@ -110,7 +111,7 @@ export default React.createClass({
   },
 
   statics: {
-    i18n: require('./i18n')
+    i18n
   }
 })
 

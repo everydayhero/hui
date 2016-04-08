@@ -1,9 +1,10 @@
 'use strict'
 
-var React     = require('react')
-var Button    = require('../Button')
-var openPopup = require('../../lib/openPopup')
-var format    = require('../../lib/format')
+import React     from 'react'
+import Button    from '../Button'
+import openPopup from '../../lib/openPopup'
+import format    from '../../lib/format'
+
 var serviceConfigs = {
   facebook: {
     name: 'facebook',
@@ -27,7 +28,7 @@ var serviceConfigs = {
   }
 }
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'Share',
   propTypes: {
     kind: React.PropTypes.oneOf([

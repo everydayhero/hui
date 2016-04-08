@@ -1,7 +1,9 @@
-'use strict';
+'use strict'
 
-var DatePickerDay = require('../');
-var moment = require('moment');
+import DatePickerDay from '../'
+import moment from 'moment'
+
+import ReactDOM from 'react-dom'
 
 describe('DatePickerDay', function() {
   describe('selected', function() {
@@ -9,7 +11,7 @@ describe('DatePickerDay', function() {
     var element = renderIntoDocument(<DatePickerDay date={ date } selectedDate={ date }/>);
 
     it('renders day as selected', function() {
-      var className = element.getDOMNode().className;
+      var className = ReactDOM.findDOMNode(element).className
 
       className.should.contain('hui-DatePickerDay--selected');
     });
@@ -20,7 +22,7 @@ describe('DatePickerDay', function() {
     var element = renderIntoDocument(<DatePickerDay date={ date } selectedDate={ date } />);
 
     it('renders day as selected', function() {
-      var className = element.getDOMNode().className;
+      var className = ReactDOM.findDOMNode(element).className
 
       className.should.contain('hui-DatePickerDay--today');
     });
@@ -32,8 +34,8 @@ describe('DatePickerDay', function() {
       var listener = sinon.spy();
       var element = renderIntoDocument(<DatePickerDay onClick={ listener } date={ date }/>);
 
-      date = element.getDOMNode();
-      Simulate.click(date);
+      date = ReactDOM.findDOMNode(element)
+      Simulate.click(date)
 
       listener.should.have.been.called;
     });

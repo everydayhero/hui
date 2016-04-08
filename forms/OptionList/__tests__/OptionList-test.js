@@ -1,6 +1,7 @@
 'use strict'
 
 import OptionList from '../'
+import ReactDOM from 'react-dom'
 
 describe('OptionList', () => {
   describe('initialisation', () => {
@@ -29,14 +30,14 @@ describe('OptionList', () => {
         let options = [
           { value: '1', label: 'Tim Rogers' }
         ]
-        let element = element = renderIntoDocument(
+        let element = renderIntoDocument(
           <OptionList
             options={ options }
             Display={ MyCrazyDisplay }/>
         )
-        let subject = findByType(element, MyCrazyDisplay)
-          .getDOMNode()
-          .innerHTML
+        let subject = ReactDOM.findDOMNode(
+          findByType(element, MyCrazyDisplay)
+        ).textContent
 
         expect(subject).to.eq('sregoR miT')
       })
@@ -55,7 +56,7 @@ describe('OptionList', () => {
           let element = renderIntoDocument(<OptionList options={ options } />)
           let item    = element.refs['option-list-item-0']
           let radio   = item.refs.radio
-          Simulate.keyDown(radio.getDOMNode(), { keyCode: 40 })
+          Simulate.keyDown(radio, { keyCode: 40 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '2', label: 'Tex' })
         })
@@ -73,7 +74,7 @@ describe('OptionList', () => {
           element.setState({
             selectionCandidate: options[2]
           })
-          Simulate.keyDown(radio.getDOMNode(), { keyCode: 40 })
+          Simulate.keyDown(radio, { keyCode: 40 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '1', label: 'Tim' })
         })
@@ -93,7 +94,7 @@ describe('OptionList', () => {
           element.setState({
             selectionCandidate: options[2]
           })
-          Simulate.keyDown(radio.getDOMNode(), { keyCode: 38 })
+          Simulate.keyDown(radio, { keyCode: 38 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '2', label: 'Tex' })
         })
@@ -108,7 +109,7 @@ describe('OptionList', () => {
           let element = renderIntoDocument(<OptionList options={ options } />)
           let item    = element.refs['option-list-item-0']
           let radio   = item.refs.radio
-          Simulate.keyDown(radio.getDOMNode(), { keyCode: 38 })
+          Simulate.keyDown(radio, { keyCode: 38 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '3', label: 'Ben' })
         })
@@ -124,7 +125,7 @@ describe('OptionList', () => {
         let element = renderIntoDocument(<OptionList options={ options } />)
         let item0   = element.refs['option-list-item-0']
         let radio0  = item0.refs.radio
-        Simulate.keyDown(radio0.getDOMNode(), { keyCode: 13 })
+        Simulate.keyDown(radio0, { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '1', label: 'Tim' })
 
@@ -133,7 +134,7 @@ describe('OptionList', () => {
         })
         let item2   = element.refs['option-list-item-2']
         let radio2  = item2.refs.radio
-        Simulate.keyDown(radio2.getDOMNode(), { keyCode: 13 })
+        Simulate.keyDown(radio2, { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '3', label: 'Ben' })
       })
@@ -150,7 +151,7 @@ describe('OptionList', () => {
       let element = renderIntoDocument(<OptionList options={ options } />)
       let option = scryByTag(element, 'label')[1]
 
-      TestUtils.SimulateNative.mouseOver(option.getDOMNode())
+      TestUtils.SimulateNative.mouseOver(option)
       expect(element.state.selectionCandidate).to.eql(options[1])
     })
 
@@ -180,8 +181,8 @@ describe('OptionList', () => {
       let label   = item.refs.label
       let radio   = item.refs.radio
 
-      Simulate.mouseDown(label.getDOMNode())
-      Simulate.blur(radio.getDOMNode())
+      Simulate.mouseDown(label)
+      Simulate.blur(radio)
       expect(element.state.selected).to.eql(options[1])
       expect(element.state.shouldScroll).to.eql(false)
     })
@@ -202,7 +203,7 @@ describe('OptionList', () => {
       let item = element.refs['option-list-item-1']
       element.focus()
 
-      expect(document.activeElement).to.eql(item.refs.radio.getDOMNode())
+      expect(document.activeElement).to.eql(item.refs.radio)
     })
   })
 

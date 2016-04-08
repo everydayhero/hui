@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-var React             = require('react');
-var DateSelect        = require('../../../forms/DateSelect');
-var DateSelectWrapper = require('../../../forms/DateSelect/DateSelectWrapper');
+import React             from 'react'
+import DateSelect        from '../../../forms/DateSelect'
+import DateSelectWrapper from '../../../forms/DateSelect/DateSelectWrapper'
 
-var formMixin = require('../../../mixins/reactForm.mixin');
-var FormRow   = require('../../../forms/FormRow');
+import formMixin from '../../../mixins/reactForm.mixin'
+import FormRow   from '../../../forms/FormRow'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'DateSelectExample',
 
   mixins: [formMixin],
