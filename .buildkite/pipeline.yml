@@ -14,12 +14,9 @@ steps:
     agents:
       queue: native
 
-  - name: ":rocket: Release"
-    type: "manual"
-
   - name: ":s3: Delploy assets"
     command: "bin/buildkite bin/ci run bin/deploy_assets"
-    branches: "master"
+    branches: "v?(\\d|\\.)+"
     agents:
       queue: native
 
@@ -27,6 +24,6 @@ steps:
 
   - name: ":package: Publish"
     command: "bin/buildkite bin/ci run bin/publish_npm"
-    branches: "master"
+    branches: "v?(\\d|\\.)+"
     agents:
       queue: native
