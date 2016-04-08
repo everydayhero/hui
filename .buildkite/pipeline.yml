@@ -14,16 +14,9 @@ steps:
     agents:
       queue: native
 
-  - name: ":s3: Delploy assets"
-    command: "bin/buildkite bin/ci run bin/deploy_assets"
-    branches: "v?(\\d|\\.)+"
-    agents:
-      queue: native
-
   - type: "waiter"
 
-  - name: ":package: Publish"
-    command: "bin/buildkite bin/ci run bin/publish_npm"
-    branches: "v?(\\d|\\.)+"
+  - name: ":package: Deploy"
+    command: "bin/buildkite bin/ci run bin/deploy"
     agents:
       queue: native
