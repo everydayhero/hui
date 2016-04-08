@@ -18,5 +18,6 @@ steps:
 
   - name: ":package: Deploy"
     command: "bin/buildkite bin/ci run bin/deploy"
+    branches: "master"
     agents:
       queue: native

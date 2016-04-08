@@ -3,7 +3,7 @@
 set -euo pipefail
 
 pat="^v?([0-9]|\.)+$"
-if [[ "${BUILDKITE_BRANCH}" =~ $pat ]]; then
+if [[ "${BUILDKITE_MESSAGE}" =~ $pat ]]; then
   # Deploy assets
   ./bin/version_check
   node_modules/.bin/gulp assets-build

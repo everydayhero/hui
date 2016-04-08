@@ -6,4 +6,4 @@ tests:
     - NPM_EMAIL
     - AWS_KEY
     - AWS_SECRET
-    - BUILDKITE_BRANCH
+    - BUILDKITE_MESSAGE
