@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+node_modules/.bin/gulp transpile
+npm publish transpiled
