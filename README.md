@@ -37,15 +37,22 @@ $ gulp styles           # build styles assest (Can also use the --debug flag)
 $ npm run test          # run all tests
 $ npm start             # run local server to view demo page
 ```
+
 ## Publishing updates
 
-Updates are published through Buildkite.  There is a manual step for deploying assets and publishing to npm. Make sure you bump the version as per the below specifications.
-* Non-breaking changes and bug fixes are a minor revision – e.g. 0.0.(2)
-* Breaking changes, css and template re-factors are major revisions – 0.(2).0
-* API updates and large additions/changes are major versions – e.g. (1).0.0
+Once your changes are merged use a single version bump commit to trigger deploying assets and publishing to npm. The easiest way is to use the npm command:
+
+`npm version [major | minor | patch]`
+
+Then push to `master` with `git push origin master --follow-tags`.
+
+Make sure you bump the version as per the below specifications:
+
+* Non-breaking changes and bug fixes are a **patch** revision – e.g. 0.0.(2)
+* Breaking changes, css and template re-factors are **minor** revisions – 0.(2).0
+* API updates and large additions/changes are **major** versions – e.g. (1).0.0
 
 The version number should be updated in the `package.json` before publishing.
-
 
 ## Development
 
