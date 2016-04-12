@@ -86,7 +86,12 @@ module.exports = {
   us: {
     registration_number: 'EIN:',
     left_3: 'Blog',
-    right_3_url: '{portal}nonprofits/'
+    right_2: 'Events',
+    right_3: 'Nonprofits',
+    right_4: 'Developers',
+    right_2_url: '{portal}fundraising-events-to-participate-in/',
+    right_3_url: '{portal}nonprofits/',
+    right_4_url: '{portal}developers-giving-ecosystem/'
   },
   ie: {
     registration_number: 'VAT:',
