@@ -8,6 +8,7 @@ module.exports = React.createClass({
   displayName: 'Checkbox',
 
   propTypes: {
+    id: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     labelIsClickable: React.PropTypes.bool,
     onChange: React.PropTypes.func,
