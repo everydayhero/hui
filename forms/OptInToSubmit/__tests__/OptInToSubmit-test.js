@@ -13,7 +13,7 @@ let submitOnceProps = {
   onClick: sinon.spy()
 }
 
-describe.only('OptInToSubmit', () => {
+describe('OptInToSubmit', () => {
   let testProps = { checkBoxProps, submitOnceProps }
 
   it('disables submit when unchecked', () => {
