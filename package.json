@@ -1,6 +1,6 @@
 {
   "name": "hero-ui",
-  "version": "3.7.5",
+  "version": "3.7.6",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",
   "files": [
