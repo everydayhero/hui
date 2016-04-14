@@ -13,4 +13,6 @@ if [[ "${BUILDKITE_MESSAGE}" =~ $pat ]]; then
   echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
   node_modules/.bin/gulp transpile
   npm publish transpiled
+
+  ./bin/buildkite bin/ci announce released
 fi
