@@ -1,0 +1,23 @@
+---
+steps:
+  - type: "waiter"
+
+  - name: ":docker:"
+    command: "bin/buildkite bin/ci build"
+    agents:
+      queue: native
+
+  - type: "waiter"
+
+  - name: ":pill:"
+    command: "bin/buildkite bin/ci run npm test"
+    agents:
+      queue: native
+
+  - type: "waiter"
+
+  - name: ":package: Deploy"
+    command: "bin/buildkite bin/ci run bin/deploy"
+    branches: "v-3"
+    agents:
+      queue: native

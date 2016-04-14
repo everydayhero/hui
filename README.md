@@ -1,6 +1,6 @@
 # HUI (◠‿◠)
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/50b2d44c-21b4-4627-b63f-ab5f1beb261a/383098/badge.svg)](https://semaphoreci.com/everydayherodev/hui)
+[![Build status](https://badge.buildkite.com/68863f07d5165ecae59a39d6f548cb66b825ffa7bddb8f614c.svg)](https://buildkite.com/everyday-hero/hui)
 
 EDH UI library to share layout and components between applications.
 
@@ -35,14 +35,22 @@ $ gulp --debug          # build all unminified assets (for debugging)
 $ gulp scripts          # build script assest (Can also use the --debug flag)
 $ gulp styles           # build styles assest (Can also use the --debug flag)
 $ npm run test          # run all tests
-$ npm run deploy-assets # publish build files to S3 bucket (AWS_KEY and AWS_SECRET environment variables must be set)
 $ npm start             # run local server to view demo page
 ```
+
 ## Publishing updates
 
-* Non-breaking changes and bug fixes are a minor revision – e.g. 0.0.(2)
-* Breaking changes, css and template re-factors are major revisions – 0.(2).0
-* API updates and large additions/changes are major versions – e.g. (1).0.0
+Once your changes are merged use a single version bump commit to trigger deploying assets and publishing to npm. The easiest way is to use the npm command:
+
+`npm version [major | minor | patch]`
+
+Then push to `master` with `git push origin master --follow-tags`.
+
+Make sure you bump the version as per the below specifications:
+
+* Non-breaking changes and bug fixes are a **patch** revision – e.g. 0.0.(2)
+* Breaking changes, css and template re-factors are **minor** revisions – 0.(2).0
+* API updates and large additions/changes are **major** versions – e.g. (1).0.0
 
 The version number should be updated in the `package.json` before publishing.
 
