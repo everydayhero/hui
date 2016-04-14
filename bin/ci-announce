@@ -53,7 +53,9 @@ function send_announcement() {
 
 main() {
   announcement="$1" && shift
-  pat="^v?([0-9]|\.)+$"
+  # pat="^v?([0-9]|\.)+$"
+  pat="test"
+
   if [[ "${BUILDKITE_MESSAGE}" =~ $pat ]]; then
     echo "--- Announcing to slack"
     send_announcement "$announcement"
