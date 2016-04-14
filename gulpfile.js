@@ -10,6 +10,7 @@ var merge = require('lodash/object/merge');
 
 // Tasks
 require('./gulp_tasks/assets-deploy');
+require('./gulp_tasks/transpile');
 require('./gulp_tasks/lint');
 require('./gulp_tasks/assets-build');
 require('./gulp_tasks/docs');
@@ -25,7 +26,8 @@ var exclude = [
   '!./bin/**',
   '!./gulp*',
   '!./gulp_tasks/**',
-  '!./dist/**'
+  '!./dist/**',
+  '!./transpiled/**'
 ];
 
 process.env.NODE_ENV = debug ? 'development' : 'production';
