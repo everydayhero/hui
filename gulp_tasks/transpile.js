@@ -16,7 +16,7 @@ var sourceDirectories = [
   "sass"
 ];
 
-var sourceMatcher = `{${sourceDirectories.join(",")}}`;
+var sourceMatcher = '{' + sourceDirectories.join(",") + '}';
 var destination = 'transpiled';
 
 gulp.task("transpile", ['transpile-js', 'transpile-scss', 'transpile-images'], function() {
@@ -25,22 +25,24 @@ gulp.task("transpile", ['transpile-js', 'transpile-scss', 'transpile-images'], f
 
 gulp.task("transpile-js", function () {
   return gulp.src([
-      `${sourceMatcher}/**/*.js`,
-      `!${sourceMatcher}/**/*-test.js`,
+      sourceMatcher + '/**/*.js',
+      '!**/*-test.js',
       'api.js'
     ])
-    .pipe(babel())
+    .pipe(babel({
+      presets: ['react', 'es2015', 'stage-0']
+    }))
     .pipe(gulp.dest(destination));
 });
 
 gulp.task('transpile-scss', function() {
   return gulp
-    .src([`${sourceMatcher}/**/*.{scss,sass}`, 'common.scss', 'assets.scss'])
+    .src([sourceMatcher + '/**/*.{scss,sass}', 'common.scss', 'assets.scss'])
     .pipe(gulp.dest(destination))
 });
 
 gulp.task('transpile-images', function() {
   return gulp
     .src('./images/*')
-    .pipe(gulp.dest(`${destination}/images`));
+    .pipe(gulp.dest(destination + '/images'));
 });
