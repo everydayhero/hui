@@ -1,0 +1,63 @@
+#!/bin/bash
+
+set -euo pipefail
+
+function quick_release_notes() {
+  current_commit="${CURRENT_COMMIT:-$(curl -s "${HEALTH_ENDPOINT}" | jq --raw-output .revision)}"
+  deploy_commit="${COMMIT}"
+  "${BIN_DIR}"/release-notes ${current_commit}...${deploy_commit} | grep "RELEASE" | sed -e 's/\[RELEASE\] /- /'
+}
+export -f quick_release_notes
+
+template() {
+  cat <<EOF
+  {
+    channel: "#${ANNOUNCE_ROBOT_SLACK_CHANNEL}",
+    username: "${ANNOUNCE_ROBOT_NAME:-Derp}",
+    icon_emoji: "${ANNOUNCE_ROBOT_EMOJI:-:derp:}",
+    text: \$text
+  }
+EOF
+}
+
+build_message_payload() {
+  script="$1"
+
+  jq \
+    --null-input \
+    --monochrome-output \
+    --compact-output \
+    --arg text "$(cat <(${script}))" \
+    "$(template)"
+}
+
+function send_announcement() {
+  # Allow overriding of announce messages
+  if [ -x "${BASE_DIR}/bin/announce/$1" ]; then
+    script="${BASE_DIR}/bin/announce/$1"
+  else
+    script="${BIN_DIR}/announce/$1"
+  fi
+
+  if [ -e "${script}" ]; then
+    curl \
+      -X POST \
+      -H "Content-Type: application/json" \
+      -d @<(build_message_payload "${script}") \
+      "${SLACK_WEBHOOK_URL}"
+  else
+    echo "I don't know how to announce: $1"
+    exit 1
+  fi
+}
+
+main() {
+  announcement="$1" && shift
+  pat="^v?([0-9]|\.)+$"
+  if [[ "${BUILDKITE_MESSAGE}" =~ $pat ]]; then
+    echo "--- Announcing to slack"
+    send_announcement "$announcement"
+  fi
+}
+
+. "$BIN_DIR/ci-subr"

@@ -16,8 +16,7 @@ steps:
 
   - type: "waiter"
 
-  - name: ":package: Deploy"
-    command: "bin/buildkite bin/ci run bin/deploy"
-    branches: "v-3"
+  - name: ":loudspeaker:"
+    command: "bin/buildkite bin/ci announce released"
     agents:
       queue: native
