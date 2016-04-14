@@ -1,5 +1,5 @@
 {
-  "name": "hui",
+  "name": "hero-ui",
   "version": "3.7.2",
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",
