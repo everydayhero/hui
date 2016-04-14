@@ -37,6 +37,7 @@ import AvatarInput from '../../examples/AvatarInput'
 import FlashMessage from '../../examples/FlashMessage'
 import Tabs from '../../examples/Tabs'
 import Leaderboard from '../../examples/Leaderboard'
+import PrimaryNav from '../../examples/PrimaryNav'
 
 const IMG_PATH = '../../images/'
 
@@ -112,6 +113,11 @@ export default React.createClass({
           <div className="DemoPage__group">
             <Link to="/wizard/1">Open Wizard</Link>
             { this.props.children }
+          </div>
+
+          <h2 className="DemoPage__h2" id="wizard">PrimaryNav</h2>
+          <div className="DemoPage__group">
+            <PrimaryNav />
           </div>
         </div>
       </div>
