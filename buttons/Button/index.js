@@ -17,6 +17,8 @@ export default React.createClass({
     iconLeft: React.PropTypes.bool,
     iconSpin: React.PropTypes.bool,
     id: React.PropTypes.string,
+    name: React.PropTypes.string,
+    value: React.PropTypes.string,
     inverse: React.PropTypes.bool,
     borderless: React.PropTypes.bool,
     kind: React.PropTypes.oneOf([
@@ -101,6 +103,8 @@ export default React.createClass({
     return (
       <El { ...dataAttributesFromProps(props) } target={ props.target } className={ classes }
         id={ props.id }
+        name={ props.name }
+        value={ props.value }
         tabIndex={ 1 }
         type={ props.type }
         to={ href }
