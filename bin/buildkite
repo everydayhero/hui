@@ -16,7 +16,6 @@ export ANNOUNCE_EMAIL_TO="XXX"
 export APP="${APP:-hui}"
 export BRANCH="${BUILDKITE_BRANCH}"
 export BUILD_NUMBER="${BUILDKITE_BUILD_NUMBER}"
-export BUILD_MESSAGE="${BUILDKITE_MESSAGE}"
 export BUILD_URL="${BUILDKITE_BUILD_URL}"
 export COMMIT="${BUILDKITE_COMMIT}"
 export HEALTH_ENDPOINT='https://XXX.everydayhero.io/health'
