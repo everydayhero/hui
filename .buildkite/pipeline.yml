@@ -17,7 +17,7 @@ steps:
   - type: "waiter"
 
   - name: ":package: Deploy"
-    command: "bin/buildkite bin/ci run bin/deploy"
+    command: "bin/buildkite bin/only-for-version-releases bin/ci run bin/deploy"
     branches: "master"
     agents:
       queue: native
