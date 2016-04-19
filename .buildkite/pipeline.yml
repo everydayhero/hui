@@ -21,3 +21,11 @@ steps:
     branches: "master"
     agents:
       queue: native
+
+  - type: "waiter"
+
+  - name: ":loudspeaker:"
+    command: "bin/buildkite bin/ci announce released"
+    branches: "master"
+    agents:
+      queue: native

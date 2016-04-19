@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cat <<EOF
-[<${BUILD_URL}|${APP} #${BUILD_NUMBER}>] :balloon: HUI ${BUILD_MESSAGE} has been released!
+[<${BUILD_URL}|${APP} #${BUILD_NUMBER}>] :balloon: HUI ${BUILD_MESSAGE} has been released! :partyparrot:
 EOF
