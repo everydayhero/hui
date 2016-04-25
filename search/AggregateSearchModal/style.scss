@@ -6,8 +6,6 @@
 }
 
 .AggregateSearchModal__header {
-  @extend %clearfix;
-
   width: 100%;
   padding: $x-4;
   position: relative;
@@ -90,7 +88,6 @@
 }
 
 .AggregateSearchModal__content {
-  @extend %clearfix;
   margin: {
     left: auto;
     right: auto;
@@ -105,7 +102,6 @@
 }
 
 .AggregateSearchModal__filters {
-  @extend %clearfix;
   position: absolute;
   top: 107px;
   left: $x-8;
