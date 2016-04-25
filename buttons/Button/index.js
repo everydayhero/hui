@@ -29,6 +29,8 @@ export default React.createClass({
       'facebook', 'facebook-borderless',
       'twitter', 'twitter-borderless',
       'googleplus', 'googleplus-borderless',
+      'strava', 'strava-borderless',
+      'mapmyfitness', 'mapmyfitness-borderless',
       'pinterest', 'pinterest-borderless'
     ]).isRequired,
     label: React.PropTypes.string,
