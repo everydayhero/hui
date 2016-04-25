@@ -2,15 +2,12 @@
 
 set -euo pipefail
 
-pat="^v?([0-9]|\.)+$"
-if [[ "${BUILDKITE_MESSAGE}" =~ $pat ]]; then
-  # Deploy assets
-  ./bin/version_check
-  node_modules/.bin/gulp assets-build
-  node_modules/.bin/gulp assets-deploy
+# Deploy assets
+./bin/version_check
+node_modules/.bin/gulp assets-build
+node_modules/.bin/gulp assets-deploy
 
-  # Publish to npm
-  echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
-  node_modules/.bin/gulp transpile
-  npm publish transpiled
-fi
+# Publish to npm
+echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+node_modules/.bin/gulp transpile
+npm publish transpiled
