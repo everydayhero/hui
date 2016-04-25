@@ -61,8 +61,6 @@
 }
 
 %hui-text-input--readOnly {
-  @extend %hui-text-input;
-
   background: none;
   border: none;
   cursor: default;
@@ -78,7 +76,6 @@
 }
 
 %hui-placeholder {
-  @extend %hui-text-input-label;
   padding: 0 $x-4;
   color: $grey-light;
 }
@@ -90,7 +87,6 @@
 
 %hui-text-area {
   @extend %hui-input-wrap;
-  @extend %hui-text-input;
   padding: $x-3;
   min-height: $x-36;
   font-family: "Lato", Helvetica, Arial, sans-serif;
