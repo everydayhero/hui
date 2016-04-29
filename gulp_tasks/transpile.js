@@ -27,7 +27,8 @@ gulp.task("transpile-js", function () {
   return gulp.src([
       sourceMatcher + '/**/*.js',
       '!**/*-test.js',
-      'api.js'
+      'api.js',
+      'urls.js'
     ])
     .pipe(babel({
       presets: ['react', 'es2015', 'stage-0']
