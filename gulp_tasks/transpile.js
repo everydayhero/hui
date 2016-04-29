@@ -27,7 +27,8 @@ gulp.task("transpile-js", function () {
   return gulp.src([
       `${sourceMatcher}/**/*.js`,
       `!${sourceMatcher}/**/*-test.js`,
-      'api.js'
+      'api.js',
+      'urls.js'
     ])
     .pipe(babel())
     .pipe(gulp.dest(destination));
