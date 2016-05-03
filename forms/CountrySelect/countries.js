@@ -1,7 +1,7 @@
 'use strict';
 
 export default [
-  { label: 'Australia', value: 'AU' },
+  { label: 'Australia', value: 'AU', idd: '+61' },
   { label: 'Canada', value: 'CA' },
   { label: 'Ireland', value: 'IE' },
   { label: 'New Zealand', value: 'NZ' },
