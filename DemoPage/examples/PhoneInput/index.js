@@ -25,8 +25,12 @@ export default React.createClass({
   },
 
   render() {
+    const { value } = this.state
     return (
-      <PhoneInput { ...props } onChange={ this.handleChange } />
+      <div>
+        <h3 className="DemoPage__h3" id="TextInput">PhoneInput</h3>
+        <PhoneInput { ...props } value={ value } onChange={ this.handleChange } />
+      </div>
     )
   }
 })

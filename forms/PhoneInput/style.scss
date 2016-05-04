@@ -1,0 +1,55 @@
+@include input-sizes(PhoneInput);
+
+.hui-PhoneInput {
+  position: relative;
+}
+
+.hui-PhoneInput_CountrySelect {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  z-index: 1;
+  width: auto;
+}
+
+.hui-PhoneInput--compact .hui-PhoneInput_CountrySelect {
+  left: 0
+}
+
+.hui-PhoneInput--tight .hui-PhoneInput_CountrySelect {
+  left: $x-1 + 1;
+}
+
+.hui-PhoneInput--fitted .hui-PhoneInput_CountrySelect {
+  left: $x-4 + 1;
+}
+
+.hui-PhoneInput--loose .hui-PhoneInput_CountrySelect {
+  left: $x-4 + 1;
+}
+
+.hui-PhoneInput_CountrySelect--active {
+  position: static;
+  width: 100%;
+}
+
+.hui-PhoneInput_TextInput .hui-TextInput__label {
+  padding-left: 100px;
+}
+
+.hui-PhoneInput_TextInput--extraPadding .hui-TextInput__label {
+  padding-left: 115px;
+}
+
+.hui-PhoneInput_TextInput--inactive {
+  display: none;
+}
+
+.hui-PhoneInput_CountrySelect .hui-CountrySelectDisplay__wrap {
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  height: 40px;
+  margin-top: 1px;
+  border-radius: 0 $border-radius $border-radius 0;
+}
