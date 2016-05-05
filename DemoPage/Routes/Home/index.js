@@ -21,6 +21,7 @@ import SelectInput from '../../examples/SelectInput'
 import SearchInput from '../../examples/SearchInput'
 import UrlInput from '../../examples/UrlInput'
 import UrlSearchSelect from '../../examples/UrlSearchSelect'
+import PhoneInput from '../../examples/PhoneInput'
 import DateInput from '../../examples/DateInput'
 import DateSelect from '../../examples/DateSelect'
 import FileInput from '../../examples/FileInput'
@@ -91,6 +92,7 @@ export default React.createClass({
             <SearchInput />
             <UrlInput />
             <UrlSearchSelect />
+            <PhoneInput />
             <DateInput />
             <DateSelect />
             <FileInput />
