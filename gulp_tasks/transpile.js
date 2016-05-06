@@ -12,7 +12,7 @@ var sourceDirectories = [
   'navigation',
   'search',
   'wizard',
-  'typogaphy',
+  'typography',
   'lib',
   'sass'
 ]
