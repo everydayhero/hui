@@ -37,7 +37,7 @@ gulp.task('transpile-js', function () {
 
 gulp.task('transpile-scss', function() {
   return gulp
-    .src([`${sourceMatcher}/**/*.{scss,sass}`, 'common.scss', 'assets.scss'])
+    .src([`${sourceMatcher}/**/*.{css,scss,sass}`, 'common.scss', 'assets.scss'])
     .pipe(gulp.dest(destination))
 })
 
