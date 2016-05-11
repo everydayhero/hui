@@ -35,7 +35,7 @@ export default React.createClass({
 
   componentDidMount () {
     if (this.props.focused === true) {
-      this.refs.filterInput.refs.input.getDOMNode().focus()
+      this.refs.filterInput.refs.input.focus()
     }
   },
 

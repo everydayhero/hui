@@ -70,7 +70,7 @@ export default React.createClass({
     let { shouldFocus, isCandidate, shouldScroll } = this.props
 
     if (shouldFocus) {
-      this.refs.radio.getDOMNode().focus()
+      this.refs.radio.focus()
     } else if (!shouldFocus && shouldScroll && isCandidate) {
       let scrollPos = ReactDOM.findDOMNode(this).offsetTop - 20
       this.props.setScroll(scrollPos)
