@@ -164,7 +164,7 @@ describe('OptionList', () => {
       let element = renderIntoDocument(<OptionList options={ options } />)
       let option = scryByTag(element, 'label')[1]
 
-      TestUtils.SimulateNative.mouseOver(option.getDOMNode())
+      TestUtils.SimulateNative.mouseOver(findDOMNode(option))
       expect(element.state.shouldScroll).to.eql(false)
     })
   })

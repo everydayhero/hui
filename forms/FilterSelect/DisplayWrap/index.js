@@ -6,7 +6,7 @@ export default React.createClass({
   componentDidMount () {
     if (this.props.focused) {
       setTimeout(() => {
-        this.refs.input.getDOMNode().focus()
+        this.refs.input.focus()
       })
     }
   },

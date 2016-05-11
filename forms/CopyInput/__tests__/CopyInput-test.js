@@ -35,6 +35,6 @@ describe('CopyInput', () => {
 
   it('shows an error message if a copy failed', () => {
     element.setState({ errors: ['fail message'] })
-    element.getDOMNode().textContent.should.contain('fail message')
+    findDOMNode(element).textContent.should.contain('fail message')
   })
 })

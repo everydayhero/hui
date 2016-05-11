@@ -21,7 +21,7 @@ describe('FormRow', function() {
     it('does render a help text', function() {
       var label = findByClass(element, 'hui-FormRow__tip');
 
-      label.getDOMNode().textContent.should.equal('tip');
+      findDOMNode(label).textContent.should.equal('tip');
     });
 
     it('does render with the id given to it', function() {
