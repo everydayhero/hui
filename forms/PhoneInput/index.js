@@ -15,21 +15,25 @@ export default React.createClass({
   propTypes: {
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
-    countryCode: React.PropTypes.string
+    countryCode: React.PropTypes.string,
+    dialCode: React.PropTypes.string
   },
 
   getDefaultProps() {
     return {
       layout: 'full',
       spacing: 'loose',
-      countryCode: 'au'
+      countryCode: 'au',
+      dialCode: ''
     }
   },
 
   getInitialState() {
     return {
       isSelectingCountry: false,
-      selectedCountry: find(countries, (d) => d.value === this.props.countryCode.toUpperCase())
+      selectedCountry: find(countries, (d) => {
+        return d.dial_code === this.props.dialCode || d.value === this.props.countryCode.toUpperCase()
+      })
     }
   },
 
@@ -84,7 +88,7 @@ export default React.createClass({
           onBlur={ this.handleCountrySelectBlur }
           onOpen={ this.handleCountrySelectOpen }
           onSelection={ this.handleCountrySelection } />
-        <input type="hidden" name={ props.name } value={ formatPhone(selectedCountry.dial_code + props.value) } />
+        <input type="hidden" name={ props.name } value={ formatPhone(selectedCountry.dial_code + ' ' + props.value) } />
       </div>
     )
   },
@@ -97,7 +101,7 @@ export default React.createClass({
         if (isNaN(d) && d !== '+') {
           if (!extAdded && d.toLowerCase() === 'x') {
             extAdded = true
-            n = ' ext. '
+            n = 'ext.'
           }
         } else if (d !== ' ') {
           n = d
