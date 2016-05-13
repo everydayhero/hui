@@ -73,7 +73,7 @@ export default React.createClass({
     })
     return (
       <div className={ classes }>
-        <TextInput { ...props } className={ textInputClasses } spacing="compact" validate={ validateAs.phone } />
+        <TextInput { ...props } name={ 'ui_' + props.name } className={ textInputClasses } spacing="compact" validate={ validateAs.phone } />
         <CountrySelect
           ref="countrySelect"
           spacing="compact"
