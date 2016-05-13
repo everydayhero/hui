@@ -88,7 +88,7 @@ export default React.createClass({
           onBlur={ this.handleCountrySelectBlur }
           onOpen={ this.handleCountrySelectOpen }
           onSelection={ this.handleCountrySelection } />
-        <input type="hidden" name={ props.name } value={ formatPhone(selectedCountry.dial_code + ' ' + props.value) } />
+        <input type="hidden" name={ props.name } value={ selectedCountry.dial_code + ' ' + formatPhone(props.value) } />
       </div>
     )
   },
