@@ -2,7 +2,7 @@
 .DS_Store
 .deprc
 /dist/
-npm-debug.log
+npm-debug.log*
 docs/
 /build/
 browserify-cache.json
