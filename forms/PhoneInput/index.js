@@ -95,6 +95,7 @@ export default React.createClass({
 
   statics: {
     formatPhone(num) {
+      if (!num || !num.length) return ''
       let extAdded = false
       return reduce(num, (res, d) => {
         let n = ''
