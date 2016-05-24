@@ -21,7 +21,6 @@ export default React.createClass({
 
   handleChange(value) {
     this.setState({ value })
-    console.log('Handling PhoneInput Change', value)
   },
 
   render() {
