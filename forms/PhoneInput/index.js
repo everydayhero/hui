@@ -7,7 +7,9 @@ import countries from '../CountrySelect/countries'
 import validateAs from '../../lib/validation'
 import cx from 'classnames'
 import find from 'lodash/collection/find'
-import reduce from 'lodash/collection/reduce'
+import forEach from 'lodash/collection/forEach'
+
+const isNumber = (str) => /[0-9]/.test(str)
 
 export default React.createClass({
   displayName: 'PhoneInput',
@@ -96,19 +98,18 @@ export default React.createClass({
   statics: {
     formatPhone(num) {
       if (!num || !num.length) return ''
+      let n = ''
       let extAdded = false
-      return reduce(num, (res, d) => {
-        let n = ''
-        if (isNaN(d) && d !== '+') {
-          if (!extAdded && d.toLowerCase() === 'x') {
-            extAdded = true
-            n = 'ext.'
-          }
-        } else if (d !== ' ') {
-          n = d
+      forEach(num, (d, i) => {
+        if ((i === 0 && d === '0')) return
+        if (isNumber(d)) {
+          return n += d
+        } else if (!extAdded && d.toLowerCase() === 'x') {
+          extAdded = true
+          return n += 'ext.'
         }
-        return res + n
       })
+      return n
     }
   }
 })
