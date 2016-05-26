@@ -35,10 +35,14 @@ module.exports = React.createClass({
     var domain = props.domain;
     var region = props.region;
 
+    // var leftLinkKeys = ['privacy_policy','terms_of_service','cookie_policy','blackbaud_service']
+
     while(i++ < n) {
       var name = id + '_' + i;
       links[t(name)] = t(name + '_url', { portal: urls('portal', domain, region) });
     }
+
+    console.log('links >', links)
 
     return links;
   },
