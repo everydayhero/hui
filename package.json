@@ -40,7 +40,7 @@
     "classnames": "^2.2.3",
     "console-polyfill": "^0.2.2",
     "exenv": "^1.2.0",
-    "history": "^2.0.0",
+    "history": "^2.1.0",
     "lodash": "^3.10.1",
     "moment": "2.8.3",
     "numeral": "^1.5.3",
