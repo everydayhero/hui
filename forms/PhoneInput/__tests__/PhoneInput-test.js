@@ -20,8 +20,8 @@ describe('PhoneInput', () => {
   it('allows country to be changed', (done) => {
     const subject = renderIntoDocument(<PhoneInput />)
     Simulate.click(findByClass(subject, 'hui-FilterSelect__display-input'))
-    Simulate.mouseDown(scryByClass(subject, 'hui-OptionListItem__radio-label')[5])
-    Simulate.blur(scryByClass(subject, 'hui-OptionListItem__radio--hidden')[5])
+    Simulate.mouseDown(scryByClass(subject, 'hui-OptionListItem__radio-label')[4])
+    Simulate.blur(scryByClass(subject, 'hui-OptionListItem__radio--hidden')[4])
 
     setTimeout(() => {
       subject.state.isSelectingCountry.should.eq(false)
