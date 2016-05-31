@@ -20,15 +20,12 @@ export default React.createClass({
   },
 
   getDefaultProps: function() {
-    global.ENV = global.ENV || {};
-
     return {
       options: {
         imageDim: [600, 600],
         cropRatio: 1 / 1,
         mimetype: ['image/*'],
-        services: ['CONVERT', 'COMPUTER'],
-        debug: global.ENV.TEST_MODE
+        services: ['CONVERT', 'COMPUTER']
       },
       buttonLabel: 'Upload Image',
       value: {},

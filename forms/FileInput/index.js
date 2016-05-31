@@ -119,13 +119,6 @@ export default React.createClass({
       'hui-FileInput'
     ])
 
-    global.ENV = global.ENV || {}
-
-    if (global.ENV.TEST_MODE) {
-      global.fileInputs = global.fileInputs || {}
-      global.fileInputs[props.id] = this
-    }
-
     if (filename) {
       resetButton = (
         <a href="#" className="hui-FileInput__reset" onClick={ this.reset }>
