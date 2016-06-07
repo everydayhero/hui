@@ -193,11 +193,11 @@ export default React.createClass({
 
   requireValue() {
     let { required } = this.props
-    let { selectedOption } = this.state
+    let { selectedOption, isOpen } = this.state
     let hasError = !!required && !selectedOption
     this.setState({
       hasError,
-      isOpen: hasError
+      isOpen: hasError ? true : isOpen
     }, () => {
       this.props.onError(hasError)
     })

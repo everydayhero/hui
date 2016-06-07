@@ -121,6 +121,34 @@ describe('UrlSearchSelect', () => {
         expect(element.state.hasError).to.eq(true)
         expect(onError).calledWith(true)
       })
+
+      it('ensures state.isOpen is true (to display error)', () => {
+        let element = renderIntoDocument(
+          <UrlSearchSelect
+            required
+            url="http://everydayhero.com" />
+        )
+        element.setState({isOpen: false})
+        element.requireValue()
+        expect(element.state.isOpen).to.eq(true)
+      })
+    })
+
+    context('otherwise', () => {
+      it('does not mutate state.isOpen', () => {
+        let element = renderIntoDocument(
+          <UrlSearchSelect
+            url="http://everydayhero.com" />
+        )
+
+        element.setState({isOpen: false})
+        element.requireValue()
+        expect(element.state.isOpen).to.eq(false)
+
+        element.setState({isOpen: true})
+        element.requireValue()
+        expect(element.state.isOpen).to.eq(true)
+      })
     })
   })
 
