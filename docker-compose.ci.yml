@@ -1,5 +1,5 @@
 tests:
-  build: .
+  image: "${DOCKER_REPOSITORY}:${COMMIT}"
   environment:
     - NPM_USER
     - NPM_PASS
