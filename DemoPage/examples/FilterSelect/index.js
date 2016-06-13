@@ -128,6 +128,7 @@ export default React.createClass({
           required
           errorMessage="Please select an option"
           value=" "
+          sort="asc"
           options={ options } />
 
         <FilterSelect
