@@ -35,6 +35,7 @@ describe('FilterSelect', () => {
       })
     })
   })
+
   describe('available options', () => {
     it('limits options passed to the option list to < props.maxResults', () => {
       let collection = [
@@ -181,6 +182,42 @@ describe('FilterSelect', () => {
         let subject = element.state.filteredOptions
 
         expect(subject).to.eql(options)
+      })
+    })
+
+    context('alphabetical', () => {
+      it('lists options alphabetically asc', () => {
+        let options = [
+          { value: '1', label: 'Zim Rogers' },
+          { value: '2', label: 'Kex Perkins' },
+          { value: '3', label: 'Ben Ely' }
+        ]
+        let subject = renderIntoDocument(
+          <FilterSelect options={ options } sort={ 'asc' } />
+        ).state.filteredOptions
+
+        expect(subject).to.eql([
+          { value: '3', label: 'Ben Ely' },
+          { value: '2', label: 'Kex Perkins' },
+          { value: '1', label: 'Zim Rogers' }
+        ])
+      })
+
+      it('lists options alphabetically desc', () => {
+        let options = [
+          { value: '2', label: 'Kex Perkins' },
+          { value: '3', label: 'Ben Ely' },
+          { value: '1', label: 'Zim Rogers' }
+        ]
+        let subject = renderIntoDocument(
+          <FilterSelect options={ options } sort={ 'desc' } />
+        ).state.filteredOptions
+
+        expect(subject).to.eql([
+          { value: '1', label: 'Zim Rogers' },
+          { value: '2', label: 'Kex Perkins' },
+          { value: '3', label: 'Ben Ely' }
+        ])
       })
     })
   })

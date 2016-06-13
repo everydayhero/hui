@@ -11,6 +11,7 @@ import OptionList from '../OptionList'
 import DisplayWrap from './DisplayWrap'
 import Filter from '../Filter'
 import classnames from 'classnames'
+import _ from 'lodash'
 
 export default React.createClass({
   displayName: 'FilterSelect',
@@ -41,7 +42,8 @@ export default React.createClass({
     Option: React.PropTypes.func,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
-    maxResults: React.PropTypes.number
+    maxResults: React.PropTypes.number,
+    sort: React.PropTypes.string
   },
 
   getDefaultProps () {
@@ -66,7 +68,8 @@ export default React.createClass({
       validate: () => {},
       layout: 'full',
       spacing: 'loose',
-      maxResults: 100
+      maxResults: 100,
+      sort: 'default'
     }
   },
 
@@ -75,7 +78,7 @@ export default React.createClass({
     return {
       focused: false,
       value: props.value || '',
-      filteredOptions: props.options.slice(0, props.maxResults),
+      filteredOptions: this.getOptions().slice(0, props.maxResults),
       selectedOption: this.getSelected(props.value, props.data),
       isOpen: false,
       filterValue: ''
@@ -95,10 +98,22 @@ export default React.createClass({
   getSelected(value, data) {
     value = value || ''
     const { valueKey } = this.props
-    return find(this.props.options, opt => (
+    return find(this.getOptions(), opt => (
       opt[valueKey] && opt[valueKey].toString() === value.toString()) ||
       isEqual(opt, data)
     )
+  },
+
+  getOptions() {
+    let options = this.props.options
+
+    if(this.props.sort === 'default') {
+      return options
+    }
+
+    options = _.sortBy(options, (option) =>  option.label )
+
+    return this.props.sort === 'asc' ? options : options.reverse()
   },
 
   handleFilter (filteredOptions) {
@@ -223,7 +238,6 @@ export default React.createClass({
 
   renderDisplay () {
     const {
-      options,
       id,
       label,
       name,
@@ -240,7 +254,7 @@ export default React.createClass({
     return (
       <DisplayWrap
         ref="displayInput"
-        options={ options }
+        options={ this.getOptions() }
         id={ id }
         label={ label }
         displayProperty={ displayProperty }
@@ -268,7 +282,6 @@ export default React.createClass({
 
     const {
       properties,
-      options,
       filterLabel,
       Option,
       labelKey,
@@ -287,7 +300,7 @@ export default React.createClass({
           focused
           filterValue={ filterValue }
           properties={ properties }
-          collection={ options }
+          collection={ this.getOptions() }
           label={ filterLabel }
           onChange={ this.handleFilterChange }
           onFilter={ this.handleFilter } />
