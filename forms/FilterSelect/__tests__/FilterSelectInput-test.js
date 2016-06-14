@@ -219,6 +219,23 @@ describe('FilterSelect', () => {
           { value: '3', label: 'Ben Ely' }
         ])
       })
+
+      it('lists options alphabetically asc with alternate labelKey', () => {
+        let options = [
+          { value: 'Zim Rogers' },
+          { value: 'Kex Perkins' },
+          { value: 'Ben Ely' }
+        ]
+        let subject = renderIntoDocument(
+          <FilterSelect options={ options } sort={ 'asc' } labelKey={ 'value' } />
+        ).state.filteredOptions
+
+        expect(subject).to.eql([
+          { value: 'Ben Ely' },
+          { value: 'Kex Perkins' },
+          { value: 'Zim Rogers' }
+        ])
+      })
     })
   })
 })

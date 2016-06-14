@@ -105,13 +105,14 @@ export default React.createClass({
   },
 
   getOptions() {
+    let labelKey = this.props.labelKey
     let options = this.props.options
 
     if(this.props.sort === 'default') {
       return options
     }
 
-    options = _.sortBy(options, (option) =>  option.label )
+    options = _.sortBy(options, (option) =>  option[labelKey] )
 
     return this.props.sort === 'asc' ? options : options.reverse()
   },
