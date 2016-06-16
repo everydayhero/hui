@@ -89,7 +89,7 @@ export default React.createClass({
       { label: 'The Smith Family', value: '79' },
       { label: 'Exodus Foundation', value: '80' },
       { label: 'Fred Hollows Foundation', value: '81' },
-      { label: 'Australian Red Cross', value: '82' },
+      { label: 'lowercase', value: '82' },
       { label: 'Indigenous Literacy Foundation', value: '83' },
       { label: 'Australian Men’s Shed Association', value: '84' },
       { label: 'Royal Flying Doctor Service', value: '85' },

@@ -112,7 +112,7 @@ export default React.createClass({
       return options
     }
 
-    options = _.sortBy(options, (option) =>  option[labelKey] )
+    options = _.sortBy(options, (option) =>  option[labelKey].toLowerCase() )
 
     return this.props.sort === 'asc' ? options : options.reverse()
   },

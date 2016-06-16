@@ -186,18 +186,20 @@ describe('FilterSelect', () => {
     })
 
     context('alphabetical', () => {
-      it('lists options alphabetically asc', () => {
+      it('lists options alphabetically asc ignoring case', () => {
         let options = [
           { value: '1', label: 'Zim Rogers' },
           { value: '2', label: 'Kex Perkins' },
-          { value: '3', label: 'Ben Ely' }
+          { value: '3', label: 'ben Ely' },
+          { value: '4', label: '123 thing' }
         ]
         let subject = renderIntoDocument(
           <FilterSelect options={ options } sort={ 'asc' } />
         ).state.filteredOptions
 
         expect(subject).to.eql([
-          { value: '3', label: 'Ben Ely' },
+          { value: '4', label: '123 thing' },
+          { value: '3', label: 'ben Ely' },
           { value: '2', label: 'Kex Perkins' },
           { value: '1', label: 'Zim Rogers' }
         ])
