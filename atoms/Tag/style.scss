@@ -1,0 +1,12 @@
+.hui-Tag {
+  display: inline-block;
+  margin: $x-2 $x-2 $x-2 0;
+}
+
+.hui-Tag__label {
+  background-color: $grey-lighter;
+  padding: $x-1 $x-2;
+  border-radius: $border-radius;
+  color: $grey;
+  font-family: $font-copy;
+}
