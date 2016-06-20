@@ -1,9 +1,10 @@
 'use strict';
 
-var React      = require('react/addons');
-var Icon       = require('../../../atoms/Icon');
+import React from 'react/addons'
+import Icon from '../../../atoms/Icon'
+import Tag from '../../../atoms/Tag'
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: 'TagListItem',
 
   propTypes: {
@@ -12,43 +13,36 @@ module.exports = React.createClass({
     onIconClick: React.PropTypes.func.isRequired
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       item: {},
       icon: 'remove',
       onIconClick: null
-    };
+    }
   },
 
-  onClick: function(e) {
-    var props = this.props;
-    var onIconClick = props.onIconClick;
-    e.preventDefault();
-
-    return onIconClick && onIconClick(props.item);
+  onClick(e) {
+    const { onIconClick, item } = this.props
+    e.preventDefault()
+    return onIconClick && onIconClick(item)
   },
 
-  renderIcon: function() {
-    var props = this.props;
-    var icon = props.icon;
+  renderIcon() {
+    const { icon, item } = this.props
 
     return icon && (
-      <button id={ props.item.id } className="hui-TagListItem__iconButton" onClick={ this.onClick }>
+      <button id={ item.id } className="hui-TagListItem__iconButton" onClick={ this.onClick }>
         <Icon icon={ icon } fixedWidth={ true } />
       </button>
-    );
+    )
   },
 
-  render: function() {
-    var props = this.props;
-
+  render() {
     return (
-      <div className="hui-TagListItem">
-        <div className="hui-TagListItem__label">
-          { props.item.name }
-          { this.renderIcon() }
-        </div>
-      </div>
-    );
+      <Tag>
+        { this.props.item.name }
+        { this.renderIcon() }
+      </Tag>
+    )
   }
-});
+})
