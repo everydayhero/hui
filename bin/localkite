@@ -16,6 +16,7 @@ export ANNOUNCE_EMAIL_TO="XXX"
 export APP="${APP:-hui}"
 export BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 export BUILD_NUMBER="local"
+export BUILD_MESSAGE="x.x.x"
 export BUILD_URL="http://example.com/local-build"
 export COMMIT="$(git rev-parse HEAD)"
 export HEALTH_ENDPOINT='https://XXX.everydayhero.io/health'
