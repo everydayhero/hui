@@ -40,7 +40,14 @@ You can view the demo html file at:
 ```javascript
 var TextInput = require('hui/forms/TextInput');
 ```
-> Step 3: Import the hui component sass you require in your sass file
+
+> Step 3: Import hui common sass in your sass file
+
+```javascript
+@import "../node_modules/hui/common";
+```
+
+> Step 4: Import the hui component sass you require in your sass file
 
 ```javascript
 @import "../node_modules/hui/forms/TextInput/style";
