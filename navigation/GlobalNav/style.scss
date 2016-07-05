@@ -85,9 +85,9 @@
   }
 }
 
-@import "navigation/GlobalNav/SiteNav/style";
-@import "navigation/GlobalNav/NavAccount/style";
-@import "navigation/GlobalNav/NavLink/style";
-@import "navigation/GlobalNav/NavPages/style";
-@import "navigation/GlobalNav/NavSearch/style";
-@import "navigation/GlobalNav/NavUser/style";
+@import "./SiteNav/style";
+@import "./NavAccount/style";
+@import "./NavLink/style";
+@import "./NavPages/style";
+@import "./NavSearch/style";
+@import "./NavUser/style";
