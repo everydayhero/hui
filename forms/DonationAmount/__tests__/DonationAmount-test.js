@@ -47,12 +47,12 @@ describe('DonationAmount display component', () => {
     expect(wrapper.find('label')).to.have.text('£50')
   })
 
-  it('should call onClicked when user clicks the label', () => {
+  it('should call handleSelected when user clicks the label', () => {
     const clickStub = sinon.stub()
     wrapper = shallow(
       <DonationAmount
         amount={amount}
-        onClicked={clickStub}
+        handleSelected={clickStub}
       />
     )
     const radio = wrapper.find('input[type="radio"]')

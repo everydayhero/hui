@@ -4,7 +4,7 @@ import numeric from '../../lib/numeric'
 
 const DonationAmount = ({
   amount,
-  onClicked
+  handleSelected
 }) => {
   const id = `donation_donation_builder_predefined_amount_${amount.cents}`
   return (
@@ -16,7 +16,7 @@ const DonationAmount = ({
           name='predefined_amount'
           type='radio'
           value={amount.cents}
-          onClick={onClicked}
+          onClick={handleSelected}
         />
         {numeric.money(amount.currency.symbol, amount.cents, '0')}
       </label>
