@@ -11,7 +11,12 @@ describe('CustomDonationAmount display component', () => {
 
   beforeEach(() => {
     changeStub = sinon.stub()
-    wrapper = shallow(<CustomDonationAmount handleChanged={changeStub } />)
+    wrapper = shallow(
+      <CustomDonationAmount
+        handleChanged={changeStub}
+        customDonation={{ cents: 3500, currency: { symbol: '$'} }}
+      />
+    )
   })
 
   it('should render a defined_amount number input', () => {
@@ -26,9 +31,33 @@ describe('CustomDonationAmount display component', () => {
     expect(label).to.have.text('Other amount')
   })
 
-  it('should call handleChanged prop when input value changes', () => {
+  it('should render the customDonation cent value as a dollar value', () => {
     const numInput = wrapper.find('input[type="number"]')
-    numInput.simulate('change', { target: { value: '35' }})
-    expect(changeStub).to.be.calledWith('35')
+    expect(numInput).to.have.value('35')
+  })
+
+  it('should render no value if the customDonation cent value is 0', () => {
+    wrapper = shallow(<CustomDonationAmount customDonation={{ cents: 0, currency: { symbol: '$' } }}/>)
+    const numInput = wrapper.find('input[type="number"]')
+    expect(numInput).to.have.value('')
+  })
+
+  describe('change listener', () => {
+    beforeEach(() => {
+      const numInput = wrapper.find('input[type="number"]')
+      numInput.simulate('change', { target: { value: '35' }})
+    })
+    
+    it('should call handleChanged prop when input value changes', () => {
+      expect(changeStub).to.be.called
+    })
+
+    it('should call handleChanged with the dollar value converted to cents', () => {
+      expect(changeStub).to.be.calledWith(3500)
+    })
+
+    it('should call handleChanged with the customDonation currency symbol', () => {
+      expect(changeStub).to.be.calledWith(3500, '$')
+    })
   })
 })
