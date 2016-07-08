@@ -5,6 +5,7 @@ import CustomDonationAmount from '../CustomDonationAmount'
 
 const DonationAmountsList = ({
   donationOptions,
+  currency,
   handleCustomAmountChanged,
   handleDonationOptionSelected
 }) => (
@@ -16,6 +17,7 @@ const DonationAmountsList = ({
       {donationOptions.map((option, i) => (
         <DonationAmount
           amount={option.amount}
+          currency={currency}
           handleSelected={function () {
             handleDonationOptionSelected(i, option)
           }}
@@ -37,15 +39,13 @@ const DonationAmountsList = ({
 DonationAmountsList.propTypes = {
   donationAmounts: React.PropTypes.arrayOf(
     React.PropTypes.shape({
-      amount: React.PropTypes.shape({
-        cents: React.PropTypes.number.isRequired,
-        currency: React.PropTypes.shape({
-          symbol: React.PropTypes.oneOf(['£', '$', '€'])
-        })
-      }),
+      amount: React.PropTypes.number.isRequired,
       isSelected: React.PropTypes.bool
     })
   ).isRequired,
+  currency: React.PropTypes.shape({
+    symbol: React.PropTypes.oneOf(['£', '$', '€'])
+  }),
   handleCustomAmountChange: React.PropTypes.func.isRequired,
   handleDonationOptionSelected: React.PropTypes.func.isRequired
 }

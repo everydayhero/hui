@@ -4,17 +4,18 @@ import sinon from 'sinon'
 import DonationAmount from '../'
 
 describe('DonationAmount display component', () => {
-  let wrapper, amount
+  let wrapper, amount, currency
 
   beforeEach(() => {
-    amount = {
-      cents: 5000,
-      currency: {
-        symbol: '$'
-      }
+    amount = 5000
+    currency = {
+      symbol: '$'
     }
     wrapper = shallow(
-      <DonationAmount amount={amount} />
+      <DonationAmount
+        amount={amount}
+        currency={currency}
+      />
     )
   })
 
@@ -37,13 +38,15 @@ describe('DonationAmount display component', () => {
   })
 
   it('should set the text in the label to localised currency', () => {
-    amount = {
-      cents: 5000,
-      currency: {
-        symbol: '£'
-      }
+    amount = 5000
+    currency = {
+      symbol: '£'
     }
-    wrapper = shallow(<DonationAmount amount={amount} />)
+    wrapper = shallow(
+      <DonationAmount
+        amount={amount}
+        currency={currency}
+      />)
     expect(wrapper.find('label')).to.have.text('£50')
   })
 
@@ -52,6 +55,7 @@ describe('DonationAmount display component', () => {
     wrapper = shallow(
       <DonationAmount
         amount={amount}
+        currency={currency}
         handleSelected={clickStub}
       />
     )

@@ -14,7 +14,8 @@ describe('CustomDonationAmount display component', () => {
     wrapper = shallow(
       <CustomDonationAmount
         handleChanged={changeStub}
-        customDonation={{ cents: 3500, currency: { symbol: '$'} }}
+        amount={3500}
+        currency={{ symbol: '$' }}
       />
     )
   })
@@ -37,7 +38,7 @@ describe('CustomDonationAmount display component', () => {
   })
 
   it('should render no value if the customDonation cent value is 0', () => {
-    wrapper = shallow(<CustomDonationAmount customDonation={{ cents: 0, currency: { symbol: '$' } }}/>)
+    wrapper = shallow(<CustomDonationAmount />)
     const numInput = wrapper.find('input[type="number"]')
     expect(numInput).to.have.value('')
   })
@@ -47,7 +48,7 @@ describe('CustomDonationAmount display component', () => {
       const numInput = wrapper.find('input[type="number"]')
       numInput.simulate('change', { target: { value: '35' }})
     })
-    
+
     it('should call handleChanged prop when input value changes', () => {
       expect(changeStub).to.be.called
     })

@@ -24,14 +24,14 @@ describe('DonationAmountsList display component', () => {
   it('should render a list of DonationAmount components', () => {
     expect(wrapper.find(DonationAmount)).to.not.have.length(0)
   })
-  
+
   it('should render a DonationAmount for each value in the donation amount prop', () => {
     const donationElements = wrapper.find(DonationAmount)
     donationElements.forEach((option, index) => {
       expect(option.prop('amount')).to.equal(donationOptions[index].amount)
     })
   })
-  
+
   it('should render a CustomDonationAmount component', () => {
     expect(wrapper).to.have.descendants(CustomDonationAmount)
   })
@@ -52,27 +52,21 @@ describe('DonationAmountsList display component', () => {
     const donationSelectedStub = sinon.stub()
     const realOptions = [
       {
-        amount: {
-          cents: 2500,
-          currency: {
-            symbol: '$'
-          }
-        },
+        amount: 2500,
         isSelected: true
       },
       {
-        amount: {
-          cents: 5000,
-          currency: {
-            symbol: '$'
-          }
-        },
+        amount: 5000,
         isSelected: false
       }
     ]
+    const currency = {
+      symbol: '$'
+    }
     wrapper = mount(
       <DonationAmountsList
         donationOptions={realOptions}
+        currency={currency}
         handleDonationOptionSelected={donationSelectedStub}
       />
     )
@@ -83,12 +77,7 @@ describe('DonationAmountsList display component', () => {
 
     firstDonation.simulate('click')
     expect(donationSelectedStub).to.be.calledWith(0, {
-      amount: {
-        cents: 2500,
-        currency: {
-          symbol: '$'
-        }
-      },
+      amount: 2500,
       isSelected: true
     })
     secondDonation.simulate('click')
