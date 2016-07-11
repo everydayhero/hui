@@ -87,6 +87,8 @@ module.exports = {
     options = options || {};
     var label = options.label || this.t(name + '_label');
     var hint = options.hint || this.t(name + '_hint', defaultMessage);
+    var layout = options.layout || "half"
+    var spacing = options.spacing || "fitted"
     var errors = this.props.errors || {};
 
     input = (
@@ -97,8 +99,8 @@ module.exports = {
         hint={ hint }
         onChange={  this.inputChangeEventFn(name) }
         className={ name }
-        layout="half"
-        spacing="fitted"
+        layout={ layout }
+        spacing={ spacing }
         errors={ options.errors || errors[name] }
         {...options} />
     );
