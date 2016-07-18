@@ -7,16 +7,16 @@ import CustomDonationAmount from '../../CustomDonationAmount'
 import DonationAmountsList from '../'
 
 describe('DonationAmountsList display component', () => {
-  let wrapper, donationOptions
+  let wrapper, donationAmounts
 
   beforeEach(() => {
-    donationOptions = [
+    donationAmounts = [
       { amount: 25, isSelected: false },
       { amount: 50, isSelected: false }
     ]
     wrapper = shallow(
       <DonationAmountsList
-        donationOptions={donationOptions}
+        donationAmounts={donationAmounts}
       />
     )
   })
@@ -28,7 +28,7 @@ describe('DonationAmountsList display component', () => {
   it('should render a DonationAmount for each value in the donation amount prop', () => {
     const donationElements = wrapper.find(DonationAmount)
     donationElements.forEach((option, index) => {
-      expect(option.prop('amount')).to.equal(donationOptions[index].amount)
+      expect(option.prop('amount')).to.equal(donationAmounts[index].amount)
     })
   })
 
@@ -40,7 +40,7 @@ describe('DonationAmountsList display component', () => {
     const customAmountStub = sinon.stub()
     wrapper = shallow(
       <DonationAmountsList
-        donationOptions={donationOptions}
+        donationAmounts={donationAmounts}
         handleCustomAmountChanged={customAmountStub}
       />
     )
@@ -65,7 +65,7 @@ describe('DonationAmountsList display component', () => {
     }
     wrapper = mount(
       <DonationAmountsList
-        donationOptions={realOptions}
+        donationAmounts={realOptions}
         currency={currency}
         handleDonationOptionSelected={donationSelectedStub}
       />

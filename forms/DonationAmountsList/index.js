@@ -1,10 +1,14 @@
+/*
+ * TODO Comment
+ * This is only used for HUI demos. Not used external to this project
+ */
 import React from 'react'
 
 import DonationAmount from '../DonationAmount'
 import CustomDonationAmount from '../CustomDonationAmount'
 
 const DonationAmountsList = ({
-  donationOptions,
+  donationAmounts,
   currency,
   handleCustomAmountChanged,
   handleDonationOptionSelected
@@ -14,7 +18,7 @@ const DonationAmountsList = ({
       id="donation_donation_builder_predefined_amount_input"
       className="radio optional"
     >
-      {donationOptions.map((option, i) => (
+      {donationAmounts.map((option, i) => (
         <DonationAmount
           amount={option.amount}
           currency={currency}
@@ -26,7 +30,6 @@ const DonationAmountsList = ({
         />
       ))}
     </li>
-
     <li
       id="donation_donation_builder_defined_amount_input"
       className="string required"
@@ -46,7 +49,7 @@ DonationAmountsList.propTypes = {
   currency: React.PropTypes.shape({
     symbol: React.PropTypes.oneOf(['£', '$', '€'])
   }),
-  handleCustomAmountChange: React.PropTypes.func.isRequired,
+  handleCustomAmountChanged: React.PropTypes.func.isRequired,
   handleDonationOptionSelected: React.PropTypes.func.isRequired
 }
 

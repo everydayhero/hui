@@ -9,19 +9,17 @@ const DonationAmount = ({
 }) => {
   const id = `donation_donation_builder_predefined_amount_${amount.cents}`
   return (
-    <li>
-      <label for={id}>
-        <input
-          id={id}
-          className='surcharge-input'
-          name='predefined_amount'
-          type='radio'
-          value={amount}
-          onClick={handleSelected}
-        />
-        {numeric.money(currency.symbol, amount, '0')}
-      </label>
-    </li>
+    <label for={id}>
+      <input
+        id={id}
+        className='surcharge-input'
+        name='predefined_amount'
+        type='radio'
+        value={amount}
+        onClick={handleSelected}
+      />
+      {numeric.money(currency.symbol, amount, '0')}
+    </label>
   )
 }
 
@@ -30,8 +28,7 @@ DonationAmount.propTypes = {
   currency: React.PropTypes.shape({
     symbol: React.PropTypes.string
   }),
-  onClicked: React.PropTypes.func.isRequired
+  handleSelected: React.PropTypes.func.isRequired
 }
 
 export default DonationAmount
-
