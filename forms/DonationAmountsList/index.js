@@ -18,24 +18,21 @@ const DonationAmountsList = ({
       id="donation_donation_builder_predefined_amount_input"
       className="radio optional"
     >
-      {donationAmounts.map((option, i) => (
-        <DonationAmount
-          amount={option.amount}
-          currency={currency}
-          handleSelected={function () {
-            handleDonationOptionSelected(i, option)
-          }}
-          isSelected={option.isSelected}
-          key={i}
-        />
-      ))}
+      <ol>
+        {donationAmounts.map((option, i) => (
+          <DonationAmount
+            amount={option.amount}
+            currency={currency}
+            handleSelected={function () {
+              handleDonationOptionSelected(i, option)
+            }}
+            isSelected={option.isSelected}
+            key={i}
+          />
+        ))}
+      </ol>
     </li>
-    <li
-      id="donation_donation_builder_defined_amount_input"
-      className="string required"
-    >
-      <CustomDonationAmount handleChanged={handleCustomAmountChanged} />
-    </li>
+    <CustomDonationAmount handleChanged={handleCustomAmountChanged} />
   </ol>
 )
 

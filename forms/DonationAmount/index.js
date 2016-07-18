@@ -18,7 +18,7 @@ const DonationAmount = ({
         value={amount}
         onClick={handleSelected}
       />
-      {numeric.money(currency.symbol, amount, '0')}
+      {numeric.money(currency.symbol, amount, '0,0')}
     </label>
   )
 }

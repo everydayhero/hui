@@ -8,7 +8,7 @@ const CustomDonationAmount = ({
   currency
 }) => {
   return (
-    <span
+    <li
       className='string required'
       id='donation_donation_builder_defined_amount_input'
     >
@@ -26,7 +26,7 @@ const CustomDonationAmount = ({
           handleChanged(centsValue, currency.symbol)
         }}
       />
-    </span>
+    </li>
   )
 }
 
