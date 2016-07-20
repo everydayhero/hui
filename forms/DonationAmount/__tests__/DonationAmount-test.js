@@ -15,6 +15,7 @@ describe('DonationAmount display component', () => {
       <DonationAmount
         amount={amount}
         currency={currency}
+        selected={true}
       />
     )
   })
@@ -30,6 +31,11 @@ describe('DonationAmount display component', () => {
   it('should set the value of the radio to the amount prop', () => {
     const radio = wrapper.find('input[type="radio"]')
     expect(radio).to.have.value('5000')
+  })
+
+  it('should set the checked attribute to the selected prop', () => {
+    const radio = wrapper.find('input[type="radio"]')
+    expect(radio).to.have.prop('checked', true)
   })
 
   it('should set the text in the label to formatted currency', () => {
@@ -56,11 +62,12 @@ describe('DonationAmount display component', () => {
       <DonationAmount
         amount={amount}
         currency={currency}
+        checked={false}
         handleSelected={clickStub}
       />
     )
     const radio = wrapper.find('input[type="radio"]')
-    radio.simulate('click')
+    radio.simulate('change')
     expect(clickStub).to.have.been.called
   })
 })

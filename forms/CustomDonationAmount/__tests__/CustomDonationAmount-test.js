@@ -56,9 +56,5 @@ describe('CustomDonationAmount display component', () => {
     it('should call handleChanged with the dollar value converted to cents', () => {
       expect(changeStub).to.be.calledWith(3500)
     })
-
-    it('should call handleChanged with the customDonation currency symbol', () => {
-      expect(changeStub).to.be.calledWith(3500, '$')
-    })
   })
 })

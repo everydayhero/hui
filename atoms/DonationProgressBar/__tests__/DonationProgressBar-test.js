@@ -9,9 +9,9 @@ describe('Donation Progress Bar component', () => {
   let wrapper, totalAmount, existingAmount, influenceAmount
 
   beforeEach(() => {
-    totalAmount = makeDonationAmount(70000)
-    existingAmount = makeDonationAmount(30000)
-    influenceAmount = makeDonationAmount(5000)
+    totalAmount = 70000
+    existingAmount = 30000
+    influenceAmount = 5000
     wrapper = shallow(
       <DonationProgressBar
         donationTarget={totalAmount}
@@ -41,26 +41,17 @@ describe('Donation Progress Bar component', () => {
     const existing = progressElements.at(0)
     const influence = progressElements.at(1)
 
-    expect(existing).to.have.prop('totalAmount', totalAmount.cents)
-    expect(influence).to.have.prop('totalAmount', totalAmount.cents)
+    expect(existing).to.have.prop('totalAmount', totalAmount)
+    expect(influence).to.have.prop('totalAmount', totalAmount)
   })
 
   it('should pass the currentTotal cents onto the existing progress element', () => {
     const existing = wrapper.find(DonationProgressElement).at(0)
-    expect(existing).to.have.prop('elementAmount', existingAmount.cents)
+    expect(existing).to.have.prop('elementAmount', existingAmount)
   })
 
   it('should pass the personalInfluence amount onto the influence element', () => {
     const influence = wrapper.find(DonationProgressElement).at(1)
-    expect(influence).to.have.prop('elementAmount', influenceAmount.cents)
+    expect(influence).to.have.prop('elementAmount', influenceAmount)
   })
 })
-
-const makeDonationAmount = (cents, currencySymbol = '$') => {
-  return {
-    cents,
-    currency: {
-      symbol: currencySymbol
-    }
-  }
-}

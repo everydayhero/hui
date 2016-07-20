@@ -8,17 +8,17 @@ const DonationProgressBar = ({
   personalInfluence
 }) => (
   <div className='donation-progress container'>
-    
+
     <DonationProgressElement
       className='donation-progress existing'
-      totalAmount={donationTarget.cents}
-      elementAmount={currentTotal.cents}
+      totalAmount={donationTarget}
+      elementAmount={currentTotal}
     />
 
     <DonationProgressElement
       className='donation-progress influence'
-      totalAmount={donationTarget.cents}
-      elementAmount={personalInfluence.cents}
+      totalAmount={donationTarget}
+      elementAmount={personalInfluence}
     />
   </div>
 )

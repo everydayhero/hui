@@ -75,12 +75,12 @@ describe('DonationAmountsList display component', () => {
     const secondDonation = wrapper.find(DonationAmount)
       .at(1).find('input[type="radio"]')
 
-    firstDonation.simulate('click')
+    firstDonation.simulate('change')
     expect(donationSelectedStub).to.be.calledWith(0, {
       amount: 2500,
       isSelected: true
     })
-    secondDonation.simulate('click')
+    secondDonation.simulate('change')
     expect(donationSelectedStub).to.be.calledWith(1)
   })
 })
