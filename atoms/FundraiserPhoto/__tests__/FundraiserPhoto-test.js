@@ -21,6 +21,9 @@ describe('FundraiserPhoto component', () => {
   it('should wrap the image in a border container', () => {
     const borderElement = wrapper.find('img').parent()
     expect(borderElement).to.have.className('fundraiser-photo')
-    expect(borderElement).to.have.className('circle-border')
+  })
+
+  it('should set a circle-image class on the image', () => { 
+    expect(wrapper.find('img')).to.have.className('circle-border')
   })
 })

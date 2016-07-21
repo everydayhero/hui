@@ -5,14 +5,13 @@ const CustomDonationAmount = ({
   handleChanged,
   handleFocused,
   amount,
-  selected,
-  currency
+  selected
 }) => (
   <li
     className='donation-preset'
   >
     <div
-      id="donation_donation_builder_defined_amount_input"
+      id='donation_donation_builder_defined_amount_input'
       className={classNames({
         'donation-preset-amount-label': true,
         selected
@@ -41,16 +40,10 @@ CustomDonationAmount.propTypes = {
   handleChanged: React.PropTypes.func.isRequired,
   handleFocused: React.PropTypes.func,
   amount: React.PropTypes.number.isRequired,
-  selected: React.PropTypes.bool,
-  currency: React.PropTypes.shape({
-    symbol: React.PropTypes.oneOf(['$', '£', '€'])
-  })
+  selected: React.PropTypes.bool
 }
 
 CustomDonationAmount.defaultProps = {
-  currency: {
-    symbol: '$'
-  },
   selected: false,
   amount: 0
 }

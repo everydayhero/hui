@@ -29,7 +29,7 @@ describe('CustomDonationAmount display component', () => {
   it('should render a matching label', () => {
     const label = wrapper.find('label')
     expect(label).to.be.present()
-    expect(label).to.have.text('Other amount')
+    expect(label).to.include.text('Other amount')
   })
 
   it('should render the customDonation cent value as a dollar value', () => {

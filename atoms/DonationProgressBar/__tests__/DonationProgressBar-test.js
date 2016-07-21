@@ -17,12 +17,15 @@ describe('Donation Progress Bar component', () => {
         donationTarget={totalAmount}
         currentTotal={existingAmount}
         personalInfluence={influenceAmount}
+        currency={{
+          symbol: '$'
+        }}
       />
     )
   })
 
   it('should render a container element', () => {
-    expect(wrapper).to.have.descendants('div.donation-progress.container')
+    expect(wrapper).to.have.descendants('div.donation-progress-container')
   })
 
   it('should render a DonationProgressElement for the existing donations', () => {

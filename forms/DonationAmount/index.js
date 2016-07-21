@@ -5,7 +5,6 @@ import numeric from '../../lib/numeric'
 
 const DonationAmount = ({
   amount,
-  currency,
   selected,
   handleSelected
 }) => {
@@ -36,9 +35,6 @@ const DonationAmount = ({
 
 DonationAmount.propTypes = {
   amount: React.PropTypes.number.isRequired,
-  currency: React.PropTypes.shape({
-    symbol: React.PropTypes.string
-  }),
   selected: React.PropTypes.bool,
   handleSelected: React.PropTypes.func.isRequired
 }

@@ -38,22 +38,9 @@ describe('DonationAmount display component', () => {
     expect(radio).to.have.prop('checked', true)
   })
 
-  it('should set the text in the label to formatted currency', () => {
+  it('should reformat the donation amount to a dollar value', () => {
     const label = wrapper.find('label')
-    expect(label).to.have.text('$50')
-  })
-
-  it('should set the text in the label to localised currency', () => {
-    amount = 5000
-    currency = {
-      symbol: '£'
-    }
-    wrapper = shallow(
-      <DonationAmount
-        amount={amount}
-        currency={currency}
-      />)
-    expect(wrapper.find('label')).to.have.text('£50')
+    expect(label).to.have.text('50')
   })
 
   it('should call handleSelected when user clicks the label', () => {
