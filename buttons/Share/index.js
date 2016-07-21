@@ -59,9 +59,9 @@ export default React.createClass({
     let payload = {}
     const { shareUrl, action, onComplete } = this.props
     if (action && action.type) {
-      payload.method = 'share_open_graph'
+      payload.method = action.method || 'share_open_graph'
       payload.action_type = action.type,
-      payload.action_properties = JSON.stringify(action.action_properties)
+      payload.action_properties = JSON.stringify(action.properties)
     } else {
       payload.method = 'share'
       payload.href = shareUrl
