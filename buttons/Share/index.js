@@ -36,7 +36,11 @@ export default React.createClass({
       'twitter',
       'googleplus',
       'pinterest'
-    ]).isRequired
+    ]).isRequired,
+    action: React.PropTypes.shape({
+      type: React.PropTypes.string,
+      properties: React.PropTypes.object
+    })
   },
 
   getDefaultProps: function() {
@@ -46,17 +50,23 @@ export default React.createClass({
     return {
       shareUrl: (!!window && window.location.href) || '',
       shareTitle: (!!document && document.title) || '',
-      shareImage: ''
+      shareImage: '',
+      action: null
     }
   },
 
   openFacebookShare: function() {
-    var { shareUrl, onComplete } = this.props
-
-    window.FB.ui({
-      method: 'share',
-      href: shareUrl
-    }, onComplete)
+    let payload = {}
+    const { shareUrl, action, onComplete } = this.props
+    if (action && action.type) {
+      payload.method = 'share_open_graph'
+      payload.action_type = action.type,
+      payload.action_properties = JSON.stringify(action.action_properties)
+    } else {
+      payload.method = 'share'
+      payload.href = shareUrl
+    }
+    window.FB.ui(payload, onComplete)
   },
 
   onClick: function() {
