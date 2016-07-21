@@ -5,7 +5,7 @@ div.section fieldset.inputs ol {
     float: none;
     width: auto;
     display: flex;
-    margin: 0;
+    margin: 20px 0 0 0;
 
     * {
       box-sizing: border-box;
@@ -14,7 +14,8 @@ div.section fieldset.inputs ol {
 }
 
 fieldset.inputs li.donation-preset {
-  padding: 10px;
+  padding: 0 10px;
+  margin: 0;
 }
 
 /* End Command Centre resets */
@@ -24,7 +25,7 @@ fieldset.inputs li.donation-preset {
 }
 
 .donation-preset-amount-label {
-  padding: 20px;
+  padding: 15px;
   background: white;
   text-align: center;
   border: 1px $grey-lightest solid;
