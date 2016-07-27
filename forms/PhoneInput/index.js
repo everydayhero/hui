@@ -77,6 +77,8 @@ export default React.createClass({
       [className + '_CountrySelect']: true,
       [className + '_CountrySelect--active']: isSelectingCountry
     })
+    const localNumber = formatPhone(props.value)
+    const fullNumber = localNumber ? `${selectedCountry.dial_code} ${localNumber}` : ''
     return (
       <div className={ classes }>
         <TextInput { ...props } name={ 'ui_' + props.name } className={ textInputClasses } spacing="compact" validate={ validateAs.phone } />
@@ -90,7 +92,7 @@ export default React.createClass({
           onBlur={ this.handleCountrySelectBlur }
           onOpen={ this.handleCountrySelectOpen }
           onSelection={ this.handleCountrySelection } />
-        <input type="hidden" name={ props.name } value={ selectedCountry.dial_code + ' ' + formatPhone(props.value) } />
+        <input type="hidden" name={ props.name } value={ fullNumber } />
       </div>
     )
   },
