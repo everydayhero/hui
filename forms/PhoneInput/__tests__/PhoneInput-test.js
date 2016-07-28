@@ -11,8 +11,8 @@ describe('PhoneInput', () => {
     })
 
     it('sets dial code to a provided default country', () => {
-      const { value, dial_code } = renderIntoDocument(<PhoneInput countryCode="gb" />).state.selectedCountry
-      value.should.eql('GB')
+      const { value, dial_code } = renderIntoDocument(<PhoneInput countryCode="uk" />).state.selectedCountry
+      value.should.eql('UK')
       dial_code.should.eql('+44')
     })
   })

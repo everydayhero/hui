@@ -4,7 +4,7 @@ export default [
   { label: 'Australia', value: 'AU', dial_code: '+61' },
   { label: 'Ireland', value: 'IE', dial_code: '+353' },
   { label: 'New Zealand', value: 'NZ', dial_code: '+64' },
-  { label: 'United Kingdom', value: 'GB', dial_code: '+44' },
+  { label: 'United Kingdom', value: 'UK', dial_code: '+44' },
   { label: 'United States', value: 'US', dial_code: '+1' },
   { label: 'Canada', value: 'CA', dial_code: '+1' },
   { label: 'Afghanistan', value: 'AF', dial_code: '+93' },
