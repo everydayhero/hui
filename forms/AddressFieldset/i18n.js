@@ -12,7 +12,7 @@ export default {
     postal_code: 'Postcode',
     postal_code_blank_error: 'Please enter a postcode',
     country_name: 'Country',
-    GB: {
+    UK: {
       locality: 'City',
       locality_blank_error: 'Please enter a city',
       region: 'County',

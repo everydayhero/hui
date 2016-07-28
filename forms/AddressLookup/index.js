@@ -57,7 +57,7 @@ export default React.createClass({
   getInitialState() {
     return {
       selectedCountry: this.props.selectedCountry,
-      minQueryLength: this.props.countryCode === 'GB' ? 7 : 5,
+      minQueryLength: this.props.countryCode === 'UK' ? 7 : 5,
       pendingRequest: null,
       address: null
     }
@@ -75,7 +75,7 @@ export default React.createClass({
 
   isPAFLookup() {
     return ((!!this.state.selectedCountry &&
-        this.state.selectedCountry.value) === 'GB')
+        this.state.selectedCountry.value) === 'UK')
   },
 
   isGoogleLookup() {
@@ -114,7 +114,7 @@ export default React.createClass({
 
   handleCountrySelection(country) {
     this.setState({
-      minQueryLength: country.value === 'GB' ? 7 : 5,
+      minQueryLength: country.value === 'UK' ? 7 : 5,
       isSelectingCountry: false,
       selectedCountry: country
     }, () => this.props.onCountrySelect(country))
