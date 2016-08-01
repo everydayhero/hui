@@ -17,6 +17,7 @@
   vertical-align: middle;
   background-color: transparent;
   box-sizing: border-box;
+  font-feature-settings: "liga" 0;
 
   &:before {
     transition: all 200ms ease-out;
