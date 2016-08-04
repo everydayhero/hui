@@ -47,7 +47,7 @@
     "paths-js": "^0.3.0",
     "react": "^0.14.1",
     "react-addons-pure-render-mixin": "^0.14.7",
-    "react-dom": "^0.14.7",
+    "react-dom": "^15.2.1",
     "remarkable": "^1.6.0",
     "superagent": "^2.0.0",
     "uuid": "^2.0.1"
