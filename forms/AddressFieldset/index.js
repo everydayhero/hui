@@ -62,7 +62,8 @@ export default React.createClass({
   },
 
   getSelectedCountry() {
-    return find(countries, country => country.label === this.props.address.country_name)
+    const countryName = this.props.address.country_name
+    return find(countries, country => country.label === countryName || country.value === countryName)
   },
 
   fieldChangeHandler() {
