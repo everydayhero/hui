@@ -7,6 +7,7 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var browserifyInc = require('browserify-incremental');
 var merge = require('lodash/object/merge');
+var mocha = require('gulp-spawn-mocha')
 
 // Tasks
 require('./gulp_tasks/assets-deploy');
@@ -97,3 +98,16 @@ gulp.task('watch', ['styles', 'scripts', 'index'], function() {
   gulp.watch(src.scripts, ['scripts']);
   gulp.watch('index.ejs', ['index']);
 });
+
+gulp.task('test', () => {
+  return gulp.src(['**/*-test.js', '!node_modules/**/*'])
+    .pipe(mocha({
+      compilers: 'js:babel-register',
+      require: 'test/helpers/common.js'
+    }));
+})
+
+gulp.task('test:watch', ['lint', 'test'], () => {
+  src.scripts = ['./**/*.js'].concat(exclude);
+  gulp.watch(src.scripts, ['lint', 'test'])
+})

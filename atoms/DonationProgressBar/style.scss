@@ -1,0 +1,37 @@
+.donation-progress-caption {
+  color: $grey;
+  padding: 10px 0;
+}
+
+.donation-progress-remaining {
+  font-size: 1.3em;
+}
+
+.donation-progress-target {
+  font-size: 1.1em;
+  text-align: right;
+}
+
+.donation-progress {
+  height: 10px;
+  transition: width 0.3s ease-out;
+
+  &.background {
+    width: 100%;
+    position: relative;
+    background: $grey-light;
+  }
+
+  &.existing,
+  &.influence {
+    position: absolute;
+  }
+
+  &.existing {
+    background: $green-active;
+  }
+
+  &.influence {
+    background: $green-light;
+  }
+}

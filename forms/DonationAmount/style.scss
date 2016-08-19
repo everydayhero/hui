@@ -1,0 +1,53 @@
+/* Begin kludges to reset existing Command Centre styles */
+div.section fieldset.inputs ol {
+  &.donation-options-list,
+  &.donation-presets-list {
+    float: none;
+    width: auto;
+    display: flex;
+    margin: 20px 0 0 0;
+
+    * {
+      box-sizing: border-box;
+    }
+  }
+}
+
+fieldset.inputs li.donation-preset {
+  padding: 0 10px;
+  margin: 0;
+}
+
+/* End Command Centre resets */
+
+.donation-preset {
+  flex: 1 1 25%;
+}
+
+.donation-preset-amount-label {
+  padding: 15px;
+  background: white;
+  text-align: center;
+  border: 1px $grey-lightest solid;
+  color: $grey;
+  cursor: pointer;
+
+  &.selected {
+    background: $green-light;
+    color: $white;
+    border: 1px $green-light solid;
+  }
+
+  &.selected {
+    cursor: default;
+  }
+}
+
+.donation-preset-amount-label {
+  display: block;
+  width: 100%;
+}
+
+.donation-preset-amount {
+  display: none;
+}

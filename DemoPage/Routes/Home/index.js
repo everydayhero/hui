@@ -38,6 +38,7 @@ import AvatarInput from '../../examples/AvatarInput'
 import FlashMessage from '../../examples/FlashMessage'
 import Tabs from '../../examples/Tabs'
 import Leaderboard from '../../examples/Leaderboard'
+import DonationAmountsList from '../../examples/DonationAmountsList'
 
 const IMG_PATH = '../../images/'
 
@@ -50,6 +51,14 @@ export default React.createClass({
         <GlobalNav domain="everydayhero-staging.com" region="au" imgPath={ IMG_PATH } />
 
         <div className="DemoPage__content">
+
+          <h2 className="DemoPage__h2" id="donation_amounts">
+            TODO (Move this down )Donation Details
+          </h2>
+          <div className="DemoPage__group">
+            <DonationAmountsList />
+          </div>
+
           <h2 className="DemoPage__h2" id="how-to-use">How To Use</h2>
           <p className="DemoPage__p">HUI documentation can be found on <a href="http://everydayhero.github.io/public-api-docs/hui">EDH docs</a></p>
           <h2 className="DemoPage__h2" id="layout">Layout</h2>
@@ -115,6 +124,7 @@ export default React.createClass({
             <Link to="/wizard/1">Open Wizard</Link>
             { this.props.children }
           </div>
+
         </div>
       </div>
     )

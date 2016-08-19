@@ -27,4 +27,5 @@ global.findByTag = TestUtils.findRenderedDOMComponentWithTag
 global.scryByAttribute = require('./scryRenderedDOMComponentsWithAttribute').scryRenderedDOMComponentsWithAttribute
 global.findByAttribute = require('./scryRenderedDOMComponentsWithAttribute').findRenderedDOMComponentWithAttribute
 
+chai.use(require('chai-enzyme')())
 chai.use(require('sinon-chai'))
