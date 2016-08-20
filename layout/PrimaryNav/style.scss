@@ -1,0 +1,35 @@
+$navigation-width: $x-48;
+$color-sidebar-background: $slate;
+
+.Navigation {
+  background-color: $color-sidebar-background;
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+  overflow: hidden;
+  max-width: $navigation-width;
+  min-width: $navigation-width;
+  transition: $ease-in-out-slow;
+}
+
+.Navigation__wrap {
+  width: $navigation-width;
+  overflow: hidden;
+  transition: $ease-in-out-slow;
+}
+
+.Navigation--reduce {
+  max-width: $x-16;
+  min-width: $x-16;
+  .Navigation__wrap {
+    width: $x-16;
+  }
+
+  &:hover {
+    max-width: $navigation-width;
+
+    .Navigation__wrap {
+      width: $navigation-width;
+    }
+  }
+}

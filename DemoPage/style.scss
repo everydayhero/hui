@@ -126,3 +126,12 @@
 .DemoPage__example--button--inverse {
   background: $grey;
 }
+
+.DemoPage__options {
+  border: 2px dashed #f0af47;
+  font-size: $x-4;
+
+  padding: $x-2;
+  margin-bottom: $x-6;
+  margin-top: $x-6;
+}
