@@ -43,9 +43,9 @@ export default {
   validate(val) {
     let props = this.props
     if (!props.required) { return }
-    let value = val || this.props.value
+    let value = val || this.props.value || ""
     let hasValue = value && !!value.trim()
-    if (hasValue && props.validate) {
+    if (props.validate) {
       this.setState({ waiting: true })
       props.validate(value, this.setValid)
     } else {
@@ -99,17 +99,19 @@ export default {
     if (this.props.disabled || this.props.readOnly) { return }
     this.setState({
       hasError: false,
+      errors: [],
       valid: false,
       value: this.maskValue(value)
     })
     this.expose(value)
   },
 
-  setValid(valid) {
+  setValid(valid, errors = []) {
     let onError = this.props.onError
     if (onError) { onError(!valid); }
     this.setState({
       hasError: !valid,
+      errors: errors,
       waiting: false,
       valid
     })

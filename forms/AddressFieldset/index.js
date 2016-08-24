@@ -92,7 +92,7 @@ export default React.createClass({
       value: this.state.form[name],
       required: methods && !!methods.length,
       showError: this.props.showError,
-      validate: methods && validation[methods[0]],
+      validate: methods && validation.compose(...methods),
       errorMessage: this.t(name + '_blank_error', { scope: this.state.countryCode }),
       spacing: this.props.internalSpacing,
       storeLocally: this.props.storeLocally,

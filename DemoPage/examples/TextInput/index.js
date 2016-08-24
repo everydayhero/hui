@@ -4,6 +4,7 @@ import React              from 'react'
 import TextCountDownInput from '../../../forms/TextCountDownInput'
 import TextInput          from '../../../forms/TextInput'
 import formMixin          from '../../../mixins/reactForm.mixin'
+import validation         from '../../../lib/validation'
 
 export default React.createClass({
   displayName: 'TextInputExample',
@@ -35,8 +36,10 @@ export default React.createClass({
         id="demo_input"
         value={ this.state.form.demo_input_01 }
         label="Hint"
+        required={true}
         placeHolder="This is a placeholder"
-        onChange={ change('demo_input_01') } />
+        onChange={ change('demo_input_01') }
+        validate={ validation.compose('name', 'phone') } />
       <TextInput
         autoComplete={false}
         id="demo_input"

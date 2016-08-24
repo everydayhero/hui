@@ -12,8 +12,7 @@ export default {
   },
 
   shouldShowError() {
-    let props = this.props
-    let errors = props.errors || []
+    let errors = collectErrors(this.props, this.state) || []
 
     return this.state.hasError || errors.length
   },
@@ -21,14 +20,15 @@ export default {
   shouldRenderMessage () {
     const {
       hint,
-      errorMessage,
-      errors
+      errorMessage
     } = this.props
+
+    const errors = collectErrors(this.props, this.state) || []
 
     const { focused } = this.state
 
     return (!!errorMessage && this.shouldShowError()) ||
-           (!!(errors || []).length && this.shouldShowError()) ||
+           (!!errors.length && this.shouldShowError()) ||
            (!!hint && focused)
   },
 
@@ -36,8 +36,10 @@ export default {
     let props = this.props
     let message
 
+    const displayErrors = collectErrors(this.props, this.state)
+
     let errors = this.state.hasError
-      ? [props.errorMessage]
+      ? displayErrors || [props.errorMessage]
       : props.errors || []
 
     if (errors.length > 0) {
@@ -51,5 +53,14 @@ export default {
         { message }
       </div>
     )
+  }
+}
+
+function collectErrors(props, state) {
+  if (props.errors && props.errors.length) {
+    return props.errors
+  }
+  if (state.errors && state.errors.length) {
+    return state.errors
   }
 }

@@ -43,8 +43,8 @@ export default {
         showError={ state.showErrors }
         spacing="tight"
         required={ !!method }
-        validate={ validation[method] }
-        errorMessage={ validation[method + 'Message'] } />
+        validate={ typeof method === 'function' ? method : validation[method] }
+        errorMessage={ typeof method === 'string' && validation[method + 'Message'] } />
     )
   },
 
@@ -56,7 +56,7 @@ export default {
 
   onFieldError(key) {
     if (!this.errors) { this.errors = this.state.errors || {} }
-    return bool => {
+    return (bool) => {
       this.errors[key] = bool
       this.setErrors()
     }
