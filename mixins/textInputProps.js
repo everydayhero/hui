@@ -54,7 +54,10 @@ export const types = {
   mask: React.PropTypes.func,
   onFocus: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  validate: React.PropTypes.func,
+  validate: React.PropTypes.oneOfType([
+    React.PropTypes.func,
+    React.PropTypes.array
+  ]),
   onError: React.PropTypes.func,
   onBlur: React.PropTypes.func,
   onTab: React.PropTypes.func,
