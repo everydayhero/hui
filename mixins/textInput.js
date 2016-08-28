@@ -173,8 +173,8 @@ export default {
 }
 
 function getValidator (validate) {
-  if (!isArray(validate)) {
-    validate = [validate]
+  if (isArray(validate)) {
+    return validation.compose(...validate)
   }
-  return validation.compose(...validate)
+  return validate
 }
