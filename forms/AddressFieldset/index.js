@@ -7,7 +7,6 @@ import isEqual from 'lodash/lang/isEqual'
 import classnames from 'classnames'
 import I18n from '../../mixins/I18n'
 import formControl from '../../mixins/formControl'
-import validation from '../../lib/validation'
 import Input from '../TextInput'
 import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
@@ -92,7 +91,7 @@ export default React.createClass({
       value: this.state.form[name],
       required: methods && !!methods.length,
       showError: this.props.showError,
-      validate: methods && validation[methods[0]],
+      validate: methods,
       errorMessage: this.t(name + '_blank_error', { scope: this.state.countryCode }),
       spacing: this.props.internalSpacing,
       storeLocally: this.props.storeLocally,

@@ -5,6 +5,7 @@
 import merge from 'lodash/object/merge'
 import isEmpty from 'lodash/lang/isEmpty'
 import cloneDeep from 'lodash/lang/cloneDeep'
+import isArray from 'lodash/lang/isArray'
 import React from 'react'
 import validation from '../lib/validation'
 
@@ -43,8 +44,9 @@ export default {
         showError={ state.showErrors }
         spacing="tight"
         required={ !!method }
-        validate={ validation[method] }
-        errorMessage={ validation[method + 'Message'] } />
+        validate={ isArray(method) ? method : [method] }
+        errors={ state.errors && state.errors[name] && state.errors[name].messages }
+        errorMessage={ typeof method === 'string' && validation[method + 'Message'] } />
     )
   },
 
@@ -56,8 +58,8 @@ export default {
 
   onFieldError(key) {
     if (!this.errors) { this.errors = this.state.errors || {} }
-    return bool => {
-      this.errors[key] = bool
+    return (inError, messages = []) => {
+      this.errors[key] = { inError, messages }
       this.setErrors()
     }
   },

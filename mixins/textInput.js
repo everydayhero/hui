@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { findDOMNode } from 'react-dom'
+import isArray from 'lodash/lang/isArray'
 import Icon from '../atoms/Icon'
 import classnames from 'classnames'
+import validation from '../lib/validation'
 
 export default {
   componentDidMount() {
@@ -37,18 +39,19 @@ export default {
     let { onChange, onError, validate, required } = props
 
     if (onChange) { onChange(value) }
-    if (onError && validate && required) { onError(!validate(value)) }
+    if (onError && validate && required) { onError(!getValidator(validate)(value)) }
   },
 
   validate(val) {
-    let props = this.props
-    if (!props.required) { return }
-    let value = val || this.props.value
-    let hasValue = value && !!value.trim()
-    if (hasValue && props.validate) {
+    const { validate, required, value: propValue } = this.props
+    if (!required) { return }
+    let value = val || propValue || ""
+
+    if (validate) {
       this.setState({ waiting: true })
-      props.validate(value, this.setValid)
+      getValidator(validate)(value, this.setValid)
     } else {
+      let hasValue = value && !!value.trim()
       this.setValid(hasValue)
     }
   },
@@ -82,13 +85,13 @@ export default {
   },
 
   handleBlur() {
-    let props = this.props
-    if (props.disabled || props.readOnly) { return }
+    let { disabled, readOnly, onBlur, value } = this.props
+    if (disabled || readOnly) { return }
 
     this.setState({ focused: false })
     this.validate()
-    if (props.onBlur) {
-      props.onBlur(props.value, val => {
+    if (onBlur) {
+      onBlur(value, val => {
         this.setValue(val);
         this.validate(val);
       });
@@ -105,9 +108,9 @@ export default {
     this.expose(value)
   },
 
-  setValid(valid) {
+  setValid(valid, errors = []) {
     let onError = this.props.onError
-    if (onError) { onError(!valid); }
+    if (onError) { onError(!valid, errors); }
     this.setState({
       hasError: !valid,
       waiting: false,
@@ -167,4 +170,11 @@ export default {
       onFocus: this.handleFocus
     }
   }
+}
+
+function getValidator (validate) {
+  if (isArray(validate)) {
+    return validation.compose(...validate)
+  }
+  return validate
 }
