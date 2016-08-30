@@ -9,7 +9,7 @@ import Icon from '../../../atoms/Icon'
 
 import urls from '../../../urls'
 import cx from 'classnames'
-import { addListeners, removeListeners } from '../../../lib/bindEvents'
+import { addEventBindings, removeEventBindings } from '../../../lib/eventUtils'
 
 export default React.createClass({
   displayName: 'NavAccount',
@@ -36,12 +36,12 @@ export default React.createClass({
 
   open() {
     let open = !this.state.open
-    this.setState({ open }, () => open && addListeners(['mousedown', 'touchstart'], this.handleClick))
+    this.setState({ open }, () => open && addEventBindings(['mousedown', 'touchstart'], this.handleClick))
   },
 
   close() {
     this.setState({ open: false }, () => {
-      removeListeners(['mousedown', 'touchstart'], this.handleClick)
+      removeEventBindings(['mousedown', 'touchstart'], this.handleClick)
       setTimeout(() => this.refs.button.blur(), 15)
     })
   },

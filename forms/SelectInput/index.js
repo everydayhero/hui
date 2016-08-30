@@ -114,7 +114,7 @@ export default React.createClass({
     if(props.value) {
       criteria[props.valueKey] = props.value
 
-      return _.where(options, criteria)[0]
+      return _.filter(options, criteria)[0]
     }
   },
 

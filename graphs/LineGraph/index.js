@@ -8,7 +8,7 @@ import YScale              from './YScale'
 import XScale              from './XScale'
 import ToolTip             from './ToolTip'
 import LoadingPlaceholder  from './LoadingPlaceholder'
-import { addListeners, removeListeners } from '../../lib/bindEvents'
+import { addEventBindings, removeEventBindings } from '../../lib/eventUtils'
 
 export default React.createClass({
   displayName: 'LineGraph',
@@ -57,7 +57,7 @@ export default React.createClass({
 
   componentDidMount: function() {
     this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 })
-    addListeners('resize', this.handleResizeDebounce, window)
+    addEventBindings('resize', this.handleResizeDebounce, window)
     this.handleResize()
   },
 
@@ -66,7 +66,7 @@ export default React.createClass({
   },
 
   componentWillUnmount: function() {
-    removeListeners('resize', this.handleResizeDebounce, window)
+    removeEventBindings('resize', this.handleResizeDebounce, window)
   },
 
   transformCollection: function() {

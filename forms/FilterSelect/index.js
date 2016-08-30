@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react'
-import find from 'lodash/collection/find'
-import isEqual from 'lodash/lang/isEqual'
+import find from 'lodash/find'
+import isEqual from 'lodash/isEqual'
 import validatable from '../../mixins/validatable'
 import inputMessage from '../../mixins/inputMessage'
 import FocusAggregate from '../FocusAggregate'

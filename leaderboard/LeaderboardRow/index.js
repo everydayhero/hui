@@ -7,8 +7,7 @@ import Share from '../../buttons/Share'
 import ProgressBar from '../../atoms/ProgressBar'
 import classnames from 'classnames'
 import _ from 'lodash'
-import addEventListener from '../../lib/addEventListener'
-import removeEventListener from '../../lib/removeEventListener'
+import { addEventBindings, removeEventBindings } from '../../lib/eventUtils'
 import i18n from './i18n'
 import i18nMixin from '../../mixins/I18n'
 import numeric from '../../lib/numeric'
@@ -68,12 +67,12 @@ export default React.createClass({
 
   componentDidMount: function() {
     this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 });
-    addEventListener('resize', this.handleResizeDebounce);
+    addEventBindings('resize', this.handleResizeDebounce);
     this.handleResize();
   },
 
   componentWillUnmount: function() {
-    removeEventListener('resize', this.handleResizeDebounce);
+    removeEventBindings('resize', this.handleResizeDebounce);
   },
 
   handleResize: function() {

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { findDOMNode } from 'react-dom'
-import isArray from 'lodash/lang/isArray'
+import isArray from 'lodash/isArray'
 import Icon from '../atoms/Icon'
 import classnames from 'classnames'
 import validation from '../lib/validation'

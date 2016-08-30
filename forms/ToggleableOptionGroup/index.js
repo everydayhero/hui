@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ToggleableOption from '../ToggleableOption'
-import map from 'lodash/collection/map'
-import forEach from 'lodash/collection/forEach'
-import compact from 'lodash/array/compact'
-import merge from 'lodash/object/merge'
-import keys from 'lodash/object/keys'
+import map from 'lodash/map'
+import forEach from 'lodash/forEach'
+import compact from 'lodash/compact'
+import merge from 'lodash/merge'
+import keys from 'lodash/keys'
 
 export default React.createClass({
   displayName: 'ToggleableOptionGroup',

@@ -2,7 +2,7 @@
 
 import _ from 'lodash'
 var flip = _.curry(function(f, x, y) { return f(y, x); });
-var pluck = flip(_.pluck);
+var pluck = flip(_.map);
 
 export default {
   getMin: function() {
@@ -14,12 +14,12 @@ export default {
   },
 
   getValues: function() {
-    var values = _.compose(pluck('calculatedValue'), _.flatten, pluck('series'));
+    var values = _.flowRight(pluck('calculatedValue'), _.flatten, pluck('series'));
     return values(this.props.collection);
   },
 
   getValuesForIndex: function(index) {
-    return _.pluck(this.props.collection[index].series, 'calculatedValue');
+    return _.map(this.props.collection[index].series, 'calculatedValue');
   },
 
   getMinForIndex: function(index) {

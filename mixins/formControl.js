@@ -2,10 +2,10 @@
 
 // Requires I18n mixin
 
-import merge from 'lodash/object/merge'
-import isEmpty from 'lodash/lang/isEmpty'
-import cloneDeep from 'lodash/lang/cloneDeep'
-import isArray from 'lodash/lang/isArray'
+import merge from 'lodash/merge'
+import isEmpty from 'lodash/isEmpty'
+import cloneDeep from 'lodash/cloneDeep'
+import isArray from 'lodash/isArray'
 import React from 'react'
 import validation from '../lib/validation'
 

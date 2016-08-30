@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import forEach from 'lodash/collection/forEach'
+import forEach from 'lodash/forEach'
 import classnames from 'classnames'
 import UrlSearchSelect from '../UrlSearchSelect'
 import CountrySelect from '../CountrySelect'
