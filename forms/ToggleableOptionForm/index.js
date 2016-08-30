@@ -4,8 +4,8 @@ import React from 'react'
 import ToggleableOptionGroup from '../ToggleableOptionGroup'
 import Icon from '../../atoms/Icon'
 import sync from '../../lib/sync'
-import map from 'lodash/collection/map'
-import isBoolean from 'lodash/lang/isBoolean'
+import map from 'lodash/map'
+import isBoolean from 'lodash/isBoolean'
 
 export default React.createClass({
   displayName: 'ToggleableOptionForm',

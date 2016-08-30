@@ -6,7 +6,7 @@ import SiteNav from './SiteNav'
 import NavUser from './NavUser'
 
 import urls from '../../urls'
-import isEmpty from 'lodash/lang/isEmpty'
+import isEmpty from 'lodash/isEmpty'
 import cx from 'classnames'
 
 export default React.createClass({

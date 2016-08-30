@@ -2,7 +2,7 @@
 
 import React from 'react'
 import OptionList from '../forms/OptionList'
-import find from 'lodash/collection/find'
+import find from 'lodash/find'
 
 export default React.createClass({
   displayName: 'Leaderboard',

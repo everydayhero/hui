@@ -38,6 +38,9 @@ import AvatarInput from '../../examples/AvatarInput'
 import FlashMessage from '../../examples/FlashMessage'
 import Tabs from '../../examples/Tabs'
 import Leaderboard from '../../examples/Leaderboard'
+import RadioGroup from '../../examples/RadioGroup'
+import TextAreaLite from '../../examples/TextAreaLite'
+import IconButtons from '../../examples/IconButtons'
 
 const IMG_PATH = '../../images/'
 
@@ -103,6 +106,9 @@ export default React.createClass({
             <Fieldset />
             <TagList />
             <AvatarInput />
+            <RadioGroup />
+            <TextAreaLite />
+            <IconButtons />
           </div>
 
           <h2 className="DemoPage__h2" id="forms">Leaderboard</h2>

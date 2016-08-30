@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import { addListeners, removeListeners } from '../../lib/bindEvents'
+import { addEventBindings, removeEventBindings } from '../../lib/eventUtils'
 import cx from 'classnames'
 import Icon from '../Icon'
 
@@ -28,12 +28,12 @@ export default React.createClass({
 
   openTip() {
     this.setState({ open: true })
-    addListeners('click', this.closeTip, document)
+    addEventBindings('click', this.closeTip, document)
   },
 
   closeTip() {
     this.setState({ open: false })
-    removeListeners('click', this.closeTip, document)
+    removeEventBindings('click', this.closeTip, document)
   },
 
   render() {

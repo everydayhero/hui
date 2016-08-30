@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react'
-import find from 'lodash/collection/find'
-import isEmpty from 'lodash/lang/isEmpty'
+import find from 'lodash/find'
+import isEmpty from 'lodash/isEmpty'
 import Button from '../../buttons/Button'
 import AddressLookup from '../AddressLookup'
 import AddressFieldset from '../AddressFieldset'

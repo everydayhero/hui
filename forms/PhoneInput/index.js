@@ -6,8 +6,8 @@ import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import validateAs from '../../lib/validation'
 import cx from 'classnames'
-import find from 'lodash/collection/find'
-import forEach from 'lodash/collection/forEach'
+import find from 'lodash/find'
+import forEach from 'lodash/forEach'
 
 const isNumber = (str) => /[0-9]/.test(str)
 

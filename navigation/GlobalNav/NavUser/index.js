@@ -14,7 +14,7 @@ import NavAccount from '../NavAccount'
 import api from '../../../api'
 import urls from '../../../urls'
 import getJSON from '../../../lib/getJSON'
-import isEmpty from 'lodash/lang/isEmpty'
+import isEmpty from 'lodash/isEmpty'
 import cx from 'classnames'
 
 export default React.createClass({

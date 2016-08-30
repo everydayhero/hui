@@ -1,0 +1,41 @@
+/*vertical slide*/
+.slide-enter {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.slide-enter.slide-enter-active {
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 480ms ease-in;
+}
+
+.slide-leave {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.slide-leave.slide-leave-active {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 480ms ease-out;
+}
+
+/*fade*/
+.fade-enter {
+  opacity: 0.05;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all 180ms 60ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.05;
+  transition: all 180ms 60ms ease-out;
+}

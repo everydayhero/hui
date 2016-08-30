@@ -6,7 +6,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var browserifyInc = require('browserify-incremental');
-var merge = require('lodash/object/merge');
+var merge = require('lodash/merge');
 
 // Tasks
 require('./gulp_tasks/assets-deploy');

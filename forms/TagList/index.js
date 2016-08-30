@@ -4,8 +4,8 @@ import React from 'react'
 
 import ListItem from './Item'
 
-import remove from 'lodash/array/remove'
-import isEmpty from 'lodash/lang/isEmpty'
+import remove from 'lodash/remove'
+import isEmpty from 'lodash/isEmpty'
 import classnames from 'classnames'
 
 export default React.createClass({

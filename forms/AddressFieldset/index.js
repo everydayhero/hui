@@ -1,9 +1,9 @@
 'use strict'
 
 import React from 'react'
-import find from 'lodash/collection/find'
-import merge from 'lodash/object/merge'
-import isEqual from 'lodash/lang/isEqual'
+import find from 'lodash/find'
+import merge from 'lodash/merge'
+import isEqualWith from 'lodash/isEqualWith'
 import classnames from 'classnames'
 import I18n from '../../mixins/I18n'
 import formControl from '../../mixins/formControl'
@@ -66,7 +66,7 @@ export default React.createClass({
   },
 
   fieldChangeHandler() {
-    let paf_validated = isEqual(this.state.initialAddress, this.state.form, (i, f, k) => {
+    let paf_validated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
       if (k === 'paf_validated') { return i }
     })
     this.form = { ...this.state.form, paf_validated }

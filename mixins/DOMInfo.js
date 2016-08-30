@@ -7,7 +7,7 @@
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import { canUseDOM } from 'exenv'
-import addEventListener from '../lib/addEventListener'
+import { addEventBindings } from '../lib/eventUtils'
 
 const breakpoints = {
   phone: 450,
@@ -25,7 +25,7 @@ const sizes = {
 const resizeHandlers = []
 
 if (canUseDOM) {
-  addEventListener('resize', function(e) {
+  addEventBindings('resize', function(e) {
     resizeHandlers.forEach(function(handler) {
       handler(e)
     })
@@ -38,7 +38,7 @@ function findSize(o, w) {
   })
 }
 
-module.exports = {
+export default {
   getInitialState: function() {
     return {
       size: 'medium',

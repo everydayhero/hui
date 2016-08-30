@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom'
 import DatePicker from './DatePicker'
 import TextInput from '../TextInput'
 import classnames from 'classnames'
-import addEventListener from '../../lib/addEventListener'
-import removeEventListener from '../../lib/removeEventListener'
+import { addEventBindings, removeEventBindings } from '../../lib/eventUtils'
 
 var dateFormats = {
   uk: ['DD', 'YYYY', 'DD-MM', 'MMM DD', 'MMM Do', 'DD-MM-YY', 'DD-MM-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD'],
@@ -56,13 +55,13 @@ export default React.createClass({
 
   componentWillMount: function() {
     if (typeof document === 'object') {
-      addEventListener('click', this._clickBody, document);
+      addEventBindings('click', this._clickBody, document);
     }
   },
 
   componentWillUnmount: function() {
     if (typeof document === 'object') {
-      removeEventListener('click', this._clickBody, document);
+      removeEventBindings('click', this._clickBody, document);
     }
   },
 
