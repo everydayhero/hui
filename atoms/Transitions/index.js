@@ -1,12 +1,13 @@
 import React from 'react'
-import Transition from 'react-addons-css-transition-group'
+import { VelocityTransitionGroup } from 'velocity-react'
+import { revealVertical, fade } from './transitions'
 
-const T = (children, name = 'fade', enter = 120, leave = 120) => (
-  <Transition transitionName={ name } transitionEnterTimeout={ enter } transitionLeaveTimeout={ leave }>
+const T = (children, transition) => (
+  <VelocityTransitionGroup { ...transition }>
     { children }
-  </Transition>
+  </VelocityTransitionGroup>
 )
 
-export const SlideVertical = ({ children }) => T(children, 'slide', 480, 480)
+export const SlideVertical = ({ children }) => T(children, revealVertical)
 
-export const Fade = ({ children }) => T(children, 'fade', 240, 240)
+export const Fade = ({ children }) => T(children, fade)

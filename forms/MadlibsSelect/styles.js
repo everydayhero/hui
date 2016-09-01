@@ -43,6 +43,7 @@ export const mirror = merge({}, selectMirror, {
 })
 
 export const select = merge({}, selectMirror, {
+  opacity: 0,
   appearance: 'none',
   textIndent: 0.01,
   textOverflow: '',
