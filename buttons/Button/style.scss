@@ -19,34 +19,9 @@
   box-sizing: border-box;
   font-feature-settings: "liga" 0;
 
-  &:before {
-    transition: all 200ms ease-out;
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    padding-bottom: 100%;
-    margin-top: -50%;
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 0;
-  }
-
   &:hover, &:focus {
     color: white;
     text-decoration: none;
-  }
-
-  &:hover:before, &:focus:before {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  &:active:before {
-    transform: scale(1);
-    opacity: 0;
   }
 }
 
@@ -169,9 +144,8 @@ a.hui-Button--slim {
 .hui-Button--cta,
 .hui-Button--secondary {
   border-color: $green;
-  &:before {
+  &:hover {
     background-color: $green-active;
-    box-shadow: 0 0 90px 60px $green-active;
   }
   .hui-Button__icon {
     border-color: $green-light;
@@ -179,53 +153,46 @@ a.hui-Button--slim {
 }
 
 .hui-Button--facebook {
-  &:before {
+  &:hover {
     background-color: darken($facebook, 10%);
-    box-shadow: 0 0 90px 60px darken($facebook, 10%);
   }
 }
 
 .hui-Button--twitter {
-  &:before {
+  &:hover {
     background-color: darken($twitter, 10%);
-    box-shadow: 0 0 90px 60px darken($twitter, 10%);
   }
 }
 
 .hui-Button--googleplus {
-  &:before {
+  &:hover {
     background-color: darken($googleplus, 10%);
-    box-shadow: 0 0 90px 60px darken($googleplus, 10%);
   }
 }
 
 .hui-Button--pinterest {
-  &:before {
+  &:hover {
     background-color: darken($pinterest, 10%);
-    box-shadow: 0 0 90px 60px darken($pinterest, 10%);
   }
 }
 
 .hui-Button--strava {
-  &:before {
+  &:hover {
     background-color: darken($strava, 10%);
-    box-shadow: 0 0 90px 60px darken($strava, 10%);
   }
 }
 
 .hui-Button--mapmyfitness {
-  &:before {
+  &:hover {
     background-color: darken($mmf, 10%);
-    box-shadow: 0 0 90px 60px darken($mmf, 10%);
   }
 }
 
 .hui-Button--primary,
 .hui-Button--tertiary {
   border-color: $grey;
-  &:before {
+  &:hover {
     background-color: $grey;
-    box-shadow: 0 0 90px 60px $grey;
   }
   .hui-Button__icon {
     border-color: $grey-light;
@@ -285,18 +252,16 @@ a.hui-Button--slim {
 
 .hui-Button--primary.hui-Button--inverse {
   border-color: white;
-  &:before {
+  &:hover {
     background-color: $grey-lighter;
-    box-shadow: 0 0 90px 60px $grey-lighter;
   }
 }
 
 .hui-Button--secondary.hui-Button--inverse,
 .hui-Button--tertiary.hui-Button--inverse {
   border-color: white;
-  &:before {
+  &:hover {
     background-color: $grey-lighter;
-    box-shadow: 0 0 90px 60px $grey-lighter;
   }
   .hui-Button__icon {
     border-color: white;
@@ -374,9 +339,8 @@ a.hui-Button--slim {
   border-color: $grey-light !important;
   border-style: dashed !important;
   background-color: $grey-lighter;
-  &:before {
+  &:hover {
     background-color: transparent !important;
-    box-shadow: 0 0 90px 60px transparent !important;
   }
   .hui-Button__icon {
     border-color: $grey-light !important;
