@@ -70,7 +70,6 @@ export const modal = {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: c.lightestGrey,
-  padding: r(0.25),
   ' > *': {
     margin: '0 1%'
   },
@@ -80,10 +79,10 @@ export const modal = {
     fontSize: r(0.75)
   },
   ' input[type=number]': {
-    maxWidth: r(3)
+    maxWidth: r(4)
   },
   ' input[type=tel]': {
-    maxWidth: r(3)
+    maxWidth: r(2)
   }
 }
 

@@ -50,13 +50,13 @@
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",
     "react": "^0.14.1",
-    "react-addons-css-transition-group": "^0.14.7",
     "react-addons-pure-render-mixin": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-functional": "^1.2.0",
     "remarkable": "^1.6.0",
     "superagent": "^2.0.0",
-    "uuid": "^2.0.1"
+    "uuid": "^2.0.1",
+    "velocity-react": "^1.1.5"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
