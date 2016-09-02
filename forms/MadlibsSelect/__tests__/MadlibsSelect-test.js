@@ -6,12 +6,12 @@ describe(CWD, () => {
   const subject = (props = {}) => shallow(<Component { ...props } />)
 
   it('renders', () => {
-    const props = { options: ['this', 'is', 'a', 'test'], inputProps: { onChange: sinon.spy() } }
+    const props = { options: ['this', 'is', 'a', 'test'], onChange: sinon.spy() }
     subject(props).should.have.length(1)
   })
 
   it('lists options', () => {
-    const props = { options: ['this', 'is', 'a', 'test'], inputProps: { onChange: sinon.spy() } }
+    const props = { options: ['this', 'is', 'a', 'test'], onChange: sinon.spy() }
     const el = subject(props)
     el.find('option').should.have.length(4)
     el.containsMatchingElement(<option key="is" value="is">is</option>).should.eql(true)
@@ -22,9 +22,7 @@ describe(CWD, () => {
     const props = {
       options: ['this', 'is', 'a', 'test'],
       displayOptions: ['alternative', 'display', 'options'],
-      inputProps: {
-        onChange: sinon.spy()
-      }
+      onChange: sinon.spy()
     }
     subject(props).containsMatchingElement(<option key="is" value="is">display</option>).should.eql(true)
   })
@@ -33,9 +31,7 @@ describe(CWD, () => {
     const props = {
       options: ['this', 'is', 'a', 'test'],
       displayValue: 'testDisplayValue',
-      inputProps: {
-        onChange: sinon.spy()
-      }
+      onChange: sinon.spy()
     }
     subject(props).find('pre').text().should.eql('testDisplayValue')
   })
