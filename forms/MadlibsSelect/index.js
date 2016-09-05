@@ -6,12 +6,10 @@ import * as styles from './styles'
 const Option = ({ value, display }) => <option key={ value } value={ value }>{ display }</option>
 
 const propTypes = {
-  inputProps: PropTypes.shape({
-    hasFocus: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.node
-  }).isRequired,
-  options: PropTypes.arrayOf(PropTypes.node).isRequired,
+  value: PropTypes.node,
+  hasFocus: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
   displayOptions: PropTypes.arrayOf(PropTypes.string),
   displayValue: PropTypes.string
 }
@@ -20,10 +18,8 @@ const render = ({
   options,
   displayOptions = [],
   displayValue,
-  inputProps: {
-    hasFocus,
-    ...rest
-  }
+  hasFocus,
+  ...rest
 }) => (
   <span className={ css(styles.wrapper, hasFocus && styles.focused) }>
     <pre className={ css(styles.mirror) }>{ displayValue || rest.value || options[0] }</pre>
