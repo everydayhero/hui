@@ -3,6 +3,7 @@ var babel = require('gulp-babel')
 var sourceDirectories = [
   'atoms',
   'buttons',
+  'css',
   'forms',
   'graphs',
   'layout',
