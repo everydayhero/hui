@@ -92,7 +92,7 @@ gulp.task('images', function() {
 gulp.task('build', ['index']);
 gulp.task('default', ['build']);
 
-gulp.task('watch', ['styles', 'scripts', 'index'], function() {
+gulp.task('watch', ['index'], function() {
   gulp.watch(['**/*.scss', '**/*.css', '**/*.sass'].concat(exclude), ['styles']);
   gulp.watch(src.scripts, ['scripts']);
   gulp.watch('index.ejs', ['index']);
