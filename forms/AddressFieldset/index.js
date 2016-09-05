@@ -32,7 +32,7 @@ export default React.createClass({
     validations: React.PropTypes.object
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       address: {
         paf_validated: false
@@ -50,7 +50,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     let country = this.getSelectedCountry() || countries[0]
     let address = merge({}, this.props.address, { country })
     return {
@@ -60,12 +60,12 @@ export default React.createClass({
     }
   },
 
-  getSelectedCountry() {
+  getSelectedCountry () {
     const countryName = this.props.address.country_name
     return find(countries, country => country.label === countryName || country.value === countryName)
   },
 
-  fieldChangeHandler() {
+  fieldChangeHandler () {
     let paf_validated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
       if (k === 'paf_validated') { return i }
     })
@@ -73,14 +73,14 @@ export default React.createClass({
     this.setState({ form: this.form })
   },
 
-  handleCountrySelection(country) {
+  handleCountrySelection (country) {
     this.setState({ countryCode: country.value })
     this.onFieldChange('country')(country)
     this.onFieldChange('country_name')(country.label)
     this.props.onCountrySelect(country)
   },
 
-  fieldProps(name) {
+  fieldProps (name) {
     let methods = this.props.validations[name]
     return {
       ...this.fieldMethods(name),
@@ -93,21 +93,22 @@ export default React.createClass({
       showError: this.props.showError,
       validate: methods,
       errorMessage: this.t(name + '_blank_error', { scope: this.state.countryCode }),
+      errors: this.state.errors && this.state.errors[name] && this.state.errors[name].messages,
       spacing: this.props.internalSpacing,
       storeLocally: this.props.storeLocally,
       localStorageKey: name
     }
   },
 
-  renderAddressField(name, customProps) {
-    return <Input { ...this.fieldProps(name) } { ...customProps } />
+  renderAddressField (name, customProps) {
+    return <Input {...this.fieldProps(name)} {...customProps} />
   },
 
-  renderCountrySelect(name, customProps) {
-    return <CountrySelect { ...this.fieldProps(name) } { ...customProps } />
+  renderCountrySelect (name, customProps) {
+    return <CountrySelect {...this.fieldProps(name)} {...customProps} />
   },
 
-  render() {
+  render () {
     let props = this.props
     let state = this.state
     let classes = classnames([
@@ -117,23 +118,23 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className={ `hui-AddressFieldset__wrap hui-AddressFieldset__wrap--internal-${props.internalSpacing}` }>
+      <div className={classes}>
+        <div className={`hui-AddressFieldset__wrap hui-AddressFieldset__wrap--internal-${props.internalSpacing}`}>
           <div className="hui-AddressFieldset__header">
-            { props.header }
+            {props.header}
           </div>
 
-          { this.renderAddressField('street_address', { autoFocus: !props.address.street_address && props.autoFocus }) }
-          { this.renderAddressField('extended_address') }
-          { this.renderAddressField('locality', { layout: 'twoThirds' }) }
-          { this.renderAddressField('region', { layout: 'third' }) }
-          { this.renderCountrySelect('country_name', { data: state.form.country, displayProperty: 'label', layout: 'twoThirds', onSelection: this.handleCountrySelection }) }
-          { this.renderAddressField('postal_code', { layout: 'third' }) }
+          {this.renderAddressField('street_address', { autoFocus: !props.address.street_address && props.autoFocus })}
+          {this.renderAddressField('extended_address')}
+          {this.renderAddressField('locality', { layout: 'twoThirds' })}
+          {this.renderAddressField('region', { layout: 'third' })}
+          {this.renderCountrySelect('country_name', { data: state.form.country, displayProperty: 'label', layout: 'twoThirds', onSelection: this.handleCountrySelection })}
+          {this.renderAddressField('postal_code', { layout: 'third' })}
 
-          { props.children }
+          {props.children}
 
-          <input type="hidden" name={ props.prefix + 'country_iso' } value={ state.countryCode } />
-          <input type="hidden" name={ props.prefix + 'paf_validated' } value={ state.form.paf_validated } />
+          <input type='hidden' name={props.prefix + 'country_iso'} value={state.countryCode} />
+          <input type='hidden' name={props.prefix + 'paf_validated'} value={state.form.paf_validated} />
         </div>
       </div>
     )

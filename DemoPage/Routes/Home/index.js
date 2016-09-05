@@ -13,6 +13,7 @@ import Visualisation from '../../examples/DataVisualisation'
 import TextInput from '../../examples/TextInput'
 import ReadOnlyAddress from '../../examples/ReadOnlyAddress'
 import AddressFieldset from '../../examples/AddressFieldset'
+import AddressFieldsetWithCustomValidation from '../../examples/AddressFieldsetWithCustomValidation'
 import AddressFieldsetWithLookup from '../../examples/AddressFieldsetWithLookup'
 import AddressLookup from '../../examples/AddressLookup'
 import Checkbox from '../../examples/Checkbox'
@@ -89,6 +90,7 @@ export default React.createClass({
             <AddressLookup />
             <AddressFieldset />
             <AddressFieldsetWithLookup />
+            <AddressFieldsetWithCustomValidation />
             <Checkbox />
             <TextArea />
             <SelectInput />
