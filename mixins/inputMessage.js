@@ -22,7 +22,7 @@ export default {
   hasErrorMessages() {
     const {errorMessage, errors} = this.props
 
-    return !!(this.shouldShowError() && (errors.length || errorMessage))
+    return !!this.shouldShowError() && (errors.length > 0 || !!errorMessage)
   },
 
   shouldRenderMessage () {
