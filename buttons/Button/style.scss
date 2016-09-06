@@ -144,7 +144,7 @@ a.hui-Button--slim {
 .hui-Button--cta,
 .hui-Button--secondary {
   border-color: $green;
-  &:hover {
+  &:hover, &:focus {
     background-color: $green-active;
   }
   .hui-Button__icon {
@@ -153,37 +153,37 @@ a.hui-Button--slim {
 }
 
 .hui-Button--facebook {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($facebook, 10%);
   }
 }
 
 .hui-Button--twitter {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($twitter, 10%);
   }
 }
 
 .hui-Button--googleplus {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($googleplus, 10%);
   }
 }
 
 .hui-Button--pinterest {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($pinterest, 10%);
   }
 }
 
 .hui-Button--strava {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($strava, 10%);
   }
 }
 
 .hui-Button--mapmyfitness {
-  &:hover {
+  &:hover, &:focus {
     background-color: darken($mmf, 10%);
   }
 }
@@ -191,7 +191,7 @@ a.hui-Button--slim {
 .hui-Button--primary,
 .hui-Button--tertiary {
   border-color: $grey;
-  &:hover {
+  &:hover, &:focus {
     background-color: $grey;
   }
   .hui-Button__icon {
@@ -252,7 +252,7 @@ a.hui-Button--slim {
 
 .hui-Button--primary.hui-Button--inverse {
   border-color: white;
-  &:hover {
+  &:hover, &:focus {
     background-color: $grey-lighter;
   }
 }
@@ -260,7 +260,7 @@ a.hui-Button--slim {
 .hui-Button--secondary.hui-Button--inverse,
 .hui-Button--tertiary.hui-Button--inverse {
   border-color: white;
-  &:hover {
+  &:hover, &:focus {
     background-color: $grey-lighter;
   }
   .hui-Button__icon {
@@ -339,7 +339,7 @@ a.hui-Button--slim {
   border-color: $grey-light !important;
   border-style: dashed !important;
   background-color: $grey-lighter;
-  &:hover {
+  &:hover, &:focus {
     background-color: transparent !important;
   }
   .hui-Button__icon {
