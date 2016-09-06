@@ -19,14 +19,12 @@ export default {
 
   shouldRenderMessage () {
     const {
-      hint,
-      errorMessage,
-      errors
+      hint
     } = this.props
 
     const { focused } = this.state
 
-    return (this.shouldShowError() && (errors.length || errorMessage)) || (!!hint && focused)
+    return (this.shouldShowError()) || (!!hint && focused)
   },
 
   renderMessage() {
@@ -36,7 +34,7 @@ export default {
     const displayErrors = collectErrors(this.props)
 
     let errors = this.state.hasError
-      ? displayErrors || (props.errorMessage && [props.errorMessage]) || []
+      ? displayErrors || [props.errorMessage]
       : props.errors || []
 
     if (errors.length > 0) {
