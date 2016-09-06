@@ -2,6 +2,8 @@
 
 import React from 'react'
 import InputErrors from '../forms/InputErrors'
+import array from 'lodash/array'
+const { compact } = array
 
 export default {
   onTab(e) {
@@ -17,6 +19,12 @@ export default {
     return this.state.hasError || errors.length
   },
 
+  hasErrorMessages() {
+    const {errorMessage, errors} = this.props
+
+    return !!(this.shouldShowError() && (errors.length || errorMessage))
+  },
+
   shouldRenderMessage () {
     const {
       hint
@@ -24,7 +32,7 @@ export default {
 
     const { focused } = this.state
 
-    return (this.shouldShowError()) || (!!hint && focused)
+    return this.hasErrorMessages() || (!!hint && focused)
   },
 
   renderMessage() {
@@ -34,7 +42,7 @@ export default {
     const displayErrors = collectErrors(this.props)
 
     let errors = this.state.hasError
-      ? displayErrors || [props.errorMessage]
+      ? displayErrors || compact([props.errorMessage])
       : props.errors || []
 
     if (errors.length > 0) {
