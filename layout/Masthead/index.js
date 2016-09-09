@@ -8,17 +8,19 @@ export default React.createClass({
   propTypes: {
     href: React.PropTypes.string,
     appName: React.PropTypes.string,
-    imagePath: React.PropTypes.string.isRequired
+    imagePath: React.PropTypes.string,
+    desktopLogo: React.PropTypes.string,
+    mobileLogo: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps () {
     return {
       root: '/'
     };
   },
 
-  renderAppName: function() {
-    var appName = this.props.appName;
+  renderAppName () {
+    const appName = this.props.appName;
 
     if (appName) {
       return (
@@ -31,20 +33,27 @@ export default React.createClass({
     }
   },
 
-  render: function() {
-    var alt = ['everydayhero', this.props.appName].join(' ');
+  render () {
+    const props = this.props;
+    const alt = ['everydayhero', props.appName].join(' ');
+    const desktopImagePath = props.imagePath
+      ? props.imagePath + 'hui_edh_logo@x2.gif'
+      : props.desktopLogo
+    const mobileImagePath = props.imagePath
+      ? props.imagePath + 'hui_edh_mark@x2.gif'
+      : props.mobileLogo
 
     return (
       <h1 className="hui-Masthead">
-        <a href={ this.props.href }>
+        <a href={ props.href }>
           <img
             className="hui-Masthead__logo--desktop"
-            src={ this.props.imagePath + 'hui_edh_logo@x2.gif' }
-            alt={ alt } />
+            src={desktopImagePath}
+            alt={alt} />
           <img
             className="hui-Masthead__logo--mobile"
-            src={ this.props.imagePath + 'hui_edh_mark@x2.gif' }
-            alt={ alt } />
+            src={mobileImagePath}
+            alt={alt} />
           { this.renderAppName() }
         </a>
       </h1>
