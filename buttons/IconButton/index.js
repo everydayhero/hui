@@ -32,7 +32,7 @@ const render = ({
     className
   ])
   return (
-    <button className={ classes } style={ style } tabIndex="0" onClick={ onClick }>
+    <button className={ classes } style={ style } tabIndex="0" onMouseDown={ onClick } onTouchStart={ onClick }>
       <Icon icon={ icon }/>
       { label && <div className={ css(styles.label) }>{ label }</div> }
     </button>
