@@ -2,7 +2,7 @@
   "name": "hero-ui",
   "version": "4.4.6",
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=6.0.0"
   },
   "description": "EDH UI library to share layout and base components between applications.",
   "main": "index.js",

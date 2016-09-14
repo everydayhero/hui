@@ -13,9 +13,10 @@ describe(CWD, () => {
     subject({ icon: 'check', label: 'testLabel'}).find('div').text().should.eql('testLabel')
   })
 
-  it('executes an onClick callback', () => {
+  it('executes an onClick callback onMouseDown and onTouchStart', () => {
     const onClick = sinon.spy()
-    subject({ icon: 'check', onClick }).simulate('click')
-    onClick.should.have.been.called
+    subject({ icon: 'check', onClick }).simulate('mousedown')
+    subject({ icon: 'check', onClick }).simulate('touchstart')
+    onClick.should.have.been.calledTwice
   })
 })
