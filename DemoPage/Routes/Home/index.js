@@ -42,6 +42,7 @@ import Leaderboard from '../../examples/Leaderboard'
 import RadioGroup from '../../examples/RadioGroup'
 import TextAreaLite from '../../examples/TextAreaLite'
 import IconButtons from '../../examples/IconButtons'
+import Table from '../../examples/Table'
 
 const IMG_PATH = '../../images/'
 
@@ -122,6 +123,11 @@ export default React.createClass({
           <div className="DemoPage__group">
             <Link to="/wizard/1">Open Wizard</Link>
             { this.props.children }
+          </div>
+
+          <h2 className="DemoPage__h2" id="table">Table</h2>
+          <div className="DemoPage__group">
+            <Table/>
           </div>
         </div>
       </div>
