@@ -66,6 +66,12 @@ export default React.createClass({
     }
   },
 
+  componentWillMount() {
+    if (this.props.prefill) {
+      this.setState({ address: this.props.prefill })
+    }
+  },
+
   componentDidMount() {
     this.isAnyFieldRequired() && this.props.onError(isEmpty(this.state.address))
   },
