@@ -33,15 +33,28 @@ function loadStateFromLocalStorage(component, done) {
   if (!settingState) done()
 }
 
+function isStorageAvailable() {
+  if (!ls) { return false }
+  try {
+    const TEST_KEY = 'test'
+    ls.setItem(TEST_KEY, '1')
+    ls.removeItem(TEST_KEY)
+
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 export default {
   componentWillUpdate() {
-    if (!ls || !this.props.storeLocally) return
+    if (!isStorageAvailable() || !this.props.storeLocally) return
     let key = getLocalStorageKey(this)
     ls.setItem(key, JSON.stringify(this.state))
   },
 
-  componentWillMount () {
-    if (!ls || !this.props.storeLocally) return
+  componentWillMount() {
+    if (!isStorageAvailable() || !this.props.storeLocally) return
     loadStateFromLocalStorage(this, () => {
       ls.setItem(getLocalStorageKey(this), JSON.stringify(this.state))
     })
