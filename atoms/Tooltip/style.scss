@@ -1,82 +1,24 @@
-.Tooltip {
+.hui-Tooltip {
+  font-family: $font-copy;
+  display: inline-block;
   position: relative;
   z-index: 1;
-  width: $x-11;
-  height: $x-11;
-  padding: $x-2;
-  line-height: $x-7;
   text-align: center;
   cursor: pointer;
   user-select: none;
 }
 
-.Tooltip__icon {
+.hui-Tooltip__icon {
   transition: all 160ms ease-out;
   color: $grey-light;
   font-size: 18px;
   opacity: 0.7;
+  width: $x-11;
+  height: $x-11;
+  padding: $x-2;
+  line-height: $x-7;
 }
 
-.Tooltip--open .Tooltip__icon {
+.hui-Tooltip--open .hui-Tooltip__icon {
   opacity: 1;
-}
-
-.Tooltip__tip {
-  transition: all 160ms ease-out;
-  display: block;
-  transform: scale(0.1);
-  visibility: hidden;
-  opacity: 0;
-  width: $x-54;
-  padding: $x-4;
-  position: absolute;
-  z-index: 10;
-  bottom: 100%;
-  background-color: #525252;
-  color: #fff;
-  font-size: 11px;
-  line-height: 14px;
-  pointer-events: none;
-}
-
-.Tooltip__tip::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  width: 0;
-  height: 0;
-  border-top: $x-2 solid #525252;
-}
-
-.Tooltip__tip--left {
-  right: 50%;
-  border-radius: 2px 2px 0 2px;
-  transform-origin: bottom right;
-}
-
-.Tooltip__tip--left::after {
-  right: 0;
-  border-left: $x-2 solid transparent;
-}
-
-.Tooltip__tip--right {
-  left: 50%;
-  border-radius: 2px 2px 2px 0;
-  transform-origin: bottom left;
-}
-
-.Tooltip__tip--right::after {
-  left: 0;
-  border-right: $x-2 solid transparent;
-}
-
-.Tooltip__tip__text {
-  overflow: hidden;
-}
-
-.Tooltip--open .Tooltip__tip {
-  transform: scale(1);
-  opacity: 1;
-  visibility: visible;
 }
