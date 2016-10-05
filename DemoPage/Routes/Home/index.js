@@ -43,6 +43,7 @@ import RadioGroup from '../../examples/RadioGroup'
 import TextAreaLite from '../../examples/TextAreaLite'
 import IconButtons from '../../examples/IconButtons'
 import Table from '../../examples/Table'
+import Tooltip from '../../examples/Tooltip'
 
 const IMG_PATH = '../../images/'
 
@@ -106,6 +107,7 @@ export default React.createClass({
             <FilterSelect />
             <ImageInput />
             <FormRow />
+            <Tooltip />
             <Fieldset />
             <TagList />
             <AvatarInput />

@@ -1,0 +1,101 @@
+.hui-TooltipContent {
+  transition: all 160ms ease-out;
+  display: block;
+  transform: scale(0.1);
+  visibility: hidden;
+  opacity: 0;
+  min-width: $x-54;
+  padding: $x-4;
+  margin-bottom: $x-1;
+  position: absolute;
+  z-index: 10;
+  bottom: 100%;
+  font-size: 11px;
+  line-height: 14px;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba($grey-dark, 0.15);
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-top: $x-2 solid;
+    margin-top: -1px;
+  }
+
+  &::before {
+    margin-top: 0px;
+    border-top-color: rgba($grey-dark, 0.15)
+  }
+
+  &--open {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--left {
+    right: 50%;
+    border-radius: $border-radius $border-radius 0 $border-radius;
+    transform-origin: bottom right;
+  }
+
+  &--left::before,
+  &--left::after {
+    right: 0;
+    border-left: $x-2 solid transparent;
+  }
+
+  &--right {
+    left: 50%;
+    border-radius: $border-radius $border-radius $border-radius 0;
+    transform-origin: bottom left;
+  }
+
+  &--right::before,
+  &--right::after {
+    left: 0;
+    border-right: $x-2 solid transparent;
+  }
+
+  &--center {
+    left: 50%;
+    transform: scale(1) translateX(-50%);
+    border-radius: $border-radius;
+    transform-origin: bottom center;
+  }
+
+  &--center::before,
+  &--center::after {
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: $x-2 solid transparent;
+    border-right: $x-2 solid transparent;
+  }
+
+  &--dark {
+    background-color: $grey;
+    color: #fff;
+  }
+
+  &--dark::after {
+    border-top-color: $grey;
+  }
+
+  &--light {
+    background-color: #fff;
+    color: $grey-dark;
+  }
+
+  &--light::after {
+    border-top-color: #fff;
+  }
+}
+
+.hui-TooltipContent__content {
+  overflow: hidden;
+}
