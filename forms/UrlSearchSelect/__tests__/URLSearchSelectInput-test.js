@@ -49,11 +49,13 @@ describe('UrlSearchSelect', () => {
 
     it('calls getJSON with a params object containing props.params and q: state.queryValue', () => {
       let element = renderIntoDocument(
-        <UrlSearchSelect params={ { some: 'Param' }  }  url="http://everydayhero.com" />
+        <UrlSearchSelect
+          params={{ some: 'Param' }}
+          url="http://everydayhero.com" />
       )
       element.fetchResults('foobar')
 
-      expect(mockGetJSON).calledWith('http://everydayhero.com', {
+      expect(mockGetJSON).calledWithMatch('http://everydayhero.com', {
         q: 'foobar',
         some: 'Param'
       })
