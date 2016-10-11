@@ -131,6 +131,7 @@ export default React.createClass({
     if (query === this.state.queryValue) { return }
     let queryBelowMin = query.length < this.props.minQueryLength
     this.cancelRequest()
+    this.props.onChange(query)
     this.setState({
       queryValue: query,
       hasError: false,

@@ -89,7 +89,7 @@ export default React.createClass({
   setEmptyAddress() {
     this.setState({
       address: {
-        street_address: this.state.queryString,
+        street_address: this.state.queryValue,
         country_name: this.state.country.label,
         paf_validated: false
       }
@@ -109,7 +109,7 @@ export default React.createClass({
 
   handleAddressChange(address) {
     if (typeof address === 'string') {
-      return this.setState({ queryString: address })
+      return this.setState({ queryValue: address })
     }
     this.setState({ address }, () => this.props.onChange(address))
   },
