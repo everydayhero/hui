@@ -35,7 +35,7 @@ export default React.createClass({
 
   render () {
     const props = this.props;
-    const alt = ['everydayhero', props.appName].join(' ');
+    const alt = ['everydayhero', props.appName].join(' ').trim();
     const desktopImagePath = props.imagePath
       ? props.imagePath + 'hui_edh_logo@x2.gif'
       : props.desktopLogo
