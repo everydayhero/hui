@@ -1,6 +1,7 @@
 'use strict'
 
 import Promise from 'bluebird'
+import { mount } from 'enzyme'
 
 const proxyquire = require('proxyquire')
   .noCallThru()
@@ -166,6 +167,52 @@ describe('UrlSearchSelect', () => {
         expect(element.state.hasError).to.eq(true)
         done()
       }, 110)
+    })
+  })
+
+  describe('manual error rendering', () => {
+    context('when an errors prop is set', () => {
+      it('renders the errors from errors array', () => {
+        const wrapper = mount(
+          <UrlSearchSelect
+            required
+            errors={['I got you, you rookie b#&*$!']}
+            url="http://everydayhero.com" />
+        )
+
+        expect(wrapper.find('.hui-InputErrors').length).to.equal(1)
+        expect(wrapper.find('.hui-InputErrors').text()).to.contain('I got you, you rookie b#&*$!')
+      })
+    })
+
+    context('when an errorMessage prop is set', () => {
+      it('will render the error message if the showError prop is set to true', () => {
+        const wrapper = mount(
+          <UrlSearchSelect
+            required
+            showError
+            errorMessage="You have failed, just like everything in your life."
+            url="http://everydayhero.com"
+            required
+            errors={['You have failed, just like everything in your life.']}
+            url="http://everydayhero.com" />
+        )
+
+        expect(wrapper.find('.hui-InputErrors').length).to.equal(1)
+        expect(wrapper.find('.hui-InputErrors').text())
+          .to.contain('You have failed, just like everything in your life.')
+      })
+
+      it('will not render the error message by default', () => {
+        const wrapper = mount(
+          <UrlSearchSelect
+            required
+            showError={ false }
+            errorMessage="You have failed, just like everything in your life." />
+        )
+
+        expect(wrapper.find('.hui-InputErrors').length).to.equal(0)
+      })
     })
   })
 })
