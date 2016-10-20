@@ -58,16 +58,17 @@ export default React.createClass({
       'hui-TextInput__input--icon': this.hasIcon() && !iconsLeft,
       'hui-TextInput__input': true
     })
+    let inputId = props.id || props.name
 
     return (
       <div className={ classes }>
-        <label className="hui-TextInput__label" htmlFor={ props.name } ref={ props.ref }>
+        <label className="hui-TextInput__label" htmlFor={ inputId } ref={ props.ref }>
           { props.label }
           <input { ...this.inputMethods(!props.disabled) }
             autoComplete={ props.autoComplete ? 'on' : 'off' }
             className={ inputClassName }
             disabled={ props.disabled }
-            id={ props.id || props.name }
+            id={ inputId }
             name={ props.name }
             ref="input"
             onKeyDown={ (e) => {
