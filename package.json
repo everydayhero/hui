@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "test": "TEST_MODE=true && mocha `find . -name '*-test.js' -not -path '*node_modules*'`",
-    "lint": "gulp lint",
+    "lint": "standard --verbose | snazzy",
     "start": "babel-node server.js",
     "build": "gulp build",
     "dev-build": "gulp build --debug true",
@@ -92,6 +92,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "^2.2.0",
+    "gulp-standard": "^8.0.2",
     "gulp-svg-sprite": "^1.2.19",
     "gulp-svg2png": "^2.0.0",
     "gulp-svgmin": "^1.2.2",
@@ -112,6 +113,8 @@
     "simple-spinner": "0.0.3",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0",
+    "snazzy": "^5.0.0",
+    "standard": "^8.4.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "wget": "0.0.1"
