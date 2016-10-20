@@ -9,7 +9,12 @@ steps:
 
   - type: "waiter"
 
-  - name: ":pill:"
+  - name: ":pill: lint"
+    command: "bin/buildkite bin/ci run npm run lint"
+    agents:
+      queue: elastic
+
+  - name: ":pill: test"
     command: "bin/buildkite bin/ci run npm test"
     agents:
       queue: elastic
