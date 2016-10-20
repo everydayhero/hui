@@ -1,5 +1,7 @@
 'use strict'
 
+import { mount } from 'enzyme'
+
 import TextInput from '../'
 
 describe('TextInput', function() {
@@ -8,32 +10,32 @@ describe('TextInput', function() {
     var element, input
 
     beforeEach(function() {
-      element = renderIntoDocument(<TextInput />)
-      input = findByTag(element, 'input')
+      element = mount(<TextInput />)
+      input = element.find('input')
     })
 
     it('type of text', function() {
-      input.type.should.equal('text')
+      input.prop('type').should.equal('text')
     })
 
     it('value of null', function() {
-      input.value.should.equal('')
+      input.prop('value').should.equal('')
     })
 
     it('id of null', function() {
-      input.id.should.equal('')
+      input.prop('id').should.equal('')
     })
 
     it('name of null', function() {
-      input.name.should.equal('')
+      input.prop('name').should.equal('')
     })
 
     it('readOnly', function() {
-      input.readOnly.should.equal(false)
+      input.prop('readOnly').should.equal(false)
     })
 
     it('no placeholder element', function() {
-      var placeholders = scryByTag(element, 'placeholder')
+      var placeholders = element.find('placeholder')
       placeholders.length.should.equal(0)
     })
 
@@ -283,14 +285,14 @@ describe('TextInput', function() {
         this.setProps({ value })
       }
       var mask = sinon.stub().returns('newValue--masked')
-      var element = renderIntoDocument(<TextInput value="oldValue" mask={ mask } />)
-      var input = findByClass(element, 'hui-TextInput__input')
+      var element = mount(<TextInput value="oldValue" mask={ mask } />)
+      var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      Simulate.change(input, { target: { value: 'newValue' }})
+      input.simulate('change', { target: { value: 'newValue' }})
 
       mask.should.have.been.calledWith('newValue')
-      input.value.should.equal('newValue--masked')
+      input.prop('value').should.equal('newValue--masked')
     })
 
     it('will not execute validate function on blur if not required', function() {
@@ -298,10 +300,10 @@ describe('TextInput', function() {
       var onChange = function(value) {
         this.setProps({ value })
       }
-      var element = renderIntoDocument(<TextInput required={ false } validate={ validate } />)
-      var input = findByClass(element, 'hui-TextInput__input')
+      var element = mount(<TextInput required={ false } validate={ validate } />)
+      var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
-      Simulate.blur(input)
+      input.simulate('blur')
 
       validate.should.have.not.been.called
     })
@@ -311,21 +313,21 @@ describe('TextInput', function() {
         this.setProps({ value })
       }
       var validate = sinon.stub()
-      var element = renderIntoDocument(<TextInput required validate={ validate } />)
-      var input = findByClass(element, 'hui-TextInput__input')
+      var element = mount(<TextInput required validate={ validate } />)
+      var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      Simulate.change(input, { target: { value: 'testValue' }})
-      Simulate.blur(input)
-      validate.should.have.been.calledWith('testValue', element.setValid)
+      input.simulate('change', { target: { value: 'testValue' }})
+      input.simulate('blur')
+      validate.should.have.been.calledWith('testValue')
 
       validate.callsArgWith(1, true)
-      Simulate.blur(input)
-      element.state.valid.should.equal(true)
+      input.simulate('blur')
+      element.state().valid.should.equal(true)
 
       validate.callsArgWith(1, false)
-      Simulate.blur(input)
-      element.state.valid.should.equal(false)
+      input.simulate('blur')
+      element.state().valid.should.equal(false)
     })
 
     it('will execute onError callback on load if has validate method', function() {

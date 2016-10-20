@@ -1,5 +1,8 @@
 'use strict'
 
+import { mount } from 'enzyme'
+import { expect } from 'chai'
+
 import FileInput from '../'
 
 describe('FileInput', function() {
@@ -7,20 +10,20 @@ describe('FileInput', function() {
   var component;
 
   beforeEach(function() {
-    component = renderIntoDocument(<FileInput noFileLabel={noFileLabel} />);
+    component = mount(<FileInput noFileLabel={noFileLabel} />);
   });
 
   describe('when no file selected', function() {
     it('should render the input field', function() {
-      var input = findByClass(component, 'hui-FileInput__input');
+      var input = component.find('.hui-FileInput__input');
 
-      input.textContent.should.equal(noFileLabel);
+      input.text().should.equal(noFileLabel);
     });
 
     it('should render the browse button', function() {
-      var button = findByClass(component, 'hui-FileInput__browse');
+      var button = component.find('.hui-FileInput__browse');
 
-      button.textContent.should.equal('Browse');
+      button.text().should.equal('Browse');
     });
   });
 
@@ -34,30 +37,30 @@ describe('FileInput', function() {
     });
 
     it('should render the input field', function() {
-      var input = findByClass(component, 'hui-FileInput__input');
+      var input = component.find('.hui-FileInput__input');
 
-      input.textContent.should.equal(filename);
+      input.text().should.equal(filename);
     });
 
     it('should render the browse button', function() {
-      var button = findByClass(component, 'hui-FileInput__browse');
+      var button = component.find('.hui-FileInput__browse');
 
-      button.textContent.should.equal('Replace');
+      button.text().should.equal('Replace');
     });
 
     it('should render the reset button', function() {
-      var button = findByClass(component, 'hui-FileInput__reset');
+      var button = component.find('.hui-FileInput__reset');
 
-      button.should.exist;
+      expect(button.length).to.equal(1);
     });
   });
 
   describe('when errors', function() {
     it('should render the errors', function() {
       component.setProps({ errors: ['is not good'] });
-      var errors = findByClass(component, 'hui-InputErrors');
+      var errors = component.find('.hui-InputErrors');
 
-      errors.textContent.should.contain('is not good');
+      errors.text().should.contain('is not good');
     });
   });
 });

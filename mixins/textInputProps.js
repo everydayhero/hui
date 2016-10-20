@@ -67,6 +67,7 @@ export const types = {
 
 export const defaults = {
   id: '',
+  name: '',
   type: 'text',
   value: '',
   label: 'Input',
@@ -86,6 +87,7 @@ export const defaults = {
   showError: false,
   required: false,
   showIcon: true,
+  readOnly: false,
 
   errors: [],
 

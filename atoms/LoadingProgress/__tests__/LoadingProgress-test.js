@@ -1,30 +1,32 @@
 'use strict'
 
+import { expect } from 'chai'
+import { mount } from 'enzyme'
+
 import LoadingProgress from '../'
 
 describe('LoadingProgress', function() {
   it('does not show progress state if "inProgress" flag is false', function() {
-    var componenet = <LoadingProgress inProgress={ false } />;
-    var element = renderIntoDocument(componenet);
+    var element = mount(<LoadingProgress inProgress={ false } />);
 
-    findByClass(element, 'hui-LoadingProgress__bar');
+    expect(element.find('.hui-LoadingProgress__bar').length).to.equal(1)
+    expect(element.find('.hui-LoadingProgress__bar--inProgress').length).to.equal(0)
   });
 
   it('shows progress state if "inProgress" flag is true', function() {
-    var componenet = <LoadingProgress inProgress={ true } />;
-    var element = renderIntoDocument(componenet);
+    var element = mount(<LoadingProgress inProgress={ true } />);
 
-    findByClass(element, 'hui-LoadingProgress__bar--inProgress');
+    expect(element.find('.hui-LoadingProgress__bar--inProgress').length).to.equal(1)
   });
 
   it('does adds the previous width of the bar after progress completed', function() {
-    var componenet = <LoadingProgress inProgress={ true } />;
-    var element = renderIntoDocument(componenet);
+    var element = mount(<LoadingProgress inProgress={ true } />);
 
     element.setProps({
       inProgress: false
     });
 
-    element.style().width.should.equal('100%');
+    element.find('.hui-LoadingProgress__bar')
+      .prop('style').width.should.equal('100%');
   });
 });

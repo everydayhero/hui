@@ -18,7 +18,7 @@ describe('AsyncActionToggle', () => {
     setTimeout(() => {
       props.action.should.have.been.called
       done()
-    }, 1)
+    }, 10)
   })
 
   it('displays pre- and post-action labels', (done) => {
@@ -28,7 +28,7 @@ describe('AsyncActionToggle', () => {
     setTimeout(() => {
       findDOMNode(element).textContent.should.contain(props.post_action_label)
       done()
-    }, 2)
+    }, 10)
   })
 
   it('displays an error label if action fails', (done) => {
@@ -40,6 +40,6 @@ describe('AsyncActionToggle', () => {
       rejectAction.should.have.been.called
       findDOMNode(element).textContent.should.contain(props.error_label)
       done()
-    }, 1)
+    }, 10)
   })
 })

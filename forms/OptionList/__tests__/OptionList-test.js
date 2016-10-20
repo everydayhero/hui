@@ -1,5 +1,8 @@
 'use strict'
 
+import { mount } from 'enzyme'
+import { expect } from 'chai'
+
 import OptionList from '../'
 import ReactDOM from 'react-dom'
 
@@ -10,11 +13,11 @@ describe('OptionList', () => {
         { value: '1', label: 'Tim' },
         { value: '2', label: 'Tex' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
-      let subject = scryByTag(element, 'label').map(e => e.props.children)
+      let element = mount(<OptionList options={ options } />)
+      let subject = element.find('label').map(e => e.children())
 
-      expect(subject[0].props.label).to.eq('Tim')
-      expect(subject[1].props.label).to.eq('Tex')
+      expect(subject[0].prop('label')).to.eq('Tim')
+      expect(subject[1].prop('label')).to.eq('Tex')
     })
 
     context('when a `Display` React class has been passed', () => {
