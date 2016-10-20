@@ -1,7 +1,6 @@
 'use strict';
 
 import { mount } from 'enzyme'
-import { expect } from 'chai'
 import moment from 'moment'
 
 import DatePickerPeriods from '../'
