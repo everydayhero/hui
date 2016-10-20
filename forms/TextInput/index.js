@@ -75,7 +75,8 @@ export default React.createClass({
               this.props.onKeyDown(e)
             } }
             type={ props.type }
-            value={ value } />
+            value={ value }
+            readOnly={ props.readOnly } />
           { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>
