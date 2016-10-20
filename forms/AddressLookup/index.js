@@ -22,6 +22,8 @@ export default React.createClass({
   propTypes: {
     layout: React.PropTypes.string,
     required: React.PropTypes.bool,
+    errors: React.PropTypes.array,
+    errorMessage: React.PropTypes.string,
     showError: React.PropTypes.bool,
     spacing: React.PropTypes.string,
     countryCode: React.PropTypes.string,
@@ -162,13 +164,14 @@ export default React.createClass({
           pendingRequest={ !!state.pendingRequest }
           required={ props.required }
           errorMessage={ props.errorMessage }
+          errors={ props.errors }
           emptyLabel={ props.emptyLabel || this.t('empty_label', { scope: state.selectedCountry.value }) }
           manualAction={ props.manualAction }
           minQueryLength={ state.minQueryLength }
           deserializeResponse={ this.deserializeAddressesResponse }
-          showError={ this.props.showError }
-          onError={ this.props.onError }
-          onChange={ this.props.onChange }
+          showError={ props.showError }
+          onError={ props.onError }
+          onChange={ props.onChange }
           onSelection={ this.handleAddressSelection } />
         <CountrySelect
           ref="countrySelect"

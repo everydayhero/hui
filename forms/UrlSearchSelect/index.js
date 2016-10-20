@@ -229,11 +229,13 @@ export default React.createClass({
           value={ state.queryValue }
           icon={ inputIcon }
           label={ props.label }
-          showError={ state.hasError }
+          showError={ props.showError || state.hasError }
           required={ props.required }
           onKeyDown={ this.handleKeyDown }
           onError={ props.onError }
-          onChange={ this.handleSearchInputChange }/>
+          onChange={ this.handleSearchInputChange }
+          errorMessage={ props.errorMessage }
+          errors={ props.errors } />
         { state.isOpen ?
           <div className="hui-UrlSearchSelect__dropdown">
             <OptionList
@@ -250,8 +252,6 @@ export default React.createClass({
                 { props.manualAction }
               </div> }
           </div> : null }
-
-        { this.renderMessage() }
       </div>
     )
   },

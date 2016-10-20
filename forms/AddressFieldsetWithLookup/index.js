@@ -32,6 +32,8 @@ export default React.createClass({
     onError: React.PropTypes.func,
     onUnmount: React.PropTypes.func,
     showError: React.PropTypes.bool,
+    errors: React.PropTypes.array,
+    errorMessage: React.PropTypes.string,
     storeLocally: React.PropTypes.bool,
     validations: React.PropTypes.shape({
       street_address: React.PropTypes.array,
@@ -149,7 +151,8 @@ export default React.createClass({
       <AddressLookup
         ref="lookup"
         required={ this.isAnyFieldRequired() }
-        errorMessage={ this.t('error_message') }
+        errorMessage={ this.props.errorMessage || this.t('error_message') }
+        errors={ this.props.errors }
         spacing={ this.props.spacing }
         countryCode={ this.state.countryCode }
         selectedCountry={ this.state.country }
