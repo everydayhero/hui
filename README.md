@@ -34,7 +34,7 @@ $ gulp                  # build all production assets
 $ gulp --debug          # build all unminified assets (for debugging)
 $ gulp scripts          # build script assest (Can also use the --debug flag)
 $ gulp styles           # build styles assest (Can also use the --debug flag)
-$ npm run test          # run all tests
+$ npm test              # run all tests
 $ npm start             # run local server to view demo page
 ```
 
