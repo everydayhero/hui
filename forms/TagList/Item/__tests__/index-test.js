@@ -11,8 +11,8 @@ describe('Tag List Item', () => {
     beforeEach(() => {
       component = renderIntoDocument(
         <TagListItem
-          item={ item }
-          onIconClick={ onIconClick } />
+          item={item}
+          onIconClick={onIconClick} />
       )
     })
 

@@ -23,34 +23,34 @@ export default React.createClass({
     onOpen: React.PropTypes.func
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       transparent: false,
       onOpen: () => {}
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return { open: false }
   },
 
-  open() {
+  open () {
     let open = !this.state.open
     this.setState({ open }, () => open && addEventBindings(['mousedown', 'touchstart'], this.handleClick))
   },
 
-  close() {
+  close () {
     this.setState({ open: false }, () => {
       removeEventBindings(['mousedown', 'touchstart'], this.handleClick)
       setTimeout(() => this.refs.button.blur(), 15)
     })
   },
 
-  handleClick(e) {
+  handleClick (e) {
     if (!this.refs.list.contains(e.target || e.srcElement)) { this.close() }
   },
 
-  render() {
+  render () {
     let t = this.t
     let props = this.props
     let domain = props.domain
@@ -63,15 +63,15 @@ export default React.createClass({
     }, 'hui-NavAccount')
 
     return (
-      <div className={ classes }>
-        <div className="hui-NavAccount__icon" onFocus={ this.open } tabIndex="0" ref="button">
-          <Icon icon="bars" />
+      <div className={classes}>
+        <div className='hui-NavAccount__icon' onFocus={this.open} tabIndex='0' ref='button'>
+          <Icon icon='bars' />
         </div>
         { open &&
-          <div className="hui-NavAccount__menu" ref="list">
-            <NavLink transparent={ transparent } kind="account" href={ urls('receipts', domain, region) } label={ t('receipts') } icon="file"/>
-            <NavLink transparent={ transparent } kind="account" href={ urls('account', domain, region) } label={ t('account') } icon="user"/>
-            <NavLink transparent={ transparent } kind="account" href={ urls('log_out', domain, region) } label={ t('logout') } icon="sign-out" onBlur={ this.close }/>
+          <div className='hui-NavAccount__menu' ref='list'>
+            <NavLink transparent={transparent} kind='account' href={urls('receipts', domain, region)} label={t('receipts')} icon='file' />
+            <NavLink transparent={transparent} kind='account' href={urls('account', domain, region)} label={t('account')} icon='user' />
+            <NavLink transparent={transparent} kind='account' href={urls('log_out', domain, region)} label={t('logout')} icon='sign-out' onBlur={this.close} />
           </div>
         }
       </div>

@@ -20,13 +20,13 @@ let user = {
 
 describe('GlobalNav', () => {
   it('should contain a desktop and mobile nav', () => {
-    let nav = renderIntoDocument(<GlobalNav { ...defaultProps }/>)
+    let nav = renderIntoDocument(<GlobalNav {...defaultProps} />)
     findByClass(nav, 'hui-SiteNav--desktop').should.exist
     findByClass(nav, 'hui-SiteNav--mobile').should.exist
   })
 
   when('no campaign provided', () => {
-    let nav = renderIntoDocument(<GlobalNav { ...defaultProps }/>)
+    let nav = renderIntoDocument(<GlobalNav {...defaultProps} />)
     it('should render the logo', () => {
       let logo = findByClass(nav, 'hui-GlobalNav__logo')
       logo.href.should.equal(`http://www.${defaultProps.domain}/au/`)
@@ -35,14 +35,14 @@ describe('GlobalNav', () => {
   })
 
   when('campaign provided with user', () => {
-    let nav = renderIntoDocument(<GlobalNav { ...defaultProps } campaign={ campaign } user={ user }/>)
+    let nav = renderIntoDocument(<GlobalNav {...defaultProps} campaign={campaign} user={user} />)
     it('should render the logo', () => {
       findByAttribute(nav, 'src', `${defaultProps.imgPath}hui_edh_logo@x2.png`)
     })
   })
 
   when('campaign provided without user', () => {
-    let nav = renderIntoDocument(<GlobalNav { ...defaultProps } campaign={ campaign }/>)
+    let nav = renderIntoDocument(<GlobalNav {...defaultProps} campaign={campaign} />)
     it('should render the campaign details', () => {
       let campaignDetails = findByClass(nav, 'hui-GlobalNav__campaign')
       campaignDetails.href.should.equal(campaign.url)
@@ -52,7 +52,7 @@ describe('GlobalNav', () => {
   })
 
   when('transparent', () => {
-    let nav = renderIntoDocument(<GlobalNav { ...defaultProps } transparent={ true }/>)
+    let nav = renderIntoDocument(<GlobalNav {...defaultProps} transparent />)
     it('should be transparent', () => {
       findByClass(nav, 'hui-GlobalNav--transparent').should.exist
     })

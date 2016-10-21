@@ -20,7 +20,7 @@ export default React.createClass({
     spacing: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       value: countries[0].value,
       data: countries[0],
@@ -33,23 +33,23 @@ export default React.createClass({
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.onChange(this.props.value)
     this.props.onSelection(this.props.data)
   },
 
-  render() {
+  render () {
     let classes = classnames([
       this.props.className,
       'hui-CountrySelect'
     ])
 
     return (
-      <FilterSelect { ...this.props }
-        className={ classes }
-        label="Select your country"
-        options={ countries }
-        Display={ CountrySelectDisplay } />
+      <FilterSelect {...this.props}
+        className={classes}
+        label='Select your country'
+        options={countries}
+        Display={CountrySelectDisplay} />
     )
   }
 })

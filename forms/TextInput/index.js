@@ -14,11 +14,11 @@ export default React.createClass({
 
   propTypes: types,
 
-  getDefaultProps() {
+  getDefaultProps () {
     return defaults
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       hasError: false,
       focused: false,
@@ -27,7 +27,7 @@ export default React.createClass({
     }
   },
 
-  focus() {
+  focus () {
     this.refs.input.focus()
   },
 
@@ -35,7 +35,7 @@ export default React.createClass({
     this.refs.input.blur()
   },
 
-  render() {
+  render () {
     let props = this.props
     let state = this.state
     let valueType = typeof props.value
@@ -61,23 +61,23 @@ export default React.createClass({
     let inputId = props.id || props.name
 
     return (
-      <div className={ classes }>
-        <label className="hui-TextInput__label" htmlFor={ inputId } ref={ props.ref }>
+      <div className={classes}>
+        <label className='hui-TextInput__label' htmlFor={inputId} ref={props.ref}>
           { props.label }
-          <input { ...this.inputMethods(!props.disabled) }
-            autoComplete={ props.autoComplete ? 'on' : 'off' }
-            className={ inputClassName }
-            disabled={ props.disabled }
-            id={ inputId }
-            name={ props.name }
-            ref="input"
-            onKeyDown={ (e) => {
+          <input {...this.inputMethods(!props.disabled)}
+            autoComplete={props.autoComplete ? 'on' : 'off'}
+            className={inputClassName}
+            disabled={props.disabled}
+            id={inputId}
+            name={props.name}
+            ref='input'
+            onKeyDown={(e) => {
               this.onTab(e)
               this.props.onKeyDown(e)
-            } }
-            type={ props.type }
-            value={ value }
-            readOnly={ props.readOnly } />
+            }}
+            type={props.type}
+            value={value}
+            readOnly={props.readOnly} />
           { this.renderPlaceHolder() }
           { this.renderIcon() }
         </label>

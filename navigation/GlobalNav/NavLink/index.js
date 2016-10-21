@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 
@@ -18,14 +18,14 @@ export default React.createClass({
     onBlur: React.PropTypes.func
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       transparent: false,
       icon: null
     }
   },
 
-  render() {
+  render () {
     let props = this.props
     let showIcon = props.icon && ['desktop', 'account'].indexOf(props.kind) !== -1
     let classes = cx({
@@ -34,9 +34,9 @@ export default React.createClass({
     }, 'hui-NavLink', 'hui-NavLink--' + props.kind)
 
     return (
-      <a className={ classes } href={ props.href } onBlur={ props.onBlur }>
-        { showIcon && <Icon className="hui-NavLink__icon" icon={ props.icon } /> }
-        <span className="hui-NavLink__label">{ props.label }</span>
+      <a className={classes} href={props.href} onBlur={props.onBlur}>
+        { showIcon && <Icon className='hui-NavLink__icon' icon={props.icon} /> }
+        <span className='hui-NavLink__label'>{ props.label }</span>
       </a>
     )
   }

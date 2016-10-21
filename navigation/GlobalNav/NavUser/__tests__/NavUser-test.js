@@ -10,7 +10,7 @@ let userData = {
   image_url: 'http://test/path',
   page_ids: [1, 2, 3]
 }
-let success = new Promise.resolve({ dashboard_user: userData })
+let success = Promise.resolve({ dashboard_user: userData })
 let getJSON = sinon.stub()
 let onLoad = sinon.spy()
 let defaultProps = {
@@ -27,8 +27,8 @@ describe('NavUser', () => {
   beforeEach(() => onLoad.reset())
 
   it('shows onboarding calls to action without a user', (done) => {
-    getJSON.returns(new Promise.reject('no user'))
-    let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
+    getJSON.returns(Promise.reject('no user'))
+    let element = renderIntoDocument(<NavUser {...defaultProps} />)
     setTimeout(() => {
       onLoad.should.not.have.been.called
       let register = findByClass(element, 'hui-Button--cta')
@@ -44,7 +44,7 @@ describe('NavUser', () => {
 
   it('loads a user', (done) => {
     getJSON.returns(success)
-    let element = renderIntoDocument(<NavUser { ...defaultProps }/>)
+    let element = renderIntoDocument(<NavUser {...defaultProps} />)
     setTimeout(() => {
       onLoad.should.have.been.calledWith(userData)
       let user = findByClass(element, 'hui-NavUser__user')
@@ -59,7 +59,7 @@ describe('NavUser', () => {
 
   it('accepts a user', (done) => {
     getJSON.returns(success)
-    let element = renderIntoDocument(<NavUser { ...defaultProps } user={ userData }/>)
+    let element = renderIntoDocument(<NavUser {...defaultProps} user={userData} />)
     setTimeout(() => {
       onLoad.should.not.have.been.called
       let user = findByClass(element, 'hui-NavUser__user')

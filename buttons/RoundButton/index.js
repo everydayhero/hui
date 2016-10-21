@@ -16,7 +16,7 @@ const propTypes = {
 }
 
 const render = ({ className = '', size, ...rest }) => (
-  <IconButton { ...rest } className={ cssCompact(css(styles.button, styles[size]), className) } />
+  <IconButton {...rest} className={cssCompact(css(styles.button, styles[size]), className)} />
 )
 
 export default functional({ propTypes, render })

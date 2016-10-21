@@ -1,6 +1,6 @@
 const mapObject = (o, fn) => {
   const newO = {}
-  Object.keys(o).forEach((key) => newO[key] = fn(o[key]))
+  Object.keys(o).forEach((key) => { newO[key] = fn(o[key]) })
   return newO
 }
 
@@ -27,7 +27,7 @@ export const cA = (color, alpha) => `rgba(${baseColours[color]},${alpha})`
 export const url = (url) => `url(${url})`
 export const r = (n = 1, u = 'rem', lh = 1.5) => `${n * lh}${u}`
 export const rs = (first, ...rest) => (
-  typeof first === 'array'
+  first instanceof Array
     ? rest.reduce((a, d) => `${a} ${r(...d)}`, r(...first))
     : rest.reduce((a, d) => `${a} ${r(d)}`, r(first))
 )

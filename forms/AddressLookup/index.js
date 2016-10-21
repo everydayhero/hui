@@ -42,7 +42,7 @@ export default React.createClass({
     })
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       countryCode: countries[0].value,
       selectedCountry: countries[0],
@@ -56,7 +56,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       selectedCountry: this.props.selectedCountry,
       minQueryLength: this.props.countryCode === 'UK' ? 7 : 5,
@@ -65,7 +65,7 @@ export default React.createClass({
     }
   },
 
-  deserializeAddressesResponse(response) {
+  deserializeAddressesResponse (response) {
     if (!response || !response.addresses) { return [] }
     return response.addresses.map((address) => {
       return {
@@ -75,20 +75,20 @@ export default React.createClass({
     })
   },
 
-  isPAFLookup() {
+  isPAFLookup () {
     return ((!!this.state.selectedCountry &&
         this.state.selectedCountry.value) === 'UK')
   },
 
-  isGoogleLookup() {
+  isGoogleLookup () {
     return !this.isPAFLookup()
   },
 
-  removeNull(o) {
-    return forEach(o, (d, k) => o[k] = d === null ? '' : d)
+  removeNull (o) {
+    return forEach(o, (d, k) => { o[k] = d === null ? '' : d })
   },
 
-  fetchAddress(id) {
+  fetchAddress (id) {
     return getJSON(`${addressUrl}/${this.state.selectedCountry.value}/${id}`)
       .then(response => {
         let address = this.removeNull(response.address)
@@ -105,7 +105,7 @@ export default React.createClass({
       .catch(this.props.onError)
   },
 
-  handleAddressSelection(address) {
+  handleAddressSelection (address) {
     if (this.state.pendingRequest) {
       this.state.pendingRequest.cancel()
     }
@@ -114,7 +114,7 @@ export default React.createClass({
     })
   },
 
-  handleCountrySelection(country) {
+  handleCountrySelection (country) {
     this.setState({
       minQueryLength: country.value === 'UK' ? 7 : 5,
       isSelectingCountry: false,
@@ -122,19 +122,19 @@ export default React.createClass({
     }, () => this.props.onCountrySelect(country))
   },
 
-  handleCountrySelectOpen() {
+  handleCountrySelectOpen () {
     this.setState({
       isSelectingCountry: true
     })
   },
 
-  handleCountrySelectBlur() {
+  handleCountrySelectBlur () {
     this.setState({
       isSelectingCountry: false
     })
   },
 
-  render() {
+  render () {
     let props = this.props
     let state = this.state
     let classes = classnames([
@@ -153,36 +153,36 @@ export default React.createClass({
       'hui-AddressLookup__country-select--active': state.isSelectingCountry
     })
     return (
-      <div className={ classes }>
+      <div className={classes}>
         <UrlSearchSelect
-          ref="searchSelect"
-          label={ this.t('search_prompt', { scope: state.selectedCountry.value }) }
-          className={ urlSearchSelectClasses }
-          url={ addressesSearchUrl }
-          params={ { country_code: state.selectedCountry.value } }
-          spacing="compact"
-          pendingRequest={ !!state.pendingRequest }
-          required={ props.required }
-          errorMessage={ props.errorMessage }
-          errors={ props.errors }
-          emptyLabel={ props.emptyLabel || this.t('empty_label', { scope: state.selectedCountry.value }) }
-          manualAction={ props.manualAction }
-          minQueryLength={ state.minQueryLength }
-          deserializeResponse={ this.deserializeAddressesResponse }
-          showError={ props.showError }
-          onError={ props.onError }
-          onChange={ props.onChange }
-          onSelection={ this.handleAddressSelection } />
+          ref='searchSelect'
+          label={this.t('search_prompt', { scope: state.selectedCountry.value })}
+          className={urlSearchSelectClasses}
+          url={addressesSearchUrl}
+          params={{ country_code: state.selectedCountry.value }}
+          spacing='compact'
+          pendingRequest={!!state.pendingRequest}
+          required={props.required}
+          errorMessage={props.errorMessage}
+          errors={props.errors}
+          emptyLabel={props.emptyLabel || this.t('empty_label', { scope: state.selectedCountry.value })}
+          manualAction={props.manualAction}
+          minQueryLength={state.minQueryLength}
+          deserializeResponse={this.deserializeAddressesResponse}
+          showError={props.showError}
+          onError={props.onError}
+          onChange={props.onChange}
+          onSelection={this.handleAddressSelection} />
         <CountrySelect
-          ref="countrySelect"
-          spacing="compact"
-          displayProperty="value"
-          className={ countrySelectClasses }
-          value={ state.selectedCountry.value }
-          data={ state.selectedCountry }
-          onBlur={ this.handleCountrySelectBlur }
-          onOpen={ this.handleCountrySelectOpen }
-          onSelection={ this.handleCountrySelection } />
+          ref='countrySelect'
+          spacing='compact'
+          displayProperty='value'
+          className={countrySelectClasses}
+          value={state.selectedCountry.value}
+          data={state.selectedCountry}
+          onBlur={this.handleCountrySelectBlur}
+          onOpen={this.handleCountrySelectOpen}
+          onSelection={this.handleCountrySelection} />
       </div>
     )
   },

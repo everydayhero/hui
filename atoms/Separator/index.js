@@ -10,21 +10,21 @@ export default React.createClass({
     separatorImagePath: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       color: 'green',
       separatorImagePath: 'url(images/separator_green.png)'
-    };
+    }
   },
 
-  render: function() {
-    var formStyle;
+  render: function () {
+    var formStyle
     if (this.props.separatorImagePath) {
-      formStyle = { backgroundImage: 'url(' + this.props.separatorImagePath + ')' };
+      formStyle = { backgroundImage: 'url(' + this.props.separatorImagePath + ')' }
     }
 
     return (
-      <hr style={ formStyle } className={ 'Separator ' + this.props.color }/>
-    );
+      <hr style={formStyle} className={'Separator ' + this.props.color} />
+    )
   }
-});
+})

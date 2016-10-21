@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 import map from 'lodash/map'
 import YScale from '../'
 
-describe('YScale', function() {
+describe('YScale', function () {
   var collection = [
     { series: [
       { date: 1, calculatedValue: 5 },
@@ -21,7 +21,7 @@ describe('YScale', function() {
       { date: 5, calculatedValue: 4 },
       { date: 6, calculatedValue: 23 }
     ] }
-  ];
+  ]
 
   var gutters = {
     top: 20,
@@ -30,64 +30,64 @@ describe('YScale', function() {
     bottom: 20
   }
 
-  var textContent = function(label) { return label.textContent; };
-  var scryLabels = function(component, transform) { return map(scryByClass(component, 'hui-YScale__label'), transform); };
+  var textContent = function (label) { return label.textContent }
+  var scryLabels = function (component, transform) { return map(scryByClass(component, 'hui-YScale__label'), transform) }
 
-  describe('scaleUnits', function() {
-    var component;
+  describe('scaleUnits', function () {
+    var component
 
-    beforeEach(function() {
+    beforeEach(function () {
       component = renderIntoDocument(
         <YScale
-          scaleUnit="m"
-          collection={ collection }
-          height={ 200 }
-          width={ 200 }
-          gutter= { gutters } />
-      );
-    });
+          scaleUnit='m'
+          collection={collection}
+          height={200}
+          width={200}
+          gutter={gutters} />
+      )
+    })
 
-    it('renders the correct labels with scaleUnit', function() {
-      var labels = scryLabels(component, textContent);
-      labels.should.include('0 m');
-      labels.should.include('5 m');
-      labels.should.include('10 m');
-      labels.should.include('15 m');
-      labels.should.include('20 m');
-      labels.should.include('25 m');
-    });
-  });
+    it('renders the correct labels with scaleUnit', function () {
+      var labels = scryLabels(component, textContent)
+      labels.should.include('0 m')
+      labels.should.include('5 m')
+      labels.should.include('10 m')
+      labels.should.include('15 m')
+      labels.should.include('20 m')
+      labels.should.include('25 m')
+    })
+  })
 
-  describe('default', function() {
-    var component;
+  describe('default', function () {
+    var component
 
-    beforeEach(function() {
+    beforeEach(function () {
       component = renderIntoDocument(
         <YScale
-          collection={ collection }
-          height={ 200 }
-          width={ 200 }
-          gutter= { gutters } />
-      );
-    });
+          collection={collection}
+          height={200}
+          width={200}
+          gutter={gutters} />
+      )
+    })
 
-    it('should render YScale', function() {
-      component.should.exist;
-    });
+    it('should render YScale', function () {
+      component.should.exist
+    })
 
-    it('renders the correct labels', function() {
-      var labels = scryLabels(component, textContent);
-      labels.should.include('0 ');
-      labels.should.include('5 ');
-      labels.should.include('10 ');
-      labels.should.include('15 ');
-      labels.should.include('20 ');
-      labels.should.include('25 ');
-    });
+    it('renders the correct labels', function () {
+      var labels = scryLabels(component, textContent)
+      labels.should.include('0 ')
+      labels.should.include('5 ')
+      labels.should.include('10 ')
+      labels.should.include('15 ')
+      labels.should.include('20 ')
+      labels.should.include('25 ')
+    })
 
-    it('renders the correct number of scale lines', function() {
-      var scaleLines = scryByClass(component, 'hui-YScale__line');
-      scaleLines.length.should.equal(6);
-    });
-  });
-});
+    it('renders the correct number of scale lines', function () {
+      var scaleLines = scryByClass(component, 'hui-YScale__line')
+      scaleLines.length.should.equal(6)
+    })
+  })
+})

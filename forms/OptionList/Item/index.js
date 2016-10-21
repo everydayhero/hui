@@ -59,10 +59,10 @@ export default React.createClass({
     } = this.props
     return (
       nextProps.option[valueKey] !== option[valueKey] ||
-      nextProps.isSelected       !== isSelected       ||
-      nextProps.isHighlighted    !== isHighlighted    ||
-      nextProps.isCandidate      !== isCandidate      ||
-      nextProps.shouldFocus      !== shouldFocus
+      nextProps.isSelected !== isSelected ||
+      nextProps.isHighlighted !== isHighlighted ||
+      nextProps.isCandidate !== isCandidate ||
+      nextProps.shouldFocus !== shouldFocus
     )
   },
 
@@ -117,35 +117,35 @@ export default React.createClass({
 
     return (
       <li
-        key={ option[valueKey] }
-        className="hui-OptionListItem">
+        key={option[valueKey]}
+        className='hui-OptionListItem'>
         <input
-          type="radio"
-          ref="radio"
-          id={ `option-list-item-${option[valueKey]}` }
-          name={ `option-list-item-${option[valueKey]}` }
-          className="hui-OptionListItem__radio--hidden"
-          value={ option[valueKey] }
-          checked={ isSelected }
-          onBlur={ this.handleSelection }
-          onKeyDown={ this.handleKeyDown }
+          type='radio'
+          ref='radio'
+          id={`option-list-item-${option[valueKey]}`}
+          name={`option-list-item-${option[valueKey]}`}
+          className='hui-OptionListItem__radio--hidden'
+          value={option[valueKey]}
+          checked={isSelected}
+          onBlur={this.handleSelection}
+          onKeyDown={this.handleKeyDown}
           readOnly />
 
         <label
-          ref="label"
-          onMouseDown={ this.handleDown }
-          onTouchStart={ this.handleDown }
-          onTouchMove={ this.handleMove }
-          onMouseOver={ this.handleMouseOver }
-          className="hui-OptionListItem__radio-label"
-          htmlFor={ `option-list-item-${option[valueKey]}` }>
+          ref='label'
+          onMouseDown={this.handleDown}
+          onTouchStart={this.handleDown}
+          onTouchMove={this.handleMove}
+          onMouseOver={this.handleMouseOver}
+          className='hui-OptionListItem__radio-label'
+          htmlFor={`option-list-item-${option[valueKey]}`}>
           <Display
-            { ...option }
-            isHighlighted={ isHighlighted }
-            isSelected={ isSelected }
-            isCandidate={ isCandidate }
-            label={ option[labelKey] }
-            value={ option[valueKey] }  />
+            {...option}
+            isHighlighted={isHighlighted}
+            isSelected={isSelected}
+            isCandidate={isCandidate}
+            label={option[labelKey]}
+            value={option[valueKey]} />
         </label>
       </li>
     )

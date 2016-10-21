@@ -55,5 +55,5 @@ export const mirrorPlaceholder = {
 }
 
 export const focusedMirrorPlaceholder = {
-  color: c.lightGrey,
+  color: c.lightGrey
 }

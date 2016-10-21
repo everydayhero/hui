@@ -27,7 +27,7 @@ export default React.createClass({
     value: React.PropTypes.object
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       disabled: false,
       errors: [],
@@ -41,14 +41,14 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       hasError: false,
       focused: false
     }
   },
 
-  browse: function(e) {
+  browse: function (e) {
     var props = this.props
     var options = props.options
 
@@ -61,7 +61,7 @@ export default React.createClass({
     }
   },
 
-  reset: function(e) {
+  reset: function (e) {
     e.preventDefault()
     this.onChange({
       url: null,
@@ -69,11 +69,11 @@ export default React.createClass({
     })
   },
 
-  focus: function() {
+  focus: function () {
     this.refs.browse_files.focus()
   },
 
-  onBlur: function() {
+  onBlur: function () {
     var onBlur = this.props.onBlur
     if (onBlur) {
       onBlur()
@@ -81,7 +81,7 @@ export default React.createClass({
     this.setState({ focused: false })
   },
 
-  onFocus: function() {
+  onFocus: function () {
     var onFocus = this.props.onFocus
     if (onFocus) {
       onFocus()
@@ -89,7 +89,7 @@ export default React.createClass({
     this.setState({ focused: true })
   },
 
-  onChange: function(file) {
+  onChange: function (file) {
     var onChange = this.props.onChange
     if (onChange) {
       onChange(file)
@@ -97,17 +97,17 @@ export default React.createClass({
     this.focus()
   },
 
-  getBrowseLabel: function(filename) {
+  getBrowseLabel: function (filename) {
     return filename ? 'Replace' : 'Browse'
   },
 
-  render: function() {
-    var props           = this.props
-    var state           = this.state
-    var file            = props.value
-    var filename        = file ? file.filename : null
-    var inputLabel      = filename ? filename : props.noFileLabel
-    var browseLabel     = this.getBrowseLabel(filename)
+  render: function () {
+    var props = this.props
+    var state = this.state
+    var file = props.value
+    var filename = file ? file.filename : null
+    var inputLabel = filename || props.noFileLabel
+    var browseLabel = this.getBrowseLabel(filename)
     var resetButton
     var classes = classnames([
       'hui-FileInput--' + props.layout,
@@ -128,22 +128,22 @@ export default React.createClass({
 
     if (filename) {
       resetButton = (
-        <a href="#" className="hui-FileInput__reset" onClick={ this.reset }>
-          <Icon icon="times-circle" />
+        <a href='#' className='hui-FileInput__reset' onClick={this.reset}>
+          <Icon icon='times-circle' />
         </a>
       )
     }
 
     return (
-      <div className={ classes } >
-        <div className="hui-FileInput__wrap">
-          <label className="hui-FileInput__label">{ props.label }</label>
-          <div className="hui-FileInput__input" id={ props.id } onClick={ this.browse }>
+      <div className={classes} >
+        <div className='hui-FileInput__wrap'>
+          <label className='hui-FileInput__label'>{ props.label }</label>
+          <div className='hui-FileInput__input' id={props.id} onClick={this.browse}>
             { inputLabel }
           </div>
-          <div className="hui-FileInput__buttons">
+          <div className='hui-FileInput__buttons'>
             { resetButton }
-            <a href="#" ref="browse_files" onBlur={ this.onBlur } onFocus={ this.onFocus } className="hui-FileInput__browse" onClick={ this.browse }>{ browseLabel }</a>
+            <a href='#' ref='browse_files' onBlur={this.onBlur} onFocus={this.onFocus} className='hui-FileInput__browse' onClick={this.browse}>{ browseLabel }</a>
           </div>
         </div>
         { this.renderMessage() }

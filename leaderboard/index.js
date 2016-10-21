@@ -16,7 +16,7 @@ export default React.createClass({
     highlightedCharity: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       onSelect: () => {},
       highlightedCharity: '',
@@ -24,7 +24,7 @@ export default React.createClass({
     }
   },
 
-  getSelected() {
+  getSelected () {
     return find(this.props.rowData, (datum) => {
       let { id } = datum
       let { selectedId } = this.props
@@ -33,7 +33,7 @@ export default React.createClass({
     }) || null
   },
 
-  prepareRows() {
+  prepareRows () {
     let {
       rowData,
       valuePath,
@@ -57,7 +57,7 @@ export default React.createClass({
     })
   },
 
-  render() {
+  render () {
     let {
       onSelect,
       highlightedCharity,
@@ -65,17 +65,17 @@ export default React.createClass({
     } = this.props
 
     return (
-      <div className="hui-Leaderboard">
+      <div className='hui-Leaderboard'>
         <OptionList
-          spacing="compact"
-          options={ this.prepareRows() }
-          valueKey="id"
-          labelKey="name"
-          highlightedKey="charity_name"
-          highlightedValue={ highlightedCharity }
-          selectedOption={ this.getSelected() }
-          onSelection={ onSelect }
-          Display={ rowComponent } />
+          spacing='compact'
+          options={this.prepareRows()}
+          valueKey='id'
+          labelKey='name'
+          highlightedKey='charity_name'
+          highlightedValue={highlightedCharity}
+          selectedOption={this.getSelected()}
+          onSelection={onSelect}
+          Display={rowComponent} />
       </div>
     )
   }

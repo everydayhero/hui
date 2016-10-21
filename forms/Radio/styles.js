@@ -10,16 +10,15 @@ export const radio = {
   color: c.grey,
   ' input': {
     position: 'absolute !important', // Firefox BS
-    clip: 'rect(0,0,0,0)',
-    clip: 'rect(0 0 0 0)',
+    clip: 'rect(0 0 0 0)'
   },
   ':first-of-type': {
     paddingLeft: r(0.5),
-    marginLeft: 0,
+    marginLeft: 0
   },
   ':last-of-type': {
     paddingRight: r(0.5),
-    marginRight: 0,
+    marginRight: 0
   }
 }
 
@@ -28,10 +27,10 @@ export const checkedRadio = {
   borderRadius: r(1),
   boxShadow: `0 0 ${r(0.4)} ${cA('darkGrey', 0.1)}`,
   padding: rs(0.25, 0.5),
-  margin: rs(0, 0.2),
+  margin: rs(0, 0.2)
 }
 
 export const checkedFocusedRadio = {
   color: c.green,
-  boxShadow: `0 0 ${r(0.3)} ${cA('darkGrey', 0.3)}`,
+  boxShadow: `0 0 ${r(0.3)} ${cA('darkGrey', 0.3)}`
 }

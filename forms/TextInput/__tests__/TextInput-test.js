@@ -4,49 +4,48 @@ import { mount } from 'enzyme'
 
 import TextInput from '../'
 
-describe('TextInput', function() {
-
-  describe('defaults', function() {
+describe('TextInput', function () {
+  describe('defaults', function () {
     var element, input
 
-    beforeEach(function() {
+    beforeEach(function () {
       element = mount(<TextInput />)
       input = element.find('input')
     })
 
-    it('type of text', function() {
+    it('type of text', function () {
       input.prop('type').should.equal('text')
     })
 
-    it('value of null', function() {
+    it('value of null', function () {
       input.prop('value').should.equal('')
     })
 
-    it('id of null', function() {
+    it('id of null', function () {
       input.prop('id').should.equal('')
     })
 
-    it('name of null', function() {
+    it('name of null', function () {
       input.prop('name').should.equal('')
     })
 
-    it('readOnly', function() {
+    it('readOnly', function () {
       input.prop('readOnly').should.equal(false)
     })
 
-    it('no placeholder element', function() {
+    it('no placeholder element', function () {
       var placeholders = element.find('placeholder')
       placeholders.length.should.equal(0)
     })
 
-    it('renders an input', function() {
+    it('renders an input', function () {
       var props = {
         name: 'test_input',
         label: 'Test Input',
         hint: 'This is a test',
         errorMessage: 'This input errored correctly'
       }
-      element = renderIntoDocument(<TextInput { ...props } icon="bolt" width="half" />)
+      element = renderIntoDocument(<TextInput {...props} icon='bolt' width='half' />)
       findByClass(element, 'hui-TextInput__input')
       findByAttribute(element, 'name', 'test_input')
 
@@ -66,113 +65,113 @@ describe('TextInput', function() {
     })
   })
 
-  describe('properties', function() {
+  describe('properties', function () {
     var element, input
 
-    beforeEach(function() {
+    beforeEach(function () {
       element = renderIntoDocument(<TextInput
-        type="email"
-        value="six"
-        id="seven"
-        name="eight"
-        icon="rocket"
-        placeHolder="placeHolder"
+        type='email'
+        value='six'
+        id='seven'
+        name='eight'
+        icon='rocket'
+        placeHolder='placeHolder'
         readOnly />)
       input = findByTag(element, 'input')
     })
 
-    it('type of email', function() {
+    it('type of email', function () {
       input.type.should.equal('email')
     })
 
-    it('value of six', function() {
+    it('value of six', function () {
       input.value.should.equal('six')
     })
 
-    it('id is TextInput-seven', function() {
+    it('id is TextInput-seven', function () {
       input.id.should.equal('seven')
     })
 
-    it('name is TextInput-seven', function() {
+    it('name is TextInput-seven', function () {
       input.name.should.equal('eight')
     })
 
-    it('placeHolder is present', function() {
+    it('placeHolder is present', function () {
       element = renderIntoDocument(<TextInput
-        type="email"
-        id="seven"
-        name="eight"
-        icon="rocket"
-        placeHolder="placeHolder"
+        type='email'
+        id='seven'
+        name='eight'
+        icon='rocket'
+        placeHolder='placeHolder'
         readOnly />)
       findByClass(element, 'hui-TextInput__placeHolder')
     })
 
-    it('icon is default', function() {
+    it('icon is default', function () {
       findByClass(element, 'hui-TextInput__input--icon')
       findByClass(element, 'hui-TextInput__icon')
     })
   })
 
-  describe('handles numeric values', function() {
+  describe('handles numeric values', function () {
     var element, input
 
-    beforeEach(function() {
+    beforeEach(function () {
       element = renderIntoDocument(<TextInput
-        value={ 6 }
-        id="seven"
-        name="eight"
-        icon="rocket"
+        value={6}
+        id='seven'
+        name='eight'
+        icon='rocket'
         readOnly />)
       input = findByTag(element, 'input')
     })
 
-    it('value of 6', function() {
+    it('value of 6', function () {
       input.value.should.equal('6')
     })
   })
 
-  describe('icon left', function() {
+  describe('icon left', function () {
     var element, input
 
-    beforeEach(function() {
+    beforeEach(function () {
       element = renderIntoDocument(<TextInput
-        type="email"
-        value="six"
-        id="seven"
-        name="eight"
-        icon="rocket"
-        iconPosition="left" />)
+        type='email'
+        value='six'
+        id='seven'
+        name='eight'
+        icon='rocket'
+        iconPosition='left' />)
       input = findByTag(element, 'input')
     })
 
-    it('type of email', function() {
+    it('type of email', function () {
       input.type.should.equal('email')
     })
 
-    it('value of six', function() {
+    it('value of six', function () {
       input.value.should.equal('six')
     })
 
-    it('id is TextInput-seven', function() {
+    it('id is TextInput-seven', function () {
       input.id.should.equal('seven')
     })
 
-    it('name is TextInput-seven', function() {
+    it('name is TextInput-seven', function () {
       input.name.should.equal('eight')
     })
 
-    it('icon is left', function() {
+    it('icon is left', function () {
       findByClass(element, 'hui-TextInput__input--icon-left')
       findByClass(element, 'hui-TextInput__icon--left')
     })
   })
 
-  describe('onChange', function() {
-    it('is fired onChange', function() {
+  describe('onChange', function () {
+    it('is fired onChange', function () {
       var listener = sinon.stub()
       var value = 'foo'
-      var element = renderIntoDocument(<TextInput onChange={listener} value={ value }/>)
+      var element = renderIntoDocument(<TextInput onChange={listener} value={value} />)
       var input = findByTag(element, 'input')
 
       Simulate.change(input)
@@ -180,70 +179,70 @@ describe('TextInput', function() {
     })
   })
 
-  describe('validation behavior', function() {
+  describe('validation behavior', function () {
     var element, errorClasses
 
-    it('defaults valid to true', function() {
-      element = renderIntoDocument(<TextInput/>)
+    it('defaults valid to true', function () {
+      element = renderIntoDocument(<TextInput />)
       errorClasses = scryByClass(element, 'hui-TextInput--error')[0]
 
       expect(errorClasses).to.equal(undefined)
     })
 
-    it('does not have TextInput--error class when errors is null', function() {
-      element = renderIntoDocument(<TextInput errors={ null } />)
+    it('does not have TextInput--error class when errors is null', function () {
+      element = renderIntoDocument(<TextInput errors={null} />)
       errorClasses = scryByClass(element, 'hui-TextInput--error')
 
       errorClasses.length.should.equal(0)
     })
 
-    it('does not have TextInput--error class when errors is empty', function() {
-      element = renderIntoDocument(<TextInput errors={ [] } />)
+    it('does not have TextInput--error class when errors is empty', function () {
+      element = renderIntoDocument(<TextInput errors={[]} />)
       errorClasses = scryByClass(element, 'hui-TextInput--error')
 
       errorClasses.length.should.equal(0)
     })
 
-    it('does have TextInput--error class when errors is present', function() {
-      element = renderIntoDocument(<TextInput errors={ [true] } errorMessage="foo" />)
+    it('does have TextInput--error class when errors is present', function () {
+      element = renderIntoDocument(<TextInput errors={[true]} errorMessage='foo' />)
       errorClasses = scryByClass(element, 'hui-TextInput--error')
 
       errorClasses.length.should.equal(1)
     })
 
-    it('does have a message element when errors is present', function() {
-      element = renderIntoDocument(<TextInput errors={ [true] } />)
+    it('does have a message element when errors is present', function () {
+      element = renderIntoDocument(<TextInput errors={[true]} />)
       const subject = findByClass(element, 'hui-TextInput__message')
 
       expect(subject).to.be.ok
     })
 
-    it('does not have a message element when errors is empty', function() {
-      element = renderIntoDocument(<TextInput errors={ [] } />)
+    it('does not have a message element when errors is empty', function () {
+      element = renderIntoDocument(<TextInput errors={[]} />)
       const subject = scryByClass(element, 'hui-TextInput__message').length
 
       expect(subject).to.eq(0)
     })
   })
 
-  describe('readOnly behavior', function() {
-    it('will not alter input when readOnly', function() {
-      var element = renderIntoDocument(<TextInput value="oldValue" readOnly />)
+  describe('readOnly behavior', function () {
+    it('will not alter input when readOnly', function () {
+      var element = renderIntoDocument(<TextInput value='oldValue' readOnly />)
       var input = findByClass(element, 'hui-TextInput__input')
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
 
       input.value.should.equal('oldValue')
     })
 
-    it('will not execute methods when disabled', function() {
+    it('will not execute methods when disabled', function () {
       var onFocus = sinon.spy()
       var onChange = sinon.spy()
       var validate = sinon.spy()
-      var element = renderIntoDocument(<TextInput value="oldValue" disabled onFocus={ onFocus } onChange={ onChange } validate={ validate } />)
+      var element = renderIntoDocument(<TextInput value='oldValue' disabled onFocus={onFocus} onChange={onChange} validate={validate} />)
       var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.focus(input)
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
       Simulate.blur(input)
 
       onFocus.should.have.not.been.called
@@ -253,11 +252,10 @@ describe('TextInput', function() {
     })
   })
 
-  describe('readOnly callbacks', function() {
-
-    it('will execute onFocus function on focus', function() {
+  describe('readOnly callbacks', function () {
+    it('will execute onFocus function on focus', function () {
       var onFocus = sinon.spy()
-      var element = renderIntoDocument(<TextInput value="testValue" onFocus={ onFocus } />)
+      var element = renderIntoDocument(<TextInput value='testValue' onFocus={onFocus} />)
       var input = element.refs.input
       Simulate.focus(input)
 
@@ -270,37 +268,37 @@ describe('TextInput', function() {
       onFocus.should.have.been.calledWith(object)
     })
 
-    it('will execute onChange function on change', function() {
+    it('will execute onChange function on change', function () {
       var onChange = sinon.spy()
-      var element = renderIntoDocument(<TextInput value="oldValue" onChange={ onChange } />)
+      var element = renderIntoDocument(<TextInput value='oldValue' onChange={onChange} />)
       var input = findByClass(element, 'hui-TextInput__input')
 
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
 
       onChange.should.have.been.calledWith('newValue')
     })
 
-    it('will execute mask function on change', function() {
-      var onChange = function(value) {
+    it('will execute mask function on change', function () {
+      var onChange = function (value) {
         this.setProps({ value })
       }
       var mask = sinon.stub().returns('newValue--masked')
-      var element = mount(<TextInput value="oldValue" mask={ mask } />)
+      var element = mount(<TextInput value='oldValue' mask={mask} />)
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      input.simulate('change', { target: { value: 'newValue' }})
+      input.simulate('change', { target: { value: 'newValue' } })
 
       mask.should.have.been.calledWith('newValue')
       input.prop('value').should.equal('newValue--masked')
     })
 
-    it('will not execute validate function on blur if not required', function() {
+    it('will not execute validate function on blur if not required', function () {
       var validate = sinon.spy()
-      var onChange = function(value) {
+      var onChange = function (value) {
         this.setProps({ value })
       }
-      var element = mount(<TextInput required={ false } validate={ validate } />)
+      var element = mount(<TextInput required={false} validate={validate} />)
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
       input.simulate('blur')
@@ -308,16 +306,16 @@ describe('TextInput', function() {
       validate.should.have.not.been.called
     })
 
-    it('will execute validate function on blur if required', function() {
-      var onChange = function(value) {
+    it('will execute validate function on blur if required', function () {
+      var onChange = function (value) {
         this.setProps({ value })
       }
       var validate = sinon.stub()
-      var element = mount(<TextInput required validate={ validate } />)
+      var element = mount(<TextInput required validate={validate} />)
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      input.simulate('change', { target: { value: 'testValue' }})
+      input.simulate('change', { target: { value: 'testValue' } })
       input.simulate('blur')
       validate.should.have.been.calledWith('testValue')
 
@@ -330,18 +328,18 @@ describe('TextInput', function() {
       element.state().valid.should.equal(false)
     })
 
-    it('will execute onError callback on load if has validate method', function() {
+    it('will execute onError callback on load if has validate method', function () {
       var validate = sinon.stub().returns(true)
       var onError = sinon.stub()
-      renderIntoDocument(<TextInput required validate={ validate } onError={ onError } />)
+      renderIntoDocument(<TextInput required validate={validate} onError={onError} />)
 
       validate.should.have.been.calledWith('')
       onError.should.have.been.calledWith(false)
     })
 
-    it('will execute validate function on load if has value', function() {
+    it('will execute validate function on load if has value', function () {
       var validate = sinon.stub()
-      var element = renderIntoDocument(<TextInput required value="testValue" validate={ validate } />)
+      var element = renderIntoDocument(<TextInput required value='testValue' validate={validate} />)
 
       validate.should.have.been.calledWith('testValue', element.setValid)
 
@@ -349,20 +347,20 @@ describe('TextInput', function() {
       element.state.valid.should.equal(true)
     })
 
-    it('will execute onBlur prop on blur', function() {
+    it('will execute onBlur prop on blur', function () {
       var onBlur = sinon.spy()
       var value = 'foo'
-      var element = renderIntoDocument(<TextInput required onBlur={ onBlur }  value={ value }/>)
+      var element = renderIntoDocument(<TextInput required onBlur={onBlur} value={value} />)
       var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.blur(input)
       onBlur.should.have.been.calledWith(value)
     })
 
-    it('will execute onBlur prop on blur', function() {
+    it('will execute onBlur prop on blur', function () {
       var onTab = sinon.spy()
       var value = 'foo'
-      var element = renderIntoDocument(<TextInput required onTab={ onTab }  value={ value }/>)
+      var element = renderIntoDocument(<TextInput required onTab={onTab} value={value} />)
       var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.keyDown(input, { key: 'Tab' })

@@ -1,7 +1,7 @@
 'use strict'
 
-import React      from 'react'
-import numeral    from 'numeral'
+import React from 'react'
+import numeral from 'numeral'
 import classnames from 'classnames'
 
 export default React.createClass({
@@ -12,7 +12,7 @@ export default React.createClass({
     emptyState: React.PropTypes.bool
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       format: '0.0a',
       loading: false,
@@ -20,7 +20,7 @@ export default React.createClass({
     }
   },
 
-  metricFormatted: function() {
+  metricFormatted: function () {
     const props = this.props
 
     if (!props.loading && !props.emptyState) {
@@ -28,17 +28,17 @@ export default React.createClass({
     }
   },
 
-  render: function() {
-    const loading    = this.props.loading
+  render: function () {
+    const loading = this.props.loading
     const emptyState = this.props.emptyState
-    const className  = classnames({
+    const className = classnames({
       'hui-SingleNumber--loading': loading,
       'hui-SingleNumber--emptyState': emptyState
     }, 'hui-SingleNumber')
 
     return (
-      <div className={ className }>
-        <div className="hui-SingleNumber__metric">
+      <div className={className}>
+        <div className='hui-SingleNumber__metric'>
           { this.metricFormatted() }
         </div>
       </div>

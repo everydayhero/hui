@@ -37,7 +37,7 @@ export default React.createClass({
     errorMessage: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       autoComplete: true,
       storeLocally: false,
@@ -47,9 +47,9 @@ export default React.createClass({
       hint: '',
       onFocus: null,
       onChange: null,
-      onBlur: function() {},
+      onBlur: function () {},
       includeBlank: false,
-      onTab: function() {},
+      onTab: function () {},
       required: false,
       spacing: 'loose',
       layout: 'full',
@@ -64,20 +64,20 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       focused: false
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     var props = this.props
 
     if (props.disabled) { return }
     if (props.autoFocus) { this.refs.input.focus() }
   },
 
-  onChange: function(event) {
+  onChange: function (event) {
     var onChange = this.props.onChange
     var value = event.target.value
     var hasError = this.props.required ? !value : false
@@ -92,7 +92,7 @@ export default React.createClass({
     }
   },
 
-  onBlur: function() {
+  onBlur: function () {
     var props = this.props
     var hasError = props.required ? !props.value : false
 
@@ -100,25 +100,25 @@ export default React.createClass({
     this.setState({ focused: false, hasError })
   },
 
-  onFocus: function() {
+  onFocus: function () {
     var props = this.props
     if (props.onFocus) { props.onFocus(props.value) }
     this.setState({ focused: true, valid: true })
   },
 
-  getSelected: function() {
+  getSelected: function () {
     var options = this.getOptions()
     var props = this.props
     var criteria = {}
 
-    if(props.value) {
+    if (props.value) {
       criteria[props.valueKey] = props.value
 
       return _.filter(options, criteria)[0]
     }
   },
 
-  getOptions: function() {
+  getOptions: function () {
     var props = this.props
     var options = props.options.slice()
     var blank = {}
@@ -132,14 +132,14 @@ export default React.createClass({
     return options
   },
 
-  renderDisplayValue: function() {
-    var props          = this.props
-    var value          = props.value
-    var className      = 'hui-SelectInput__selected'
-    var displayValue   = props.prompt
+  renderDisplayValue: function () {
+    var props = this.props
+    var value = props.value
+    var className = 'hui-SelectInput__selected'
+    var displayValue = props.prompt
     var selectedOption = this.getSelected()
-    var firstOption    = this.getOptions()[0]
-    var firstLabel     = firstOption && firstOption[props.labelKey]
+    var firstOption = this.getOptions()[0]
+    var firstLabel = firstOption && firstOption[props.labelKey]
 
     if (!value && !firstLabel && !this.props.selectionMade) {
       className += '--noSelection'
@@ -152,35 +152,35 @@ export default React.createClass({
     }
 
     return (
-      <div className="hui-SelectInput__displayValue">
-        <div className={ className }>
+      <div className='hui-SelectInput__displayValue'>
+        <div className={className}>
           { displayValue }
         </div>
       </div>
     )
   },
 
-  renderOptions: function() {
+  renderOptions: function () {
     var props = this.props
     var valueKey = props.valueKey
     var labelKey = props.labelKey
     var options = this.getOptions()
 
-    return _.map(options, function(option, index) {
+    return _.map(options, function (option, index) {
       var optionValue = option[valueKey]
 
       return (
         <option
-          key={ index }
-          label={ option[labelKey] }
-          value={ optionValue } >
+          key={index}
+          label={option[labelKey]}
+          value={optionValue} >
           { option[labelKey] }
         </option>
         )
     })
   },
 
-  render: function() {
+  render: function () {
     var props = this.props
     var state = this.state
     var value = props.value
@@ -198,24 +198,24 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-SelectInput__wrap">
-          <label className="hui-SelectInput__label">{ props.label }</label>
+      <div className={classes}>
+        <div className='hui-SelectInput__wrap'>
+          <label className='hui-SelectInput__label'>{ props.label }</label>
           { this.renderDisplayValue() }
-          <Icon icon="chevron-down" className="hui-SelectInput__icon"/>
-          <div className="hui-SelectInput__inputWrap">
+          <Icon icon='chevron-down' className='hui-SelectInput__icon' />
+          <div className='hui-SelectInput__inputWrap'>
             <select
-              autoComplete={ props.autoComplete }
-              className="hui-SelectInput__input"
-              id={ props.id || props.name }
-              disabled={ props.disabled }
-              name={ props.name || props.id }
-              onBlur={ this.onBlur }
-              onFocus={ this.onFocus }
-              onChange={ this.onChange }
-              onKeyDown={ this.onTab }
-              value={ value }>
-                { this.renderOptions() }
+              autoComplete={props.autoComplete}
+              className='hui-SelectInput__input'
+              id={props.id || props.name}
+              disabled={props.disabled}
+              name={props.name || props.id}
+              onBlur={this.onBlur}
+              onFocus={this.onFocus}
+              onChange={this.onChange}
+              onKeyDown={this.onTab}
+              value={value}>
+              { this.renderOptions() }
             </select>
           </div>
         </div>

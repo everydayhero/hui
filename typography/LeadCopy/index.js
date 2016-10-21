@@ -11,10 +11,10 @@ export default React.createClass({
     className: React.PropTypes.string
   },
 
-  render() {
+  render () {
     let { text, className, children } = this.props
     let classes = cx(['LeadCopy', className])
 
-    return <span className={ classes }>{ text || children }</span>
+    return <span className={classes}>{ text || children }</span>
   }
 })

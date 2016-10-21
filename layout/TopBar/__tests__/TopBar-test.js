@@ -2,17 +2,16 @@
 
 import TopBar from '../index'
 
-describe('TopBar', function() {
+describe('TopBar', function () {
+  describe('default', function () {
+    var topBar
 
-  describe('default', function() {
-    var topBar;
+    beforeEach(function () {
+      topBar = renderIntoDocument(<TopBar />)
+    })
 
-    beforeEach(function() {
-      topBar = renderIntoDocument(<TopBar/>);
-    });
-
-    it('should render TopBar', function() {
-      topBar.should.exist;
-    });
-  });
-});
+    it('should render TopBar', function () {
+      topBar.should.exist
+    })
+  })
+})

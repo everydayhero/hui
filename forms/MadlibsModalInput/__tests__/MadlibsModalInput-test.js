@@ -3,7 +3,7 @@ import Component from '../'
 const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 
 describe(CWD, () => {
-  const subject = (props = {}) => mount(<Component { ...props } />)
+  const subject = (props = {}) => mount(<Component {...props} />)
 
   it('renders', () => {
     subject({ label: 'test' }).should.have.length(1)
@@ -17,7 +17,7 @@ describe(CWD, () => {
   })
 
   it('shows modal content', () => {
-    const el = subject({ label: 'test', children: <div className="test"></div> })
+    const el = subject({ label: 'test', children: <div className='test' /> })
     el.find('.test').should.have.length(0)
     el.find('span').first().simulate('focus')
     el.find('.test').should.have.length(1)

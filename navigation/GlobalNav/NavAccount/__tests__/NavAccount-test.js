@@ -7,7 +7,7 @@ let defaultProps = {
 }
 
 describe('NavAccount', () => {
-  let nav = renderIntoDocument(<NavAccount { ...defaultProps }/>)
+  let nav = renderIntoDocument(<NavAccount {...defaultProps} />)
   let button = nav.refs.button
 
   it('displays a list on focus', () => {

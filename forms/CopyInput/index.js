@@ -27,7 +27,7 @@ export default React.createClass({
     value: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       disabled: false,
       icon: null,
@@ -39,9 +39,9 @@ export default React.createClass({
       copyError: 'Copy command failed. Please try to copy manually instead.',
       layout: 'full',
       name: null,
-      onBlur() {},
-      onKeyDown() {},
-      onTab() {},
+      onBlur () {},
+      onKeyDown () {},
+      onTab () {},
       readOnly: true,
       spacing: 'loose',
       type: 'text',
@@ -49,20 +49,20 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       copied: false,
       errors: []
     }
   },
 
-  handleFocus({ inputElement }) {
+  handleFocus ({ inputElement }) {
     if (inputElement && inputElement.setSelectionRange) {
       inputElement.setSelectionRange(0, inputElement.value.length)
     }
   },
 
-  selectAndCopy() {
+  selectAndCopy () {
     this.refs.copyInput.focus()
 
     try {
@@ -78,11 +78,11 @@ export default React.createClass({
     }
   },
 
-  renderCopyButton() {
+  renderCopyButton () {
     const { labelCopy, labelCopied, labelSelect } = this.props
     const selectBlock = <span>{ labelSelect }</span>
-    const copyBlock   = <span><Icon icon="clipboard" /> { labelCopy }</span>
-    const copiedBlock = <span><Icon icon="check" /> { labelCopied }</span>
+    const copyBlock = <span><Icon icon='clipboard' /> { labelCopy }</span>
+    const copiedBlock = <span><Icon icon='check' /> { labelCopied }</span>
     let content
 
     /**
@@ -100,15 +100,15 @@ export default React.createClass({
     }
 
     return (
-      <div className="hui-CopyInput__buttonWrapper">
-        <button className="hui-CopyInput__button" onClick={ this.selectAndCopy }>
+      <div className='hui-CopyInput__buttonWrapper'>
+        <button className='hui-CopyInput__button' onClick={this.selectAndCopy}>
           { content }
         </button>
       </div>
     )
   },
 
-  render() {
+  render () {
     const { className, layout, spacing } = this.props
     const classes = classnames([
       className,
@@ -118,16 +118,16 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-CopyInput__wrapper">
-          <div className="hui-CopyInput__input">
+      <div className={classes}>
+        <div className='hui-CopyInput__wrapper'>
+          <div className='hui-CopyInput__input'>
             <TextInput
-              { ...this.props }
-              ref="copyInput"
-              spacing="compact"
-              layout="full"
-              onFocus={ this.handleFocus }
-              errors={ this.state.errors } />
+              {...this.props}
+              ref='copyInput'
+              spacing='compact'
+              layout='full'
+              onFocus={this.handleFocus}
+              errors={this.state.errors} />
           </div>
           { this.renderCopyButton() }
         </div>

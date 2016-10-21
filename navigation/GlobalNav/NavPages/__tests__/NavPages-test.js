@@ -41,7 +41,7 @@ const NavPages = proxyquire('../', {
 
 describe('NavPages', () => {
   before(() => {
-    pages = renderIntoDocument(<NavPages { ...defaultProps }/>)
+    pages = renderIntoDocument(<NavPages {...defaultProps} />)
   })
   it('displays a list on focus', () => {
     let button = pages.refs.button

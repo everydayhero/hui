@@ -15,20 +15,20 @@ const props = {
 export default React.createClass({
   displayName: 'PhoneInputExample',
 
-  getInitialState() {
+  getInitialState () {
     return { value: '' }
   },
 
-  handleChange(value) {
+  handleChange (value) {
     this.setState({ value })
   },
 
-  render() {
+  render () {
     const { value } = this.state
     return (
       <div>
-        <h3 className="DemoPage__h3" id="TextInput">PhoneInput</h3>
-        <PhoneInput { ...props } value={ value } onChange={ this.handleChange } />
+        <h3 className='DemoPage__h3' id='TextInput'>PhoneInput</h3>
+        <PhoneInput {...props} value={value} onChange={this.handleChange} />
       </div>
     )
   }

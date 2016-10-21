@@ -36,6 +36,6 @@ export default React.createClass({
   render () {
     let { props, state, handleClick } = this
     let icon = props.icon ? props.icon : state.submitted ? 'refresh' : ''
-    return <Button { ...defaults } { ...props } icon={ icon } onClick={ handleClick } />
+    return <Button {...defaults} {...props} icon={icon} onClick={handleClick} />
   }
 })

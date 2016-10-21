@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-var gulp      = require('gulp')
-var svgmin    = require('gulp-svgmin')
+var gulp = require('gulp')
+var svgmin = require('gulp-svgmin')
 var svgSprite = require('gulp-svg-sprite')
-var svg2png   = require('gulp-svg2png')
+var svg2png = require('gulp-svg2png')
 
 gulp.task('svgFlagSprite', function () {
   return gulp.src(['./images/flags/*.svg'])
@@ -19,9 +19,9 @@ gulp.task('svgFlagSprite', function () {
     }))
     .pipe(svgSprite({
       variables: {
-        png: function() {
-          return function(sprite, render) {
-            return render(sprite).split('.svg').join('.png');
+        png: function () {
+          return function (sprite, render) {
+            return render(sprite).split('.svg').join('.png')
           }
         }
       },
@@ -40,13 +40,13 @@ gulp.task('svgFlagSprite', function () {
         }
       }
     }))
-    .pipe(gulp.dest('./atoms/FlagIcon/'));
-});
+    .pipe(gulp.dest('./atoms/FlagIcon/'))
+})
 
-gulp.task('pngFlagSprite', ['svgFlagSprite'], function() {
+gulp.task('pngFlagSprite', ['svgFlagSprite'], function () {
   return gulp.src('./images/flags_sprite*.svg')
     .pipe(svg2png(0.1))
-    .pipe(gulp.dest('./images/'));
-});
+    .pipe(gulp.dest('./images/'))
+})
 
-gulp.task('flag-sprites', ['pngFlagSprite']);
+gulp.task('flag-sprites', ['pngFlagSprite'])

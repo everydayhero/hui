@@ -41,7 +41,7 @@ export default React.createClass({
     onIconClick: React.PropTypes.func
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       autoComplete: true,
       storeLocally: false,
@@ -55,8 +55,8 @@ export default React.createClass({
       onChange: null,
       validate: null,
       onError: null,
-      onBlur: function() {},
-      onTab: function() {},
+      onBlur: function () {},
+      onTab: function () {},
       onIconClick: null,
       readOnly: false,
       required: false,
@@ -74,7 +74,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       hasError: false,
       focused: false,
@@ -83,7 +83,7 @@ export default React.createClass({
     }
   },
 
-  render: function() {
+  render: function () {
     var props = this.props
     var state = this.state
     var value = props.value || ''
@@ -99,19 +99,18 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-TextArea__inputWrap">
-          <label className="hui-TextArea__label" htmlFor={ props.id }>{ props.label }</label>
-          <textarea className="hui-TextArea__input"
-            id={ props.id }
-            ref="input"
-            value={ props.value }
-            disabled={ props.disabled }
-            onBlur={ this.handleBlur }
-            onChange={ this.handleChange }
-            onFocus={ this.handleFocus }
-            onTab={ this.onTab }>
-          </textarea>
+      <div className={classes}>
+        <div className='hui-TextArea__inputWrap'>
+          <label className='hui-TextArea__label' htmlFor={props.id}>{ props.label }</label>
+          <textarea className='hui-TextArea__input'
+            id={props.id}
+            ref='input'
+            value={props.value}
+            disabled={props.disabled}
+            onBlur={this.handleBlur}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onTab={this.onTab} />
         </div>
         { this.renderMessage() }
       </div>

@@ -66,10 +66,10 @@ export default React.createClass({
   },
 
   fieldChangeHandler () {
-    let paf_validated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
+    const pafValidated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
       if (k === 'paf_validated') { return i }
     })
-    this.form = { ...this.state.form, paf_validated }
+    this.form = { ...this.state.form, paf_validated: pafValidated }
     this.setState({ form: this.form })
   },
 
@@ -120,7 +120,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className={`hui-AddressFieldset__wrap hui-AddressFieldset__wrap--internal-${props.internalSpacing}`}>
-          <div className="hui-AddressFieldset__header">
+          <div className='hui-AddressFieldset__header'>
             {props.header}
           </div>
 

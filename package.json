@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "test": "TEST_MODE=true && mocha `find . -name '*-test.js' -not -path '*node_modules*'`",
-    "lint": "gulp lint",
+    "lint": "standard --verbose | snazzy",
     "start": "babel-node server.js",
     "build": "gulp build",
     "dev-build": "gulp build --debug true",
@@ -62,7 +62,6 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.9.1",
-    "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
@@ -75,8 +74,6 @@
     "compression": "^1.3.0",
     "ejs": "^2.4.2",
     "enzyme": "^2.4.1",
-    "eslint": "^3.0.0",
-    "eslint-plugin-react": "^5.2.2",
     "express": "^4.11.1",
     "glob": "^7.0.4",
     "gulp": "^3.9.1",
@@ -84,7 +81,6 @@
     "gulp-awspublish": "^1.0.6",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^1.1.1",
     "gulp-if": "^2.0.1",
     "gulp-inject": "^4.1.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
@@ -92,6 +88,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
     "gulp-sass": "^2.2.0",
+    "gulp-standard": "^8.0.2",
     "gulp-svg-sprite": "^1.2.19",
     "gulp-svg2png": "^2.0.0",
     "gulp-svgmin": "^1.2.2",
@@ -112,8 +109,34 @@
     "simple-spinner": "0.0.3",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0",
+    "snazzy": "^5.0.0",
+    "standard": "^8.4.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "wget": "0.0.1"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "globals": [
+      "AssertionError",
+      "Simulate",
+      "TestUtils",
+      "chai",
+      "expect",
+      "findByAttribute",
+      "findByClass",
+      "findByTag",
+      "findByType",
+      "findDOMNode",
+      "renderIntoDocument",
+      "scryByAttribute",
+      "scryByClass",
+      "scryByTag",
+      "scryByType",
+      "should",
+      "sinon"
+    ]
   }
 }

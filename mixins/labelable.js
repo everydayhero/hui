@@ -11,9 +11,9 @@ export default {
 
     return (
       <label
-        ref="label"
-        htmlFor={ id }
-        className={ `hui-${ displayName }__label` }>
+        ref='label'
+        htmlFor={id}
+        className={`hui-${displayName}__label`}>
         { label }
       </label>
     )

@@ -27,26 +27,26 @@ export default React.createClass({
     })
   },
 
-  render: function() {
+  render: function () {
     return (
       <div>
-        <h3 className="DemoPage__h3" id="UrlSearchSelect">UrlSearchSelect</h3>
+        <h3 className='DemoPage__h3' id='UrlSearchSelect'>UrlSearchSelect</h3>
 
         <UrlSearchSelect
-          label="Search for a Wikipedia article"
-          url={ 'https://en.wikipedia.org/w/api.php' }
-          params={ {
+          label='Search for a Wikipedia article'
+          url={'https://en.wikipedia.org/w/api.php'}
+          params={{
             action: 'query',
             list: 'search',
             continue: '',
             format: 'json'
-          } }
+          }}
           jsonp
-          queryProperty="srsearch"
-          onSelection={ this.handleSelection }
-          deserializeResponse={ this.deserializeWikipediaResponse } />
+          queryProperty='srsearch'
+          onSelection={this.handleSelection}
+          deserializeResponse={this.deserializeWikipediaResponse} />
 
-        <p className="DemoPage__p">
+        <p className='DemoPage__p'>
           { this.state.pageUrl || 'No page selected' }
         </p>
       </div>

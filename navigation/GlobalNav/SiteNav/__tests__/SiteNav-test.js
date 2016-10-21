@@ -13,19 +13,19 @@ let defaultProps = {
 
 describe('SiteNav', () => {
   it('renders a search input', () => {
-    let nav = renderIntoDocument(<SiteNav { ...defaultProps }/>)
+    let nav = renderIntoDocument(<SiteNav {...defaultProps} />)
     findByClass(nav, 'hui-NavSearch').should.exist
   })
 
   it('links to the wonderwall', () => {
-    let nav = renderIntoDocument(<SiteNav { ...defaultProps }/>)
+    let nav = renderIntoDocument(<SiteNav {...defaultProps} />)
     let blog = findByAttribute(nav, 'href', `${defaultProps.portal}blog/`)
     blog.should.exist
     blog.textContent.should.equal('Wonderwall')
   })
 
   it('links to the help page', () => {
-    let nav = renderIntoDocument(<SiteNav { ...defaultProps }/>)
+    let nav = renderIntoDocument(<SiteNav {...defaultProps} />)
     let help = findByAttribute(nav, 'href', `${defaultProps.portal}contact/`)
     help.should.exist
     help.textContent.should.equal('Help')
@@ -33,7 +33,7 @@ describe('SiteNav', () => {
 
   when('has no user', () => {
     it('links to the nonprofit page', () => {
-      let nav = renderIntoDocument(<SiteNav { ...defaultProps }/>)
+      let nav = renderIntoDocument(<SiteNav {...defaultProps} />)
       let nonprofit = findByAttribute(nav, 'href', `${defaultProps.portal}nonprofits/`)
       nonprofit.should.exist
       nonprofit.textContent.should.equal('Nonprofit')
@@ -43,7 +43,7 @@ describe('SiteNav', () => {
   when('has user', () => {
     it('shows user pages', () => {
       defaultProps.hasUser = true
-      let nav = renderIntoDocument(<SiteNav { ...defaultProps }/>)
+      let nav = renderIntoDocument(<SiteNav {...defaultProps} />)
       findByClass(nav, 'hui-NavPages').should.exist
     })
   })

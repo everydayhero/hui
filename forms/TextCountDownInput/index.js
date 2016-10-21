@@ -38,9 +38,9 @@ export default React.createClass({
     max: React.PropTypes.number
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
-      onChange: function() {},
+      onChange: function () {},
       max: 100,
       warnMax: 90,
       value: '',
@@ -48,37 +48,37 @@ export default React.createClass({
       spacing: 'loose',
       errors: [],
       maxErrorMessage: 'Maximum {{max}} characters'
-    };
+    }
   },
 
-  render: function() {
-    var props   = this.props;
-    var value   = props.value || '';
-    var maxed   = value.length > props.max;
-    var maxWarn =  value.length > props.warnMax && value.length <= props.max;
-    var errors  = props.errors;
+  render: function () {
+    var props = this.props
+    var value = props.value || ''
+    var maxed = value.length > props.max
+    var maxWarn = value.length > props.warnMax && value.length <= props.max
+    var errors = props.errors
     var classes = classnames([
       'hui-TextCountDownInput--' + props.layout,
       'hui-TextCountDownInput--' + props.spacing,
       'hui-TextCountDownInput'
-    ]);
+    ])
     var counterClasses = classnames([
       maxed && 'hui-TextCountDownInput__counter--maxed',
       maxWarn && 'hui-TextCountDownInput__counter--warn',
       'hui-TextCountDownInput__counter'
-    ]);
+    ])
 
-    if(maxed) {
-      errors = [props.maxErrorMessage.replace('{{max}}', props.max)];
+    if (maxed) {
+      errors = [props.maxErrorMessage.replace('{{max}}', props.max)]
     }
 
     return (
-      <div className={ classes }>
-        <Input {...props} errors={ errors } layout="full" spacing="compact" showIcon={ false }/>
-        <div className={ counterClasses }>
+      <div className={classes}>
+        <Input {...props} errors={errors} layout='full' spacing='compact' showIcon={false} />
+        <div className={counterClasses}>
           { value.length }
         </div>
       </div>
-    );
+    )
   }
-});
+})

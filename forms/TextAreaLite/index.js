@@ -28,9 +28,9 @@ const render = ({
     (!value && hasFocus) && styles.focusedMirrorPlaceholder
   )
   return (
-    <div className={ css(styles.wrapper) }>
-      <pre className={ mirrorClasses } style={{ minHeight: minRows * 24 }}>{ value || placeholder }</pre>
-      <textarea className={ css(styles.textarea) } value={ value } onChange={ onChange } onFocus={ onFocus } onBlur={ onBlur } />
+    <div className={css(styles.wrapper)}>
+      <pre className={mirrorClasses} style={{ minHeight: minRows * 24 }}>{ value || placeholder }</pre>
+      <textarea className={css(styles.textarea)} value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
     </div>
   )
 }

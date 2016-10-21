@@ -10,7 +10,7 @@ describe('FilterSelect', () => {
         { value: '2', label: 'Tex' }
       ]
       let subject = renderIntoDocument(
-        <FilterSelect options={ options } />
+        <FilterSelect options={options} />
       ).state.filteredOptions
 
       expect(subject).to.eql(options)
@@ -18,7 +18,7 @@ describe('FilterSelect', () => {
 
     it('renders a Select for displaying the selected option', () => {
       let subject = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       ).refs.displayInput
 
       expect(subject).to.be.ok
@@ -29,7 +29,7 @@ describe('FilterSelect', () => {
     context('when `null`', () => {
       it('will guard aginst a null value and still render', () => {
         let subject = renderIntoDocument(
-          <FilterSelect value={ null }  options={ [] } />
+          <FilterSelect value={null} options={[]} />
         )
         expect(subject).to.be.ok
       })
@@ -45,8 +45,8 @@ describe('FilterSelect', () => {
       ]
       let element = renderIntoDocument(
         <FilterSelect
-          options={ collection }
-          maxResults={ 1 } />
+          options={collection}
+          maxResults={1} />
       )
       let subject = element.state.filteredOptions
 
@@ -59,7 +59,7 @@ describe('FilterSelect', () => {
   describe('#openOptionList', () => {
     it('sets state.isOpen to true', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       element.openOptionList()
       let subject = element.state.isOpen
@@ -69,7 +69,7 @@ describe('FilterSelect', () => {
 
     it('renders an OptionList for displaying / selecting filtered options', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       element.openOptionList()
       let subject = element.refs.optionList
@@ -81,7 +81,7 @@ describe('FilterSelect', () => {
   describe('#closeOptionList', () => {
     it('sets state.isOpen to false', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       element.closeOptionList()
       let subject = element.state.isOpen
@@ -91,7 +91,7 @@ describe('FilterSelect', () => {
 
     it('doesn\'t render an OptionList', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       element.closeOptionList()
       let subject = element.refs.optionList
@@ -103,7 +103,7 @@ describe('FilterSelect', () => {
   describe('the display select', () => {
     it('sets state.focused to true on focus', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       let input = element.refs.displayInput.refs.input
       Simulate.focus(input)
@@ -114,7 +114,7 @@ describe('FilterSelect', () => {
 
     it('sets state.isOpen to true on click', () => {
       let element = renderIntoDocument(
-        <FilterSelect options={ [] } />
+        <FilterSelect options={[]} />
       )
       let input = element.refs.displayInput.refs.input
       Simulate.click(input)
@@ -127,7 +127,7 @@ describe('FilterSelect', () => {
       describe('hitting the down arrow', () => {
         it('opens the optionList', () => {
           let element = renderIntoDocument(
-            <FilterSelect options={ [] } />
+            <FilterSelect options={[]} />
           )
           let input = element.refs.displayInput.refs.input
           Simulate.focus(input)
@@ -149,12 +149,12 @@ describe('FilterSelect', () => {
         { value: '3', label: 'Ben Ely' }
       ]
       let element = renderIntoDocument(
-        <FilterSelect options={ options } />
+        <FilterSelect options={options} />
       )
       element.openOptionList()
 
       let input = element.refs.filter.refs.filterInput.refs.input
-      Simulate.change(input, { target: { value: 'Per' }})
+      Simulate.change(input, { target: { value: 'Per' } })
 
       let subject = element.state.filteredOptions
 
@@ -171,13 +171,13 @@ describe('FilterSelect', () => {
           { value: '3', label: 'Ben Ely' }
         ]
         let element = renderIntoDocument(
-          <FilterSelect options={ options } />
+          <FilterSelect options={options} />
         )
         element.openOptionList()
 
         let input = element.refs.filter.refs.filterInput.refs.input
-        Simulate.change(input, { target: { value: 'Per' }})
-        Simulate.change(input, { target: { value: '' }})
+        Simulate.change(input, { target: { value: 'Per' } })
+        Simulate.change(input, { target: { value: '' } })
 
         let subject = element.state.filteredOptions
 
@@ -194,7 +194,7 @@ describe('FilterSelect', () => {
           { value: '4', label: '123 thing' }
         ]
         let subject = renderIntoDocument(
-          <FilterSelect options={ options } sort={ 'asc' } />
+          <FilterSelect options={options} sort={'asc'} />
         ).state.filteredOptions
 
         expect(subject).to.eql([
@@ -212,7 +212,7 @@ describe('FilterSelect', () => {
           { value: '1', label: 'Zim Rogers' }
         ]
         let subject = renderIntoDocument(
-          <FilterSelect options={ options } sort={ 'desc' } />
+          <FilterSelect options={options} sort={'desc'} />
         ).state.filteredOptions
 
         expect(subject).to.eql([
@@ -229,7 +229,7 @@ describe('FilterSelect', () => {
           { value: 'Ben Ely' }
         ]
         let subject = renderIntoDocument(
-          <FilterSelect options={ options } sort={ 'asc' } labelKey={ 'value' } />
+          <FilterSelect options={options} sort={'asc'} labelKey={'value'} />
         ).state.filteredOptions
 
         expect(subject).to.eql([

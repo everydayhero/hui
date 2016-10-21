@@ -26,57 +26,57 @@ export default React.createClass({
     pages: React.PropTypes.array
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       transparent: false,
       pages: []
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       pages: [],
       open: false
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     if (!isEmpty(this.props.pages)) {
       this.getPages().then(this.setPages)
     }
   },
 
-  getPages() {
+  getPages () {
     return getJSON(api('page'), { ids: this.props.pages.join(','), limit: 5 })
   },
 
-  setPages(data) {
+  setPages (data) {
     this.setState({ pages: data.pages })
   },
 
-  open() {
+  open () {
     let open = !this.state.open
     this.setState({ open }, () => open && addEventBindings(['mousedown', 'touchstart'], this.handleClick))
   },
 
-  close() {
+  close () {
     this.setState({ open: false }, () => {
       removeEventBindings(['mousedown', 'touchstart'], this.handleClick)
       setTimeout(() => this.refs.button.blur(), 15)
     })
   },
 
-  handleClick(e) {
+  handleClick (e) {
     if (!this.refs.list.contains(e.target || e.srcElement)) { this.close() }
   },
 
-  renderPages() {
+  renderPages () {
     return map(this.state.pages, (d, i) => {
-      return <NavPagesPage page={ d } key={ i } />
+      return <NavPagesPage page={d} key={i} />
     })
   },
 
-  render() {
+  render () {
     let open = this.state.open
     let props = this.props
     let t = this.t
@@ -86,15 +86,15 @@ export default React.createClass({
     }, 'hui-NavPages', 'hui-NavPages--' + props.kind)
 
     return (
-      <div className={ classes }>
-        <div className="hui-NavPages__button" ref="button" onFocus={ this.open } tabIndex="0">
-          <span className="hui-NavPages__label">{ t('page_label') }</span>
-          <Icon className="hui-NavPages__icon" icon="chevron-down"/>
+      <div className={classes}>
+        <div className='hui-NavPages__button' ref='button' onFocus={this.open} tabIndex='0'>
+          <span className='hui-NavPages__label'>{ t('page_label') }</span>
+          <Icon className='hui-NavPages__icon' icon='chevron-down' />
         </div>
         { open &&
-          <div className="hui-NavPages__pageList" ref="list">
+          <div className='hui-NavPages__pageList' ref='list'>
             { this.renderPages() }
-            <a className="hui-NavPages__create" href={ props.registerUrl } onBlur={ this.close }>{ t('register_label') }</a>
+            <a className='hui-NavPages__create' href={props.registerUrl} onBlur={this.close}>{ t('register_label') }</a>
           </div>
         }
       </div>

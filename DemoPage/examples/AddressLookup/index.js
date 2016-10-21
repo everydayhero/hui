@@ -20,18 +20,17 @@ export default React.createClass({
     })
   },
 
-  render: function() {
-
+  render: function () {
     return (
       <div>
-        <h3 className="DemoPage__h3" id="AddressLookup">AddressLookup</h3>
+        <h3 className='DemoPage__h3' id='AddressLookup'>AddressLookup</h3>
 
         <AddressLookup
           required
-          errorMessage="You need to find an address, please :)"
-          onChange={ this.handleChange }/>
+          errorMessage='You need to find an address, please :)'
+          onChange={this.handleChange} />
 
-        <p className="DemoPage__p">
+        <p className='DemoPage__p'>
           { this.state.address.street_address || 'No address selected' }
         </p>
       </div>

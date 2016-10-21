@@ -10,16 +10,16 @@ export default React.createClass({
     icon: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return { icon: 'heart-o' }
   },
 
-  render() {
+  render () {
     let { icon } = this.props
 
     return (
-      <div className={ 'IconBanner' }>
-        <Icon className={ 'IconBanner__icon' } icon={ icon } />
+      <div className={'IconBanner'}>
+        <Icon className={'IconBanner__icon'} icon={icon} />
       </div>
     )
   }

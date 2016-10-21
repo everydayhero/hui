@@ -1,8 +1,8 @@
 'use strict'
 
-import React      from 'react'
+import React from 'react'
 import classnames from 'classnames'
-import Errors     from '../InputErrors'
+import Errors from '../InputErrors'
 
 export default React.createClass({
   displayName: 'Checkbox',
@@ -19,50 +19,50 @@ export default React.createClass({
     ])
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       disabled: false,
       labelIsClickable: true
-    };
-  },
-
-  handleChange: function(e) {
-    var props = this.props;
-
-    if(props.onChange) {
-      this.props.onChange(e.target.checked);
     }
   },
 
-  handleBlur: function(e) {
-    var props = this.props;
+  handleChange: function (e) {
+    var props = this.props
 
-    if(props.onBlur) {
-      this.props.onBlur(e.target.checked);
+    if (props.onChange) {
+      this.props.onChange(e.target.checked)
     }
   },
 
-  renderLabel: function() {
-    var props = this.props;
+  handleBlur: function (e) {
+    var props = this.props
+
+    if (props.onBlur) {
+      this.props.onBlur(e.target.checked)
+    }
+  },
+
+  renderLabel: function () {
+    var props = this.props
 
     if (props.labelIsClickable) {
       return props.label && (
-        <label htmlFor={ props.id } className="hui-Checkbox__label">
+        <label htmlFor={props.id} className='hui-Checkbox__label'>
           { props.label }
         </label>
-      );
+      )
     } else {
       return props.label && (
-        <span className="hui-Checkbox__label">
+        <span className='hui-Checkbox__label'>
           { props.label }
         </span>
-      );
+      )
     }
   },
 
-  render: function() {
-    var props = this.props;
-    var errors = props.errors || [];
+  render: function () {
+    var props = this.props
+    var errors = props.errors || []
 
     var Input = React.DOM.input({
       id: props.id,
@@ -75,18 +75,18 @@ export default React.createClass({
       onChange: this.handleChange,
       autoComplete: 'off',
       disabled: (props.disabled)
-    });
+    })
 
     var classes = classnames({
       'hui-Input--error': errors.length > 0
-    }, 'hui-Checkbox');
+    }, 'hui-Checkbox')
 
     return (
-      <div className={ classes }>
+      <div className={classes}>
         { Input }
         { this.renderLabel() }
-        <Errors errors={ this.props.errors } />
+        <Errors errors={this.props.errors} />
       </div>
-    );
+    )
   }
-});
+})

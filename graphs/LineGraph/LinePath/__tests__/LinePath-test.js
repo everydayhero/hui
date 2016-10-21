@@ -2,7 +2,7 @@
 
 import LinePath from '../'
 
-describe('LinePath', function() {
+describe('LinePath', function () {
   var collection = [
     { series: [
       { date: 1, calculatedValue: 5 },
@@ -20,7 +20,7 @@ describe('LinePath', function() {
       { date: 5, calculatedValue: 4 },
       { date: 6, calculatedValue: 23 }
     ] }
-  ];
+  ]
 
   var gutters = {
     top: 10,
@@ -29,94 +29,94 @@ describe('LinePath', function() {
     bottom: 10
   }
 
-  var height = 120;
+  var height = 120
 
-  describe('default', function() {
-    var component;
+  describe('default', function () {
+    var component
 
-    beforeEach(function() {
+    beforeEach(function () {
       component = renderIntoDocument(
         <LinePath
-          collection={ collection }
-          width={ 200 }
-          height={ height }
-          index={ 0 }
+          collection={collection}
+          width={200}
+          height={height}
+          index={0}
           line
           area
-          gutter={ gutters }
-          className="classname1"
-          collectionValueKey="" />
-      );
-    });
+          gutter={gutters}
+          className='classname1'
+          collectionValueKey='' />
+      )
+    })
 
-    it('should render LinePath', function() {
-      component.should.exist;
-    });
+    it('should render LinePath', function () {
+      component.should.exist
+    })
 
-    it('should render item with given className', function() {
-      var lines = scryByClass(component, 'classname1');
+    it('should render item with given className', function () {
+      var lines = scryByClass(component, 'classname1')
 
-      lines.length.should.equal(1);
-    });
+      lines.length.should.equal(1)
+    })
 
-    it('should render a line', function() {
-      var lines = scryByClass(component, 'hui-LinePath__line');
+    it('should render a line', function () {
+      var lines = scryByClass(component, 'hui-LinePath__line')
 
-      lines.length.should.equal(1);
-    });
+      lines.length.should.equal(1)
+    })
 
-    it('should render a area', function() {
-      var lines = scryByClass(component, 'hui-LinePath__area');
+    it('should render a area', function () {
+      var lines = scryByClass(component, 'hui-LinePath__area')
 
-      lines.length.should.equal(1);
-    });
+      lines.length.should.equal(1)
+    })
 
-    it('should render the correct drawigHeight', function() {
-      component.getDrawingHeight().should.equal(height - gutters.top - gutters.bottom);
-    });
+    it('should render the correct drawigHeight', function () {
+      component.getDrawingHeight().should.equal(height - gutters.top - gutters.bottom)
+    })
 
-    it('should render the correct getScalePercentage', function() {
-      component.getScalePercentage().should.equal(0.96);
-    });
+    it('should render the correct getScalePercentage', function () {
+      component.getScalePercentage().should.equal(0.96)
+    })
 
-    it('should render the correct getPathHeight', function() {
-      component.getPathDrawingHeight().should.equal(96);
-    });
+    it('should render the correct getPathHeight', function () {
+      component.getPathDrawingHeight().should.equal(96)
+    })
 
-    it('should render the correct getTranslateY', function() {
-      height = component.getTranslateY() + component.getPathDrawingHeight();
+    it('should render the correct getTranslateY', function () {
+      height = component.getTranslateY() + component.getPathDrawingHeight()
 
-      height.should.equal(component.getDrawingHeight() + gutters.top);
-    });
-  });
+      height.should.equal(component.getDrawingHeight() + gutters.top)
+    })
+  })
 
-  describe('area and line false', function() {
-    var component;
+  describe('area and line false', function () {
+    var component
 
-    beforeEach(function() {
+    beforeEach(function () {
       component = renderIntoDocument(
         <LinePath
-          collection={ collection }
-          width={ 200 }
-          height={ 200 }
-          index={ 0 }
-          line={ false }
-          area={ false }
-          gutter={ gutters }
-          collectionValueKey="" />
-      );
-    });
+          collection={collection}
+          width={200}
+          height={200}
+          index={0}
+          line={false}
+          area={false}
+          gutter={gutters}
+          collectionValueKey='' />
+      )
+    })
 
-    it('should not render a line', function() {
-      var lines = scryByClass(component, 'hui-LinePath__line');
+    it('should not render a line', function () {
+      var lines = scryByClass(component, 'hui-LinePath__line')
 
-      lines.length.should.equal(0);
-    });
+      lines.length.should.equal(0)
+    })
 
-    it('should not render a area', function() {
-      var lines = scryByClass(component, 'hui-LinePath__area');
+    it('should not render a area', function () {
+      var lines = scryByClass(component, 'hui-LinePath__area')
 
-      lines.length.should.equal(0);
-    });
-  });
-});
+      lines.length.should.equal(0)
+    })
+  })
+})

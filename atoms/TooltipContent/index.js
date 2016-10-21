@@ -13,8 +13,8 @@ let TooltipContent = ({ style, position, content, open }) => {
   })
 
   return (
-    <div className={ classes }>
-      <div className="hui-TooltipContent__content">
+    <div className={classes}>
+      <div className='hui-TooltipContent__content'>
         { content }
       </div>
     </div>

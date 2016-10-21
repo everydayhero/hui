@@ -3,7 +3,7 @@ import Component from '../'
 const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 
 describe(CWD, () => {
-  const subject = (props = {}) => shallow(<Component { ...props } />)
+  const subject = (props = {}) => shallow(<Component {...props} />)
 
   it('renders a value', () => {
     const props = { onChange: sinon.spy(), value: 'test value' }

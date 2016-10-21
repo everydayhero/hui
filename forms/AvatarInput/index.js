@@ -19,8 +19,8 @@ export default React.createClass({
     pageName: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
-    global.ENV = global.ENV || {};
+  getDefaultProps: function () {
+    global.ENV = global.ENV || {}
 
     return {
       options: {
@@ -33,68 +33,68 @@ export default React.createClass({
       buttonLabel: 'Upload Image',
       value: {},
       pageName: ''
-    };
+    }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       hasError: false,
       focused: false
-    };
-  },
-
-  browse: function(e) {
-    var props = this.props;
-    var options = props.options;
-
-    e.preventDefault();
-    if (!props.disabled) {
-      filepicker.pick(options, this.onChange, this.focus);
     }
   },
 
-  focus: function() {
+  browse: function (e) {
+    var props = this.props
+    var options = props.options
+
+    e.preventDefault()
+    if (!props.disabled) {
+      filepicker.pick(options, this.onChange, this.focus)
+    }
+  },
+
+  focus: function () {
     this.refs.browse_files.focus()
   },
 
-  onChange: function(file) {
-    var onChange = this.props.onChange;
+  onChange: function (file) {
+    var onChange = this.props.onChange
     if (onChange) {
-      onChange(file);
+      onChange(file)
     }
-    this.focus();
+    this.focus()
   },
 
-  renderPageName: function() {
-    var pageName = this.props.pageName;
-    return pageName && (<p className="hui-AvatarInput__pageName">{ pageName }</p>);
+  renderPageName: function () {
+    var pageName = this.props.pageName
+    return pageName && (<p className='hui-AvatarInput__pageName'>{ pageName }</p>)
   },
 
-  renderAvatar: function() {
-    var file = this.props.value;
+  renderAvatar: function () {
+    var file = this.props.value
 
     if (file.url) {
-      return <img className="hui-AvatarInput__preview" src={ file.url } alt={ file.filename } />;
+      return <img className='hui-AvatarInput__preview' src={file.url} alt={file.filename} />
     } else {
-      return <span className="hui-AvatarInput__preview"/>;
+      return <span className='hui-AvatarInput__preview' />
     }
   },
 
-  render: function() {
-    var props = this.props;
+  render: function () {
+    var props = this.props
 
     return (
-      <div className="hui-AvatarInput" >
-        <div className="hui-AvatarInput__card" onClick={ this.browse }>
+      <div className='hui-AvatarInput' >
+        <div className='hui-AvatarInput__card' onClick={this.browse}>
           { this.renderAvatar() }
           { this.renderPageName() }
         </div>
-        <div className="hui-AvatarInput__buttons">
-          <Button kind="cta" href="#" ref="browse_files" onClick={ this.browse } >
+        <div className='hui-AvatarInput__buttons'>
+          <Button kind='cta' href='#' ref='browse_files' onClick={this.browse} >
             { props.buttonLabel }
           </Button>
         </div>
       </div>
-    );
+    )
   }
-});
+})

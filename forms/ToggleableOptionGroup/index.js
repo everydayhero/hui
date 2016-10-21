@@ -18,29 +18,29 @@ export default React.createClass({
     label: React.PropTypes.string.isRequired
   },
 
-  isAllSelected() {
+  isAllSelected () {
     let { options } = this.props
     return compact(map(options, o => o.value)).length === keys(options).length
   },
 
-  isAllUnselected() {
+  isAllUnselected () {
     let { options } = this.props
     return compact(map(options, o => !o.value)).length === keys(options).length
   },
 
-  handlePrimaryChange(name, checked) {
+  handlePrimaryChange (name, checked) {
     forEach(this.refs, (d, k) => {
-      k !== name && d.handleChange({ target: { checked }})
+      k !== name && d.handleChange({ target: { checked } })
     })
     return Promise.resolve()
   },
 
-  renderOption(option, name) {
+  renderOption (option, name) {
     let optionProps = merge({ name, onChange: this.props.onChange, key: name, ref: name }, option)
-    return <ToggleableOption { ...optionProps } />
+    return <ToggleableOption {...optionProps} />
   },
 
-  render() {
+  render () {
     let { options, name, label } = this.props
     let isSingleOption = keys(options).length === 1
     let primaryOptionProps = {
@@ -53,11 +53,11 @@ export default React.createClass({
     }
 
     return (
-      <div className="ToggleableOptionGroup">
-        <div className="ToggleableOptionGroup__PrimaryOption">
+      <div className='ToggleableOptionGroup'>
+        <div className='ToggleableOptionGroup__PrimaryOption'>
           { map(isSingleOption ? options : primaryOptionProps, this.renderOption) }
         </div>
-        { !isSingleOption && <div className="ToggleableOption__SecondaryOptions">
+        { !isSingleOption && <div className='ToggleableOption__SecondaryOptions'>
           { map(options, this.renderOption) }
         </div> }
       </div>

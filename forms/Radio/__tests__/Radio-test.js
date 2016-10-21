@@ -6,7 +6,7 @@ const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 const classNames = (el) => el.node.props.className
 
 describe(CWD, () => {
-  const subject = (props = {}) => shallow(<Component { ...props } />)
+  const subject = (props = {}) => shallow(<Component {...props} />)
   it('renders a label', () => {
     const props = { id: 'test', label: 'testLabel', onChange: sinon.spy() }
     subject(props).text().should.eql('testLabel')

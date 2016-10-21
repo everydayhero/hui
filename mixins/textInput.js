@@ -8,7 +8,7 @@ import classnames from 'classnames'
 import validation from '../lib/validation'
 
 export default {
-  componentDidMount() {
+  componentDidMount () {
     let props = this.props
     if (props.disabled || props.readOnly) { return }
     let node = this.refs.input
@@ -18,22 +18,22 @@ export default {
     this.setValue(value)
   },
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     let state = this.state
     if (nextProps.disabled || nextProps.readOnly) { return }
     if (nextProps.showError && !state.hasError && !state.valid && !state.focused) { this.validate() }
   },
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (this.props.onUnmount) { this.props.onUnmount() }
   },
 
-  maskValue(value) {
+  maskValue (value) {
     if (!this.props.mask) { return value }
     return this.props.mask(value)
   },
 
-  expose(value) {
+  expose (value) {
     value = this.maskValue(value)
     let props = this.props
     let { onChange, onError, validate, required } = props
@@ -42,10 +42,10 @@ export default {
     if (onError && validate && required) { onError(!getValidator(validate)(value)) }
   },
 
-  validate(val) {
+  validate (val) {
     const { validate, required, value: propValue } = this.props
     if (!required) { return }
-    let value = val || propValue || ""
+    let value = val || propValue || ''
 
     if (validate) {
       this.setState({ waiting: true })
@@ -56,7 +56,7 @@ export default {
     }
   },
 
-  handleChange(e) {
+  handleChange (e) {
     let props = this.props
     let value = e.target.value
     if (props.disabled || props.readOnly || (!!props.limit && value.length > props.limit)) {
@@ -66,7 +66,7 @@ export default {
     if (!this.state.focused) { this.validate(value) }
   },
 
-  handleFocus() {
+  handleFocus () {
     const { disabled, readOnly, onFocus, value } = this.props
 
     if (disabled) { return }
@@ -84,7 +84,7 @@ export default {
     }
   },
 
-  handleBlur() {
+  handleBlur () {
     let { disabled, readOnly, onBlur, value } = this.props
     if (disabled || readOnly) { return }
 
@@ -92,13 +92,13 @@ export default {
     this.validate()
     if (onBlur) {
       onBlur(value, val => {
-        this.setValue(val);
-        this.validate(val);
-      });
+        this.setValue(val)
+        this.validate(val)
+      })
     }
   },
 
-  setValue(value) {
+  setValue (value) {
     if (this.props.disabled || this.props.readOnly) { return }
     this.setState({
       hasError: false,
@@ -108,9 +108,9 @@ export default {
     this.expose(value)
   },
 
-  setValid(valid, errors = []) {
+  setValid (valid, errors = []) {
     let onError = this.props.onError
-    if (onError) { onError(!valid, errors); }
+    if (onError) { onError(!valid, errors) }
     this.setState({
       hasError: !valid,
       waiting: false,
@@ -118,7 +118,7 @@ export default {
     })
   },
 
-  iconName() {
+  iconName () {
     const props = this.props
     const state = this.state
     const hasServerErrors = (props.errors || []).length
@@ -132,11 +132,11 @@ export default {
      : ''
   },
 
-  hasIcon() {
+  hasIcon () {
     return !!this.iconName()
   },
 
-  renderIcon() {
+  renderIcon () {
     let props = this.props
     let className = classnames({
       'hui-TextInput__icon': true,
@@ -145,25 +145,25 @@ export default {
     let icon = this.iconName()
 
     return this.hasIcon() && (
-      <span className={ className }>
-        <Icon icon={ icon } onClick={ props.onIconClick } disabled={ props.disabled } fixedWidth />
+      <span className={className}>
+        <Icon icon={icon} onClick={props.onIconClick} disabled={props.disabled} fixedWidth />
       </span>
     )
   },
 
-  renderPlaceHolder() {
+  renderPlaceHolder () {
     if (!this.props.placeHolder || this.props.value) {
       return false
     }
 
     return (
-      <span className="hui-TextInput__placeHolder">
+      <span className='hui-TextInput__placeHolder'>
         { this.props.placeHolder }
       </span>
     )
   },
 
-  inputMethods(bool) {
+  inputMethods (bool) {
     return bool && {
       onBlur: this.handleBlur,
       onChange: this.handleChange,

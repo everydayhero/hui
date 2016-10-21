@@ -16,26 +16,26 @@ export default React.createClass({
   getDefaultProps () {
     return {
       root: '/'
-    };
+    }
   },
 
   renderAppName () {
-    const appName = this.props.appName;
+    const appName = this.props.appName
 
     if (appName) {
       return (
-          <span className="hui-Masthead__appName">
-            { appName }
-          </span>
-        );
+        <span className='hui-Masthead__appName'>
+          { appName }
+        </span>
+      )
     } else {
-      return false;
+      return false
     }
   },
 
   render () {
-    const props = this.props;
-    const alt = ['everydayhero', props.appName].join(' ').trim();
+    const props = this.props
+    const alt = ['everydayhero', props.appName].join(' ').trim()
     const desktopImagePath = props.imagePath
       ? props.imagePath + 'hui_edh_logo@x2.gif'
       : props.desktopLogo
@@ -44,19 +44,19 @@ export default React.createClass({
       : props.mobileLogo
 
     return (
-      <h1 className="hui-Masthead">
-        <a href={ props.href }>
+      <h1 className='hui-Masthead'>
+        <a href={props.href}>
           <img
-            className="hui-Masthead__logo--desktop"
+            className='hui-Masthead__logo--desktop'
             src={desktopImagePath}
             alt={alt} />
           <img
-            className="hui-Masthead__logo--mobile"
+            className='hui-Masthead__logo--mobile'
             src={mobileImagePath}
             alt={alt} />
           { this.renderAppName() }
         </a>
       </h1>
-    );
+    )
   }
-});
+})

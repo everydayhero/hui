@@ -22,7 +22,7 @@ export default {
       locality: 'City',
       locality_blank_error: 'Please enter a city',
       postal_code: 'ZIP',
-      postal_code_blank_error: 'Please enter a ZIP code',
+      postal_code_blank_error: 'Please enter a ZIP code'
     },
     NZ: {
       region: 'City',

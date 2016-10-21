@@ -5,7 +5,7 @@ import Icon from '../../Icon'
 
 describe('Tooltip', () => {
   it('renders a TooltipContent component as a child', () => {
-    const wrapper = shallow(<Tooltip content="potato" />)
+    const wrapper = shallow(<Tooltip content='potato' />)
     expect(wrapper.find(TooltipContent)).to.exist
     expect(wrapper.find(TooltipContent).props()).to.eql({
       style: 'dark',
@@ -39,7 +39,7 @@ describe('Tooltip', () => {
 
   context('when the trigger is set to hover', () => {
     it('sets the tooltip to open when hovered', () => {
-      const wrapper = shallow(<Tooltip trigger="hover" />)
+      const wrapper = shallow(<Tooltip trigger='hover' />)
       const trigger = wrapper.find('.hui-Tooltip__trigger')
       expect(wrapper.state().open).to.be.false
 

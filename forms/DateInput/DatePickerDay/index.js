@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-import  React      from 'react'
-import  moment     from 'moment'
-import  classnames from 'classnames'
+import React from 'react'
+import moment from 'moment'
+import classnames from 'classnames'
 
 export default React.createClass({
   displayName: 'hui-DatePickerDay',
@@ -13,28 +13,28 @@ export default React.createClass({
     selectedDate: React.PropTypes.object
   },
 
-  onClick: function(e) {
-    e.preventDefault();
+  onClick: function (e) {
+    e.preventDefault()
     if (this.props.onClick) {
-      this.props.onClick(this.props.date);
+      this.props.onClick(this.props.date)
     }
   },
 
-  isToday: function() {
-    return this.props.date && this.props.date.isSame(moment(), 'day');
+  isToday: function () {
+    return this.props.date && this.props.date.isSame(moment(), 'day')
   },
 
-  isSelected: function() {
-    return this.props.date && this.props.date.isSame(this.props.selectedDate, 'day');
+  isSelected: function () {
+    return this.props.date && this.props.date.isSame(this.props.selectedDate, 'day')
   },
 
-  render: function() {
+  render: function () {
     var classes = classnames({
       'hui-DatePickerDay--today': this.isToday(),
       'hui-DatePickerDay--selected': this.isSelected()
-    }, 'hui-DatePickerDay');
+    }, 'hui-DatePickerDay')
     return (
-      <a href="#" tabIndex="-1" className={ classes } onClick={ this.onClick } >{ this.props.children }</a>
-    );
+      <a href='#' tabIndex='-1' className={classes} onClick={this.onClick} >{ this.props.children }</a>
+    )
   }
-});
+})

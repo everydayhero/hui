@@ -1,5 +1,6 @@
 'use strict'
 
+import React from 'react'
 import { mount } from 'enzyme'
 import { expect } from 'chai'
 
@@ -13,7 +14,7 @@ describe('OptionList', () => {
         { value: '1', label: 'Tim' },
         { value: '2', label: 'Tex' }
       ]
-      let element = mount(<OptionList options={ options } />)
+      let element = mount(<OptionList options={options} />)
       let subject = element.find('label').map(e => e.children())
 
       expect(subject[0].prop('label')).to.eq('Tim')
@@ -35,8 +36,8 @@ describe('OptionList', () => {
         ]
         let element = renderIntoDocument(
           <OptionList
-            options={ options }
-            Display={ MyCrazyDisplay }/>
+            options={options}
+            Display={MyCrazyDisplay} />
         )
         let subject = ReactDOM.findDOMNode(
           findByType(element, MyCrazyDisplay)
@@ -56,9 +57,9 @@ describe('OptionList', () => {
             { value: '2', label: 'Tex' },
             { value: '3', label: 'Ben' }
           ]
-          let element = renderIntoDocument(<OptionList options={ options } />)
-          let item    = element.refs['option-list-item-0']
-          let radio   = item.refs.radio
+          let element = renderIntoDocument(<OptionList options={options} />)
+          let item = element.refs['option-list-item-0']
+          let radio = item.refs.radio
           Simulate.keyDown(radio, { keyCode: 40 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '2', label: 'Tex' })
@@ -71,9 +72,9 @@ describe('OptionList', () => {
             { value: '2', label: 'Tex' },
             { value: '3', label: 'Ben' }
           ]
-          let element = renderIntoDocument(<OptionList options={ options } />)
-          let item    = element.refs['option-list-item-2']
-          let radio   = item.refs.radio
+          let element = renderIntoDocument(<OptionList options={options} />)
+          let item = element.refs['option-list-item-2']
+          let radio = item.refs.radio
           element.setState({
             selectionCandidate: options[2]
           })
@@ -91,9 +92,9 @@ describe('OptionList', () => {
             { value: '2', label: 'Tex' },
             { value: '3', label: 'Ben' }
           ]
-          let element = renderIntoDocument(<OptionList options={ options } />)
-          let item    = element.refs['option-list-item-2']
-          let radio   = item.refs.radio
+          let element = renderIntoDocument(<OptionList options={options} />)
+          let item = element.refs['option-list-item-2']
+          let radio = item.refs.radio
           element.setState({
             selectionCandidate: options[2]
           })
@@ -109,9 +110,9 @@ describe('OptionList', () => {
             { value: '2', label: 'Tex' },
             { value: '3', label: 'Ben' }
           ]
-          let element = renderIntoDocument(<OptionList options={ options } />)
-          let item    = element.refs['option-list-item-0']
-          let radio   = item.refs.radio
+          let element = renderIntoDocument(<OptionList options={options} />)
+          let item = element.refs['option-list-item-0']
+          let radio = item.refs.radio
           Simulate.keyDown(radio, { keyCode: 38 })
 
           expect(element.state.selectionCandidate).to.eql({ value: '3', label: 'Ben' })
@@ -125,9 +126,9 @@ describe('OptionList', () => {
           { value: '2', label: 'Tex' },
           { value: '3', label: 'Ben' }
         ]
-        let element = renderIntoDocument(<OptionList options={ options } />)
-        let item0   = element.refs['option-list-item-0']
-        let radio0  = item0.refs.radio
+        let element = renderIntoDocument(<OptionList options={options} />)
+        let item0 = element.refs['option-list-item-0']
+        let radio0 = item0.refs.radio
         Simulate.keyDown(radio0, { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '1', label: 'Tim' })
@@ -135,8 +136,8 @@ describe('OptionList', () => {
         element.setState({
           selectionCandidate: options[2]
         })
-        let item2   = element.refs['option-list-item-2']
-        let radio2  = item2.refs.radio
+        let item2 = element.refs['option-list-item-2']
+        let radio2 = item2.refs.radio
         Simulate.keyDown(radio2, { keyCode: 13 })
 
         expect(element.state.selected).to.eql({ value: '3', label: 'Ben' })
@@ -151,7 +152,7 @@ describe('OptionList', () => {
         { value: '2', label: 'Tex' },
         { value: '3', label: 'Ben' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
+      let element = renderIntoDocument(<OptionList options={options} />)
       let option = scryByTag(element, 'label')[1]
 
       TestUtils.SimulateNative.mouseOver(option)
@@ -164,7 +165,7 @@ describe('OptionList', () => {
         { value: '2', label: 'Tex' },
         { value: '3', label: 'Ben' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
+      let element = renderIntoDocument(<OptionList options={options} />)
       let option = scryByTag(element, 'label')[1]
 
       TestUtils.SimulateNative.mouseOver(findDOMNode(option))
@@ -179,10 +180,10 @@ describe('OptionList', () => {
         { value: '2', label: 'Tex' },
         { value: '3', label: 'Ben' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
-      let item    = element.refs['option-list-item-1']
-      let label   = item.refs.label
-      let radio   = item.refs.radio
+      let element = renderIntoDocument(<OptionList options={options} />)
+      let item = element.refs['option-list-item-1']
+      let label = item.refs.label
+      let radio = item.refs.radio
 
       Simulate.mouseDown(label)
       Simulate.blur(radio)
@@ -198,7 +199,7 @@ describe('OptionList', () => {
         { value: '2', label: 'Tex' },
         { value: '3', label: 'Ben' }
       ]
-      let element = renderIntoDocument(<OptionList options={ options } />)
+      let element = renderIntoDocument(<OptionList options={options} />)
       element.setState({
         selectionCandidate: options[1],
         focused: true
@@ -226,9 +227,9 @@ describe('OptionList', () => {
       render () {
         return (
           <OptionList
-            ref="optionList"
-            options={ options }
-            selectedOption={ this.state.selected }/>
+            ref='optionList'
+            options={options}
+            selectedOption={this.state.selected} />
         )
       }
     })

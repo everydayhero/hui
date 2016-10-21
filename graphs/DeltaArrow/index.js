@@ -1,7 +1,7 @@
 'use strict'
 
-import React      from 'react'
-import numeral    from 'numeral'
+import React from 'react'
+import numeral from 'numeral'
 import classnames from 'classnames'
 
 export default React.createClass({
@@ -13,17 +13,17 @@ export default React.createClass({
     emptyState: React.PropTypes.bool
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       loading: false,
       emptyState: false
     }
   },
 
-  renderTriangle: function() {
-    const props      = this.props
-    const delta      = props.delta
-    const loading    = props.loading
+  renderTriangle: function () {
+    const props = this.props
+    const delta = props.delta
+    const loading = props.loading
     const emptyState = props.emptyState
     const showBlankState = (delta === null || delta > 0 || loading === true || emptyState === true)
     var path
@@ -36,15 +36,15 @@ export default React.createClass({
 
     return (
       <svg>
-        <path d={ path } />
+        <path d={path} />
       </svg>
     )
   },
 
-  render: function() {
-    const props      = this.props
-    const delta      = props.delta
-    const loading    = props.loading
+  render: function () {
+    const props = this.props
+    const delta = props.delta
+    const loading = props.loading
     const emptyState = props.emptyState
     var text
     const className = classnames({
@@ -61,7 +61,7 @@ export default React.createClass({
 
     if (loading === true || emptyState === true) {
       text = ''
-    } else if (delta === null ) {
+    } else if (delta === null) {
       text = '--%'
     } else {
       text = numeral(delta).format('0a%')
@@ -70,9 +70,9 @@ export default React.createClass({
     }
 
     return (
-      <div className={ className }>
+      <div className={className}>
         { this.renderTriangle() }
-        <div className="hui-DeltaArrow__value">
+        <div className='hui-DeltaArrow__value'>
           { text }
         </div>
       </div>

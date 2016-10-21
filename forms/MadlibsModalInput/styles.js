@@ -19,7 +19,7 @@ const MadlibsModalInputBase = {
 
 const modalSelect = {
   fontSize: r(1.5),
-  color: c.grey,
+  color: c.grey
 }
 
 const MadlibsModalInput = {

@@ -1,9 +1,9 @@
 'use strict'
 
-import _            from 'lodash'
-import React        from 'react'
-import classnames   from 'classnames'
-import moment       from 'moment'
+import _ from 'lodash'
+import React from 'react'
+import classnames from 'classnames'
+import moment from 'moment'
 import formatNumber from '../../../lib/formatNumber'
 
 export default React.createClass({
@@ -21,7 +21,7 @@ export default React.createClass({
     scaleUnit: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       show: false,
       data: {},
@@ -34,116 +34,116 @@ export default React.createClass({
         x: 0,
         y: 0
       }
-    };
+    }
   },
 
-  renderDotLine: function() {
-    var pathData;
+  renderDotLine: function () {
+    var pathData
 
     if (this.props.isFlipOver) {
-      pathData = 'M190 100 L190 0';
+      pathData = 'M190 100 L190 0'
     } else {
-      pathData = 'M10 100 L10 0';
+      pathData = 'M10 100 L10 0'
     }
 
     return (
-      <svg className="hui-ToolTip__svg">
+      <svg className='hui-ToolTip__svg'>
         <g>
           <path
-            d={ pathData }
-            stroke="black"
-            strokeWidth="1"
-            strokeLinecap="round"
-            strokeDasharray="1, 2" />
+            d={pathData}
+            stroke='black'
+            strokeWidth='1'
+            strokeLinecap='round'
+            strokeDasharray='1, 2' />
         </g>
       </svg>
-    );
+    )
   },
 
-  renderTipContent: function() {
-    var props = this.props;
+  renderTipContent: function () {
+    var props = this.props
     var classes = classnames({
       'hui-ToolTip__text--left': !props.isFlipOver,
       'hui-ToolTip__text--right': props.isFlipOver
-    }, 'hui-ToolTip__text');
+    }, 'hui-ToolTip__text')
 
     if (_.isEmpty(props.data)) {
-      return false;
+      return false
     } else {
       return (
-        <div className={ classes } >
+        <div className={classes} >
           { this.renderDate() }
           { this.renderTip() }
         </div>
-      );
+      )
     }
   },
 
-  renderDate: function() {
-    var props = this.props;
+  renderDate: function () {
+    var props = this.props
 
-    if(props.showDate) {
-      var date = moment(props.data.date).format('ddd MMM DD, YYYY');
-      return (<p className="hui-ToolTip__date" >{ date }</p>);
+    if (props.showDate) {
+      var date = moment(props.data.date).format('ddd MMM DD, YYYY')
+      return (<p className='hui-ToolTip__date' >{ date }</p>)
     } else {
-      return false;
+      return false
     }
   },
 
-  renderTip: function() {
-    var props = this.props;
+  renderTip: function () {
+    var props = this.props
 
     return (
       <span>
         { this.renderLabel() }
-        <span className="hui-ToolTip__value">{ formatNumber(props.data.value, props.totalFormat) + props.scaleUnit }</span>
+        <span className='hui-ToolTip__value'>{ formatNumber(props.data.value, props.totalFormat) + props.scaleUnit }</span>
         { this.renderTotal() }
       </span>
-    );
+    )
   },
 
-  renderLabel: function() {
-    var props = this.props;
+  renderLabel: function () {
+    var props = this.props
 
-    if(props.label) {
+    if (props.label) {
       return props.label + ': '
     } else {
-      return false;
+      return false
     }
   },
 
-  renderTotal: function() {
-    var props = this.props;
+  renderTotal: function () {
+    var props = this.props
 
-    if(props.showTotal) {
+    if (props.showTotal) {
       return (
-        <span className="hui-ToolTip__total">/ { formatNumber(props.data.total, props.totalFormat) + props.scaleUnit }</span>
-      );
+        <span className='hui-ToolTip__total'>/ { formatNumber(props.data.total, props.totalFormat) + props.scaleUnit }</span>
+      )
     } else {
-      return false;
+      return false
     }
   },
 
-  render: function() {
-    var props    = this.props;
-    var position = props.position;
-    var x        = position.x;
-    var y        = position.y;
-    var style    = { left: x, top: y - 3 };
+  render: function () {
+    var props = this.props
+    var position = props.position
+    var x = position.x
+    var y = position.y
+    var style = { left: x, top: y - 3 }
 
     var classes = classnames({
       'hui-ToolTip--left': props.isFlipOver
-    }, 'hui-ToolTip');
+    }, 'hui-ToolTip')
 
     if (!props.show) {
-      return false;
+      return false
     }
 
     return (
-      <div className={ classes } style={ style }>
+      <div className={classes} style={style}>
         { this.renderDotLine() }
         { this.renderTipContent() }
       </div>
-    );
+    )
   }
-});
+})

@@ -3,7 +3,7 @@ import functional from 'react-functional'
 import css from '../../css'
 import * as styles from './styles'
 
-const Option = ({ value, display }) => <option key={ value } value={ value }>{ display }</option>
+const Option = ({ value, display }) => <option key={value} value={value}>{ display }</option>
 
 const propTypes = {
   value: PropTypes.node,
@@ -21,9 +21,9 @@ const render = ({
   hasFocus,
   ...rest
 }) => (
-  <span className={ css(styles.wrapper, hasFocus && styles.focused) }>
-    <pre className={ css(styles.mirror) }>{ displayValue || rest.value || options[0] }</pre>
-    <select className={ css(styles.select) } { ...rest } size={ 1 }>
+  <span className={css(styles.wrapper, hasFocus && styles.focused)}>
+    <pre className={css(styles.mirror)}>{ displayValue || rest.value || options[0] }</pre>
+    <select className={css(styles.select)} {...rest} size={1}>
       { options.map((o, i) => Option({ value: o, display: displayOptions[i] || o })) }
     </select>
   </span>

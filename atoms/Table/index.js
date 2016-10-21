@@ -13,24 +13,24 @@ export default React.createClass({
     headings: React.PropTypes.array
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       rows: [],
       headings: []
-    };
+    }
   },
 
-  renderCells(cellData) {
+  renderCells (cellData) {
     return _.map(cellData, (cell, i) => {
       return (
-        <td className="hui-Table__cell" key={ `cell-${i}` }>
+        <td className='hui-Table__cell' key={`cell-${i}`}>
           { cell }
         </td>
-      );
-    });
+      )
+    })
   },
 
-  renderRows() {
+  renderRows () {
     return _.map(this.props.rows, (row, i) => {
       const classes = classNames({
         'hui-Table__row': true,
@@ -38,41 +38,41 @@ export default React.createClass({
       })
 
       return (
-        <tr key={ `row-${i}` } className={ `${classes} ${row.className || ''}` }>
+        <tr key={`row-${i}`} className={`${classes} ${row.className || ''}`}>
           { this.renderCells(row.data) }
         </tr>
-      );
-    });
+      )
+    })
   },
 
-  renderHeaderCells() {
+  renderHeaderCells () {
     return _.map(this.props.headings, heading => {
       return (
-        <th className="hui-Table__header-cell" key={ heading }>
+        <th className='hui-Table__header-cell' key={heading}>
           { heading }
         </th>
       )
-    });
+    })
   },
 
-  renderHead() {
+  renderHead () {
     return (
-      <thead className="hui-Table__head">
+      <thead className='hui-Table__head'>
         <tr>
           { this.renderHeaderCells() }
         </tr>
       </thead>
-    );
+    )
   },
 
-  render() {
+  render () {
     return (
-      <table className="hui-Table">
+      <table className='hui-Table'>
         { this.props.headings && this.renderHead() }
-        <tbody className="hui-Table__body">
+        <tbody className='hui-Table__body'>
           { this.renderRows() }
         </tbody>
       </table>
-    );
+    )
   }
-});
+})

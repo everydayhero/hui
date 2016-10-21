@@ -122,19 +122,19 @@ export default React.createClass({
 
     return (
       <div>
-        <h3 className="DemoPage__h3" id="FilterSelect">FilterSelect</h3>
+        <h3 className='DemoPage__h3' id='FilterSelect'>FilterSelect</h3>
 
         <FilterSelect
           required
-          errorMessage="Please select an option"
-          value=" "
-          sort="asc"
-          options={ options } />
+          errorMessage='Please select an option'
+          value=' '
+          sort='asc'
+          options={options} />
 
         <FilterSelect
-          label={ null }
-          value="2"
-          options={ options } />
+          label={null}
+          value='2'
+          options={options} />
       </div>
     )
   }

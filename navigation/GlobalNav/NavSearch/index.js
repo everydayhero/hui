@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 
@@ -20,7 +20,7 @@ export default React.createClass({
     onFocus: React.PropTypes.func
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       transparent: false,
       label: '',
@@ -28,22 +28,22 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       focused: false,
       value: ''
     }
   },
 
-  setValue(e) {
+  setValue (e) {
     this.setState({ value: e.target.value })
   },
 
-  clearSearch() {
+  clearSearch () {
     this.setState({ value: '' })
   },
 
-  triggerSearch() {
+  triggerSearch () {
     if (this.state.value) {
       renderModal(AggregateSearch, {
         autoFocus: true,
@@ -53,23 +53,23 @@ export default React.createClass({
     }
   },
 
-  onEnter(e) {
+  onEnter (e) {
     if (e.keyCode === 13) { this.triggerSearch() }
   },
 
-  onFocus() {
+  onFocus () {
     this.setState({ focused: true })
     this.props.onFocus(true)
     window.addEventListener('keydown', this.onEnter)
   },
 
-  onBlur() {
+  onBlur () {
     this.setState({ focused: false })
     this.props.onFocus(false)
     window.removeEventListener('keydown', this.onEnter)
   },
 
-  render() {
+  render () {
     let props = this.props
     let state = this.state
     let classes = cx({
@@ -79,19 +79,19 @@ export default React.createClass({
     }, 'hui-NavSearch', 'hui-NavSearch--' + props.kind)
 
     return (
-      <div className={ classes }>
-        <label className="hui-NavSearch__label" htmlFor={ props.name }>
-          <Icon className="hui-NavSearch__icon" icon="search" onClick={ this.triggerSearch } />
-          <input className="hui-NavSearch__input"
-            ref="input"
-            name={ props.name }
-            id={ props.name }
-            value={ state.value }
-            onChange={ this.setValue }
-            onFocus={ this.onFocus }
-            onBlur={ this.onBlur }
-            placeholder={ props.label } />
-          <Icon className="hui-NavSearch__close" icon="times" onClick={ this.clearSearch } />
+      <div className={classes}>
+        <label className='hui-NavSearch__label' htmlFor={props.name}>
+          <Icon className='hui-NavSearch__icon' icon='search' onClick={this.triggerSearch} />
+          <input className='hui-NavSearch__input'
+            ref='input'
+            name={props.name}
+            id={props.name}
+            value={state.value}
+            onChange={this.setValue}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            placeholder={props.label} />
+          <Icon className='hui-NavSearch__close' icon='times' onClick={this.clearSearch} />
         </label>
       </div>
     )

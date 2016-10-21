@@ -6,7 +6,7 @@ const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 const classNames = (el) => el.node.props.className
 
 describe(CWD, () => {
-  const subject = (props = {}) => shallow(<Component { ...props } />)
+  const subject = (props = {}) => shallow(<Component {...props} />)
 
   it('renders an icon', () => {
     subject({ icon: 'check' }).html().should.contain('fa-check')

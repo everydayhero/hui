@@ -106,25 +106,25 @@ export default React.createClass({
   },
 
   keyHandlers: {
-    9() {
+    9 () {
       this.setSelected(this.state.selected)
     },
-    13(e) {
+    13 (e) {
       e.preventDefault()
       this.setSelected(this.state.selectionCandidate)
     },
-    32(e) {
+    32 (e) {
       e.preventDefault()
       this.setSelected(this.state.selectionCandidate)
     },
-    40(e, index) {
+    40 (e, index) {
       e.preventDefault()
       let options = this.props.options
       let newIndex = index + 1 === options.length ? 0 : index + 1
       let option = options[newIndex]
       this.setSelectionCandidate(option)
     },
-    38(e, index) {
+    38 (e, index) {
       e.preventDefault()
       let options = this.props.options
       let newIndex = index === 0 ? options.length - 1 : index - 1
@@ -144,35 +144,35 @@ export default React.createClass({
     }
   },
 
-  isCandidate(option) {
+  isCandidate (option) {
     let { selectionCandidate } = this.state
     let { valueKey } = this.props
 
     return selectionCandidate && (option[valueKey] === selectionCandidate[valueKey])
   },
 
-  isSelected(option) {
+  isSelected (option) {
     let { selected } = this.state
     let { valueKey } = this.props
 
     return !!selected && (option[valueKey] === selected[valueKey])
   },
 
-  isHighlighted(option) {
+  isHighlighted (option) {
     let { highlightedKey, highlightedValue } = this.props
 
     return !!highlightedValue && (option[highlightedKey] === highlightedValue)
   },
 
-  handleOptionSelection(option) {
+  handleOptionSelection (option) {
     this.setSelected(option)
   },
 
-  handleOptionMouseOver(option) {
+  handleOptionMouseOver (option) {
     this.setSelectionCandidate(option)
   },
 
-  focus() {
+  focus () {
     let visibleCandidate = this.getVisibleCandidate()
 
     this.setState({
@@ -181,7 +181,7 @@ export default React.createClass({
     })
   },
 
-  renderOptions() {
+  renderOptions () {
     let {
       Display,
       valueKey,
@@ -194,36 +194,36 @@ export default React.createClass({
 
       return (
         <Item
-          ref={ `option-list-item-${ index }` }
-          key={ `option-list-item-${ index }` }
-          Display={ Display }
-          option={ option }
-          valueKey={ valueKey }
-          labelKey={ labelKey }
-          shouldScroll={ shouldScroll }
-          shouldFocus={ focused && isCandidate }
-          isHighlighted={ this.isHighlighted(option) }
-          isCandidate={ isCandidate }
-          isSelected={ this.isSelected(option) }
-          onSelection={ this.handleOptionSelection }
-          onMouseOver={ this.handleOptionMouseOver }
-          onKeyDown={ this.handleOptionKeyDown }
-          setScroll={ this.setScroll } />
+          ref={`option-list-item-${index}`}
+          key={`option-list-item-${index}`}
+          Display={Display}
+          option={option}
+          valueKey={valueKey}
+          labelKey={labelKey}
+          shouldScroll={shouldScroll}
+          shouldFocus={focused && isCandidate}
+          isHighlighted={this.isHighlighted(option)}
+          isCandidate={isCandidate}
+          isSelected={this.isSelected(option)}
+          onSelection={this.handleOptionSelection}
+          onMouseOver={this.handleOptionMouseOver}
+          onKeyDown={this.handleOptionKeyDown}
+          setScroll={this.setScroll} />
       )
     })
   },
 
-  renderEmptyState() {
+  renderEmptyState () {
     return (
       <li>
-        <em className="hui-OptionListDisplay hui-OptionListDisplay--empty">
+        <em className='hui-OptionListDisplay hui-OptionListDisplay--empty'>
           { this.props.emptyLabel }
         </em>
       </li>
     )
   },
 
-  render() {
+  render () {
     let classes = classnames([
       this.props.className,
       'hui-OptionList--' + this.props.layout,
@@ -232,11 +232,11 @@ export default React.createClass({
     ])
     return (
       <FocusAggregate
-        className={ classes }
-        onFocus={ this.props.onFocus }
-        onBlur={ this.props.onBlur }>
-        <div ref="scrollContainer" className="hui-OptionList__scroll-container">
-          <ul className="hui-OptionList__list">
+        className={classes}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}>
+        <div ref='scrollContainer' className='hui-OptionList__scroll-container'>
+          <ul className='hui-OptionList__list'>
             { this.props.options.length ? this.renderOptions() : this.renderEmptyState() }
           </ul>
         </div>
