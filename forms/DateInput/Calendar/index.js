@@ -41,8 +41,8 @@ export default React.createClass({
             key={dates[current]}
             selectedDate={this.props.date}
             onClick={this.props.onSelectDate} >
-              { dates[current].date() }
-            </DatePickerDay>)
+            { dates[current].date() }
+          </DatePickerDay>)
           current++
         } else if (current < 28) {
           days.push(<div key={d} className='hui-DatePickerDay--filler' />)

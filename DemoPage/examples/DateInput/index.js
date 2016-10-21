@@ -26,22 +26,22 @@ export default React.createClass({
     var change = this.inputChangeEventFn
 
     return (
-    <div>
-      <h3 className='DemoPage__h3'>DateInput</h3>
+      <div>
+        <h3 className='DemoPage__h3'>DateInput</h3>
 
-      { this.dateInput('start_on') }
+        { this.dateInput('start_on') }
 
-      <FormRow htmlFor='end_on' tip="I'm very helpful.">
-        <DateInput
-          className='campaign__endOn'
-          value={this.state.form.end_on}
-          onChange={change('end_on')} />
-        <DateInput
-          className='campaign__endOn'
-          value={this.state.form.end_on2}
-          onChange={change('end_on2')} />
-      </FormRow>
-    </div>
+        <FormRow htmlFor='end_on' tip="I'm very helpful.">
+          <DateInput
+            className='campaign__endOn'
+            value={this.state.form.end_on}
+            onChange={change('end_on')} />
+          <DateInput
+            className='campaign__endOn'
+            value={this.state.form.end_on2}
+            onChange={change('end_on2')} />
+        </FormRow>
+      </div>
     )
   }
 })

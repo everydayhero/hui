@@ -58,19 +58,19 @@ export default React.createClass({
     }
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='DataVisualisation'>DataVisualisation</h3>
-      <p>The HUI data visualisation is a combination of a number of graph component. These componets can also be used independantly of the data visualisation.</p>
-      <div className='DemoPage__example--visualisation'>
-        <DataVisualisation {...this.state} title={'Example Data'} period={'LAST 7 DAYS'} />
+      <div>
+        <h3 className='DemoPage__h3' id='DataVisualisation'>DataVisualisation</h3>
+        <p>The HUI data visualisation is a combination of a number of graph component. These componets can also be used independantly of the data visualisation.</p>
+        <div className='DemoPage__example--visualisation'>
+          <DataVisualisation {...this.state} title={'Example Data'} period={'LAST 7 DAYS'} />
+        </div>
+        <div className='DemoPage__example--visualisation'>
+          <DataVisualisation {...this.state} title={'Example Loading Data'} period={'LAST 7 DAYS'} loading />
+        </div>
+        <div className='DemoPage__example--visualisation'>
+          <DataVisualisation {...this.state} title={'Example Empty Data'} period={'LAST 7 DAYS'} emptyState />
+        </div>
       </div>
-      <div className='DemoPage__example--visualisation'>
-        <DataVisualisation {...this.state} title={'Example Loading Data'} period={'LAST 7 DAYS'} loading />
-      </div>
-      <div className='DemoPage__example--visualisation'>
-        <DataVisualisation {...this.state} title={'Example Empty Data'} period={'LAST 7 DAYS'} emptyState />
-      </div>
-    </div>
     )
   }
 })

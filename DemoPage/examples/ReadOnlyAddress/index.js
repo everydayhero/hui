@@ -45,12 +45,12 @@ export default React.createClass({
     }
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='ReadOnlyAddress'>ReadOnlyAddress</h3>
-      <p className='DemoPage__p'>Read only address input (Contactinates address values with ",").</p>
-      { this.readOnlyAddress('charity_address') }
-      <ReadOnlyAddress id={name} value={address} />
-    </div>
+      <div>
+        <h3 className='DemoPage__h3' id='ReadOnlyAddress'>ReadOnlyAddress</h3>
+        <p className='DemoPage__p'>Read only address input (Contactinates address values with ",").</p>
+        { this.readOnlyAddress('charity_address') }
+        <ReadOnlyAddress id={name} value={address} />
+      </div>
     )
   }
 })

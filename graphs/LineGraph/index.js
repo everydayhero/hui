@@ -188,9 +188,10 @@ export default React.createClass({
 
     if (emptyState === true) {
       emptyData = (
-      <span className='hui-LineGraph__emptyState'>
-        No Information to Display
-      </span>)
+        <span className='hui-LineGraph__emptyState'>
+          No Information to Display
+        </span>
+      )
     }
 
     return (

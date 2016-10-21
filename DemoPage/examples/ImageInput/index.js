@@ -21,14 +21,14 @@ export default React.createClass({
     var change = this.changeFormPropertyFn
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='ImageInput'>ImageInput</h3>
-      <ImageInput
-        id={'proof_image'}
-        value={this.state.form.proof_image}
-        onChange={change('proof_image')}
-        options={{ imageMin: [800, 600], imageQuality: 80, cropRatio: 8 / 6 }} />
-    </div>
+      <div>
+        <h3 className='DemoPage__h3' id='ImageInput'>ImageInput</h3>
+        <ImageInput
+          id={'proof_image'}
+          value={this.state.form.proof_image}
+          onChange={change('proof_image')}
+          options={{ imageMin: [800, 600], imageQuality: 80, cropRatio: 8 / 6 }} />
+      </div>
     )
   }
 })

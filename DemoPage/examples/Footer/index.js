@@ -9,13 +9,12 @@ export default React.createClass({
 
   render: function () {
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='Footer'>Footer</h3>
-      <div className='DemoPage__example'>
-        <Footer
-          imagePath={ImagePath} />
+      <div>
+        <h3 className='DemoPage__h3' id='Footer'>Footer</h3>
+        <div className='DemoPage__example'>
+          <Footer imagePath={ImagePath} />
+        </div>
       </div>
-    </div>
     )
   }
 })

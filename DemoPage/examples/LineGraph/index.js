@@ -52,19 +52,19 @@ export default React.createClass({
     }
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='LineGraph'>LineGraph</h3>
-      <p>The line graph can render a stacked or combination graph as well as option for area fill or line only.</p>
-      <div className='DemoPage__example--graph--lines'>
-        <LineGraph {...this.state} line area={false} tipLabel='Fund raised' />
+      <div>
+        <h3 className='DemoPage__h3' id='LineGraph'>LineGraph</h3>
+        <p>The line graph can render a stacked or combination graph as well as option for area fill or line only.</p>
+        <div className='DemoPage__example--graph--lines'>
+          <LineGraph {...this.state} line area={false} tipLabel='Fund raised' />
+        </div>
+        <div className='DemoPage__example--graph--stacked'>
+          <LineGraph {...this.state} stacked tipLabel='Fund raised' />
+        </div>
+        <div className='DemoPage__example--graph--empty'>
+          <LineGraph {...this.state} stacked tipLabel='Fund raised' emptyState />
+        </div>
       </div>
-      <div className='DemoPage__example--graph--stacked'>
-        <LineGraph {...this.state} stacked tipLabel='Fund raised' />
-      </div>
-      <div className='DemoPage__example--graph--empty'>
-        <LineGraph {...this.state} stacked tipLabel='Fund raised' emptyState />
-      </div>
-    </div>
     )
   }
 })

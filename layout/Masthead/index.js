@@ -24,10 +24,10 @@ export default React.createClass({
 
     if (appName) {
       return (
-          <span className='hui-Masthead__appName'>
-            { appName }
-          </span>
-        )
+        <span className='hui-Masthead__appName'>
+          { appName }
+        </span>
+      )
     } else {
       return false
     }

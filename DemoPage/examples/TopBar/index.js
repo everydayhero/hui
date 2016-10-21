@@ -24,7 +24,6 @@ export default React.createClass({
           </TopBar>
         </div>
       </div>
-    </div>
     )
   }
 })

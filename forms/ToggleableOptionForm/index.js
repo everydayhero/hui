@@ -55,11 +55,11 @@ export default React.createClass({
 
   render () {
     return (
-        <div className='ToggleableOptionForm'>
-          { !this.state.options
-            ? <Icon className='ToggleableOptionForm--loading' icon='circle-o-notch' />
-            : map(this.state.options, this.renderToggleableOptionGroup) }
-        </div>
-      )
+      <div className='ToggleableOptionForm'>
+        { !this.state.options
+          ? <Icon className='ToggleableOptionForm--loading' icon='circle-o-notch' />
+          : map(this.state.options, this.renderToggleableOptionGroup) }
+      </div>
+    )
   }
 })

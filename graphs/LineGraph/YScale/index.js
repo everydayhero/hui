@@ -87,7 +87,7 @@ export default React.createClass({
             y={yPos - TEXTOFFSET}
             textAnchor='end'
             className='hui-YScale__label'>
-              { this.formatLabel(label) }
+            { this.formatLabel(label) }
           </text>
         </g>
       )

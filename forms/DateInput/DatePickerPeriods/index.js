@@ -63,7 +63,7 @@ export default React.createClass({
           type={props.type}
           current={props.current}
           onSelect={this.onChange}>
-            { label }
+          { label }
         </DatePickerPeriod>
       )
     }
@@ -74,9 +74,9 @@ export default React.createClass({
     return (
       <div className='hui-DatePickerPeriods'>
         <a href='#' tabIndex='-1' className='hui-DatePickerPeriods__back' onClick={this.onBack}><Icon icon='chevron-left' /></a>
-          <div className='hui-DatePickerPeriods__periods'>
-            { this.renderPeriods() }
-          </div>
+        <div className='hui-DatePickerPeriods__periods'>
+          { this.renderPeriods() }
+        </div>
         <a href='#' tabIndex='-1' className='hui-DatePickerPeriods__forward' onClick={this.onForward}><Icon icon='chevron-right' /></a>
       </div>
     )

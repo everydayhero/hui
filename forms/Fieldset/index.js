@@ -34,7 +34,7 @@ export default React.createClass({
     if (props.legend) {
       return (
         <legend className='hui-Fieldset__legend'>
-            { props.legend }
+          { props.legend }
         </legend>
       )
     } else {

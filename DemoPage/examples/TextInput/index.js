@@ -24,73 +24,73 @@ export default React.createClass({
     var change = this.inputChangeEventFn
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='TextInput'>TextInput</h3>
-      <p className='DemoPage__p'>Basic text input.</p>
+      <div>
+        <h3 className='DemoPage__h3' id='TextInput'>TextInput</h3>
+        <p className='DemoPage__p'>Basic text input.</p>
 
-      { this.textInput('user_name') }
+        { this.textInput('user_name') }
 
-      <TextInput
-        autoComplete={false}
-        id='demo_input'
-        value={this.state.form.demo_input_01}
-        label='Hint'
-        placeHolder='This is a placeholder'
-        onChange={change('demo_input_01')} />
-      <TextInput
-        autoComplete={false}
-        id='demo_input'
-        value={this.state.form.demo_input_02}
-        required
-        errorMessage='This field cannot be left blank'
-        label='A required field'
-        onChange={change('demo_input_02')} />
-      <TextInput
-        autoComplete={false}
-        id='demo_input'
-        value={this.state.form.demo_input_03}
-        errors={['invalid email address', 'required']}
-        label='invalid email address'
-        onChange={change('demo_input_03')} />
-      <TextInput
-        autoComplete={false}
-        id='demo_input'
-        value={this.state.form.demo_input_04}
-        label='Hint'
-        hint='this is the hint'
-        onChange={change('demo_input_04')} />
-      <TextInput
-        id='demo_input_readonly'
-        label='Read only'
-        value='This is a readonly text input'
-        readOnly />
-      <TextInput
-        id='demo_input_disabled'
-        value='This is a disabled text input'
-        disabled />
-      <TextInput
-        id='demo_input_icon'
-        value={this.state.form.demo_input_05}
-        label='custom icon'
-        icon='rocket'
-        onChange={change('demo_input_05')} />
-      <TextInput
-        id='demo_input_icon_left'
-        name='demo_input_icon_left'
-        value={this.state.form.demo_input_06}
-        label='custom icon left postion'
-        icon='search'
-        iconPosition='left'
-        onChange={change('demo_input_06')} />
+        <TextInput
+          autoComplete={false}
+          id='demo_input'
+          value={this.state.form.demo_input_01}
+          label='Hint'
+          placeHolder='This is a placeholder'
+          onChange={change('demo_input_01')} />
+        <TextInput
+          autoComplete={false}
+          id='demo_input'
+          value={this.state.form.demo_input_02}
+          required
+          errorMessage='This field cannot be left blank'
+          label='A required field'
+          onChange={change('demo_input_02')} />
+        <TextInput
+          autoComplete={false}
+          id='demo_input'
+          value={this.state.form.demo_input_03}
+          errors={['invalid email address', 'required']}
+          label='invalid email address'
+          onChange={change('demo_input_03')} />
+        <TextInput
+          autoComplete={false}
+          id='demo_input'
+          value={this.state.form.demo_input_04}
+          label='Hint'
+          hint='this is the hint'
+          onChange={change('demo_input_04')} />
+        <TextInput
+          id='demo_input_readonly'
+          label='Read only'
+          value='This is a readonly text input'
+          readOnly />
+        <TextInput
+          id='demo_input_disabled'
+          value='This is a disabled text input'
+          disabled />
+        <TextInput
+          id='demo_input_icon'
+          value={this.state.form.demo_input_05}
+          label='custom icon'
+          icon='rocket'
+          onChange={change('demo_input_05')} />
+        <TextInput
+          id='demo_input_icon_left'
+          name='demo_input_icon_left'
+          value={this.state.form.demo_input_06}
+          label='custom icon left postion'
+          icon='search'
+          iconPosition='left'
+          onChange={change('demo_input_06')} />
 
-      <TextCountDownInput
-        id='demo_input_icon'
-        value={this.state.form.demo_input_07}
-        label='Text input with countdown'
-        max={20}
-        warnMax={10}
-        onChange={change('demo_input_07')} />
-    </div>
+        <TextCountDownInput
+          id='demo_input_icon'
+          value={this.state.form.demo_input_07}
+          label='Text input with countdown'
+          max={20}
+          warnMax={10}
+          onChange={change('demo_input_07')} />
+      </div>
     )
   }
 })

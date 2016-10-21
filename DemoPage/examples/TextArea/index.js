@@ -24,31 +24,31 @@ export default React.createClass({
     var change = this.inputChangeEventFn
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='TextArea'>TextArea</h3>
-      <p className='DemoPage__p'>Basic text area.</p>
+      <div>
+        <h3 className='DemoPage__h3' id='TextArea'>TextArea</h3>
+        <p className='DemoPage__p'>Basic text area.</p>
 
-      { this.textArea('story') }
+        { this.textArea('story') }
 
-      <TextArea
-        className='Your-TextArea'
-        id='description'
-        label='With hint'
-        value={this.state.form.description}
-        onChange={change('description')}
-        hint='Tell me a story.'
-        errors={this.props.errors} />
+        <TextArea
+          className='Your-TextArea'
+          id='description'
+          label='With hint'
+          value={this.state.form.description}
+          onChange={change('description')}
+          hint='Tell me a story.'
+          errors={this.props.errors} />
 
-       <TextArea
-         className='Your-TextArea'
-         id='description'
-         value={this.state.form.description_02}
-         onChange={change('description_02')}
-         required
-         label='Error message and required'
-         errorMessage='You need to do this thing.'
-         errors={['You should attend a marketing writing course.']} />
-    </div>
+        <TextArea
+          className='Your-TextArea'
+          id='description'
+          value={this.state.form.description_02}
+          onChange={change('description_02')}
+          required
+          label='Error message and required'
+          errorMessage='You need to do this thing.'
+          errors={['You should attend a marketing writing course.']} />
+      </div>
     )
   }
 })

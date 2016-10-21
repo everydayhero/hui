@@ -211,7 +211,7 @@ export default React.createClass({
 
     return this.state.results && (
       <div className='AggregateSearchModal__filters'>
-       { categories }
+        { categories }
       </div>
     )
   },

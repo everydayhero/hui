@@ -215,7 +215,7 @@ export default React.createClass({
               onChange={this.onChange}
               onKeyDown={this.onTab}
               value={value}>
-                { this.renderOptions() }
+              { this.renderOptions() }
             </select>
           </div>
         </div>

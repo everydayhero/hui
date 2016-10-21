@@ -29,27 +29,27 @@ export default React.createClass({
     ]
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='SelectInput'>SelectInput</h3>
+      <div>
+        <h3 className='DemoPage__h3' id='SelectInput'>SelectInput</h3>
 
-      { this.selectInput('toys', { options }) }
+        { this.selectInput('toys', { options }) }
 
-      <SelectInput
-        id='toys'
-        onChange={change('toys01')}
-        label='Select a toy'
-        value={this.state.form.toys01}
-        className='Toys__select'
-        options={options} />
+        <SelectInput
+          id='toys'
+          onChange={change('toys01')}
+          label='Select a toy'
+          value={this.state.form.toys01}
+          className='Toys__select'
+          options={options} />
 
-      <SelectInput
-        id='toys'
-        onChange={change('toys02')}
-        value={this.state.form.toys02}
-        label='disabled'
-        disabled
-        className='Toys__select'
-        options={options} />
+        <SelectInput
+          id='toys'
+          onChange={change('toys02')}
+          value={this.state.form.toys02}
+          label='disabled'
+          disabled
+          className='Toys__select'
+          options={options} />
 
         <SelectInput
           id='toys'

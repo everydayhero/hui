@@ -28,7 +28,7 @@ export default React.createClass({
           <label
             className='hui-FormRow__label'
             htmlFor={props.htmlFor}>
-              { props.tip }
+            { props.tip }
           </label>
         </div>
       )

@@ -16,12 +16,12 @@ export default React.createClass({
 
   render () {
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='Table'>Table</h3>
-      <div className='DemoPage__example'>
-        <Table {...this.tableCells()} />
+      <div>
+        <h3 className='DemoPage__h3' id='Table'>Table</h3>
+        <div className='DemoPage__example'>
+          <Table {...this.tableCells()} />
+        </div>
       </div>
-    </div>
     )
   }
 })

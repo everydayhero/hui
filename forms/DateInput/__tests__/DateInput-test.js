@@ -51,8 +51,8 @@ describe('DatePicker', function () {
 
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(
-            <Input onChange={listener} />
-          )
+        <Input onChange={listener} />
+      )
       element.onDateChange(moment(initialValue))
 
       parsedValue.should.equal(initialValue)

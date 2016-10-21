@@ -24,18 +24,18 @@ export default React.createClass({
     var url = 'redirect_url'
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='UrlInput'>UrlInput</h3>
+      <div>
+        <h3 className='DemoPage__h3' id='UrlInput'>UrlInput</h3>
 
-      { this.urlInput('website_url') }
+        { this.urlInput('website_url') }
 
-      <UrlInput
-        id={url}
-        onChange={change(url)}
-        value={this.state.form[url]}
-        placeholder={'www.example.com'}
-        errors={this.props.errors && this.props.errors[url]} />
-    </div>
+        <UrlInput
+          id={url}
+          onChange={change(url)}
+          value={this.state.form[url]}
+          placeholder={'www.example.com'}
+          errors={this.props.errors && this.props.errors[url]} />
+      </div>
     )
   }
 })

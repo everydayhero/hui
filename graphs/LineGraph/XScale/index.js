@@ -68,7 +68,7 @@ export default React.createClass({
               y={props.height}
               textAnchor='middle'
               className='hui-XScale__label'>
-                { moment(series[i].date).format(props.dateFormat) }
+              { moment(series[i].date).format(props.dateFormat) }
             </text>
           </g>)
 

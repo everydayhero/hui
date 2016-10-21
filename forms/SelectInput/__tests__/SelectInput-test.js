@@ -13,8 +13,8 @@ describe('SelectInput', function () {
 
     beforeEach(function () {
       element = renderIntoDocument(
-          <Select options={[{ value: 1, label: 'Item x' }]} prompt='Please select' />
-        )
+        <Select options={[{ value: 1, label: 'Item x' }]} prompt='Please select' />
+      )
       select = findByTag(element, 'select')
     })
 
@@ -44,13 +44,13 @@ describe('SelectInput', function () {
 
     beforeEach(function () {
       element = renderIntoDocument(
-          <Select
-            type='email'
-            value='six'
-            id='seven'
-            includeBlank
-            options={options} />
-        )
+        <Select
+          type='email'
+          value='six'
+          id='seven'
+          includeBlank
+          options={options} />
+      )
       select = findByTag(element, 'select')
     })
 
@@ -85,10 +85,10 @@ describe('SelectInput', function () {
     it('is fired onChange', function () {
       var listener = sinon.spy()
       var element = renderIntoDocument(
-            <Select
-              onChange={listener}
-              options={options} />
-          )
+        <Select
+          onChange={listener}
+          options={options} />
+      )
 
       listener.should.have.not.been.called
 

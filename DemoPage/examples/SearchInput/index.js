@@ -27,17 +27,17 @@ export default React.createClass({
     let change = this.inputChangeEventFn
 
     return (
-    <div>
-      <h3 className='DemoPage__h3' id='SearchInput'>SearchInput</h3>
+      <div>
+        <h3 className='DemoPage__h3' id='SearchInput'>SearchInput</h3>
 
-      { this.searchInput('search_01', { onSubmit: this.onSubmit }) }
+        { this.searchInput('search_01', { onSubmit: this.onSubmit }) }
 
-      <SearchInput
-        onChange={change('search')}
-        onSubmit={this.onSubmit}
-        label='Search for something'
-        value={this.state.form.search} />
-    </div>
+        <SearchInput
+          onChange={change('search')}
+          onSubmit={this.onSubmit}
+          label='Search for something'
+          value={this.state.form.search} />
+      </div>
     )
   }
 })
