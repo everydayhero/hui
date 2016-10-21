@@ -66,10 +66,10 @@ export default React.createClass({
   },
 
   fieldChangeHandler () {
-    let paf_validated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
+    const pafValidated = isEqualWith(this.state.initialAddress, this.state.form, (i, f, k) => {
       if (k === 'paf_validated') { return i }
     })
-    this.form = { ...this.state.form, paf_validated }
+    this.form = { ...this.state.form, paf_validated: pafValidated }
     this.setState({ form: this.form })
   },
 

@@ -55,17 +55,17 @@ export default {
     _.pull(resizeHandlers, this.setSizeAndDevice)
   },
 
-  getChildrenWidth: function (min_width, count) {
-    const child_count = Math.min(count, this.getChildCountFromWidth(min_width))
-    return this.getChildWidth(child_count)
+  getChildrenWidth: function (minWidth, count) {
+    const childCount = Math.min(count, this.getChildCountFromWidth(minWidth))
+    return this.getChildWidth(childCount)
   },
 
   getChildWidth: function (count) {
     return Math.floor(10000 / Math.max(1, count)) * 0.01 + '%'
   },
 
-  getChildCountFromWidth: function (min_width) {
-    return Math.max(1, Math.floor(this.getComponentWidth() / min_width))
+  getChildCountFromWidth: function (minWidth) {
+    return Math.max(1, Math.floor(this.getComponentWidth() / minWidth))
   },
 
   getDeviceFallback: function (device, obj) {

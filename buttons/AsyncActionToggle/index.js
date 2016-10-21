@@ -48,8 +48,13 @@ export default React.createClass({
 
   render () {
     let { loading, actionToggled, error } = this.state
-    let { kind, pre_action_label, post_action_label, error_label } = this.props
-    let label = error ? error_label : actionToggled ? post_action_label : pre_action_label
+    let {
+      kind,
+      pre_action_label: preActionLabel,
+      post_action_label: postActionLabel,
+      error_label: errorLabel
+    } = this.props
+    let label = error ? errorLabel : actionToggled ? postActionLabel : preActionLabel
     let icon = error ? 'times' : loading ? 'circle-o-notch' : ''
 
     return <Button {...{ kind, label, icon }} onClick={this.handleAction} />
