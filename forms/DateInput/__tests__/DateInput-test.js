@@ -141,7 +141,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -154,7 +154,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -167,7 +167,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -180,7 +180,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -193,7 +193,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -206,7 +206,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -219,7 +219,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -232,7 +232,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')
@@ -245,7 +245,7 @@ describe('DatePicker', function () {
       var listener = function (value) { parsedValue = value }
       var element = renderIntoDocument(<Input onChange={listener} countryCode='us' />)
       var input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: initialValue }})
+      Simulate.change(input, { target: { value: initialValue } })
       element.close()
 
       parsedValue.should.equal('1979-09-12')

@@ -30,7 +30,7 @@ export default React.createClass({
 
   handlePrimaryChange (name, checked) {
     forEach(this.refs, (d, k) => {
-      k !== name && d.handleChange({ target: { checked }})
+      k !== name && d.handleChange({ target: { checked } })
     })
     return Promise.resolve()
   },

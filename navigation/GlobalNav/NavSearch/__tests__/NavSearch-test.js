@@ -43,7 +43,7 @@ describe('NavSearch', () => {
   it('launches an aggregate search modal', () => {
     let input = search.refs.input
     Simulate.focus(input)
-    Simulate.change(input, { target: { value: 'dog' }})
+    Simulate.change(input, { target: { value: 'dog' } })
     search.triggerSearch()
     modal.should.have.been.calledWith('testModal', {
       autoFocus: true,

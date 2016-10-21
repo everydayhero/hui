@@ -48,13 +48,13 @@ describe('ToggleableOptionGroup', () => {
     let element = renderIntoDocument(<ToggleableOptionGroup {...props} />)
     let input = scryByClass(element, 'ToggleableOption__hiddenInput')[0]
     input.checked.should.be.false
-    Simulate.change(input, { target: { checked: true }})
+    Simulate.change(input, { target: { checked: true } })
     props.onChange.should.have.callCount(2)
     forEach(props.options, (d, k) => !d.value && props.onChange.should.have.been.calledWith(k, true))
   })
 
   it('renders a singular option as the primary option', () => {
-    let singleOption = { test_singular: { label: 'Test Singular Option', value: true }}
+    let singleOption = { test_singular: { label: 'Test Singular Option', value: true } }
     let element = renderIntoDocument(<ToggleableOptionGroup {...props} options={singleOption} />)
     let text = findDOMNode(element).textContent
     text.should.not.contain(props.label)

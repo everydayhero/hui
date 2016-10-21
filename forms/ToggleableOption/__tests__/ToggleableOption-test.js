@@ -38,7 +38,7 @@ describe('ToggleableOption', () => {
     let element = renderIntoDocument(<ToggleableOption {...props} />)
     let input = findByClass(element, 'ToggleableOption__hiddenInput')
     input.checked.should.be.false
-    Simulate.change(input, { target: { checked: true }})
+    Simulate.change(input, { target: { checked: true } })
     props.onChange.should.have.been.calledWith(props.name, true)
   })
 

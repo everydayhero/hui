@@ -34,14 +34,14 @@ describe('UrlInput', function () {
     })
 
     it('calls the onChange function whenever the path changes', function () {
-      Simulate.change(path, { target: { value: 'https://example.com' }})
+      Simulate.change(path, { target: { value: 'https://example.com' } })
 
       path.value.should.equal('example.com')
       parsedValue.should.equal('https://example.com')
     })
 
     it('calls the onChange function whenever the protocol changes', function () {
-      Simulate.change(protocol, { target: { value: 'https://' }})
+      Simulate.change(protocol, { target: { value: 'https://' } })
 
       path.value.should.equal('example.org')
       protocol.value.should.equal('https://')
@@ -49,7 +49,7 @@ describe('UrlInput', function () {
     })
 
     it('does not change the form to include only the protocol when the path is remved', function () {
-      Simulate.change(path, { target: { value: '' }})
+      Simulate.change(path, { target: { value: '' } })
 
       parsedValue.should.equal('')
     })

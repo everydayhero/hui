@@ -58,7 +58,7 @@ describe('ToggleableOptionForm', () => {
     let element = renderIntoDocument(<ToggleableOptionForm {...props} />)
     let input = scryByClass(element, 'ToggleableOption__hiddenInput')[1]
     input.checked.should.be.false
-    Simulate.change(input, { target: { checked: true }})
+    Simulate.change(input, { target: { checked: true } })
     mockSync.should.have.callCount(1)
     mockSync.should.have.been.calledWith(url, 'put')
   })

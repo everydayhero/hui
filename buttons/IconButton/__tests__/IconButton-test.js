@@ -10,7 +10,7 @@ describe(CWD, () => {
   })
 
   it('displays an optional label', () => {
-    subject({ icon: 'check', label: 'testLabel'}).find('div').text().should.eql('testLabel')
+    subject({ icon: 'check', label: 'testLabel' }).find('div').text().should.eql('testLabel')
   })
 
   it('executes an onClick callback onMouseDown and onTouchStart', () => {

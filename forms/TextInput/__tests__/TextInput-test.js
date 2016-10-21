@@ -229,7 +229,7 @@ describe('TextInput', function () {
     it('will not alter input when readOnly', function () {
       var element = renderIntoDocument(<TextInput value='oldValue' readOnly />)
       var input = findByClass(element, 'hui-TextInput__input')
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
 
       input.value.should.equal('oldValue')
     })
@@ -242,7 +242,7 @@ describe('TextInput', function () {
       var input = findByClass(element, 'hui-TextInput__input')
 
       Simulate.focus(input)
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
       Simulate.blur(input)
 
       onFocus.should.have.not.been.called
@@ -273,7 +273,7 @@ describe('TextInput', function () {
       var element = renderIntoDocument(<TextInput value='oldValue' onChange={onChange} />)
       var input = findByClass(element, 'hui-TextInput__input')
 
-      Simulate.change(input, { target: { value: 'newValue' }})
+      Simulate.change(input, { target: { value: 'newValue' } })
 
       onChange.should.have.been.calledWith('newValue')
     })
@@ -287,7 +287,7 @@ describe('TextInput', function () {
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      input.simulate('change', { target: { value: 'newValue' }})
+      input.simulate('change', { target: { value: 'newValue' } })
 
       mask.should.have.been.calledWith('newValue')
       input.prop('value').should.equal('newValue--masked')
@@ -315,7 +315,7 @@ describe('TextInput', function () {
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
 
-      input.simulate('change', { target: { value: 'testValue' }})
+      input.simulate('change', { target: { value: 'testValue' } })
       input.simulate('blur')
       validate.should.have.been.calledWith('testValue')
 

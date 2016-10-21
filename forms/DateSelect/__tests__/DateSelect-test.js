@@ -43,21 +43,21 @@ describe('DateSelect', function () {
     it('is fired onChange date', function () {
       var dateSelect = scryByTag(element, 'select')[0]
 
-      Simulate.change(dateSelect, { target: { value: 5 }})
+      Simulate.change(dateSelect, { target: { value: 5 } })
       date.should.equal('1982-01-05')
     })
 
     it('is fired onChange month', function () {
       var monthSelect = scryByTag(element, 'select')[1]
 
-      Simulate.change(monthSelect, { target: { value: 11 }})
+      Simulate.change(monthSelect, { target: { value: 11 } })
       date.should.equal('1982-12-01')
     })
 
     it('is fired onChange year', function () {
       var yearSelect = scryByTag(element, 'select')[2]
 
-      Simulate.change(yearSelect, { target: { value: 2012 }})
+      Simulate.change(yearSelect, { target: { value: 2012 } })
       date.should.equal('2012-01-01')
     })
   })

@@ -15,7 +15,7 @@ export default {
   },
 
   getDefaultProps () {
-    return { duplicate: {}}
+    return { duplicate: {} }
   },
 
   duplicating: {},

@@ -1,7 +1,7 @@
 'use strict'
 
 var gulp = require('gulp')
-var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' }})
+var $ = require('gulp-load-plugins')({ rename: { 'gulp-minify-css': 'minify' } })
 var source = require('vinyl-source-stream')
 var buffer = require('vinyl-buffer')
 var browserify = require('browserify')

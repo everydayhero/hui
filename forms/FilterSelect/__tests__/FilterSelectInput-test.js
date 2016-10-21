@@ -154,7 +154,7 @@ describe('FilterSelect', () => {
       element.openOptionList()
 
       let input = element.refs.filter.refs.filterInput.refs.input
-      Simulate.change(input, { target: { value: 'Per' }})
+      Simulate.change(input, { target: { value: 'Per' } })
 
       let subject = element.state.filteredOptions
 
@@ -176,8 +176,8 @@ describe('FilterSelect', () => {
         element.openOptionList()
 
         let input = element.refs.filter.refs.filterInput.refs.input
-        Simulate.change(input, { target: { value: 'Per' }})
-        Simulate.change(input, { target: { value: '' }})
+        Simulate.change(input, { target: { value: 'Per' } })
+        Simulate.change(input, { target: { value: '' } })
 
         let subject = element.state.filteredOptions
 

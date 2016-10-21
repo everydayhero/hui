@@ -86,7 +86,7 @@ describe('FocusAggregate', () => {
         <TestComponent onFocus={handleFocus} />
       )
       const input1 = element.refs.input1
-      Simulate.focus(input1, { target: { value: 'WOOOOOT!' }})
+      Simulate.focus(input1, { target: { value: 'WOOOOOT!' } })
     })
   })
 })

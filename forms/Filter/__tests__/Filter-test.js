@@ -81,7 +81,7 @@ describe('Filter', () => {
           onFilter={subject} />
       )
       let input = findByTag(element, 'input')
-      Simulate.change(input, { target: { value: 'Tex Perkins' }})
+      Simulate.change(input, { target: { value: 'Tex Perkins' } })
       expect(subject).to.be.calledWith([
         { id: '2', name: 'Tex Perkins' }
       ])

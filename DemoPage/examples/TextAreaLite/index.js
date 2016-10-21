@@ -14,7 +14,7 @@ export default createClass({
     }
   },
 
-  handleChange ({ target: { value }}) {
+  handleChange ({ target: { value } }) {
     this.setState({ value })
   },
 
