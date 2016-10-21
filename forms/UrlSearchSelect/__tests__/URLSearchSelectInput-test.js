@@ -192,8 +192,6 @@ describe('UrlSearchSelect', () => {
             required
             showError
             errorMessage='You have failed, just like everything in your life.'
-            url='http://everydayhero.com'
-            required
             errors={['You have failed, just like everything in your life.']}
             url='http://everydayhero.com' />
         )

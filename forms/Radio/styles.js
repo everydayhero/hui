@@ -10,7 +10,6 @@ export const radio = {
   color: c.grey,
   ' input': {
     position: 'absolute !important', // Firefox BS
-    clip: 'rect(0,0,0,0)',
     clip: 'rect(0 0 0 0)'
   },
   ':first-of-type': {
