@@ -85,7 +85,7 @@ export default React.createClass({
   },
 
   removeNull (o) {
-    return forEach(o, (d, k) => o[k] = d === null ? '' : d)
+    return forEach(o, (d, k) => { o[k] = d === null ? '' : d })
   },
 
   fetchAddress (id) {

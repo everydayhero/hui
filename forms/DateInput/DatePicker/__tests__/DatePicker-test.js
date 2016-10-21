@@ -9,7 +9,7 @@ describe('DatePicker', function () {
   beforeEach(function () {
     date = moment()
     passedDate = null
-    var onChangeSelection = val => passedDate = val
+    var onChangeSelection = val => { passedDate = val }
     component = renderIntoDocument(<DatePicker date={date} onChangeSelection={onChangeSelection} />)
   })
 

@@ -20,7 +20,7 @@ describe('Button', function () {
 
     beforeEach(function () {
       clicked = false
-      var onClick = () => clicked = true
+      var onClick = () => { clicked = true }
 
       component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' onClick={onClick} />)
     })
@@ -132,7 +132,7 @@ describe('Button', function () {
 
     beforeEach(function () {
       clicked = false
-      var onClick = () => clicked = true
+      var onClick = () => { clicked = true }
 
       component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' disabled onClick={onClick} />)
     })

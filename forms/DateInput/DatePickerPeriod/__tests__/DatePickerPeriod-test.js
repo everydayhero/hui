@@ -19,7 +19,7 @@ describe('DatePickerPeriod', function () {
     it('is fired onClick', function () {
       var parsedValue
       var value = 2
-      var listener = val => parsedValue = val
+      var listener = val => { parsedValue = val }
       var element = renderIntoDocument(<DatePickerPeriod onSelect={listener} value={value} />)
 
       var period = ReactDOM.findDOMNode(element)

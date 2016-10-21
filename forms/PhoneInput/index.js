@@ -105,10 +105,10 @@ export default React.createClass({
       forEach(num, (d, i) => {
         if ((i === 0 && d === '0')) return
         if (isNumber(d)) {
-          return n += d
+          return (n += d)
         } else if (!extAdded && d.toLowerCase() === 'x') {
           extAdded = true
-          return n += 'ext.'
+          return (n += 'ext.')
         }
       })
       return n

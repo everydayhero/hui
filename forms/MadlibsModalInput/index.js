@@ -33,7 +33,7 @@ export default React.createClass({
 
   handleTouch (e) {
     this.recentClick = true
-    setTimeout(() => this.recentClick = false, 10)
+    setTimeout(() => { this.recentClick = false }, 10)
     this.toggleInput(findDOMNode(this).contains(e.target))
   },
 
@@ -44,7 +44,7 @@ export default React.createClass({
 
   handleKeyDown () {
     this.recentKeydown = true
-    setTimeout(() => this.recentKeydown = false, 10)
+    setTimeout(() => { this.recentKeydown = false }, 10)
   },
 
   toggleInput (toggle) {

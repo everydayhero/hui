@@ -1,6 +1,6 @@
 const mapObject = (o, fn) => {
   const newO = {}
-  Object.keys(o).forEach((key) => newO[key] = fn(o[key]))
+  Object.keys(o).forEach((key) => { newO[key] = fn(o[key]) })
   return newO
 }
 
