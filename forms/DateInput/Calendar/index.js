@@ -30,7 +30,9 @@ export default React.createClass({
   },
 
   buildCalendar: function () {
-    var dates = this.buildDates(), current = 0, days = []
+    const dates = this.buildDates()
+    let current = 0
+    let days = []
 
     for (var week = 0; week <= 5; week++) {
       for (var d = 0; d <= 6; d++) {

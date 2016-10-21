@@ -39,7 +39,8 @@ export default React.createClass({
   },
 
   handleChange (e) {
-    let { checked } = e.target, { state, props } = this
+    const { checked } = e.target
+    const { state, props } = this
     if (state.loading || (checked === props.value)) { return false }
     this.setState({ loading: true, error: false })
     props.onChange(props.name, checked)
