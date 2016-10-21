@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-import React      from 'react'
+import React from 'react'
 import DateSelect from '../'
 
 export default React.createClass({
@@ -30,7 +30,7 @@ export default React.createClass({
     name: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       yearLabel: 'Year',
       monthLabel: 'Month',
@@ -46,32 +46,32 @@ export default React.createClass({
       autoComplete: true,
       disabled: false,
       readOnly: false
-    };
+    }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       value: null
-    };
+    }
   },
 
-  componentWillMount: function() {
-    this.setState({ value: this.props.value });
+  componentWillMount: function () {
+    this.setState({ value: this.props.value })
   },
 
-  onChange: function(value) {
-    this.setState({ value });
+  onChange: function (value) {
+    this.setState({ value })
   },
 
-  render: function() {
-    var state = this.state;
-    var props = this.props;
+  render: function () {
+    var state = this.state
+    var props = this.props
 
     return (
       <div>
-        <input type="hidden" value={ state.value } name={ props.name } />
-        <DateSelect {...props} value={ state.value } onChange={ this.onChange } />
+        <input type='hidden' value={state.value} name={props.name} />
+        <DateSelect {...props} value={state.value} onChange={this.onChange} />
       </div>
-    );
+    )
   }
-});
+})

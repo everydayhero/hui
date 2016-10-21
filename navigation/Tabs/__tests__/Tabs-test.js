@@ -2,9 +2,8 @@
 
 import Tabs from '../index'
 
-describe('Tabs', function() {
-
-  describe('default', function() {
+describe('Tabs', function () {
+  describe('default', function () {
     let tabs
     let activeId = 0
     let tabItems = [
@@ -24,32 +23,32 @@ describe('Tabs', function() {
 
     let onChange = sinon.spy()
 
-    beforeEach(function() {
+    beforeEach(function () {
       onChange.reset()
-      tabs = renderIntoDocument(<Tabs tabs={ tabItems } active={ activeId } onChange={ onChange }/>)
+      tabs = renderIntoDocument(<Tabs tabs={tabItems} active={activeId} onChange={onChange} />)
     })
 
-    it('should render Tabs', function() {
+    it('should render Tabs', function () {
       let tabLinks = scryByClass(tabs, 'hui-Tabs__tab')
 
       expect(tabLinks.length).to.equal(3)
     })
 
-    it('should render Content', function() {
+    it('should render Content', function () {
       let content = findByClass(tabs, 'hui-Tabs_content')
 
       expect(content.textContent).to.contain('Amount raised goes here')
     })
 
-    it('should select a tab', function() {
+    it('should select a tab', function () {
       let tabLinks = scryByClass(tabs, 'hui-Tabs__tab')
       Simulate.click(tabLinks[2])
 
       onChange.should.have.been.calledWith(2)
     })
 
-    it('should default to a tab', function() {
-      tabs = renderIntoDocument(<Tabs tabs={ tabItems } active={ 2 }/>)
+    it('should default to a tab', function () {
+      tabs = renderIntoDocument(<Tabs tabs={tabItems} active={2} />)
       let content = findByClass(tabs, 'hui-Tabs__tab--active')
 
       expect(content.textContent).to.contain(tabItems[2].label)

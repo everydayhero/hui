@@ -17,8 +17,8 @@ describe('Item', () => {
       let option = { value: '1', label: 'Tim Rogers' }
       let element = element = renderIntoDocument(
         <Item
-          option={ option }
-          Display={ MyCrazyDisplay }/>
+          option={option}
+          Display={MyCrazyDisplay} />
       )
       let subject = ReactDOM.findDOMNode(
         findByType(element, MyCrazyDisplay)

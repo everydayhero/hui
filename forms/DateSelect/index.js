@@ -34,7 +34,7 @@ export default React.createClass({
     promptValue: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       yearLabel: 'Year',
       monthLabel: 'Month',
@@ -53,40 +53,40 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       hasError: false,
       valid: false
     }
   },
 
-  onChange: function(type, value) {
+  onChange: function (type, value) {
     var props = this.props
     var currentValue = props.value || moment(props.promptValue).format(props.format)
     var date = moment(currentValue, props.format)[type](Number(value))
 
-    if(props.onChange) {
+    if (props.onChange) {
       props.onChange(date.format(props.format))
     }
   },
 
-  yearChange: function(value) {
+  yearChange: function (value) {
     this.onChange('year', value)
   },
 
-  monthChange: function(value) {
+  monthChange: function (value) {
     this.onChange('month', value)
   },
 
-  dateChange: function(value) {
+  dateChange: function (value) {
     this.onChange('date', value)
   },
 
-  getYears: function() {
+  getYears: function () {
     var year = moment().year()
     var minYear = 1899
     var years = []
-    while(year !== minYear) {
+    while (year !== minYear) {
       years.push({ value: year.toString(), label: year })
       year--
     }
@@ -94,11 +94,11 @@ export default React.createClass({
     return years
   },
 
-  getMonths: function() {
+  getMonths: function () {
     var month = 0
     var months = []
 
-    while(month !== 12) {
+    while (month !== 12) {
       months.push({ value: month.toString(), label: this.props.months[month] })
       month++
     }
@@ -106,13 +106,13 @@ export default React.createClass({
     return months
   },
 
-  getDays: function() {
+  getDays: function () {
     var date = 1
     var dates = []
     var props = this.props
     var value = props.value || props.promptValue
     var momentDate = moment(value, props.format)
-    while(date !== momentDate.daysInMonth() + 1) {
+    while (date !== momentDate.daysInMonth() + 1) {
       dates.push({ value: date.toString(), label: date })
       date++
     }
@@ -120,7 +120,7 @@ export default React.createClass({
     return dates
   },
 
-  render: function() {
+  render: function () {
     var props = this.props
     var state = this.state
     var date
@@ -151,41 +151,41 @@ export default React.createClass({
     dateValue = dateValue.toString()
 
     return (
-      <div className={ classes }>
-        <div className="hui-DateSelect__wrap">
+      <div className={classes}>
+        <div className='hui-DateSelect__wrap'>
           <SelectInput
-            id={ props.id + '_date' }
-            value={ dateValue }
-            className="hui-DateSelect__date"
-            onChange={ this.dateChange }
-            layout="third"
-            spacing="compact"
-            label={ props.dateLabel }
-            options={ this.getDays() }
-            prompt={ moment(props.promptValue).date().toString() }
-            { ...passedProps }/>
+            id={props.id + '_date'}
+            value={dateValue}
+            className='hui-DateSelect__date'
+            onChange={this.dateChange}
+            layout='third'
+            spacing='compact'
+            label={props.dateLabel}
+            options={this.getDays()}
+            prompt={moment(props.promptValue).date().toString()}
+            {...passedProps} />
           <SelectInput
-            id={ props.id + '_month' }
-            value={ monthValue }
-            className="hui-DateSelect__month"
-            onChange={ this.monthChange }
-            layout="third"
-            spacing="compact"
-            label={ props.monthLabel }
-            options={ this.getMonths() }
-            prompt={ this.props.months[moment(props.promptValue).month()] }
-            { ...passedProps } />
+            id={props.id + '_month'}
+            value={monthValue}
+            className='hui-DateSelect__month'
+            onChange={this.monthChange}
+            layout='third'
+            spacing='compact'
+            label={props.monthLabel}
+            options={this.getMonths()}
+            prompt={this.props.months[moment(props.promptValue).month()]}
+            {...passedProps} />
           <SelectInput
-            id={ props.id + '_year' }
-            value={ yearValue }
-            className="hui-DateSelect__year"
-            onChange={ this.yearChange }
-            layout="third"
-            spacing="compact"
-            label={ props.yearLabel }
-            options={ this.getYears() }
-            prompt={ moment(props.promptValue).year().toString() }
-            { ...passedProps }  />
+            id={props.id + '_year'}
+            value={yearValue}
+            className='hui-DateSelect__year'
+            onChange={this.yearChange}
+            layout='third'
+            spacing='compact'
+            label={props.yearLabel}
+            options={this.getYears()}
+            prompt={moment(props.promptValue).year().toString()}
+            {...passedProps} />
         </div>
         { this.renderMessage() }
       </div>

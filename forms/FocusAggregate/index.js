@@ -9,10 +9,10 @@ export default React.createClass({
   getDefaultProps () {
     return {
       onFocus: () => {},
-      onBlur: () => {},
+      onBlur: () => {}
     }
   },
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearTimeout(blurringTimer)
   },
   handleFocus (e) {
@@ -29,9 +29,9 @@ export default React.createClass({
     const { children, className } = this.props
     return (
       <div
-        className={ className }
-        onFocus={ this.handleFocus }
-        onBlur={ this.handleBlur }>
+        className={className}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}>
         { children }
       </div>
     )

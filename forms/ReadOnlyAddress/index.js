@@ -1,15 +1,15 @@
 'use strict'
 
-import React     from 'react'
+import React from 'react'
 import TextInput from '../TextInput'
-import _         from 'lodash'
+import _ from 'lodash'
 
 export default React.createClass({
   displayName: 'ReadOnlyAddress',
 
-  render: function() {
-    var props = this.props;
-    var address = props.value || {};
+  render: function () {
+    var props = this.props
+    var address = props.value || {}
     var fields = _.compact([
       address.street_address,
       address.street_address_2,
@@ -17,13 +17,13 @@ export default React.createClass({
       address.region,
       address.postal_code,
       address.country_name
-    ]);
+    ])
 
     return (
       <TextInput
         {...props}
         readOnly
-        value={ fields.join(', ') } />
-    );
+        value={fields.join(', ')} />
+    )
   }
-});
+})

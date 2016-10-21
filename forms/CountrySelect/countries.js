@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 export default [
   { label: 'Australia', value: 'AU', dial_code: '+61' },

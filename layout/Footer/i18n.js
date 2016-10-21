@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 export default {
   en: {
@@ -92,7 +92,7 @@ export default {
     right_4: 'Developers',
     right_2_url: '{portal}fundraising-events-to-participate-in/',
     right_3_url: '{portal}nonprofits/',
-    right_4_url: '{portal}developers-giving-ecosystem/',
+    right_4_url: '{portal}developers-giving-ecosystem/'
   },
   ie: {
     registration_number: 'VAT:',
@@ -104,4 +104,4 @@ export default {
     right_3: 'Not for profits',
     right_4: 'Partners'
   }
-};
+}

@@ -3,7 +3,7 @@ import Component from '../'
 const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 
 describe(CWD, () => {
-  const subject = (props = {}) => shallow(<Component { ...props } />)
+  const subject = (props = {}) => shallow(<Component {...props} />)
 
   it('renders', () => {
     const props = { options: ['this', 'is', 'a', 'test'], onChange: sinon.spy() }
@@ -14,7 +14,7 @@ describe(CWD, () => {
     const props = { options: ['this', 'is', 'a', 'test'], onChange: sinon.spy() }
     const el = subject(props)
     el.find('option').should.have.length(4)
-    el.containsMatchingElement(<option key="is" value="is">is</option>).should.eql(true)
+    el.containsMatchingElement(<option key='is' value='is'>is</option>).should.eql(true)
     el.find('pre').text().should.eql('this')
   })
 
@@ -24,7 +24,7 @@ describe(CWD, () => {
       displayOptions: ['alternative', 'display', 'options'],
       onChange: sinon.spy()
     }
-    subject(props).containsMatchingElement(<option key="is" value="is">display</option>).should.eql(true)
+    subject(props).containsMatchingElement(<option key='is' value='is'>display</option>).should.eql(true)
   })
 
   it('uses optional displayValues', () => {

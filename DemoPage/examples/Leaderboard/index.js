@@ -1,6 +1,6 @@
 'use strict'
 
-import React       from 'react'
+import React from 'react'
 import Leaderboard from '../../../leaderboard'
 import LeaderboardRow from '../../../leaderboard/LeaderboardRow'
 import raisedData from './raisedData.json'
@@ -8,24 +8,24 @@ import raisedData from './raisedData.json'
 export default React.createClass({
   displayName: 'Leaderboard',
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       selectedIndex: null
     }
   },
 
-  onSelect: function(item, index) {
+  onSelect: function (item, index) {
     this.setState({
       selectedIndex: index
     })
   },
 
   getShareUrl: function (id) {
-    return `/share/team/${ id }`
+    return `/share/team/${id}`
   },
 
-  render: function() {
-    let onSelect  = this.onSelect
+  render: function () {
+    let onSelect = this.onSelect
     let rowData = raisedData.leaderboard.pages
     rowData.forEach((item, index) => {
       item.rank = index + 1
@@ -34,16 +34,16 @@ export default React.createClass({
 
     return (
       <div>
-        <h3 className="DemoPage__h3" id="Leaderboard">Leaderboard</h3>
+        <h3 className='DemoPage__h3' id='Leaderboard'>Leaderboard</h3>
 
         <Leaderboard
-          onSelect={ onSelect }
-          selectedIndex={ this.props.selectedIndex }
-          rowData={ raisedData.leaderboard.pages }
-          valueSymbol="$"
-          valueType="money"
-          highlightedCharity="au-1795"
-          rowComponent={ LeaderboardRow } />
+          onSelect={onSelect}
+          selectedIndex={this.props.selectedIndex}
+          rowData={raisedData.leaderboard.pages}
+          valueSymbol='$'
+          valueType='money'
+          highlightedCharity='au-1795'
+          rowComponent={LeaderboardRow} />
       </div>
     )
   }

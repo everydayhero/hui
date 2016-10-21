@@ -1,5 +1,5 @@
 import React, { createClass } from 'react'
-import TextAreaLite  from '../../../forms/TextAreaLite'
+import TextAreaLite from '../../../forms/TextAreaLite'
 
 const props = {
   placeholder: 'This is the placeholder',
@@ -7,27 +7,27 @@ const props = {
 }
 
 export default createClass({
-  getInitialState() {
+  getInitialState () {
     return {
       value: '',
       hasFocus: false
     }
   },
 
-  handleChange({ target: { value }}) {
+  handleChange ({ target: { value }}) {
     this.setState({ value })
   },
 
-  handleFocus(hasFocus) {
+  handleFocus (hasFocus) {
     return () => this.setState({ hasFocus })
   },
 
-  render: function() {
+  render: function () {
     const { value, hasFocus } = this.state
     return (
       <div>
-        <h3 className="DemoPage__h3" id="TextAreaLite">TextAreaLite</h3>
-        <TextAreaLite { ...props } value={ value } hasFocus={ hasFocus } onChange={ this.handleChange } onFocus={ this.handleFocus(true) } onBlur={ this.handleFocus(false) } />
+        <h3 className='DemoPage__h3' id='TextAreaLite'>TextAreaLite</h3>
+        <TextAreaLite {...props} value={value} hasFocus={hasFocus} onChange={this.handleChange} onFocus={this.handleFocus(true)} onBlur={this.handleFocus(false)} />
       </div>
     )
   }

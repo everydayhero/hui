@@ -12,29 +12,29 @@ export default React.createClass({
     active: React.PropTypes.number
   },
 
-  onChange: function(index) {
+  onChange: function (index) {
     let onChange = this.props.onChange
 
-    return function(e) {
+    return function (e) {
       e.preventDefault()
       onChange && onChange(index)
     }
   },
 
-  renderTabLabels: function() {
+  renderTabLabels: function () {
     let props = this.props
     let tabLabels = []
     let component = this
 
-    props.tabs.forEach(function(tab, index) {
+    props.tabs.forEach(function (tab, index) {
       let classes = classnames([
         props.className,
         'hui-Tabs__tab',
         index === props.active && 'hui-Tabs__tab--active'
-      ]);
+      ])
 
       tabLabels.push(
-        <a href="#" key={ index } className={ classes } onClick={ component.onChange(index) }>
+        <a href='#' key={index} className={classes} onClick={component.onChange(index)}>
           { tab.label }
         </a>
       )
@@ -43,15 +43,15 @@ export default React.createClass({
     return tabLabels
   },
 
-  render: function() {
+  render: function () {
     let props = this.props
 
     return (
-      <div className="hui-Tabs">
+      <div className='hui-Tabs'>
         <div>
           { this.renderTabLabels() }
         </div>
-        <div className="hui-Tabs_content">
+        <div className='hui-Tabs_content'>
           { props.tabs[props.active].content }
         </div>
       </div>

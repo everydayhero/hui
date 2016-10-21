@@ -5,14 +5,14 @@ import Icon from '../Icon'
 import TooltipContent from '../TooltipContent'
 
 class Tooltip extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = { open: false }
     this.openTip = this.openTip.bind(this)
     this.closeTip = this.closeTip.bind(this)
   }
 
-  openTip() {
+  openTip () {
     this.setState({ open: true })
 
     if (this.props.trigger === 'click') {
@@ -20,7 +20,7 @@ class Tooltip extends Component {
     }
   }
 
-  closeTip() {
+  closeTip () {
     this.setState({ open: false })
 
     if (this.props.trigger === 'click') {
@@ -28,7 +28,7 @@ class Tooltip extends Component {
     }
   }
 
-  render() {
+  render () {
     const { trigger } = this.props
     const classes = classNames({
       'hui-Tooltip': true,
@@ -38,18 +38,18 @@ class Tooltip extends Component {
     })
 
     return (
-      <div className={ classes }>
-        <div className="hui-Tooltip__trigger"
-          onClick={ trigger === 'click' && this.openTip }
-          onMouseEnter={ trigger === 'hover' && this.openTip }
-          onMouseLeave={ trigger === 'hover' && this.closeTip }>
-          { this.props.children || <Icon icon="question-circle" className="hui-Tooltip__icon" /> }
+      <div className={classes}>
+        <div className='hui-Tooltip__trigger'
+          onClick={trigger === 'click' && this.openTip}
+          onMouseEnter={trigger === 'hover' && this.openTip}
+          onMouseLeave={trigger === 'hover' && this.closeTip}>
+          { this.props.children || <Icon icon='question-circle' className='hui-Tooltip__icon' /> }
         </div>
         <TooltipContent
-          style={ this.props.style }
-          position={ this.props.position }
-          content={ this.props.content }
-          open={ this.state.open } />
+          style={this.props.style}
+          position={this.props.position}
+          content={this.props.content}
+          open={this.state.open} />
       </div>
     )
   }

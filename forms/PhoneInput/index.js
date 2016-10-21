@@ -21,7 +21,7 @@ export default React.createClass({
     dialCode: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       layout: 'full',
       spacing: 'loose',
@@ -30,7 +30,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       isSelectingCountry: false,
       selectedCountry: find(countries, (d) => {
@@ -39,26 +39,26 @@ export default React.createClass({
     }
   },
 
-  handleCountrySelection(country) {
+  handleCountrySelection (country) {
     this.setState({
       isSelectingCountry: false,
       selectedCountry: country
     })
   },
 
-  handleCountrySelectOpen() {
+  handleCountrySelectOpen () {
     this.setState({
       isSelectingCountry: true
     })
   },
 
-  handleCountrySelectBlur() {
+  handleCountrySelectBlur () {
     this.setState({
       isSelectingCountry: false
     })
   },
 
-  render() {
+  render () {
     const { displayName, formatPhone } = this.constructor
     const { props, state } = this
     const { isSelectingCountry, selectedCountry } = state
@@ -80,25 +80,25 @@ export default React.createClass({
     const localNumber = formatPhone(props.value)
     const fullNumber = localNumber ? `${selectedCountry.dial_code} ${localNumber}` : ''
     return (
-      <div className={ classes }>
-        <TextInput { ...props } name={ 'ui_' + props.name } className={ textInputClasses } spacing="compact" validate={ validateAs.phone } />
+      <div className={classes}>
+        <TextInput {...props} name={'ui_' + props.name} className={textInputClasses} spacing='compact' validate={validateAs.phone} />
         <CountrySelect
-          ref="countrySelect"
-          spacing="compact"
-          displayProperty="dial_code"
-          className={ countrySelectClasses }
-          value={ selectedCountry.value }
-          data={ selectedCountry }
-          onBlur={ this.handleCountrySelectBlur }
-          onOpen={ this.handleCountrySelectOpen }
-          onSelection={ this.handleCountrySelection } />
-        <input type="hidden" name={ props.name } value={ fullNumber } />
+          ref='countrySelect'
+          spacing='compact'
+          displayProperty='dial_code'
+          className={countrySelectClasses}
+          value={selectedCountry.value}
+          data={selectedCountry}
+          onBlur={this.handleCountrySelectBlur}
+          onOpen={this.handleCountrySelectOpen}
+          onSelection={this.handleCountrySelection} />
+        <input type='hidden' name={props.name} value={fullNumber} />
       </div>
     )
   },
 
   statics: {
-    formatPhone(num) {
+    formatPhone (num) {
       if (!num || !num.length) return ''
       let n = ''
       let extAdded = false

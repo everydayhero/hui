@@ -15,11 +15,11 @@ export default React.createClass({
     toggled: React.PropTypes.bool
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return { toggled: false }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       actionToggled: this.props.toggled,
       loading: false,
@@ -27,11 +27,11 @@ export default React.createClass({
     }
   },
 
-  setError() {
+  setError () {
     this.setState({ error: true })
   },
 
-  setToggled() {
+  setToggled () {
     this.setState({
       actionToggled: !this.state.actionToggled,
       error: false,
@@ -39,19 +39,19 @@ export default React.createClass({
     })
   },
 
-  handleAction() {
+  handleAction () {
     this.setState({ loading: true, error: false })
     this.props.action(!this.state.actionToggled)
       .then(this.setToggled)
       .catch(this.setError)
   },
 
-  render() {
+  render () {
     let { loading, actionToggled, error } = this.state
     let { kind, pre_action_label, post_action_label, error_label } = this.props
     let label = error ? error_label : actionToggled ? post_action_label : pre_action_label
     let icon = error ? 'times' : loading ? 'circle-o-notch' : ''
 
-    return <Button { ...{ kind, label, icon }} onClick={ this.handleAction } />
+    return <Button {...{ kind, label, icon }} onClick={this.handleAction} />
   }
 })

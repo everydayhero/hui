@@ -12,27 +12,27 @@ export default React.createClass({
     })).isRequired
   },
 
-  keys: function() {
-    return this.props.keys.map(function(key) {
-      var givenClassName = ' ' + key.className || '';
+  keys: function () {
+    return this.props.keys.map(function (key) {
+      var givenClassName = ' ' + key.className || ''
       return (
-        <div key={ key.label } className={ 'hui-Legend__item' + givenClassName }>
-          <div className="hui-Legend__content">
-            <div className="hui-Legend__dot"></div>
-            <div className="hui-Legend__label">
+        <div key={key.label} className={'hui-Legend__item' + givenClassName}>
+          <div className='hui-Legend__content'>
+            <div className='hui-Legend__dot' />
+            <div className='hui-Legend__label'>
               { key.label }
             </div>
           </div>
         </div>
-      );
-    });
+      )
+    })
   },
 
-  render: function() {
+  render: function () {
     return (
-      <div className="hui-Legend">
+      <div className='hui-Legend'>
         { this.keys() }
       </div>
-    );
+    )
   }
-});
+})

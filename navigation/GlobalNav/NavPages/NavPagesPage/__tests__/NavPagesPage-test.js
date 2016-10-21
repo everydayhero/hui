@@ -24,7 +24,7 @@ let testPage = {
 }
 
 describe('NavPagesPage', () => {
-  let page = renderIntoDocument(<NavPagesPage page={ testPage }/>)
+  let page = renderIntoDocument(<NavPagesPage page={testPage} />)
 
   it('links to the page', () => {
     ReactDOM.findDOMNode(page).href.should.equal(testPage.url)

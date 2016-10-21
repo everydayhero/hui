@@ -16,7 +16,7 @@ export default React.createClass({
     type: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       disabled: false,
       fixedWidth: false,
@@ -26,11 +26,11 @@ export default React.createClass({
     }
   },
 
-  onClick(e) {
+  onClick (e) {
     !this.props.disabled && this.props.onClick(e)
   },
 
-  render: function() {
+  render: function () {
     let { icon, type, fixedWidth, spin, className} = this.props
     spin = icon === 'circle-o-notch' || icon === 'spinner' || icon === 'refresh' || spin
     let classes = cx([
@@ -44,7 +44,7 @@ export default React.createClass({
     let wrapperClasses = cx(['hui-IconWrapper', className])
 
     return (
-      <span className={ wrapperClasses } onTouchStart={ this.onClick } onMouseDown={ this.onClick }><i className={ classes } /></span>
+      <span className={wrapperClasses} onTouchStart={this.onClick} onMouseDown={this.onClick}><i className={classes} /></span>
     )
   }
 })

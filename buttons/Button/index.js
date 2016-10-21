@@ -44,7 +44,7 @@ export default React.createClass({
     uppercase: React.PropTypes.bool
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       data: null,
       disabled: false,
@@ -62,25 +62,25 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return { state: null }
   },
 
-  ignoreClick(e) {
+  ignoreClick (e) {
     e.preventDefault()
   },
 
-  propogateClick(e) {
+  propogateClick (e) {
     let { onClick } = this.props
     !!onClick && onClick(e)
   },
 
-  icon() {
+  icon () {
     let { icon, iconSpin } = this.props
-    return !!icon && <Icon className="hui-Button__icon" icon={ icon } spin={ iconSpin } />
+    return !!icon && <Icon className='hui-Button__icon' icon={icon} spin={iconSpin} />
   },
 
-  render() {
+  render () {
     let props = this.props
     let href = props.href
     let clickHandler = props.disabled ? this.ignoreClick : this.propogateClick
@@ -101,18 +101,18 @@ export default React.createClass({
     ])
 
     return (
-      <El { ...dataAttributesFromProps(props) } target={ props.target } className={ classes }
-        id={ props.id }
-        name={ props.name }
-        value={ props.value }
-        tabIndex={ 1 }
-        type={ props.type }
-        to={ href }
-        href={ href }
-        disabled={ props.disabled && 'disabled' }
-        onClick={ clickHandler }>
+      <El {...dataAttributesFromProps(props)} target={props.target} className={classes}
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        tabIndex={1}
+        type={props.type}
+        to={href}
+        href={href}
+        disabled={props.disabled && 'disabled'}
+        onClick={clickHandler}>
         { this.icon() }
-        <span className="hui-Button__label">{ props.label || props.children }</span>
+        <span className='hui-Button__label'>{ props.label || props.children }</span>
       </El>
     )
   }

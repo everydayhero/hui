@@ -2,7 +2,7 @@
 
 import LineGraph from '../'
 
-describe('LineGraph', function() {
+describe('LineGraph', function () {
   var collection = [
     {
       series: [
@@ -24,74 +24,74 @@ describe('LineGraph', function() {
         { date: new Date('2014, 6').toISOString(), value: 23 }
       ]
     }
-  ];
+  ]
 
-  describe('default', function() {
-    var component;
+  describe('default', function () {
+    var component
 
-    beforeEach(function() {
-      component = renderIntoDocument(<LineGraph collection={ collection } collectionValueKey={'value'} />);
+    beforeEach(function () {
+      component = renderIntoDocument(<LineGraph collection={collection} collectionValueKey={'value'} />)
       component.setState({
         width: 200,
         height: 200
-      });
-    });
+      })
+    })
 
-    it('should render LineGraph', function() {
-      component.should.exist;
-    });
+    it('should render LineGraph', function () {
+      component.should.exist
+    })
 
-    it('should render a equal number of paths to sets in collection', function() {
-      var linePaths = scryByClass(component, 'hui-LinePath');
+    it('should render a equal number of paths to sets in collection', function () {
+      var linePaths = scryByClass(component, 'hui-LinePath')
 
-      linePaths.length.should.equal(collection.length);
-    });
+      linePaths.length.should.equal(collection.length)
+    })
 
-    it('should transform set series when stacked', function() {
-      var transformedCollection = component.transformCollection();
-      var secondIndex = transformedCollection[1];
+    it('should transform set series when stacked', function () {
+      var transformedCollection = component.transformCollection()
+      var secondIndex = transformedCollection[1]
 
       for (var i = 0; i < secondIndex.length; i++) {
-        secondIndex[i].calculatedValue.should.equal(secondIndex[i].value);
+        secondIndex[i].calculatedValue.should.equal(secondIndex[i].value)
       }
-    });
-  });
+    })
+  })
 
-  describe('empty set', function() {
-    var component;
+  describe('empty set', function () {
+    var component
 
-    beforeEach(function() {
-      component = renderIntoDocument(<LineGraph collection={ [] } collectionValueKey={'value'} />);
+    beforeEach(function () {
+      component = renderIntoDocument(<LineGraph collection={[]} collectionValueKey={'value'} />)
       component.setState({
         width: 200,
         height: 200
-      });
-    });
+      })
+    })
 
-    it('should render LineGraph', function() {
-      component.should.exist;
-    });
-  });
+    it('should render LineGraph', function () {
+      component.should.exist
+    })
+  })
 
-  describe('stacked', function() {
-    var component;
+  describe('stacked', function () {
+    var component
 
-    beforeEach(function() {
-      component = renderIntoDocument(<LineGraph collection={ collection } stacked={ true } collectionValueKey={'value'} />);
+    beforeEach(function () {
+      component = renderIntoDocument(<LineGraph collection={collection} stacked collectionValueKey={'value'} />)
       component.setState({
         width: 200,
         height: 200
-      });
-    });
+      })
+    })
 
-    it('should transform series collection when stacked', function() {
-      var transformedCollection = component.transformCollection();
-      var firstIndex = transformedCollection[0];
-      var secondIndex = transformedCollection[1];
+    it('should transform series collection when stacked', function () {
+      var transformedCollection = component.transformCollection()
+      var firstIndex = transformedCollection[0]
+      var secondIndex = transformedCollection[1]
 
       for (var i = 0; i < secondIndex.length; i++) {
-        secondIndex[i].calculatedValue.should.equal(secondIndex[i].value + firstIndex[i].value);
+        secondIndex[i].calculatedValue.should.equal(secondIndex[i].value + firstIndex[i].value)
       }
-    });
-  });
-});
+    })
+  })
+})

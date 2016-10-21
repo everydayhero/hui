@@ -22,7 +22,7 @@ let search
 
 describe('NavSearch', () => {
   before(() => {
-    search = renderIntoDocument(<NavSearch { ...defaultProps }/>)
+    search = renderIntoDocument(<NavSearch {...defaultProps} />)
   })
 
   it('renders a label and input', () => {

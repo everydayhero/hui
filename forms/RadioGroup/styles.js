@@ -12,10 +12,10 @@ export const group = {
   maxHeight: r(2),
   borderRadius: r(1),
   backgroundColor: c.lightGrey,
-  overflow: 'hidden',
+  overflow: 'hidden'
 }
 
 export const focusedGroup = {
   boxShadow: `inset 0 3px ${r(0.75)} ${cA('darkGrey', 0.05)}`,
-  borderColor: cA('darkGrey', 0.05),
+  borderColor: cA('darkGrey', 0.05)
 }

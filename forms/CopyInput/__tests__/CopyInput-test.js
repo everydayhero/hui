@@ -6,9 +6,9 @@ describe('CopyInput', () => {
   let element, input, button
 
   beforeEach(() => {
-    element = renderIntoDocument(<CopyInput value="foobar" name="underTest" id="baz" />)
-    input   = findByAttribute(element, 'name', 'underTest')
-    button  = findByClass(element, 'hui-CopyInput__button')
+    element = renderIntoDocument(<CopyInput value='foobar' name='underTest' id='baz' />)
+    input = findByAttribute(element, 'name', 'underTest')
+    button = findByClass(element, 'hui-CopyInput__button')
   })
 
   it('renders a text field with a given value', () => {

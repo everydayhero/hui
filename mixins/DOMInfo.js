@@ -25,50 +25,50 @@ const sizes = {
 const resizeHandlers = []
 
 if (canUseDOM) {
-  addEventBindings('resize', function(e) {
-    resizeHandlers.forEach(function(handler) {
+  addEventBindings('resize', function (e) {
+    resizeHandlers.forEach(function (handler) {
       handler(e)
     })
   }, false)
 }
 
-function findSize(o, w) {
-  return _.findKey(o, function(d) {
+function findSize (o, w) {
+  return _.findKey(o, function (d) {
     return w < d
   })
 }
 
 export default {
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       size: 'medium',
       device: 'tablet'
     }
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     resizeHandlers.push(this.setSizeAndDevice)
     this.setSizeAndDevice()
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     _.pull(resizeHandlers, this.setSizeAndDevice)
   },
 
-  getChildrenWidth: function(min_width, count) {
+  getChildrenWidth: function (min_width, count) {
     const child_count = Math.min(count, this.getChildCountFromWidth(min_width))
     return this.getChildWidth(child_count)
   },
 
-  getChildWidth: function(count) {
+  getChildWidth: function (count) {
     return Math.floor(10000 / Math.max(1, count)) * 0.01 + '%'
   },
 
-  getChildCountFromWidth: function(min_width) {
+  getChildCountFromWidth: function (min_width) {
     return Math.max(1, Math.floor(this.getComponentWidth() / min_width))
   },
 
-  getDeviceFallback: function(device, obj) {
+  getDeviceFallback: function (device, obj) {
     const devices = ['phone', 'tablet', 'laptop', 'desktop', 'tv']
     const length = devices.length
     const i = devices.indexOf(device)
@@ -80,7 +80,7 @@ export default {
     return fallback
   },
 
-  setSizeAndDevice: function() {
+  setSizeAndDevice: function () {
     const size = this.getSize()
     const device = this.getDevice()
     if (size !== this.state.size || device !== this.state.device) {
@@ -88,7 +88,7 @@ export default {
     }
   },
 
-  getWindowWidth: function() {
+  getWindowWidth: function () {
     return document.body.clientWidth
   },
 
@@ -96,12 +96,12 @@ export default {
     return ReactDOM.findDOMNode(this).offsetWidth || 0
   },
 
-  getDevice: function() {
+  getDevice: function () {
     const w = this.getWindowWidth()
     return findSize(breakpoints, w) || 'tv'
   },
 
-  getSize: function() {
+  getSize: function () {
     const w = this.getComponentWidth()
     return findSize(sizes, w) || 'huge'
   }

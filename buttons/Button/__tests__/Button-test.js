@@ -2,147 +2,147 @@
 
 import Button from '../index'
 
-describe('Button', function() {
-  var component;
+describe('Button', function () {
+  var component
 
-  describe('with id', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button id="click-me" />);
-    });
+  describe('with id', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button id='click-me' />)
+    })
 
-    it('renders a CTA button', function(){
-      findByAttribute(component, 'id', 'click-me');
-    });
-  });
+    it('renders a CTA button', function () {
+      findByAttribute(component, 'id', 'click-me')
+    })
+  })
 
-  describe('cta', function() {
-    var clicked = false;
+  describe('cta', function () {
+    var clicked = false
 
-    beforeEach(function() {
-      clicked = false;
-      var onClick = () => clicked = true;
+    beforeEach(function () {
+      clicked = false
+      var onClick = () => clicked = true
 
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" onClick={ onClick }/>);
-    });
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' onClick={onClick} />)
+    })
 
-    it('renders a CTA button', function(){
-      findByClass(component, 'hui-Button--cta');
-    });
+    it('renders a CTA button', function () {
+      findByClass(component, 'hui-Button--cta')
+    })
 
-    it('handles click events', function(){
-      var node = scryByTag(component, 'button')[0];
-      Simulate.click(node);
+    it('handles click events', function () {
+      var node = scryByTag(component, 'button')[0]
+      Simulate.click(node)
 
-      clicked.should.equal(true);
-    });
-  });
+      clicked.should.equal(true)
+    })
+  })
 
-  describe('primary', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="primary" label="Get Started" icon="chevron-right"/>);
-    });
+  describe('primary', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='primary' label='Get Started' icon='chevron-right' />)
+    })
 
-    it('renders a primary button', function(){
-      findByClass(component, 'hui-Button--primary');
-    });
-  });
+    it('renders a primary button', function () {
+      findByClass(component, 'hui-Button--primary')
+    })
+  })
 
-  describe('secondary', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="secondary" label="Get Started" icon="chevron-right"/>);
-    });
+  describe('secondary', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='secondary' label='Get Started' icon='chevron-right' />)
+    })
 
-    it('renders a secondary button', function(){
-      findByClass(component, 'hui-Button--secondary');
-    });
-  });
+    it('renders a secondary button', function () {
+      findByClass(component, 'hui-Button--secondary')
+    })
+  })
 
-  describe('tertiary', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="tertiary" label="Get Started" icon="chevron-right"/>);
-    });
+  describe('tertiary', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='tertiary' label='Get Started' icon='chevron-right' />)
+    })
 
-    it('renders a tertiary button', function(){
-      findByClass(component, 'hui-Button--tertiary');
-    });
-  });
+    it('renders a tertiary button', function () {
+      findByClass(component, 'hui-Button--tertiary')
+    })
+  })
 
-  describe('href', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" href="/foo" />);
-    });
+  describe('href', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' href='/foo' />)
+    })
 
-    it('renders an anchor when given a href', function(){
-      scryByTag(component, 'a').length.should.equal(1);
-    });
-  });
+    it('renders an anchor when given a href', function () {
+      scryByTag(component, 'a').length.should.equal(1)
+    })
+  })
 
-  describe('inverse', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" inverse={ true } />);
-    });
+  describe('inverse', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' inverse />)
+    })
 
-    it('inverses the button', function(){
-      findByClass(component, 'hui-Button--inverse');
-    });
-  });
+    it('inverses the button', function () {
+      findByClass(component, 'hui-Button--inverse')
+    })
+  })
 
-  describe('thin', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" thin={ true } />);
-    });
+  describe('thin', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' thin />)
+    })
 
-    it('renders a thin button', function(){
-      findByClass(component, 'hui-Button--thin');
-    });
-  });
+    it('renders a thin button', function () {
+      findByClass(component, 'hui-Button--thin')
+    })
+  })
 
-  describe('slim', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" slim={ true } />);
-    });
+  describe('slim', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' slim />)
+    })
 
-    it('renders a slim button', function(){
-      findByClass(component, 'hui-Button--slim');
-    });
-  });
+    it('renders a slim button', function () {
+      findByClass(component, 'hui-Button--slim')
+    })
+  })
 
-  describe('iconSpin', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Log In" icon="refresh" iconSpin={ true } />);
-    });
+  describe('iconSpin', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Log In' icon='refresh' iconSpin />)
+    })
 
-    it('spins the icon', function(){
-      findByClass(component, 'fa-spin');
-    });
-  });
+    it('spins the icon', function () {
+      findByClass(component, 'fa-spin')
+    })
+  })
 
-  describe('iconLeft', function() {
-    beforeEach(function() {
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" iconLeft={ true } />);
-    });
+  describe('iconLeft', function () {
+    beforeEach(function () {
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' iconLeft />)
+    })
 
-    it('renders the icon left', function(){
-      findByClass(component, 'hui-Button--iconLeft');
-    });
-  });
+    it('renders the icon left', function () {
+      findByClass(component, 'hui-Button--iconLeft')
+    })
+  })
 
-  describe('disabled', function() {
-    var clicked = false;
+  describe('disabled', function () {
+    var clicked = false
 
-    beforeEach(function() {
-      clicked = false;
-      var onClick = () => clicked = true;
+    beforeEach(function () {
+      clicked = false
+      var onClick = () => clicked = true
 
-      component = renderIntoDocument(<Button kind="cta" label="Get Started" icon="chevron-right" disabled={ true } onClick={ onClick }/>);
-    });
+      component = renderIntoDocument(<Button kind='cta' label='Get Started' icon='chevron-right' disabled onClick={onClick} />)
+    })
 
-    it('disables the button', function(){
-      var node = scryByTag(component, 'button')[0];
-      Simulate.click(node);
+    it('disables the button', function () {
+      var node = scryByTag(component, 'button')[0]
+      Simulate.click(node)
 
-      findByClass(component, 'hui-Button--disabled');
-      clicked.should.equal(false);
-    });
-  });
-});
+      findByClass(component, 'hui-Button--disabled')
+      clicked.should.equal(false)
+    })
+  })
+})

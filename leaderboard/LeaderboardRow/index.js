@@ -43,10 +43,10 @@ export default React.createClass({
     isCandidate: React.PropTypes.bool,
     isHighlighted: React.PropTypes.bool,
     valueType: React.PropTypes.oneOf(['money', 'distance']),
-    valueSymbol: React.PropTypes.oneOf(['$', '£', '€', 'km', 'mi', 'm']),
+    valueSymbol: React.PropTypes.oneOf(['$', '£', '€', 'km', 'mi', 'm'])
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       valueType: 'money',
       valueSymbol: '$',
@@ -59,30 +59,30 @@ export default React.createClass({
     }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       narrow: false
     }
   },
 
-  componentDidMount: function() {
-    this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 });
-    addEventBindings('resize', this.handleResizeDebounce);
-    this.handleResize();
+  componentDidMount: function () {
+    this.handleResizeDebounce = _.debounce(this.handleResize, 300, { maxWait: 1000 })
+    addEventBindings('resize', this.handleResizeDebounce)
+    this.handleResize()
   },
 
-  componentWillUnmount: function() {
-    removeEventBindings('resize', this.handleResizeDebounce);
+  componentWillUnmount: function () {
+    removeEventBindings('resize', this.handleResizeDebounce)
   },
 
-  handleResize: function() {
+  handleResize: function () {
     let domNode = ReactDOM.findDOMNode(this)
     this.setState({
       narrow: domNode.offsetWidth <= 460
-    });
+    })
   },
 
-  renderFlipper: function() {
+  renderFlipper: function () {
     let props = this.props
     let data = props.data
     let symbol = data.amount.currency.symbol
@@ -90,31 +90,31 @@ export default React.createClass({
     let formattedGoal = numeric.money(symbol, data.target_cents, '0.00')
 
     return (
-      <div className="hui-LeaderboardRow__flipContainer">
-        <div className="hui-LeaderboardRow__flipper">
+      <div className='hui-LeaderboardRow__flipContainer'>
+        <div className='hui-LeaderboardRow__flipper'>
 
-          <div className="hui-LeaderboardRow__stats">
-            <ProgressBar goal={ data.target_cents } progress={ data.amount.cents } />
-            <div className="hui-LeaderboardRow__raised">
+          <div className='hui-LeaderboardRow__stats'>
+            <ProgressBar goal={data.target_cents} progress={data.amount.cents} />
+            <div className='hui-LeaderboardRow__raised'>
               { formattedRaised } { this.t('raise_join') } { formattedGoal } { this.t('goal') }
             </div>
           </div>
 
-          <div className="hui-LeaderboardRow__ctas">
-            <Button kind="primary" inverse slim icon="heart" href={ data.url }>Give</Button>
-            <Button kind="primary" inverse slim icon="chevron-right" onClick={ props.onView }>View Team</Button>
-            { !!data.share_url && <Share kind="facebook" inverse slim label="Share" shareUrl={ data.share_url } /> }
+          <div className='hui-LeaderboardRow__ctas'>
+            <Button kind='primary' inverse slim icon='heart' href={data.url}>Give</Button>
+            <Button kind='primary' inverse slim icon='chevron-right' onClick={props.onView}>View Team</Button>
+            { !!data.share_url && <Share kind='facebook' inverse slim label='Share' shareUrl={data.share_url} /> }
           </div>
         </div>
       </div>
     )
   },
 
-  renderRank: function() {
-    return <div className="hui-LeaderboardRow__rank">{ this.props.data.rank }</div>
+  renderRank: function () {
+    return <div className='hui-LeaderboardRow__rank'>{ this.props.data.rank }</div>
   },
 
-  render: function() {
+  render: function () {
     let props = this.props
     let data = props.data
     let value = numeric[props.valueType](props.valueSymbol, _.get(data, props.valuePath), props.valueFormat)
@@ -128,22 +128,22 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
+      <div className={classes}>
         { !state.narrow && this.renderRank() }
-        <div className="hui-LeaderboardRow__avatar">
-          <img src={ data.image.medium_image_url }/>
+        <div className='hui-LeaderboardRow__avatar'>
+          <img src={data.image.medium_image_url} />
         </div>
-        <div className="hui-LeaderboardRow__details">
+        <div className='hui-LeaderboardRow__details'>
           { state.narrow && this.renderRank() }
-          <h2 className="hui-LeaderboardRow__pageName">
+          <h2 className='hui-LeaderboardRow__pageName'>
             { data.name }
           </h2>
-          <p className="hui-LeaderboardRow__charityName">
+          <p className='hui-LeaderboardRow__charityName'>
             { data.charity_name }
           </p>
           { !state.narrow && this.renderFlipper() }
         </div>
-        <div className="hui-LeaderboardRow__value">
+        <div className='hui-LeaderboardRow__value'>
           { value }
         </div>
         { state.narrow && this.renderFlipper() }

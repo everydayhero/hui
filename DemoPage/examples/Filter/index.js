@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 import Filter from '../../../forms/Filter'
@@ -64,16 +64,16 @@ export default React.createClass({
   render () {
     return (
       <div>
-        <h3 className="DemoPage__h3" id="Filter">Filter</h3>
+        <h3 className='DemoPage__h3' id='Filter'>Filter</h3>
 
         <Filter
-          label="You can search both the name and summary"
-          onFilter={ this.handleFilter }
-          properties={ ['name', 'summary'] }
-          collection={ collection } />
+          label='You can search both the name and summary'
+          onFilter={this.handleFilter}
+          properties={['name', 'summary']}
+          collection={collection} />
 
-        <div className="DemoPage__pre-wrap">
-          <pre className="DemoPage__pre">{ JSON.stringify(this.state.filtered, null, 2) }</pre>
+        <div className='DemoPage__pre-wrap'>
+          <pre className='DemoPage__pre'>{ JSON.stringify(this.state.filtered, null, 2) }</pre>
         </div>
       </div>
     )

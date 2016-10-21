@@ -11,11 +11,11 @@ import { addEventBindings, removeEventBindings } from '../../lib/eventUtils'
 var dateFormats = {
   uk: ['DD', 'YYYY', 'DD-MM', 'MMM DD', 'MMM Do', 'DD-MM-YY', 'DD-MM-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD'],
   us: ['MM', 'YYYY', 'MM-DD', 'MMM DD', 'MMM Do', 'MM-DD-YY', 'MM-DD-YYYY', 'MMM DD YY', 'MMM Do YY', 'MMM DD YYYY', 'MMM Do YYYY', 'Do MMM YYYY', 'DD MMM YYYY', 'YYYY-MM-DD']
-};
+}
 
-dateFormats.au = dateFormats.uk;
-dateFormats.nz = dateFormats.uk;
-dateFormats.ie = dateFormats.uk;
+dateFormats.au = dateFormats.uk
+dateFormats.nz = dateFormats.uk
+dateFormats.ie = dateFormats.uk
 
 export default React.createClass({
   displayName: 'DateInput',
@@ -34,7 +34,7 @@ export default React.createClass({
     spacing: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       valueFormat: 'YYYY-MM-DD',
       displayFormat: 'DD/MM/YYYY',
@@ -43,197 +43,197 @@ export default React.createClass({
       minimumYear: 1000,
       layout: 'quarter',
       spacing: 'loose'
-    };
+    }
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       open: false,
       date: moment()
-    };
-  },
-
-  componentWillMount: function() {
-    if (typeof document === 'object') {
-      addEventBindings('click', this._clickBody, document);
     }
   },
 
-  componentWillUnmount: function() {
+  componentWillMount: function () {
     if (typeof document === 'object') {
-      removeEventBindings('click', this._clickBody, document);
+      addEventBindings('click', this._clickBody, document)
     }
   },
 
-  _clickBody: function(e) {
+  componentWillUnmount: function () {
+    if (typeof document === 'object') {
+      removeEventBindings('click', this._clickBody, document)
+    }
+  },
+
+  _clickBody: function (e) {
     if (!this.state.open) {
-      return;
+      return
     }
 
-    var target = e.target;
+    var target = e.target
     var node = ReactDOM.findDOMNode(this)
 
     while (target) {
       if (target === node) {
-        return;
+        return
       } else {
-        target = target.parentNode;
+        target = target.parentNode
       }
     }
-    this.close();
+    this.close()
   },
 
-  onDateChange: function(date) {
-    this.setDateValue(date);
-    this.close();
+  onDateChange: function (date) {
+    this.setDateValue(date)
+    this.close()
   },
 
-  setDateValue: function(date) {
-    var props = this.props;
-    var value = date && date.format(props.valueFormat);
+  setDateValue: function (date) {
+    var props = this.props
+    var value = date && date.format(props.valueFormat)
 
     this.setState({
       date: date || moment()
-    });
+    })
 
     if (props.onChange) {
-      props.onChange(value);
+      props.onChange(value)
     }
   },
 
-  clear: function() {
-    this.setDateValue(null);
+  clear: function () {
+    this.setDateValue(null)
   },
 
-  toggleOpen: function(force) {
+  toggleOpen: function (force) {
     this.setState({
       open: force !== null ? force : !this.state.open
-    });
+    })
   },
 
-  close: function() {
-    var state = this.state;
-    var date = this.state.date;
+  close: function () {
+    var state = this.state
+    var date = this.state.date
 
-    if(state.tempValue) {
-      this.setDateValue(date);
+    if (state.tempValue) {
+      this.setDateValue(date)
     }
 
-    this.setState({ open: false, tempValue: null });
+    this.setState({ open: false, tempValue: null })
   },
 
-  hasValue: function() {
-    return !!this.props.value;
+  hasValue: function () {
+    return !!this.props.value
   },
 
-  getDisplayValue: function() {
-    var props = this.props;
-    var state = this.state;
+  getDisplayValue: function () {
+    var props = this.props
+    var state = this.state
 
     if (state.open && !!state.tempValue) {
-      return state.tempValue;
+      return state.tempValue
     }
 
     if (this.hasValue()) {
-      return moment(props.value, props.valueFormat).format(props.displayFormat);
+      return moment(props.value, props.valueFormat).format(props.displayFormat)
     }
 
-    return '';
+    return ''
   },
 
-  onTab: function() {
-    this.close();
+  onTab: function () {
+    this.close()
   },
 
-  onFocus: function() {
-    this.toggleOpen(true);
+  onFocus: function () {
+    this.toggleOpen(true)
   },
 
-  onIconClick: function(e) {
-    e.preventDefault();
+  onIconClick: function (e) {
+    e.preventDefault()
 
     if (this.hasValue()) {
-      this.clear();
-      this.close();
+      this.clear()
+      this.close()
     } else {
       var input = this.refs.input
-      input.getElementsByTagName('input')[0].focus();
+      input.getElementsByTagName('input')[0].focus()
     }
   },
 
   localisedValue: function () {
-    var props = this.props;
-    var dateFormat = dateFormats[props.countryCode];
+    var props = this.props
+    var dateFormat = dateFormats[props.countryCode]
 
     return moment(props.value, dateFormat).format(props.displayFormat)
   },
 
-  onInputEdit: function(inputValue) {
-    var props = this.props;
-    var dateFormat = dateFormats[props.countryCode];
-    var parsedDate = moment(inputValue, dateFormat);
-    var currentDate = moment();
+  onInputEdit: function (inputValue) {
+    var props = this.props
+    var dateFormat = dateFormats[props.countryCode]
+    var parsedDate = moment(inputValue, dateFormat)
+    var currentDate = moment()
 
     if (parsedDate.isValid()) {
       if (parsedDate.year() < props.minimumYear) {
-        parsedDate.year(currentDate.year());
+        parsedDate.year(currentDate.year())
       }
     }
 
     if (!inputValue) {
-      this.clear();
-      this.setState({ tempValue: null });
-    } else if(inputValue !== this.localisedValue()) {
+      this.clear()
+      this.setState({ tempValue: null })
+    } else if (inputValue !== this.localisedValue()) {
       this.setState({
         date: parsedDate.isValid() && parsedDate,
         tempValue: inputValue
-      });
+      })
     }
   },
 
-  onChangeSelection: function(date) {
-    this.setDateValue(date);
+  onChangeSelection: function (date) {
+    this.setDateValue(date)
   },
 
-  renderInput: function() {
-    var icon = this.hasValue() ? 'times' : 'calendar';
+  renderInput: function () {
+    var icon = this.hasValue() ? 'times' : 'calendar'
 
     return (
       <TextInput
         {...this.props}
-        layout="full"
-        spacing="compact"
-        value={ this.getDisplayValue() }
-        onTab={ this.onTab }
-        onFocus={ this.onFocus }
-        onChange={ this.onInputEdit }
-        icon={ icon }
-        ref="input"
-        onIconClick={ this.onIconClick }/>
-    );
+        layout='full'
+        spacing='compact'
+        value={this.getDisplayValue()}
+        onTab={this.onTab}
+        onFocus={this.onFocus}
+        onChange={this.onInputEdit}
+        icon={icon}
+        ref='input'
+        onIconClick={this.onIconClick} />
+    )
   },
 
-  renderDatePicker: function() {
-    var state = this.state;
+  renderDatePicker: function () {
+    var state = this.state
 
     if (state.open) {
-      return <DatePicker onChange={ this.onDateChange } onChangeSelection={ this.onChangeSelection } date={ state.date } className="hui-DateInput__picker" />;
+      return <DatePicker onChange={this.onDateChange} onChangeSelection={this.onChangeSelection} date={state.date} className='hui-DateInput__picker' />
     }
   },
 
-  render: function() {
-    var props = this.props;
+  render: function () {
+    var props = this.props
     var classes = classnames([
       'hui-DateInput--' + props.layout,
       'hui-DateInput--' + props.spacing,
       'hui-DateInput'
-    ]);
+    ])
 
     return (
-      <div className={ classes }>
+      <div className={classes}>
         { this.renderInput() }
         { this.renderDatePicker() }
       </div>
-    );
+    )
   }
-});
+})

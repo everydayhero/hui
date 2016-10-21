@@ -3,13 +3,13 @@
 'use strict'
 
 import transform from './stub-transform'
-import glob      from 'glob'
-import path      from 'path'
+import glob from 'glob'
+import path from 'path'
 
-module.exports = function(blanket) {
+module.exports = function (blanket) {
   const origJs = require.extensions['.js']
 
-  require.extensions['.js'] = function(localModule, filename) {
+  require.extensions['.js'] = function (localModule, filename) {
     if (filename.match(/node_modules/)) {
       return origJs(localModule, filename)
     }
@@ -28,19 +28,19 @@ module.exports = function(blanket) {
     blanket.instrument({
       inputFile: content,
       inputFileName: normalizedFilename
-    }, function(instrumented){
+    }, function (instrumented) {
       const baseDirPath = blanket.normalizeBackslashes(path.dirname(normalizedFilename)) + '/.'
       try {
         instrumented = instrumented.replace(/(^require| require)\s*\(\s*("|')\./g, 'require($2' + baseDirPath)
         localModule._compile(instrumented, normalizedFilename)
         delete require.cache[normalizedFilename]  // might be stubbed in the future.
-      } catch(err){
+      } catch (err) {
         console.log('Error parsing instrumented code: ' + err)
       }
     })
   }
 
-  const matches = function(_path, test) {
+  const matches = function (_path, test) {
     var bool = false
     if (test instanceof RegExp) {
       bool = test.test(_path)
@@ -58,7 +58,7 @@ module.exports = function(blanket) {
 
   // Source all JS files so that they count towards the denominator.
   const pattern = './**/*.js'
-  glob.sync(pattern).forEach(function(_path) {
+  glob.sync(pattern).forEach(function (_path) {
     if (!matches(_path, blanket.options('filter')) || matches(_path, blanket.options('antifilter'))) {
       return
     }

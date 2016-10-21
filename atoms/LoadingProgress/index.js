@@ -1,29 +1,29 @@
 'use strict'
 
 import React from 'react'
-import _     from 'lodash'
+import _ from 'lodash'
 
 export default React.createClass({
   displayName: 'LoadingProgress',
 
-  style: function() {
-    var style;
+  style: function () {
+    var style
     if (this.refs.bar && !this.props.inProgress) {
       style = { width: this.refs.bar.offsetWidth || '100%' }
     }
 
-    return style;
+    return style
   },
 
-  render: function() {
+  render: function () {
     var classes = _.compact([
       'hui-LoadingProgress__bar',
       this.props.inProgress && '--inProgress'
-    ]).join('');
+    ]).join('')
 
     return (
-      <div className="hui-LoadingProgress">
-        <div className={ classes } ref="bar" style={ this.style() }></div>
+      <div className='hui-LoadingProgress'>
+        <div className={classes} ref='bar' style={this.style()} />
       </div>
     )
   }

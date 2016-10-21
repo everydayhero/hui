@@ -15,11 +15,11 @@ const render = (props) => {
   const { id, label, checked, onChange } = props
   const { focused, ...rest } = props
   return (
-    <label htmlFor={ id } className={
+    <label htmlFor={id} className={
       css(styles.radio,
       checked && styles.checkedRadio,
-      (checked && focused) && styles.checkedFocusedRadio) }>
-      <input { ...rest } type="radio" onChange={ onChange.bind(null, label) }/>
+      (checked && focused) && styles.checkedFocusedRadio)}>
+      <input {...rest} type='radio' onChange={onChange.bind(null, label)} />
       { label }
     </label>
   )

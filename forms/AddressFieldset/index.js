@@ -120,7 +120,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className={`hui-AddressFieldset__wrap hui-AddressFieldset__wrap--internal-${props.internalSpacing}`}>
-          <div className="hui-AddressFieldset__header">
+          <div className='hui-AddressFieldset__header'>
             {props.header}
           </div>
 

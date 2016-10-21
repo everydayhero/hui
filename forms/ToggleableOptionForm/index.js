@@ -16,48 +16,48 @@ export default React.createClass({
     token: React.PropTypes.string.isRequired
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return { options: null }
   },
 
-  getInitialState() {
+  getInitialState () {
     return { options: this.props.options }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     if (!this.props.options) { this.synchronize() }
   },
 
-  getUrl(namespace, value) {
+  getUrl (namespace, value) {
     let { url, token } = this.props
     return (namespace && isBoolean(value))
-      ? `${ url }/${ namespace }?access_token=${ token }&value=${ value }`
-      : `${ url }?access_token=${ token }`
+      ? `${url}/${namespace}?access_token=${token}&value=${value}`
+      : `${url}?access_token=${token}`
   },
 
-  synchronize(namespace, value) {
+  synchronize (namespace, value) {
     let method = (namespace && isBoolean(value)) ? 'put' : 'get'
     return sync(this.getUrl(namespace, value), method)
       .then(res => res.results && this.setState({ options: res.results }))
   },
 
-  renderToggleableOptionGroup(group, key) {
+  renderToggleableOptionGroup (group, key) {
     let { label, values } = group
     return (
       <ToggleableOptionGroup
-        onChange={ this.synchronize }
-        key={ key }
-        name={ key }
-        options={ values }
-        label={ label } />
+        onChange={this.synchronize}
+        key={key}
+        name={key}
+        options={values}
+        label={label} />
     )
   },
 
-  render() {
+  render () {
     return (
-        <div className="ToggleableOptionForm">
+        <div className='ToggleableOptionForm'>
           { !this.state.options
-            ? <Icon className="ToggleableOptionForm--loading" icon='circle-o-notch' />
+            ? <Icon className='ToggleableOptionForm--loading' icon='circle-o-notch' />
             : map(this.state.options, this.renderToggleableOptionGroup) }
         </div>
       )

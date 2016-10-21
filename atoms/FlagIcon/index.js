@@ -1,7 +1,7 @@
 'use strict'
 
-import _      from 'lodash'
-import React  from 'react'
+import _ from 'lodash'
+import React from 'react'
 
 export default React.createClass({
   displayName: 'FlagIcon',
@@ -17,13 +17,13 @@ export default React.createClass({
     }
   },
 
-  render: function() {
-    var classes = _.compact(['hui-FlagIcon', this.props.className]).join(' ');
+  render: function () {
+    var classes = _.compact(['hui-FlagIcon', this.props.className]).join(' ')
 
     return (
-      <span className={ classes }>
-        <i className={ 'hui-Flag hui-Flag-' + (!!this.props.country && this.props.country.toLowerCase()) } />
+      <span className={classes}>
+        <i className={'hui-Flag hui-Flag-' + (!!this.props.country && this.props.country.toLowerCase())} />
       </span>
-    );
+    )
   }
-});
+})

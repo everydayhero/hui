@@ -21,14 +21,14 @@ export default React.createClass({
     layout: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       layout: 'full',
       spacing: 'loose'
     }
   },
 
-  onClickItemIcon(data) {
+  onClickItemIcon (data) {
     let props = this.props
     let onItemIconClicked = props.onItemIconClicked
     let elements = props.items
@@ -38,14 +38,14 @@ export default React.createClass({
     return onItemIconClicked && onItemIconClicked(elements)
   },
 
-  renderItems() {
+  renderItems () {
     let items = this.props.items || []
     let onIconClick = this.onClickItemIcon
 
-    return !isEmpty(items) && items.map((item) => <ListItem key={ item.id } item={ item } onIconClick={ onIconClick } />)
+    return !isEmpty(items) && items.map((item) => <ListItem key={item.id} item={item} onIconClick={onIconClick} />)
   },
 
-  render() {
+  render () {
     let props = this.props
     let classes = classnames([
       'hui-TagList--' + props.layout,
@@ -54,8 +54,8 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="TagList__list">
+      <div className={classes}>
+        <div className='TagList__list'>
           { this.renderItems() }
         </div>
       </div>

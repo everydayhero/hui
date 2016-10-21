@@ -3,7 +3,7 @@ import { VelocityTransitionGroup } from 'velocity-react'
 import { revealVertical, fade } from './transitions'
 
 const T = (children, transition) => (
-  <VelocityTransitionGroup { ...transition }>
+  <VelocityTransitionGroup {...transition}>
     { children }
   </VelocityTransitionGroup>
 )

@@ -13,7 +13,7 @@ export default React.createClass({
     onIconClick: React.PropTypes.func.isRequired
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       item: {},
       icon: 'remove',
@@ -21,24 +21,24 @@ export default React.createClass({
     }
   },
 
-  onClick(e) {
+  onClick (e) {
     const { onIconClick, item } = this.props
     e.preventDefault()
 
     return onIconClick && onIconClick(item)
   },
 
-  renderIcon() {
+  renderIcon () {
     const { icon, item } = this.props
 
     return icon && (
-      <button id={ item.id } className="hui-TagListItem__iconButton" onClick={ this.onClick }>
-        <Icon icon={ icon } fixedWidth={ true } />
+      <button id={item.id} className='hui-TagListItem__iconButton' onClick={this.onClick}>
+        <Icon icon={icon} fixedWidth />
       </button>
     )
   },
 
-  render() {
+  render () {
     return (
       <Tag>
         { this.props.item.name }

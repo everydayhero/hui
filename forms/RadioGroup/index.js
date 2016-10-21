@@ -27,9 +27,9 @@ const render = ({
 }) => {
   const options = labels.map((label, i) => {
     const checked = value ? value === label : i === 0
-    return <Radio key={ name + i } name={ name } id={ name + i } label={ label } checked={ checked } focused={ hasFocus } onChange={ onChange } autoFocus={ autoFocus && checked }/>
+    return <Radio key={name + i} name={name} id={name + i} label={label} checked={checked} focused={hasFocus} onChange={onChange} autoFocus={autoFocus && checked} />
   })
-  return <div className={ css(styles.group, hasFocus && styles.focusedGroup) } onFocus={ onFocus } onBlur={ onBlur }>{ options }</div>
+  return <div className={css(styles.group, hasFocus && styles.focusedGroup)} onFocus={onFocus} onBlur={onBlur}>{ options }</div>
 }
 
 export default functional({ propTypes, render })

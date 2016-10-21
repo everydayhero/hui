@@ -14,72 +14,72 @@ export default React.createClass({
     inputClass: PropTypes.string
   },
 
-  getInitialState() {
+  getInitialState () {
     return { modalOpen: false }
   },
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.bindEvents(false)
   },
 
-  componentWillUpdate(p, { modalOpen }) {
+  componentWillUpdate (p, { modalOpen }) {
     if (this.state.modalOpen !== modalOpen) this.bindEvents(modalOpen)
   },
 
-  bindEvents(toggle) {
+  bindEvents (toggle) {
     bindTouch(toggle, this.handleTouch)
     bindFocus(toggle, this.handleFocus)
   },
 
-  handleTouch(e) {
+  handleTouch (e) {
     this.recentClick = true
     setTimeout(() => this.recentClick = false, 10)
     this.toggleInput(findDOMNode(this).contains(e.target))
   },
 
-  handleFocus() {
+  handleFocus () {
     if (this.recentClick) return
     this.toggleInput(findDOMNode(this).contains(document.activeElement))
   },
 
-  handleKeyDown() {
+  handleKeyDown () {
     this.recentKeydown = true
     setTimeout(() => this.recentKeydown = false, 10)
   },
 
-  toggleInput(toggle) {
+  toggleInput (toggle) {
     toggle ? this.showModal() : this.hideModal()
   },
 
-  showModal() {
+  showModal () {
     this.setState({ modalOpen: true })
   },
 
-  hideModal() {
+  hideModal () {
     setTimeout(this.setState.bind(this, { modalOpen: false }), 0)
   },
 
-  autoClose() {
+  autoClose () {
     if (this.props.autoClose && !this.recentKeydown) this.hideModal()
   },
 
-  renderModal() {
+  renderModal () {
     const { state: { modalOpen }, props: { children, inputClass } } = this
     return (
       <SlideVertical>
-        { modalOpen && <span key="modal" className={ cx([css(styles.modal, modalOpen && styles.modalVisible), inputClass]) }>
+        { modalOpen && <span key='modal' className={cx([css(styles.modal, modalOpen && styles.modalVisible), inputClass])}>
           { children }
-          <RoundButton key="close" icon="check" onClick={ this.hideModal } />
+          <RoundButton key='close' icon='check' onClick={this.hideModal} />
         </span> }
       </SlideVertical>
     )
   },
 
-  render() {
+  render () {
     const { label } = this.props
     return (
-      <div className={ css(styles.wrapper) } onKeyDown={ this.handleKeyDown } onChange={ this.autoClose }>
-        <span className={ css(styles.label) } onFocus={ this.showModal } tabIndex={ !this.state.modalOpen ? 0 : -1 }>{ label }</span>
+      <div className={css(styles.wrapper)} onKeyDown={this.handleKeyDown} onChange={this.autoClose}>
+        <span className={css(styles.label)} onFocus={this.showModal} tabIndex={!this.state.modalOpen ? 0 : -1}>{ label }</span>
         { this.renderModal() }
       </div>
     )

@@ -6,7 +6,7 @@ describe('Filter', () => {
   describe('initialisation', () => {
     it('renders a TextInput for displaying the selected option', () => {
       let subject = renderIntoDocument(
-        <Filter collection={ [] } />
+        <Filter collection={[]} />
       ).refs.filterInput
 
       expect(subject).to.be.ok
@@ -27,8 +27,8 @@ describe('Filter', () => {
         }
         let element = renderIntoDocument(
           <Filter
-            collection={ collection }
-            onFilter={ handleFilter }/>
+            collection={collection}
+            onFilter={handleFilter} />
         )
         element.filter('t r')
 
@@ -52,9 +52,9 @@ describe('Filter', () => {
         }
         let element = renderIntoDocument(
           <Filter
-            properties={ ['id', 'name'] }
-            collection={ collection }
-            onFilter={ handleFilter }/>
+            properties={['id', 'name']}
+            collection={collection}
+            onFilter={handleFilter} />
         )
         element.filter('G')
 
@@ -76,9 +76,9 @@ describe('Filter', () => {
       let subject = sinon.spy()
       let element = renderIntoDocument(
         <Filter
-          properties={ ['id', 'name'] }
-          collection={ collection }
-          onFilter={ subject }/>
+          properties={['id', 'name']}
+          collection={collection}
+          onFilter={subject} />
       )
       let input = findByTag(element, 'input')
       Simulate.change(input, { target: { value: 'Tex Perkins' }})

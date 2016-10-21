@@ -6,9 +6,9 @@ const TestComponent = React.createClass({
   render () {
     return (
       <FocusAggregate
-        { ...this.props }>
-        <input type="text" ref="input1" />
-        <input type="text" ref="input2" />
+        {...this.props}>
+        <input type='text' ref='input1' />
+        <input type='text' ref='input2' />
       </FocusAggregate>
     )
   }
@@ -19,7 +19,7 @@ describe('FocusAggregate', () => {
     it('calls props.onFocus', () => {
       const subject = sinon.spy()
       const element = renderIntoDocument(
-        <TestComponent onFocus={ subject } />
+        <TestComponent onFocus={subject} />
       )
       const input = element.refs.input1
       Simulate.focus(input)
@@ -31,7 +31,7 @@ describe('FocusAggregate', () => {
     it('calls props.onBlur after 100ms', (done) => {
       const subject = sinon.spy()
       const element = renderIntoDocument(
-        <TestComponent onBlur={ subject } />
+        <TestComponent onBlur={subject} />
       )
       const input = element.refs.input1
       Simulate.blur(input)
@@ -47,7 +47,7 @@ describe('FocusAggregate', () => {
     it('calls props.onFocus but not props.onBlur', (done) => {
       const subject = sinon.spy()
       const element = renderIntoDocument(
-        <TestComponent onBlur={ subject } />
+        <TestComponent onBlur={subject} />
       )
       const input = element.refs.input1
       Simulate.blur(input)
@@ -64,10 +64,10 @@ describe('FocusAggregate', () => {
     it('only calls props.onBlur once', (done) => {
       const subject = sinon.spy()
       const element = renderIntoDocument(
-        <TestComponent onBlur={ subject } />
+        <TestComponent onBlur={subject} />
       )
-      const input1= element.refs.input1
-      const input2= element.refs.input1
+      const input1 = element.refs.input1
+      const input2 = element.refs.input1
       Simulate.blur(input1)
       Simulate.blur(input2)
       setTimeout(() => {
@@ -83,9 +83,9 @@ describe('FocusAggregate', () => {
         expect(e.target.value).to.eq('WOOOOOT!')
       }
       const element = renderIntoDocument(
-        <TestComponent onFocus={ handleFocus } />
+        <TestComponent onFocus={handleFocus} />
       )
-      const input1= element.refs.input1
+      const input1 = element.refs.input1
       Simulate.focus(input1, { target: { value: 'WOOOOOT!' }})
     })
   })

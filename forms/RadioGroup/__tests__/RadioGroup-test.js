@@ -6,7 +6,7 @@ const CWD = __dirname.split('/')[__dirname.split('/').length - 2]
 const classNames = (el) => el.node.className
 
 describe(CWD, () => {
-  const subject = (props = {}) => mount(<Component { ...props } />)
+  const subject = (props = {}) => mount(<Component {...props} />)
 
   it('renders an array of radio inputs', () => {
     const props = { labels: ['this', 'is', 'a', 'test'], onChange: sinon.spy() }

@@ -5,10 +5,10 @@ import React from 'react'
 export default React.createClass({
   displayName: 'TopBarLink',
 
-  render: function() {
+  render: function () {
     return (
-      <a className="hui-TopBarLink"  {...this.props} >
+      <a className='hui-TopBarLink' {...this.props} >
         { this.props.children }
-      </a>);
+      </a>)
   }
-});
+})

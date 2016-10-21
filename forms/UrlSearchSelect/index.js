@@ -41,7 +41,7 @@ export default React.createClass({
     initialLabel: React.PropTypes.string
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       label: 'Search',
       params: {},
@@ -65,7 +65,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       isOpen: false,
       value: this.props.initialValue,
@@ -75,29 +75,29 @@ export default React.createClass({
     }
   },
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.showError !== this.props.showError) {
       this.setState({ hasError: nextProps.showError })
     }
   },
 
-  deserializeResponse(response) {
+  deserializeResponse (response) {
     let method = this.props.deserializeResponse || this.defaultDeserializer
     return method.call(this, response)
   },
 
-  defaultDeserializer(response) {
+  defaultDeserializer (response) {
     return response[this.props.responseProperty]
   },
 
-  getParams(query) {
+  getParams (query) {
     return merge(this.props.params, {
       __jsonp: this.props.jsonp,
       [this.props.queryProperty]: query
     })
   },
 
-  fetchResults(query) {
+  fetchResults (query) {
     let endState = { pendingRequest: null, isOpen: true }
     return getJSON(this.props.url, this.getParams(query))
       .then(response => {
@@ -114,20 +114,20 @@ export default React.createClass({
       })
   },
 
-  cancelRequest() {
+  cancelRequest () {
     if (this.state.pendingRequest) {
       this.state.pendingRequest.cancel()
       this.setState({ pendingRequest: null })
     }
   },
 
-  queueResultFetch: debounce(function(query) {
+  queueResultFetch: debounce(function (query) {
     if (this.isMounted()) {
       this.setState({ pendingRequest: this.fetchResults(query) })
     }
   }, 250, { trailing: true }),
 
-  handleSearchInputChange(query) {
+  handleSearchInputChange (query) {
     if (query === this.state.queryValue) { return }
     let queryBelowMin = query.length < this.props.minQueryLength
     this.cancelRequest()
@@ -140,7 +140,7 @@ export default React.createClass({
     }, () => (query.length >= this.props.minQueryLength) && this.queueResultFetch(query))
   },
 
-  handleSelection(option) {
+  handleSelection (option) {
     if (!option) { return }
     this.setState({
       isOpen: false,
@@ -154,28 +154,28 @@ export default React.createClass({
     })
   },
 
-  debouncedRequireValue: debounce(function() {
+  debouncedRequireValue: debounce(function () {
     this.requireValue()
   }, 100),
 
-  handleBlur() {
+  handleBlur () {
     this.debouncedRequireValue()
   },
 
   keyHandlers: {
-    9() {
+    9 () {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[9].call(optionList)
       }
     },
-    13(e) {
+    13 (e) {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[13].call(optionList, e)
       }
     },
-    40(e) {
+    40 (e) {
       let optionList = this.refs.optionList
       if (optionList) {
         e.preventDefault()
@@ -184,7 +184,7 @@ export default React.createClass({
     }
   },
 
-  handleKeyDown(e) {
+  handleKeyDown (e) {
     let key = e.keyCode || e.which
 
     if (this.keyHandlers[key]) {
@@ -192,7 +192,7 @@ export default React.createClass({
     }
   },
 
-  requireValue() {
+  requireValue () {
     let { required } = this.props
     let { selectedOption, isOpen } = this.state
     let hasError = !!required && !selectedOption
@@ -204,7 +204,7 @@ export default React.createClass({
     })
   },
 
-  render() {
+  render () {
     let { props, state } = this
     let classes = classnames([
       props.className,
@@ -220,35 +220,35 @@ export default React.createClass({
 
     return (
       <div
-        onBlur={ this.handleBlur }
-        className={ classes }>
+        onBlur={this.handleBlur}
+        className={classes}>
         <TextInput
-          ref="searchInput"
-          className="hui-UrlSearchSelect__search-input"
-          spacing="compact"
-          value={ state.queryValue }
-          icon={ inputIcon }
-          label={ props.label }
-          showError={ props.showError || state.hasError }
-          required={ props.required }
-          onKeyDown={ this.handleKeyDown }
-          onError={ props.onError }
-          onChange={ this.handleSearchInputChange }
-          errorMessage={ props.errorMessage }
-          errors={ props.errors } />
+          ref='searchInput'
+          className='hui-UrlSearchSelect__search-input'
+          spacing='compact'
+          value={state.queryValue}
+          icon={inputIcon}
+          label={props.label}
+          showError={props.showError || state.hasError}
+          required={props.required}
+          onKeyDown={this.handleKeyDown}
+          onError={props.onError}
+          onChange={this.handleSearchInputChange}
+          errorMessage={props.errorMessage}
+          errors={props.errors} />
         { state.isOpen ?
-          <div className="hui-UrlSearchSelect__dropdown">
+          <div className='hui-UrlSearchSelect__dropdown'>
             <OptionList
-              ref="optionList"
-              spacing="compact"
-              className="hui-UrlSearchSelect__option-list"
-              emptyLabel={ props.emptyLabel || this.t('empty_label') }
-              options={ state.results }
-              selectedOption={ state.selectedOption }
-              onSelection={ this.handleSelection } />
+              ref='optionList'
+              spacing='compact'
+              className='hui-UrlSearchSelect__option-list'
+              emptyLabel={props.emptyLabel || this.t('empty_label')}
+              options={state.results}
+              selectedOption={state.selectedOption}
+              onSelection={this.handleSelection} />
 
             { !!props.manualAction &&
-              <div className="hui-UrlSearchSelect__manual-action">
+              <div className='hui-UrlSearchSelect__manual-action'>
                 { props.manualAction }
               </div> }
           </div> : null }

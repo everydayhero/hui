@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import React from 'react'
 
@@ -12,15 +12,15 @@ export default React.createClass({
   },
 
   render () {
-    var errors     = this.props.errors;
+    var errors = this.props.errors
     var errorsList = errors.map((error, i) => {
-      return <li key={ 'error' + i }>{ error }</li>
+      return <li key={'error' + i}>{ error }</li>
     })
 
     return (
-      <ul className="hui-InputErrors">
+      <ul className='hui-InputErrors'>
         { errorsList }
       </ul>
     )
   }
-});
+})

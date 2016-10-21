@@ -26,7 +26,7 @@ export const wrapper = {
     width: '100%',
     backgroundColor: 'currentColor',
     top: '91%',
-    left: 0,
+    left: 0
   }
 }
 

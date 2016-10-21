@@ -10,14 +10,14 @@ export default React.createClass({
     goal: React.PropTypes.number
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       progress: 0,
       goal: 0
     }
   },
 
-  render: function() {
+  render: function () {
     let props = this.props
     let width = props.progress && props.goal ? (props.progress / props.goal * 100) : 0
     let progressStyles = {
@@ -25,8 +25,8 @@ export default React.createClass({
     }
 
     return (
-      <div className="hui-ProgressBar">
-        <div className="hui-ProgressBar__progress" style={ progressStyles }></div>
+      <div className='hui-ProgressBar'>
+        <div className='hui-ProgressBar__progress' style={progressStyles} />
       </div>
     )
   }

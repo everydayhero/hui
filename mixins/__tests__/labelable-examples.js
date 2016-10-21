@@ -6,8 +6,8 @@ export default function (Component, props = {}) {
       it('doesn\'t render a label element', () => {
         const subject = renderIntoDocument(
           <Component
-            { ...props }
-            label={ null } />
+            {...props}
+            label={null} />
         ).refs.label
 
         expect(subject).to.eq(undefined)
@@ -18,8 +18,8 @@ export default function (Component, props = {}) {
       it('renders a label element containing that string', () => {
         const subject = renderIntoDocument(
           <Component
-            { ...props }
-            label="Yo" />
+            {...props}
+            label='Yo' />
         ).refs.label.textContent
 
         expect(subject).to.eq('Yo')

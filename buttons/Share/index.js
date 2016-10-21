@@ -1,9 +1,9 @@
 'use strict'
 
-import React     from 'react'
-import Button    from '../Button'
+import React from 'react'
+import Button from '../Button'
 import openPopup from '../../lib/openPopup'
-import format    from '../../lib/format'
+import format from '../../lib/format'
 
 var serviceConfigs = {
   facebook: {
@@ -43,7 +43,7 @@ export default React.createClass({
     })
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     let window = typeof window !== 'undefined' ? window : null
     let document = typeof document !== 'undefined' ? document : null
 
@@ -55,7 +55,7 @@ export default React.createClass({
     }
   },
 
-  openFacebookShare: function() {
+  openFacebookShare: function () {
     let payload = {}
     const { shareUrl, action, onComplete } = this.props
     if (action && action.type) {
@@ -69,7 +69,7 @@ export default React.createClass({
     window.FB.ui(payload, onComplete)
   },
 
-  onClick: function() {
+  onClick: function () {
     var {
       kind,
       shareUrl,
@@ -98,12 +98,12 @@ export default React.createClass({
     }
   },
 
-  render: function() {
+  render: function () {
     var props = this.props
     var service = serviceConfigs[props.kind]
 
     return (
-      <Button {...props} kind={ props.kind } icon={ service.icon } onClick={ this.onClick }>
+      <Button {...props} kind={props.kind} icon={service.icon} onClick={this.onClick}>
         { props.label || service.name }
       </Button>
     )

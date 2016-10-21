@@ -39,19 +39,19 @@ export default React.createClass({
     layout: React.PropTypes.string
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       autoComplete: true,
       storeLocally: false,
       autoFocus: false,
       disabled: false,
       icon: null,
-      onFocus: function() {},
-      onChange: function() {},
-      onError: function() {},
-      onBlur: function() {},
-      onTab: function() {},
-      onSubmit: function() {},
+      onFocus: function () {},
+      onChange: function () {},
+      onError: function () {},
+      onBlur: function () {},
+      onTab: function () {},
+      onSubmit: function () {},
       onIconClick: null,
       readOnly: false,
       required: false,
@@ -69,12 +69,12 @@ export default React.createClass({
     }
   },
 
-  onSubmit: function() {
+  onSubmit: function () {
     let props = this.props
     props.onSubmit && props.onSubmit(props.value || '')
   },
 
-  render: function() {
+  render: function () {
     let props = this.props
     let classes = classnames([
       props.className,
@@ -84,14 +84,14 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-SearchInput__wrapper">
-          <div className="hui-SearchInput__input">
-            <Input {...props} spacing="compact" layout="full" />
+      <div className={classes}>
+        <div className='hui-SearchInput__wrapper'>
+          <div className='hui-SearchInput__input'>
+            <Input {...props} spacing='compact' layout='full' />
           </div>
-          <div className="hui-SearchInput__submitWrapper">
-            <button className="hui-SearchInput__submit" onClick={ this.onSubmit }>
-              <Icon icon="search" />
+          <div className='hui-SearchInput__submitWrapper'>
+            <button className='hui-SearchInput__submit' onClick={this.onSubmit}>
+              <Icon icon='search' />
             </button>
           </div>
         </div>

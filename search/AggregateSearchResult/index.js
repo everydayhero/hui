@@ -10,13 +10,13 @@ export default React.createClass({
     onSelect: React.PropTypes.func
   },
 
-  render() {
+  render () {
     var props = this.props
 
     return (
-      <a href={ props.url || '#' }
-        className="AggregateSearchResult"
-        onClick={ props.onSelect }>
+      <a href={props.url || '#'}
+        className='AggregateSearchResult'
+        onClick={props.onSelect}>
         { props.children }
       </a>
     )

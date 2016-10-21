@@ -32,7 +32,7 @@ describe('UrlSearchSelect', () => {
   describe('initialisation', () => {
     it('renders a TextInput for entering a search query', () => {
       let subject = renderIntoDocument(
-        <UrlSearchSelect url="http://everydayhero.com" />
+        <UrlSearchSelect url='http://everydayhero.com' />
       ).refs.searchInput
 
       expect(subject).to.be.ok
@@ -42,7 +42,7 @@ describe('UrlSearchSelect', () => {
   describe('#fetchResults', () => {
     it('calls getJSON with supplied url', () => {
       renderIntoDocument(
-        <UrlSearchSelect url="http://everydayhero.com" />
+        <UrlSearchSelect url='http://everydayhero.com' />
       ).fetchResults()
 
       expect(mockGetJSON).calledWith('http://everydayhero.com')
@@ -52,7 +52,7 @@ describe('UrlSearchSelect', () => {
       let element = renderIntoDocument(
         <UrlSearchSelect
           params={{ some: 'Param' }}
-          url="http://everydayhero.com" />
+          url='http://everydayhero.com' />
       )
       element.fetchResults('foobar')
 
@@ -69,8 +69,8 @@ describe('UrlSearchSelect', () => {
 
       renderIntoDocument(
         <UrlSearchSelect
-          url="http://everydayhero.com"
-          deserializeResponse={ subject } />
+          url='http://everydayhero.com'
+          deserializeResponse={subject} />
       ).fetchResults().done(() => {
         expect(subject).to.be.called
         done()
@@ -79,7 +79,7 @@ describe('UrlSearchSelect', () => {
 
     it('sets state.results to the return value of props.deserializeResponse(reponse)', (done) => {
       let element = renderIntoDocument(
-        <UrlSearchSelect url="http://everydayhero.com" />
+        <UrlSearchSelect url='http://everydayhero.com' />
       )
       element.fetchResults().done(() => {
         expect(element.state.results).to.eql(mockResult.resources)
@@ -91,7 +91,7 @@ describe('UrlSearchSelect', () => {
   describe('#cancelRequest', () => {
     it('cancels the previous pending request', () => {
       let element = renderIntoDocument(
-        <UrlSearchSelect url="http://everydayhero.com" />
+        <UrlSearchSelect url='http://everydayhero.com' />
       )
       element.cancelRequest()
       expect(element.state.pendingRequest).to.be.false
@@ -102,7 +102,7 @@ describe('UrlSearchSelect', () => {
     context('when the supplied query string is long enough', () => {
       it('sets state.queryValue and enqueues a result fecth', () => {
         let element = renderIntoDocument(
-          <UrlSearchSelect url="http://everydayhero.com" />
+          <UrlSearchSelect url='http://everydayhero.com' />
         )
         element.handleSearchInputChange('foobar')
         expect(element.state.queryValue).to.eq('foobar')
@@ -117,8 +117,8 @@ describe('UrlSearchSelect', () => {
         let element = renderIntoDocument(
           <UrlSearchSelect
             required
-            onError={ onError }
-            url="http://everydayhero.com" />
+            onError={onError}
+            url='http://everydayhero.com' />
         )
         element.requireValue()
         expect(element.state.hasError).to.eq(true)
@@ -129,7 +129,7 @@ describe('UrlSearchSelect', () => {
         let element = renderIntoDocument(
           <UrlSearchSelect
             required
-            url="http://everydayhero.com" />
+            url='http://everydayhero.com' />
         )
         element.setState({isOpen: false})
         element.requireValue()
@@ -141,7 +141,7 @@ describe('UrlSearchSelect', () => {
       it('does not mutate state.isOpen', () => {
         let element = renderIntoDocument(
           <UrlSearchSelect
-            url="http://everydayhero.com" />
+            url='http://everydayhero.com' />
         )
 
         element.setState({isOpen: false})
@@ -160,7 +160,7 @@ describe('UrlSearchSelect', () => {
       let element = renderIntoDocument(
         <UrlSearchSelect
           required
-          url="http://everydayhero.com" />
+          url='http://everydayhero.com' />
       )
       Simulate.blur(element.refs.searchInput.refs.input)
       setTimeout(() => {
@@ -177,7 +177,7 @@ describe('UrlSearchSelect', () => {
           <UrlSearchSelect
             required
             errors={['I got you, you rookie b#&*$!']}
-            url="http://everydayhero.com" />
+            url='http://everydayhero.com' />
         )
 
         expect(wrapper.find('.hui-InputErrors').length).to.equal(1)
@@ -191,11 +191,11 @@ describe('UrlSearchSelect', () => {
           <UrlSearchSelect
             required
             showError
-            errorMessage="You have failed, just like everything in your life."
-            url="http://everydayhero.com"
+            errorMessage='You have failed, just like everything in your life.'
+            url='http://everydayhero.com'
             required
             errors={['You have failed, just like everything in your life.']}
-            url="http://everydayhero.com" />
+            url='http://everydayhero.com' />
         )
 
         expect(wrapper.find('.hui-InputErrors').length).to.equal(1)
@@ -207,8 +207,8 @@ describe('UrlSearchSelect', () => {
         const wrapper = mount(
           <UrlSearchSelect
             required
-            showError={ false }
-            errorMessage="You have failed, just like everything in your life." />
+            showError={false}
+            errorMessage='You have failed, just like everything in your life.' />
         )
 
         expect(wrapper.find('.hui-InputErrors').length).to.equal(0)

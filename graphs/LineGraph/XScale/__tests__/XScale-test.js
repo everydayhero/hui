@@ -2,7 +2,7 @@
 
 import XScale from '../'
 
-describe('XScale', function() {
+describe('XScale', function () {
   var collection = [
     { series: [
       { date: new Date('2014, 1').toISOString(), calculatedValue: 5 },
@@ -20,7 +20,7 @@ describe('XScale', function() {
       { date: new Date('2014, 5').toISOString(), calculatedValue: 4 },
       { date: new Date('2014, 6').toISOString(), calculatedValue: 23 }
     ] }
-  ];
+  ]
 
   var gutters = {
     top: 20,
@@ -29,34 +29,34 @@ describe('XScale', function() {
     bottom: 20
   }
 
-  describe('default', function() {
-    var component;
+  describe('default', function () {
+    var component
 
-    beforeEach(function() {
+    beforeEach(function () {
       component = renderIntoDocument(
         <XScale
-          collection={ collection }
-          width={ 200 }
-          height={ 200 }
-          gutter={ gutters } />
-      );
-    });
+          collection={collection}
+          width={200}
+          height={200}
+          gutter={gutters} />
+      )
+    })
 
-    it('should render XScale', function() {
-      component.should.exist;
-    });
+    it('should render XScale', function () {
+      component.should.exist
+    })
 
-    it('renders the correct number of labels', function() {
-      var scaleLines = scryByClass(component, 'hui-XScale__label');
+    it('renders the correct number of labels', function () {
+      var scaleLines = scryByClass(component, 'hui-XScale__label')
 
       scaleLines.length.should.equal(2)
-    });
+    })
 
-    it('renders the correct labels', function() {
-      var scaleLabels = scryByClass(component, 'hui-XScale__label');
+    it('renders the correct labels', function () {
+      var scaleLabels = scryByClass(component, 'hui-XScale__label')
 
-      scaleLabels[0].textContent.should.equal('Jan 1');
-      scaleLabels[1].textContent.should.equal('Apr 1');
-    });
-  });
-});
+      scaleLabels[0].textContent.should.equal('Jan 1')
+      scaleLabels[1].textContent.should.equal('Apr 1')
+    })
+  })
+})

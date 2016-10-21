@@ -14,13 +14,13 @@ export default {
     duplicate: React.PropTypes.object
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return { duplicate: {}}
   },
 
   duplicating: {},
 
-  fieldMethods(name) {
+  fieldMethods (name) {
     return {
       onChange: this.onFieldChange(name),
       onUnmount: this.onFieldUnmount(name),
@@ -28,35 +28,35 @@ export default {
     }
   },
 
-  renderField(Component, name, method, props) {
+  renderField (Component, name, method, props) {
     let state = this.state
     let methods = this.fieldMethods(name)
     props = merge(methods, props)
     return (
-      <Component { ...props }
-        key={ name }
-        name={ name }
-        controlled={ true }
-        autoComplete={ false }
-        label={ this.t(name) }
-        hint={ this.t(name + '_hint') }
-        value={ state.form[name] || state.form[this.duplicating[name]] }
-        showError={ state.showErrors }
-        spacing="tight"
-        required={ !!method }
-        validate={ isArray(method) ? method : [method] }
-        errors={ state.errors && state.errors[name] && state.errors[name].messages }
-        errorMessage={ typeof method === 'string' && validation[method + 'Message'] } />
+      <Component {...props}
+        key={name}
+        name={name}
+        controlled
+        autoComplete={false}
+        label={this.t(name)}
+        hint={this.t(name + '_hint')}
+        value={state.form[name] || state.form[this.duplicating[name]]}
+        showError={state.showErrors}
+        spacing='tight'
+        required={!!method}
+        validate={isArray(method) ? method : [method]}
+        errors={state.errors && state.errors[name] && state.errors[name].messages}
+        errorMessage={typeof method === 'string' && validation[method + 'Message']} />
     )
   },
 
-  setErrors() {
+  setErrors () {
     let errors = cloneDeep(this.errors)
     this.setState({ errors })
     if (this.props.onError) { this.props.onError(isEmpty(errors) || errors) }
   },
 
-  onFieldError(key) {
+  onFieldError (key) {
     if (!this.errors) { this.errors = this.state.errors || {} }
     return (inError, messages = []) => {
       this.errors[key] = { inError, messages }
@@ -64,7 +64,7 @@ export default {
     }
   },
 
-  setForm() {
+  setForm () {
     let form = cloneDeep(this.form)
     this.setState({ form }, () => {
       if (this.props.onChange) { this.props.onChange(form) }
@@ -72,7 +72,7 @@ export default {
     })
   },
 
-  onFieldChange(key) {
+  onFieldChange (key) {
     if (!this.form) { this.form = this.state.form || {} }
     let dupe = this.props.duplicate[key]
     if (dupe && typeof this.duplicating[dupe] === 'undefined') { this.duplicating[dupe] = key }
@@ -88,7 +88,7 @@ export default {
     }
   },
 
-  onFieldUnmount(key) {
+  onFieldUnmount (key) {
     return () => {
       delete this.form[key]
       delete this.errors[key]

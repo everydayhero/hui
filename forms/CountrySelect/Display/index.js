@@ -37,15 +37,15 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-CountrySelectDisplay__wrap">
+      <div className={classes}>
+        <div className='hui-CountrySelectDisplay__wrap'>
           <FlagIcon
-            className="hui-CountrySelectDisplay__flag-icon"
-            country={ (!!selected && selected.value) } />
-          <span className="hui-CountrySelectDisplay__value">
+            className='hui-CountrySelectDisplay__flag-icon'
+            country={(!!selected && selected.value)} />
+          <span className='hui-CountrySelectDisplay__value'>
             { !!selected && selected[props.displayProperty] }
           </span>
-          <Icon className="hui-CountrySelectDisplay__icon" icon="caret-down" />
+          <Icon className='hui-CountrySelectDisplay__icon' icon='caret-down' />
         </div>
       </div>
     )

@@ -41,7 +41,7 @@ export default React.createClass({
     onSelect: React.PropTypes.func
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       autoFocus: true,
       searchTerm: '',
@@ -53,7 +53,7 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       searchTerm: this.props.searchTerm,
       search: () => {},
@@ -65,31 +65,31 @@ export default React.createClass({
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.state.searchTerm) {
       this.search()
       this.searchCounts()
     }
   },
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.cancelSearch(false)
   },
 
-  cancelSearch(updateState) {
+  cancelSearch (updateState) {
     this.state.search.cancel()
     this.state.searchCounts.cancel()
     if (updateState) { this.setState({ isSearching: false }) }
   },
 
-  inputChanged(searchTerm) {
+  inputChanged (searchTerm) {
     if (searchTerm !== this.state.searchTerm) {
       this.cancelSearch(true)
       this.setState({ searchTerm }, this.delayedSearch)
     }
   },
 
-  delayedSearch: debounce(function() {
+  delayedSearch: debounce(function () {
     if (this.isMounted()) {
       if (this.state.searchTerm) {
         this.search()
@@ -100,7 +100,7 @@ export default React.createClass({
     }
   }, 300),
 
-  search(page) {
+  search (page) {
     let params = {
       country_code: this.props.country,
       q: this.state.searchTerm,
@@ -117,7 +117,7 @@ export default React.createClass({
     })
   },
 
-  clearResults() {
+  clearResults () {
     this.setState({
       results: null,
       isSearching: false,
@@ -125,7 +125,7 @@ export default React.createClass({
     })
   },
 
-  updateResults(data) {
+  updateResults (data) {
     if (data) {
       let pagination = data.meta.pagination
       let results = data[this.state.filter] || data.results
@@ -150,7 +150,7 @@ export default React.createClass({
     }
   },
 
-  searchCounts() {
+  searchCounts () {
     let self = this
     let types = ['campaigns', 'charities', 'pages']
     let params = {
@@ -174,22 +174,22 @@ export default React.createClass({
     })
   },
 
-  updateCounts(counts) {
+  updateCounts (counts) {
     this.setState({ counts })
   },
 
-  setFilter(filter) {
+  setFilter (filter) {
     this.setState({ filter }, this.search)
   },
 
-  getResults() {
+  getResults () {
     return map(this.state.results, (result) => {
       let El = resultTypes[result._type]
-      return El && <El key={ result._type + result.id } result={ result } />
+      return El && <El key={result._type + result.id} result={result} />
     })
   },
 
-  renderFilters() {
+  renderFilters () {
     let categories = map(this.t('filterTypes'), (name, type) => {
       let selected = type === this.state.filter
       let classes = cx({
@@ -201,96 +201,96 @@ export default React.createClass({
       let numResults = count >= 0 ? this.t('numResults', { count }) : this.t('searching')
 
       return (
-        <div className={ classes } key={ type } onClick={ onClick }>
-          { selected && <Icon icon="chevron-right" /> }
-          <div className="AggregateSearchModal__filters__type__name">{ name }</div>
-          <div className="AggregateSearchModal__filters__type__results">{ numResults }</div>
+        <div className={classes} key={type} onClick={onClick}>
+          { selected && <Icon icon='chevron-right' /> }
+          <div className='AggregateSearchModal__filters__type__name'>{ name }</div>
+          <div className='AggregateSearchModal__filters__type__results'>{ numResults }</div>
         </div>
       )
     }, this)
 
     return this.state.results && (
-      <div className="AggregateSearchModal__filters">
+      <div className='AggregateSearchModal__filters'>
        { categories }
       </div>
     )
   },
 
-  renderEmpty() {
+  renderEmpty () {
     return isEmpty(this.state.results) && (
-      <p className="AggregateSearchModal__footer">
+      <p className='AggregateSearchModal__footer'>
         { this.t(this.state.filter, { scope: 'emptyLabel' }) }
       </p>
     )
   },
 
-  renderLoading() {
+  renderLoading () {
     return this.state.isSearching && (
-      <p className="AggregateSearchModal__footer">
-        { this.t('searching') }<Icon icon="refresh"/>
+      <p className='AggregateSearchModal__footer'>
+        { this.t('searching') }<Icon icon='refresh' />
       </p>
     )
   },
 
-  renderLoadMore() {
+  renderLoadMore () {
     return !this.state.lastPage && (
-      <p className="AggregateSearchModal__footer">
-        <a href="#" onClick={ this.search.bind(this, this.state.currentPage + 1) }>{ this.t('loadMore') }</a>
+      <p className='AggregateSearchModal__footer'>
+        <a href='#' onClick={this.search.bind(this, this.state.currentPage + 1)}>{ this.t('loadMore') }</a>
       </p>
     )
   },
 
-  renderNoMore() {
+  renderNoMore () {
     return (
-      <p className="AggregateSearchModal__footer">{ this.t('noMore') }</p>
+      <p className='AggregateSearchModal__footer'>{ this.t('noMore') }</p>
     )
   },
 
-  renderFooter() {
+  renderFooter () {
     return this.renderLoading() || this.renderEmpty() || this.renderLoadMore() || this.renderNoMore()
   },
 
-  renderResults() {
+  renderResults () {
     return this.state.results && (
-      <div className="AggregateSearchModal__results">
+      <div className='AggregateSearchModal__results'>
         { this.getResults() }
         { this.renderFooter() }
       </div>
     )
   },
 
-  renderCloseButton() {
+  renderCloseButton () {
     return (
-      <div className="AggregateSearchModal__close" onClick={ this.props.onClose }>&times;</div>
+      <div className='AggregateSearchModal__close' onClick={this.props.onClose}>&times;</div>
     )
   },
 
-  renderInput() {
+  renderInput () {
     return (
       <Input
-        className="AggregateSearchModal__input"
-        spacing="compact"
-        autoFocus={ this.props.autoFocus }
-        label={ this.t('inputLabel') }
-        name={ 'aggregate_search_input' }
-        onChange={ this.inputChanged }
-        showIcon={ true }
-        icon={ this.state.isSearching ? 'refresh' : '' }
-        value={ this.state.searchTerm } />
+        className='AggregateSearchModal__input'
+        spacing='compact'
+        autoFocus={this.props.autoFocus}
+        label={this.t('inputLabel')}
+        name={'aggregate_search_input'}
+        onChange={this.inputChanged}
+        showIcon
+        icon={this.state.isSearching ? 'refresh' : ''}
+        value={this.state.searchTerm} />
     )
   },
 
-  render() {
+  render () {
     return (
-      <Overlay className="AggregateSearchModal__overlay" onClose={ this.props.onClose } showCloseButton={ false }>
-        <div className="AggregateSearchModal__header">
-          <span className="AggregateSearchModal__title">{ this.t('title') }</span>
+      <Overlay className='AggregateSearchModal__overlay' onClose={this.props.onClose} showCloseButton={false}>
+        <div className='AggregateSearchModal__header'>
+          <span className='AggregateSearchModal__title'>{ this.t('title') }</span>
           { this.renderCloseButton() }
           { this.renderInput() }
           { this.renderFilters() }
         </div>
-        <div ref="body" className="AggregateSearchModal__body">
-          <div className="AggregateSearchModal__content">
+        <div ref='body' className='AggregateSearchModal__body'>
+          <div className='AggregateSearchModal__content'>
             { this.renderResults() }
           </div>
         </div>

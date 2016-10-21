@@ -50,15 +50,15 @@ export default React.createClass({
     ])
 
     return (
-      <div className={ classes }>
-        <div className="hui-FilterSelectDisplay__wrap">
-          { this.renderLabel('FilterSelectDisplay')  }
-          <div className={ valueClasses }>
+      <div className={classes}>
+        <div className='hui-FilterSelectDisplay__wrap'>
+          { this.renderLabel('FilterSelectDisplay') }
+          <div className={valueClasses}>
             { !!selected && selected[displayProperty] }
           </div>
           <Icon
-            icon="chevron-down"
-            className="hui-FilterSelectDisplay__icon" />
+            icon='chevron-down'
+            className='hui-FilterSelectDisplay__icon' />
         </div>
       </div>
     )

@@ -95,7 +95,7 @@ export default React.createClass({
     }
   },
 
-  getSelected(value, data) {
+  getSelected (value, data) {
     value = value || ''
     const { valueKey } = this.props
     return find(this.getOptions(), opt => (
@@ -104,15 +104,15 @@ export default React.createClass({
     )
   },
 
-  getOptions() {
+  getOptions () {
     let labelKey = this.props.labelKey
     let options = this.props.options
 
-    if(this.props.sort === 'default') {
+    if (this.props.sort === 'default') {
       return options
     }
 
-    options = _.sortBy(options, (option) =>  option[labelKey].toLowerCase() )
+    options = _.sortBy(options, (option) => option[labelKey].toLowerCase())
 
     return this.props.sort === 'asc' ? options : options.reverse()
   },
@@ -173,19 +173,19 @@ export default React.createClass({
   },
 
   filterKeyHandlers: {
-    9() {
+    9 () {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[9].call(optionList)
       }
     },
-    13(e) {
+    13 (e) {
       let optionList = this.refs.optionList
       if (optionList) {
         optionList.keyHandlers[13].call(optionList, e)
       }
     },
-    40(e) {
+    40 (e) {
       let optionList = this.refs.optionList
       e.preventDefault()
       if (optionList) {
@@ -254,23 +254,23 @@ export default React.createClass({
 
     return (
       <DisplayWrap
-        ref="displayInput"
-        options={ this.getOptions() }
-        id={ id }
-        label={ label }
-        displayProperty={ displayProperty }
-        name={ name }
-        Display={ Display }
-        valueKey={ valueKey }
-        labelKey={ labelKey }
-        focused={ focused }
-        selected={ selected }
-        onFocus={ this.handleDisplayFocus }
-        onBlur={ this.handleDisplayBlur }
-        onChange={ this.handleDisplayChange }
-        onKeyDown={ this.handleDisplayKeyDown }
-        onMouseDown={ this.handleDisplayClick }
-        onClick={ this.handleDisplayClick } />
+        ref='displayInput'
+        options={this.getOptions()}
+        id={id}
+        label={label}
+        displayProperty={displayProperty}
+        name={name}
+        Display={Display}
+        valueKey={valueKey}
+        labelKey={labelKey}
+        focused={focused}
+        selected={selected}
+        onFocus={this.handleDisplayFocus}
+        onBlur={this.handleDisplayBlur}
+        onChange={this.handleDisplayChange}
+        onKeyDown={this.handleDisplayKeyDown}
+        onMouseDown={this.handleDisplayClick}
+        onClick={this.handleDisplayClick} />
     )
   },
 
@@ -292,29 +292,29 @@ export default React.createClass({
     return (
       <div>
         <Filter
-          ref="filter"
+          ref='filter'
           inputOptions={{
             spacing: 'compact',
             className: 'hui-FilterSelect__filter-input',
             onKeyDown: this.handleFilterKeyDown
           }}
           focused
-          filterValue={ filterValue }
-          properties={ properties }
-          collection={ this.getOptions() }
-          label={ filterLabel }
-          onChange={ this.handleFilterChange }
-          onFilter={ this.handleFilter } />
+          filterValue={filterValue}
+          properties={properties}
+          collection={this.getOptions()}
+          label={filterLabel}
+          onChange={this.handleFilterChange}
+          onFilter={this.handleFilter} />
         <OptionList
-          className="hui-FilterSelect__option-list"
-          ref="optionList"
-          spacing="compact"
-          Option={ Option }
-          onSelection={ this.handleSelection }
-          selectedOption={ selectedOption }
-          labelKey={ labelKey }
-          valueKey={ valueKey }
-          options={ filteredOptions } />
+          className='hui-FilterSelect__option-list'
+          ref='optionList'
+          spacing='compact'
+          Option={Option}
+          onSelection={this.handleSelection}
+          selectedOption={selectedOption}
+          labelKey={labelKey}
+          valueKey={valueKey}
+          options={filteredOptions} />
       </div>
     )
   },
@@ -333,9 +333,9 @@ export default React.createClass({
 
     return (
       <FocusAggregate
-        className={ classes }
-        onFocus={ this.handleFocus }
-        onBlur={ this.handleBlur }>
+        className={classes}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}>
         { this.state.isOpen ? this.renderFilter() : this.renderDisplay() }
         { this.renderMessage() }
       </FocusAggregate>

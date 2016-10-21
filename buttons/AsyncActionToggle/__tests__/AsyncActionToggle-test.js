@@ -13,7 +13,7 @@ let props = {
 
 describe('AsyncActionToggle', () => {
   it('executes an action on click', (done) => {
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } />)
+    let element = renderIntoDocument(<AsyncActionToggle {...props} />)
     Simulate.click(findByTag(element, 'button'))
     setTimeout(() => {
       props.action.should.have.been.called
@@ -22,7 +22,7 @@ describe('AsyncActionToggle', () => {
   })
 
   it('displays pre- and post-action labels', (done) => {
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } />)
+    let element = renderIntoDocument(<AsyncActionToggle {...props} />)
     findDOMNode(element).textContent.should.contain(props.pre_action_label)
     Simulate.click(findByTag(element, 'button'))
     setTimeout(() => {
@@ -33,7 +33,7 @@ describe('AsyncActionToggle', () => {
 
   it('displays an error label if action fails', (done) => {
     let rejectAction = sinon.stub().returns(Promise.reject())
-    let element = renderIntoDocument(<AsyncActionToggle { ...props } action={ rejectAction } />)
+    let element = renderIntoDocument(<AsyncActionToggle {...props} action={rejectAction} />)
     findDOMNode(element).textContent.should.contain(props.pre_action_label)
     Simulate.click(findByTag(element, 'button'))
     setTimeout(() => {

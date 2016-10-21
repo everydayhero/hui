@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react'
-import Path  from 'paths-js/path'
+import Path from 'paths-js/path'
 
 export default React.createClass({
   displayName: 'LoadingPlaceholder',
@@ -12,38 +12,38 @@ export default React.createClass({
     numberOfLines: React.PropTypes.number
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       numberOfLines: 3
     }
   },
 
-  render: function() {
-    var props = this.props;
-    var height = props.height;
-    var width = props.width;
-    var numberOfLines = props.numberOfLines;
-    var scaleLinePaths = [];
-    var yPosInterval = height / (numberOfLines + 1);
-    var yPos;
+  render: function () {
+    var props = this.props
+    var height = props.height
+    var width = props.width
+    var numberOfLines = props.numberOfLines
+    var scaleLinePaths = []
+    var yPosInterval = height / (numberOfLines + 1)
+    var yPos
 
     for (var i = 0; i < numberOfLines; i++) {
-      yPos = (i + 1) * yPosInterval;
+      yPos = (i + 1) * yPosInterval
 
       var path = Path().moveto({ x: 0, y: yPos })
-                       .hlineto({ x: width });
+                       .hlineto({ x: width })
 
       scaleLinePaths.push(
-        <g key={ i } transform={ "translate(0, 0)" }>
-          <path className="hui-YScale__line" d={ path.print() } />
+        <g key={i} transform={'translate(0, 0)'}>
+          <path className='hui-YScale__line' d={path.print()} />
         </g>
-      );
+      )
     }
 
     return (
-      <g className="hui-YScale">
+      <g className='hui-YScale'>
         { scaleLinePaths }
       </g>
-    );
+    )
   }
-});
+})

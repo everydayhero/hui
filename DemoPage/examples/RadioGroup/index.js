@@ -13,28 +13,28 @@ const flexStyle = {
 }
 
 export default createClass({
-  getInitialState() {
+  getInitialState () {
     return {
       value: '',
       hasFocus: false
     }
   },
 
-  handleFocus(hasFocus) {
+  handleFocus (hasFocus) {
     return () => this.setState({ hasFocus })
   },
 
-  handleChange(value) {
+  handleChange (value) {
     this.setState({ value })
   },
 
-  render() {
+  render () {
     const { value, hasFocus } = this.state
     return (
       <div>
-        <h3 className="DemoPage__h3" id="RadioGroup">RadioGroup</h3>
-        <div style={ flexStyle }>
-          <RadioGroup { ...props } value={ value } hasFocus={ hasFocus } onChange={ this.handleChange } onFocus={ this.handleFocus(true) } onBlur={ this.handleFocus(false) } />
+        <h3 className='DemoPage__h3' id='RadioGroup'>RadioGroup</h3>
+        <div style={flexStyle}>
+          <RadioGroup {...props} value={value} hasFocus={hasFocus} onChange={this.handleChange} onFocus={this.handleFocus(true)} onBlur={this.handleFocus(false)} />
         </div>
       </div>
     )

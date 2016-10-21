@@ -50,43 +50,43 @@ const IMG_PATH = '../../images/'
 export default React.createClass({
   displayName: 'DemoPageHome',
 
-  render() {
+  render () {
     return (
-      <div className="DemoPage">
-        <GlobalNav domain="everydayhero-staging.com" region="au" imgPath={ IMG_PATH } />
+      <div className='DemoPage'>
+        <GlobalNav domain='everydayhero-staging.com' region='au' imgPath={IMG_PATH} />
 
-        <div className="DemoPage__content">
-          <h2 className="DemoPage__h2" id="how-to-use">How To Use</h2>
-          <p className="DemoPage__p">HUI documentation can be found on <a href="http://everydayhero.github.io/public-api-docs/hui">EDH docs</a></p>
-          <h2 className="DemoPage__h2" id="layout">Layout</h2>
-          <div className="DemoPage__group">
-            <TopBarExample/>
-            <LoadingProgress/>
-            <FlashMessage/>
-            <PageFormExample/>
-            <FooterExample/>
+        <div className='DemoPage__content'>
+          <h2 className='DemoPage__h2' id='how-to-use'>How To Use</h2>
+          <p className='DemoPage__p'>HUI documentation can be found on <a href='http://everydayhero.github.io/public-api-docs/hui'>EDH docs</a></p>
+          <h2 className='DemoPage__h2' id='layout'>Layout</h2>
+          <div className='DemoPage__group'>
+            <TopBarExample />
+            <LoadingProgress />
+            <FlashMessage />
+            <PageFormExample />
+            <FooterExample />
           </div>
 
-          <h2 className="DemoPage__h2" id="layout">Navigation</h2>
-          <div className="DemoPage__group">
-            <Tabs/>
+          <h2 className='DemoPage__h2' id='layout'>Navigation</h2>
+          <div className='DemoPage__group'>
+            <Tabs />
           </div>
 
-          <h2 className="DemoPage__h2" id="buttons">Buttons</h2>
-          <div className="DemoPage__group">
-            <ButtonExample/>
+          <h2 className='DemoPage__h2' id='buttons'>Buttons</h2>
+          <div className='DemoPage__group'>
+            <ButtonExample />
           </div>
 
-          <h2 className="DemoPage__h2" id="graphs">Graphs</h2>
-          <div className="DemoPage__group">
+          <h2 className='DemoPage__h2' id='graphs'>Graphs</h2>
+          <div className='DemoPage__group'>
             <Visualisation />
-            <LineGraph/>
+            <LineGraph />
             <Legend />
-            <DeltaArrow/>
+            <DeltaArrow />
           </div>
 
-          <h2 className="DemoPage__h2" id="forms">Forms</h2>
-          <div className="DemoPage__group">
+          <h2 className='DemoPage__h2' id='forms'>Forms</h2>
+          <div className='DemoPage__group'>
             <TextInput />
             <ReadOnlyAddress />
             <AddressLookup />
@@ -116,20 +116,20 @@ export default React.createClass({
             <IconButtons />
           </div>
 
-          <h2 className="DemoPage__h2" id="forms">Leaderboard</h2>
-          <div className="DemoPage__group">
-            <Leaderboard/>
+          <h2 className='DemoPage__h2' id='forms'>Leaderboard</h2>
+          <div className='DemoPage__group'>
+            <Leaderboard />
           </div>
 
-          <h2 className="DemoPage__h2" id="wizard">Wizard</h2>
-          <div className="DemoPage__group">
-            <Link to="/wizard/1">Open Wizard</Link>
+          <h2 className='DemoPage__h2' id='wizard'>Wizard</h2>
+          <div className='DemoPage__group'>
+            <Link to='/wizard/1'>Open Wizard</Link>
             { this.props.children }
           </div>
 
-          <h2 className="DemoPage__h2" id="table">Table</h2>
-          <div className="DemoPage__group">
-            <Table/>
+          <h2 className='DemoPage__h2' id='table'>Table</h2>
+          <div className='DemoPage__group'>
+            <Table />
           </div>
         </div>
       </div>

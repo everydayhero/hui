@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   'data-cover-only': [
@@ -19,4 +19,4 @@ module.exports = {
     'shim'
   ],
   'data-cover-loader': '../../../test/helpers/blanket-stub.js'
-};
+}

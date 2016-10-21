@@ -35,7 +35,7 @@ export default React.createClass({
     onMenuOpen: React.PropTypes.func
   },
 
-  getDefaultProps() {
+  getDefaultProps () {
     return {
       transparent: false,
       user: {},
@@ -44,14 +44,14 @@ export default React.createClass({
     }
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       user: this.props.user,
       loading: isEmpty(this.props.user)
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     if (this.state.loading) {
       this.getUser().then(this.setUser).catch((err) => {
         console.warn(err)
@@ -60,11 +60,11 @@ export default React.createClass({
     }
   },
 
-  getUser() {
+  getUser () {
     return getJSON(api('user'), null, true)
   },
 
-  setUser(data) {
+  setUser (data) {
     this.props.onLoad(data.dashboard_user)
     this.setState({
       user: data.dashboard_user,
@@ -72,18 +72,18 @@ export default React.createClass({
     })
   },
 
-  renderUser() {
+  renderUser () {
     let user = this.state.user
 
     return (
-      <a className="hui-NavUser__user" href={ urls('dashboard', this.props.domain, this.props.region) }>
-        <span className="hui-NavUser__name">{ user.name }</span>
-        <span className="hui-NavUser__avatar"><img src={ user.image_url } /></span>
+      <a className='hui-NavUser__user' href={urls('dashboard', this.props.domain, this.props.region)}>
+        <span className='hui-NavUser__name'>{ user.name }</span>
+        <span className='hui-NavUser__avatar'><img src={user.image_url} /></span>
       </a>
     )
   },
 
-  render() {
+  render () {
     let props = this.props
     let state = this.state
     let domain = props.domain
@@ -96,16 +96,16 @@ export default React.createClass({
     ], 'hui-NavUser')
 
     return (
-      <div className={ classes }>
-        { state.loading && <Icon icon="circle-o-notch" className="hui-NavUser__loading" /> }
+      <div className={classes}>
+        { state.loading && <Icon icon='circle-o-notch' className='hui-NavUser__loading' /> }
 
-        { noUser && <Button kind={ transparent ? 'secondary' : 'cta' } inverse={ transparent } thin label={ t('register') } href={ urls('register', domain, props.region) } /> }
+        { noUser && <Button kind={transparent ? 'secondary' : 'cta'} inverse={transparent} thin label={t('register')} href={urls('register', domain, props.region)} /> }
 
-        { noUser && <NavLink transparent={ props.transparent } kind="cta" href={ urls('log_in', domain, props.region) } label={ t('log_in') } /> }
+        { noUser && <NavLink transparent={props.transparent} kind='cta' href={urls('log_in', domain, props.region)} label={t('log_in')} /> }
 
         { hasUser && this.renderUser() }
 
-        { hasUser && <NavAccount transparent={ props.transparent } domain={ props.domain } region={ props.region } onOpen={ props.onMenuOpen } /> }
+        { hasUser && <NavAccount transparent={props.transparent} domain={props.domain} region={props.region} onOpen={props.onMenuOpen} /> }
       </div>
     )
   },

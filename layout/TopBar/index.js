@@ -1,6 +1,6 @@
 'use strict'
 
-import React      from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 export default React.createClass({
@@ -10,15 +10,15 @@ export default React.createClass({
     children: React.PropTypes.node
   },
 
-  render: function() {
+  render: function () {
     var className = classnames({
       'hui-TopBar--fixed': this.props.fixed
-    }, 'hui-TopBar');
+    }, 'hui-TopBar')
 
     return (
-      <div className={ className }>
+      <div className={className}>
         { this.props.children }
       </div>
-    );
+    )
   }
-});
+})

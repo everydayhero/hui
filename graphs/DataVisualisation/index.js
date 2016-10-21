@@ -1,10 +1,10 @@
 'use strict'
 
-import React        from 'react'
-import Graph        from '../LineGraph'
-import DeltaArrow   from '../DeltaArrow'
+import React from 'react'
+import Graph from '../LineGraph'
+import DeltaArrow from '../DeltaArrow'
 import SingleNumber from './SingleNumber'
-import Legend       from './Legend'
+import Legend from './Legend'
 
 export default React.createClass({
   displayName: 'DataVisualisation',
@@ -25,10 +25,10 @@ export default React.createClass({
     emptyState: React.PropTypes.bool
   },
 
-  getDefaultProps: function() {
+  getDefaultProps: function () {
     return {
       stacked: true,
-      valueConverter: function(number) {
+      valueConverter: function (number) {
         return number
       },
       loading: false,
@@ -36,60 +36,60 @@ export default React.createClass({
     }
   },
 
-  renderGraph: function() {
+  renderGraph: function () {
     const props = this.props
 
     if (props.collection) {
       return (
         <Graph
-          stacked={ props.stacked }
-          collection={ props.collection }
-          collectionValueKey={ props.collectionValueKey }
-          valueConverter={ props.valueConverter }
-          totalFormat={ props.totalFormat }
-          tipLabel={ props.tipLabel }
-          loading={ props.loading }
-          emptyState={ props.emptyState }/>
+          stacked={props.stacked}
+          collection={props.collection}
+          collectionValueKey={props.collectionValueKey}
+          valueConverter={props.valueConverter}
+          totalFormat={props.totalFormat}
+          tipLabel={props.tipLabel}
+          loading={props.loading}
+          emptyState={props.emptyState} />
       )
     }
   },
 
-  renderTotal: function() {
-    const props          = this.props
-    const total          = props.total
-    const totalFormat    = props.totalFormat
-    const title          = props.title
+  renderTotal: function () {
+    const props = this.props
+    const total = props.total
+    const totalFormat = props.totalFormat
+    const title = props.title
     const valueConverter = props.valueConverter
-    const loading        = props.loading
-    const emptyState     = props.emptyState
-
-    if (emptyState) {
-      return (
-        <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } emptyState={ emptyState }/>
-      )
-    }
-    return (
-      <SingleNumber title={ title } format={ totalFormat } value={ valueConverter(total) } loading={ loading }/>
-    )
-  },
-
-  renderDeltaArrow: function() {
-    const props      = this.props
-    const delta      = props.delta
-    const loading    = props.loading
+    const loading = props.loading
     const emptyState = props.emptyState
 
     if (emptyState) {
-      return <DeltaArrow delta={ delta } emptyState={ emptyState } />
+      return (
+        <SingleNumber title={title} format={totalFormat} value={valueConverter(total)} emptyState={emptyState} />
+      )
+    }
+    return (
+      <SingleNumber title={title} format={totalFormat} value={valueConverter(total)} loading={loading} />
+    )
+  },
+
+  renderDeltaArrow: function () {
+    const props = this.props
+    const delta = props.delta
+    const loading = props.loading
+    const emptyState = props.emptyState
+
+    if (emptyState) {
+      return <DeltaArrow delta={delta} emptyState={emptyState} />
     }
     if (loading || delta) {
-      return <DeltaArrow delta={ delta } loading={ loading } />
+      return <DeltaArrow delta={delta} loading={loading} />
     }
   },
 
-  renderLegend: function() {
-    const props      = this.props
-    const loading    = props.loading
+  renderLegend: function () {
+    const props = this.props
+    const loading = props.loading
     const legendKeys = props.legendKeys
     const emptyState = props.emptyState
 
@@ -98,16 +98,16 @@ export default React.createClass({
     }
 
     return (
-      <Legend keys={ legendKeys } />
+      <Legend keys={legendKeys} />
     )
   },
 
-  render: function() {
+  render: function () {
     return (
-      <div className="hui-DataVisualisation">
-        <h2 className="hui-DataVisualisation__title">{ this.props.title }</h2>
-        <h5 className="hui-DataVisualisation__period">{ this.props.period }</h5>
-        <div className="hui-DataVisualisation__valueGroup">
+      <div className='hui-DataVisualisation'>
+        <h2 className='hui-DataVisualisation__title'>{ this.props.title }</h2>
+        <h5 className='hui-DataVisualisation__period'>{ this.props.period }</h5>
+        <div className='hui-DataVisualisation__valueGroup'>
           { this.renderTotal() }
           { this.renderDeltaArrow() }
         </div>

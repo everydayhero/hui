@@ -1,16 +1,16 @@
 'use strict'
 
-import React  from 'react'
+import React from 'react'
 import Legend from '../../../graphs/DataVisualisation/Legend'
 
 export default React.createClass({
   displayName: 'LegendExample',
 
-  render: function() {
+  render: function () {
     return (
       <div>
-        <h3 className="DemoPage__h3" id="Legend">Legend</h3>
-        <div className="DemoPage__example--legend">
+        <h3 className='DemoPage__h3' id='Legend'>Legend</h3>
+        <div className='DemoPage__example--legend'>
           <Legend keys={[
             { label: 'Campaign 1', className: 'exampleClass1' },
             { label: 'Campaign 2' },
@@ -21,6 +21,6 @@ export default React.createClass({
             { label: 'Campaign 7' }]} />
         </div>
       </div>
-    );
+    )
   }
-});
+})

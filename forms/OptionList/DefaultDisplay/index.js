@@ -28,7 +28,7 @@ export default React.createClass({
     })
 
     return (
-      <div className={ classes }>
+      <div className={classes}>
         { label }
       </div>
     )

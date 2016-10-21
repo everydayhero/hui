@@ -3,8 +3,8 @@
 import React from 'react'
 
 const Tag = ({ children }) => (
-  <div className="hui-Tag">
-    <div className="hui-Tag__label">
+  <div className='hui-Tag'>
+    <div className='hui-Tag__label'>
       { children }
     </div>
   </div>
