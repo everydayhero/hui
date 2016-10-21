@@ -1,6 +1,6 @@
 {
   "name": "hero-ui",
-  "version": "4.5.3",
+  "version": "5.0.0",
   "engines": {
     "node": ">=6.0.0"
   },
