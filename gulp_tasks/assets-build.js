@@ -3,7 +3,6 @@
 var gulp = require('gulp')
 var gutil = require('gulp-util')
 var concat = require('gulp-concat')
-var runSequence = require('run-sequence')
 var source = require('vinyl-source-stream')
 var buffer = require('vinyl-buffer')
 var pkg = require('../package')
