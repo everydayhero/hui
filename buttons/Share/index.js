@@ -60,7 +60,7 @@ export default React.createClass({
     const { shareUrl, action, onComplete } = this.props
     if (action && action.type) {
       payload.method = action.method || 'share_open_graph'
-      payload.action_type = action.type,
+      payload.action_type = action.type
       payload.action_properties = JSON.stringify(action.properties)
     } else {
       payload.method = 'share'

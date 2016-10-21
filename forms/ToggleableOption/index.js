@@ -51,7 +51,7 @@ export default React.createClass({
     let { loading, error } = this.state
     let { partialChecked, name, label, value, description } = this.props
     let classes = cx([
-      'ToggleableOption__checkbox',,
+      'ToggleableOption__checkbox',
       value && 'ToggleableOption__checkbox--checked',
       partialChecked && 'ToggleableOption__checkbox--partial',
       loading && 'ToggleableOption__checkbox--loading',

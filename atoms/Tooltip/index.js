@@ -55,7 +55,7 @@ class Tooltip extends Component {
   }
 }
 
-Tooltip.displayName = 'Tooltip',
+Tooltip.displayName = 'Tooltip'
 Tooltip.propTypes = {
   className: PropTypes.string,
   trigger: PropTypes.oneOf(['click', 'hover']),
