@@ -236,8 +236,8 @@ export default React.createClass({
           onChange={this.handleSearchInputChange}
           errorMessage={props.errorMessage}
           errors={props.errors} />
-        { state.isOpen ?
-          <div className='hui-UrlSearchSelect__dropdown'>
+        { state.isOpen
+          ? <div className='hui-UrlSearchSelect__dropdown'>
             <OptionList
               ref='optionList'
               spacing='compact'
@@ -251,7 +251,9 @@ export default React.createClass({
               <div className='hui-UrlSearchSelect__manual-action'>
                 { props.manualAction }
               </div> }
-          </div> : null }
+          </div>
+          : null
+        }
       </div>
     )
   },

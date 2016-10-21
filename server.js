@@ -1,5 +1,6 @@
 'use strict'
 
+import path from 'path'
 import express from 'express'
 import compression from 'compression'
 import morgan from 'morgan'
@@ -10,7 +11,7 @@ import DemoPageRoutes from './DemoPage/Routes'
 
 const app = express()
 
-const staticPath = __dirname + '/dist/'
+const staticPath = path.join(__dirname, '/dist/')
 const port = Number(process.env.PORT || 8000)
 
 app.use(compression())
@@ -18,7 +19,7 @@ app.use(morgan())
 
 const sendStaticFile = name =>
   (req, res) => {
-    match({ routes: DemoPageRoutes, location: req.path }, (error, redirectLocation, renderProps) => {
+    match({ routes: DemoPageRoutes, location: req.path }, (_, redirectLocation, renderProps) => {
       let content = renderToString(React.createElement(RouterContext, renderProps))
       res.render(staticPath + name, { content })
     })

@@ -106,7 +106,7 @@ export default React.createClass({
     var state = this.state
     var file = props.value
     var filename = file ? file.filename : null
-    var inputLabel = filename ? filename : props.noFileLabel
+    var inputLabel = filename || props.noFileLabel
     var browseLabel = this.getBrowseLabel(filename)
     var resetButton
     var classes = classnames([

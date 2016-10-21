@@ -85,7 +85,7 @@ export default React.createClass({
     let href = props.href
     let clickHandler = props.disabled ? this.ignoreClick : this.propogateClick
     let kind = props.borderless ? props.kind + '-borderless' : props.kind
-    let El = !!href ? 'a' : 'button'
+    let El = href ? 'a' : 'button'
 
     let classes = cx([
       props.className,
