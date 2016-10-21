@@ -20,7 +20,7 @@ export default React.createClass({
   },
 
   onSubmit: function (searchTerm) {
-    alert('You searched for ' + searchTerm)
+    window.alert('You searched for ' + searchTerm)
   },
 
   render: function () {

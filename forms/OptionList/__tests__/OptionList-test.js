@@ -1,5 +1,6 @@
 'use strict'
 
+import React from 'react'
 import { mount } from 'enzyme'
 import { expect } from 'chai'
 

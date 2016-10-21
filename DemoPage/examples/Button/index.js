@@ -121,7 +121,7 @@ export default React.createClass({
         <div className='DemoPage__group'>
           <h4 className='DemoPage__h4'>Share Example</h4>
           <div className='DemoPage__example--button'>
-            <Share kind='facebook' label='Share' onComplete={function () { alert('Share completed (but maybe not succeefully :/ )') }} />
+            <Share kind='facebook' label='Share' onComplete={function () { window.alert('Share completed (but maybe not succeefully :/ )') }} />
             <Share kind='twitter' label='Tweet' />
             <Share kind='googleplus' label='Post' />
             <Share kind='pinterest' label='Pin' />
