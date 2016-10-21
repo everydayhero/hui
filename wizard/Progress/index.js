@@ -27,18 +27,20 @@ export default React.createClass({
     var index = 0
     var active = parseInt(this.props.active)
 
-    while (index < total && total !== 0) {
-      var classes = classnames([
-        'hui-Progress__item',
-        (index === active) && 'hui-Progress__item--active',
-        (active >= index) && 'hui-Progress__item--viewed'
-      ])
+    if (total !== 0) {
+      while (index < total) {
+        var classes = classnames([
+          'hui-Progress__item',
+          (index === active) && 'hui-Progress__item--active',
+          (active >= index) && 'hui-Progress__item--viewed'
+        ])
 
-      items.push(
-        <a href='#' key={index} className={classes} onClick={this.onChange(index)} />
-      )
+        items.push(
+          <a href='#' key={index} className={classes} onClick={this.onChange(index)} />
+        )
 
-      index++
+        index++
+      }
     }
 
     return items
