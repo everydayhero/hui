@@ -114,5 +114,29 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "wget": "0.0.1"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "globals": [
+      "AssertionError",
+      "Simulate",
+      "TestUtils",
+      "chai",
+      "expect",
+      "findByAttribute",
+      "findByClass",
+      "findByTag",
+      "findByType",
+      "findDOMNode",
+      "renderIntoDocument",
+      "scryByAttribute",
+      "scryByClass",
+      "scryByTag",
+      "scryByType",
+      "should",
+      "sinon"
+    ]
   }
 }
