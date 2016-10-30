@@ -36,7 +36,7 @@
   "assets_cdn": "//edh-widgets.s3.amazonaws.com/",
   "dependencies": {
     "async": "^2.0.0",
-    "bluebird": "^2.10.2",
+    "bluebird": "^3.4.1",
     "bowser": "^1.0.0",
     "classnames": "^2.2.3",
     "console-polyfill": "^0.2.2",
