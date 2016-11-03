@@ -15,7 +15,7 @@ export default React.createClass({
     onChange: React.PropTypes.func.isRequired,
     options: React.PropTypes.object.isRequired,
     name: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired
+    label: React.PropTypes.node.isRequired
   },
 
   isAllSelected () {

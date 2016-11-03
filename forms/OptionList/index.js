@@ -20,7 +20,7 @@ export default React.createClass({
     onFocus: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     Display: React.PropTypes.func,
-    emptyLabel: React.PropTypes.string,
+    emptyLabel: React.PropTypes.node,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string
   },

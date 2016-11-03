@@ -15,8 +15,8 @@ export default React.createClass({
     onChange: React.PropTypes.func.isRequired,
     partialChecked: React.PropTypes.bool,
     name: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string,
+    label: React.PropTypes.node.isRequired,
+    description: React.PropTypes.node,
     value: React.PropTypes.bool.isRequired
   },
 
@@ -66,7 +66,7 @@ export default React.createClass({
 
     return (
       <span className='ToggleableOption__wrapper'>
-        { description && <Tooltip text={description} className='ToggleableOption__tooltip' /> }
+        { description && <Tooltip content={description} className='ToggleableOption__tooltip' /> }
         <label className='ToggleableOption' htmlFor={name}>
           <input className='ToggleableOption__hiddenInput'
             id={name}

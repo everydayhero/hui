@@ -7,7 +7,7 @@ import * as styles from './styles'
 const propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
-  labels: PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  labels: PropTypes.arrayOf(React.PropTypes.node).isRequired,
   hasFocus: PropTypes.bool,
   autoFocus: PropTypes.bool,
   onChange: PropTypes.func.isRequired,

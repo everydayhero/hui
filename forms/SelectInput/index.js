@@ -33,8 +33,8 @@ export default React.createClass({
     labelKey: React.PropTypes.string,
     valueKey: React.PropTypes.string,
     errors: React.PropTypes.array,
-    label: React.PropTypes.string,
-    errorMessage: React.PropTypes.string
+    label: React.PropTypes.node,
+    errorMessage: React.PropTypes.node
   },
 
   getDefaultProps: function () {

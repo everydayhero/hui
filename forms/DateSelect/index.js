@@ -26,11 +26,11 @@ export default React.createClass({
     layout: React.PropTypes.string,
     value: React.PropTypes.string,
     errors: React.PropTypes.array,
-    errorMessage: React.PropTypes.string,
+    errorMessage: React.PropTypes.node,
     months: React.PropTypes.array,
-    monthLabel: React.PropTypes.string,
-    yearLabel: React.PropTypes.string,
-    dateLabel: React.PropTypes.string,
+    monthLabel: React.PropTypes.node,
+    yearLabel: React.PropTypes.node,
+    dateLabel: React.PropTypes.node,
     promptValue: React.PropTypes.string
   },
 

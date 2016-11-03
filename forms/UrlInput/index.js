@@ -18,7 +18,7 @@ export default React.createClass({
     autoFocus: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     name: React.PropTypes.string,
-    hint: React.PropTypes.string,
+    hint: React.PropTypes.node,
     onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onBlur: React.PropTypes.func,
@@ -31,9 +31,9 @@ export default React.createClass({
     prompt: React.PropTypes.string,
     value: React.PropTypes.string,
     errors: React.PropTypes.array,
-    label: React.PropTypes.string,
+    label: React.PropTypes.node,
     protocolLabel: React.PropTypes.string,
-    errorMessage: React.PropTypes.string
+    errorMessage: React.PropTypes.node
   },
 
   getDefaultProps: function () {

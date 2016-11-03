@@ -33,7 +33,7 @@ export default React.createClass({
     onUnmount: React.PropTypes.func,
     showError: React.PropTypes.bool,
     errors: React.PropTypes.array,
-    errorMessage: React.PropTypes.string,
+    errorMessage: React.PropTypes.node,
     storeLocally: React.PropTypes.bool,
     validations: React.PropTypes.shape({
       street_address: React.PropTypes.array,

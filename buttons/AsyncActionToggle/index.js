@@ -9,9 +9,9 @@ export default React.createClass({
   propTypes: {
     action: React.PropTypes.func.isRequired,
     kind: React.PropTypes.string.isRequired,
-    pre_action_label: React.PropTypes.string.isRequired,
-    post_action_label: React.PropTypes.string.isRequired,
-    error_label: React.PropTypes.string.isRequired,
+    pre_action_label: React.PropTypes.node.isRequired,
+    post_action_label: React.PropTypes.node.isRequired,
+    error_label: React.PropTypes.node.isRequired,
     toggled: React.PropTypes.bool
   },
 

@@ -9,7 +9,7 @@ import * as styles from './styles'
 
 export default React.createClass({
   propTypes: {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.node.isRequired,
     autoClose: PropTypes.bool,
     inputClass: PropTypes.string
   },

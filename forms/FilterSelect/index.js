@@ -22,7 +22,7 @@ export default React.createClass({
     id: React.PropTypes.string,
     name: React.PropTypes.string,
     value: React.PropTypes.string,
-    label: React.PropTypes.string,
+    label: React.PropTypes.node,
     data: React.PropTypes.object,
     options: React.PropTypes.array.isRequired,
     labelKey: React.PropTypes.string,

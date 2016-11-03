@@ -5,7 +5,7 @@ import * as styles from './styles'
 
 const propTypes = {
   id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
   focused: PropTypes.bool

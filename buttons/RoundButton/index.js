@@ -9,7 +9,7 @@ const propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   color: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node,
   active: PropTypes.bool,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['small'])

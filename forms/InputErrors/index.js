@@ -5,6 +5,10 @@ import React from 'react'
 export default React.createClass({
   displayName: 'InputErrors',
 
+  propTypes: {
+    errors: React.PropTypes.array
+  },
+
   getDefaultProps () {
     return {
       errors: []

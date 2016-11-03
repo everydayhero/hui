@@ -61,10 +61,7 @@ Tooltip.propTypes = {
   trigger: PropTypes.oneOf(['click', 'hover']),
   style: PropTypes.oneOf(['light', 'dark']),
   position: PropTypes.oneOf(['left', 'right', 'center']),
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node
-  ])
+  content: PropTypes.node
 }
 Tooltip.defaultProps = {
   trigger: 'click',

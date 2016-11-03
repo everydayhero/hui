@@ -9,7 +9,7 @@ export default React.createClass({
   propTypes: {
     id: React.PropTypes.string,
     onChange: React.PropTypes.func,
-    errors: React.PropTypes.string,
+    errors: React.PropTypes.array,
     value: React.PropTypes.object
   },
 
