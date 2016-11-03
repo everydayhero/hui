@@ -19,7 +19,7 @@ export default {
     const stateErrors = get(this, 'state.errors') || []
     const hasErrorArray = !!(propErrors.length || stateErrors.length)
 
-    return this.state.hasError || hasErrorArray
+    return this.state.hasError && (hasErrorArray || this.props.errorMessage)
   },
 
   hasErrorMessages () {
@@ -49,7 +49,7 @@ export default {
       ? displayErrors || compact([props.errorMessage])
       : props.errors || []
 
-    if (errors.length > 0) {
+    if (this.state.hasError && errors.length > 0) {
       message = (<InputErrors errors={errors} />)
     } else {
       message = this.props.hint
