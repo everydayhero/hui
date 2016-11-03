@@ -63,7 +63,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <label className='hui-TextInput__label' htmlFor={inputId} ref={props.ref}>
-          { props.label }
+          {props.label}
           <input {...this.inputMethods(!props.disabled)}
             autoComplete={props.autoComplete ? 'on' : 'off'}
             className={inputClassName}
@@ -78,10 +78,10 @@ export default React.createClass({
             type={props.type}
             value={value}
             readOnly={props.readOnly} />
-          { this.renderPlaceHolder() }
-          { this.renderIcon() }
+          {this.renderPlaceHolder()}
+          {this.renderIcon()}
         </label>
-        { this.renderMessage() }
+        {this.renderMessage()}
       </div>
     )
   }

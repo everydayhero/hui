@@ -3,6 +3,7 @@
 import React from 'react'
 import InputErrors from '../forms/InputErrors'
 import array from 'lodash/array'
+import get from 'lodash/get'
 const { compact } = array
 
 export default {
@@ -14,15 +15,17 @@ export default {
   },
 
   shouldShowError () {
-    let errors = this.props.errors || []
+    let propErrors = this.props.errors || []
+    const stateErrors = get(this, 'state.errors') || []
+    const hasErrorArray = !!(propErrors.length || stateErrors.length)
 
-    return this.state.hasError || errors.length
+    return this.state.hasError || hasErrorArray
   },
 
   hasErrorMessages () {
     const {errorMessage, errors} = this.props
 
-    return !!this.shouldShowError() && (errors.length > 0 || !!errorMessage)
+    return this.shouldShowError() && (errors.length > 0 || !!errorMessage)
   },
 
   shouldRenderMessage () {
@@ -36,10 +39,11 @@ export default {
   },
 
   renderMessage () {
-    let props = this.props
+    const props = this.props
+    const state = this.state || {}
     let message
 
-    const displayErrors = collectErrors(this.props)
+    const displayErrors = collectErrors(props) || collectErrors(state)
 
     let errors = this.state.hasError
       ? displayErrors || compact([props.errorMessage])
@@ -53,7 +57,7 @@ export default {
 
     return this.shouldRenderMessage() && (
       <div className='hui-TextInput__message'>
-        { message }
+        {message}
       </div>
     )
   }
