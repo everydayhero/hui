@@ -15,7 +15,7 @@ export default React.createClass({
     disabled: React.PropTypes.bool,
     errors: React.PropTypes.array,
     id: React.PropTypes.string,
-    label: React.PropTypes.string,
+    label: React.PropTypes.node,
     layout: React.PropTypes.string,
     noFileLabel: React.PropTypes.string,
     onBlur: React.PropTypes.func,

@@ -8,7 +8,7 @@ export default React.createClass({
   displayName: 'FlashMessage',
   propTypes: {
     type: React.PropTypes.string,
-    message: React.PropTypes.string,
+    message: React.PropTypes.node,
     show: React.PropTypes.bool,
     onDismiss: React.PropTypes.func
   },

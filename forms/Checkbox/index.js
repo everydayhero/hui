@@ -13,10 +13,7 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onBlur: React.PropTypes.func,
     value: React.PropTypes.bool,
-    label: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.element
-    ])
+    label: React.PropTypes.node
   },
 
   getDefaultProps: function () {

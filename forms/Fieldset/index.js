@@ -7,7 +7,7 @@ export default React.createClass({
   displayName: 'Fieldset',
 
   propTypes: {
-    legend: React.PropTypes.string,
+    legend: React.PropTypes.node,
     children: React.PropTypes.oneOfType([
       React.PropTypes.node,
       React.PropTypes.arrayOf(React.PropTypes.node)

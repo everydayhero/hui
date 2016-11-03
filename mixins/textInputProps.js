@@ -12,11 +12,11 @@ export const types = {
     'email'
   ]),
   value: React.PropTypes.string,
-  label: React.PropTypes.string,
+  label: React.PropTypes.node,
   placeHolder: React.PropTypes.string,
   className: React.PropTypes.string,
-  errorMessage: React.PropTypes.string,
-  hint: React.PropTypes.string,
+  errorMessage: React.PropTypes.node,
+  hint: React.PropTypes.node,
   icon: React.PropTypes.string,
   iconPosition: React.PropTypes.string,
   spacing: React.PropTypes.oneOf([

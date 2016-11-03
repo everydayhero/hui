@@ -30,15 +30,15 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onSelection: React.PropTypes.func,
     onError: React.PropTypes.func,
-    hint: React.PropTypes.string,
-    emptyLabel: React.PropTypes.string,
-    errorMessage: React.PropTypes.string,
+    hint: React.PropTypes.node,
+    emptyLabel: React.PropTypes.node,
+    errorMessage: React.PropTypes.node,
     errors: React.PropTypes.array,
     layout: React.PropTypes.string,
     spacing: React.PropTypes.string,
     pendingRequest: React.PropTypes.bool,
     initialValue: React.PropTypes.number,
-    initialLabel: React.PropTypes.string
+    initialLabel: React.PropTypes.node
   },
 
   getDefaultProps () {

@@ -33,7 +33,7 @@ export default React.createClass({
       'mapmyfitness', 'mapmyfitness-borderless',
       'pinterest', 'pinterest-borderless'
     ]).isRequired,
-    label: React.PropTypes.string,
+    label: React.PropTypes.node,
     onClick: React.PropTypes.func,
     target: React.PropTypes.string,
     thin: React.PropTypes.bool,

@@ -7,15 +7,8 @@ export default React.createClass({
 
   propTypes: {
     htmlFor: React.PropTypes.string,
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.node,
-      React.PropTypes.element,
-      React.PropTypes.array
-    ]),
-    tip: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.node
-    ]),
+    children: React.PropTypes.node,
+    tip: React.PropTypes.node,
     id: React.PropTypes.string
   },
 

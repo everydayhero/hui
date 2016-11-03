@@ -26,10 +26,7 @@ TooltipContent.propTypes = {
   open: PropTypes.bool.isRequired,
   style: PropTypes.oneOf(['light', 'dark']).isRequired,
   position: PropTypes.oneOf(['left', 'right', 'center']).isRequired,
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node
-  ]).isRequired
+  content: PropTypes.node.isRequired
 }
 
 export default TooltipContent
