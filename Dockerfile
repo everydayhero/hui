@@ -5,8 +5,8 @@ RUN npm install -g yarn@0.16
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-ADD package.json /usr/src/app/
-RUN yarn install
+ADD package.json yarn.lock /usr/src/app/
+RUN yarn
 
 ADD . /usr/src/app
 
