@@ -76,7 +76,7 @@ module.exports = {
         id={'FormRow__' + name}
         key={'fieldset' + name}
         labelTop>
-        { children }
+        {children}
       </FormRow>
     )
   },

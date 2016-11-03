@@ -44,7 +44,7 @@ export default {
 
   validate (val) {
     const { validate, required, value: propValue } = this.props
-    if (!required) { return }
+    if (!required && (!validate || !validate.length)) { return }
     let value = val || propValue || ''
 
     if (validate) {
@@ -114,7 +114,8 @@ export default {
     this.setState({
       hasError: !valid,
       waiting: false,
-      valid
+      valid,
+      errors
     })
   },
 
@@ -158,7 +159,7 @@ export default {
 
     return (
       <span className='hui-TextInput__placeHolder'>
-        { this.props.placeHolder }
+        {this.props.placeHolder}
       </span>
     )
   },
