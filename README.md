@@ -29,20 +29,20 @@ You can view the demo html file at:
 OSX users may need to increase the maximum number of open files (default is 256) using `ulimit -Sn 1000` to use build, watch, and scripts commands.
 
 ```sh
-$ npm install           # download npm dependencies
+$ yarn install          # download npm dependencies
 $ gulp                  # build all production assets
 $ gulp --debug          # build all unminified assets (for debugging)
 $ gulp scripts          # build script assest (Can also use the --debug flag)
 $ gulp styles           # build styles assest (Can also use the --debug flag)
-$ npm test              # run all tests
-$ npm start             # run local server to view demo page
+$ yarn test             # run all tests
+$ yarn start            # run local server to view demo page
 ```
 
 ## Publishing updates
 
-Once your changes are merged use a single version bump commit to trigger deploying assets and publishing to npm. The easiest way is to use the npm command:
+Once your changes are merged use a single version bump commit to trigger deploying assets and publishing to npm. The easiest way is to use the yarn command:
 
-`npm version [major | minor | patch]`
+`yarn version --new-version 4.1.2`
 
 Then push to `master` with `git push origin master --follow-tags`.
 
