@@ -74,15 +74,18 @@ export default React.createClass({
         this.setState({ copied: false })
       }, 4000)
     } catch (error) {
-      this.setState({ errors: [this.props.copyError] })
+      this.setState({
+        hasError: true,
+        errors: [this.props.copyError]
+      })
     }
   },
 
   renderCopyButton () {
     const { labelCopy, labelCopied, labelSelect } = this.props
-    const selectBlock = <span>{ labelSelect }</span>
-    const copyBlock = <span><Icon icon='clipboard' /> { labelCopy }</span>
-    const copiedBlock = <span><Icon icon='check' /> { labelCopied }</span>
+    const selectBlock = <span>{labelSelect}</span>
+    const copyBlock = <span><Icon icon='clipboard' /> {labelCopy}</span>
+    const copiedBlock = <span><Icon icon='check' /> {labelCopied}</span>
     let content
 
     /**
@@ -102,7 +105,7 @@ export default React.createClass({
     return (
       <div className='hui-CopyInput__buttonWrapper'>
         <button className='hui-CopyInput__button' onClick={this.selectAndCopy}>
-          { content }
+          {content}
         </button>
       </div>
     )
@@ -129,7 +132,7 @@ export default React.createClass({
               onFocus={this.handleFocus}
               errors={this.state.errors} />
           </div>
-          { this.renderCopyButton() }
+          {this.renderCopyButton()}
         </div>
       </div>
     )
