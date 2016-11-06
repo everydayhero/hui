@@ -3,7 +3,6 @@
 import React from 'react'
 import InputErrors from '../forms/InputErrors'
 import array from 'lodash/array'
-import get from 'lodash/get'
 const { compact } = array
 
 export default {
@@ -16,16 +15,8 @@ export default {
 
   shouldShowError () {
     let propErrors = this.props.errors || []
-    const stateErrors = get(this, 'state.errors') || []
-    const hasErrorArray = !!(propErrors.length || stateErrors.length)
 
-    return this.state.hasError && (hasErrorArray || this.props.errorMessage)
-  },
-
-  hasErrorMessages () {
-    const {errorMessage, errors} = this.props
-
-    return this.shouldShowError() && (errors.length > 0 || !!errorMessage)
+    return this.state.hasError || !!propErrors.length
   },
 
   shouldRenderMessage () {
@@ -35,7 +26,7 @@ export default {
 
     const { focused } = this.state
 
-    return this.hasErrorMessages() || (!!hint && focused)
+    return this.shouldShowError() || (!!hint && focused)
   },
 
   renderMessage () {
@@ -49,7 +40,7 @@ export default {
       ? displayErrors || compact([props.errorMessage])
       : props.errors || []
 
-    if (this.state.hasError && errors.length > 0) {
+    if (this.shouldShowError()) {
       message = (<InputErrors errors={errors} />)
     } else {
       message = this.props.hint
