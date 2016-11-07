@@ -27,7 +27,7 @@ export default React.createClass({
     mask: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    validate: React.PropTypes.func,
+    validate: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array]),
     onError: React.PropTypes.func,
     onBlur: React.PropTypes.func,
     onTab: React.PropTypes.func,
@@ -53,7 +53,7 @@ export default React.createClass({
       mask: null,
       onFocus: null,
       onChange: null,
-      validate: null,
+      validate: [],
       onError: null,
       onBlur: function () {},
       onTab: function () {},
@@ -110,7 +110,7 @@ export default React.createClass({
             onBlur={this.handleBlur}
             onChange={this.handleChange}
             onFocus={this.handleFocus}
-            onTab={this.onTab} />
+            onKeyDown={this.onTab} />
         </div>
         { this.renderMessage() }
       </div>
