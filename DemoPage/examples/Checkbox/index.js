@@ -35,6 +35,13 @@ export default React.createClass({
           onChange={change('terms')} />
 
         <CheckboxInput
+          id='help'
+          value={this.state.form.help}
+          label={'With a tooltip hint'}
+          hint='This text gives the user more context about what this option entails.'
+          onChange={change('help')} />
+
+        <CheckboxInput
           id='errors'
           value={this.state.form.errors}
           label={'Accepts terms and conditions'}
