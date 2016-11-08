@@ -1,89 +1,58 @@
-'use strict'
-
 import React from 'react'
-import classnames from 'classnames'
+import cx from 'classnames'
 import Errors from '../InputErrors'
+import Tooltip from '../../atoms/Tooltip'
 
-export default React.createClass({
-  displayName: 'Checkbox',
+const renderHint = ({hint}) => <Tooltip className='hui-Checkbox__hint' content={hint} />
 
-  propTypes: {
-    disabled: React.PropTypes.bool,
-    labelIsClickable: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    onBlur: React.PropTypes.func,
-    value: React.PropTypes.bool,
-    label: React.PropTypes.node
-  },
+const renderLabel = ({
+  id,
+  name,
+  label,
+  labelIsClickable
+}) => (
+  <label htmlFor={labelIsClickable && (id || name || 'checkbox')} className='hui-Checkbox__label'>
+    {label}
+  </label>
+)
 
-  getDefaultProps: function () {
-    return {
-      disabled: false,
-      labelIsClickable: true
-    }
-  },
+const renderInput = ({
+  id,
+  name,
+  disabled,
+  value,
+  onBlur,
+  onChange
+}) => (
+  <input
+    id={id || name || 'checkbox'}
+    name={name || id || 'checkbox'}
+    className='hui-Checkbox__input'
+    type='checkbox'
+    checked={value}
+    onBlur={({target: {checked}}) => onBlur(checked)}
+    onChange={({target: {checked}}) => onChange(checked)}
+    autoComplete='off'
+    disabled={disabled}
+  />
+)
 
-  handleChange: function (e) {
-    var props = this.props
-
-    if (props.onChange) {
-      this.props.onChange(e.target.checked)
-    }
-  },
-
-  handleBlur: function (e) {
-    var props = this.props
-
-    if (props.onBlur) {
-      this.props.onBlur(e.target.checked)
-    }
-  },
-
-  renderLabel: function () {
-    var props = this.props
-
-    if (props.labelIsClickable) {
-      return props.label && (
-        <label htmlFor={props.id} className='hui-Checkbox__label'>
-          { props.label }
-        </label>
-      )
-    } else {
-      return props.label && (
-        <span className='hui-Checkbox__label'>
-          { props.label }
-        </span>
-      )
-    }
-  },
-
-  render: function () {
-    var props = this.props
-    var errors = props.errors || []
-
-    var Input = React.DOM.input({
-      id: props.id,
-      name: props.name || props.id,
-      className: 'hui-Checkbox__input',
-      type: 'checkbox',
-      value: props.value,
-      checked: props.value,
-      onBlur: this.handleBlur,
-      onChange: this.handleChange,
-      autoComplete: 'off',
-      disabled: (props.disabled)
-    })
-
-    var classes = classnames({
-      'hui-Input--error': errors.length > 0
-    }, 'hui-Checkbox')
-
-    return (
-      <div className={classes}>
-        { Input }
-        { this.renderLabel() }
-        <Errors errors={this.props.errors} />
-      </div>
-    )
-  }
-})
+export default ({
+  id,
+  name,
+  disabled = false,
+  labelIsClickable = true,
+  onChange = () => {},
+  onBlur = () => {},
+  value = false,
+  label = '',
+  hint = '',
+  errors = []
+}) => (
+  <div className={cx({'hui-Input--error': errors.length > 0}, 'hui-Checkbox')}>
+    {!!hint && renderHint({hint})}
+    {renderInput({id, name, disabled, value, onBlur, onChange})}
+    {renderLabel({id, name, label, labelIsClickable})}
+    {!!errors.length && <Errors errors={errors} />}
+  </div>
+)
