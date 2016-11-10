@@ -20,6 +20,9 @@ export default {
 
   componentWillReceiveProps (nextProps) {
     let state = this.state
+    if (nextProps.hasError !== undefined) {
+      this.setState({hasError: nextProps.hasError})
+    }
     if (nextProps.disabled || nextProps.readOnly) { return }
     if (nextProps.showError && !state.hasError && !state.valid && !state.focused) { this.validate() }
   },

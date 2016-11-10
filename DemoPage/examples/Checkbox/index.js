@@ -26,7 +26,7 @@ export default React.createClass({
         <h3 className='DemoPage__h3' id='Checkbox'>Checkbox</h3>
         <p className='DemoPage__p'>Basic checkbox with label</p>
 
-        { this.checkboxInput('opt_in') }
+        {this.checkboxInput('opt_in')}
 
         <CheckboxInput
           id='terms'

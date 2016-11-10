@@ -130,7 +130,8 @@ export default React.createClass({
               spacing='compact'
               layout='full'
               onFocus={this.handleFocus}
-              errors={this.state.errors} />
+              errors={this.state.errors}
+              hasError={this.state.hasError} />
           </div>
           {this.renderCopyButton()}
         </div>

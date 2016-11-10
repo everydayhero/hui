@@ -59,6 +59,7 @@ export default React.createClass({
       labelKey: 'label',
       valueKey: 'value',
       errors: [],
+      showError: true,
       label: 'Select',
       errorMessage: null
     }
@@ -154,7 +155,7 @@ export default React.createClass({
     return (
       <div className='hui-SelectInput__displayValue'>
         <div className={className}>
-          { displayValue }
+          {displayValue}
         </div>
       </div>
     )
@@ -174,7 +175,7 @@ export default React.createClass({
           key={index}
           label={option[labelKey]}
           value={optionValue} >
-          { option[labelKey] }
+          {option[labelKey]}
         </option>
         )
     })
@@ -200,8 +201,8 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className='hui-SelectInput__wrap'>
-          <label className='hui-SelectInput__label'>{ props.label }</label>
-          { this.renderDisplayValue() }
+          <label className='hui-SelectInput__label'>{props.label}</label>
+          {this.renderDisplayValue()}
           <Icon icon='chevron-down' className='hui-SelectInput__icon' />
           <div className='hui-SelectInput__inputWrap'>
             <select
@@ -215,11 +216,11 @@ export default React.createClass({
               onChange={this.onChange}
               onKeyDown={this.onTab}
               value={value}>
-              { this.renderOptions() }
+              {this.renderOptions()}
             </select>
           </div>
         </div>
-        { this.renderMessage() }
+        {this.renderMessage()}
       </div>
     )
   }

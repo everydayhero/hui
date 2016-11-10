@@ -84,7 +84,7 @@ export const defaults = {
   storeLocally: false,
   autoFocus: false,
   disabled: false,
-  showError: false,
+  showError: true,
   required: false,
   showIcon: true,
   readOnly: false,

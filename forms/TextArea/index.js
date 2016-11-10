@@ -101,7 +101,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className='hui-TextArea__inputWrap'>
-          <label className='hui-TextArea__label' htmlFor={props.id}>{ props.label }</label>
+          <label className='hui-TextArea__label' htmlFor={props.id}>{props.label}</label>
           <textarea className='hui-TextArea__input'
             id={props.id}
             ref='input'
@@ -112,7 +112,7 @@ export default React.createClass({
             onFocus={this.handleFocus}
             onKeyDown={this.onTab} />
         </div>
-        { this.renderMessage() }
+        {this.renderMessage()}
       </div>
     )
   }

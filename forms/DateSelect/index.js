@@ -26,6 +26,7 @@ export default React.createClass({
     layout: React.PropTypes.string,
     value: React.PropTypes.string,
     errors: React.PropTypes.array,
+    showError: React.PropTypes.bool,
     errorMessage: React.PropTypes.node,
     months: React.PropTypes.array,
     monthLabel: React.PropTypes.node,
@@ -46,6 +47,7 @@ export default React.createClass({
       value: '',
       includeBlank: true,
       promptValue: '1980-01-01',
+      showError: true,
       errors: [],
       autoComplete: true,
       disabled: false,
@@ -187,7 +189,7 @@ export default React.createClass({
             prompt={moment(props.promptValue).year().toString()}
             {...passedProps} />
         </div>
-        { this.renderMessage() }
+        {this.renderMessage()}
       </div>
     )
   }

@@ -14,9 +14,10 @@ export default {
   },
 
   shouldShowError () {
-    const { errors = [], showError } = this.props
+    const { errors, showError } = this.props
+    const propErrors = errors || []
 
-    return this.state.hasError || (showError && !!errors.length)
+    return this.state.hasError || (showError && !!propErrors.length)
   },
 
   shouldRenderMessage () {
