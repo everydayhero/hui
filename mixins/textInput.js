@@ -39,7 +39,10 @@ export default {
     let { onChange, onError, validate, required } = props
 
     if (onChange) { onChange(value) }
-    if (onError && validate && required) { onError(!getValidator(validate)(value)) }
+    if (onError && validate && required) {
+      const { valid, messages } = getValidator(validate)(value)
+      onError(!valid, messages)
+    }
   },
 
   validate (val) {
