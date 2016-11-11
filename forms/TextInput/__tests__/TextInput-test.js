@@ -310,7 +310,7 @@ describe('TextInput', function () {
       var onChange = function (value) {
         this.setProps({ value })
       }
-      var validate = sinon.stub()
+      var validate = sinon.stub().returns({ isValid: true, messages: [] })
       var element = mount(<TextInput required validate={validate} />)
       var input = element.find('.hui-TextInput__input')
       element.setProps({ onChange: onChange.bind(element) })
@@ -329,7 +329,7 @@ describe('TextInput', function () {
     })
 
     it('will execute onError callback on load if has validate method', function () {
-      var validate = sinon.stub().returns(true)
+      var validate = sinon.stub().returns({ valid: true, messages: [] })
       var onError = sinon.stub()
       renderIntoDocument(<TextInput required validate={validate} onError={onError} />)
 
@@ -338,7 +338,7 @@ describe('TextInput', function () {
     })
 
     it('will execute validate function on load if has value', function () {
-      var validate = sinon.stub()
+      var validate = sinon.stub().returns({ valid: true })
       var element = renderIntoDocument(<TextInput required value='testValue' validate={validate} />)
 
       validate.should.have.been.calledWith('testValue', element.setValid)

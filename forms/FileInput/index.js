@@ -31,6 +31,7 @@ export default React.createClass({
     return {
       disabled: false,
       errors: [],
+      showError: true,
       label: 'image',
       layout: 'full',
       mimetypes: ['image/*'],
@@ -137,16 +138,16 @@ export default React.createClass({
     return (
       <div className={classes} >
         <div className='hui-FileInput__wrap'>
-          <label className='hui-FileInput__label'>{ props.label }</label>
+          <label className='hui-FileInput__label'>{props.label}</label>
           <div className='hui-FileInput__input' id={props.id} onClick={this.browse}>
-            { inputLabel }
+            {inputLabel}
           </div>
           <div className='hui-FileInput__buttons'>
-            { resetButton }
-            <a href='#' ref='browse_files' onBlur={this.onBlur} onFocus={this.onFocus} className='hui-FileInput__browse' onClick={this.browse}>{ browseLabel }</a>
+            {resetButton}
+            <a href='#' ref='browse_files' onBlur={this.onBlur} onFocus={this.onFocus} className='hui-FileInput__browse' onClick={this.browse}>{browseLabel}</a>
           </div>
         </div>
-        { this.renderMessage() }
+        {this.renderMessage()}
       </div>
     )
   }
