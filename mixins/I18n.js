@@ -1,20 +1,10 @@
-'use strict'
-
-import React from 'react'
-import i18n from '../lib/i18n'
-import Remarkable from 'remarkable'
-let md = new Remarkable({ xhtmlOut: true, breaks: true })
+import {translate, translateMarkdown} from '../lib/i18n'
 
 export default {
   t (key, params) {
-    return i18n.t(this.constructor.i18n, key, params, this.props.region)
+    return translate(this.constructor.i18n, this.props.region, key, params)
   },
-
   tm (key, params) {
-    return (
-      <span dangerouslySetInnerHTML={{
-        __html: md.render(this.t(key, params))
-      }} />
-    )
+    return translateMarkdown(this.constructor.i18n, this.props.region, key, params)
   }
 }
