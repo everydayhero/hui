@@ -1,6 +1,6 @@
 {
   "name": "hero-ui",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -43,7 +43,6 @@
     "cxs": "^1.0.0",
     "exenv": "^1.2.0",
     "filepicker-js": "^2.4.14",
-    "history": "^3.0.0",
     "inline-style-prefixer": "^2.0.1",
     "keycode": "^2.1.4",
     "lodash": "^4.15.0",
