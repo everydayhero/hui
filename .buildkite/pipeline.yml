@@ -18,7 +18,7 @@ steps:
 
   - name: ":package: Deploy"
     command: "bin/buildkite bin/only-for-version-releases bin/ci run bin/deploy"
-    branches: "master"
+    branches: "v-4"
     agents:
       queue: elastic
 
@@ -26,6 +26,6 @@ steps:
 
   - name: ":loudspeaker:"
     command: "bin/buildkite bin/only-for-version-releases bin/ci announce released"
-    branches: "master"
+    branches: "v-4"
     agents:
       queue: elastic
