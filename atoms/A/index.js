@@ -10,6 +10,12 @@ export default React.createClass({
     onClick: React.PropTypes.func
   },
 
+  getDefaultProps: function() {
+    return {
+      onClick: function() {} 
+    }
+  },
+
   handleClick: function (e) {
     this.props.onClick(e)
   },
