@@ -4,10 +4,9 @@ import A from '../'
 
 describe('A', function () {
   var element
-  var fn = sinon.spy()
 
   before(function () {
-    element = TestUtils.renderIntoDocument(<A href='testurl' className='customClass' onClick={fn} />)
+    element = TestUtils.renderIntoDocument(<A href='testurl' className='customClass' />)
   })
 
   it('renders a link', function () {
@@ -22,8 +21,17 @@ describe('A', function () {
   })
 
   it('executes an onclick handler', function () {
+    var onClick = sinon.spy()
+    element = TestUtils.renderIntoDocument(<A href='testurl' className='customClass' onClick={onClick} />)
     var link = findByClass(element, 'hui-A')
-    TestUtils.Simulate.mouseUp(link)
-    fn.should.have.been.called
+    TestUtils.Simulate.click(link)
+    onClick.should.have.been.called
+  })
+
+  it.only('has a default onClick handler', function () {
+    var link = findByClass(element, 'hui-A')
+    expect(function () {
+      TestUtils.Simulate.click(link)
+    }).to.not.throw()
   })
 })
