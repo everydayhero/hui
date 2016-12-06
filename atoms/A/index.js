@@ -10,13 +10,19 @@ export default React.createClass({
     onClick: React.PropTypes.func
   },
 
+  getDefaultProps: function () {
+    return {
+      onClick: function () {}
+    }
+  },
+
   handleClick: function (e) {
     this.props.onClick(e)
   },
 
   render: function () {
     return (
-      <a href={this.props.href} className={'hui-A ' + this.props.className} onMouseUp={this.handleClick} onTouchStart={this.handleClick}>
+      <a href={this.props.href} className={'hui-A ' + this.props.className} onClick={this.handleClick}>
         { this.props.children }
       </a>
     )
