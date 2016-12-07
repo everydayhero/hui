@@ -40,7 +40,8 @@ export default React.createClass({
     action: React.PropTypes.shape({
       type: React.PropTypes.string,
       properties: React.PropTypes.object
-    })
+    }),
+    onClick: React.PropTypes.func
   },
 
   getDefaultProps: function () {
@@ -51,7 +52,8 @@ export default React.createClass({
       shareUrl: (!!window && window.location.href) || '',
       shareTitle: (!!document && document.title) || '',
       shareImage: '',
-      action: null
+      action: null,
+      onClick: () => {}
     }
   },
 
@@ -69,13 +71,14 @@ export default React.createClass({
     window.FB.ui(payload, onComplete)
   },
 
-  onClick: function () {
+  onClick: function (e) {
     var {
       kind,
       shareUrl,
       shareTitle,
       onComplete,
-      shareImage
+      shareImage,
+      onClick
     } = this.props
     var service = serviceConfigs[kind]
     var popUpConfig = {
@@ -90,6 +93,8 @@ export default React.createClass({
       'img': shareImage
     }
     var url = format(service.url, urlParams, true)
+
+    onClick({...e, url})
 
     if (typeof window.FB === 'object' && kind === 'facebook') {
       this.openFacebookShare()
