@@ -28,7 +28,7 @@ describe('A', function () {
     onClick.should.have.been.called
   })
 
-  it.only('has a default onClick handler', function () {
+  it('has a default onClick handler', function () {
     var link = findByClass(element, 'hui-A')
     expect(function () {
       TestUtils.Simulate.click(link)
