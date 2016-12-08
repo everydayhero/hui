@@ -53,7 +53,8 @@ export default React.createClass({
       shareTitle: (!!document && document.title) || '',
       shareImage: '',
       action: null,
-      onClick: () => {}
+      onClick: () => {},
+      onComplete: () => {}
     }
   },
 
