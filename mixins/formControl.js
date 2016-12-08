@@ -24,7 +24,8 @@ export default {
     return {
       onChange: this.onFieldChange(name),
       onUnmount: this.onFieldUnmount(name),
-      onError: this.onFieldError(name)
+      onError: this.onFieldError(name),
+      onBlur: this.props.onBlur && this.props.onBlur.bind(null, name)
     }
   },
 
