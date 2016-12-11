@@ -46,7 +46,8 @@ export default React.createClass({
       validations: {},
       onCountrySelect: () => {},
       onChange: () => {},
-      onError: () => {}
+      onError: () => {},
+      onBlur: null
     }
   },
 

@@ -1,5 +1,6 @@
 'use strict'
 
+import { mount } from 'enzyme'
 import AddressFieldset from '../'
 let fakeAddress = {
   street_address: '123 Fakerton Drive',
@@ -33,5 +34,19 @@ describe('AddressFieldset', () => {
         expect(element.state.form.paf_validated).to.eq(true)
       })
     })
+  })
+
+  it('calls an onBlur callback when a given field is blurred', () => {
+    const onBlurSpy = sinon.spy()
+    const wrapper = mount(
+      <AddressFieldset
+        address={fakeAddress}
+        onBlur={onBlurSpy} />
+    )
+    const streetInput = wrapper.find('#street_address')
+    streetInput.simulate('blur')
+
+    expect(onBlurSpy).to.have.been.calledOnce
+    expect(onBlurSpy).to.have.been.calledWith('street_address', '123 Fakerton Drive')
   })
 })
