@@ -97,7 +97,7 @@ export const defaults = {
   onFocus: () => {},
   onChange: () => {},
   validate: null,
-  onError: () => {},
+  onError: null,
   onBlur: () => {},
   onTab: () => {},
   onKeyDown: () => {},
