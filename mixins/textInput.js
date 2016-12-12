@@ -3,6 +3,7 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
 import isArray from 'lodash/isArray'
+import isEqual from 'lodash/isEqual'
 import Icon from '../atoms/Icon'
 import classnames from 'classnames'
 import validation from '../lib/validation'
@@ -19,6 +20,22 @@ export default {
   },
 
   componentWillReceiveProps (nextProps) {
+    const nextPropsWeCareAbout = {
+      hasError: nextProps.hasError,
+      disabled: nextProps.disabled,
+      readOnly: nextProps.readOnly,
+      showError: nextProps.showError
+    }
+
+    const currentPropsWeCareAbout = {
+      hasError: this.props.hasError,
+      disabled: this.props.disabled,
+      readOnly: this.props.readOnly,
+      showError: this.props.showError
+    }
+
+    if (isEqual(nextPropsWeCareAbout, currentPropsWeCareAbout)) return
+
     let state = this.state
     if (nextProps.hasError !== undefined) {
       this.setState({hasError: nextProps.hasError})
