@@ -8,7 +8,7 @@ import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import getJSON from '../../lib/getJSON'
 import apiRoutes from '../../api'
-import I18n from '../../mixins/I18n'
+import { translate } from '../../lib/i18n'
 import i18n from './i18n'
 
 const addressesSearchUrl = apiRoutes('addresses_search')
@@ -16,8 +16,6 @@ const addressUrl = apiRoutes('address')
 
 export default React.createClass({
   displayName: 'AddressLookup',
-
-  mixins: [I18n],
 
   propTypes: {
     layout: React.PropTypes.string,
@@ -152,11 +150,14 @@ export default React.createClass({
       'hui-AddressLookup__country-select': true,
       'hui-AddressLookup__country-select--active': state.isSelectingCountry
     })
+
+    const t = translate.bind(null, i18n, state.selectedCountry.value)
+
     return (
       <div className={classes}>
         <UrlSearchSelect
           ref='searchSelect'
-          label={this.t('search_prompt', { scope: state.selectedCountry.value })}
+          label={t('search_prompt')}
           className={urlSearchSelectClasses}
           url={addressesSearchUrl}
           params={{ country_code: state.selectedCountry.value }}
@@ -165,7 +166,7 @@ export default React.createClass({
           required={props.required}
           errorMessage={props.errorMessage}
           errors={props.errors}
-          emptyLabel={props.emptyLabel || this.t('empty_label', { scope: state.selectedCountry.value })}
+          emptyLabel={props.emptyLabel || t('empty_label')}
           manualAction={props.manualAction}
           minQueryLength={state.minQueryLength}
           deserializeResponse={this.deserializeAddressesResponse}
