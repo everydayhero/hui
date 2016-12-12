@@ -15,7 +15,7 @@ export default {
     let node = this.refs.input
     let value = node.value
     if (props.autoFocus) { node.focus() }
-    if (value && props.validate) { this.validate() }
+    if (props.validate) { this.validate() }
     this.setValue(value)
   },
 
