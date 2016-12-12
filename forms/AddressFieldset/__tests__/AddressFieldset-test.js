@@ -13,6 +13,17 @@ let fakeAddress = {
 }
 
 describe('AddressFieldset', () => {
+  it('renders text labels for each field', () => {
+    const wrapper = mount(<AddressFieldset />)
+    const labels = wrapper.find('.hui-TextInput__label')
+
+    expect(labels.at(0).text()).to.equal('Address')
+    expect(labels.at(1).text()).to.equal('Address 2')
+    expect(labels.at(2).text()).to.equal('Suburb')
+    expect(labels.at(3).text()).to.equal('State')
+    expect(labels.at(4).text()).to.equal('Postcode')
+  })
+
   describe('#onFieldChange()', () => {
     context('when any address value is set to something different than provided to props', () => {
       it('sets paf_validated to false', () => {

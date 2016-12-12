@@ -5,17 +5,17 @@ import find from 'lodash/find'
 import merge from 'lodash/merge'
 import isEqualWith from 'lodash/isEqualWith'
 import classnames from 'classnames'
-import I18n from '../../mixins/I18n'
 import formControl from '../../mixins/formControl'
 import Input from '../TextInput'
 import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
 import i18n from './i18n'
+import { translate } from '../../lib/i18n'
 
 export default React.createClass({
   displayName: 'AddressFieldset',
 
-  mixins: [I18n, formControl],
+  mixins: [formControl],
 
   propTypes: {
     header: React.PropTypes.element,
@@ -82,18 +82,20 @@ export default React.createClass({
   },
 
   fieldProps (name) {
+    const t = translate.bind(null, i18n, this.state.countryCode)
+
     let methods = this.props.validations[name]
     return {
       ...this.fieldMethods(name),
       ref: name,
       key: name,
       name: this.props.prefix + name,
-      label: this.t(name, { scope: this.state.countryCode }),
+      label: t(name),
       value: this.state.form[name],
       required: methods && !!methods.length,
       showError: this.props.showError,
       validate: methods,
-      errorMessage: this.t(name + '_blank_error', { scope: this.state.countryCode }),
+      errorMessage: t(name + '_blank_error'),
       errors: this.state.errors && this.state.errors[name] && this.state.errors[name].messages,
       spacing: this.props.internalSpacing,
       storeLocally: this.props.storeLocally,
