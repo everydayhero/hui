@@ -82,7 +82,7 @@ export default React.createClass({
   },
 
   fieldProps (name) {
-    const t = translate.bind(null, i18n, this.state.countryCode)
+    const t = translate.bind(null, i18n, this.state.countryCode.toLowerCase())
 
     let methods = this.props.validations[name]
     return {
