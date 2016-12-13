@@ -11,38 +11,38 @@ export default {
     region_blank_error: 'Please enter a state',
     postal_code: 'Postcode',
     postal_code_blank_error: 'Please enter a postcode',
-    country_name: 'Country',
-    UK: {
-      locality: 'City',
-      locality_blank_error: 'Please enter a city',
-      region: 'County',
-      region_blank_error: 'Please enter a county'
-    },
-    US: {
-      locality: 'City',
-      locality_blank_error: 'Please enter a city',
-      postal_code: 'ZIP',
-      postal_code_blank_error: 'Please enter a ZIP code'
-    },
-    NZ: {
-      region: 'City',
-      region_blank_error: 'Please enter a city',
-      postal_code: 'Post Code',
-      postal_code_blank_error: 'Please enter a post code'
-    },
-    IE: {
-      region: 'County',
-      region_blank_error: 'Please enter a county',
-      postal_code: 'Postal Code',
-      postal_code_blank_error: 'Please enter a postal code'
-    },
-    CA: {
-      locality: 'City',
-      locality_blank_error: 'Please enter a city',
-      region: 'Province',
-      region_blank_error: 'Please enter a province',
-      postal_code: 'Postal Code',
-      postal_code_blank_error: 'Please enter a postal code'
-    }
+    country_name: 'Country'
+  },
+  uk: {
+    locality: 'City',
+    locality_blank_error: 'Please enter a city',
+    region: 'County',
+    region_blank_error: 'Please enter a county'
+  },
+  us: {
+    locality: 'City',
+    locality_blank_error: 'Please enter a city',
+    postal_code: 'ZIP',
+    postal_code_blank_error: 'Please enter a ZIP code'
+  },
+  nz: {
+    region: 'City',
+    region_blank_error: 'Please enter a city',
+    postal_code: 'Post Code',
+    postal_code_blank_error: 'Please enter a post code'
+  },
+  ie: {
+    region: 'County',
+    region_blank_error: 'Please enter a county',
+    postal_code: 'Postal Code',
+    postal_code_blank_error: 'Please enter a postal code'
+  },
+  ca: {
+    locality: 'City',
+    locality_blank_error: 'Please enter a city',
+    region: 'Province',
+    region_blank_error: 'Please enter a province',
+    postal_code: 'Postal Code',
+    postal_code_blank_error: 'Please enter a postal code'
   }
 }
