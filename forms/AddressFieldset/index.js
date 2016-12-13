@@ -87,7 +87,7 @@ export default React.createClass({
     let methods = this.props.validations[name]
     return {
       ...this.fieldMethods(name),
-      ref: name,
+      ref: this.props.prefix + name,
       key: name,
       name: this.props.prefix + name,
       label: t(name),
