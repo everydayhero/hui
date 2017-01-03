@@ -104,6 +104,7 @@ export default React.createClass({
           <label className='hui-TextArea__label' htmlFor={props.id}>{props.label}</label>
           <textarea className='hui-TextArea__input'
             id={props.id}
+            name={props.name}
             ref='input'
             value={props.value}
             disabled={props.disabled}
