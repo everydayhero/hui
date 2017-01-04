@@ -15,6 +15,10 @@ export default React.createClass({
     return style
   },
 
+  shouldComponentUpdate: function (newProps) {
+    return (!!this.props.inProgress) !== (!!newProps.inProgress)
+  },
+
   render: function () {
     var classes = _.compact([
       'hui-LoadingProgress__bar',
