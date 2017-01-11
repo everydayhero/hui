@@ -54,7 +54,7 @@ export default React.createClass({
       onFocus: null,
       onChange: null,
       validate: [],
-      onError: null,
+      onError: () => {},
       onBlur: function () {},
       onTab: function () {},
       onIconClick: null,

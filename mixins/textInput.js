@@ -132,8 +132,7 @@ export default {
   },
 
   setValid (valid, errors = []) {
-    let onError = this.props.onError
-    if (onError) { onError(!valid, errors) }
+    this.props.onError(!valid, errors)
     this.setState({
       hasError: !valid,
       waiting: false,
