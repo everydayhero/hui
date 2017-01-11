@@ -59,8 +59,8 @@ export default {
     let { onChange, onError, validate, required } = props
 
     if (onChange) { onChange(value) }
-    if (onError && validate && required) {
-      const { valid, messages } = getValidator(validate)(value)
+    if (validate && required) {
+      const { valid, messages } = getValidator(validate)(value) || {}
       onError(!valid, messages)
     }
   },
@@ -132,8 +132,7 @@ export default {
   },
 
   setValid (valid, errors = []) {
-    let onError = this.props.onError
-    if (onError) { onError(!valid, errors) }
+    this.props.onError(!valid, errors)
     this.setState({
       hasError: !valid,
       waiting: false,
