@@ -1,6 +1,7 @@
 'use strict'
 
 import FileInput from '../'
+import filepicker from '../../../lib/filepicker'
 
 describe('FileInput', function() {
   var noFileLabel = 'No file selected';
@@ -60,4 +61,43 @@ describe('FileInput', function() {
       errors.textContent.should.contain('is not good');
     });
   });
+
+  describe('mimetype options', function () {
+    beforeEach(function () {
+      sinon.stub(filepicker, 'pick')
+    })
+
+    afterEach(function () {
+      filepicker.pick.restore()
+    })
+
+    it('sets a default mimetypes option', function () {
+      Simulate.click(findByClass(component, 'hui-FileInput__browse'))
+      expect(filepicker.pick.args[0][0].mimetypes).to.contain('image/*')
+    })
+
+    it('does not set a mimetypes option if extension option is present', function () {
+      component = renderIntoDocument(
+        <FileInput
+          noFileLabel={noFileLabel}
+          options={{ extension: '.jpg' }} />
+      )
+
+      Simulate.click(findByClass(component, 'hui-FileInput__browse'))
+      expect(filepicker.pick.args[0][0].extension).to.equal('.jpg')
+      expect(filepicker.pick.args[0][0].mimetypes).to.be.undefined
+    })
+
+    it('does not set a mimetypes option if extensions option is present', function () {
+      component = renderIntoDocument(
+        <FileInput
+          noFileLabel={noFileLabel}
+          options={{ extensions: ['.jpg', '.png'] }} />
+      )
+
+      Simulate.click(findByClass(component, 'hui-FileInput__browse'))
+      expect(filepicker.pick.args[0][0].extensions).to.eql(['.jpg', '.png'])
+      expect(filepicker.pick.args[0][0].mimetypes).to.be.undefined
+    })
+  })
 });

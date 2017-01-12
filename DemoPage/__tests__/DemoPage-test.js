@@ -1,18 +1,12 @@
 'use strict';
 
+import { shallow } from 'enzyme'
 import Page from '../'
 
 describe('Demo Page', function() {
-  describe('default', function() {
-    var page;
-
-    beforeEach(function() {
-      page = renderIntoDocument(Page)
-    });
-
-    it('should render Page', function() {
-      page.should.exist;
-    });
+  it('should render Page', function() {
+    var page = shallow(Page)
+    page.should.exist;
   });
 });
 

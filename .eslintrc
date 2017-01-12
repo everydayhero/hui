@@ -94,6 +94,7 @@
     "before": 1,
     "beforeEach": 1,
     "after": 1,
+    "afterEach": 1,
     "it": 1,
     "xit": 1,
     "React": 1,

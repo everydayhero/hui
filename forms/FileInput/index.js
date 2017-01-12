@@ -52,7 +52,10 @@ export default React.createClass({
     var props = this.props
     var options = props.options
 
-    options.mimetypes = options.mimetypes || props.mimetypes
+    if (!options.extension && !options.extensions) {
+      options.mimetypes = options.mimetypes || props.mimetypes
+    }
+
     options.services = options.services || props.services
 
     e.preventDefault()
