@@ -2,7 +2,7 @@
 
 import { mount } from 'enzyme'
 import { expect } from 'chai'
-
+import filepicker from '../../../lib/filepicker'
 import FileInput from '../'
 
 describe('FileInput', function () {
@@ -61,6 +61,45 @@ describe('FileInput', function () {
       var errors = component.find('.hui-InputErrors')
 
       errors.text().should.contain('is not good')
+    })
+  })
+
+  describe('mimetype options', () => {
+    beforeEach(() => {
+      sinon.stub(filepicker, 'pick')
+    })
+
+    afterEach(() => {
+      filepicker.pick.restore()
+    })
+
+    it('sets a default mimetypes option', () => {
+      component.find('.hui-FileInput__browse').first().simulate('click')
+      expect(filepicker.pick.args[0][0].mimetypes).to.contain('image/*')
+    })
+
+    it('does not set a mimetypes option if extension option is present', () => {
+      component = mount(
+        <FileInput
+          noFileLabel={noFileLabel}
+          options={{ extension: '.jpg' }} />
+      )
+
+      component.find('.hui-FileInput__browse').first().simulate('click')
+      expect(filepicker.pick.args[0][0].extension).to.equal('.jpg')
+      expect(filepicker.pick.args[0][0].mimetypes).to.be.undefined
+    })
+
+    it('does not set a mimetypes option if extensions option is present', () => {
+      component = mount(
+        <FileInput
+          noFileLabel={noFileLabel}
+          options={{ extensions: ['.jpg', '.png'] }} />
+      )
+
+      component.find('.hui-FileInput__browse').first().simulate('click')
+      expect(filepicker.pick.args[0][0].extensions).to.eql(['.jpg', '.png'])
+      expect(filepicker.pick.args[0][0].mimetypes).to.be.undefined
     })
   })
 })
