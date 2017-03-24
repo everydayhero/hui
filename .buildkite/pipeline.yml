@@ -5,27 +5,21 @@ steps:
   - name: ":docker:"
     command: "bin/buildkite bin/ci build"
     agents:
-      queue: elastic
+      queue: build
 
   - type: "waiter"
 
   - name: ":pill:"
     command: "bin/buildkite bin/ci run npm test"
-    agents:
-      queue: elastic
 
   - type: "waiter"
 
   - name: ":package: Deploy"
     command: "bin/buildkite bin/only-for-version-releases bin/ci run bin/deploy"
     branches: "v-4"
-    agents:
-      queue: elastic
 
   - type: "waiter"
 
   - name: ":loudspeaker:"
     command: "bin/buildkite bin/only-for-version-releases bin/ci announce released"
     branches: "v-4"
-    agents:
-      queue: elastic
