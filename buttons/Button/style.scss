@@ -34,6 +34,7 @@
 .hui-Button--googleplus,
 .hui-Button--strava,
 .hui-Button--mapmyfitness,
+.hui-Button--fitbit,
 .hui-Button--pinterest {
   border-width: 1px;
   border-style: solid;
@@ -71,6 +72,7 @@ a.hui-Button {
 .hui-Button--googleplus,
 .hui-Button--strava,
 .hui-Button--mapmyfitness,
+.hui-Button--fitbit,
 .hui-Button--pinterest {
   .hui-Button__icon {
     margin-left: -5px;
@@ -88,6 +90,7 @@ a.hui-Button {
 .hui-Button--googleplus-borderless,
 .hui-Button--facebook-borderless,
 .hui-Button--mapmyfitness-borderless,
+.hui-Button--fitbit-borderless,
 .hui-Button--pinterest-borderless {
   .hui-Button__icon {
     margin-left: -30px;
@@ -188,6 +191,12 @@ a.hui-Button--slim {
   }
 }
 
+.hui-Button--fitbit {
+  &:hover, &:focus {
+    background-color: darken($fitbit, 10%);
+  }
+}
+
 .hui-Button--primary,
 .hui-Button--tertiary {
   border-color: $grey;
@@ -248,6 +257,10 @@ a.hui-Button--slim {
 .hui-Button--mapmyfitness {
   color: white;
   background-color: $mmf;
+}
+.hui-Button--fitbit {
+  color: white;
+  background-color: $fitbit;
 }
 
 .hui-Button--primary.hui-Button--inverse {
@@ -324,6 +337,7 @@ a.hui-Button--slim {
 .hui-Button--googleplus-borderless,
 .hui-Button--strava-borderless,
 .hui-Button--mapmyfitness-borderless,
+.hui-Button--fitbit-borderless,
 .hui-Button--pinterest-borderless {
   &.hui-Button--inverse {
     background: none;
@@ -353,6 +367,7 @@ a.hui-Button--slim {
 .hui-Button--googleplus,
 .hui-Button--mapmyfitnes,
 .hui-Button--strava,
+.hui-Button--fitbit,
 .hui-Button--pinterest {
   .hui-Button__icon {
     font-size: $x-5;
@@ -368,6 +383,7 @@ a.hui-Button--slim {
 .hui-Button--googleplus-borderless,
 .hui-Button--strava-borderless,
 .hui-Button--mapmyfitness-borderless,
+.hui-Button--fitbit-borderless,
 .hui-Button--pinterest-borderless {
   &.hui-Button--disabled {
     border: 0px;
