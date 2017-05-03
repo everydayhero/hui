@@ -31,7 +31,8 @@ export default React.createClass({
       'googleplus', 'googleplus-borderless',
       'strava', 'strava-borderless',
       'mapmyfitness', 'mapmyfitness-borderless',
-      'pinterest', 'pinterest-borderless'
+      'pinterest', 'pinterest-borderless',
+      'fitbit', 'fitbit-borderless'
     ]).isRequired,
     label: React.PropTypes.node,
     onClick: React.PropTypes.func,
