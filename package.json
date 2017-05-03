@@ -52,7 +52,7 @@
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-functional": "^1.2.0",
+    "react-functional": "^2.0.0",
     "remarkable": "^1.6.0",
     "superagent": "^2.0.0",
     "uuid": "^2.0.1",
