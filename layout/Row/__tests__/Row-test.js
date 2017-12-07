@@ -10,7 +10,7 @@ describe('Row', function () {
 
   it('tracks device width', function () {
     var element = TestUtils.renderIntoDocument(<Row />)
-    var tv = findByClass(element, 'tv')
+    var tv = findByClass(element, 'phone')
     tv.should.exist
   })
 
