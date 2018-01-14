@@ -7,7 +7,10 @@
 .hui-FilterSelectDisplay__wrap {
   @extend %hui-input-border;
   position: relative;
+  height: auto;
+  min-height: 42px;
   padding-right: 25px;
+  padding-bottom: $x-7;
 }
 
 .hui-FilterSelectDisplay__label {
@@ -23,7 +26,7 @@
 
 .hui-FilterSelectDisplay__value {
   position: absolute;
-  top: 9px;
+  bottom: 3px;
   left: 0px;
   color: $grey;
   letter-spacing: 0.10em;
