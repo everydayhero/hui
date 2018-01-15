@@ -46,7 +46,7 @@
     "inline-style-prefixer": "^2.0.1",
     "keycode": "^2.1.4",
     "lodash": "^4.15.0",
-    "moment": "2.14.1",
+    "moment": "2.11.2",
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",
     "react": "^15.3.2",
