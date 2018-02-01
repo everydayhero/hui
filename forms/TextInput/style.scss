@@ -10,6 +10,11 @@
   z-index: 1;
 }
 
+.hui-TextInput__label__with-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .hui-TextInput__input {
   font-family: $font-copy;
   display: block;
@@ -108,6 +113,10 @@
 
 .hui-TextInput--focused .hui-TextInput__message {
   @extend %hui-input-focused;
+}
+
+.hui-TextInput__with-child {
+  display: flex;
 }
 
 @include input-sizes(TextInput);

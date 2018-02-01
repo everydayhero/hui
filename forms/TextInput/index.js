@@ -12,10 +12,16 @@ export default React.createClass({
 
   mixins: [LocalStorageMixin, inputMessage, textInput],
 
-  propTypes: types,
+  propTypes: {
+    ...types,
+    attachedInput: React.PropTypes.node
+  },
 
   getDefaultProps () {
-    return defaults
+    return {
+      ...defaults,
+      childPosition: 'right'
+    }
   },
 
   getInitialState () {
@@ -60,27 +66,48 @@ export default React.createClass({
     })
     let inputId = props.id || props.name
 
+    let labelClassName = classnames({
+      'hui-TextInput__label': true,
+      'hui-TextInput__label__with-child': props.children
+    })
+    let groupClassName = classnames({
+      'hui-TextInput__with-child': props.children
+    })
+    let childClassName = classnames({
+      'hui-ChildInput': true
+    })
+
     return (
       <div className={classes}>
-        <label className='hui-TextInput__label' htmlFor={inputId} ref={props.ref}>
-          {props.label}
-          <input {...this.inputMethods(!props.disabled)}
-            autoComplete={props.autoComplete ? 'on' : 'off'}
-            className={inputClassName}
-            disabled={props.disabled}
-            id={inputId}
-            name={props.name}
-            ref='input'
-            onKeyDown={(e) => {
-              this.onTab(e)
-              this.props.onKeyDown(e)
-            }}
-            type={props.type}
-            value={value}
-            readOnly={props.readOnly} />
-          {this.renderPlaceHolder()}
-          {this.renderIcon()}
-        </label>
+        <div className={groupClassName}>
+          <label className={labelClassName} htmlFor={inputId} ref={props.ref}>
+            {props.label}
+
+            <input {...this.inputMethods(!props.disabled)}
+              autoComplete={props.autoComplete ? 'on' : 'off'}
+              className={inputClassName}
+              disabled={props.disabled}
+              id={inputId}
+              name={props.name}
+              ref='input'
+              onKeyDown={(e) => {
+                this.onTab(e)
+                this.props.onKeyDown(e)
+              }}
+              type={props.type}
+              value={value}
+              readOnly={props.readOnly} />
+
+            {this.renderPlaceHolder()}
+            {this.renderIcon()}
+          </label>
+
+          {props.children &&
+            <div className={childClassName}>
+              {props.children}
+            </div>
+          }
+        </div>
         {this.renderMessage()}
       </div>
     )
