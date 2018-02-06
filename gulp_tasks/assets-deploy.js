@@ -9,14 +9,14 @@ var headers = {
 }
 
 gulp.task('assets-deploy', function () {
-  if (!process.env.AWS_KEY || !process.env.AWS_SECRET) {
+  if (!process.env.HUI_AWS_ACCESS_KEY_ID || !process.env.HUI_AWS_SECRET) {
     console.error('ERROR: No AWS credentials found.')
     return
   }
 
   var publisher = awspublish.create({
-    key: process.env.AWS_KEY,
-    secret: process.env.AWS_SECRET,
+    key: process.env.HUI_AWS_ACCESS_KEY_ID,
+    secret: process.env.HUI_AWS_SECRET,
     bucket: 'shared-scripts'
   })
 
