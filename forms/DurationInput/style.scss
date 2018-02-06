@@ -1,0 +1,101 @@
+@import "../InputErrors/style";
+
+.hui-DurationInput {
+  @extend %hui-input-base;
+}
+
+.hui-DurationInput__label {
+  @extend %hui-input-border;
+  @extend %hui-input-label;
+  z-index: 1;
+}
+
+.hui-DurationInput__input {
+  font-family: $font-copy;
+  display: inline-block;
+  width: 1.45em;
+  margin-right: 0.2em;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  text-align: right;
+  color: $grey;
+  text-transform: none;
+  letter-spacing: 0.05em;
+  line-height: 27px;
+  height: 27px;
+  position: relative;
+  box-sizing: border-box;
+
+  // Hides clear buttons in IE 10 & 11
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.hui-DurationInput__placeHolder {
+  position: absolute;
+  top: 22px;
+  font-family: $font-copy;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: $grey-light;
+}
+
+.hui-DurationInput__message {
+  position: relative;
+  border-radius: 0 0 2px 2px;
+  color: $grey;
+  font-size: $x-3;
+  line-height: $x-3;
+  letter-spacing: 0.05em;
+  padding: $x-1 $x-2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hui-DurationInput--error .hui-DurationInput__label {
+  @extend %hui-input-error;
+}
+
+.hui-DurationInput--error .hui-DurationInput__message {
+  @extend %error-message;
+}
+
+.hui-DurationInput--disabled .hui-DurationInput__label {
+  @extend %hui-input-disabled;
+}
+
+.hui-DurationInput--disabled .hui-DurationInput__input {
+  @extend %hui-input-disabled;
+}
+
+.hui-DurationInput--focused .hui-DurationInput__label {
+  @extend %hui-input-focused;
+}
+
+.hui-DurationInput--focused .hui-DurationInput__message {
+  @extend %hui-input-focused;
+}
+
+.hui-DurationInput__duration_components {
+  
+}
+
+.hui-DurationInput__duration_component {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 0.4em;
+}
+
+.hui-DurationInput__duration_component_label {
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 1.25em;
+  text-transform: none;
+  color: $grey-light;
+}
+
+@include input-sizes(DurationInput);
