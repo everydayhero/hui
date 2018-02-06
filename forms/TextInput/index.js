@@ -18,10 +18,7 @@ export default React.createClass({
   },
 
   getDefaultProps () {
-    return {
-      ...defaults,
-      childPosition: 'right'
-    }
+    return defaults
   },
 
   getInitialState () {

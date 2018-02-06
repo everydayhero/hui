@@ -5,6 +5,7 @@ import TextCountDownInput from '../../../forms/TextCountDownInput'
 import TextInput from '../../../forms/TextInput'
 import SimpleSelectInput from '../../../forms/SimpleSelectInput'
 import formMixin from '../../../mixins/reactForm.mixin'
+import DurationInput from '../../../forms/DurationInput'
 
 export default React.createClass({
   displayName: 'TextInputExample',
@@ -105,7 +106,7 @@ export default React.createClass({
             valueKey='value'
             layout='compact'
             spacing='compact'
-            value={this.state.form.demo_input_09}
+            value={this.state.form.demo_input_09 || 'steps'}
             onChange={change('demo_input_09')}
             options={[
               {label: 'Steps', value: 'steps'},
@@ -114,6 +115,14 @@ export default React.createClass({
             ]}
           />
         </TextInput>
+
+        <DurationInput
+          id='demo_input_duration'
+          name='demo_input_duration'
+          value={this.state.form.demo_input_10}
+          label='Duration'
+          onChange={change('demo_input_10')}
+        />
       </div>
     )
   }
