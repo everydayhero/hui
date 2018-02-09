@@ -74,7 +74,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className={groupClassName}>
-          <label className={labelClassName} htmlFor={inputId} ref={props.ref}>
+          <label className={labelClassName} htmlFor={inputId}>
             {props.label}
 
             <input {...this.inputMethods(!props.disabled)}
