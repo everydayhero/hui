@@ -12,9 +12,13 @@ export default {
   componentDidMount () {
     let props = this.props
     if (props.disabled || props.readOnly) { return }
+    let value = props.value
     let node = this.refs.input
-    let value = node.value
-    if (props.autoFocus) { node.focus() }
+    if (node) {
+      value = node.value
+      if (props.autoFocus) { node.focus() }
+    }
+
     if (props.validate) { this.validate() }
     this.setValue(value)
   },
