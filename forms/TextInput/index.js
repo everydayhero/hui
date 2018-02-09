@@ -12,10 +12,7 @@ export default React.createClass({
 
   mixins: [LocalStorageMixin, inputMessage, textInput],
 
-  propTypes: {
-    ...types,
-    attachedInput: React.PropTypes.node
-  },
+  propTypes: types,
 
   getDefaultProps () {
     return defaults
@@ -77,7 +74,7 @@ export default React.createClass({
     return (
       <div className={classes}>
         <div className={groupClassName}>
-          <label className={labelClassName} htmlFor={inputId} ref={props.ref}>
+          <label className={labelClassName} htmlFor={inputId}>
             {props.label}
 
             <input {...this.inputMethods(!props.disabled)}
