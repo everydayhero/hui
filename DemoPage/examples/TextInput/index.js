@@ -3,7 +3,7 @@
 import React from 'react'
 import TextCountDownInput from '../../../forms/TextCountDownInput'
 import TextInput from '../../../forms/TextInput'
-import SimpleSelectInput from '../../../forms/SimpleSelectInput'
+import TextInputWithAttachedSelect from '../../../forms/TextInputWithAttachedSelect'
 import formMixin from '../../../mixins/reactForm.mixin'
 import DurationInput from '../../../forms/DurationInput'
 
@@ -93,28 +93,29 @@ export default React.createClass({
           warnMax={10}
           onChange={change('demo_input_07')} />
 
-        <TextInput
-          id='demo_input_attached_dropdown'
-          name='demo_input_attached_dropdown'
-          value={this.state.form.demo_input_08}
-          label='custom input with child input'
-          childPosition='right'
-          onChange={change('demo_input_08')}
-        >
-          <SimpleSelectInput
-            labelKey='label'
-            valueKey='value'
-            layout='compact'
-            spacing='compact'
-            value={this.state.form.demo_input_09 || 'steps'}
-            onChange={change('demo_input_09')}
-            options={[
+        <TextInputWithAttachedSelect
+          textInputProps={{
+            id: 'demo_input_attached_dropdown',
+            name: 'demo_input_attached_dropdown',
+            value: this.state.form.demo_input_08,
+            label: 'custom input with child input',
+            childPosition: 'right',
+            onChange: change('demo_input_08')
+          }}
+          selectProps={{
+            labelKey: 'label',
+            valueKey: 'value',
+            layout: 'compact',
+            spacing: 'compact',
+            value: this.state.form.demo_input_09 || 'steps',
+            onChange: change('demo_input_09'),
+            options: [
               {label: 'Steps', value: 'steps'},
               {label: 'Miles', value: 'miles'},
               {label: 'Kms', value: 'kilometers'}
-            ]}
-          />
-        </TextInput>
+            ]
+          }}
+        />
 
         <DurationInput
           id='demo_input_duration'

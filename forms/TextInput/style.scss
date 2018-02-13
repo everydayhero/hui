@@ -110,8 +110,13 @@
   @extend %hui-input-focused;
 }
 
+@include input-sizes(TextInput);
+
 .hui-TextInput__with-child {
-  display: flex;
+  padding-right: 0;
 }
 
-@include input-sizes(TextInput);
+.hui-TextInput__label__with-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

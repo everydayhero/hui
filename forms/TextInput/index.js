@@ -46,6 +46,7 @@ export default React.createClass({
       'hui-TextInput--' + props.layout,
       'hui-TextInput--' + props.spacing,
       'hui-TextInput',
+      !!props.hasChild && 'hui-TextInput__with-child',
       !!value && !!value.trim() && 'hui-TextInput--hasValue',
       state.focused && 'hui-TextInput--focused',
       state.valid && 'hui-TextInput--valid',
