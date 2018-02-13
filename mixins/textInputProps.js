@@ -9,7 +9,8 @@ export const types = {
     'text',
     'number',
     'password',
-    'email'
+    'email',
+    'tel'
   ]),
   value: React.PropTypes.string,
   label: React.PropTypes.node,
