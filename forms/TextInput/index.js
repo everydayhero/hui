@@ -62,46 +62,32 @@ export default React.createClass({
 
     let labelClassName = classnames({
       'hui-TextInput__label': true,
-      'hui-TextInput__label__with-child': props.children
-    })
-    let groupClassName = classnames({
-      'hui-TextInput__with-child': props.children
-    })
-    let childClassName = classnames({
-      'hui-ChildInput': true
+      'hui-TextInput__label__with-child': props.hasChild
     })
 
     return (
       <div className={classes}>
-        <div className={groupClassName}>
-          <label className={labelClassName} htmlFor={inputId}>
-            {props.label}
+        <label className={labelClassName} htmlFor={inputId}>
+          {props.label}
 
-            <input {...this.inputMethods(!props.disabled)}
-              autoComplete={props.autoComplete ? 'on' : 'off'}
-              className={inputClassName}
-              disabled={props.disabled}
-              id={inputId}
-              name={props.name}
-              ref='input'
-              onKeyDown={(e) => {
-                this.onTab(e)
-                this.props.onKeyDown(e)
-              }}
-              type={props.type}
-              value={value}
-              readOnly={props.readOnly} />
+          <input {...this.inputMethods(!props.disabled)}
+            autoComplete={props.autoComplete ? 'on' : 'off'}
+            className={inputClassName}
+            disabled={props.disabled}
+            id={inputId}
+            name={props.name}
+            ref='input'
+            onKeyDown={(e) => {
+              this.onTab(e)
+              this.props.onKeyDown(e)
+            }}
+            type={props.type}
+            value={value}
+            readOnly={props.readOnly} />
 
-            {this.renderPlaceHolder()}
-            {this.renderIcon()}
-          </label>
-
-          {props.children &&
-            <div className={childClassName}>
-              {props.children}
-            </div>
-          }
-        </div>
+          {this.renderPlaceHolder()}
+          {this.renderIcon()}
+        </label>
         {this.renderMessage()}
       </div>
     )
