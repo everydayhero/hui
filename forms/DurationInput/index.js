@@ -106,6 +106,19 @@ const DurationInput = React.createClass({
     this.onChange('seconds', event.target.value)
   },
 
+  componentDidMount () {
+    const {value} = this.props
+
+    if (value > 0) {
+      this.setState({
+        ...durationComponents(value),
+        hoursDirty: true,
+        minutesDirty: true,
+        secondsDirty: true
+      })
+    }
+  },
+
   render () {
     let {
       value,
