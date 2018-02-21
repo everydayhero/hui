@@ -1,8 +1,4 @@
-'use strict'
-
 import React from 'react'
-
-var blurringTimer
 
 export default React.createClass({
   displayName: 'FocusAggregate',
@@ -13,15 +9,15 @@ export default React.createClass({
     }
   },
   componentWillUnmount () {
-    clearTimeout(blurringTimer)
+    clearTimeout(this.blurringTimer)
   },
   handleFocus (e) {
-    clearTimeout(blurringTimer)
+    clearTimeout(this.blurringTimer)
     this.props.onFocus(e)
   },
   handleBlur (e) {
-    clearTimeout(blurringTimer)
-    blurringTimer = setTimeout(() => {
+    clearTimeout(this.blurringTimer)
+    this.blurringTimer = setTimeout(() => {
       this.props.onBlur(e)
     })
   },
