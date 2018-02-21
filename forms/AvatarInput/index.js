@@ -54,7 +54,9 @@ export default React.createClass({
   },
 
   focus: function () {
-    this.refs.browse_files.focus()
+    if (this.browseFiles) {
+      this.browseFiles.focus()
+    }
   },
 
   onChange: function (file) {
@@ -90,7 +92,7 @@ export default React.createClass({
           { this.renderPageName() }
         </div>
         <div className='hui-AvatarInput__buttons'>
-          <Button kind='cta' href='#' ref='browse_files' onClick={this.browse} >
+          <Button kind='cta' href='#' elementRef={e => { this.browseFiles = e }} onClick={this.browse} >
             { props.buttonLabel }
           </Button>
         </div>

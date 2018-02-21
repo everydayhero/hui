@@ -74,7 +74,9 @@ export default React.createClass({
   },
 
   focus: function () {
-    this.refs.browse_files.focus()
+    if (this.browseFiles) {
+      this.browseFiles.focus()
+    }
   },
 
   onBlur: function () {
@@ -147,7 +149,7 @@ export default React.createClass({
           </div>
           <div className='hui-FileInput__buttons'>
             {resetButton}
-            <a href='#' ref='browse_files' onBlur={this.onBlur} onFocus={this.onFocus} className='hui-FileInput__browse' onClick={this.browse}>{browseLabel}</a>
+            <a href='#' ref={e => { this.browseFiles = e }} onBlur={this.onBlur} onFocus={this.onFocus} className='hui-FileInput__browse' onClick={this.browse}>{browseLabel}</a>
           </div>
         </div>
         {this.renderMessage()}
