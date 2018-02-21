@@ -42,7 +42,8 @@ export default React.createClass({
     type: React.PropTypes.oneOf(
       ['submit', 'reset', 'button']
     ),
-    uppercase: React.PropTypes.bool
+    uppercase: React.PropTypes.bool,
+    elementRef: React.PropTypes.func
   },
 
   getDefaultProps () {
@@ -59,7 +60,8 @@ export default React.createClass({
       target: null,
       thin: false,
       slim: false,
-      type: 'button'
+      type: 'button',
+      elementRef: () => {}
     }
   },
 
@@ -111,6 +113,7 @@ export default React.createClass({
         to={href}
         href={href}
         disabled={props.disabled && 'disabled'}
+        ref={props.elementRef}
         onClick={clickHandler}>
         { this.icon() }
         <span className='hui-Button__label'>{ props.label || props.children }</span>
