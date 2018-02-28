@@ -6,6 +6,8 @@ import merge from 'lodash/merge'
 import isEmpty from 'lodash/isEmpty'
 import cloneDeep from 'lodash/cloneDeep'
 import isArray from 'lodash/isArray'
+import isFunction from 'lodash/isFunction'
+import pickBy from 'lodash/pickBy'
 import React from 'react'
 import validation from '../lib/validation'
 
@@ -21,12 +23,12 @@ export default {
   duplicating: {},
 
   fieldMethods (name) {
-    return {
+    return pickBy({
       onChange: this.onFieldChange(name),
       onUnmount: this.onFieldUnmount(name),
       onError: this.onFieldError(name),
       onBlur: this.props.onBlur && this.props.onBlur.bind(null, name)
-    }
+    }, isFunction)
   },
 
   renderField (Component, name, method, props) {
