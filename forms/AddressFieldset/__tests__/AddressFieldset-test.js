@@ -79,4 +79,27 @@ describe('AddressFieldset', () => {
     expect(onBlurSpy).to.have.been.calledOnce
     expect(onBlurSpy).to.have.been.calledWith('street_address', '123 Fakerton Drive')
   })
+
+  it('validates fields on mount using the supplied hash of validations', () => {
+    const validationSpy = sinon.spy(() => ({
+      valid: true
+    }))
+    const validations = {
+      street_address: [validationSpy],
+      extended_address: [validationSpy],
+      locality: [validationSpy],
+      region: [validationSpy],
+      country_name: [validationSpy],
+      postal_code: [validationSpy]
+    }
+    mount(
+      <AddressFieldset
+        address={fakeAddress}
+        validations={validations}
+      />
+    )
+    // TODO: 10 times ... really? There are 6 fields there ... and ... why?
+    // Our validation stuff is a bit knotty.
+    expect(validationSpy.callCount).to.equal(10)
+  })
 })

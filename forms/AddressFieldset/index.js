@@ -6,6 +6,7 @@ import merge from 'lodash/merge'
 import isEqualWith from 'lodash/isEqualWith'
 import classnames from 'classnames'
 import formControl from '../../mixins/formControl'
+import validation from '../../lib/validation'
 import Input from '../TextInput'
 import CountrySelect from '../CountrySelect'
 import countries from '../CountrySelect/countries'
@@ -94,7 +95,7 @@ export default React.createClass({
       value: this.state.form[name],
       required: methods && !!methods.length,
       showError: this.props.showError,
-      validate: methods,
+      validate: methods && validation.compose(...methods),
       errorMessage: t(name + '_blank_error'),
       errors: this.state.errors && this.state.errors[name] && this.state.errors[name].messages,
       spacing: this.props.internalSpacing,
