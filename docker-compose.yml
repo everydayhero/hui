@@ -4,6 +4,6 @@ tests:
     - NPM_USER
     - NPM_PASS
     - NPM_EMAIL
-    - AWS_KEY
-    - AWS_SECRET
+    - HUI_AWS_ACCESS_KEY_ID
+    - HUI_AWS_SECRET
     - BUILDKITE_MESSAGE
