@@ -3,7 +3,7 @@
 var gulp = require('gulp')
 var svgmin = require('gulp-svgmin')
 var svgSprite = require('gulp-svg-sprite')
-var svg2png = require('gulp-svg2png')
+var svg2png = require('gulp-svg2png-update')
 
 gulp.task('svgFlagSprite', function () {
   return gulp.src(['./images/flags/*.svg'])
