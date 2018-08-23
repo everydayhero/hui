@@ -3,8 +3,8 @@
 set -euo pipefail
 
 # Deploy assets
-./bin/version_check
-node_modules/.bin/gulp assets-build
+# ./bin/version_check
+# node_modules/.bin/gulp assets-build
 # node_modules/.bin/gulp assets-deploy
 
 # Publish to npm
