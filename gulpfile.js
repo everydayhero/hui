@@ -9,7 +9,6 @@ var browserifyInc = require('browserify-incremental')
 var merge = require('lodash/merge')
 
 // Tasks
-require('./gulp_tasks/assets-deploy')
 require('./gulp_tasks/transpile')
 require('./gulp_tasks/lint')
 require('./gulp_tasks/assets-build')

@@ -5,7 +5,7 @@ set -euo pipefail
 # Deploy assets
 ./bin/version_check
 node_modules/.bin/gulp assets-build
-node_modules/.bin/gulp assets-deploy
+# node_modules/.bin/gulp assets-deploy
 
 # Publish to npm
 echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
