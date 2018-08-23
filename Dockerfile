@@ -1,6 +1,6 @@
-FROM node:6.0.0
+FROM node:8.11.4
 
-RUN npm install -g yarn@0.16
+RUN npm install -g yarn@1.9.4
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

@@ -57,7 +57,7 @@ export default React.createClass({
   getInitialState () {
     return {
       selectedCountry: this.props.selectedCountry,
-      minQueryLength: this.props.countryCode === 'UK' ? 7 : 5,
+      minQueryLength: 5,
       pendingRequest: null,
       address: null
     }
@@ -114,7 +114,6 @@ export default React.createClass({
 
   handleCountrySelection (country) {
     this.setState({
-      minQueryLength: country.value === 'UK' ? 7 : 5,
       isSelectingCountry: false,
       selectedCountry: country
     }, () => this.props.onCountrySelect(country))
