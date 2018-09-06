@@ -78,10 +78,6 @@ export default React.createClass({
         this.state.selectedCountry.value) === 'UK')
   },
 
-  isGoogleLookup () {
-    return !this.isPAFLookup()
-  },
-
   removeNull (o) {
     return forEach(o, (d, k) => { o[k] = d === null ? '' : d })
   },
@@ -142,7 +138,6 @@ export default React.createClass({
     ])
     let urlSearchSelectClasses = classnames({
       'hui-AddressLookup_url-search-select': true,
-      'hui-AddressLookup_url-search-select--google': this.isGoogleLookup(),
       'hui-AddressLookup_url-search-select--inactive': state.isSelectingCountry
     })
     let countrySelectClasses = classnames({
