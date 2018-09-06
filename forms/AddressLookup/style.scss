@@ -50,22 +50,3 @@
 .hui-AddressLookup_url-search-select .hui-TextInput__icon {
   right: 90 + $x-2;
 }
-
-.hui-AddressLookup_url-search-select--google .hui-UrlSearchSelect__dropdown:after {
-  content: "";
-  background-image: url(../images/powered_by_google_on_white.png);
-  background-image: url(../images/powered_by_google_on_white.svg);
-  background-position: 50% 50%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 108px;
-  height: 15px;
-  float: right;
-  margin: 8px;
-  display: block;
-  font-size: 0;
-}
-
-.hui-AddressLookup_url-search-select--google .hui-UrlSearchSelect__manual-action {
-  padding-bottom: 0;
-}
