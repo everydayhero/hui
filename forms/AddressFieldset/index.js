@@ -30,7 +30,8 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onError: React.PropTypes.func,
     onCountrySelect: React.PropTypes.func,
-    validations: React.PropTypes.object
+    validations: React.PropTypes.object,
+    countrySelectMaxResults: React.PropTypes.number
   },
 
   getDefaultProps () {
@@ -45,6 +46,7 @@ export default React.createClass({
       spacing: 'loose',
       internalSpacing: 'tight',
       validations: {},
+      countrySelectMaxResults: 100,
       onCountrySelect: () => {},
       onChange: () => {},
       onError: () => {},
@@ -132,7 +134,7 @@ export default React.createClass({
           {this.renderAddressField('extended_address')}
           {this.renderAddressField('locality', { layout: 'twoThirds' })}
           {this.renderAddressField('region', { layout: 'third' })}
-          {this.renderCountrySelect('country_name', { data: state.form.country, displayProperty: 'label', layout: 'twoThirds', onSelection: this.handleCountrySelection })}
+          {this.renderCountrySelect('country_name', { data: state.form.country, maxResults: props.countrySelectMaxResults, displayProperty: 'label', layout: 'twoThirds', onSelection: this.handleCountrySelection })}
           {this.renderAddressField('postal_code', { layout: 'third' })}
 
           {props.children}
