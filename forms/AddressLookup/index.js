@@ -30,6 +30,7 @@ export default React.createClass({
     onChange: React.PropTypes.func,
     onCountrySelect: React.PropTypes.func,
     manualAction: React.PropTypes.node,
+    countrySelectMaxResults: React.PropTypes.number,
     address: React.PropTypes.shape({
       street_address: React.PropTypes.string,
       extended_address: React.PropTypes.string,
@@ -50,7 +51,8 @@ export default React.createClass({
       onError: () => {},
       layout: 'full',
       spacing: 'loose',
-      manualAction: null
+      manualAction: null,
+      countrySelectMaxResults: 100
     }
   },
 
@@ -175,6 +177,7 @@ export default React.createClass({
           className={countrySelectClasses}
           value={state.selectedCountry.value}
           data={state.selectedCountry}
+          maxResults={props.countrySelectMaxResults}
           onBlur={this.handleCountrySelectBlur}
           onOpen={this.handleCountrySelectOpen}
           onSelection={this.handleCountrySelection} />

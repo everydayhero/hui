@@ -17,7 +17,8 @@ export default React.createClass({
     onSelection: React.PropTypes.func,
     onOpen: React.PropTypes.func,
     layout: React.PropTypes.string,
-    spacing: React.PropTypes.string
+    spacing: React.PropTypes.string,
+    maxResult: React.PropTypes.number
   },
 
   getDefaultProps () {
@@ -29,7 +30,8 @@ export default React.createClass({
       onSelection: () => {},
       onOpen: () => {},
       layout: 'full',
-      spacing: 'loose'
+      spacing: 'loose',
+      maxResults: 100
     }
   },
 
@@ -48,6 +50,7 @@ export default React.createClass({
       <FilterSelect {...this.props}
         className={classes}
         label='Select your country'
+        maxResult={this.props.maxResults}
         options={countries}
         Display={CountrySelectDisplay} />
     )

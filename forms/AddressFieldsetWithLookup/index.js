@@ -27,6 +27,7 @@ export default React.createClass({
       postal_code: React.PropTypes.string
     }),
     countryCode: React.PropTypes.string,
+    countrySelectMaxResults: React.PropTypes.number,
     prefix: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onError: React.PropTypes.func,
@@ -55,7 +56,8 @@ export default React.createClass({
       onChange: () => {},
       onError: () => {},
       onUnmount: () => {},
-      validations: {}
+      validations: {},
+      countrySelectMaxResults: 100
     }
   },
 
@@ -160,6 +162,7 @@ export default React.createClass({
         showError={this.props.showError}
         onError={this.handleError}
         onCountrySelect={this.handleCountrySelect}
+        countrySelectMaxResults={this.props.countrySelectMaxResults}
         onChange={this.handleAddressChange} />
     )
   },
@@ -175,6 +178,7 @@ export default React.createClass({
         autoFocus
         showError={this.props.showError}
         validations={this.props.validations}
+        countrySelectMaxResults={this.props.countrySelectMaxResults}
         onError={this.props.onError}
         onCountrySelect={this.handleCountrySelect}
         onChange={this.handleAddressChange}
