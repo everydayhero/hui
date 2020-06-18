@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 
 ADD package.json yarn.lock /usr/src/app/
 RUN yarn
+RUN yarn add react@^15.6.2 react-dom@^15.6.2
 
 ADD . /usr/src/app
 
