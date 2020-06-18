@@ -49,14 +49,16 @@
     "moment": "2.14.1",
     "numeral": "^1.5.3",
     "paths-js": "^0.3.0",
-    "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-dom": "^15.3.2",
     "react-functional": "^2.0.0",
     "remarkable": "^1.6.0",
     "superagent": "^2.0.0",
     "uuid": "^2.0.1",
     "velocity-react": "^1.1.5"
+  },
+  "peerDependencies": {
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -101,7 +103,7 @@
     "moment": "^2.22.2",
     "morgan": "^1.5.1",
     "proxyquire": "^1.7.4",
-    "react-addons-test-utils": "^15.3.2",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom-server": "0.0.5",
     "react-router": "^2.0.0",
     "run-sequence": "^1.0.2",
